@@ -8,7 +8,11 @@ import {
   createSortOrder,
   paginationInputSchema,
 } from "../../lib/pagination";
-import { hasPermission } from "../../services/rbacService";
+import {
+  UserUncheckedCreateInputObjectZodSchema,
+  UserUncheckedUpdateInputObjectZodSchema,
+} from "../../lib/zod/schemas";
+import { hasPermissionOrManage } from "../../services/rbacService";
 import { PermissionAction, PermissionResource } from "../../types/rbac";
 import { validateEmail } from "../../utils/validate";
 import { protectedProcedure, router } from "../trpc";
@@ -115,14 +119,19 @@ export const userRouter = router({
 
   update: protectedProcedure
     .input(
-      z.object({
-        id: z.string().optional(), // If not provided, updates current user
-        name: z.string().optional(),
-        email: z.string().optional(),
-        password: z.string().min(6).optional(),
-        phone: z.string().optional(),
-        language: z.enum(["ES", "EN", "PT"]).optional(),
-      })
+      z
+        .object({
+          id: z.string().optional(), // If not provided, updates current user
+          password: z.string().min(6).optional(),
+        })
+        .merge(
+          UserUncheckedUpdateInputObjectZodSchema.pick({
+            name: true,
+            email: true,
+            phone: true,
+            language: true,
+          }).partial()
+        )
     )
     .mutation(async ({ input, ctx }) => {
       if (!ctx.user?.tenantId) {
@@ -133,9 +142,9 @@ export const userRouter = router({
 
       // Check permissions: users can edit themselves, admins can edit anyone
       if (input.id && input.id !== ctx.user.id) {
-        const canManageUsers = await hasPermission(
+        const canManageUsers = await hasPermissionOrManage(
           ctx.user.id,
-          PermissionAction.MANAGE,
+          PermissionAction.UPDATE,
           PermissionResource.USER,
           ctx.user.tenantId
         );
@@ -153,14 +162,23 @@ export const userRouter = router({
       });
       if (!user) throw new Error("Usuario no encontrado");
 
-      if (input.email && !validateEmail(input.email))
+      // Extract string values from input (handle union types from generated schema)
+      const emailValue =
+        typeof input.email === "string" ? input.email : undefined;
+      const nameValue = typeof input.name === "string" ? input.name : undefined;
+      const phoneValue =
+        typeof input.phone === "string" ? input.phone : undefined;
+      const languageValue =
+        typeof input.language === "string" ? input.language : input.language;
+
+      if (emailValue && !validateEmail(emailValue))
         throw new Error("Email inválido");
 
       // Check if email is already taken by another user in the same tenant
-      if (input.email && input.email !== user.email) {
+      if (emailValue && emailValue !== user.email) {
         const existingUser = await prisma.user.findFirst({
           where: {
-            email: input.email,
+            email: emailValue,
             tenantId: ctx.user.tenantId,
             id: { not: targetUserId },
           },
@@ -170,10 +188,10 @@ export const userRouter = router({
 
       // Prepare update data (exclude password - it's handled separately in Account table)
       const updateData: Prisma.UserUpdateInput = {};
-      if (input.name !== undefined) updateData.name = input.name;
-      if (input.email !== undefined) updateData.email = input.email;
-      if (input.phone !== undefined) updateData.phone = input.phone;
-      if (input.language !== undefined) updateData.language = input.language;
+      if (nameValue !== undefined) updateData.name = nameValue;
+      if (emailValue !== undefined) updateData.email = emailValue;
+      if (phoneValue !== undefined) updateData.phone = phoneValue;
+      if (languageValue !== undefined) updateData.language = languageValue;
 
       // Handle password update if provided - passwords are stored in Account table
       if (input.password && input.password.trim() !== "") {
@@ -219,9 +237,9 @@ export const userRouter = router({
 
       // Check permissions: users can delete themselves, admins can delete anyone
       if (input.id !== ctx.user.id) {
-        const canManageUsers = await hasPermission(
+        const canManageUsers = await hasPermissionOrManage(
           ctx.user.id,
-          PermissionAction.MANAGE,
+          PermissionAction.DELETE,
           PermissionResource.USER,
           ctx.user.tenantId
         );
@@ -245,15 +263,23 @@ export const userRouter = router({
 
   create: protectedProcedure
     .input(
-      z.object({
-        email: z.string().email("Email inválido"),
-        name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
-        password: z
-          .string()
-          .min(6, "Contraseña debe tener al menos 6 caracteres"),
-        phone: z.string().optional(),
-        language: z.enum(["ES", "EN", "PT"]).optional(),
-      })
+      z
+        .object({
+          password: z
+            .string()
+            .min(6, "Contraseña debe tener al menos 6 caracteres"),
+        })
+        .merge(
+          UserUncheckedCreateInputObjectZodSchema.pick({
+            email: true,
+            name: true,
+            phone: true,
+            language: true,
+          })
+        )
+        .refine((data) => data.email && data.name, {
+          message: "Email y nombre son requeridos",
+        })
     )
     .mutation(async ({ input, ctx }) => {
       if (!ctx.user?.tenantId) {
@@ -261,9 +287,9 @@ export const userRouter = router({
       }
 
       // Check permissions: only admins can create users
-      const canManageUsers = await hasPermission(
+      const canManageUsers = await hasPermissionOrManage(
         ctx.user.id,
-        PermissionAction.MANAGE,
+        PermissionAction.CREATE,
         PermissionResource.USER,
         ctx.user.tenantId
       );
@@ -344,9 +370,9 @@ export const userRouter = router({
       }
 
       // Check permissions: only admins can assign roles
-      const canManageUsers = await hasPermission(
+      const canManageUsers = await hasPermissionOrManage(
         ctx.user.id,
-        PermissionAction.MANAGE,
+        PermissionAction.UPDATE,
         PermissionResource.USER,
         ctx.user.tenantId
       );
@@ -418,9 +444,9 @@ export const userRouter = router({
       }
 
       // Check permissions: only admins can remove roles
-      const canManageUsers = await hasPermission(
+      const canManageUsers = await hasPermissionOrManage(
         ctx.user.id,
-        PermissionAction.MANAGE,
+        PermissionAction.UPDATE,
         PermissionResource.USER,
         ctx.user.tenantId
       );
@@ -475,9 +501,9 @@ export const userRouter = router({
 
       // Users can see their own roles, admins can see any user's roles
       if (input.userId !== ctx.user.id) {
-        const canManageUsers = await hasPermission(
+        const canManageUsers = await hasPermissionOrManage(
           ctx.user.id,
-          PermissionAction.MANAGE,
+          PermissionAction.READ,
           PermissionResource.USER,
           ctx.user.tenantId
         );

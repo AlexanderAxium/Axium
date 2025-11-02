@@ -76,14 +76,20 @@ export const translationRouter = router({
       })
     )
     .query(async ({ input }) => {
-      const translation = await getTranslation(
-        input.entityType,
-        input.entityId,
-        input.fieldName,
-        input.localeCode,
-        { tenantId: input.tenantId ?? undefined }
-      );
-      return translation;
+      try {
+        const translation = await getTranslation(
+          input.entityType,
+          input.entityId,
+          input.fieldName,
+          input.localeCode,
+          { tenantId: input.tenantId ?? undefined }
+        );
+        return translation;
+      } catch (error) {
+        console.error("Error fetching translation:", error);
+        // Return null instead of throwing to prevent 500 errors
+        return null;
+      }
     }),
 
   /**
@@ -188,7 +194,7 @@ export const translationRouter = router({
           .default(TranslationStatus.PUBLISHED),
       })
     )
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       if (!ctx.user?.id) {
         throw new TRPCError({
           code: "UNAUTHORIZED",

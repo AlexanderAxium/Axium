@@ -1,76 +1,84 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark *));
+
 @theme {
-  --font-family-sans: "Poppins", "sans-serif";
+  --font-family-sans: "Raleway", "sans-serif";
 
   /* Colors for light mode */
-  --color-background: hsl(0 0% 97%);
-  --color-foreground: hsl(240 10% 3.9%);
+  --color-background: #f8fafb;
+  --color-foreground: hsl(240 10% 23.9%);
   --color-card: hsl(0 0% 100%);
   --color-card-foreground: hsl(240 10% 3.9%);
   --color-popover: hsl(0 0% 100%);
   --color-popover-foreground: hsl(240 10% 3.9%);
-  --color-primary: hsl(42, 91%, 58%);
+  --color-primary: hsl(215, 40%, 42%);
   --color-primary-foreground: hsl(0 0% 98%);
-  --color-secondary: hsl(240 4.8% 95.9%);
-  --color-secondary-foreground: hsl(240 5.9% 10%);
+  --color-secondary: hsl(187, 60%, 42%);
+  --color-secondary-foreground: hsl(0 0% 98%);
   --color-muted: hsl(240 4.8% 95.9%);
   --color-muted-foreground: hsl(240 3.8% 46.1%);
-  --color-accent: hsl(240 4.8% 95.9%);
-  --color-accent-foreground: hsl(240 5.9% 10%);
+  --color-accent: hsl(200, 10%, 92%);
+  --color-accent-foreground: hsl(221, 60%, 10%);
   --color-destructive: hsl(0 84.2% 60.2%);
   --color-destructive-foreground: hsl(0 0% 98%);
-  --color-border: hsl(240 5.9% 90%);
+  --color-border: hsl(140 15.9% 92%);
   --color-input: hsl(240 5.9% 90%);
-  --color-ring: hsl(221 83% 53%);
+  --color-ring: hsl(215, 40%, 42%);
 
   /* Sidebar colors for light mode */
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(240 10% 3.9%);
+  --sidebar-primary: hsl(215, 40%, 42%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(215, 40%, 96%);
+  --sidebar-accent-foreground: hsl(215, 40%, 20%);
+  --sidebar-border: hsl(240 5.9% 85%);
+  --sidebar-ring: hsl(215, 40%, 42%);
 
   --radius: 0.6rem;
 }
 
 .dark {
   /* Colors for dark mode */
-  --color-background: hsl(223 42% 13%);
+  --color-background: hsl(220, 15%, 6%);
   --color-foreground: hsl(0 0% 98%);
-  --color-card: hsl(222, 35%, 22%);
+  --color-card: hsl(220, 15%, 10%);
   --color-card-foreground: hsl(0 0% 98%);
-  --color-popover: hsl(240 10% 3.9%);
+  --color-popover: hsl(220, 15%, 9%);
   --color-popover-foreground: hsl(0 0% 98%);
-  --color-primary: hsl(42, 91%, 58%);
+  --color-primary: hsl(210, 50%, 58%);
   --color-primary-foreground: hsl(0 0% 98%);
-  --color-secondary: hsl(240 3.7% 15.9%);
+  --color-secondary: hsl(187, 60%, 57%);
   --color-secondary-foreground: hsl(0 0% 98%);
-  --color-muted: hsl(240 3.7% 15.9%);
+  --color-muted: hsl(220, 12%, 14%);
   --color-muted-foreground: hsl(240 5% 64.9%);
-  --color-accent: hsl(240 3.7% 15.9%);
+  --color-accent: hsl(220, 15%, 8%);
   --color-accent-foreground: hsl(0 0% 98%);
   --color-destructive: hsl(0 62.8% 30.6%);
   --color-destructive-foreground: hsl(0 0% 98%);
-  --color-border: hsl(223 69% 9%);
-  --color-input: hsl(240 3.7% 15.9%);
-  --color-ring: hsl(142 76% 36%);
+  --color-border: hsl(220, 12%, 12%);
+  --color-input: hsl(220, 12%, 14%);
+  --color-ring: hsl(210, 50%, 58%);
 
   /* Sidebar colors for dark mode */
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.439 0 0);
+  --sidebar: hsl(220, 15%, 5%);
+  --sidebar-foreground: hsl(0 0% 98%);
+  --sidebar-primary: hsl(210, 50%, 58%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(210, 50%, 15%);
+  --sidebar-accent-foreground: hsl(0 0% 98%);
+  --sidebar-border: hsl(220, 12%, 10%);
+  --sidebar-ring: hsl(210, 50%, 58%);
 }
 
 /* Global styles */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+}
+
 html {
   height: 100%;
 }

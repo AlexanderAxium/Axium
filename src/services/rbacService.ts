@@ -121,6 +121,7 @@ export async function getUserPermissions(
 
 /**
  * Check if user has a specific permission
+ * MANAGE permission grants access to all actions for that resource
  */
 export async function hasPermission(
   userId: string,
@@ -130,16 +131,69 @@ export async function hasPermission(
 ): Promise<boolean> {
   const permissions = await getUserPermissions(userId, tenantId);
 
-  return permissions.some(
+  // Check if user has the specific permission
+  const hasSpecificPermission = permissions.some(
     (permission) =>
       permission.action === action.toString() &&
       permission.resource === resource.toString() &&
       permission.isActive
   );
+
+  // If user has MANAGE permission for this resource, they can do everything
+  if (hasSpecificPermission) return true;
+
+  const hasManagePermission = permissions.some(
+    (permission) =>
+      permission.action === PermissionAction.MANAGE.toString() &&
+      permission.resource === resource.toString() &&
+      permission.isActive
+  );
+
+  return hasManagePermission;
+}
+
+/**
+ * Check if user has permission (MANAGE or specific action)
+ * This helper makes it explicit that MANAGE always grants access
+ * Optimized to fetch permissions only once
+ * @param userId - User ID to check
+ * @param action - Specific action to check (CREATE, READ, UPDATE, DELETE)
+ * @param resource - Resource to check permission for
+ * @param tenantId - Tenant ID
+ * @returns true if user has MANAGE permission OR the specific action permission
+ */
+export async function hasPermissionOrManage(
+  userId: string,
+  action: PermissionAction,
+  resource: PermissionResource,
+  tenantId: string
+): Promise<boolean> {
+  const permissions = await getUserPermissions(userId, tenantId);
+
+  // Check if user has the specific permission
+  const hasSpecificPermission = permissions.some(
+    (permission) =>
+      permission.action === action.toString() &&
+      permission.resource === resource.toString() &&
+      permission.isActive
+  );
+
+  if (hasSpecificPermission) return true;
+
+  // Check if user has MANAGE permission (it grants all actions)
+  const hasManagePermission = permissions.some(
+    (permission) =>
+      permission.action === PermissionAction.MANAGE.toString() &&
+      permission.resource === resource.toString() &&
+      permission.isActive
+  );
+
+  return hasManagePermission;
 }
 
 /**
  * Check if user has any of the specified permissions
+ * MANAGE permission grants access to all actions for that resource
  */
 export async function hasAnyPermission(
   userId: string,
@@ -148,18 +202,30 @@ export async function hasAnyPermission(
 ): Promise<boolean> {
   const permissions = await getUserPermissions(userId, tenantId);
 
-  return permissionChecks.some((check) =>
-    permissions.some(
+  return permissionChecks.some((check) => {
+    // Check if user has the specific permission
+    const hasSpecificPermission = permissions.some(
       (permission) =>
         permission.action === check.action.toString() &&
         permission.resource === check.resource.toString() &&
         permission.isActive
-    )
-  );
+    );
+
+    if (hasSpecificPermission) return true;
+
+    // Check if user has MANAGE permission for this resource
+    return permissions.some(
+      (permission) =>
+        permission.action === PermissionAction.MANAGE.toString() &&
+        permission.resource === check.resource.toString() &&
+        permission.isActive
+    );
+  });
 }
 
 /**
  * Check if user has all of the specified permissions
+ * MANAGE permission grants access to all actions for that resource
  */
 export async function hasAllPermissions(
   userId: string,
@@ -168,14 +234,25 @@ export async function hasAllPermissions(
 ): Promise<boolean> {
   const permissions = await getUserPermissions(userId, tenantId);
 
-  return permissionChecks.every((check) =>
-    permissions.some(
+  return permissionChecks.every((check) => {
+    // Check if user has the specific permission
+    const hasSpecificPermission = permissions.some(
       (permission) =>
         permission.action === check.action.toString() &&
         permission.resource === check.resource.toString() &&
         permission.isActive
-    )
-  );
+    );
+
+    if (hasSpecificPermission) return true;
+
+    // Check if user has MANAGE permission for this resource
+    return permissions.some(
+      (permission) =>
+        permission.action === PermissionAction.MANAGE.toString() &&
+        permission.resource === check.resource.toString() &&
+        permission.isActive
+    );
+  });
 }
 
 /**

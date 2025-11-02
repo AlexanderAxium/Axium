@@ -27,6 +27,7 @@ import type {
 import { ScrollableTable } from "@/components/ui/scrollable-table";
 import { usePagination } from "@/hooks/usePagination";
 import { useRBAC } from "@/hooks/useRBAC";
+import { useTranslation } from "@/hooks/useTranslation";
 import { trpc } from "@/utils/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Edit, Eye, Plus, Trash2, UserCheck, UserX, Users } from "lucide-react";
@@ -34,28 +35,35 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const updateUserSchema = z.object({
-  email: z.string().email("Email inválido"),
-  name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
-  password: z
-    .string()
-    .transform((val) => (val === "" ? undefined : val))
-    .optional()
-    .refine((val) => !val || val.length >= 6, {
-      message: "Contraseña debe tener al menos 6 caracteres",
-    }),
-});
+// Schemas will use translations dynamically in component
+const getUpdateUserSchema = (t: (key: string) => string) =>
+  z.object({
+    email: z.string().email(t("invalidEmail") || "Email inválido"),
+    name: z
+      .string()
+      .min(2, t("nameMinChars") || "Nombre debe tener al menos 2 caracteres"),
+    password: z
+      .string()
+      .transform((val) => (val === "" ? undefined : val))
+      .optional()
+      .refine((val) => !val || val.length >= 6, {
+        message: t("passwordMinChars"),
+      }),
+  });
 
-const createUserSchema = z.object({
-  email: z.string().email("Email inválido"),
-  name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
-  password: z.string().min(6, "Contraseña debe tener al menos 6 caracteres"),
-  phone: z.string().optional(),
-  language: z.enum(["ES", "EN", "PT"]).optional(),
-});
+const getCreateUserSchema = (t: (key: string) => string) =>
+  z.object({
+    email: z.string().email(t("invalidEmail") || "Email inválido"),
+    name: z
+      .string()
+      .min(2, t("nameMinChars") || "Nombre debe tener al menos 2 caracteres"),
+    password: z.string().min(6, t("passwordMinChars")),
+    phone: z.string().optional(),
+    language: z.enum(["ES", "EN", "PT"]).optional(),
+  });
 
-type UserFormData = z.infer<typeof updateUserSchema>;
-type CreateUserFormData = z.infer<typeof createUserSchema>;
+type UserFormData = z.infer<ReturnType<typeof getUpdateUserSchema>>;
+type CreateUserFormData = z.infer<ReturnType<typeof getCreateUserSchema>>;
 
 interface User {
   id: string;
@@ -69,6 +77,7 @@ interface User {
 
 // Component to show user roles in table cell
 function UserRolesCell({ userId }: { userId: string }) {
+  const { t } = useTranslation("dashboard");
   const { data: userRoles, isLoading } = trpc.user.getUserRoles.useQuery(
     { userId },
     {
@@ -78,17 +87,17 @@ function UserRolesCell({ userId }: { userId: string }) {
   );
 
   if (isLoading) {
-    return <span className="text-muted-foreground">Cargando...</span>;
+    return <span className="text-muted-foreground">{t("loadingRoles")}</span>;
   }
 
   if (!userRoles || userRoles.length === 0) {
-    return <span className="text-muted-foreground">Sin roles</span>;
+    return <span className="text-muted-foreground">{t("noRoles")}</span>;
   }
 
   const activeRoles = userRoles.filter((role) => role.isActive);
 
   if (activeRoles.length === 0) {
-    return <span className="text-muted-foreground">Sin roles activos</span>;
+    return <span className="text-muted-foreground">{t("noActiveRoles")}</span>;
   }
 
   return (
@@ -97,13 +106,16 @@ function UserRolesCell({ userId }: { userId: string }) {
         <Badge
           key={userRole.id}
           variant="secondary"
-          className="bg-blue-100 text-blue-800 hover:bg-blue-200"
+          className="bg-primary/15 text-primary border-primary hover:bg-primary/20"
         >
           {userRole.roleDisplayName}
         </Badge>
       ))}
       {activeRoles.length > 2 && (
-        <Badge variant="outline" className="bg-muted text-muted-foreground">
+        <Badge
+          variant="outline"
+          className="bg-secondary/10 text-secondary border-secondary/30"
+        >
           +{activeRoles.length - 2}
         </Badge>
       )}
@@ -131,6 +143,7 @@ function UserDialog({
   }) => void;
   isLoading: boolean;
 }) {
+  const { t } = useTranslation("dashboard");
   const [selectedInitialRoles, setSelectedInitialRoles] = useState<string[]>(
     []
   );
@@ -139,7 +152,9 @@ function UserDialog({
   const isEdit = !!user?.id;
 
   const form = useForm<UserFormData | CreateUserFormData>({
-    resolver: zodResolver(isEdit ? updateUserSchema : createUserSchema),
+    resolver: zodResolver(
+      isEdit ? getUpdateUserSchema(t) : getCreateUserSchema(t)
+    ),
     defaultValues: {
       email: user?.email || "",
       name: user?.name || "",
@@ -177,12 +192,12 @@ function UserDialog({
       <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
-            {isEdit ? `Editar Usuario - ${user.name}` : "Crear Nuevo Usuario"}
+            {isEdit
+              ? t("editUser", { name: user.name || "" })
+              : t("createUser")}
           </DialogTitle>
           <DialogDescription>
-            {isEdit
-              ? "Modifica la información del usuario y gestiona sus roles."
-              : "Completa la información para crear un nuevo usuario en el sistema."}
+            {isEdit ? t("editUserDesc") : t("createUserDesc")}
           </DialogDescription>
         </DialogHeader>
 
@@ -195,7 +210,7 @@ function UserDialog({
               {/* Left Column - User Information */}
               <div className="space-y-4">
                 <h4 className="text-md font-medium text-foreground border-b border-border pb-2">
-                  Información Personal
+                  {t("personalInfo")}
                 </h4>
                 <div className="space-y-4">
                   <FormField
@@ -203,7 +218,7 @@ function UserDialog({
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email *</FormLabel>
+                        <FormLabel>{t("email")} *</FormLabel>
                         <FormControl>
                           <Input
                             {...field}
@@ -220,9 +235,14 @@ function UserDialog({
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nombre Completo *</FormLabel>
+                        <FormLabel>{t("fullName")} *</FormLabel>
                         <FormControl>
-                          <Input {...field} placeholder="Nombre del usuario" />
+                          <Input
+                            {...field}
+                            placeholder={
+                              t("userNamePlaceholder") || "Nombre del usuario"
+                            }
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -234,19 +254,15 @@ function UserDialog({
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>
-                          Contraseña{" "}
-                          {isEdit
-                            ? "(dejar vacío para mantener la actual)"
-                            : "*"}
+                          {t("password")}{" "}
+                          {isEdit ? `(${t("passwordEmpty")})` : "*"}
                         </FormLabel>
                         <FormControl>
                           <Input
                             {...field}
                             type="password"
                             placeholder={
-                              isEdit
-                                ? "Nueva contraseña"
-                                : "Mínimo 6 caracteres"
+                              isEdit ? t("newPassword") : t("minPassword")
                             }
                           />
                         </FormControl>
@@ -259,7 +275,7 @@ function UserDialog({
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Teléfono</FormLabel>
+                        <FormLabel>{t("phone")}</FormLabel>
                         <FormControl>
                           <Input {...field} placeholder="+1234567890" />
                         </FormControl>
@@ -294,8 +310,14 @@ function UserDialog({
               {canManageUsers && (
                 <div className="space-y-4">
                   <h4 className="text-md font-medium text-foreground border-b border-border pb-2">
-                    {isEdit ? "Gestión de Roles" : "Roles Iniciales"}
+                    {isEdit ? t("roleManagement") : t("initialRoles")}
                   </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {isEdit
+                      ? t("manageUserRoles") ||
+                        "Gestiona los roles asignados a este usuario."
+                      : t("selectRoles")}
+                  </p>
                   {isEdit ? (
                     <UserRolesManager userId={user.id || ""} />
                   ) : (
@@ -310,16 +332,16 @@ function UserDialog({
 
             <div className="flex justify-end space-x-2 pt-6 border-t border-border">
               <Button type="button" variant="outline" onClick={onClose}>
-                Cancelar
+                {t("cancel")}
               </Button>
               <Button type="submit" disabled={isLoading}>
                 {isLoading
                   ? isEdit
-                    ? "Actualizando..."
-                    : "Creando..."
+                    ? t("updating")
+                    : t("creating")
                   : isEdit
-                    ? "Actualizar Usuario"
-                    : "Crear Usuario"}
+                    ? t("updateUser")
+                    : t("createUser2")}
               </Button>
             </div>
           </form>
@@ -337,6 +359,7 @@ function InitialRolesManager({
   selectedRoles: string[];
   onRolesChange: (roles: string[]) => void;
 }) {
+  const { t } = useTranslation("dashboard");
   const {
     data: availableRoles = [],
     isLoading: rolesLoading,
@@ -351,13 +374,13 @@ function InitialRolesManager({
   };
 
   if (rolesLoading) {
-    return <p className="text-sm text-muted-foreground">Cargando roles...</p>;
+    return <p className="text-sm text-muted-foreground">{t("loadingRoles")}</p>;
   }
 
   if (rolesError) {
     return (
       <p className="text-sm text-red-500">
-        Error cargando roles: {rolesError.message}
+        {t("errorLoadingRoles") || "Error cargando roles"}: {rolesError.message}
       </p>
     );
   }
@@ -366,10 +389,6 @@ function InitialRolesManager({
 
   return (
     <div className="space-y-4">
-      <p className="text-sm text-muted-foreground">
-        Selecciona los roles que tendrá el usuario al ser creado:
-      </p>
-
       {activeRoles.length > 0 ? (
         <div className="space-y-3 max-h-[20rem] overflow-y-auto">
           {activeRoles.map((role) => (
@@ -405,7 +424,7 @@ function InitialRolesManager({
                     variant="secondary"
                     className="bg-blue-100 text-blue-800 hover:bg-blue-200 mt-1"
                   >
-                    Sistema
+                    {t("system")}
                   </Badge>
                 )}
               </div>
@@ -413,15 +432,13 @@ function InitialRolesManager({
           ))}
         </div>
       ) : (
-        <p className="text-sm text-muted-foreground">
-          No hay roles disponibles
-        </p>
+        <p className="text-sm text-muted-foreground">{t("noRolesAvailable")}</p>
       )}
 
       {selectedRoles.length > 0 && (
         <div className="mt-4 p-3 bg-primary/5 border border-primary/20 rounded-lg">
           <p className="text-sm font-medium text-primary mb-2">
-            Roles seleccionados ({selectedRoles.length}):
+            {t("selectedRoles", { count: selectedRoles.length.toString() })}
           </p>
           <div className="flex flex-wrap gap-2">
             {selectedRoles.map((roleId) => {
@@ -445,6 +462,7 @@ function InitialRolesManager({
 
 // Component for managing user roles in edit modal
 function UserRolesManager({ userId }: { userId: string }) {
+  const { t } = useTranslation("dashboard");
   const {
     data: availableRoles = [],
     isLoading: rolesLoading,
@@ -491,7 +509,11 @@ function UserRolesManager({ userId }: { userId: string }) {
   };
 
   if (!userId) {
-    return <div className="text-muted-foreground">Usuario no seleccionado</div>;
+    return (
+      <div className="text-muted-foreground">
+        {t("noUserSelected") || "Usuario no seleccionado"}
+      </div>
+    );
   }
 
   // Debug logs (temporary)
@@ -508,7 +530,7 @@ function UserRolesManager({ userId }: { userId: string }) {
     <div className="space-y-4 max-h-[28rem] overflow-y-auto">
       {/* Current Roles */}
       <div>
-        <h5 className="text-sm font-medium mb-2">Roles Asignados</h5>
+        <h5 className="text-sm font-medium mb-2">{t("assignedRolesTitle")}</h5>
         {userRoles && userRoles.length > 0 ? (
           <div className="space-y-2">
             {userRoles.map((userRole) => (
@@ -525,7 +547,7 @@ function UserRolesManager({ userId }: { userId: string }) {
                   </div>
                   {userRole.expiresAt && (
                     <div className="text-xs text-orange-600">
-                      Expira:{" "}
+                      {t("expires")}{" "}
                       {new Date(userRole.expiresAt).toLocaleDateString()}
                     </div>
                   )}
@@ -543,20 +565,19 @@ function UserRolesManager({ userId }: { userId: string }) {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-muted-foreground">
-            No hay roles asignados
-          </p>
+          <p className="text-sm text-muted-foreground">{t("noPermissions")}</p>
         )}
       </div>
 
       {/* Available Roles */}
       <div>
-        <h5 className="text-sm font-medium mb-2">Roles Disponibles</h5>
+        <h5 className="text-sm font-medium mb-2">{t("availableRoles2")}</h5>
         {rolesLoading ? (
-          <p className="text-sm text-muted-foreground">Cargando roles...</p>
+          <p className="text-sm text-muted-foreground">{t("loadingRoles")}</p>
         ) : rolesError ? (
           <p className="text-sm text-red-500">
-            Error cargando roles: {rolesError.message}
+            {t("errorLoadingRoles") || "Error cargando roles"}:{" "}
+            {rolesError.message}
           </p>
         ) : availableRoles && availableRoles.length > 0 ? (
           <div className="space-y-2 max-h-48 overflow-y-auto">
@@ -583,7 +604,7 @@ function UserRolesManager({ userId }: { userId: string }) {
                         variant="secondary"
                         className="bg-blue-100 text-blue-800 hover:bg-blue-200 mt-1"
                       >
-                        Sistema
+                        {t("system")}
                       </Badge>
                     )}
                   </div>
@@ -600,12 +621,13 @@ function UserRolesManager({ userId }: { userId: string }) {
           </div>
         ) : (
           <div className="text-sm text-muted-foreground">
-            <p>No hay roles disponibles</p>
+            <p>{t("noRolesAvailable")}</p>
             <p className="text-xs mt-1">
-              Roles totales: {availableRoles?.length || 0}
+              {t("totalRoles") || "Roles totales"}:{" "}
+              {availableRoles?.length || 0}
             </p>
             <p className="text-xs">
-              Roles del usuario: {userRoles?.length || 0}
+              {t("userRoles") || "Roles del usuario"}: {userRoles?.length || 0}
             </p>
           </div>
         )}
@@ -615,6 +637,7 @@ function UserRolesManager({ userId }: { userId: string }) {
 }
 
 export default function UsersPage() {
+  const { t } = useTranslation("dashboard");
   const [dialogUser, setDialogUser] = useState<Partial<User> | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { canManageUsers } = useRBAC();
@@ -735,7 +758,12 @@ export default function UsersPage() {
   };
 
   const handleDelete = (user: User) => {
-    if (confirm("¿Estás seguro de que quieres eliminar este usuario?")) {
+    if (
+      confirm(
+        t("confirmDeleteUser") ||
+          "¿Estás seguro de que quieres eliminar este usuario?"
+      )
+    ) {
       deleteUser.mutate({ id: user.id });
     }
   };
@@ -744,15 +772,15 @@ export default function UsersPage() {
   const columns: TableColumn<User>[] = [
     {
       key: "name",
-      title: "Usuario",
+      title: t("usersColumn"),
       render: (_, record) => (
         <div className="flex items-center">
           <Avatar className="h-8 w-8 mr-3">
             <AvatarImage
               src={record.image || undefined}
-              alt={record.name || "Usuario"}
+              alt={record.name || t("user")}
             />
-            <AvatarFallback className="bg-blue-100 text-blue-600">
+            <AvatarFallback className="bg-primary/10 text-primary">
               {record.name?.charAt(0)?.toUpperCase() || "U"}
             </AvatarFallback>
           </Avatar>
@@ -767,29 +795,29 @@ export default function UsersPage() {
     },
     {
       key: "emailVerified",
-      title: "Estado",
+      title: t("status"),
       render: (value) => (
         <Badge
           variant="secondary"
           className={`text-xs font-medium ${
             value
-              ? "bg-green-100 text-green-800 hover:bg-green-200"
-              : "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
+              ? "bg-green-600/15 text-green-600 border-green-600 hover:bg-green-600/20"
+              : "bg-yellow-600/15 text-yellow-600 border-yellow-600 hover:bg-yellow-600/20"
           }`}
         >
-          {value ? "Confirmado" : "Pendiente"}
+          {value ? t("confirmed") : t("pending")}
         </Badge>
       ),
     },
     {
       key: "roles",
-      title: "Roles",
+      title: t("roles"),
       render: (_, record) => <UserRolesCell userId={record.id} />,
       className: "text-sm",
     },
     {
       key: "createdAt",
-      title: "Creado",
+      title: t("created"),
       render: (value) => new Date(value as string).toLocaleDateString(),
       className: "text-sm text-muted-foreground",
     },
@@ -803,13 +831,13 @@ export default function UsersPage() {
   // Definir acciones de la tabla
   const actions: TableAction<User>[] = [
     {
-      label: "Ver Detalles",
+      label: t("viewDetails"),
       icon: <Eye className="h-4 w-4" />,
       onClick: handleViewUser,
       variant: "default",
     },
     {
-      label: "Editar",
+      label: t("edit"),
       icon: <Edit className="h-4 w-4" />,
       onClick: handleEdit,
       variant: "default",
@@ -817,7 +845,7 @@ export default function UsersPage() {
       hidden: (user: User) => !(canManageUsers || user.id === currentUser?.id),
     },
     {
-      label: "Eliminar",
+      label: t("delete"),
       icon: <Trash2 className="h-4 w-4" />,
       onClick: handleDelete,
       variant: "destructive",
@@ -833,19 +861,15 @@ export default function UsersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-foreground">
-            Gestión de Usuarios
+            {t("userManagement")}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5 mr-8">
-            Administra usuarios del sistema y asigna roles y permisos
+            {t("userManagementDesc")}
           </p>
         </div>
-        <Button
-          size="sm"
-          className="bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-500/90 text-white border-0"
-          onClick={handleCreate}
-        >
+        <Button size="sm" onClick={handleCreate}>
           <Plus className="h-4 w-4 mr-1.5" />
-          <span>Nuevo Usuario</span>
+          <span>{t("newUser")}</span>
         </Button>
       </div>
 
@@ -859,7 +883,7 @@ export default function UsersPage() {
         onPageChange={pagination.setPage}
         onPageSizeChange={pagination.setLimit}
         actions={actions}
-        emptyMessage="No se encontraron usuarios"
+        emptyMessage={t("noUsersFound")}
         emptyIcon={<Users className="h-12 w-12 text-muted-foreground" />}
       />
 

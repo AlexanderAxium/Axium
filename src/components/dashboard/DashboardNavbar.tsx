@@ -2,7 +2,15 @@
 
 import { useAuthContext } from "@/AuthContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -15,74 +23,116 @@ import {
 import { LanguageSelector } from "@/components/ui/language-selector";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
-import { Bell, LogOut, Settings, User } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { LogOut, Settings, User } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import React from "react";
 
 export function DashboardNavbar() {
   const { user, signOut } = useAuthContext();
   const { primaryRole } = useUser();
   const router = useRouter();
-  const { t, locale } = useTranslation("common");
+  const pathname = usePathname();
+  const { t } = useTranslation("common");
+  const { t: tDashboard } = useTranslation("dashboard");
 
   const handleSignOut = async () => {
     await signOut();
   };
 
+  // Generar breadcrumbs basados en la ruta actual
+  const generateBreadcrumbs = () => {
+    const segments = pathname.split("/").filter(Boolean);
+    const breadcrumbs: Array<{ label: string; href: string }> = [
+      { label: t("dashboard"), href: "/dashboard" },
+    ];
+
+    // Mapeo de rutas a traducciones
+    const routeMap: Record<string, string> = {
+      users: tDashboard("users"),
+      roles: tDashboard("rolesPermissions"),
+      settings: tDashboard("settings2"),
+      profile: t("profile"),
+    };
+
+    segments.forEach((segment, index) => {
+      if (segment === "dashboard") return;
+
+      const href = `/${segments.slice(0, index + 1).join("/")}`;
+      let label = routeMap[segment] || segment;
+
+      // Si es un ID (número o UUID), mostrar el nombre del recurso o "Detalle"
+      if (index === segments.length - 1 && /^[0-9a-f-]+$/i.test(segment)) {
+        label = tDashboard("user") || "Detalle";
+      }
+
+      breadcrumbs.push({ label, href });
+    });
+
+    return breadcrumbs;
+  };
+
+  const breadcrumbs = generateBreadcrumbs();
+
   return (
-    <div className="flex flex-1 items-center justify-between">
-      {/* Title */}
-      <div className="hidden sm:block">
-        <h1 className="text-xl font-semibold text-foreground">
-          {t("dashboard")}
-        </h1>
-        <p className="text-sm text-muted-foreground">
-          {(() => {
-            // Get welcome message based on locale
-            const welcomeMessages: Record<string, string> = {
-              es: `Bienvenido de vuelta, ${user?.name || t("user")}`,
-              en: `Welcome back, ${user?.name || t("user")}`,
-              pt: `Bem-vindo de volta, ${user?.name || t("user")}`,
-            };
-            return welcomeMessages[locale] || welcomeMessages.es;
-          })()}
-        </p>
+    <div className="flex flex-1 items-center justify-between min-w-0 gap-4">
+      {/* Breadcrumbs */}
+      <div className="min-w-0 flex-1">
+        <Breadcrumb>
+          <BreadcrumbList>
+            {breadcrumbs.map((crumb, index) => {
+              const isLast = index === breadcrumbs.length - 1;
+              return (
+                <React.Fragment key={crumb.href}>
+                  {index > 0 && <BreadcrumbSeparator />}
+                  <BreadcrumbItem>
+                    {isLast ? (
+                      <BreadcrumbPage className="text-foreground font-medium">
+                        {crumb.label}
+                      </BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink asChild>
+                        <Link href={crumb.href}>{crumb.label}</Link>
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+                </React.Fragment>
+              );
+            })}
+          </BreadcrumbList>
+        </Breadcrumb>
       </div>
 
-      {/* Right side - Language, Theme, Notifications and User Menu */}
-      <div className="flex items-center space-x-2 sm:space-x-4">
+      {/* Right side - Language, Theme and User Menu */}
+      <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
         {/* Language Selector */}
         <LanguageSelector />
 
         {/* Theme Toggle */}
         <ThemeToggle />
 
-        {/* Notifications */}
-        <Button variant="ghost" size="sm" className="relative">
-          <Bell className="h-5 w-5" />
-          <span className="absolute -top-1 -right-1 h-3 w-3 bg-destructive rounded-full text-xs text-destructive-foreground flex items-center justify-center">
-            3
-          </span>
-        </Button>
-
         {/* User Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+            <Button
+              variant="ghost"
+              className={cn(
+                "relative h-8 w-8 rounded-full p-0 hover:bg-accent/50 transition-colors",
+                "focus-visible:ring-2 focus-visible:ring-primary/20"
+              )}
+            >
               <Avatar className="h-8 w-8">
-                {user?.image ? (
-                  <AvatarImage src={user.image} alt={user?.name || "Usuario"} />
-                ) : (
-                  <AvatarFallback className="bg-primary text-primary-foreground">
-                    {user?.name
-                      ? user.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")
-                          .toUpperCase()
-                          .slice(0, 2)
-                      : "U"}
-                  </AvatarFallback>
-                )}
+                <AvatarFallback className="bg-primary text-primary-foreground text-xs border-2 border-primary/20">
+                  {user?.name
+                    ? user.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .toUpperCase()
+                        .slice(0, 2)
+                    : "U"}
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
@@ -96,7 +146,7 @@ export function DashboardNavbar() {
                   {user?.email || ""}
                 </p>
                 {primaryRole && (
-                  <p className="text-xs leading-none text-muted-foreground capitalize">
+                  <p className="text-xs leading-none text-muted-foreground capitalize mt-1">
                     {primaryRole.replace("_", " ")}
                   </p>
                 )}

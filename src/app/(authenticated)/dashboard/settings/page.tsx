@@ -1,5 +1,6 @@
 "use client";
 
+import { TranslationButton } from "@/components/dashboard/TranslationButton";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,10 +11,10 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslation } from "@/hooks/useTranslation";
 import { trpc } from "@/utils/trpc";
-import { Building2, Globe, Mail, Save, Settings, Shield } from "lucide-react";
+import { Building2, Globe, Mail, Save, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -71,6 +72,7 @@ function getFieldErrorMessage(errorCode: string, fieldName: string): string {
 }
 
 export default function SettingsPage() {
+  const { t } = useTranslation("dashboard");
   const [formData, setFormData] = useState({
     name: "",
     displayName: "",
@@ -197,8 +199,8 @@ export default function SettingsPage() {
         instagramUrl: formData.instagramUrl || null,
         linkedinUrl: formData.linkedinUrl || null,
         youtubeUrl: formData.youtubeUrl || null,
-        logoUrl: formData.logoUrl || null,
-        faviconUrl: formData.faviconUrl || null,
+        logoUrl: formData.logoUrl?.trim() || null,
+        faviconUrl: formData.faviconUrl?.trim() || null,
       });
     } catch (_error) {
       // Error is already handled by the mutation's onError callback
@@ -210,346 +212,396 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
-        <Settings className="h-8 w-8 text-primary" />
+      {/* Header */}
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">
-            Configuraciones
+          <h1 className="text-2xl font-semibold text-foreground">
+            {t("settings2")}
           </h1>
-          <p className="text-muted-foreground">
-            Gestiona la configuración del sistema y la información de la empresa
+          <p className="text-sm text-muted-foreground mt-0.5 mr-8">
+            {t("settingsDesc")}
           </p>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="p-2 bg-primary/10 rounded-lg">
+            <Settings className="h-5 w-5 text-primary" />
+          </div>
         </div>
       </div>
 
-      <Tabs defaultValue="company" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="company" className="flex items-center gap-2">
-            <Building2 className="h-4 w-4" />
-            Información de la Empresa
-          </TabsTrigger>
-          <TabsTrigger value="system" className="flex items-center gap-2">
-            <Shield className="h-4 w-4" />
-            Sistema
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="company" className="space-y-6">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Basic Information */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Building2 className="h-5 w-5" />
-                  Información Básica
-                </CardTitle>
-                <CardDescription>
-                  Configura la información principal de la empresa
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Nombre de la Empresa</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) =>
-                        handleInputChange("name", e.target.value)
-                      }
-                      placeholder="MyApp"
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Basic Information - Campos no traducibles (base) */}
+        <Card className="bg-card rounded-xl border border-border">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Building2 className="h-5 w-5 text-primary" />
+              </div>
+              <span>{t("basicInfo2")}</span>
+            </CardTitle>
+            <CardDescription>{t("basicInfoDesc")}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="name">{t("companyName")}</Label>
+                  {companyInfo?.id && (
+                    <TranslationButton
+                      entityType="tenant"
+                      entityId={companyInfo.id}
+                      fieldName="name"
+                      fieldLabel={t("companyName")}
+                      fieldType="text"
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="displayName">Nombre para Mostrar</Label>
-                    <Input
-                      id="displayName"
-                      value={formData.displayName}
-                      onChange={(e) =>
-                        handleInputChange("displayName", e.target.value)
-                      }
-                      placeholder="My Application Platform"
-                    />
-                  </div>
+                  )}
                 </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="description">Descripción</Label>
-                  <Textarea
-                    id="description"
-                    value={formData.description}
-                    onChange={(e) =>
-                      handleInputChange("description", e.target.value)
-                    }
-                    placeholder="Descripción de la empresa..."
-                    rows={3}
-                  />
+                <Input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange("name", e.target.value)}
+                  placeholder="MyApp"
+                />
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="displayName">{t("displayName3")}</Label>
+                  {companyInfo?.id && (
+                    <TranslationButton
+                      entityType="tenant"
+                      entityId={companyInfo.id}
+                      fieldName="displayName"
+                      fieldLabel={t("displayName3")}
+                      fieldType="text"
+                    />
+                  )}
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="foundedYear">Año de Fundación</Label>
-                    <Input
-                      id="foundedYear"
-                      type="number"
-                      value={formData.foundedYear}
-                      onChange={(e) =>
-                        handleInputChange("foundedYear", e.target.value)
-                      }
-                      placeholder="2024"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="website">Sitio Web</Label>
-                    <Input
-                      id="website"
-                      value={formData.website}
-                      onChange={(e) =>
-                        handleInputChange("website", e.target.value)
-                      }
-                      placeholder="https://myapp.com"
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Contact Information */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Mail className="h-5 w-5" />
-                  Información de Contacto
-                </CardTitle>
-                <CardDescription>Datos de contacto y ubicación</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        handleInputChange("email", e.target.value)
-                      }
-                      placeholder="info@myapp.com"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Teléfono</Label>
-                    <Input
-                      id="phone"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        handleInputChange("phone", e.target.value)
-                      }
-                      placeholder="+1 (234) 567-890"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="address">Dirección</Label>
-                  <Input
-                    id="address"
-                    value={formData.address}
-                    onChange={(e) =>
-                      handleInputChange("address", e.target.value)
-                    }
-                    placeholder="Dirección completa"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="city">Ciudad</Label>
-                    <Input
-                      id="city"
-                      value={formData.city}
-                      onChange={(e) =>
-                        handleInputChange("city", e.target.value)
-                      }
-                      placeholder="Lima"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="country">País</Label>
-                    <Input
-                      id="country"
-                      value={formData.country}
-                      onChange={(e) =>
-                        handleInputChange("country", e.target.value)
-                      }
-                      placeholder="Perú"
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Social Media */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5" />
-                  Redes Sociales
-                </CardTitle>
-                <CardDescription>
-                  Enlaces a las redes sociales de la empresa
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="facebookUrl">Facebook</Label>
-                    <Input
-                      id="facebookUrl"
-                      value={formData.facebookUrl}
-                      onChange={(e) =>
-                        handleInputChange("facebookUrl", e.target.value)
-                      }
-                      placeholder="https://facebook.com/myapp"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="twitterUrl">Twitter</Label>
-                    <Input
-                      id="twitterUrl"
-                      value={formData.twitterUrl}
-                      onChange={(e) =>
-                        handleInputChange("twitterUrl", e.target.value)
-                      }
-                      placeholder="https://twitter.com/myapp"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="instagramUrl">Instagram</Label>
-                    <Input
-                      id="instagramUrl"
-                      value={formData.instagramUrl}
-                      onChange={(e) =>
-                        handleInputChange("instagramUrl", e.target.value)
-                      }
-                      placeholder="https://instagram.com/myapp"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="linkedinUrl">LinkedIn</Label>
-                    <Input
-                      id="linkedinUrl"
-                      value={formData.linkedinUrl}
-                      onChange={(e) =>
-                        handleInputChange("linkedinUrl", e.target.value)
-                      }
-                      placeholder="https://linkedin.com/company/myapp"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="youtubeUrl">YouTube</Label>
-                    <Input
-                      id="youtubeUrl"
-                      value={formData.youtubeUrl}
-                      onChange={(e) =>
-                        handleInputChange("youtubeUrl", e.target.value)
-                      }
-                      placeholder="https://youtube.com/@myapp"
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* SEO Information */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5" />
-                  SEO y Metadatos
-                </CardTitle>
-                <CardDescription>
-                  Información para motores de búsqueda
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="metaTitle">Título SEO</Label>
-                  <Input
-                    id="metaTitle"
-                    value={formData.metaTitle}
-                    onChange={(e) =>
-                      handleInputChange("metaTitle", e.target.value)
-                    }
-                    placeholder="MyApp - Modern Platform"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="metaDescription">Descripción SEO</Label>
-                  <Textarea
-                    id="metaDescription"
-                    value={formData.metaDescription}
-                    onChange={(e) =>
-                      handleInputChange("metaDescription", e.target.value)
-                    }
-                    placeholder="Descripción para motores de búsqueda..."
-                    rows={3}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="metaKeywords">Palabras Clave</Label>
-                  <Input
-                    id="metaKeywords"
-                    value={formData.metaKeywords}
-                    onChange={(e) =>
-                      handleInputChange("metaKeywords", e.target.value)
-                    }
-                    placeholder="gestión, usuarios, plataforma, moderno, escalable"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Submit Button */}
-            <div className="flex justify-end">
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="min-w-[200px]"
-              >
-                <Save className="h-4 w-4 mr-2" />
-                {isLoading ? "Guardando..." : "Guardar Cambios"}
-              </Button>
+                <Input
+                  id="displayName"
+                  value={formData.displayName}
+                  onChange={(e) =>
+                    handleInputChange("displayName", e.target.value)
+                  }
+                  placeholder="My Application Platform"
+                />
+              </div>
             </div>
-          </form>
-        </TabsContent>
 
-        <TabsContent value="system" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="h-5 w-5" />
-                Configuración del Sistema
-              </CardTitle>
-              <CardDescription>
-                Configuraciones avanzadas del sistema
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center py-8">
-                <Shield className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                <h3 className="text-lg font-medium mb-2">
-                  Configuración del Sistema
-                </h3>
-                <p className="text-muted-foreground">
-                  Las configuraciones del sistema estarán disponibles
-                  próximamente.
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="description">{t("description2")}</Label>
+                {companyInfo?.id && (
+                  <TranslationButton
+                    entityType="tenant"
+                    entityId={companyInfo.id}
+                    fieldName="description"
+                    fieldLabel={t("description2")}
+                    fieldType="textarea"
+                  />
+                )}
+              </div>
+              <Textarea
+                id="description"
+                value={formData.description}
+                onChange={(e) =>
+                  handleInputChange("description", e.target.value)
+                }
+                placeholder={t("descriptionPlaceholder")}
+                rows={3}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="foundedYear">{t("foundedYear")}</Label>
+                <Input
+                  id="foundedYear"
+                  type="number"
+                  value={formData.foundedYear}
+                  onChange={(e) =>
+                    handleInputChange("foundedYear", e.target.value)
+                  }
+                  placeholder="2024"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="website">{t("website")}</Label>
+                <Input
+                  id="website"
+                  value={formData.website}
+                  onChange={(e) => handleInputChange("website", e.target.value)}
+                  placeholder="https://myapp.com"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="logoUrl">
+                  {t("logoUrl") || "URL del Logo"}
+                </Label>
+                <Input
+                  id="logoUrl"
+                  type="text"
+                  value={formData.logoUrl}
+                  onChange={(e) => handleInputChange("logoUrl", e.target.value)}
+                  placeholder="/images/logo.png o https://example.com/logo.png"
+                />
+                <p className="text-xs text-muted-foreground">
+                  {t("logoUrlHelp") ||
+                    "URL completa o ruta relativa del logo (ej: /images/logo.png)"}
                 </p>
               </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+              <div className="space-y-2">
+                <Label htmlFor="faviconUrl">
+                  {t("faviconUrl") || "URL del Favicon"}
+                </Label>
+                <Input
+                  id="faviconUrl"
+                  type="text"
+                  value={formData.faviconUrl}
+                  onChange={(e) =>
+                    handleInputChange("faviconUrl", e.target.value)
+                  }
+                  placeholder="/favicon.ico o https://example.com/favicon.ico"
+                />
+                <p className="text-xs text-muted-foreground">
+                  {t("faviconUrlHelp") ||
+                    "URL completa o ruta relativa del favicon (ej: /favicon.ico)"}
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Contact Information */}
+        <Card className="bg-card rounded-xl border border-border">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Mail className="h-5 w-5 text-primary" />
+              </div>
+              <span>{t("contactInfo")}</span>
+            </CardTitle>
+            <CardDescription>{t("contactInfoDesc")}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">{t("email2")}</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  placeholder="info@myapp.com"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone">{t("phone2")}</Label>
+                <Input
+                  id="phone"
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange("phone", e.target.value)}
+                  placeholder="+1 (234) 567-890"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="address">{t("address")}</Label>
+              <Input
+                id="address"
+                value={formData.address}
+                onChange={(e) => handleInputChange("address", e.target.value)}
+                placeholder={t("addressPlaceholder")}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="city">{t("city")}</Label>
+                <Input
+                  id="city"
+                  value={formData.city}
+                  onChange={(e) => handleInputChange("city", e.target.value)}
+                  placeholder="Lima"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="country">{t("country")}</Label>
+                <Input
+                  id="country"
+                  value={formData.country}
+                  onChange={(e) => handleInputChange("country", e.target.value)}
+                  placeholder="Perú"
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Social Media */}
+        <Card className="bg-card rounded-xl border border-border">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Globe className="h-5 w-5 text-primary" />
+              </div>
+              <span>{t("socialMedia")}</span>
+            </CardTitle>
+            <CardDescription>{t("socialMediaDesc")}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="facebookUrl">Facebook</Label>
+                <Input
+                  id="facebookUrl"
+                  value={formData.facebookUrl}
+                  onChange={(e) =>
+                    handleInputChange("facebookUrl", e.target.value)
+                  }
+                  placeholder="https://facebook.com/myapp"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="twitterUrl">Twitter</Label>
+                <Input
+                  id="twitterUrl"
+                  value={formData.twitterUrl}
+                  onChange={(e) =>
+                    handleInputChange("twitterUrl", e.target.value)
+                  }
+                  placeholder="https://twitter.com/myapp"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="instagramUrl">Instagram</Label>
+                <Input
+                  id="instagramUrl"
+                  value={formData.instagramUrl}
+                  onChange={(e) =>
+                    handleInputChange("instagramUrl", e.target.value)
+                  }
+                  placeholder="https://instagram.com/myapp"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="linkedinUrl">LinkedIn</Label>
+                <Input
+                  id="linkedinUrl"
+                  value={formData.linkedinUrl}
+                  onChange={(e) =>
+                    handleInputChange("linkedinUrl", e.target.value)
+                  }
+                  placeholder="https://linkedin.com/company/myapp"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="youtubeUrl">YouTube</Label>
+                <Input
+                  id="youtubeUrl"
+                  value={formData.youtubeUrl}
+                  onChange={(e) =>
+                    handleInputChange("youtubeUrl", e.target.value)
+                  }
+                  placeholder="https://youtube.com/@myapp"
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* SEO Information - Campos no traducibles (base) */}
+        <Card className="bg-card rounded-xl border border-border">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Globe className="h-5 w-5 text-primary" />
+              </div>
+              <span>{t("seoMetadata")}</span>
+            </CardTitle>
+            <CardDescription>{t("seoDesc")}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="metaTitle">{t("seoTitle")}</Label>
+                {companyInfo?.id && (
+                  <TranslationButton
+                    entityType="tenant"
+                    entityId={companyInfo.id}
+                    fieldName="metaTitle"
+                    fieldLabel={t("seoTitle")}
+                    fieldType="text"
+                  />
+                )}
+              </div>
+              <Input
+                id="metaTitle"
+                value={formData.metaTitle}
+                onChange={(e) => handleInputChange("metaTitle", e.target.value)}
+                placeholder="MyApp - Modern Platform"
+              />
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="metaDescription">{t("seoDescription")}</Label>
+                {companyInfo?.id && (
+                  <TranslationButton
+                    entityType="tenant"
+                    entityId={companyInfo.id}
+                    fieldName="metaDescription"
+                    fieldLabel={t("seoDescription")}
+                    fieldType="textarea"
+                  />
+                )}
+              </div>
+              <Textarea
+                id="metaDescription"
+                value={formData.metaDescription}
+                onChange={(e) =>
+                  handleInputChange("metaDescription", e.target.value)
+                }
+                placeholder={t("descriptionPlaceholder")}
+                rows={3}
+              />
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="metaKeywords">{t("keywords")}</Label>
+                {companyInfo?.id && (
+                  <TranslationButton
+                    entityType="tenant"
+                    entityId={companyInfo.id}
+                    fieldName="metaKeywords"
+                    fieldLabel={t("keywords")}
+                    fieldType="text"
+                  />
+                )}
+              </div>
+              <Input
+                id="metaKeywords"
+                value={formData.metaKeywords}
+                onChange={(e) =>
+                  handleInputChange("metaKeywords", e.target.value)
+                }
+                placeholder="gestión, usuarios, plataforma, moderno, escalable"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Submit Button */}
+        <div className="flex justify-end">
+          <Button type="submit" disabled={isLoading} className="min-w-[200px]">
+            <Save className="h-4 w-4 mr-2" />
+            {isLoading ? t("saving") : t("save")}
+          </Button>
+        </div>
+      </form>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "@/hooks/useTranslation";
 import {
   BarChart3,
   BookOpen,
@@ -26,6 +28,7 @@ interface ViewerDashboardProps {
 }
 
 export default function ViewerDashboard({ user }: ViewerDashboardProps) {
+  const { t } = useTranslation("dashboard");
   const router = useRouter();
 
   const viewerStats = {
@@ -42,7 +45,7 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
       description: "Análisis general de los mercados financieros",
       type: "market",
       lastUpdated: "Hace 1 hora",
-      icon: <BarChart3 className="h-5 w-5 text-blue-600" />,
+      icon: <BarChart3 className="h-5 w-5 text-primary" />,
     },
     {
       id: 2,
@@ -50,7 +53,7 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
       description: "Métricas de usuarios activos y registros",
       type: "users",
       lastUpdated: "Hace 3 horas",
-      icon: <Users className="h-5 w-5 text-green-600" />,
+      icon: <Users className="h-5 w-5 text-secondary" />,
     },
     {
       id: 3,
@@ -58,7 +61,7 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
       description: "Métricas de rendimiento y disponibilidad",
       type: "system",
       lastUpdated: "Hace 6 horas",
-      icon: <TrendingUp className="h-5 w-5 text-purple-600" />,
+      icon: <TrendingUp className="h-5 w-5 text-accent-foreground" />,
     },
     {
       id: 4,
@@ -66,37 +69,37 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
       description: "Resumen de actividad de la plataforma",
       type: "platform",
       lastUpdated: "Hace 12 horas",
-      icon: <DollarSign className="h-5 w-5 text-orange-600" />,
+      icon: <DollarSign className="h-5 w-5 text-muted-foreground" />,
     },
   ];
 
   const viewerActions = [
     {
-      title: "Ver Reportes",
-      description: "Acceder a reportes disponibles",
+      title: t("viewReports"),
+      description: t("viewReportsDesc"),
       icon: <FileText className="h-6 w-6" />,
-      color: "bg-blue-500",
+      bgColor: "bg-primary",
       href: "/reports",
     },
     {
-      title: "Dashboard Público",
-      description: "Ver métricas públicas",
+      title: t("publicDashboard"),
+      description: t("publicDashboardDesc"),
       icon: <BarChart3 className="h-6 w-6" />,
-      color: "bg-green-500",
+      bgColor: "bg-secondary",
       href: "/public-dashboard",
     },
     {
-      title: "Documentación",
-      description: "Leer documentación del sistema",
+      title: t("documentation"),
+      description: t("documentationDesc"),
       icon: <BookOpen className="h-6 w-6" />,
-      color: "bg-purple-500",
+      bgColor: "bg-accent",
       href: "/docs",
     },
     {
-      title: "Configuración",
-      description: "Ajustar preferencias",
+      title: t("configuration"),
+      description: t("configurationDesc"),
       icon: <Settings className="h-6 w-6" />,
-      color: "bg-gray-500",
+      bgColor: "bg-muted",
       href: "/settings",
     },
   ];
@@ -107,28 +110,28 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
       type: "report_viewed",
       message: "Viste el reporte 'Resumen de Mercados'",
       time: "Hace 30 minutos",
-      icon: <FileText className="h-4 w-4 text-blue-600" />,
+      icon: <FileText className="h-4 w-4 text-primary" />,
     },
     {
       id: 2,
       type: "data_exported",
       message: "Exportaste datos de usuarios",
       time: "Hace 2 horas",
-      icon: <DollarSign className="h-4 w-4 text-green-600" />,
+      icon: <DollarSign className="h-4 w-4 text-secondary" />,
     },
     {
       id: 3,
       type: "dashboard_accessed",
       message: "Accediste al dashboard público",
       time: "Hace 4 horas",
-      icon: <BarChart3 className="h-4 w-4 text-purple-600" />,
+      icon: <BarChart3 className="h-4 w-4 text-accent-foreground" />,
     },
     {
       id: 4,
       type: "settings_updated",
       message: "Actualizaste tus preferencias",
       time: "Ayer",
-      icon: <Settings className="h-4 w-4 text-gray-600" />,
+      icon: <Settings className="h-4 w-4 text-muted-foreground" />,
     },
   ];
 
@@ -138,87 +141,92 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-foreground">
-            Dashboard de Visualización
+            {t("viewerDashboard")}
           </h1>
           <p className="text-sm text-muted-foreground mt-0.5 mr-8">
-            Bienvenido, {user?.name || "Usuario"} - Acceso de solo lectura a
-            reportes y métricas
+            {t("viewerWelcome", { name: user?.name || "Usuario" })}
           </p>
         </div>
         <div className="flex items-center space-x-2">
-          <Eye className="h-5 w-5 text-blue-600" />
-          <span className="text-sm font-medium text-foreground">Viewer</span>
+          <div className="p-2 bg-primary/10 rounded-lg">
+            <Eye className="h-5 w-5 text-primary" />
+          </div>
+          <span className="text-sm font-medium text-foreground">
+            {t("viewer")}
+          </span>
         </div>
       </div>
 
       {/* Viewer Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow">
+        <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/20 hover:shadow-md transition-all">
           <div className="flex items-center">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Eye className="h-5 w-5 text-blue-600" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <Eye className="h-5 w-5 text-primary" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-muted-foreground">
-                Total Vistas
+                {t("totalViews")}
               </p>
               <p className="text-xl font-bold text-foreground">
                 {viewerStats.totalViews}
               </p>
-              <p className="text-xs text-blue-600">+12 esta semana</p>
+              <p className="text-xs text-primary mt-1">+12 esta semana</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow">
+        <div className="bg-card rounded-xl p-6 border border-border hover:border-secondary/20 hover:shadow-md transition-all">
           <div className="flex items-center">
-            <div className="p-2 bg-green-100 rounded-lg">
-              <FileText className="h-5 w-5 text-green-600" />
+            <div className="p-2 bg-secondary/10 rounded-lg">
+              <FileText className="h-5 w-5 text-secondary" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-muted-foreground">
-                Reportes Vistos
+                {t("reportsViewed")}
               </p>
               <p className="text-xl font-bold text-foreground">
                 {viewerStats.reportsViewed}
               </p>
-              <p className="text-xs text-green-600">Último: hace 1 hora</p>
+              <p className="text-xs text-secondary mt-1">Último: hace 1 hora</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow">
+        <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/20 hover:shadow-md transition-all">
           <div className="flex items-center">
-            <div className="p-2 bg-purple-100 rounded-lg">
-              <BarChart3 className="h-5 w-5 text-purple-600" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <BarChart3 className="h-5 w-5 text-primary" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-muted-foreground">
-                Puntos de Datos
+                {t("dataPoints")}
               </p>
               <p className="text-xl font-bold text-foreground">
                 {viewerStats.dataPoints.toLocaleString()}
               </p>
-              <p className="text-xs text-purple-600">
+              <p className="text-xs text-muted-foreground mt-1">
                 Disponibles para análisis
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-card rounded-xl shadow-sm p-6 border border-border hover:shadow-md transition-shadow">
+        <div className="bg-card rounded-xl p-6 border border-border hover:border-primary/20 hover:shadow-md transition-all">
           <div className="flex items-center">
-            <div className="p-2 bg-orange-100 rounded-lg">
-              <Clock className="h-5 w-5 text-orange-600" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <Clock className="h-5 w-5 text-primary" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-muted-foreground">
-                Último Acceso
+                {t("lastAccess")}
               </p>
               <p className="text-xl font-bold text-foreground">
                 {viewerStats.lastLogin}
               </p>
-              <p className="text-xs text-orange-600">Sesión activa</p>
+              <p className="text-xs text-muted-foreground mt-1">
+                Sesión activa
+              </p>
             </div>
           </div>
         </div>
@@ -227,9 +235,9 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
         {/* Viewer Actions */}
         <div className="xl:col-span-1 space-y-6">
-          <div className="bg-card rounded-xl shadow-sm p-6 border border-border">
+          <div className="bg-card rounded-xl p-6 border border-border">
             <h3 className="text-base font-semibold text-foreground mb-4">
-              Acciones Disponibles
+              {t("availableActions")}
             </h3>
             <div className="space-y-3">
               {viewerActions.map((action) => (
@@ -237,12 +245,10 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
                   key={action.href}
                   type="button"
                   onClick={() => router.push(action.href)}
-                  className="w-full flex items-center p-3 rounded-lg border border-border hover:bg-muted/50 hover:shadow-sm transition-all"
+                  className="w-full flex items-center p-3 rounded-lg border border-border hover:bg-muted/50 hover:border-primary/20 transition-all"
                 >
-                  <div
-                    className={`p-2 ${action.color} rounded-lg text-white mr-3 flex-shrink-0`}
-                  >
-                    {action.icon}
+                  <div className="p-2 bg-primary/10 rounded-lg mr-3 flex-shrink-0">
+                    <div className="text-primary">{action.icon}</div>
                   </div>
                   <div className="text-left min-w-0 flex-1">
                     <p className="font-medium text-foreground text-sm">
@@ -258,25 +264,25 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
           </div>
 
           {/* Tenant Information */}
-          {user?.tenantId && <TenantInfo tenantId={user.tenantId} />}
+          {user?.tenantId && <TenantInfo />}
         </div>
 
         {/* Available Reports */}
         <div className="xl:col-span-3">
-          <div className="bg-card rounded-xl shadow-sm p-6 border border-border">
+          <div className="bg-card rounded-xl p-6 border border-border">
             <h3 className="text-base font-semibold text-foreground mb-4">
-              Reportes Disponibles
+              {t("availableReports")}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {availableReports.map((report) => (
                 <button
                   key={report.id}
                   type="button"
-                  className="w-full flex items-start justify-between p-4 rounded-lg border border-border hover:bg-muted/50 hover:shadow-sm cursor-pointer text-left transition-all"
+                  className="w-full flex items-start justify-between p-4 rounded-lg border border-border hover:bg-muted/50 hover:border-primary/20 cursor-pointer text-left transition-all"
                   onClick={() => router.push(`/reports/${report.id}`)}
                 >
                   <div className="flex items-start space-x-3 min-w-0 flex-1">
-                    <div className="p-2 bg-muted rounded-lg flex-shrink-0">
+                    <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
                       {report.icon}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -287,25 +293,28 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
                         {report.description}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Actualizado: {report.lastUpdated}
+                        {t("lastUpdated")} {report.lastUpdated}
                       </p>
                     </div>
                   </div>
                   <div className="flex flex-col items-end space-y-1 ml-2">
-                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <Badge
+                      variant="outline"
+                      className="rounded-full border-secondary/30 text-secondary"
+                    >
                       {report.type}
-                    </span>
-                    <Eye className="h-4 w-4 text-muted-foreground" />
+                    </Badge>
+                    <Eye className="h-4 w-4 text-secondary/70" />
                   </div>
                 </button>
               ))}
             </div>
-            <div className="mt-4 pt-4 border-t border-border">
+            <div className="mt-4 pt-4 border-t border-secondary/20">
               <button
                 type="button"
-                className="text-sm text-primary hover:text-primary/80 font-medium"
+                className="text-sm text-secondary hover:text-secondary/80 font-medium"
               >
-                Ver todos los reportes
+                {t("viewAllReports")}
               </button>
             </div>
           </div>
@@ -314,9 +323,9 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
 
       {/* Recent Activity */}
       <div>
-        <div className="bg-card rounded-xl shadow-sm p-6 border border-border">
+        <div className="bg-card rounded-xl p-6 border border-border">
           <h3 className="text-base font-semibold text-foreground mb-4">
-            Actividad Reciente
+            {t("recentActivity")}
           </h3>
           <div className="space-y-4">
             {recentActivity.map((activity) => (
@@ -324,7 +333,9 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
                 key={activity.id}
                 className="flex items-start space-x-3 p-3 rounded-lg hover:bg-muted/30 transition-colors"
               >
-                <div className="flex-shrink-0 mt-1">{activity.icon}</div>
+                <div className="p-1.5 bg-primary/10 rounded-lg flex-shrink-0 mt-0.5">
+                  <div className="text-primary">{activity.icon}</div>
+                </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-foreground">{activity.message}</p>
                   <p className="text-xs text-muted-foreground mt-1">
@@ -334,12 +345,12 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
               </div>
             ))}
           </div>
-          <div className="mt-4 pt-4 border-t border-border">
+          <div className="mt-4 pt-4 border-t border-secondary/20">
             <button
               type="button"
-              className="text-sm text-primary hover:text-primary/80 font-medium"
+              className="text-sm text-secondary hover:text-secondary/80 font-medium"
             >
-              Ver toda la actividad
+              {t("viewAllActivity")}
             </button>
           </div>
         </div>
@@ -347,24 +358,26 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
 
       {/* Account Status */}
       <div>
-        <div className="bg-card rounded-xl shadow-sm p-6 border border-border">
+        <div className="bg-card rounded-xl p-6 border border-border">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Info className="h-5 w-5 text-blue-600" />
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Info className="h-5 w-5 text-primary" />
               </div>
               <div>
                 <h3 className="text-base font-semibold text-foreground">
-                  Estado de la Cuenta
+                  {t("accountStatusTitle2")}
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Cuenta de visualización activa - Acceso limitado a reportes
+                  {t("viewerAccount")}
                 </p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-sm text-muted-foreground">Tipo de cuenta</p>
-              <p className="text-sm font-medium text-foreground">Viewer</p>
+              <p className="text-sm text-muted-foreground">
+                {t("accountType")}
+              </p>
+              <p className="text-sm font-medium text-primary">{t("viewer")}</p>
             </div>
           </div>
         </div>

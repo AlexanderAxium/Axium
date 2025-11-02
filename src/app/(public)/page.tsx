@@ -27,6 +27,8 @@ export default function HomePage() {
     );
   }
 
+  // Asegurar que todos los hooks se llamen antes de cualquier return condicional
+
   // Landing page para usuarios no autenticados y autenticados
   return (
     <div className="min-h-screen bg-background">

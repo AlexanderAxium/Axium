@@ -180,6 +180,7 @@ async function main() {
 
     // Admin permissions
     { action: PermissionAction.READ, resource: PermissionResource.ADMIN },
+    { action: PermissionAction.UPDATE, resource: PermissionResource.ADMIN },
     { action: PermissionAction.MANAGE, resource: PermissionResource.ADMIN },
   ];
 

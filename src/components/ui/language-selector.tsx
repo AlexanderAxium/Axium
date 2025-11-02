@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Globe } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const languages = [
   { code: "es", name: "Español", flag: "🇪🇸" },
@@ -19,22 +19,22 @@ const languages = [
 export function LanguageSelector() {
   const { locale, setLocale } = useTranslation("common");
 
-  const currentLanguage =
-    languages.find((lang) => lang.code === locale) || languages[0];
+  const currentLanguage = languages.find((lang) => lang.code === locale) ??
+    languages[0] ?? { code: "es", name: "Español", flag: "🇪🇸" };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          size="sm"
-          className="text-gray-300 hover:text-white hover:bg-gray-700/50"
+          className="h-8 px-2 hover:bg-accent/50 text-foreground/70 hover:text-foreground transition-colors gap-1.5"
         >
-          <Globe className="h-4 w-4 mr-2" />
-          <span className="text-sm font-medium">{currentLanguage.flag}</span>
-          <span className="hidden sm:inline ml-2 text-sm">
-            {currentLanguage.code.toUpperCase()}
+          <span className="text-base leading-none">{currentLanguage.flag}</span>
+          <span className="text-xs font-medium hidden sm:inline-block">
+            {currentLanguage.name}
           </span>
+          <ChevronDown className="h-3.5 w-3.5 opacity-50" />
+          <span className="sr-only">Seleccionar idioma</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
@@ -43,13 +43,15 @@ export function LanguageSelector() {
             key={language.code}
             onClick={() => setLocale(language.code)}
             className={`cursor-pointer ${
-              locale === language.code ? "bg-accent font-semibold" : ""
+              locale === language.code
+                ? "bg-accent/50 font-semibold text-primary"
+                : ""
             }`}
           >
             <span className="mr-2 text-lg">{language.flag}</span>
             <span>{language.name}</span>
             {locale === language.code && (
-              <span className="ml-auto text-xs">✓</span>
+              <span className="ml-auto text-xs text-primary">✓</span>
             )}
           </DropdownMenuItem>
         ))}

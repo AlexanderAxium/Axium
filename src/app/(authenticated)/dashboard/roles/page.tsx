@@ -78,20 +78,26 @@ type Role = {
 const permissionConfig = {
   CREATE: {
     label: "Crear",
-    color: "bg-green-100 text-green-800 hover:bg-green-200",
+    color:
+      "bg-green-600/15 text-green-600 border-green-600 hover:bg-green-600/20",
   },
-  READ: { label: "Leer", color: "bg-blue-100 text-blue-800 hover:bg-blue-200" },
+  READ: {
+    label: "Leer",
+    color: "bg-primary/15 text-primary border-primary hover:bg-primary/20",
+  },
   UPDATE: {
     label: "Actualizar",
-    color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-200",
+    color:
+      "bg-yellow-600/15 text-yellow-600 border-yellow-600 hover:bg-yellow-600/20",
   },
   DELETE: {
     label: "Eliminar",
-    color: "bg-red-100 text-red-800 hover:bg-red-200",
+    color: "bg-red-600/15 text-red-600 border-red-600 hover:bg-red-600/20",
   },
   MANAGE: {
     label: "Gestionar",
-    color: "bg-purple-100 text-purple-800 hover:bg-purple-200",
+    color:
+      "bg-purple-600/15 text-purple-600 border-purple-600 hover:bg-purple-600/20",
   },
 };
 
@@ -297,12 +303,12 @@ export default function RolesPage() {
       render: (_, record) => (
         <div className="flex items-center space-x-3">
           <div
-            className={`p-2 rounded-lg ${record.isSystem ? "bg-purple-100" : "bg-blue-100"}`}
+            className={`p-2 rounded-lg ${record.isSystem ? "bg-primary/10" : "bg-primary/10"}`}
           >
             {record.isSystem ? (
-              <Shield className="h-4 w-4 text-purple-600" />
+              <Shield className="h-4 w-4 text-primary" />
             ) : (
-              <Users className="h-4 w-4 text-blue-600" />
+              <Users className="h-4 w-4 text-primary" />
             )}
           </div>
           <div>
@@ -329,10 +335,10 @@ export default function RolesPage() {
       render: (_, record) => (
         <Badge
           variant="outline"
-          className={`text-xs font-medium ${
+          className={`text-xs font-medium border ${
             record.isActive
-              ? "bg-green-100 text-green-600 border-green-200 hover:bg-green-200"
-              : "bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-200"
+              ? "bg-green-600/15 text-green-600 border-green-600 hover:bg-green-600/20"
+              : "bg-muted text-muted-foreground border-border hover:bg-muted/80"
           }`}
         >
           {record.isActive ? "Activo" : "Inactivo"}
@@ -409,11 +415,7 @@ export default function RolesPage() {
           </p>
         </div>
         {canManageRoles && (
-          <Button
-            size="sm"
-            className="bg-gradient-to-r from-primary to-orange-500 hover:from-primary/90 hover:to-orange-500/90 text-white border-0"
-            onClick={handleCreate}
-          >
+          <Button size="sm" onClick={handleCreate}>
             <Plus className="h-4 w-4 mr-1.5" />
             <span>Nuevo Rol</span>
           </Button>
@@ -659,10 +661,10 @@ export default function RolesPage() {
                         </span>
                         <Badge
                           variant="outline"
-                          className={`text-xs font-medium ml-2 ${
+                          className={`text-xs font-medium ml-2 border ${
                             viewingRole.isActive
-                              ? "bg-green-100 text-green-600 border-green-200"
-                              : "bg-gray-100 text-gray-600 border-gray-200"
+                              ? "bg-green-600/15 text-green-600 border-green-600"
+                              : "bg-muted text-muted-foreground border-border"
                           }`}
                         >
                           {viewingRole.isActive ? "Activo" : "Inactivo"}
@@ -674,10 +676,10 @@ export default function RolesPage() {
                         </span>
                         <Badge
                           variant="secondary"
-                          className={`text-xs font-medium ml-2 ${
+                          className={`text-xs font-medium ml-2 border ${
                             viewingRole.isSystem
-                              ? "bg-purple-100 text-purple-800"
-                              : "bg-blue-100 text-blue-800"
+                              ? "bg-primary/15 text-primary border-primary"
+                              : "bg-primary/15 text-primary border-primary"
                           }`}
                         >
                           {viewingRole.isSystem ? "Sistema" : "Personalizado"}
@@ -778,7 +780,7 @@ export default function RolesPage() {
                                 <Badge
                                   key={rolePermission.id}
                                   variant="secondary"
-                                  className={`text-xs px-3 py-1.5 pr-2 ${actionInfo?.color || "bg-gray-100 text-gray-700 hover:bg-gray-200"} transition-colors group relative`}
+                                  className={`text-xs px-3 py-1.5 pr-2 border ${actionInfo?.color || "bg-muted text-muted-foreground border-border hover:bg-muted/80"} transition-colors group relative`}
                                 >
                                   <span className="mr-1">
                                     {actionInfo?.label || permission.action}
@@ -806,7 +808,7 @@ export default function RolesPage() {
                   </div>
                 ) : (
                   <div className="text-center py-6">
-                    <Lock className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+                    <Lock className="h-8 w-8 text-secondary/60 mx-auto mb-2" />
                     <p className="text-xs text-muted-foreground">
                       Sin permisos asignados
                     </p>
@@ -926,7 +928,7 @@ export default function RolesPage() {
                             />
                             <Badge
                               variant="secondary"
-                              className={`text-xs px-2 py-1 ${actionInfo?.color || "bg-gray-100 text-gray-700 hover:bg-gray-200"} transition-colors`}
+                              className={`text-xs px-2 py-1 border ${actionInfo?.color || "bg-muted text-muted-foreground border-border hover:bg-muted/80"} transition-colors`}
                             >
                               {actionInfo?.label || permission.action}
                             </Badge>
@@ -940,7 +942,7 @@ export default function RolesPage() {
             </div>
           ) : (
             <div className="text-center py-8">
-              <Lock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <Lock className="h-12 w-12 text-secondary/60 mx-auto mb-4" />
               <p className="text-sm text-muted-foreground">
                 No hay permisos disponibles
               </p>
@@ -948,7 +950,7 @@ export default function RolesPage() {
           )}
 
           <div className="flex justify-between items-center pt-4 border-t border-border">
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-secondary/80">
               {selectedPermissions.length} permiso(s) seleccionado(s)
             </div>
             <div className="flex space-x-2">

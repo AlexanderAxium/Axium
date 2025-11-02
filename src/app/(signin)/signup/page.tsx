@@ -9,6 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "@/hooks/useTranslation";
 import { authClient } from "@/lib/auth-client";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
@@ -17,15 +18,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-const passwordRules = [
-  { label: "Mínimo 8 caracteres", test: (v: string) => v.length >= 8 },
-  { label: "Una mayúscula", test: (v: string) => /[A-Z]/.test(v) },
-  { label: "Un número", test: (v: string) => /[0-9]/.test(v) },
-  {
-    label: "Un carácter especial",
-    test: (v: string) => /[^A-Za-z0-9]/.test(v),
-  },
-];
+// Password rules will be translated dynamically
 
 type RegisterFormValues = {
   name: string;
@@ -35,10 +28,30 @@ type RegisterFormValues = {
 };
 
 export default function SignUpPage() {
+  const { t } = useTranslation("common");
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const passwordRules = [
+    {
+      label: t("passwordRuleMin") || "Mínimo 8 caracteres",
+      test: (v: string) => v.length >= 8,
+    },
+    {
+      label: t("passwordRuleUpper") || "Una mayúscula",
+      test: (v: string) => /[A-Z]/.test(v),
+    },
+    {
+      label: t("passwordRuleNumber") || "Un número",
+      test: (v: string) => /[0-9]/.test(v),
+    },
+    {
+      label: t("passwordRuleSpecial") || "Un carácter especial",
+      test: (v: string) => /[^A-Za-z0-9]/.test(v),
+    },
+  ];
 
   const form = useForm<RegisterFormValues>({
     defaultValues: {
@@ -70,9 +83,9 @@ export default function SignUpPage() {
     if (!emailRegex.test(data.email)) {
       setFormError("email", {
         type: "manual",
-        message: "Ingresa un correo válido",
+        message: t("validEmail"),
       });
-      toast.error("Ingresa un correo válido");
+      toast.error(t("validEmail"));
       setLoading(false);
       return;
     }
@@ -81,7 +94,7 @@ export default function SignUpPage() {
     if (data.password !== data.repeatPassword) {
       setFormError("repeatPassword", {
         type: "manual",
-        message: "Las contraseñas no coinciden",
+        message: t("passwordNoMatch"),
       });
       setLoading(false);
       return;
@@ -92,7 +105,7 @@ export default function SignUpPage() {
     if (failedRule) {
       setFormError("password", {
         type: "manual",
-        message: `La contraseña debe cumplir: ${failedRule.label}`,
+        message: `${t("passwordMustContain")}: ${failedRule.label}`,
       });
       setLoading(false);
       return;
@@ -107,18 +120,23 @@ export default function SignUpPage() {
       });
 
       if (error) {
-        toast.error("Error al crear cuenta", {
+        toast.error(t("errorCreatingAccount") || "Error al crear cuenta", {
           description: error.message,
         });
       } else {
-        toast.success("¡Cuenta creada exitosamente!", {
-          description: "Revisa tu email para confirmar tu cuenta.",
-        });
+        toast.success(
+          t("accountCreatedSuccess") || "¡Cuenta creada exitosamente!",
+          {
+            description:
+              t("checkEmailToConfirm") ||
+              "Revisa tu email para confirmar tu cuenta.",
+          }
+        );
         // Let RoleBasedRedirect handle the redirection based on user role
         router.push("/");
       }
     } catch (_error) {
-      toast.error("Error de red o servidor");
+      toast.error(t("networkError") || "Error de red o servidor");
     }
     setLoading(false);
   };
@@ -133,7 +151,7 @@ export default function SignUpPage() {
         newUserCallbackURL: "/dashboard",
       });
     } catch (_error) {
-      toast.error("No se pudo redirigir a Google");
+      toast.error(t("googleRedirectError") || "No se pudo redirigir a Google");
       setLoading(false);
     }
   };
@@ -148,22 +166,22 @@ export default function SignUpPage() {
             className="inline-flex items-center text-blue-600 hover:text-blue-700 mb-8 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Volver al inicio
+            {t("backToHome")}
           </Link>
 
           <div className="mx-auto h-16 w-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
             <span className="text-white font-bold text-2xl">M</span>
           </div>
           <h2 className="mt-6 text-3xl font-bold text-gray-900">
-            Únete a MyApp
+            {t("join")} MyApp
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            ¿Ya tienes cuenta?{" "}
+            {t("hasAccount")}{" "}
             <Link
               href="/signin"
               className="font-medium text-blue-600 hover:text-blue-500"
             >
-              Inicia sesión aquí
+              {t("signInHere")}
             </Link>
           </p>
         </div>
@@ -175,14 +193,14 @@ export default function SignUpPage() {
               <Controller
                 name="name"
                 control={control}
-                rules={{ required: "Nombre requerido" }}
+                rules={{ required: t("nameRequired") }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nombre completo</FormLabel>
+                    <FormLabel>{t("fullName")}</FormLabel>
                     <FormControl>
                       <Input
                         type="text"
-                        placeholder="Tu nombre completo"
+                        placeholder={t("yourFullName") || "Tu nombre completo"}
                         {...field}
                       />
                     </FormControl>
@@ -194,10 +212,10 @@ export default function SignUpPage() {
               <Controller
                 name="email"
                 control={control}
-                rules={{ required: "Correo requerido" }}
+                rules={{ required: t("emailRequired") }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Correo electrónico</FormLabel>
+                    <FormLabel>{t("email")}</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
@@ -213,15 +231,15 @@ export default function SignUpPage() {
               <Controller
                 name="password"
                 control={control}
-                rules={{ required: "Contraseña requerida" }}
+                rules={{ required: t("passwordRequired") }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Contraseña</FormLabel>
+                    <FormLabel>{t("password")}</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type={showPassword ? "text" : "password"}
-                          placeholder="Tu contraseña"
+                          placeholder={t("yourPassword") || "Tu contraseña"}
                           {...field}
                           className="pr-10"
                         />
@@ -269,15 +287,17 @@ export default function SignUpPage() {
               <Controller
                 name="repeatPassword"
                 control={control}
-                rules={{ required: "Repite la contraseña" }}
+                rules={{ required: t("repeatPasswordRequired") }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Repite la contraseña</FormLabel>
+                    <FormLabel>{t("repeatPassword")}</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type={showRepeatPassword ? "text" : "password"}
-                          placeholder="Repite tu contraseña"
+                          placeholder={
+                            t("repeatYourPassword") || "Repite tu contraseña"
+                          }
                           {...field}
                           className="pr-10"
                         />
@@ -310,8 +330,8 @@ export default function SignUpPage() {
                   }
                 >
                   {password === repeatPassword
-                    ? "Las contraseñas coinciden"
-                    : "Las contraseñas no coinciden"}
+                    ? t("passwordMatch")
+                    : t("passwordNoMatch")}
                 </div>
               )}
 
@@ -320,7 +340,7 @@ export default function SignUpPage() {
                 disabled={loading}
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                {loading ? "Creando cuenta..." : "Crear Cuenta"}
+                {loading ? t("creatingAccount") : t("createAccount")}
               </button>
             </form>
           </Form>
@@ -333,7 +353,7 @@ export default function SignUpPage() {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  O continúa con
+                  {t("continueWith")}
                 </span>
               </div>
             </div>
@@ -346,7 +366,7 @@ export default function SignUpPage() {
                 className="w-full flex justify-center items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <GoogleIcon className="w-5 h-5 mr-2" />
-                {loading ? "Redirigiendo..." : "Google"}
+                {loading ? t("redirecting") : "Google"}
               </button>
             </div>
           </div>

@@ -12,31 +12,35 @@ export default function TenantInfo() {
 
   if (isLoading) {
     return (
-      <div className="bg-card rounded-xl shadow-sm p-6 border border-border">
+      <div className="bg-card rounded-xl p-6 border border-border">
         <div className="animate-pulse">
           <div className="flex items-center space-x-3 mb-6">
-            <div className="p-2 bg-muted rounded-lg">
-              <div className="h-5 w-5 bg-muted rounded" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <div className="h-5 w-5 bg-primary/20 rounded" />
             </div>
             <div className="flex-1">
               <div className="h-5 bg-muted rounded w-3/4 mb-2" />
-              <div className="h-4 bg-muted rounded w-1/2" />
+              <div className="h-4 bg-muted/70 rounded w-1/2" />
             </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             <div className="space-y-3">
               <div className="h-4 bg-muted rounded w-1/3" />
-              <div className="h-3 bg-muted rounded w-full" />
-              <div className="h-3 bg-muted rounded w-5/6" />
+              <div className="space-y-2">
+                <div className="h-3 bg-muted/70 rounded w-full" />
+                <div className="h-3 bg-muted/70 rounded w-5/6" />
+              </div>
             </div>
             <div className="space-y-3">
               <div className="h-4 bg-muted rounded w-2/3" />
-              <div className="h-3 bg-muted rounded w-4/5" />
-              <div className="h-3 bg-muted rounded w-3/5" />
+              <div className="space-y-2">
+                <div className="h-3 bg-muted/70 rounded w-4/5" />
+                <div className="h-3 bg-muted/70 rounded w-3/5" />
+              </div>
             </div>
             <div className="space-y-3">
               <div className="h-4 bg-muted rounded w-1/2" />
-              <div className="h-3 bg-muted rounded w-3/4" />
+              <div className="h-3 bg-muted/70 rounded w-3/4" />
             </div>
           </div>
         </div>
@@ -46,7 +50,7 @@ export default function TenantInfo() {
 
   if (!tenant) {
     return (
-      <div className="bg-card rounded-xl shadow-sm p-6 border border-border">
+      <div className="bg-card rounded-xl p-6 border border-border">
         <div className="text-center">
           <div className="p-3 bg-muted rounded-lg w-fit mx-auto mb-4">
             <Building2 className="h-8 w-8 text-muted-foreground" />
@@ -70,11 +74,11 @@ export default function TenantInfo() {
   }
 
   return (
-    <div className="bg-card rounded-xl shadow-sm p-6 border border-border">
+    <div className="bg-card rounded-xl p-6 border border-border">
       <div className="flex items-start justify-between mb-6">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-blue-100 rounded-lg">
-            <Building2 className="h-5 w-5 text-blue-600" />
+          <div className="p-2 bg-primary/10 rounded-lg">
+            <Building2 className="h-5 w-5 text-primary" />
           </div>
           <div>
             <h3 className="text-lg font-semibold text-foreground">
@@ -209,7 +213,7 @@ export default function TenantInfo() {
                     href={tenant.facebookUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
+                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium border bg-blue-600/15 text-blue-600 border-blue-600 hover:bg-blue-600/20 transition-colors"
                   >
                     Facebook
                   </a>
@@ -219,7 +223,7 @@ export default function TenantInfo() {
                     href={tenant.twitterUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-sky-50 text-sky-700 hover:bg-sky-100 transition-colors"
+                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium border bg-sky-600/15 text-sky-600 border-sky-600 hover:bg-sky-600/20 transition-colors"
                   >
                     Twitter
                   </a>
@@ -229,7 +233,7 @@ export default function TenantInfo() {
                     href={tenant.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-pink-50 text-pink-700 hover:bg-pink-100 transition-colors"
+                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium border bg-pink-600/15 text-pink-600 border-pink-600 hover:bg-pink-600/20 transition-colors"
                   >
                     Instagram
                   </a>
@@ -239,7 +243,7 @@ export default function TenantInfo() {
                     href={tenant.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
+                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium border bg-blue-700/15 text-blue-700 border-blue-700 hover:bg-blue-700/20 transition-colors"
                   >
                     LinkedIn
                   </a>
@@ -249,7 +253,7 @@ export default function TenantInfo() {
                     href={tenant.youtubeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-red-50 text-red-700 hover:bg-red-100 transition-colors"
+                    className="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium border bg-red-600/15 text-red-600 border-red-600 hover:bg-red-600/20 transition-colors"
                   >
                     YouTube
                   </a>

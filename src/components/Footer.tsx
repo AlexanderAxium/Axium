@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "@/hooks/useTranslation";
 import { trpc } from "@/utils/trpc";
 import {
   Facebook,
@@ -12,23 +13,71 @@ import {
   Youtube,
 } from "lucide-react";
 import Link from "next/link";
+import { useMemo } from "react";
 
-const footerLinks = {
-  legal: [
-    { name: "Términos y Condiciones", href: "/legal/terms" },
-    { name: "Política de Privacidad", href: "/legal/privacy" },
-    { name: "Política de Cookies", href: "/legal/cookies" },
-    { name: "Libro de Reclamaciones", href: "/legal/complaints" },
-  ],
-  support: [
-    { name: "Centro de Ayuda", href: "/help" },
-    { name: "Documentación", href: "/docs" },
-    { name: "API", href: "/api-docs" },
-  ],
-};
+// Footer links will be translated via useTranslation hook
 
 export function Footer() {
   const { data: companyInfo } = trpc.companyInfo.get.useQuery();
+  const { locale } = useTranslation("common");
+  const { t } = useTranslation("common");
+
+  const footerLinks = {
+    legal: [
+      {
+        name: t("termsAndConditions") || "Términos y Condiciones",
+        href: "/legal/terms",
+      },
+      {
+        name: t("privacyPolicy") || "Política de Privacidad",
+        href: "/legal/privacy",
+      },
+      {
+        name: t("cookiePolicy") || "Política de Cookies",
+        href: "/legal/cookies",
+      },
+      {
+        name: t("complaintsBook") || "Libro de Reclamaciones",
+        href: "/legal/complaints",
+      },
+    ],
+    support: [
+      { name: t("helpCenter") || "Centro de Ayuda", href: "/help" },
+      { name: t("documentation") || "Documentación", href: "/docs" },
+      { name: t("api") || "API", href: "/api-docs" },
+    ],
+  };
+
+  // Get translations for company name, displayName, and description
+  const { data: nameTranslation } = trpc.translation.get.useQuery(
+    {
+      entityType: "tenant",
+      entityId: companyInfo?.id || "",
+      localeCode: locale,
+      fieldName: "name",
+    },
+    { enabled: !!companyInfo?.id && locale !== "es" }
+  );
+
+  const { data: displayNameTranslation } = trpc.translation.get.useQuery(
+    {
+      entityType: "tenant",
+      entityId: companyInfo?.id || "",
+      localeCode: locale,
+      fieldName: "displayName",
+    },
+    { enabled: !!companyInfo?.id && locale !== "es" }
+  );
+
+  const { data: descriptionTranslation } = trpc.translation.get.useQuery(
+    {
+      entityType: "tenant",
+      entityId: companyInfo?.id || "",
+      localeCode: locale,
+      fieldName: "description",
+    },
+    { enabled: !!companyInfo?.id && locale !== "es" }
+  );
 
   // Default values if no company info is available
   const defaultInfo = {
@@ -62,7 +111,18 @@ export function Footer() {
     updatedAt: new Date(),
   };
 
-  const info = companyInfo || defaultInfo;
+  const baseInfo = companyInfo || defaultInfo;
+
+  // Use translations if available, otherwise use base values
+  const info = useMemo(
+    () => ({
+      ...baseInfo,
+      name: nameTranslation || baseInfo.name,
+      displayName: displayNameTranslation || baseInfo.displayName,
+      description: descriptionTranslation || baseInfo.description,
+    }),
+    [baseInfo, nameTranslation, displayNameTranslation, descriptionTranslation]
+  );
 
   const socialLinks = [
     { name: "Facebook", href: info.facebookUrl, icon: Facebook },
@@ -142,7 +202,9 @@ export function Footer() {
 
           {/* Legal Links */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-white">Legal</h4>
+            <h4 className="font-semibold text-white">
+              {t("legal") || "Legal"}
+            </h4>
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
@@ -159,7 +221,9 @@ export function Footer() {
 
           {/* Support Links */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-white">Soporte</h4>
+            <h4 className="font-semibold text-white">
+              {t("support") || "Soporte"}
+            </h4>
             <ul className="space-y-2">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
@@ -180,27 +244,27 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
               © {new Date().getFullYear()}{" "}
-              <span className="text-primary font-medium">{info.name}</span>.
-              Todos los derechos reservados.
+              <span className="text-primary font-medium">{info.name}</span>.{" "}
+              {t("allRightsReserved") || "Todos los derechos reservados."}
             </p>
             <div className="flex gap-6 text-sm text-gray-400">
               <Link
                 href="/legal/terms"
                 className="hover:text-primary transition-colors"
               >
-                Términos
+                {t("terms") || "Términos"}
               </Link>
               <Link
                 href="/legal/privacy"
                 className="hover:text-primary transition-colors"
               >
-                Privacidad
+                {t("privacy") || "Privacidad"}
               </Link>
               <Link
                 href="/legal/cookies"
                 className="hover:text-primary transition-colors"
               >
-                Cookies
+                {t("cookies") || "Cookies"}
               </Link>
             </div>
           </div>

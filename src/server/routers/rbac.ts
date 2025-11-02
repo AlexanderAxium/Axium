@@ -6,6 +6,11 @@ import {
   paginationInputSchema,
 } from "../../lib/pagination";
 import {
+  PermissionUncheckedCreateInputObjectZodSchema,
+  RoleUncheckedCreateInputObjectZodSchema,
+  RoleUncheckedUpdateInputObjectZodSchema,
+} from "../../lib/zod/schemas";
+import {
   assignPermissionToRole,
   assignRole,
   canAccessAdmin,
@@ -24,6 +29,7 @@ import {
   getUserPermissions,
   getUserRoles,
   hasPermission,
+  hasPermissionOrManage,
   hasRole,
   isAdmin,
   isSuperAdmin,
@@ -187,11 +193,14 @@ export const rbacRouter = router({
   // Create role
   createRole: adminProcedure
     .input(
-      z.object({
+      RoleUncheckedCreateInputObjectZodSchema.pick({
+        name: true,
+        displayName: true,
+        description: true,
+        isSystem: true,
+      }).extend({
         name: z.string().min(1),
         displayName: z.string().min(1),
-        description: z.string().optional(),
-        isSystem: z.boolean().default(false),
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -204,7 +213,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to create roles
       if (ctx.user?.id) {
-        const canCreateRole = await hasPermission(
+        const canCreateRole = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.CREATE,
           PermissionResource.ROLE,
@@ -218,19 +227,32 @@ export const rbacRouter = router({
         }
       }
 
-      return await createRole(input, ctx.user.tenantId);
+      return await createRole(
+        {
+          name: input.name,
+          displayName: input.displayName,
+          description: input.description ?? undefined,
+          isSystem: input.isSystem ?? false,
+        },
+        ctx.user.tenantId
+      );
     }),
 
   // Update role
   updateRole: adminProcedure
     .input(
-      z.object({
-        id: z.string(),
-        name: z.string().min(1).optional(),
-        displayName: z.string().min(1).optional(),
-        description: z.string().optional(),
-        isSystem: z.boolean().optional(),
-      })
+      z
+        .object({
+          id: z.string(),
+        })
+        .merge(
+          RoleUncheckedUpdateInputObjectZodSchema.pick({
+            name: true,
+            displayName: true,
+            description: true,
+            isSystem: true,
+          }).partial()
+        )
     )
     .mutation(async ({ input, ctx }) => {
       if (!ctx.user?.tenantId) {
@@ -242,7 +264,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to update roles
       if (ctx.user?.id) {
-        const canUpdateRole = await hasPermission(
+        const canUpdateRole = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.UPDATE,
           PermissionResource.ROLE,
@@ -256,7 +278,48 @@ export const rbacRouter = router({
         }
       }
 
-      return await updateRole(input, ctx.user.tenantId);
+      const { id, ...updateData } = input;
+      const processedData: {
+        id: string;
+        name?: string;
+        displayName?: string;
+        description?: string;
+        isSystem?: boolean;
+      } = {
+        id,
+      };
+
+      if (updateData.name !== undefined) {
+        processedData.name =
+          typeof updateData.name === "string"
+            ? updateData.name
+            : updateData.name.set;
+      }
+      if (updateData.displayName !== undefined) {
+        processedData.displayName =
+          typeof updateData.displayName === "string"
+            ? updateData.displayName
+            : updateData.displayName.set;
+      }
+      if (updateData.description !== undefined) {
+        if (updateData.description === null) {
+          processedData.description = undefined;
+        } else if (typeof updateData.description === "string") {
+          processedData.description = updateData.description;
+        } else if (updateData.description.set !== null) {
+          processedData.description = updateData.description.set ?? undefined;
+        } else {
+          processedData.description = undefined;
+        }
+      }
+      if (updateData.isSystem !== undefined) {
+        processedData.isSystem =
+          typeof updateData.isSystem === "boolean"
+            ? updateData.isSystem
+            : updateData.isSystem.set;
+      }
+
+      return await updateRole(processedData, ctx.user.tenantId);
     }),
 
   // Delete role
@@ -272,7 +335,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to delete roles
       if (ctx.user?.id) {
-        const canDeleteRole = await hasPermission(
+        const canDeleteRole = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.DELETE,
           PermissionResource.ROLE,
@@ -292,10 +355,10 @@ export const rbacRouter = router({
   // Create permission
   createPermission: adminProcedure
     .input(
-      z.object({
-        action: z.nativeEnum(PermissionAction),
-        resource: z.nativeEnum(PermissionResource),
-        description: z.string().optional(),
+      PermissionUncheckedCreateInputObjectZodSchema.pick({
+        action: true,
+        resource: true,
+        description: true,
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -308,7 +371,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to create permissions
       if (ctx.user?.id) {
-        const canCreatePermission = await hasPermission(
+        const canCreatePermission = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.CREATE,
           PermissionResource.PERMISSION,
@@ -322,7 +385,14 @@ export const rbacRouter = router({
         }
       }
 
-      return await createPermission(input, ctx.user.tenantId);
+      return await createPermission(
+        {
+          action: input.action as PermissionAction,
+          resource: input.resource as PermissionResource,
+          description: input.description ?? undefined,
+        },
+        ctx.user.tenantId
+      );
     }),
 
   // Assign role to user
@@ -345,7 +415,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to assign roles
       if (ctx.user?.id) {
-        const canAssignRole = await hasPermission(
+        const canAssignRole = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.UPDATE,
           PermissionResource.ROLE,
@@ -386,7 +456,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to remove roles
       if (ctx.user?.id) {
-        const canRemoveRole = await hasPermission(
+        const canRemoveRole = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.UPDATE,
           PermissionResource.ROLE,
@@ -422,7 +492,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to manage roles
       if (ctx.user?.id) {
-        const canManageRole = await hasPermission(
+        const canManageRole = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.UPDATE,
           PermissionResource.ROLE,
@@ -462,7 +532,7 @@ export const rbacRouter = router({
 
       // Check if user has permission to manage roles
       if (ctx.user?.id) {
-        const canManageRole = await hasPermission(
+        const canManageRole = await hasPermissionOrManage(
           ctx.user.id,
           PermissionAction.UPDATE,
           PermissionResource.ROLE,

@@ -229,7 +229,7 @@ export async function saveTranslation(
 ): Promise<void> {
   const {
     tenantId = null,
-    status = TranslationStatus.DRAFT,
+    status = TranslationStatus.PUBLISHED,
     translatorNotes,
     approvedBy,
   } = options;
@@ -297,7 +297,7 @@ export async function saveTranslations(
     approvedBy?: string;
   } = {}
 ): Promise<void> {
-  const { status = TranslationStatus.DRAFT, approvedBy } = options;
+  const { status = TranslationStatus.PUBLISHED, approvedBy } = options;
 
   const locale = await prisma.locale.findUnique({
     where: { languageCode: localeCode },

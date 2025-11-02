@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { prisma } from "../../lib/db";
-import { hasPermission } from "../../services/rbacService";
+import { TenantUncheckedUpdateInputObjectZodSchema } from "../../lib/zod/schemas";
+import { hasPermissionOrManage } from "../../services/rbacService";
 import { PermissionAction, PermissionResource } from "../../types/rbac";
 import { protectedProcedure, publicProcedure, router } from "../trpc";
 
@@ -39,52 +40,96 @@ export const companyInfoRouter = router({
   // Update company information (admin only)
   update: protectedProcedure
     .input(
-      z.object({
-        name: z.string().optional(),
-        displayName: z.string().optional(),
-        description: z.string().optional(),
-        email: z.string().email().optional(),
-        phone: z.string().optional(),
-        address: z.string().optional(),
-        city: z.string().optional(),
-        country: z.string().optional(),
-        website: z.string().url().optional(),
-        facebookUrl: z.string().url().optional().nullable(),
-        twitterUrl: z.string().url().optional().nullable(),
-        instagramUrl: z.string().url().optional().nullable(),
-        linkedinUrl: z.string().url().optional().nullable(),
-        youtubeUrl: z.string().url().optional().nullable(),
-        foundedYear: z
-          .number()
-          .int()
-          .min(1800)
-          .max(new Date().getFullYear())
-          .optional(),
-        logoUrl: z.string().url().optional().nullable(),
-        faviconUrl: z.string().url().optional().nullable(),
-        metaTitle: z.string().optional(),
-        metaDescription: z.string().optional(),
-        metaKeywords: z.string().optional(),
-        termsUrl: z.string().optional(),
-        privacyUrl: z.string().optional(),
-        cookiesUrl: z.string().optional(),
-        complaintsUrl: z.string().optional(),
+      TenantUncheckedUpdateInputObjectZodSchema.pick({
+        name: true,
+        displayName: true,
+        description: true,
+        email: true,
+        phone: true,
+        address: true,
+        city: true,
+        country: true,
+        website: true,
+        facebookUrl: true,
+        twitterUrl: true,
+        instagramUrl: true,
+        linkedinUrl: true,
+        youtubeUrl: true,
+        foundedYear: true,
+        logoUrl: true,
+        faviconUrl: true,
+        metaTitle: true,
+        metaDescription: true,
+        metaKeywords: true,
+        termsUrl: true,
+        privacyUrl: true,
+        cookiesUrl: true,
+        complaintsUrl: true,
       })
+        .partial()
+        .extend({
+          email: z.string().email().optional(),
+          website: z.string().url().optional(),
+          facebookUrl: z.string().url().optional().nullable(),
+          twitterUrl: z.string().url().optional().nullable(),
+          instagramUrl: z.string().url().optional().nullable(),
+          linkedinUrl: z.string().url().optional().nullable(),
+          youtubeUrl: z.string().url().optional().nullable(),
+          logoUrl: z
+            .string()
+            .optional()
+            .nullable()
+            .refine(
+              (val) => {
+                if (!val || val.trim() === "") return true;
+                if (z.string().url().safeParse(val).success) return true;
+                if (val.startsWith("/")) return true;
+                return false;
+              },
+              {
+                message:
+                  "URL del logo debe ser una URL válida (http://...) o una ruta relativa (/images/...)",
+              }
+            ),
+          faviconUrl: z
+            .string()
+            .optional()
+            .nullable()
+            .refine(
+              (val) => {
+                if (!val || val.trim() === "") return true;
+                if (z.string().url().safeParse(val).success) return true;
+                if (val.startsWith("/")) return true;
+                return false;
+              },
+              {
+                message:
+                  "URL del favicon debe ser una URL válida (http://...) o una ruta relativa (/favicon.ico)",
+              }
+            ),
+          foundedYear: z
+            .number()
+            .int()
+            .min(1800)
+            .max(new Date().getFullYear())
+            .optional(),
+        })
     )
     .mutation(async ({ input, ctx }) => {
       if (!ctx.user?.tenantId) {
         throw new Error("User tenant not found");
       }
 
-      // Check if user has permission to manage company info
-      const canManage = await hasPermission(
+      // Verificar si el usuario tiene permiso para actualizar información de admin
+      // MANAGE siempre otorga todas las acciones
+      const canUpdate = await hasPermissionOrManage(
         ctx.user.id,
         PermissionAction.UPDATE,
         PermissionResource.ADMIN,
         ctx.user.tenantId
       );
 
-      if (!canManage) {
+      if (!canUpdate) {
         throw new Error(
           "No tienes permisos para actualizar la información de la empresa"
         );
@@ -107,15 +152,16 @@ export const companyInfoRouter = router({
       throw new Error("User tenant not found");
     }
 
-    // Check if user has permission to view admin data
-    const canView = await hasPermission(
+    // Verificar si el usuario tiene permiso para leer información de admin
+    // MANAGE siempre otorga todas las acciones
+    const canRead = await hasPermissionOrManage(
       ctx.user.id,
       PermissionAction.READ,
       PermissionResource.ADMIN,
       ctx.user.tenantId
     );
 
-    if (!canView) {
+    if (!canRead) {
       throw new Error(
         "No tienes permisos para ver la información de administración"
       );

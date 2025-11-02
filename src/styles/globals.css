@@ -1,10 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@variant dark (&:where(.dark *));
 
 @theme {
-  --font-family-sans: "Poppins", "sans-serif";
+  --font-family-sans: "Raleway", "sans-serif";
 
   /* Colors for light mode */
   --color-background: hsl(0 0% 97%);
@@ -13,52 +13,52 @@
   --color-card-foreground: hsl(240 10% 3.9%);
   --color-popover: hsl(0 0% 100%);
   --color-popover-foreground: hsl(240 10% 3.9%);
-  --color-primary: hsl(42, 91%, 58%);
+  --color-primary: hsl(215, 40%, 42%);
   --color-primary-foreground: hsl(0 0% 98%);
-  --color-secondary: hsl(240 4.8% 95.9%);
-  --color-secondary-foreground: hsl(240 5.9% 10%);
+  --color-secondary: hsl(187, 60%, 42%);
+  --color-secondary-foreground: hsl(0 0% 98%);
   --color-muted: hsl(240 4.8% 95.9%);
   --color-muted-foreground: hsl(240 3.8% 46.1%);
-  --color-accent: hsl(240 4.8% 95.9%);
-  --color-accent-foreground: hsl(240 5.9% 10%);
+  --color-accent: hsl(0, 0%, 100%);
+  --color-accent-foreground: hsl(221, 60%, 10%);
   --color-destructive: hsl(0 84.2% 60.2%);
   --color-destructive-foreground: hsl(0 0% 98%);
   --color-border: hsl(240 5.9% 90%);
   --color-input: hsl(240 5.9% 90%);
-  --color-ring: hsl(221 83% 53%);
+  --color-ring: hsl(215, 40%, 42%);
 
   --radius: 0.6rem;
 }
 
 .dark {
   /* Colors for dark mode */
-  --color-background: hsl(223 42% 13%);
+  --color-background: hsl(221, 60%, 10%);
   --color-foreground: hsl(0 0% 98%);
-  --color-card: hsl(222, 35%, 22%);
+  --color-card: hsl(221, 60%, 15%);
   --color-card-foreground: hsl(0 0% 98%);
-  --color-popover: hsl(240 10% 3.9%);
+  --color-popover: hsl(221, 60%, 12%);
   --color-popover-foreground: hsl(0 0% 98%);
-  --color-primary: hsl(42, 91%, 58%);
+  --color-primary: hsl(210, 50%, 58%);
   --color-primary-foreground: hsl(0 0% 98%);
-  --color-secondary: hsl(240 3.7% 15.9%);
+  --color-secondary: hsl(187, 60%, 57%);
   --color-secondary-foreground: hsl(0 0% 98%);
-  --color-muted: hsl(240 3.7% 15.9%);
+  --color-muted: hsl(221, 60%, 18%);
   --color-muted-foreground: hsl(240 5% 64.9%);
-  --color-accent: hsl(240 3.7% 15.9%);
+  --color-accent: hsl(0, 0%, 100%);
   --color-accent-foreground: hsl(0 0% 98%);
   --color-destructive: hsl(0 62.8% 30.6%);
   --color-destructive-foreground: hsl(0 0% 98%);
-  --color-border: hsl(223 69% 9%);
-  --color-input: hsl(240 3.7% 15.9%);
-  --color-ring: hsl(142 76% 36%);
-  --sidebar: hsl(240 5.9% 10%);
-  --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --color-border: hsl(221, 60%, 15%);
+  --color-input: hsl(221, 60%, 18%);
+  --color-ring: hsl(210, 50%, 58%);
+  --sidebar: hsl(221, 60%, 8%);
+  --sidebar-foreground: hsl(0 0% 98%);
+  --sidebar-primary: hsl(210, 50%, 58%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(210, 50%, 15%);
+  --sidebar-accent-foreground: hsl(0 0% 98%);
+  --sidebar-border: hsl(221, 60%, 12%);
+  --sidebar-ring: hsl(210, 50%, 58%);
 }
 
 /* Global styles */
@@ -186,14 +186,14 @@ body {
 }
 
 :root {
-  --sidebar: hsl(0 0% 98%);
-  --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(240 10% 3.9%);
+  --sidebar-primary: hsl(215, 40%, 42%);
   --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --sidebar-accent: hsl(215, 40%, 96%);
+  --sidebar-accent-foreground: hsl(215, 40%, 20%);
+  --sidebar-border: hsl(240 5.9% 90%);
+  --sidebar-ring: hsl(215, 40%, 42%);
 }
 
 @theme inline {
@@ -209,7 +209,8 @@ body {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--color-border);
+    @apply outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
