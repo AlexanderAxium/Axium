@@ -1,12 +1,10 @@
-import { hasAnyRole } from "@/services/rbacService";
 import {
   PermissionAction,
   type PermissionCheck,
   PermissionResource,
 } from "@/types/rbac";
-import { type NextRequest, NextResponse } from "next/server";
 import {
-  createAuthMiddleware,
+  createAnyRoleMiddleware,
   createMultiPermissionMiddleware,
   createPermissionMiddleware,
   createRoleMiddleware,
@@ -47,31 +45,7 @@ export function requireRole(roleName: string) {
  * Require any of the specified roles
  */
 export function requireAnyRole(roleNames: string[]) {
-  return async (req: NextRequest) => {
-    const authResult = await createAuthMiddleware()(req);
-
-    if (authResult instanceof NextResponse) {
-      return authResult;
-    }
-
-    const { user } = authResult;
-
-    try {
-      const hasRole = await hasAnyRole(user.id, roleNames);
-
-      if (!hasRole) {
-        return NextResponse.json(
-          { error: "Insufficient role permissions" },
-          { status: 403 }
-        );
-      }
-
-      return { user };
-    } catch (error) {
-      console.error("Role check error:", error);
-      return NextResponse.json({ error: "Role check failed" }, { status: 500 });
-    }
-  };
+  return createAnyRoleMiddleware(roleNames);
 }
 
 /**

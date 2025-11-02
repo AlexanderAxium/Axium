@@ -1,7 +1,9 @@
 import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/db";
 import {
   hasAllPermissions,
   hasAnyPermission,
+  hasAnyRole,
   hasPermission,
   hasRole,
 } from "@/services/rbacService";
@@ -57,7 +59,25 @@ export function createPermissionMiddleware(
     const { user } = authResult;
 
     try {
-      const userHasPermission = await hasPermission(user.id, action, resource);
+      // Get user's tenantId
+      const userWithTenant = await prisma.user.findUnique({
+        where: { id: user.id },
+        select: { tenantId: true },
+      });
+
+      if (!userWithTenant?.tenantId) {
+        return NextResponse.json(
+          { error: "User tenant not found" },
+          { status: 403 }
+        );
+      }
+
+      const userHasPermission = await hasPermission(
+        user.id,
+        action,
+        resource,
+        userWithTenant.tenantId
+      );
 
       if (!userHasPermission) {
         return NextResponse.json(
@@ -94,12 +114,33 @@ export function createMultiPermissionMiddleware(
     const { user } = authResult;
 
     try {
+      // Get user's tenantId
+      const userWithTenant = await prisma.user.findUnique({
+        where: { id: user.id },
+        select: { tenantId: true },
+      });
+
+      if (!userWithTenant?.tenantId) {
+        return NextResponse.json(
+          { error: "User tenant not found" },
+          { status: 403 }
+        );
+      }
+
       let hasPermission = false;
 
       if (requireAll) {
-        hasPermission = await hasAllPermissions(user.id, permissionChecks);
+        hasPermission = await hasAllPermissions(
+          user.id,
+          permissionChecks,
+          userWithTenant.tenantId
+        );
       } else {
-        hasPermission = await hasAnyPermission(user.id, permissionChecks);
+        hasPermission = await hasAnyPermission(
+          user.id,
+          permissionChecks,
+          userWithTenant.tenantId
+        );
       }
 
       if (!hasPermission) {
@@ -134,7 +175,72 @@ export function createRoleMiddleware(roleName: string) {
     const { user } = authResult;
 
     try {
-      const userHasRole = await hasRole(user.id, roleName);
+      // Get user's tenantId
+      const userWithTenant = await prisma.user.findUnique({
+        where: { id: user.id },
+        select: { tenantId: true },
+      });
+
+      if (!userWithTenant?.tenantId) {
+        return NextResponse.json(
+          { error: "User tenant not found" },
+          { status: 403 }
+        );
+      }
+
+      const userHasRole = await hasRole(
+        user.id,
+        roleName,
+        userWithTenant.tenantId
+      );
+
+      if (!userHasRole) {
+        return NextResponse.json(
+          { error: "Insufficient role permissions" },
+          { status: 403 }
+        );
+      }
+
+      return { user };
+    } catch (error) {
+      console.error("Role check error:", error);
+      return NextResponse.json({ error: "Role check failed" }, { status: 500 });
+    }
+  };
+}
+
+/**
+ * Create any role middleware - checks if user has any of the specified roles
+ */
+export function createAnyRoleMiddleware(roleNames: string[]) {
+  return async (req: NextRequest) => {
+    const authResult = await createAuthMiddleware()(req);
+
+    if (authResult instanceof NextResponse) {
+      return authResult;
+    }
+
+    const { user } = authResult;
+
+    try {
+      // Get user's tenantId
+      const userWithTenant = await prisma.user.findUnique({
+        where: { id: user.id },
+        select: { tenantId: true },
+      });
+
+      if (!userWithTenant?.tenantId) {
+        return NextResponse.json(
+          { error: "User tenant not found" },
+          { status: 403 }
+        );
+      }
+
+      const userHasRole = await hasAnyRole(
+        user.id,
+        roleNames,
+        userWithTenant.tenantId
+      );
 
       if (!userHasRole) {
         return NextResponse.json(
