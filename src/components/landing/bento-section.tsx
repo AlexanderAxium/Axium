@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslation } from "@/hooks/useTranslation";
 import Image from "next/image";
 
 interface BentoCardProps {
@@ -29,39 +32,37 @@ const BentoCard = ({ title, description, image }: BentoCardProps) => (
 );
 
 export function BentoSection() {
+  const { t } = useTranslation("landing");
+
   const cards = [
     {
-      title: "Análisis inteligente con IA",
-      description:
-        "Obtén sugerencias inteligentes en tiempo real para optimizar tu plataforma.",
+      title: t("bento.cards.ai.title"),
+      description: t("bento.cards.ai.description"),
       image: "/images/ai-code-reviews.png",
     },
     {
-      title: "Vistas previas en tiempo real",
-      description: "Chatea, colabora y previsualiza cambios al instante.",
+      title: t("bento.cards.realtime.title"),
+      description: t("bento.cards.realtime.description"),
       image: "/images/realtime-coding-previews.png",
     },
     {
-      title: "Integraciones con un click",
-      description:
-        "Conecta fácilmente con tus herramientas favoritas y servicios externos.",
+      title: t("bento.cards.integrations.title"),
+      description: t("bento.cards.integrations.description"),
       image: "/images/one-click-integrations.png",
     },
     {
-      title: "Conectividad flexible",
-      description:
-        "Gestiona y configura el acceso a servicios externos sin esfuerzo.",
+      title: t("bento.cards.connectivity.title"),
+      description: t("bento.cards.connectivity.description"),
       image: "/images/mcp-connectivity.png",
     },
     {
-      title: "Automatización avanzada",
-      description:
-        "Resuelve problemas complejos más rápido con múltiples agentes IA.",
+      title: t("bento.cards.automation.title"),
+      description: t("bento.cards.automation.description"),
       image: "/images/parallel-coding-agents.png",
     },
     {
-      title: "Despliegue simplificado",
-      description: "Pasa de desarrollo a producción al instante.",
+      title: t("bento.cards.deployment.title"),
+      description: t("bento.cards.deployment.description"),
       image: "/images/deployment-easy.png",
     },
   ];
@@ -74,14 +75,24 @@ export function BentoSection() {
           <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6 md:mb-8" />
 
           <h2 className="text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-4 md:mb-6 tracking-tight">
-            Potencia tu
-            <br />
-            <span className="font-medium text-primary">Plataforma</span>
+            {(() => {
+              const titleParts = t("bento.title", { platform: "" }).split(
+                "{platform}"
+              );
+              return (
+                <>
+                  {titleParts[0]}
+                  <br />
+                  <span className="font-medium text-primary">
+                    {t("bento.platform")}
+                  </span>
+                  {titleParts[1] || ""}
+                </>
+              );
+            })()}
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
-            Plataforma profesional con sincronización en tiempo real,
-            integraciones perfectas y análisis potentes para optimizar tu
-            gestión.
+            {t("bento.subtitle")}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">

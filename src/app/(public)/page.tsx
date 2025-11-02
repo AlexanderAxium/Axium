@@ -9,9 +9,11 @@ import { FAQSection } from "@/components/landing/faq-section";
 import { LandingHero } from "@/components/landing/landing-hero";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { TestimonialGrid } from "@/components/landing/testimonial-grid";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function HomePage() {
   const { loading } = useAuthContext();
+  const { t } = useTranslation("landing");
 
   // Si está cargando, mostrar loading
   if (loading) {
@@ -19,7 +21,7 @@ export default function HomePage() {
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
-          <p className="text-muted-foreground">Cargando...</p>
+          <p className="text-muted-foreground">{t("loading")}</p>
         </div>
       </div>
     );

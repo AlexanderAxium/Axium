@@ -62,10 +62,12 @@ async function main() {
   await prisma.account.deleteMany({});
   await prisma.verification.deleteMany({});
   await prisma.user.deleteMany({});
+  await prisma.translation.deleteMany({}); // i18n translations
   await prisma.rolePermission.deleteMany({});
   await prisma.role.deleteMany({});
   await prisma.permission.deleteMany({});
   await prisma.tenant.deleteMany({});
+  // Note: We don't delete locales as they are shared system data
 
   console.log("✅ All data cleared successfully");
 
@@ -331,7 +333,74 @@ async function main() {
   }
 
   // ================================
-  // 4. USER CREATION (ALL ROLES)
+  // 4. CREATE LOCALES (i18n)
+  // ================================
+  console.log("🌍 Creating locales...");
+
+  const locales = [
+    {
+      languageCode: "es",
+      name: "Spanish",
+      nativeName: "Español",
+      locale: "es_ES",
+      direction: "ltr",
+      currencySymbol: "$",
+      isActive: true,
+      isDefault: true,
+      displayOrder: 0,
+    },
+    {
+      languageCode: "en",
+      name: "English",
+      nativeName: "English",
+      locale: "en_US",
+      direction: "ltr",
+      currencySymbol: "$",
+      isActive: true,
+      isDefault: false,
+      displayOrder: 1,
+    },
+    {
+      languageCode: "pt",
+      name: "Portuguese",
+      nativeName: "Português",
+      locale: "pt_BR",
+      direction: "ltr",
+      currencySymbol: "R$",
+      isActive: true,
+      isDefault: false,
+      displayOrder: 2,
+    },
+    {
+      languageCode: "fr",
+      name: "French",
+      nativeName: "Français",
+      locale: "fr_FR",
+      direction: "ltr",
+      currencySymbol: "€",
+      isActive: true,
+      isDefault: false,
+      displayOrder: 3,
+    },
+  ];
+
+  const createdLocales = [];
+  for (const localeData of locales) {
+    const locale = await prisma.locale.upsert({
+      where: { languageCode: localeData.languageCode },
+      update: localeData,
+      create: localeData,
+    });
+    createdLocales.push(locale);
+    console.log(
+      `   ✅ Created/Updated locale: ${locale.nativeName} (${locale.languageCode})`
+    );
+  }
+
+  console.log(`✅ Created ${createdLocales.length} locales`);
+
+  // ================================
+  // 5. USER CREATION (ALL ROLES)
   // ================================
   const users = [
     // Default tenant users

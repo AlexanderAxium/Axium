@@ -2,23 +2,38 @@ import { z } from "zod";
 import { prisma } from "../../lib/db";
 import { hasPermission } from "../../services/rbacService";
 import { PermissionAction, PermissionResource } from "../../types/rbac";
-import { protectedProcedure, router } from "../trpc";
+import { protectedProcedure, publicProcedure, router } from "../trpc";
 
 export const companyInfoRouter = router({
-  // Get company information (public)
-  get: protectedProcedure.query(async ({ ctx }) => {
-    if (!ctx.user?.tenantId) {
-      throw new Error("User tenant not found");
+  // Get company information (public - returns first active tenant or default)
+  get: publicProcedure.query(async ({ ctx }) => {
+    // If user is authenticated, try to get their tenant
+    if (ctx.user?.tenantId) {
+      const tenant = await prisma.tenant.findUnique({
+        where: {
+          id: ctx.user.tenantId,
+          isActive: true,
+        },
+      });
+
+      if (tenant) {
+        return tenant;
+      }
     }
 
-    const tenant = await prisma.tenant.findUnique({
+    // Otherwise, get the first active tenant (or create a default one)
+    const firstTenant = await prisma.tenant.findFirst({
       where: {
-        id: ctx.user.tenantId,
         isActive: true,
       },
     });
 
-    return tenant;
+    if (firstTenant) {
+      return firstTenant;
+    }
+
+    // Return null if no tenant exists (Footer will use default values)
+    return null;
   }),
 
   // Update company information (admin only)

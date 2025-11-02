@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslation } from "@/hooks/useTranslation";
 import Image from "next/image";
 
 interface TestimonialCardProps {
@@ -133,6 +136,7 @@ const TestimonialCard = ({
 };
 
 export function TestimonialGrid() {
+  const { t } = useTranslation("landing");
   const [test0, test1, test2, test3] = testimonials as [
     TestimonialCardProps,
     TestimonialCardProps,
@@ -148,14 +152,14 @@ export function TestimonialGrid() {
           <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6 md:mb-8" />
 
           <h2 className="text-foreground text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-4 md:mb-6 tracking-tight">
-            Gestión
+            {t("testimonials.title")}
             <br />
-            <span className="font-medium text-primary">sin esfuerzo</span>
+            <span className="font-medium text-primary">
+              {t("testimonials.titleHighlight")}
+            </span>
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
-            Escucha cómo profesionales escalan sus operaciones más rápido,
-            colaboran sin problemas, y gestionan con confianza usando las
-            poderosas herramientas de MyApp
+            {t("testimonials.subtitle")}
           </p>
         </div>
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuthContext } from "@/AuthContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { LanguageSelector } from "@/components/ui/language-selector";
+import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
 import { Bell, LogOut, Settings, User } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -19,6 +22,7 @@ export function DashboardNavbar() {
   const { user, signOut } = useAuthContext();
   const { primaryRole } = useUser();
   const router = useRouter();
+  const { t, locale } = useTranslation("common");
 
   const handleSignOut = async () => {
     await signOut();
@@ -29,15 +33,29 @@ export function DashboardNavbar() {
       {/* Title */}
       <div className="hidden sm:block">
         <h1 className="text-xl font-semibold text-foreground">
-          Panel de Control
+          {t("dashboard")}
         </h1>
         <p className="text-sm text-muted-foreground">
-          Bienvenido de vuelta, {user?.name || "Usuario"}
+          {(() => {
+            // Get welcome message based on locale
+            const welcomeMessages: Record<string, string> = {
+              es: `Bienvenido de vuelta, ${user?.name || t("user")}`,
+              en: `Welcome back, ${user?.name || t("user")}`,
+              pt: `Bem-vindo de volta, ${user?.name || t("user")}`,
+            };
+            return welcomeMessages[locale] || welcomeMessages.es;
+          })()}
         </p>
       </div>
 
-      {/* Right side - Notifications and User Menu */}
-      <div className="flex items-center space-x-4">
+      {/* Right side - Language, Theme, Notifications and User Menu */}
+      <div className="flex items-center space-x-2 sm:space-x-4">
+        {/* Language Selector */}
+        <LanguageSelector />
+
+        {/* Theme Toggle */}
+        <ThemeToggle />
+
         {/* Notifications */}
         <Button variant="ghost" size="sm" className="relative">
           <Bell className="h-5 w-5" />
@@ -87,18 +105,18 @@ export function DashboardNavbar() {
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/dashboard/profile")}>
               <User className="mr-2 h-4 w-4" />
-              <span>Perfil</span>
+              <span>{t("profile")}</span>
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => router.push("/dashboard/settings")}
             >
               <Settings className="mr-2 h-4 w-4" />
-              <span>Configuración</span>
+              <span>{t("settings")}</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleSignOut}>
               <LogOut className="mr-2 h-4 w-4" />
-              <span>Cerrar Sesión</span>
+              <span>{t("signOut")}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

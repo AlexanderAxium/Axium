@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { LanguageSelector } from "@/components/ui/language-selector";
 import {
   Sheet,
   SheetContent,
@@ -17,6 +18,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
 import { LayoutDashboard, LogOut, Menu, Settings, User } from "lucide-react";
 import Link from "next/link";
@@ -29,6 +31,7 @@ export default function GlobalNavbar() {
   const { user, isAuthenticated, signOut } = useAuthContext();
   const { primaryRole } = useUser();
   const router = useRouter();
+  const { t } = useTranslation("common");
 
   const handleSignOut = async () => {
     await signOut();
@@ -71,12 +74,13 @@ export default function GlobalNavbar() {
 
             {/* Desktop Auth Section */}
             <div className="hidden lg:block">
-              <div className="ml-4 flex items-center md:ml-6">
+              <div className="ml-4 flex items-center md:ml-6 gap-4">
+                <LanguageSelector />
                 {isAuthenticated ? (
                   <div className="flex items-center space-x-4">
                     {/* User Name */}
                     <span className="text-white font-medium text-sm">
-                      {user?.name || "Usuario"}
+                      {user?.name || t("user")}
                     </span>
 
                     {/* User Avatar Dropdown */}
@@ -111,7 +115,7 @@ export default function GlobalNavbar() {
                         <DropdownMenuLabel className="font-normal">
                           <div className="flex flex-col space-y-1">
                             <p className="text-sm font-medium leading-none">
-                              {user?.name || "Usuario"}
+                              {user?.name || t("user")}
                             </p>
                             <p className="text-xs leading-none text-muted-foreground">
                               {user?.email || ""}
@@ -123,24 +127,24 @@ export default function GlobalNavbar() {
                           onClick={() => router.push(getDashboardUrl())}
                         >
                           <LayoutDashboard className="mr-2 h-4 w-4" />
-                          <span>Dashboard</span>
+                          <span>{t("dashboard")}</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => router.push("/dashboard/profile")}
                         >
                           <User className="mr-2 h-4 w-4" />
-                          <span>Perfil</span>
+                          <span>{t("profile")}</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => router.push("/dashboard/settings")}
                         >
                           <Settings className="mr-2 h-4 w-4" />
-                          <span>Configuración</span>
+                          <span>{t("settings")}</span>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem onClick={handleSignOut}>
                           <LogOut className="mr-2 h-4 w-4" />
-                          <span>Cerrar Sesión</span>
+                          <span>{t("signOut")}</span>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -152,13 +156,13 @@ export default function GlobalNavbar() {
                       onClick={handleSignIn}
                       className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                     >
-                      Iniciar Sesión
+                      {t("signIn")}
                     </button>
                     <Link
                       href="/signup"
                       className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors"
                     >
-                      Registrarse
+                      {t("signUp")}
                     </Link>
                   </div>
                 )}
@@ -173,7 +177,7 @@ export default function GlobalNavbar() {
                     type="button"
                     className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                   >
-                    <span className="sr-only">Open main menu</span>
+                    <span className="sr-only">{t("openMenu")}</span>
                     <Menu className="block h-6 w-6" aria-hidden="true" />
                   </button>
                 </SheetTrigger>
@@ -182,9 +186,14 @@ export default function GlobalNavbar() {
                   className="w-96 bg-[#20252F] border-gray-700"
                 >
                   <SheetHeader className="px-2">
-                    <SheetTitle className="text-white text-lg">Menú</SheetTitle>
+                    <SheetTitle className="text-white text-lg">
+                      {t("mainMenu")}
+                    </SheetTitle>
                   </SheetHeader>
                   <div className="mt-6 px-2">
+                    <div className="mb-4 px-2">
+                      <LanguageSelector />
+                    </div>
                     {isAuthenticated ? (
                       <div className="space-y-4">
                         {/* User Info */}
@@ -193,7 +202,7 @@ export default function GlobalNavbar() {
                             {user?.image ? (
                               <AvatarImage
                                 src={user.image}
-                                alt={user?.name || "Usuario"}
+                                alt={user?.name || t("user")}
                               />
                             ) : (
                               <AvatarFallback className="bg-primary text-primary-foreground">
@@ -210,7 +219,7 @@ export default function GlobalNavbar() {
                           </Avatar>
                           <div className="flex flex-col">
                             <span className="text-sm font-medium text-white">
-                              {user?.name || "Usuario"}
+                              {user?.name || t("user")}
                             </span>
                             <span className="text-xs text-gray-300">
                               {user?.email || ""}
@@ -230,10 +239,10 @@ export default function GlobalNavbar() {
                           <LayoutDashboard className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
                           <div className="flex-1 text-left">
                             <div className="font-medium text-white">
-                              Dashboard
+                              {t("dashboard")}
                             </div>
                             <div className="text-xs text-gray-400">
-                              Panel principal
+                              {t("mainPanel")}
                             </div>
                           </div>
                         </button>
@@ -250,10 +259,10 @@ export default function GlobalNavbar() {
                           <Settings className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
                           <div className="flex-1 text-left">
                             <div className="font-medium text-white">
-                              Configuración
+                              {t("settings")}
                             </div>
                             <div className="text-xs text-gray-400">
-                              Ajustes de cuenta
+                              {t("accountSettings")}
                             </div>
                           </div>
                         </button>
@@ -269,9 +278,11 @@ export default function GlobalNavbar() {
                         >
                           <User className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
                           <div className="flex-1 text-left">
-                            <div className="font-medium text-white">Perfil</div>
+                            <div className="font-medium text-white">
+                              {t("profile")}
+                            </div>
                             <div className="text-xs text-gray-400">
-                              Información personal
+                              {t("personalInfo")}
                             </div>
                           </div>
                         </button>
@@ -285,7 +296,7 @@ export default function GlobalNavbar() {
                           >
                             <LogOut className="mr-3 h-5 w-5" />
                             <div className="flex-1 text-left">
-                              <div className="font-medium">Cerrar Sesión</div>
+                              <div className="font-medium">{t("signOut")}</div>
                             </div>
                           </button>
                         </div>
@@ -297,14 +308,14 @@ export default function GlobalNavbar() {
                           onClick={handleSignIn}
                           className="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg font-medium transition-colors"
                         >
-                          Iniciar Sesión
+                          {t("signIn")}
                         </button>
                         <Link
                           href="/signup"
                           onClick={() => setIsMenuOpen(false)}
                           className="w-full bg-transparent border border-gray-600 text-white hover:bg-gray-700 px-4 py-2 rounded-lg font-medium transition-colors block text-center"
                         >
-                          Registrarse
+                          {t("signUp")}
                         </Link>
                       </div>
                     )}

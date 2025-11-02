@@ -1,9 +1,13 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
 import React from "react";
 import { ParticleNetwork } from "./particle-network";
 
 export function LandingHero() {
+  const { t } = useTranslation("landing");
   return (
     <section
       className="relative w-full overflow-visible bg-gradient-to-b from-[#1a2332] via-[#1e2838] to-[#22303f] border-b-4 border-white/5 pb-[280px] md:pb-[380px]"
@@ -26,6 +30,8 @@ export function LandingHero() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          role="presentation"
         >
           <g clipPath="url(#clip0_186_1134)">
             <mask
@@ -47,8 +53,8 @@ export function LandingHero() {
             </mask>
             <g mask="url(#mask0_186_1134)">
               {/* Grid Rectangles */}
-              {[...Array(35)].map((_, i) => (
-                <React.Fragment key={`row1-${i}`}>
+              {Array.from({ length: 35 }, (_, i) => (
+                <React.Fragment key={`grid-rect-${i}`}>
                   <rect
                     x={-20.0891 + i * 36}
                     y="9.2"
@@ -578,8 +584,15 @@ export function LandingHero() {
         <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
           <span className="text-white text-sm font-medium">Excellent</span>
           <div className="flex gap-1">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-4 h-4 fill-primary" viewBox="0 0 20 20">
+            {Array.from({ length: 5 }, (_, i) => (
+              <svg
+                key={`star-rating-${i}`}
+                className="w-4 h-4 fill-primary"
+                viewBox="0 0 20 20"
+                role="img"
+                aria-label={`${i + 1} star`}
+              >
+                <title>{`${i + 1} star`}</title>
                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
               </svg>
             ))}
@@ -592,16 +605,26 @@ export function LandingHero() {
       {/* Main content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 pt-6 pb-10 max-w-5xl mx-auto">
         <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-5">
-          Plataforma <span className="text-primary">Modern</span>
+          {(() => {
+            const titleParts = t("hero.title", { modern: "" }).split(
+              "{modern}"
+            );
+            return (
+              <>
+                {titleParts[0]}
+                <span className="text-primary">{t("hero.modern")}</span>
+                {titleParts[1] || ""}
+              </>
+            );
+          })()}
         </h1>
         <p className="text-white/80 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-3xl mx-auto mb-6 md:mb-7">
-          La forma más inteligente de gestionar usuarios, contenido y configurar
-          tu plataforma de manera eficiente y escalable.
+          {t("hero.subtitle")}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
           <Link href="/signup">
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 sm:px-8 py-3 rounded-full font-semibold text-sm sm:text-base shadow-lg w-full sm:w-auto">
-              Comenzar Ahora
+              {t("hero.ctaPrimary")}
             </Button>
           </Link>
           <Link href="#features-section">
@@ -609,7 +632,7 @@ export function LandingHero() {
               variant="outline"
               className="bg-white/10 text-white border-white/20 hover:bg-white/20 px-6 sm:px-8 py-3 rounded-full font-semibold text-sm sm:text-base w-full sm:w-auto"
             >
-              Ver Funcionalidades
+              {t("hero.ctaSecondary")}
             </Button>
           </Link>
         </div>

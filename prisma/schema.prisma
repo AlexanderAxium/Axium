@@ -40,6 +40,7 @@ model Tenant {
   users           User[]
   permissions     Permission[]
   roles           Role[]
+  translations    Translation[]
 
   @@map("tenants")
 }
@@ -200,4 +201,73 @@ enum PermissionResource {
   PERMISSION
   DASHBOARD
   ADMIN
+}
+
+// ================================
+// i18n MODELS
+// ================================
+
+model Locale {
+  id            String       @id @default(uuid())
+  languageCode  String       @unique // ISO 639-1: 'es', 'en', 'pt', 'fr'
+  name          String       // "Spanish", "English"
+  nativeName    String       // "Español", "English"
+  locale        String?      // 'es_ES', 'en_US', 'pt_BR'
+  direction     String       @default("ltr") // 'ltr' or 'rtl'
+  currencySymbol String?
+  isActive      Boolean      @default(true)
+  isDefault     Boolean      @default(false) // Solo uno puede ser true
+  flagUrl       String?
+  displayOrder  Int          @default(0)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  translations  Translation[]
+
+  @@index([languageCode])
+  @@index([isActive])
+  @@map("locales")
+}
+
+model Translation {
+  id                String            @id @default(uuid())
+  
+  // Entidad traducida (polimórfico)
+  translatableType  String            // 'course', 'category', 'chapter', etc.
+  translatableId    String            // UUID de la entidad
+  
+  // Idioma
+  localeId         String
+  locale           Locale            @relation(fields: [localeId], references: [id], onDelete: Cascade)
+  
+  // Campo traducido
+  fieldName        String            // 'title', 'description', etc.
+  translatedValue  String            @db.Text
+  
+  // Estado de traducción
+  translationStatus TranslationStatus @default(DRAFT)
+  translatorNotes  String?           @db.Text
+  approvedBy       String?           // User ID que aprobó
+  approvedAt       DateTime?
+  
+  // Multi-tenant support (opcional - si las traducciones son por tenant)
+  tenantId         String?
+  tenant           Tenant?           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  // Una traducción única por (entidad, idioma, campo, tenant)
+  @@unique([translatableType, translatableId, localeId, fieldName, tenantId])
+  @@index([translatableType, translatableId, localeId])
+  @@index([localeId])
+  @@index([translationStatus])
+  @@index([tenantId])
+  @@map("translations")
+}
+
+enum TranslationStatus {
+  DRAFT
+  REVIEW
+  APPROVED
+  PUBLISHED
 }
