@@ -76,20 +76,14 @@ export const translationRouter = router({
       })
     )
     .query(async ({ input }) => {
-      try {
-        const translation = await getTranslation(
-          input.entityType,
-          input.entityId,
-          input.fieldName,
-          input.localeCode,
-          { tenantId: input.tenantId ?? undefined }
-        );
-        return translation;
-      } catch (error) {
-        console.error("Error fetching translation:", error);
-        // Return null instead of throwing to prevent 500 errors
-        return null;
-      }
+      const translation = await getTranslation(
+        input.entityType,
+        input.entityId,
+        input.fieldName,
+        input.localeCode,
+        { tenantId: input.tenantId ?? undefined }
+      );
+      return translation;
     }),
 
   /**
