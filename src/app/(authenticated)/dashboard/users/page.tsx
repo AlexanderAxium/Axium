@@ -31,7 +31,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { trpc } from "@/utils/trpc";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Edit, Eye, Plus, Trash2, UserCheck, UserX, Users } from "lucide-react";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -82,6 +82,7 @@ function UserRolesCell({ userId }: { userId: string }) {
     { userId },
     {
       staleTime: 30000, // Cache for 30 seconds
+      gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
       refetchOnWindowFocus: false,
     }
   );
@@ -164,7 +165,7 @@ function UserDialog({
     },
   });
 
-  // Reset form when user changes
+  // Reset form when user changes (optimized to only depend on user.id to prevent loops)
   React.useEffect(() => {
     if (user?.id) {
       form.reset({
@@ -176,7 +177,7 @@ function UserDialog({
       });
       setSelectedInitialRoles([]);
     }
-  }, [user, form]); // Depend on user object and form
+  }, [user?.id, user?.email, user?.name]); // Only depend on user properties, not form object
 
   const handleSubmit = (data: UserFormData | CreateUserFormData) => {
     // For new users, include selected roles
@@ -364,7 +365,10 @@ function InitialRolesManager({
     data: availableRoles = [],
     isLoading: rolesLoading,
     error: rolesError,
-  } = trpc.rbac.getRoles.useQuery();
+  } = trpc.rbac.getRoles.useQuery(undefined, {
+    staleTime: 60000, // Cache for 1 minute
+    gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
+  });
 
   const handleRoleToggle = (roleId: string) => {
     const newRoles = selectedRoles.includes(roleId)
@@ -467,9 +471,19 @@ function UserRolesManager({ userId }: { userId: string }) {
     data: availableRoles = [],
     isLoading: rolesLoading,
     error: rolesError,
-  } = trpc.rbac.getRoles.useQuery();
+  } = trpc.rbac.getRoles.useQuery(undefined, {
+    staleTime: 60000, // Cache for 1 minute
+    gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
+  });
   const { data: userRoles, refetch: refetchUserRoles } =
-    trpc.user.getUserRoles.useQuery({ userId }, { enabled: !!userId });
+    trpc.user.getUserRoles.useQuery(
+      { userId },
+      {
+        enabled: !!userId,
+        staleTime: 30000, // Cache for 30 seconds
+        gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
+      }
+    );
 
   const assignRole = trpc.user.assignRole.useMutation({
     onSuccess: () => {
@@ -768,92 +782,102 @@ export default function UsersPage() {
     }
   };
 
-  // Definir columnas de la tabla
-  const columns: TableColumn<User>[] = [
-    {
-      key: "name",
-      title: t("usersColumn"),
-      render: (_, record) => (
-        <div className="flex items-center">
-          <Avatar className="h-8 w-8 mr-3">
-            <AvatarImage
-              src={record.image || undefined}
-              alt={record.name || t("user")}
-            />
-            <AvatarFallback className="bg-primary/10 text-primary">
-              {record.name?.charAt(0)?.toUpperCase() || "U"}
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <div className="text-sm font-medium text-foreground">
-              {record.name}
+  // Definir columnas de la tabla (memoized to prevent re-creation on each render)
+  const columns = useMemo<TableColumn<User>[]>(
+    () => [
+      {
+        key: "name",
+        title: t("usersColumn"),
+        render: (_, record) => (
+          <div className="flex items-center">
+            <Avatar className="h-8 w-8 mr-3">
+              <AvatarImage
+                src={record.image || undefined}
+                alt={record.name || t("user")}
+              />
+              <AvatarFallback className="bg-primary/10 text-primary">
+                {record.name?.charAt(0)?.toUpperCase() || "U"}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <div className="text-sm font-medium text-foreground">
+                {record.name}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {record.email}
+              </div>
             </div>
-            <div className="text-sm text-muted-foreground">{record.email}</div>
           </div>
-        </div>
-      ),
-    },
-    {
-      key: "emailVerified",
-      title: t("status"),
-      render: (value) => (
-        <Badge
-          variant="secondary"
-          className={`text-xs font-medium ${
-            value
-              ? "bg-green-600/15 text-green-600 border-green-600 hover:bg-green-600/20"
-              : "bg-yellow-600/15 text-yellow-600 border-yellow-600 hover:bg-yellow-600/20"
-          }`}
-        >
-          {value ? t("confirmed") : t("pending")}
-        </Badge>
-      ),
-    },
-    {
-      key: "roles",
-      title: t("roles"),
-      render: (_, record) => <UserRolesCell userId={record.id} />,
-      className: "text-sm",
-    },
-    {
-      key: "createdAt",
-      title: t("created"),
-      render: (value) => new Date(value as string).toLocaleDateString(),
-      className: "text-sm text-muted-foreground",
-    },
-  ];
+        ),
+      },
+      {
+        key: "emailVerified",
+        title: t("status"),
+        render: (value) => (
+          <Badge
+            variant="secondary"
+            className={`text-xs font-medium ${
+              value
+                ? "bg-green-600/15 text-green-600 border-green-600 hover:bg-green-600/20"
+                : "bg-yellow-600/15 text-yellow-600 border-yellow-600 hover:bg-yellow-600/20"
+            }`}
+          >
+            {value ? t("confirmed") : t("pending")}
+          </Badge>
+        ),
+      },
+      {
+        key: "roles",
+        title: t("roles"),
+        render: (_, record) => <UserRolesCell userId={record.id} />,
+        className: "text-sm",
+      },
+      {
+        key: "createdAt",
+        title: t("created"),
+        render: (value) => new Date(value as string).toLocaleDateString(),
+        className: "text-sm text-muted-foreground",
+      },
+    ],
+    [t]
+  );
 
   // Función para ver detalles del usuario
   const handleViewUser = (user: User) => {
     window.location.href = `/dashboard/users/${user.id}`;
   };
 
-  // Definir acciones de la tabla
-  const actions: TableAction<User>[] = [
-    {
-      label: t("viewDetails"),
-      icon: <Eye className="h-4 w-4" />,
-      onClick: handleViewUser,
-      variant: "default",
-    },
-    {
-      label: t("edit"),
-      icon: <Edit className="h-4 w-4" />,
-      onClick: handleEdit,
-      variant: "default",
-      // Solo mostrar si es administrador o si es el usuario actual
-      hidden: (user: User) => !(canManageUsers || user.id === currentUser?.id),
-    },
-    {
-      label: t("delete"),
-      icon: <Trash2 className="h-4 w-4" />,
-      onClick: handleDelete,
-      variant: "destructive",
-      separator: true,
-      // Solo mostrar si es administrador o si es el usuario actual
-      hidden: (user: User) => !(canManageUsers || user.id === currentUser?.id),
-    },
-  ];
+  // Definir acciones de la tabla (memoized to prevent re-creation on each render)
+  const actions = useMemo<TableAction<User>[]>(
+    () => [
+      {
+        label: t("viewDetails"),
+        icon: <Eye className="h-4 w-4" />,
+        onClick: handleViewUser,
+        variant: "default",
+      },
+      {
+        label: t("edit"),
+        icon: <Edit className="h-4 w-4" />,
+        onClick: handleEdit,
+        variant: "default",
+        // Solo mostrar si es administrador o si es el usuario actual
+        hidden: (user: User) =>
+          !(canManageUsers || user.id === currentUser?.id),
+      },
+      {
+        label: t("delete"),
+        icon: <Trash2 className="h-4 w-4" />,
+        onClick: handleDelete,
+        variant: "destructive",
+        separator: true,
+        // Solo mostrar si es administrador o si es el usuario actual
+        hidden: (user: User) =>
+          !(canManageUsers || user.id === currentUser?.id),
+      },
+    ],
+    [t, canManageUsers, currentUser?.id]
+  );
 
   return (
     <div className="space-y-6">

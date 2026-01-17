@@ -1,5 +1,4 @@
 import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/db";
 import {
   hasAllPermissions,
   hasAnyPermission,
@@ -59,13 +58,11 @@ export function createPermissionMiddleware(
     const { user } = authResult;
 
     try {
-      // Get user's tenantId
-      const userWithTenant = await prisma.user.findUnique({
-        where: { id: user.id },
-        select: { tenantId: true },
-      });
+      // Extract tenantId from session user (avoids extra DB query)
+      const userWithTenant = user as typeof user & { tenantId?: string };
+      const tenantId = userWithTenant.tenantId;
 
-      if (!userWithTenant?.tenantId) {
+      if (!tenantId) {
         return NextResponse.json(
           { error: "User tenant not found" },
           { status: 403 }
@@ -76,7 +73,7 @@ export function createPermissionMiddleware(
         user.id,
         action,
         resource,
-        userWithTenant.tenantId
+        tenantId
       );
 
       if (!userHasPermission) {
@@ -114,13 +111,11 @@ export function createMultiPermissionMiddleware(
     const { user } = authResult;
 
     try {
-      // Get user's tenantId
-      const userWithTenant = await prisma.user.findUnique({
-        where: { id: user.id },
-        select: { tenantId: true },
-      });
+      // Extract tenantId from session user (avoids extra DB query)
+      const userWithTenant = user as typeof user & { tenantId?: string };
+      const tenantId = userWithTenant.tenantId;
 
-      if (!userWithTenant?.tenantId) {
+      if (!tenantId) {
         return NextResponse.json(
           { error: "User tenant not found" },
           { status: 403 }
@@ -133,13 +128,13 @@ export function createMultiPermissionMiddleware(
         hasPermission = await hasAllPermissions(
           user.id,
           permissionChecks,
-          userWithTenant.tenantId
+          tenantId
         );
       } else {
         hasPermission = await hasAnyPermission(
           user.id,
           permissionChecks,
-          userWithTenant.tenantId
+          tenantId
         );
       }
 
@@ -175,24 +170,18 @@ export function createRoleMiddleware(roleName: string) {
     const { user } = authResult;
 
     try {
-      // Get user's tenantId
-      const userWithTenant = await prisma.user.findUnique({
-        where: { id: user.id },
-        select: { tenantId: true },
-      });
+      // Extract tenantId from session user (avoids extra DB query)
+      const userWithTenant = user as typeof user & { tenantId?: string };
+      const tenantId = userWithTenant.tenantId;
 
-      if (!userWithTenant?.tenantId) {
+      if (!tenantId) {
         return NextResponse.json(
           { error: "User tenant not found" },
           { status: 403 }
         );
       }
 
-      const userHasRole = await hasRole(
-        user.id,
-        roleName,
-        userWithTenant.tenantId
-      );
+      const userHasRole = await hasRole(user.id, roleName, tenantId);
 
       if (!userHasRole) {
         return NextResponse.json(
@@ -223,24 +212,18 @@ export function createAnyRoleMiddleware(roleNames: string[]) {
     const { user } = authResult;
 
     try {
-      // Get user's tenantId
-      const userWithTenant = await prisma.user.findUnique({
-        where: { id: user.id },
-        select: { tenantId: true },
-      });
+      // Extract tenantId from session user (avoids extra DB query)
+      const userWithTenant = user as typeof user & { tenantId?: string };
+      const tenantId = userWithTenant.tenantId;
 
-      if (!userWithTenant?.tenantId) {
+      if (!tenantId) {
         return NextResponse.json(
           { error: "User tenant not found" },
           { status: 403 }
         );
       }
 
-      const userHasRole = await hasAnyRole(
-        user.id,
-        roleNames,
-        userWithTenant.tenantId
-      );
+      const userHasRole = await hasAnyRole(user.id, roleNames, tenantId);
 
       if (!userHasRole) {
         return NextResponse.json(

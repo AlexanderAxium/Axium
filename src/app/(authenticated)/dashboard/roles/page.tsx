@@ -39,7 +39,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -135,10 +135,16 @@ export default function RolesPage() {
     refetch,
     isLoading,
     error,
-  } = trpc.rbac.getRoles.useQuery();
+  } = trpc.rbac.getRoles.useQuery(undefined, {
+    staleTime: 60000, // Cache for 1 minute
+    gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
+  });
 
   const { data: permissionsResponse, isLoading: permissionsLoading } =
-    trpc.rbac.getAllPermissions.useQuery();
+    trpc.rbac.getAllPermissions.useQuery(undefined, {
+      staleTime: 60000, // Cache for 1 minute
+      gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
+    });
 
   // Extract permissions from paginated response
   const allPermissions = permissionsResponse?.data || [];
@@ -150,7 +156,11 @@ export default function RolesPage() {
     refetch: refetchRolePermissions,
   } = trpc.rbac.getRolePermissions.useQuery(
     { roleId: viewingRole?.id || "" },
-    { enabled: !!viewingRole?.id }
+    {
+      enabled: !!viewingRole?.id,
+      staleTime: 30000, // Cache for 30 seconds
+      gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
+    }
   );
 
   const createRole = trpc.rbac.createRole.useMutation({
@@ -295,98 +305,104 @@ export default function RolesPage() {
     }
   };
 
-  // Define table columns
-  const columns: TableColumn<Role>[] = [
-    {
-      key: "role",
-      title: "Rol",
-      render: (_, record) => (
-        <div className="flex items-center space-x-3">
-          <div
-            className={`p-2 rounded-lg ${record.isSystem ? "bg-primary/10" : "bg-primary/10"}`}
-          >
-            {record.isSystem ? (
-              <Shield className="h-4 w-4 text-primary" />
-            ) : (
-              <Users className="h-4 w-4 text-primary" />
-            )}
-          </div>
-          <div>
-            <div className="font-medium text-foreground">
-              {record.displayName}
+  // Define table columns (memoized to prevent re-creation on each render)
+  const columns = useMemo<TableColumn<Role>[]>(
+    () => [
+      {
+        key: "role",
+        title: "Rol",
+        render: (_, record) => (
+          <div className="flex items-center space-x-3">
+            <div
+              className={`p-2 rounded-lg ${record.isSystem ? "bg-primary/10" : "bg-primary/10"}`}
+            >
+              {record.isSystem ? (
+                <Shield className="h-4 w-4 text-primary" />
+              ) : (
+                <Users className="h-4 w-4 text-primary" />
+              )}
             </div>
-            <div className="text-xs text-muted-foreground">{record.name}</div>
+            <div>
+              <div className="font-medium text-foreground">
+                {record.displayName}
+              </div>
+              <div className="text-xs text-muted-foreground">{record.name}</div>
+            </div>
           </div>
-        </div>
-      ),
-    },
-    {
-      key: "description",
-      title: "Descripción",
-      render: (_, record) => (
-        <div className="text-sm text-muted-foreground max-w-xs break-words">
-          {record.description || "Sin descripción"}
-        </div>
-      ),
-    },
-    {
-      key: "status",
-      title: "Estado",
-      render: (_, record) => (
-        <Badge
-          variant="outline"
-          className={`text-xs font-medium border ${
-            record.isActive
-              ? "bg-green-600/15 text-green-600 border-green-600 hover:bg-green-600/20"
-              : "bg-muted text-muted-foreground border-border hover:bg-muted/80"
-          }`}
-        >
-          {record.isActive ? "Activo" : "Inactivo"}
-        </Badge>
-      ),
-    },
-    {
-      key: "createdAt",
-      title: "Creado",
-      render: (_, record) => (
-        <div className="text-xs text-muted-foreground">
-          {new Date(record.createdAt).toLocaleDateString("es-ES")}
-        </div>
-      ),
-    },
-  ];
+        ),
+      },
+      {
+        key: "description",
+        title: "Descripción",
+        render: (_, record) => (
+          <div className="text-sm text-muted-foreground max-w-xs break-words">
+            {record.description || "Sin descripción"}
+          </div>
+        ),
+      },
+      {
+        key: "status",
+        title: "Estado",
+        render: (_, record) => (
+          <Badge
+            variant="outline"
+            className={`text-xs font-medium border ${
+              record.isActive
+                ? "bg-green-600/15 text-green-600 border-green-600 hover:bg-green-600/20"
+                : "bg-muted text-muted-foreground border-border hover:bg-muted/80"
+            }`}
+          >
+            {record.isActive ? "Activo" : "Inactivo"}
+          </Badge>
+        ),
+      },
+      {
+        key: "createdAt",
+        title: "Creado",
+        render: (_, record) => (
+          <div className="text-xs text-muted-foreground">
+            {new Date(record.createdAt).toLocaleDateString("es-ES")}
+          </div>
+        ),
+      },
+    ],
+    []
+  );
 
-  // Define table actions
-  const actions: TableAction<Role>[] = [
-    {
-      label: "Ver Detalles",
-      icon: <Eye className="h-4 w-4" />,
-      onClick: handleView,
-      variant: "default",
-    },
-    ...(canManageRoles
-      ? [
-          {
-            label: "Editar",
-            icon: <Edit className="h-4 w-4" />,
-            onClick: handleEdit,
-            variant: "default" as const,
-          },
-        ]
-      : []),
-    ...(canManageRoles
-      ? [
-          {
-            label: "Eliminar",
-            icon: <Trash2 className="h-4 w-4" />,
-            onClick: handleDelete,
-            variant: "destructive" as const,
-            separator: true,
-            disabled: (role: Role) => role.isSystem, // Disable for system roles
-          },
-        ]
-      : []),
-  ];
+  // Define table actions (memoized to prevent re-creation on each render)
+  const actions = useMemo<TableAction<Role>[]>(
+    () => [
+      {
+        label: "Ver Detalles",
+        icon: <Eye className="h-4 w-4" />,
+        onClick: handleView,
+        variant: "default",
+      },
+      ...(canManageRoles
+        ? [
+            {
+              label: "Editar",
+              icon: <Edit className="h-4 w-4" />,
+              onClick: handleEdit,
+              variant: "default" as const,
+            },
+          ]
+        : []),
+      ...(canManageRoles
+        ? [
+            {
+              label: "Eliminar",
+              icon: <Trash2 className="h-4 w-4" />,
+              onClick: handleDelete,
+              variant: "destructive" as const,
+              separator: true,
+              disabled: (role: Role) => role.isSystem, // Disable for system roles
+            },
+          ]
+        : []),
+    ],
+    [canManageRoles]
+  );
 
   if (error) {
     return (
