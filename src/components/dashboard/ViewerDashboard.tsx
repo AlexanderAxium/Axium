@@ -15,6 +15,7 @@ import {
   Users,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useMemo } from "react";
 import TenantInfo from "./TenantInfo";
 
 interface ViewerDashboardProps {
@@ -31,109 +32,121 @@ export default function ViewerDashboard({ user }: ViewerDashboardProps) {
   const { t } = useTranslation("dashboard");
   const router = useRouter();
 
-  const viewerStats = {
-    totalViews: 156,
-    reportsViewed: 23,
-    dataPoints: 1240,
-    lastLogin: "Hace 2 horas",
-  };
+  const viewerStats = useMemo(
+    () => ({
+      totalViews: 156,
+      reportsViewed: 23,
+      dataPoints: 1240,
+      lastLogin: "Hace 2 horas",
+    }),
+    []
+  );
 
-  const availableReports = [
-    {
-      id: 1,
-      title: "Resumen de Mercados",
-      description: "Análisis general de los mercados financieros",
-      type: "market",
-      lastUpdated: "Hace 1 hora",
-      icon: <BarChart3 className="h-5 w-5 text-primary" />,
-    },
-    {
-      id: 2,
-      title: "Estadísticas de Usuarios",
-      description: "Métricas de usuarios activos y registros",
-      type: "users",
-      lastUpdated: "Hace 3 horas",
-      icon: <Users className="h-5 w-5 text-secondary" />,
-    },
-    {
-      id: 3,
-      title: "Rendimiento del Sistema",
-      description: "Métricas de rendimiento y disponibilidad",
-      type: "system",
-      lastUpdated: "Hace 6 horas",
-      icon: <TrendingUp className="h-5 w-5 text-accent-foreground" />,
-    },
-    {
-      id: 4,
-      title: "Actividad de la Plataforma",
-      description: "Resumen de actividad de la plataforma",
-      type: "platform",
-      lastUpdated: "Hace 12 horas",
-      icon: <DollarSign className="h-5 w-5 text-muted-foreground" />,
-    },
-  ];
+  const availableReports = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "Resumen de Mercados",
+        description: "Análisis general de los mercados financieros",
+        type: "market",
+        lastUpdated: "Hace 1 hora",
+        icon: <BarChart3 className="h-5 w-5 text-primary" />,
+      },
+      {
+        id: 2,
+        title: "Estadísticas de Usuarios",
+        description: "Métricas de usuarios activos y registros",
+        type: "users",
+        lastUpdated: "Hace 3 horas",
+        icon: <Users className="h-5 w-5 text-secondary" />,
+      },
+      {
+        id: 3,
+        title: "Rendimiento del Sistema",
+        description: "Métricas de rendimiento y disponibilidad",
+        type: "system",
+        lastUpdated: "Hace 6 horas",
+        icon: <TrendingUp className="h-5 w-5 text-accent-foreground" />,
+      },
+      {
+        id: 4,
+        title: "Actividad de la Plataforma",
+        description: "Resumen de actividad de la plataforma",
+        type: "platform",
+        lastUpdated: "Hace 12 horas",
+        icon: <DollarSign className="h-5 w-5 text-muted-foreground" />,
+      },
+    ],
+    []
+  );
 
-  const viewerActions = [
-    {
-      title: t("viewReports"),
-      description: t("viewReportsDesc"),
-      icon: <FileText className="h-6 w-6" />,
-      bgColor: "bg-primary",
-      href: "/reports",
-    },
-    {
-      title: t("publicDashboard"),
-      description: t("publicDashboardDesc"),
-      icon: <BarChart3 className="h-6 w-6" />,
-      bgColor: "bg-secondary",
-      href: "/public-dashboard",
-    },
-    {
-      title: t("documentation"),
-      description: t("documentationDesc"),
-      icon: <BookOpen className="h-6 w-6" />,
-      bgColor: "bg-accent",
-      href: "/docs",
-    },
-    {
-      title: t("configuration"),
-      description: t("configurationDesc"),
-      icon: <Settings className="h-6 w-6" />,
-      bgColor: "bg-muted",
-      href: "/settings",
-    },
-  ];
+  const viewerActions = useMemo(
+    () => [
+      {
+        title: t("viewReports"),
+        description: t("viewReportsDesc"),
+        icon: <FileText className="h-6 w-6" />,
+        bgColor: "bg-primary",
+        href: "/reports",
+      },
+      {
+        title: t("publicDashboard"),
+        description: t("publicDashboardDesc"),
+        icon: <BarChart3 className="h-6 w-6" />,
+        bgColor: "bg-secondary",
+        href: "/public-dashboard",
+      },
+      {
+        title: t("documentation"),
+        description: t("documentationDesc"),
+        icon: <BookOpen className="h-6 w-6" />,
+        bgColor: "bg-accent",
+        href: "/docs",
+      },
+      {
+        title: t("configuration"),
+        description: t("configurationDesc"),
+        icon: <Settings className="h-6 w-6" />,
+        bgColor: "bg-muted",
+        href: "/settings",
+      },
+    ],
+    []
+  );
 
-  const recentActivity = [
-    {
-      id: 1,
-      type: "report_viewed",
-      message: "Viste el reporte 'Resumen de Mercados'",
-      time: "Hace 30 minutos",
-      icon: <FileText className="h-4 w-4 text-primary" />,
-    },
-    {
-      id: 2,
-      type: "data_exported",
-      message: "Exportaste datos de usuarios",
-      time: "Hace 2 horas",
-      icon: <DollarSign className="h-4 w-4 text-secondary" />,
-    },
-    {
-      id: 3,
-      type: "dashboard_accessed",
-      message: "Accediste al dashboard público",
-      time: "Hace 4 horas",
-      icon: <BarChart3 className="h-4 w-4 text-accent-foreground" />,
-    },
-    {
-      id: 4,
-      type: "settings_updated",
-      message: "Actualizaste tus preferencias",
-      time: "Ayer",
-      icon: <Settings className="h-4 w-4 text-muted-foreground" />,
-    },
-  ];
+  const recentActivity = useMemo(
+    () => [
+      {
+        id: 1,
+        type: "report_viewed",
+        message: "Viste el reporte 'Resumen de Mercados'",
+        time: "Hace 30 minutos",
+        icon: <FileText className="h-4 w-4 text-primary" />,
+      },
+      {
+        id: 2,
+        type: "data_exported",
+        message: "Exportaste datos de usuarios",
+        time: "Hace 2 horas",
+        icon: <DollarSign className="h-4 w-4 text-secondary" />,
+      },
+      {
+        id: 3,
+        type: "dashboard_accessed",
+        message: "Accediste al dashboard público",
+        time: "Hace 4 horas",
+        icon: <BarChart3 className="h-4 w-4 text-accent-foreground" />,
+      },
+      {
+        id: 4,
+        type: "settings_updated",
+        message: "Actualizaste tus preferencias",
+        time: "Ayer",
+        icon: <Settings className="h-4 w-4 text-muted-foreground" />,
+      },
+    ],
+    []
+  );
 
   return (
     <div className="space-y-6">

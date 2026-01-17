@@ -55,6 +55,17 @@ export const userRouter = router({
             tenantId: true,
             createdAt: true,
             updatedAt: true,
+            userRoles: {
+              where: {
+                OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }],
+              },
+              include: {
+                role: true,
+              },
+              orderBy: {
+                assignedAt: "desc",
+              },
+            },
           },
           orderBy,
           skip: offset,

@@ -20,10 +20,11 @@ import {
 } from "@/components/ui/sheet";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
+import { getInitials } from "@/lib/utils/avatar";
 import { LayoutDashboard, LogOut, Menu, Settings, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 export default function GlobalNavbar() {
   const _pathname = usePathname();
@@ -33,17 +34,17 @@ export default function GlobalNavbar() {
   const router = useRouter();
   const { t } = useTranslation("common");
 
-  const handleSignOut = async () => {
+  const handleSignOut = useCallback(async () => {
     await signOut();
     setIsMenuOpen(false);
-  };
+  }, [signOut]);
 
-  const handleSignIn = () => {
+  const handleSignIn = useCallback(() => {
     router.push("/signin");
     setIsMenuOpen(false);
-  };
+  }, [router]);
 
-  const getDashboardUrl = () => {
+  const getDashboardUrl = useCallback(() => {
     switch (primaryRole) {
       case "admin":
       case "super_admin":
@@ -51,9 +52,11 @@ export default function GlobalNavbar() {
       case "viewer":
         return "/dashboard";
       default:
-        return "/dashboard"; // Default to dashboard for all roles
+        return "/dashboard";
     }
-  };
+  }, [primaryRole]);
+
+  const userInitials = useMemo(() => getInitials(user?.name), [user?.name]);
 
   return (
     <>
@@ -98,14 +101,7 @@ export default function GlobalNavbar() {
                               />
                             ) : (
                               <AvatarFallback className="bg-primary text-primary-foreground">
-                                {user?.name
-                                  ? user.name
-                                      .split(" ")
-                                      .map((n) => n[0])
-                                      .join("")
-                                      .toUpperCase()
-                                      .slice(0, 2)
-                                  : "U"}
+                                {userInitials}
                               </AvatarFallback>
                             )}
                           </Avatar>
@@ -206,14 +202,7 @@ export default function GlobalNavbar() {
                               />
                             ) : (
                               <AvatarFallback className="bg-primary text-primary-foreground">
-                                {user?.name
-                                  ? user.name
-                                      .split(" ")
-                                      .map((n) => n[0])
-                                      .join("")
-                                      .toUpperCase()
-                                      .slice(0, 2)
-                                  : "U"}
+                                {userInitials}
                               </AvatarFallback>
                             )}
                           </Avatar>

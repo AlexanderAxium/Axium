@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type {
   PaginationInput,
   UsePaginationOptions,
@@ -32,22 +32,22 @@ export function usePagination(
 
   const setLimit = useCallback((newLimit: number) => {
     setLimitState(newLimit);
-    setPageState(1); // Reset to first page when changing limit
+    setPageState(1);
   }, []);
 
   const setSearch = useCallback((newSearch: string) => {
     setSearchState(newSearch);
-    setPageState(1); // Reset to first page when searching
+    setPageState(1);
   }, []);
 
   const setSortBy = useCallback((newSortBy: string) => {
     setSortByState(newSortBy);
-    setPageState(1); // Reset to first page when changing sort
+    setPageState(1);
   }, []);
 
   const setSortOrder = useCallback((newSortOrder: "asc" | "desc") => {
     setSortOrderState(newSortOrder);
-    setPageState(1); // Reset to first page when changing sort order
+    setPageState(1);
   }, []);
 
   const reset = useCallback(() => {
@@ -75,18 +75,34 @@ export function usePagination(
     [page, limit, search, sortBy, sortOrder]
   );
 
-  return {
-    page,
-    limit,
-    search,
-    sortBy,
-    sortOrder,
-    setPage,
-    setLimit,
-    setSearch,
-    setSortBy,
-    setSortOrder,
-    reset,
-    getQueryParams,
-  };
+  return useMemo(
+    () => ({
+      page,
+      limit,
+      search,
+      sortBy,
+      sortOrder,
+      setPage,
+      setLimit,
+      setSearch,
+      setSortBy,
+      setSortOrder,
+      reset,
+      getQueryParams,
+    }),
+    [
+      page,
+      limit,
+      search,
+      sortBy,
+      sortOrder,
+      setPage,
+      setLimit,
+      setSearch,
+      setSortBy,
+      setSortOrder,
+      reset,
+      getQueryParams,
+    ]
+  );
 }
