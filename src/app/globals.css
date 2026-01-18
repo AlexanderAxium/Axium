@@ -2,8 +2,50 @@
 
 @variant dark (&:where(.dark *));
 
+/* Gilroy Font Family */
+@font-face {
+  font-family: "Gilroy";
+  src: url("/gilroy/Gilroy-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/gilroy/Gilroy-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/gilroy/Gilroy-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/gilroy/Gilroy-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GuarujaTitle";
+  src: url("/gilroy/GuarujaTitle.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
-  --font-family-sans: "Raleway", "sans-serif";
+  --font-family-sans: "Gilroy", "sans-serif";
+  --font-family-heading: "GuarujaTitle", "sans-serif";
 
   /* Colors for light mode */
   --color-background: #f8fafb;
@@ -12,19 +54,19 @@
   --color-card-foreground: hsl(240 10% 3.9%);
   --color-popover: hsl(0 0% 100%);
   --color-popover-foreground: hsl(240 10% 3.9%);
-  --color-primary: hsl(215, 40%, 42%);
+  --color-primary: #060C20;
   --color-primary-foreground: hsl(0 0% 98%);
-  --color-secondary: hsl(187, 60%, 42%);
+  --color-secondary: #0072CF;
   --color-secondary-foreground: hsl(0 0% 98%);
   --color-muted: hsl(240 4.8% 95.9%);
   --color-muted-foreground: hsl(240 3.8% 46.1%);
-  --color-accent: hsl(200, 10%, 92%);
-  --color-accent-foreground: hsl(221, 60%, 10%);
+  --color-accent: #7ECFC3;
+  --color-accent-foreground: hsl(0 0% 98%);
   --color-destructive: hsl(0 84.2% 60.2%);
   --color-destructive-foreground: hsl(0 0% 98%);
   --color-border: hsl(140 15.9% 92%);
   --color-input: hsl(240 5.9% 90%);
-  --color-ring: hsl(215, 40%, 42%);
+  --color-ring: #0072CF;
 
   /* Sidebar colors for light mode */
   --sidebar: hsl(0 0% 100%);
@@ -77,6 +119,10 @@
   * {
     border-color: var(--color-border);
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+  }
 }
 
 html {
@@ -105,6 +151,15 @@ body {
     animation-delay: 4s;
   }
 
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   .bg-grid-pattern {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
@@ -117,6 +172,39 @@ body {
         transparent 1px
       ), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   }
+
+  /* Typography classes */
+  .text-heading-1 {
+    @apply text-3xl sm:text-4xl md:text-5xl leading-tight;
+    font-family: var(--font-family-heading);
+  }
+
+  .text-heading-2 {
+    @apply text-2xl sm:text-3xl md:text-4xl leading-tight;
+    font-family: var(--font-family-heading);
+  }
+
+  .text-heading-3 {
+    @apply text-xl sm:text-2xl leading-tight;
+    font-family: var(--font-family-heading);
+  }
+
+  .text-body-large {
+    @apply text-lg sm:text-xl leading-relaxed;
+  }
+
+  .text-body {
+    @apply text-base leading-relaxed;
+  }
+
+  .text-body-small {
+    @apply text-sm leading-relaxed;
+  }
+
+  .text-label {
+    @apply text-sm font-medium;
+  }
+
 }
 
 @layer utilities {

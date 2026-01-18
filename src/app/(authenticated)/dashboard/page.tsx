@@ -15,7 +15,7 @@ import {
 import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
 import type { AuthUser } from "@/types/user";
-import { Loader2 } from "lucide-react";
+import Image from "next/image";
 
 export default function DashboardPage() {
   const { t } = useTranslation("dashboard");
@@ -34,10 +34,17 @@ export default function DashboardPage() {
   if (isLoading) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="min-h-screen bg-white flex items-center justify-center">
           <div className="text-center">
-            <Loader2 className="h-8 w-8 animate-spin text-primary mx-auto mb-4" />
-            <p className="text-muted-foreground">{t("loading")}</p>
+            <div className="relative w-16 h-16 mx-auto mb-4">
+              <Image
+                src="/logo.png"
+                alt="Loading"
+                fill
+                className="object-contain animate-spin"
+                style={{ animationDuration: "2s" }}
+              />
+            </div>
           </div>
         </div>
       </ProtectedRoute>

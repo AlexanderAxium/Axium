@@ -2,6 +2,7 @@
 
 import { useAuthContext } from "@/AuthContext";
 import { useUser } from "@/hooks/useUser";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
@@ -31,10 +32,17 @@ export function RoleBasedRedirect({ children }: RoleBasedRedirectProps) {
   // Show loading state while determining role
   if (authLoading || roleLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="flex items-center justify-center min-h-screen bg-white">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading your dashboard...</p>
+          <div className="relative w-16 h-16 mx-auto mb-4">
+            <Image
+              src="/logo.png"
+              alt="Loading"
+              fill
+              className="object-contain animate-spin"
+              style={{ animationDuration: "2s" }}
+            />
+          </div>
         </div>
       </div>
     );

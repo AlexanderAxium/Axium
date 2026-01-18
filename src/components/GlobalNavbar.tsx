@@ -21,18 +21,76 @@ import {
 import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
 import { getInitials } from "@/lib/utils/avatar";
-import { LayoutDashboard, LogOut, Menu, Settings, User } from "lucide-react";
+import {
+  ChevronDown,
+  Cloud,
+  Code,
+  Grid,
+  LayoutDashboard,
+  LogOut,
+  Menu,
+  Settings,
+  Shield,
+  Smartphone,
+  User,
+  Workflow,
+  Zap,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+const services = [
+  {
+    icon: Smartphone,
+    title: "Aplicaciones Móviles",
+    description:
+      "Apps nativas e híbridas para iOS y Android con soporte offline.",
+  },
+  {
+    icon: Cloud,
+    title: "Aplicaciones Web",
+    description:
+      "Plataformas cloud-native con alta disponibilidad y seguridad enterprise.",
+  },
+  {
+    icon: Code,
+    title: "Software a Medida",
+    description:
+      "Soluciones enterprise-grade adaptadas a tu arquitectura de negocio.",
+  },
+  {
+    icon: Workflow,
+    title: "Automatización de Procesos",
+    description:
+      "Workflows inteligentes que reducen tareas manuales hasta en un 80%.",
+  },
+];
 
 export default function GlobalNavbar() {
   const _pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { user, isAuthenticated, signOut } = useAuthContext();
   const { primaryRole } = useUser();
   const router = useRouter();
   const { t } = useTranslation("common");
+
+  const handleServicesMouseEnter = useCallback(() => {
+    if (servicesTimeoutRef.current) {
+      clearTimeout(servicesTimeoutRef.current);
+      servicesTimeoutRef.current = null;
+    }
+    setIsServicesOpen(true);
+  }, []);
+
+  const handleServicesMouseLeave = useCallback(() => {
+    servicesTimeoutRef.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200);
+  }, []);
 
   const handleSignOut = useCallback(async () => {
     await signOut();
@@ -58,31 +116,150 @@ export default function GlobalNavbar() {
 
   const userInitials = useMemo(() => getInitials(user?.name), [user?.name]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      setIsScrolled(scrollPosition > viewportHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (servicesTimeoutRef.current) {
+        clearTimeout(servicesTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <>
-      <nav className="px-4 sm:px-6 lg:px-8 border-b bg-[#131B2F] border-gray-700 shadow-lg z-50">
-        <div className="max-w-[1500px] mx-auto ">
-          <div className="flex justify-between items-center h-16">
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+          isScrolled
+            ? "backdrop-blur-md bg-card/80 border-b border-border/50 shadow-sm"
+            : "bg-transparent border-b border-transparent backdrop-blur-md"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center h-14 md:h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
-                <div className="h-8 w-8 bg-gradient-to-r from-[#F5BA35] to-orange-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">M</span>
-                </div>
-                <span className="ml-2 text-xl font-medium text-white">
-                  MyApp
-                </span>
+                <img
+                  src={isScrolled ? "/logo2.png" : "/logo3.png"}
+                  alt="AXIUM"
+                  className="h-8 w-auto md:h-9 transition-all duration-300"
+                />
+              </Link>
+            </div>
+
+            {/* Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center gap-6 flex-1 justify-center ml-8">
+              <Link
+                href="#casos"
+                className={`text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? "text-foreground hover:text-secondary"
+                    : "text-white hover:text-white/80"
+                }`}
+              >
+                Casos de Éxito
+              </Link>
+
+              {/* Services Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={handleServicesMouseEnter}
+                onMouseLeave={handleServicesMouseLeave}
+              >
+                <button
+                  type="button"
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors ${
+                    isScrolled
+                      ? "text-foreground hover:text-secondary"
+                      : "text-white hover:text-white/80"
+                  }`}
+                >
+                  Servicios
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {/* Services Mega Menu */}
+                {isServicesOpen && (
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
+                    onMouseEnter={handleServicesMouseEnter}
+                    onMouseLeave={handleServicesMouseLeave}
+                  >
+                    <div className="flex items-center gap-2 mb-4">
+                      <Grid className="h-5 w-5 text-secondary" />
+                      <h3 className="font-semibold text-gray-900">Servicios</h3>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      {services.map((service) => (
+                        <Link
+                          key={service.title}
+                          href="#servicios"
+                          className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
+                              <service.icon className="w-4 h-4 text-secondary" />
+                            </div>
+                            <div>
+                              <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-secondary transition-colors">
+                                {service.title}
+                              </h4>
+                              <p className="text-xs text-gray-600 leading-relaxed">
+                                {service.description}
+                              </p>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="#como-trabajamos"
+                className={`text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? "text-foreground hover:text-secondary"
+                    : "text-white hover:text-white/80"
+                }`}
+              >
+                Cómo Trabajamos
+              </Link>
+
+              <Link
+                href="#contacto"
+                className={`text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? "text-foreground hover:text-secondary"
+                    : "text-white hover:text-white/80"
+                }`}
+              >
+                Contacto
               </Link>
             </div>
 
             {/* Desktop Auth Section */}
             <div className="hidden lg:block">
               <div className="ml-4 flex items-center md:ml-6 gap-4">
-                <LanguageSelector />
+                <LanguageSelector isTransparent={!isScrolled} />
                 {isAuthenticated ? (
                   <div className="flex items-center space-x-4">
                     {/* User Name */}
-                    <span className="text-white font-medium text-sm">
+                    <span
+                      className={`font-medium text-sm transition-colors ${
+                        isScrolled ? "text-foreground" : "text-white"
+                      }`}
+                    >
                       {user?.name || t("user")}
                     </span>
 
@@ -91,9 +268,9 @@ export default function GlobalNavbar() {
                       <DropdownMenuTrigger asChild>
                         <button
                           type="button"
-                          className="flex items-center space-x-2 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                          className="flex items-center space-x-2 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                         >
-                          <Avatar className="h-8 w-8">
+                          <Avatar className="h-7 w-7 md:h-8 md:w-8">
                             {user?.image ? (
                               <AvatarImage
                                 src={user.image}
@@ -150,16 +327,14 @@ export default function GlobalNavbar() {
                     <button
                       type="button"
                       onClick={handleSignIn}
-                      className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                      className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm ${
+                        isScrolled
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                          : "bg-white text-gray-900 hover:bg-white/90 border border-white/20"
+                      }`}
                     >
                       {t("signIn")}
                     </button>
-                    <Link
-                      href="/signup"
-                      className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                    >
-                      {t("signUp")}
-                    </Link>
                   </div>
                 )}
               </div>
@@ -171,15 +346,22 @@ export default function GlobalNavbar() {
                 <SheetTrigger asChild>
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    className={`inline-flex items-center justify-center p-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-inset ${
+                      isScrolled
+                        ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-400"
+                        : "text-white/90 hover:text-white hover:bg-white/10 focus:ring-white/50"
+                    }`}
                   >
                     <span className="sr-only">{t("openMenu")}</span>
-                    <Menu className="block h-6 w-6" aria-hidden="true" />
+                    <Menu
+                      className="block h-5 w-5 md:h-6 md:w-6"
+                      aria-hidden="true"
+                    />
                   </button>
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className="w-96 bg-[#20252F] border-gray-700"
+                  className="w-96 bg-white border-gray-200"
                 >
                   <SheetHeader className="px-2">
                     <SheetTitle className="text-white text-lg">

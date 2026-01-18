@@ -2,56 +2,70 @@ import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {
   title: {
-    default: "MiApp - Plataforma de Productividad",
-    template: "%s | MiApp",
+    default:
+      "AXIUM - Software Personalizado para Empresas | Desarrollo a Medida",
+    template: "%s | AXIUM",
   },
   description:
-    "Una plataforma moderna para gestionar proyectos, colaborar en equipo y alcanzar tus objetivos con herramientas diseñadas para el éxito.",
+    "AXIUM desarrolla software personalizado para empresas en crecimiento y grandes organizaciones. Soluciones enterprise-grade, aplicaciones web y móviles, automatización de procesos e IA. Tu socio tecnológico en Perú.",
   keywords: [
-    "productividad",
-    "gestión de proyectos",
-    "colaboración",
-    "equipo",
-    "objetivos",
-    "herramientas",
-    "plataforma",
+    "software personalizado",
+    "desarrollo de software",
+    "aplicaciones web",
+    "aplicaciones móviles",
+    "automatización de procesos",
+    "inteligencia artificial",
+    "desarrollo enterprise",
+    "software a medida",
+    "desarrollo de software Perú",
+    "consultoría tecnológica",
+    "arquitectura de software",
+    "sistemas escalables",
+    "transformación digital",
+    "ingeniería de software",
+    "desarrollo de productos",
   ],
-  authors: [{ name: "MiApp Team" }],
-  creator: "MiApp",
-  publisher: "MiApp",
+  authors: [{ name: "AXIUM" }],
+  creator: "AXIUM",
+  publisher: "AXIUM",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.SITE_URL || "https://myapp.example.com"),
+  metadataBase: new URL(process.env.SITE_URL || "https://axium.com.pe"),
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     type: "website",
-    locale: "es_ES",
-    url: process.env.SITE_URL || "https://myapp.example.com",
-    title: "MiApp - Plataforma de Productividad",
+    locale: "es_PE",
+    url: process.env.SITE_URL || "https://axium.com.pe",
+    title: "AXIUM - Software Personalizado para Empresas | Desarrollo a Medida",
     description:
-      "Una plataforma moderna para gestionar proyectos, colaborar en equipo y alcanzar tus objetivos.",
-    siteName: "MiApp",
+      "Desarrollamos software personalizado que transforma procesos manuales en sistemas eficientes y escalables. Soluciones enterprise-grade para empresas en crecimiento.",
+    siteName: "AXIUM",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "MiApp - Plataforma de Productividad",
+        alt: "AXIUM - Software Personalizado para Empresas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MiApp - Plataforma de Productividad",
+    title: "AXIUM - Software Personalizado para Empresas",
     description:
-      "Una plataforma moderna para gestionar proyectos, colaborar en equipo y alcanzar tus objetivos.",
-    images: ["/og-image.jpg"],
-    creator: "@miapp",
+      "Desarrollamos software personalizado que transforma procesos manuales en sistemas eficientes y escalables.",
+    images: ["/logo.png"],
+    creator: "@axium",
   },
   robots: {
     index: true,
@@ -83,7 +97,7 @@ export function generateMetadata({
   image?: string;
 }): Metadata {
   return {
-    title: title ? `${title} | MiApp` : defaultMetadata.title,
+    title: title ? `${title} | AXIUM` : defaultMetadata.title,
     description: description || defaultMetadata.description,
     keywords: keywords || defaultMetadata.keywords,
     openGraph: {
@@ -100,3 +114,51 @@ export function generateMetadata({
     },
   };
 }
+
+// Metadata específica para la página principal de AXIUM
+export const homePageMetadata: Metadata = {
+  title: "AXIUM - Software Personalizado para Empresas | Desarrollo a Medida",
+  description:
+    "AXIUM desarrolla software personalizado para empresas en crecimiento y grandes organizaciones. Soluciones enterprise-grade, aplicaciones web y móviles, automatización de procesos e IA. Tu socio tecnológico en Perú.",
+  keywords: [
+    "software personalizado",
+    "desarrollo de software",
+    "aplicaciones web",
+    "aplicaciones móviles",
+    "automatización de procesos",
+    "inteligencia artificial",
+    "desarrollo enterprise",
+    "software a medida",
+    "desarrollo de software Perú",
+    "consultoría tecnológica",
+    "arquitectura de software",
+    "sistemas escalables",
+    "transformación digital",
+    "ingeniería de software",
+    "desarrollo de productos",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "es_PE",
+    url: process.env.SITE_URL || "https://axium.com.pe",
+    title: "AXIUM - Software Personalizado para Empresas | Desarrollo a Medida",
+    description:
+      "Desarrollamos software personalizado que transforma procesos manuales en sistemas eficientes y escalables. Soluciones enterprise-grade para empresas en crecimiento.",
+    siteName: "AXIUM",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "AXIUM - Software Personalizado para Empresas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AXIUM - Software Personalizado para Empresas",
+    description:
+      "Desarrollamos software personalizado que transforma procesos manuales en sistemas eficientes y escalables.",
+    images: ["/logo.png"],
+  },
+};

@@ -16,7 +16,13 @@ const languages = [
   { code: "pt", name: "Português", flag: "🇵🇹" },
 ];
 
-export function LanguageSelector() {
+interface LanguageSelectorProps {
+  isTransparent?: boolean;
+}
+
+export function LanguageSelector({
+  isTransparent = false,
+}: LanguageSelectorProps) {
   const { locale, setLocale } = useTranslation("common");
 
   const currentLanguage = languages.find((lang) => lang.code === locale) ??
@@ -27,7 +33,11 @@ export function LanguageSelector() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="h-8 px-2 hover:bg-accent/50 text-foreground/70 hover:text-foreground transition-colors gap-1.5"
+          className={`h-8 px-2 transition-colors gap-1.5 ${
+            isTransparent
+              ? "hover:bg-white/10 text-white hover:text-white"
+              : "hover:bg-accent/50 text-foreground/70 hover:text-foreground"
+          }`}
         >
           <span className="text-base leading-none">{currentLanguage.flag}</span>
           <span className="text-xs font-medium hidden sm:inline-block">
