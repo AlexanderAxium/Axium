@@ -28,10 +28,23 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contacto" className="py-16 md:py-24 bg-white">
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      id="contacto"
+      className="py-16 md:py-24 bg-white"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
+        >
           <span className="text-secondary font-semibold text-sm uppercase tracking-wide">
             Contacto
           </span>
@@ -45,7 +58,7 @@ export function ContactSection() {
           <p className="text-body text-gray-600">
             Cuéntanos sobre tu proyecto y te responderemos en menos de 24 horas.
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -242,6 +255,6 @@ export function ContactSection() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

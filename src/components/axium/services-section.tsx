@@ -1,6 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -106,13 +107,23 @@ export function ServicesSection() {
   };
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       id="servicios"
       className="py-20 md:py-28 md:pb-16 bg-white relative overflow-hidden"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-secondary font-semibold text-sm uppercase tracking-wide">
             Nuestros Servicios
           </span>
@@ -123,7 +134,7 @@ export function ServicesSection() {
             </span>{" "}
             Negocios
           </h2>
-        </div>
+        </motion.div>
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -203,6 +214,6 @@ export function ServicesSection() {
           ))}
         </Tabs>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -76,9 +76,21 @@ export function ProcessSection() {
       id="como-trabajamos"
       className="py-16 md:py-24 md:pt-16 bg-white relative overflow-hidden"
     >
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+          className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
+        >
           <span className="text-secondary font-semibold text-sm uppercase tracking-wide">
             Proceso que Entrega Resultados
           </span>
@@ -93,7 +105,7 @@ export function ProcessSection() {
             ganan su confianza y construyen relaciones duraderas basadas en
             innovación y éxito medible.
           </p>
-        </div>
+        </motion.div>
 
         {/* Mobile Tabs - Top */}
         <div className="md:hidden mb-6">
@@ -554,7 +566,7 @@ export function ProcessSection() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

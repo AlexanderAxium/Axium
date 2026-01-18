@@ -2,17 +2,26 @@
 
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
+import { motion } from "motion/react";
 
 export function HeroSection() {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat min-h-screen flex items-center"
       style={{ backgroundImage: "url(/hero2.png)" }}
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
         <div className="relative flex flex-col items-center justify-between min-h-[70vh]">
           {/* Centered Headline - Positioned higher */}
-          <div className="text-center space-y-6 lg:space-y-8 max-w-4xl pt-8 lg:pt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+            className="text-center space-y-6 lg:space-y-8 max-w-4xl pt-8 lg:pt-16"
+          >
             <h1 className="text-heading-1 text-white leading-tight font-semibold">
               Software Personalizado para{" "}
               <span className="bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] bg-clip-text text-transparent">
@@ -20,10 +29,15 @@ export function HeroSection() {
               </span>{" "}
               y Grandes Organizaciones
             </h1>
-          </div>
+          </motion.div>
 
           {/* Description Box - Positioned at bottom */}
-          <div className="flex justify-end w-full mt-auto pb-8 lg:pb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+            className="flex justify-end w-full mt-auto pb-8 lg:pb-16"
+          >
             <div className="max-w-xs lg:max-w-sm rounded-3xl p-5 lg:p-6 bg-transparent border border-white/20 backdrop-blur-xl">
               <p className="text-body text-white/90 mb-5 leading-relaxed">
                 Nos asociamos con empresas y organizaciones de todas las
@@ -42,9 +56,9 @@ export function HeroSection() {
                 </span>
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

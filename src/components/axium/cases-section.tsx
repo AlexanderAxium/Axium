@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
@@ -32,7 +33,11 @@ export function CasesSection() {
     });
   }, [api]);
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       id="casos"
       className="py-20 md:py-28 overflow-hidden relative bg-gray-950"
     >
@@ -43,7 +48,13 @@ export function CasesSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-950/20 via-transparent to-transparent" />
 
       <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16"
+        >
           {/* Section Header */}
           <div className="flex items-center justify-between gap-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
@@ -78,7 +89,7 @@ export function CasesSection() {
               </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Carousel Section - Only left padding */}
         <div className="pl-4 sm:pl-6 lg:pl-16">
@@ -161,6 +172,6 @@ export function CasesSection() {
           </Carousel>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
