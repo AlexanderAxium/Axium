@@ -1,0 +1,27 @@
+{
+  "title": "Breezy",
+  "industry": "Manufactura",
+  "image": "/images/proyects/breezy/breezy.png",
+  "location": "Ukraine",
+  "services": ["Corporate Website", "UX/UI Design"],
+  "description": "Scalable multilingual B2B web platform for corporate IT refurbishment and content automation",
+  "problem": "Procesos de inventario y producción controlados mediante hojas de cálculo y comunicación manual entre departamentos, generando desajustes constantes y pérdidas por obsolescencia.",
+  "solution": "Implementamos un sistema de gestión integrado con IoT para monitoreo en tiempo real, algoritmos de planificación de producción basados en demanda predictiva y automatización completa de órdenes de trabajo.",
+  "results": [
+    {
+      "icon": "Clock",
+      "metric": "72%",
+      "label": "reducción en tiempo de gestión operativa"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "48%",
+      "label": "incremento en throughput de producción"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "99.2%",
+      "label": "precisión en inventario en tiempo real"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
@@ -12,6 +13,7 @@ import {
   CarouselItem,
 } from "~/components/ui/carousel";
 import { cases } from "~/data/cases-data";
+import { generateCaseSlug } from "~/lib/utils/cases";
 
 export function CasesSection() {
   const [api, setApi] = useState<CarouselApi>();
@@ -98,63 +100,67 @@ export function CasesSection() {
                   key={caseItem.title}
                   className="pl-4 sm:pl-6 basis-[85%] sm:basis-[70%] md:basis-[60%] lg:basis-[45%] xl:basis-[35%]"
                 >
-                  <Card className="border border-gray-700/50 hover:border-gray-600 hover:shadow-2xl transition-all duration-300 bg-gray-900/50 backdrop-blur-sm overflow-hidden group h-full">
-                    {/* Image Section - 60% of card */}
-                    <div className="relative h-[320px] overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
-                      <img
-                        src={caseItem.image}
-                        alt={caseItem.title}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <Link
+                    href={`/casos-de-exito/${generateCaseSlug(caseItem.title)}`}
+                  >
+                    <Card className="border border-gray-700/50 hover:border-gray-600 hover:shadow-2xl transition-all duration-300 bg-gray-900/50 backdrop-blur-sm overflow-hidden group h-full cursor-pointer">
+                      {/* Image Section - 60% of card */}
+                      <div className="relative h-[320px] overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                        <img
+                          src={caseItem.image}
+                          alt={caseItem.title}
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-                      {/* Industry Badge */}
-                      <Badge
-                        variant="secondary"
-                        className="absolute top-4 left-4 bg-secondary text-white hover:bg-secondary/90 shadow-lg"
-                      >
-                        {caseItem.industry}
-                      </Badge>
+                        {/* Industry Badge */}
+                        <Badge
+                          variant="secondary"
+                          className="absolute top-4 left-4 bg-secondary text-white hover:bg-secondary/90 shadow-lg"
+                        >
+                          {caseItem.industry}
+                        </Badge>
 
-                      {/* Title Overlay */}
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
-                          {caseItem.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Content Section - 40% of card */}
-                    <CardContent className="p-6 flex flex-col gap-4">
-                      {/* Description */}
-                      <p className="text-body-small text-gray-300 line-clamp-2">
-                        {caseItem.description}
-                      </p>
-
-                      {/* Services Tags */}
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        {caseItem.services.slice(0, 2).map((service) => (
-                          <span
-                            key={service}
-                            className="text-xs bg-accent/20 border border-accent/40 text-accent px-3 py-1 rounded-full font-medium"
-                          >
-                            {service}
-                          </span>
-                        ))}
-                        {caseItem.services.length > 2 && (
-                          <span className="text-xs bg-gray-700/50 border border-gray-600 text-gray-300 px-3 py-1 rounded-full font-medium">
-                            +{caseItem.services.length - 2}
-                          </span>
-                        )}
+                        {/* Title Overlay */}
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
+                            {caseItem.title}
+                          </h3>
+                        </div>
                       </div>
 
-                      {/* View More Indicator */}
-                      <div className="flex items-center gap-2 text-secondary font-semibold text-sm mt-2 group-hover:gap-3 transition-all">
-                        <span>Ver detalles</span>
-                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </div>
-                    </CardContent>
-                  </Card>
+                      {/* Content Section - 40% of card */}
+                      <CardContent className="p-6 flex flex-col gap-4">
+                        {/* Description */}
+                        <p className="text-body-small text-gray-300 line-clamp-2">
+                          {caseItem.description}
+                        </p>
+
+                        {/* Services Tags */}
+                        <div className="flex flex-wrap gap-2 mt-auto">
+                          {caseItem.services.slice(0, 2).map((service) => (
+                            <span
+                              key={service}
+                              className="text-xs bg-accent/20 border border-accent/40 text-accent px-3 py-1 rounded-full font-medium"
+                            >
+                              {service}
+                            </span>
+                          ))}
+                          {caseItem.services.length > 2 && (
+                            <span className="text-xs bg-gray-700/50 border border-gray-600 text-gray-300 px-3 py-1 rounded-full font-medium">
+                              +{caseItem.services.length - 2}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* View More Indicator */}
+                        <div className="flex items-center gap-2 text-secondary font-semibold text-sm mt-2 group-hover:gap-3 transition-all">
+                          <span>Ver detalles</span>
+                          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>

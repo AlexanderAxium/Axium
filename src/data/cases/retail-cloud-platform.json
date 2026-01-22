@@ -1,0 +1,31 @@
+{
+  "title": "Retail Cloud Platform",
+  "industry": "Retail",
+  "image": "/images/proyects/retail-cloud-platform/retail-platform.png",
+  "location": "México",
+  "services": [
+    "Cloud ERP",
+    "Business Intelligence",
+    "Multi-tenant Architecture"
+  ],
+  "description": "Cloud-native ERP with multi-tenant architecture for retail chains",
+  "problem": "Datos de inventario y ventas fragmentados entre múltiples sistemas locales, imposibilitando análisis consolidado y gestión centralizada de precios y promociones.",
+  "solution": "ERP cloud-native con arquitectura multi-tenant, sincronización bidireccional en tiempo real, módulos de BI integrado y sistema de pricing dinámico basado en algoritmos de demanda.",
+  "results": [
+    {
+      "icon": "TrendingUp",
+      "metric": "38%",
+      "label": "incremento en revenue por optimización de pricing"
+    },
+    {
+      "icon": "Clock",
+      "metric": "55%",
+      "label": "reducción en tiempo de procesos administrativos"
+    },
+    {
+      "icon": "Users",
+      "metric": "100%",
+      "label": "visibilidad consolidada multi-sucursal en tiempo real"
+    }
+  ]
+}

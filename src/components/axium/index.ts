@@ -4,3 +4,4 @@ export { InspirationalSection } from "./inspirational-section";
 export { CasesSection } from "./cases-section";
 export { ProcessSection } from "./process-section";
 export { ContactSection } from "./contact-section";
+export { CaseContactCTA } from "./case-contact-cta";

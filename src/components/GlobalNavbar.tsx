@@ -135,7 +135,7 @@ export default function GlobalNavbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
           isScrolled
             ? "backdrop-blur-md bg-card/80 border-b border-border/50 shadow-sm"
             : "bg-transparent border-b border-transparent backdrop-blur-md"

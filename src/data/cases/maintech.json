@@ -1,0 +1,52 @@
+{
+  "title": "Maintech",
+  "industry": "Educación",
+  "image": "/images/proyects/maintech/maintech.jpg",
+  "location": "Perú",
+  "platform": "Web & Mobile",
+  "duration": "Feb '25 – Jun '25",
+  "client": "Maintech",
+  "technologyStack": [
+    "Next.js",
+    "NestJS",
+    "Tailwind CSS",
+    "TypeScript",
+    "PostgreSQL"
+  ],
+  "secondaryIndustry": "Tecnología Educativa",
+  "forWhom": "Estudiantes, profesionales y equipos corporativos",
+  "services": [
+    "Plataforma E-Learning",
+    "Gestión de Cursos",
+    "Dashboard Estudiantil"
+  ],
+  "description": "Plataforma e-learning integral con gestión de cursos, dashboards estudiantiles y sistemas de seguimiento de progreso con inscripción a cursos, módulos de aprendizaje por capítulos, certificados de finalización y monitoreo de progreso en tiempo real.",
+  "problem": "Necesidad de una plataforma educativa integral para gestión de cursos, seguimiento de estudiantes y certificación de progreso.",
+  "solution": "Plataforma e-learning completa con gestión de cursos, dashboards estudiantiles personalizados, módulos de aprendizaje por capítulos, certificados de finalización y monitoreo de progreso en tiempo real con interfaces interactivas.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "100%",
+      "label": "tasa de inscripción en cursos"
+    },
+    {
+      "icon": "Clock",
+      "metric": "80%",
+      "label": "mejora en tiempo de gestión de cursos"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "95%",
+      "label": "satisfacción de estudiantes con la plataforma"
+    }
+  ],
+  "projectDescription": "Desarrollé esta plataforma integral de e-learning con gestión de cursos, dashboards estudiantiles y sistemas de seguimiento de progreso. La plataforma incluye inscripción a cursos, módulos de aprendizaje por capítulos, certificados de finalización y monitoreo del progreso del usuario. Construí interfaces de aprendizaje interactivas con seguimiento de progreso en tiempo real, sistemas de confirmación de compra y dashboards estudiantiles personalizados, creando una experiencia educativa atractiva para el desarrollo profesional y la capacitación técnica.",
+  "skillsAndDeliverables": [
+    "Next.js",
+    "NestJS",
+    "Tailwind CSS",
+    "TypeScript",
+    "PostgreSQL"
+  ],
+  "publishedDate": "Oct 18, 2025"
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Sailica 2.0",
+  "industry": "Servicios Financieros",
+  "image": "/images/proyects/sailica-2-0/sailica.png",
+  "location": "United Kingdom",
+  "services": ["Decision Engine", "Security", "Regulatory Compliance"],
+  "description": "Yacht charter online booking platform",
+  "problem": "Evaluación crediticia basada en análisis manual, tiempos de aprobación de 7-15 días, riesgo de incumplimiento normativo y capacidad limitada para escalar operaciones.",
+  "solution": "Motor de decisión automatizado con scoring avanzado, integración con bureaus de crédito, workflow engine configurable y sistema de audit trail completo para compliance regulatorio.",
+  "results": [
+    {
+      "icon": "Clock",
+      "metric": "85%",
+      "label": "reducción en tiempo de aprobación (horas vs días)"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "100%",
+      "label": "cumplimiento normativo certificado"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "6x",
+      "label": "aumento en volumen de créditos procesados"
+    }
+  ]
+}

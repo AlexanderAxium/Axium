@@ -1,0 +1,27 @@
+{
+  "title": "EduSuite Platform",
+  "industry": "Educación",
+  "image": "/images/proyects/edusuite-platform/edusuite.png",
+  "location": "Colombia",
+  "services": ["LMS Platform", "Payment Gateway", "Academic Analytics"],
+  "description": "Integrated educational suite with student portal and payment system",
+  "problem": "Múltiples plataformas desconectadas para gestión académica, pagos y comunicación, generando duplicación de datos y procesos manuales repetitivos para administradores.",
+  "solution": "Suite educativa integral con portal estudiantil personalizado, sistema de pagos en línea con múltiples métodos, automatización de certificados y reporting académico avanzado con analytics predictivo.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "94%",
+      "label": "tasa de adopción de usuarios en primer trimestre"
+    },
+    {
+      "icon": "Clock",
+      "metric": "70%",
+      "label": "reducción en carga administrativa operativa"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "100%",
+      "label": "trazabilidad completa de transacciones financieras"
+    }
+  ]
+}

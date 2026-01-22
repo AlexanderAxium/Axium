@@ -1,0 +1,27 @@
+{
+  "title": "Stark Research 4.0",
+  "industry": "Logística",
+  "image": "/images/proyects/stark-research-4-0/stark-research.png",
+  "location": "Ukraine",
+  "services": ["Portals and Services", "Mobile App Development"],
+  "description": "Analytical web and mobile application for shipping logistics",
+  "problem": "Sistemas dispares de seguimiento generando información desincronizada, falta de visibilidad en cadena de suministro y altos costos por consultas manuales de clientes.",
+  "solution": "Plataforma unificada con API-first architecture, integración GPS en tiempo real, sistema de notificaciones push automatizado y dashboard analítico para optimización de rutas mediante machine learning.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "3.5x",
+      "label": "mejora en NPS de satisfacción del cliente"
+    },
+    {
+      "icon": "Clock",
+      "metric": "68%",
+      "label": "reducción en consultas de soporte manual"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "2.8x",
+      "label": "aumento en capacidad de procesamiento diario"
+    }
+  ]
+}

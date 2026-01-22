@@ -1,0 +1,55 @@
+{
+  "title": "Feniz",
+  "industry": "Fintech / Trading",
+  "image": "/images/proyects/feniz/feniz-home.png",
+  "location": "Internacional",
+  "platform": "Web",
+  "duration": "Nov '25 – Ene '26",
+  "client": "Feniz",
+  "technologyStack": [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "PostgreSQL",
+    "API Integration"
+  ],
+  "secondaryIndustry": "PropFirms",
+  "forWhom": "Funded traders, propfirms y brokers que buscan gestionar múltiples cuentas de trading",
+  "services": [
+    "Dashboard Analytics",
+    "Gestión de Cuentas",
+    "Integración API con Propfirms"
+  ],
+  "description": "Plataforma SaaS líder para funded traders que permite conectar, gestionar y optimizar cuentas de trading de propfirms como FTMO, con dashboard de métricas en tiempo real y análisis de rendimiento.",
+  "problem": "Los funded traders enfrentaban el desafío de gestionar múltiples cuentas de propfirms de forma dispersa, sin una visión centralizada de su rendimiento, P&L y métricas clave, lo que dificultaba optimizar sus estrategias de trading.",
+  "solution": "Desarrollamos una plataforma web integral que permite conectar múltiples cuentas de propfirms en un solo dashboard, visualizar métricas en tiempo real (Balance, P&L, Win Rate), gestionar conexiones activas y optimizar estrategias de trading con datos consolidados.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "200+",
+      "label": "traders activos utilizando la plataforma"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "75%",
+      "label": "win rate promedio de usuarios"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "15+",
+      "label": "propfirms integradas en el sistema"
+    }
+  ],
+  "projectDescription": "Desarrollé esta plataforma SaaS completa para funded traders que revoluciona la forma de gestionar cuentas de propfirms. La solución incluye un dashboard intuitivo con métricas en tiempo real (Balance Total, P&L, Conexiones Activas, Win Rate), sistema de conexión con múltiples propfirms como FTMO, gestión centralizada de cuentas de trading, planes de suscripción flexibles, sistema de asesoría personalizada y acciones rápidas para operaciones frecuentes. Todo construido con un enfoque en UX/UI moderno y rendimiento óptimo.",
+  "skillsAndDeliverables": [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Dashboard Analytics",
+    "API Integration",
+    "Real-time Metrics",
+    "User Authentication",
+    "Subscription System"
+  ],
+  "publishedDate": "Jan 22, 2026"
+}

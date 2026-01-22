@@ -1,0 +1,48 @@
+{
+  "title": "¿Listo para transformar tu negocio?",
+  "steps": [
+    {
+      "number": 1,
+      "text": "Analizaremos tu proyecto y prepararemos una estimación preliminar."
+    },
+    {
+      "number": 2,
+      "text": "Nos reuniremos virtualmente o presencialmente para discutir tus necesidades y alinear los próximos pasos."
+    }
+  ],
+  "ceo": {
+    "name": "Juan Pérez",
+    "position": "Fundador & CEO",
+    "image": "/images/contact/ceo-placeholder.svg",
+    "linkedin": "https://www.linkedin.com/in/",
+    "email": "ceo@axium.com.pe"
+  },
+  "ceoSectionTitle": "¿Prefieres contacto directo con nuestro CEO?",
+  "form": {
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "¿Cómo podemos ayudarte?",
+    "attachFileLabel": "Adjuntar archivo",
+    "submitLabel": "ENVIAR"
+  },
+  "budgetOptions": {
+    "title": "Presupuesto estimado (opcional)",
+    "options": [
+      { "id": "budget-1", "label": "hasta S/20k", "value": "0-20k" },
+      { "id": "budget-2", "label": "S/20k - S/50k", "value": "20k-50k" },
+      { "id": "budget-3", "label": "S/50k - S/100k", "value": "50k-100k" },
+      { "id": "budget-4", "label": "> S/100k", "value": "100k+" },
+      { "id": "budget-5", "label": "No estoy seguro", "value": "uncertain" }
+    ]
+  },
+  "sourceOptions": {
+    "title": "¿Cómo nos conociste? (opcional)",
+    "options": [
+      { "id": "source-1", "label": "Google", "value": "google" },
+      { "id": "source-2", "label": "LinkedIn", "value": "linkedin" },
+      { "id": "source-3", "label": "Referido", "value": "referral" },
+      { "id": "source-4", "label": "Redes Sociales", "value": "social" },
+      { "id": "source-5", "label": "Otro", "value": "other" }
+    ]
+  }
+}
