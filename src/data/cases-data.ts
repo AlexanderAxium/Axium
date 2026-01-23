@@ -3,6 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import breezyData from "./cases/breezy.json";
 import edusuiteData from "./cases/edusuite-platform.json";
 import fenizData from "./cases/feniz.json";
+import innersoulbrightData from "./cases/innersoulbright.json";
 // Import JSON files directly (Next.js supports JSON imports)
 import maintechData from "./cases/maintech.json";
 import medicareData from "./cases/medicare-emr.json";
@@ -92,6 +93,7 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(maintechData as CaseItemJSON),
   convertCaseFromJSON(vitalchainData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
+  convertCaseFromJSON(innersoulbrightData as CaseItemJSON),
   convertCaseFromJSON(breezyData as CaseItemJSON),
   convertCaseFromJSON(starkResearchData as CaseItemJSON),
   convertCaseFromJSON(sailicaData as CaseItemJSON),
