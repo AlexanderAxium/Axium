@@ -1,6 +1,7 @@
 import { CheckCircle2, Clock, TrendingUp, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import breezyData from "./cases/breezy.json";
+import clefastData from "./cases/clefast.json";
 import edusuiteData from "./cases/edusuite-platform.json";
 import fenizData from "./cases/feniz.json";
 import innersoulbrightData from "./cases/innersoulbright.json";
@@ -95,6 +96,7 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(vitalchainData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
   convertCaseFromJSON(innersoulbrightData as CaseItemJSON),
+  convertCaseFromJSON(clefastData as CaseItemJSON),
   convertCaseFromJSON(redesvipData as CaseItemJSON),
   convertCaseFromJSON(breezyData as CaseItemJSON),
   convertCaseFromJSON(starkResearchData as CaseItemJSON),

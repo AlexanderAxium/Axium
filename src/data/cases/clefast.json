@@ -1,0 +1,42 @@
+{
+  "title": "Clefast",
+  "industry": "E-commerce Industrial",
+  "image": "/images/proyects/clefast/clefast-home.png",
+  "location": "Perú",
+  "platform": "Web",
+  "duration": "Oct '25 – Ene '26",
+  "client": "Clefast",
+  "technologyStack": ["Next.js", "Tailwind CSS", "TypeScript", "PostgreSQL"],
+  "secondaryIndustry": "Productos Ecológicos",
+  "forWhom": "Empresas industriales y comerciales que buscan soluciones de limpieza ecológicas",
+  "services": ["E-commerce", "Catálogo de Productos", "Blog Corporativo"],
+  "description": "Plataforma e-commerce para detergentes ecológicos industriales con catálogo de productos, sistema de promociones, blog de noticias y gestión de contacto empresarial.",
+  "problem": "Necesidad de una plataforma digital para comercializar detergentes ecológicos industriales, con catálogo organizado, promociones y canal de comunicación con clientes B2B.",
+  "solution": "E-commerce moderno con catálogo de productos ecológicos, sistema de promociones, blog informativo, formulario de contacto empresarial y libro de reclamaciones digital integrado.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "100%",
+      "label": "presencia digital establecida"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "50%",
+      "label": "incremento en consultas de clientes"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "24/7",
+      "label": "disponibilidad del catálogo online"
+    }
+  ],
+  "projectDescription": "Desarrollé esta plataforma e-commerce para Clefast, empresa especializada en detergentes ecológicos industriales. La solución incluye tienda online con catálogo de productos organizado por categorías, sistema de promociones, blog corporativo para noticias y contenido educativo, formulario de contacto empresarial y libro de reclamaciones digital cumpliendo con normativas peruanas.",
+  "skillsAndDeliverables": [
+    "Next.js",
+    "Tailwind CSS",
+    "TypeScript",
+    "E-commerce",
+    "SEO Optimization"
+  ],
+  "publishedDate": "Jan 23, 2026"
+}
