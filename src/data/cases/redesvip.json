@@ -1,0 +1,49 @@
+{
+  "title": "Redes VIP",
+  "industry": "Telecomunicaciones",
+  "image": "/images/proyects/redesvip/redesvip-home.jpg",
+  "location": "Callao, Perú",
+  "platform": "Web",
+  "duration": "Ene '26",
+  "client": "Redes VIP Telecomunicaciones",
+  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  "secondaryIndustry": "ISP / Fibra Óptica",
+  "forWhom": "Hogares y empresas en Ventanilla-Callao que buscan internet de alta velocidad por fibra óptica con precio justo y soporte especializado",
+  "services": [
+    "Catálogo de Planes",
+    "Sección Testimonios",
+    "Integración WhatsApp"
+  ],
+  "description": "Sitio web profesional para proveedor de internet por fibra óptica con más de 1500 usuarios y 5 años de experiencia, incluyendo presentación de planes, servicios VIP TV y soluciones corporativas.",
+  "problem": "Redes VIP necesitaba una presencia digital moderna que transmitiera confianza, mostrara sus planes de internet (Hogar, Duos VIP, Gamer) de forma clara, y facilitara la captación de nuevos clientes tanto residenciales como corporativos en la zona de Ventanilla-Callao.",
+  "solution": "Desarrollamos un sitio web con diseño moderno y temática tecnológica en tonos oscuros con acentos en verde y púrpura. Incluye hero impactante con propuesta de valor, sección de planes con precios claros, testimonios de clientes satisfechos, información de servicios VIP TV y soluciones corporativas, además de integración con WhatsApp para contacto directo.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "+1500",
+      "label": "usuarios activos en la plataforma"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "+150",
+      "label": "empresas con servicios corporativos"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "5+",
+      "label": "años de experiencia en el mercado"
+    }
+  ],
+  "projectDescription": "Desarrollé el sitio web para Redes VIP, un proveedor de internet 100% fibra óptica en Ventanilla-Callao, Perú. El proyecto incluye un diseño visual moderno con estética tecnológica, hero section con propuesta de valor clara (velocidad simétrica, precio justo, soporte especializado), presentación de planes de internet (Hogar 200Mbps, Duos VIP 400Mbps, Gamer 300Mbps), sección de servicios VIP TV con +80 canales Full HD, área de soluciones corporativas, testimonios de clientes satisfechos, y optimización para conversiones con botones de WhatsApp integrados.",
+  "skillsAndDeliverables": [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion",
+    "UI/UX Design",
+    "Responsive Design",
+    "SEO Optimization",
+    "WhatsApp Integration"
+  ],
+  "publishedDate": "Jan 23, 2026"
+}

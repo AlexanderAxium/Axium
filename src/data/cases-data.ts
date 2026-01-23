@@ -7,6 +7,7 @@ import innersoulbrightData from "./cases/innersoulbright.json";
 // Import JSON files directly (Next.js supports JSON imports)
 import maintechData from "./cases/maintech.json";
 import medicareData from "./cases/medicare-emr.json";
+import redesvipData from "./cases/redesvip.json";
 import retailPlatformData from "./cases/retail-cloud-platform.json";
 import sailicaData from "./cases/sailica-2-0.json";
 import starkResearchData from "./cases/stark-research-4-0.json";
@@ -94,6 +95,7 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(vitalchainData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
   convertCaseFromJSON(innersoulbrightData as CaseItemJSON),
+  convertCaseFromJSON(redesvipData as CaseItemJSON),
   convertCaseFromJSON(breezyData as CaseItemJSON),
   convertCaseFromJSON(starkResearchData as CaseItemJSON),
   convertCaseFromJSON(sailicaData as CaseItemJSON),
