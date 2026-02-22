@@ -348,5 +348,30 @@
       "sourceSocial": "Social Media",
       "sourceOther": "Other"
     }
+  },
+  "portfolio": {
+    "nuestroTrabajo": "Our work",
+    "titulo": "Project",
+    "tituloBold": "Portfolio",
+    "subtitulo": "{count} projects across {industries} different industries.",
+    "filtros": "Filters",
+    "limpiarTodo": "Clear all",
+    "industria": "Industry",
+    "servicios": "Services",
+    "tecnologia": "Technology",
+    "todos": "All",
+    "proyectosCount": "{count} projects",
+    "proyectosFiltrado": "{filtered} of {total} projects",
+    "ordenar": "Sort",
+    "vista": "View",
+    "sortDefault": "Default",
+    "sortAZ": "A → Z",
+    "sortZA": "Z → A",
+    "vistaGrid": "Grid view",
+    "vistaLista": "List view",
+    "verProyecto": "VIEW PROJECT • VIEW PROJECT • ",
+    "sinResultados": "No results",
+    "sinResultadosDesc": "No projects match the selected filters.",
+    "verTodos": "View all projects"
   }
 }

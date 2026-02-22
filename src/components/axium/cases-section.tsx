@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { MagneticCursorArrow } from "~/components/axium/magnetic-cursor-arrow";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
@@ -111,14 +112,16 @@ export function CasesSection({
                 {title}
               </h2>
               <div className="flex items-center gap-3 sm:gap-4">
-                {!isDark && (
-                  <Link
-                    href="/#casos"
-                    className="text-body px-4 sm:px-6 py-2 rounded-md font-medium whitespace-nowrap transition-colors border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
-                  >
-                    {t("caseDetail.verPortafolio")}
-                  </Link>
-                )}
+                <Link
+                  href="/portafolio"
+                  className={`text-body px-4 sm:px-6 py-2 rounded-md font-medium whitespace-nowrap transition-colors ${
+                    isDark
+                      ? "border border-white/20 text-white hover:bg-white/10"
+                      : "border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
+                  }`}
+                >
+                  {t("caseDetail.verPortafolio")}
+                </Link>
                 <Button
                   variant="outline"
                   size="icon"
@@ -177,101 +180,97 @@ export function CasesSection({
                         viewport={{ once: true, margin: "-40px" }}
                         transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                       >
-                        <Link
-                          href={`/casos-de-exito/${caseItem.slug ?? slugMap[caseItem.title] ?? caseItem.title.toLowerCase()}`}
+                        <MagneticCursorArrow
+                          label={t("portfolio.verProyecto")}
+                          arrowColor="text-[#060C20]"
                         >
-                          <Card
-                            className={`overflow-hidden group h-full cursor-pointer transition-all duration-300 ${
-                              isDark
-                                ? "border border-gray-700/50 hover:border-gray-600 hover:shadow-2xl bg-gray-900/50 backdrop-blur-sm"
-                                : "border border-gray-200/80 bg-white hover:border-[#0072CF]/30 hover:shadow-xl"
-                            }`}
+                          <Link
+                            href={`/casos-de-exito/${caseItem.slug ?? slugMap[caseItem.title] ?? caseItem.title.toLowerCase()}`}
                           >
-                            <div
-                              className={`relative h-[320px] overflow-hidden ${
+                            <Card
+                              className={`overflow-hidden group h-full cursor-pointer transition-all duration-300 ${
                                 isDark
-                                  ? "bg-gradient-to-br from-gray-800 to-gray-900"
-                                  : "bg-gradient-to-br from-gray-100 to-gray-200"
+                                  ? "border border-gray-700/50 hover:border-gray-600 hover:shadow-2xl bg-gray-900/50 backdrop-blur-sm"
+                                  : "border border-gray-200/80 bg-white hover:border-[#0072CF]/30 hover:shadow-xl"
                               }`}
                             >
-                              <img
-                                src={caseItem.image}
-                                alt={caseItem.title}
-                                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                              />
                               <div
-                                className={`absolute inset-0 bg-gradient-to-t ${
+                                className={`relative h-[320px] overflow-hidden ${
                                   isDark
-                                    ? "from-black/80 via-black/40 to-transparent"
-                                    : "from-black/50 via-black/20 to-transparent"
-                                }`}
-                              />
-
-                              <Badge
-                                className={`absolute top-4 left-4 shadow-lg ${
-                                  isDark
-                                    ? "bg-secondary text-white hover:bg-secondary/90 border-0"
-                                    : "bg-[#0072CF] text-white border-0 hover:bg-[#0072CF]/90"
+                                    ? "bg-gradient-to-br from-gray-800 to-gray-900"
+                                    : "bg-gradient-to-br from-gray-100 to-gray-200"
                                 }`}
                               >
-                                {caseItem.industry}
-                              </Badge>
+                                <img
+                                  src={caseItem.image}
+                                  alt={caseItem.title}
+                                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                                />
+                                <div
+                                  className={`absolute inset-0 bg-gradient-to-t ${
+                                    isDark
+                                      ? "from-black/80 via-black/40 to-transparent"
+                                      : "from-black/50 via-black/20 to-transparent"
+                                  }`}
+                                />
 
-                              <div className="absolute bottom-4 left-4 right-4">
-                                <h3 className="text-heading-2 mb-1 drop-shadow-lg text-white">
-                                  {caseItem.title}
-                                </h3>
+                                <Badge
+                                  className={`absolute top-4 left-4 shadow-lg ${
+                                    isDark
+                                      ? "bg-secondary text-white hover:bg-secondary/90 border-0"
+                                      : "bg-[#0072CF] text-white border-0 hover:bg-[#0072CF]/90"
+                                  }`}
+                                >
+                                  {caseItem.industry}
+                                </Badge>
+
+                                <div className="absolute bottom-4 left-4 right-4">
+                                  <h3 className="text-heading-2 mb-1 drop-shadow-lg text-white">
+                                    {caseItem.title}
+                                  </h3>
+                                </div>
                               </div>
-                            </div>
 
-                            <CardContent className="p-6 flex flex-col gap-4">
-                              <p
-                                className={`text-body-sm line-clamp-2 ${
-                                  isDark ? "text-gray-300" : "text-gray-600"
-                                }`}
-                              >
-                                {caseItem.description}
-                              </p>
+                              <CardContent className="p-6 flex flex-col gap-4">
+                                <p
+                                  className={`text-body-sm line-clamp-2 ${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                  }`}
+                                >
+                                  {caseItem.description}
+                                </p>
 
-                              <div className="flex flex-wrap gap-2 mt-auto">
-                                {caseItem.services
-                                  .slice(0, 2)
-                                  .map((service) => (
+                                <div className="flex flex-wrap gap-2 mt-auto">
+                                  {caseItem.services
+                                    .slice(0, 2)
+                                    .map((service) => (
+                                      <span
+                                        key={service}
+                                        className={`rounded-full px-3 py-1 text-xs font-medium ${
+                                          isDark
+                                            ? "bg-accent/20 border border-accent/40 text-accent"
+                                            : "border border-[#0072CF]/30 bg-[#0072CF]/10 text-[#0072CF]"
+                                        }`}
+                                      >
+                                        {service}
+                                      </span>
+                                    ))}
+                                  {caseItem.services.length > 2 && (
                                     <span
-                                      key={service}
                                       className={`rounded-full px-3 py-1 text-xs font-medium ${
                                         isDark
-                                          ? "bg-accent/20 border border-accent/40 text-accent"
-                                          : "border border-[#0072CF]/30 bg-[#0072CF]/10 text-[#0072CF]"
+                                          ? "bg-gray-700/50 border border-gray-600 text-gray-300"
+                                          : "border border-gray-200 bg-gray-100 text-gray-600"
                                       }`}
                                     >
-                                      {service}
+                                      +{caseItem.services.length - 2}
                                     </span>
-                                  ))}
-                                {caseItem.services.length > 2 && (
-                                  <span
-                                    className={`rounded-full px-3 py-1 text-xs font-medium ${
-                                      isDark
-                                        ? "bg-gray-700/50 border border-gray-600 text-gray-300"
-                                        : "border border-gray-200 bg-gray-100 text-gray-600"
-                                    }`}
-                                  >
-                                    +{caseItem.services.length - 2}
-                                  </span>
-                                )}
-                              </div>
-
-                              <div
-                                className={`flex items-center gap-2 text-body-sm font-semibold mt-2 group-hover:gap-3 transition-all ${
-                                  isDark ? "text-secondary" : "text-[#0072CF]"
-                                }`}
-                              >
-                                <span>{t("caseDetail.verDetalles")}</span>
-                                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </Link>
+                                  )}
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        </MagneticCursorArrow>
                       </motion.div>
                     </CarouselItem>
                   ))}

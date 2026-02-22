@@ -348,5 +348,30 @@
       "sourceSocial": "Redes Sociais",
       "sourceOther": "Outro"
     }
+  },
+  "portfolio": {
+    "nuestroTrabajo": "Nosso trabalho",
+    "titulo": "Portfólio de",
+    "tituloBold": "Projetos",
+    "subtitulo": "{count} projetos em {industries} setores distintos.",
+    "filtros": "Filtros",
+    "limpiarTodo": "Limpar tudo",
+    "industria": "Indústria",
+    "servicios": "Serviços",
+    "tecnologia": "Tecnologia",
+    "todos": "Todos",
+    "proyectosCount": "{count} projetos",
+    "proyectosFiltrado": "{filtered} de {total} projetos",
+    "ordenar": "Ordenar",
+    "vista": "Visualização",
+    "sortDefault": "Padrão",
+    "sortAZ": "A → Z",
+    "sortZA": "Z → A",
+    "vistaGrid": "Vista grade",
+    "vistaLista": "Vista lista",
+    "verProyecto": "VER PROJETO • VER PROJETO • ",
+    "sinResultados": "Sem resultados",
+    "sinResultadosDesc": "Nenhum projeto corresponde aos filtros selecionados.",
+    "verTodos": "Ver todos os projetos"
   }
 }

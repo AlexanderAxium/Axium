@@ -137,7 +137,7 @@ export default function GlobalNavbar() {
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-6 flex-1 justify-center ml-8">
               <Link
-                href="/#casos"
+                href="/portafolio"
                 className={`text-sm font-medium transition-colors ${
                   isScrolled
                     ? "text-foreground hover:text-secondary"
@@ -353,7 +353,7 @@ export default function GlobalNavbar() {
                   <div className="mt-6 px-2">
                     <nav className="flex flex-col gap-1 mb-6">
                       <Link
-                        href="/#casos"
+                        href="/portafolio"
                         onClick={() => setIsMenuOpen(false)}
                         className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
                       >
