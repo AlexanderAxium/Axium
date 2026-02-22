@@ -124,7 +124,7 @@ export function Footer() {
     [baseInfo, nameTranslation, displayNameTranslation, descriptionTranslation]
   );
 
-  const socialLinks = [
+  const _socialLinks = [
     { name: "Facebook", href: info.facebookUrl, icon: Facebook },
     { name: "Twitter", href: info.twitterUrl, icon: Twitter },
     { name: "Instagram", href: info.instagramUrl, icon: Instagram },
@@ -161,10 +161,10 @@ export function Footer() {
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <Phone className="h-4 w-4 text-blue-500" />
                   <a
-                    href="tel:+51999999999"
+                    href="tel:+51991285679"
                     className="hover:text-blue-400 transition-colors"
                   >
-                    +51 999 999 999
+                    +51 991 285 679
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -173,8 +173,8 @@ export function Footer() {
                 </div>
               </div>
 
-              {/* Social Media */}
-              {socialLinks.length > 0 && (
+              {/* Social Media - comentado por ahora, no colocar redes sociales */}
+              {/* {socialLinks.length > 0 && (
                 <div className="flex gap-3">
                   {socialLinks.map((social) => (
                     <a
@@ -189,7 +189,7 @@ export function Footer() {
                     </a>
                   ))}
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* Quick Links */}
@@ -199,36 +199,36 @@ export function Footer() {
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a
-                    href="#servicios"
+                  <Link
+                    href="/#servicios"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
                     {t("navbar.servicios")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#casos"
+                  <Link
+                    href="/#casos"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
                     {t("navbar.casosDeExito")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#como-trabajamos"
+                  <Link
+                    href="/#como-trabajamos"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
                     {t("navbar.comoTrabajamos")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#contacto"
+                  <Link
+                    href="/#contacto"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
                     {t("navbar.contacto")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

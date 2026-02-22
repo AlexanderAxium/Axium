@@ -42,20 +42,11 @@ export default function ClefastContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Clefast es una empresa peruana especializada en detergentes
-            ecológicos para lavanderías industriales. Nos contactaron para
-            desarrollar una tienda virtual completa que permitiera vender
-            online, gestionar promociones y generar confianza con clientes B2B.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos clefast.com.pe como plataforma e-commerce: tienda
-            online con carrito y checkout, catálogo organizado por categorías
-            (Línea Clásica, Especializada y Premium), sistema de promociones y
-            bonificaciones, blog con guías y noticias para lavanderías
-            industriales, catálogo descargable, formulario de contacto
-            empresarial y libro de reclamaciones digital cumpliendo normativas
-            peruanas.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -156,10 +147,7 @@ export default function ClefastContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy clefast.com.pe opera como tienda virtual completa para
-            lavanderías industriales: venta online con carrito y checkout,
-            catálogo por líneas, promociones, blog de guías y noticias, y canal
-            de contacto empresarial.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

@@ -41,18 +41,11 @@ export default function HappyArtContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Happy Art es una empresa arequipeña de regalos personalizados desde
-            2022. Les desarrollamos toda su identidad de marca: logo, manual de
-            marca, papelería; y la tienda virtual para vender online, mostrar su
-            catálogo por ocasiones y ofrecer asesoría a clientes.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Creamos el logo, manual de marca y elementos de identidad, además de
-            happyart.com.pe con tienda online, categorías (Día del Padre, Madre,
-            Niño, Maestro, Trabajador, para ellas/ellos, aniversarios,
-            corporativos), carrito y checkout, mi cuenta, delivery,
-            personalización, blog de consejos y asesoría por WhatsApp.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -151,9 +144,7 @@ export default function HappyArtContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy happyart.com.pe opera como tienda virtual de regalos
-            personalizados: catálogo por ocasiones, carrito y checkout,
-            delivery, personalización, blog de consejos y asesoría por WhatsApp.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

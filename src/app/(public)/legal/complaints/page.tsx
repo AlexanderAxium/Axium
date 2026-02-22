@@ -324,7 +324,7 @@ export default function ComplaintsPage() {
                   </h4>
                   <p className="text-muted-foreground">
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+51991285679"
                       className="text-primary hover:underline"
                     >
                       +1 (234) 567-890

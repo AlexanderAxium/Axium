@@ -5,18 +5,16 @@ import {
   CaseArticle,
   CaseArticleText,
   CaseArticleWide,
-  CaseFeatureShowcase,
   CaseHeroSplit,
   CaseImages,
-  CaseMetrics,
   CaseNextProject,
 } from "~/components/axium/case-blocks";
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
 import { useTranslation } from "~/hooks/useTranslation";
 import { useCaseContent } from "~/lib/case-translations";
 
-export default function FenizContent() {
-  const data = useCaseContent("feniz");
+export default function HuarmisContent() {
+  const data = useCaseContent("huarmis");
   const { t } = useTranslation("landing");
 
   if (!data) return null;
@@ -29,7 +27,8 @@ export default function FenizContent() {
         image={data.image}
         industry={data.industry}
         location={data.location}
-        gradient="linear-gradient(180deg, #0f172a 0%, #10293b 50%, #00122a 100%)"
+        gradient="linear-gradient(180deg, #0a0e14 0%, #0f1a2e 40%, #1a2d4a 100%)"
+        blurOrbs={["rgba(0,114,207,0.15)", "rgba(126,207,195,0.1)"]}
         services={data.services}
         technologies={data.technologyStack}
         liveUrl={data.liveUrl}
@@ -81,70 +80,23 @@ export default function FenizContent() {
         </CaseArticleText>
 
         <CaseArticleWide>
-          <div className="mb-8 lg:mb-10">
-            <CaseImages
-              images={[
-                {
-                  src: "/images/proyects/feniz/feniz-dashboard.jpg",
-                  alt: "Feniz — dashboard de trader con métricas en tiempo real",
-                  caption: "Dashboard de trader",
-                },
-              ]}
-              columns={1}
-            />
-          </div>
           <div className="mb-12 lg:mb-16">
             <CaseImages
               images={[
                 {
-                  src: "/images/proyects/feniz/feniz-desktop-app.jpg",
-                  alt: "Feniz — aplicación de escritorio para operaciones en MetaTrader",
-                  caption: "App de escritorio — automatización en MetaTrader",
+                  src: "/images/proyects/huarmis/huarmis-programas.jpg",
+                  alt: "Huarmis — programas STEM",
+                },
+                {
+                  src: "/images/proyects/huarmis/huarmis-equipo.jpg",
+                  alt: "Huarmis — equipo y fundadora",
                 },
               ]}
-              columns={1}
+              columns={2}
+              equalHeight
             />
           </div>
         </CaseArticleWide>
-
-        <CaseFeatureShowcase
-          background="light"
-          subtitle="Plataforma SaaS"
-          title={t("caseDetail.funcionalidadesClave")}
-          features={[
-            {
-              icon: "BarChart3",
-              title: "Métricas en Tiempo Real",
-              description:
-                "Balance Total, P&L, Win Rate y conexiones activas en un dashboard intuitivo.",
-            },
-            {
-              icon: "Layers",
-              title: "Multi-Propfirm",
-              description:
-                "Conexión con más de 15 propfirms como FTMO en una sola plataforma centralizada.",
-            },
-            {
-              icon: "Zap",
-              title: "Acciones Rápidas",
-              description:
-                "Operaciones frecuentes accesibles con un solo clic para máxima eficiencia.",
-            },
-            {
-              icon: "Lock",
-              title: "Suscripciones Flexibles",
-              description:
-                "Planes adaptados a distintos niveles de traders con asesoría personalizada.",
-            },
-            {
-              icon: "Monitor",
-              title: "App de Escritorio",
-              description:
-                "Aplicación en Python para ejecutar operaciones en MetaTrader automáticamente, disponible para usuarios suscritos.",
-            },
-          ]}
-          columns={2}
-        />
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
@@ -153,15 +105,7 @@ export default function FenizContent() {
         </CaseArticleText>
       </CaseArticle>
 
-      {data.results && data.results.length > 0 && (
-        <CaseMetrics
-          results={data.results}
-          variant="banner"
-          accentGradient="linear-gradient(135deg, #1a2332 0%, #2C3E50 55%, #FFA500 100%)"
-        />
-      )}
-
-      <CaseNextProject excludeSlug="feniz" />
+      <CaseNextProject excludeSlug="huarmis" />
 
       <CaseContactCTA />
     </div>

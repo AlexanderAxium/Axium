@@ -84,16 +84,17 @@ export default function EnrafmedicaContent() {
             <CaseImages
               images={[
                 {
-                  src: "/images/proyects/enrafmedica/enrafmedica-home.jpg",
-                  alt: "EnrafMedica — vista principal del sitio",
-                },
-                {
                   src: "/images/proyects/enrafmedica/enrafmedica-catalogo.jpg",
                   alt: "EnrafMedica — sección de catálogo",
+                },
+                {
+                  src: "/images/proyects/enrafmedica/enrafmedica-productos.jpg",
+                  alt: "EnrafMedica — últimos productos",
                 },
               ]}
               columns={2}
               equalHeight
+              equalHeightAspect="1/1"
             />
           </div>
         </CaseArticleWide>

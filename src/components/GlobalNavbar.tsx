@@ -137,7 +137,7 @@ export default function GlobalNavbar() {
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-6 flex-1 justify-center ml-8">
               <Link
-                href="#casos"
+                href="/#casos"
                 className={`text-sm font-medium transition-colors ${
                   isScrolled
                     ? "text-foreground hover:text-secondary"
@@ -184,7 +184,7 @@ export default function GlobalNavbar() {
                       {NAVBAR_SERVICES.map(({ icon: Icon, key }) => (
                         <Link
                           key={key}
-                          href="#servicios"
+                          href="/#servicios"
                           className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
                         >
                           <div className="flex items-start gap-3">
@@ -208,7 +208,7 @@ export default function GlobalNavbar() {
               </div>
 
               <Link
-                href="#como-trabajamos"
+                href="/#como-trabajamos"
                 className={`text-sm font-medium transition-colors ${
                   isScrolled
                     ? "text-foreground hover:text-secondary"
@@ -219,7 +219,7 @@ export default function GlobalNavbar() {
               </Link>
 
               <Link
-                href="#contacto"
+                href="/#contacto"
                 className={`text-sm font-medium transition-colors ${
                   isScrolled
                     ? "text-foreground hover:text-secondary"
@@ -351,8 +351,45 @@ export default function GlobalNavbar() {
                     </SheetTitle>
                   </SheetHeader>
                   <div className="mt-6 px-2">
-                    <div className="mb-4 px-2">
-                      <LanguageSelector />
+                    <nav className="flex flex-col gap-1 mb-6">
+                      <Link
+                        href="/#casos"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
+                      >
+                        <Shield className="h-4 w-4 text-gray-400" />
+                        {t("navbar.casosDeExito")}
+                      </Link>
+                      <Link
+                        href="/#servicios"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
+                      >
+                        <Grid className="h-4 w-4 text-gray-400" />
+                        {t("navbar.servicios")}
+                      </Link>
+                      <Link
+                        href="/#como-trabajamos"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
+                      >
+                        <Workflow className="h-4 w-4 text-gray-400" />
+                        {t("navbar.comoTrabajamos")}
+                      </Link>
+                      <Link
+                        href="/#contacto"
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
+                      >
+                        <Zap className="h-4 w-4 text-gray-400" />
+                        {t("navbar.contacto")}
+                      </Link>
+                    </nav>
+
+                    <div className="border-t border-gray-200 pt-4 mb-4">
+                      <div className="px-2">
+                        <LanguageSelector />
+                      </div>
                     </div>
                     {isAuthenticated ? (
                       <div className="space-y-4">

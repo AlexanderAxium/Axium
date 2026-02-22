@@ -42,18 +42,11 @@ export default function VillacerContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Villacer, establecida en Camaná en 2017, es una empresa líder en
-            alquiler de equipos y desarrollo de proyectos de construcción de
-            mediana envergadura. Nos contactaron para un servicio completo de
-            branding y web que transmitiera su propuesta: equipamos tu visión,
-            construimos tu futuro.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos la identidad de marca (logo, colores, aplicación en
-            uniformes) y la web villacer.com.pe con quiénes somos, historia,
-            servicios de alquiler de equipos y desarrollo de obras, flota,
-            proyectos y contacto para solicitar cotizaciones.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -161,10 +154,7 @@ export default function VillacerContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy Villacer cuenta con una identidad sólida y la web
-            villacer.com.pe para presentar sus servicios de alquiler de equipos
-            y desarrollo de obras ante el sector construcción en Camaná y la
-            región sur.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

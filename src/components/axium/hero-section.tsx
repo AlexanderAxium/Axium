@@ -1,14 +1,18 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 import { motion } from "motion/react";
+import { useCallback } from "react";
 import { useTranslation } from "~/hooks/useTranslation";
 
 const smoothEase = [0.4, 0, 0.2, 1] as const;
 
 export function HeroSection() {
   const { t } = useTranslation("landing");
+
+  const scrollToContact = useCallback(() => {
+    document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
   return (
     <section
@@ -18,14 +22,13 @@ export function HeroSection() {
       <div className="container-section w-full py-20">
         <div className="content-section relative">
           <div className="relative flex flex-col items-center justify-between min-h-[70vh]">
-            {/* Centered Headline - Positioned higher */}
             <motion.div
               className="text-center space-y-6 lg:space-y-8 max-w-4xl pt-8 lg:pt-16"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: smoothEase }}
             >
-              <h1 className="text-heading-1 text-white leading-tight font-semibold">
+              <h1 className="text-heading-1 text-white leading-tight">
                 {t("home.hero.titlePrefix")}
                 <span className="bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] bg-clip-text text-transparent">
                   {t("home.hero.titleHighlight")}
@@ -34,7 +37,6 @@ export function HeroSection() {
               </h1>
             </motion.div>
 
-            {/* Description Box - Positioned at bottom */}
             <motion.div
               className="flex justify-end w-full mt-auto pb-8 lg:pb-16"
               initial={{ opacity: 0, y: 30 }}
@@ -46,16 +48,17 @@ export function HeroSection() {
                   {t("home.hero.description")}
                 </p>
 
-                <Button
-                  size="lg"
-                  className="relative w-full bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white rounded-lg py-2.5 px-5 text-sm font-medium flex items-center justify-center gap-2 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className="relative w-full bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white rounded-lg py-3 px-5 text-sm font-medium flex items-center justify-center gap-2 overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-[#7ECFC3] to-[#0072CF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {t("home.hero.cta")}
                     <Zap className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                   </span>
-                </Button>
+                </button>
               </div>
             </motion.div>
           </div>

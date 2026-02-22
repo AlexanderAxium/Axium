@@ -5,8 +5,17 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import contactData from "~/data/contact-cta-data.json";
+import { useTranslation } from "~/hooks/useTranslation";
 
 const smoothEase = [0.4, 0, 0.2, 1] as const;
+
+const SOURCE_OPTIONS = [
+  { id: "source-1", key: "sourceGoogle", value: "google" },
+  { id: "source-2", key: "sourceLinkedIn", value: "linkedin" },
+  { id: "source-3", key: "sourceReferral", value: "referral" },
+  { id: "source-4", key: "sourceSocial", value: "social" },
+  { id: "source-5", key: "sourceOther", value: "other" },
+] as const;
 
 interface FormData {
   name: string;
@@ -17,6 +26,7 @@ interface FormData {
 }
 
 export function CaseContactCTA() {
+  const { t } = useTranslation("landing");
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -47,7 +57,7 @@ export function CaseContactCTA() {
   };
 
   return (
-    <section className="w-full py-10 md:py-14 lg:py-20 bg-white">
+    <section id="contacto" className="w-full py-10 md:py-14 lg:py-20 bg-white">
       <div className="container-section">
         <div className="content-section">
           <motion.div
@@ -89,7 +99,7 @@ export function CaseContactCTA() {
                       WebkitTextFillColor: "transparent",
                     }}
                   >
-                    {contactData.title}
+                    {t("home.contactCta.title")}
                   </motion.h2>
 
                   <motion.ul
@@ -99,14 +109,14 @@ export function CaseContactCTA() {
                     transition={{ duration: 0.5, delay: 0.2, ease: smoothEase }}
                     className="flex flex-col gap-3 text-body-sm text-gray-400 max-w-[400px]"
                   >
-                    {contactData.steps.map((step) => (
-                      <li key={step.number} className="leading-relaxed">
-                        <span className="text-accent font-semibold">
-                          {step.number}.
-                        </span>{" "}
-                        {step.text}
-                      </li>
-                    ))}
+                    <li className="leading-relaxed">
+                      <span className="text-accent font-semibold">1.</span>{" "}
+                      {t("home.contactCta.step1")}
+                    </li>
+                    <li className="leading-relaxed">
+                      <span className="text-accent font-semibold">2.</span>{" "}
+                      {t("home.contactCta.step2")}
+                    </li>
                   </motion.ul>
                 </div>
 
@@ -118,7 +128,7 @@ export function CaseContactCTA() {
                   className="hidden md:block mt-8"
                 >
                   <p className="text-body-sm mb-3 text-white/80">
-                    {contactData.ceoSectionTitle}
+                    {t("home.contactCta.ceoSectionTitle")}
                   </p>
                   <div className="relative flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-white/5 border border-white/10 max-w-[380px]">
                     <div className="flex items-center gap-3">
@@ -134,12 +144,13 @@ export function CaseContactCTA() {
                           {contactData.ceo.name}
                         </span>
                         <span className="text-body-sm text-white/60">
-                          {contactData.ceo.position}
+                          {t("home.contactCta.ceoPosition")}
                         </span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <a
+                      {/* Red social LinkedIn - comentado por ahora */}
+                      {/* <a
                         href={contactData.ceo.linkedin}
                         target="_blank"
                         rel="noreferrer"
@@ -147,7 +158,7 @@ export function CaseContactCTA() {
                         aria-label="LinkedIn"
                       >
                         <Linkedin className="h-3.5 w-3.5" />
-                      </a>
+                      </a> */}
                       <a
                         href={`mailto:${contactData.ceo.email}`}
                         target="_blank"
@@ -177,7 +188,7 @@ export function CaseContactCTA() {
                   <div className="relative flex-1 group rounded-lg p-[1px] transition-all duration-300 bg-white/10 hover:bg-gradient-to-r hover:from-secondary hover:via-transparent hover:to-accent focus-within:bg-gradient-to-r focus-within:from-secondary focus-within:via-transparent focus-within:to-accent">
                     <input
                       type="text"
-                      placeholder={contactData.form.namePlaceholder}
+                      placeholder={t("home.contactCta.form.namePlaceholder")}
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -190,7 +201,7 @@ export function CaseContactCTA() {
                   <div className="relative flex-1 group rounded-lg p-[1px] transition-all duration-300 bg-white/10 hover:bg-gradient-to-r hover:from-secondary hover:via-transparent hover:to-accent focus-within:bg-gradient-to-r focus-within:from-secondary focus-within:via-transparent focus-within:to-accent">
                     <input
                       type="email"
-                      placeholder={contactData.form.emailPlaceholder}
+                      placeholder={t("home.contactCta.form.emailPlaceholder")}
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -211,7 +222,7 @@ export function CaseContactCTA() {
                   className="relative group rounded-lg p-[1px] transition-all duration-300 bg-white/10 hover:bg-gradient-to-r hover:from-secondary hover:via-transparent hover:to-accent focus-within:bg-gradient-to-r focus-within:from-secondary focus-within:via-transparent focus-within:to-accent"
                 >
                   <textarea
-                    placeholder={contactData.form.messagePlaceholder}
+                    placeholder={t("home.contactCta.form.messagePlaceholder")}
                     value={formData.message}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
@@ -246,7 +257,7 @@ export function CaseContactCTA() {
                     <span>
                       {formData.file
                         ? formData.file.name
-                        : contactData.form.attachFileLabel}
+                        : t("home.contactCta.form.attachFileLabel")}
                     </span>
                     <Paperclip className="h-3.5 w-3.5" />
                   </button>
@@ -260,10 +271,10 @@ export function CaseContactCTA() {
                   className="mt-1 flex flex-col gap-2.5"
                 >
                   <p className="text-body-sm text-white/80">
-                    {contactData.sourceOptions.title}
+                    {t("home.contactCta.sourceTitle")}
                   </p>
                   <ul className="flex flex-wrap gap-2">
-                    {contactData.sourceOptions.options.map((option) => (
+                    {SOURCE_OPTIONS.map((option) => (
                       <li key={option.id}>
                         <button
                           type="button"
@@ -274,7 +285,7 @@ export function CaseContactCTA() {
                               : "border-white/20 bg-white/5 text-white hover:border-accent/50 hover:bg-accent/10"
                           }`}
                         >
-                          {option.label}
+                          {t(`home.contactCta.${option.key}`)}
                         </button>
                       </li>
                     ))}
@@ -294,10 +305,10 @@ export function CaseContactCTA() {
                     className="text-body-sm group flex h-11 md:h-12 items-center justify-center gap-2 rounded-lg bg-secondary px-7 font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent hover:text-primary disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
-                      "Enviando..."
+                      t("home.contactCta.form.submitting")
                     ) : (
                       <>
-                        {contactData.form.submitLabel}
+                        {t("home.contactCta.form.submitLabel")}
                         <Send className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </>
                     )}
@@ -313,7 +324,7 @@ export function CaseContactCTA() {
                 className="md:hidden"
               >
                 <p className="text-body-sm mb-3 text-white/80">
-                  {contactData.ceoSectionTitle}
+                  {t("home.contactCta.ceoSectionTitle")}
                 </p>
                 <div className="relative flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-white/5 border border-white/10">
                   <div className="flex items-center gap-3">
@@ -329,12 +340,13 @@ export function CaseContactCTA() {
                         {contactData.ceo.name}
                       </span>
                       <span className="text-body-sm text-white/60">
-                        {contactData.ceo.position}
+                        {t("home.contactCta.ceoPosition")}
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <a
+                    {/* Red social LinkedIn - comentado por ahora */}
+                    {/* <a
                       href={contactData.ceo.linkedin}
                       target="_blank"
                       rel="noreferrer"
@@ -342,7 +354,7 @@ export function CaseContactCTA() {
                       aria-label="LinkedIn"
                     >
                       <Linkedin className="h-3.5 w-3.5" />
-                    </a>
+                    </a> */}
                     <a
                       href={`mailto:${contactData.ceo.email}`}
                       target="_blank"

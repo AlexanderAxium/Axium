@@ -39,18 +39,11 @@ export default function AntiruidopvcContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Decibeles es especialista en ventanas, puertas y mamparas de PVC
-            antirruido en Lima y todo el Perú. Nos contactaron para crear una
-            web institucional que posicione la marca, presente sus soluciones
-            acústicas y facilite el contacto con clientes.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos antiruidopvc.pe con WordPress: hero con propuesta de
-            valor (espacios de calma), catálogo de ventanas, puertas y mamparas
-            de PVC, beneficios (aislamiento acústico, ahorro energético,
-            durabilidad, variedad de colores), blog con consejos y contacto por
-            WhatsApp.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -100,10 +93,7 @@ export default function AntiruidopvcContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy antiruidopvc.pe opera como web institucional de Decibeles:
-            ventanas, puertas y mamparas de PVC antirruido, beneficios del
-            material, blog con artículos y contacto por WhatsApp para asesoría y
-            cotizaciones.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

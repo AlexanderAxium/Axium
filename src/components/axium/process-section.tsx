@@ -4,7 +4,7 @@ import { Code2, Lightbulb, Rocket } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import type { ComponentType } from "react";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "~/hooks/useTranslation";
 
 const STEP_IDS = ["definir", "construir", "lanzar"] as const;
@@ -12,24 +12,59 @@ const STEP_ICONS = [Lightbulb, Code2, Rocket] as const;
 
 const CARD_COLORS = ["bg-accent", "bg-secondary", "bg-accent"] as const;
 
-// Smooth easing curve for all animations (cubic-bezier)
+const AUTO_ADVANCE_MS = 4000;
 const smoothEase = [0.4, 0, 0.2, 1] as const;
 
 export function ProcessSection() {
   const { t } = useTranslation("landing");
   const [activeStep, setActiveStep] = useState(0);
   const prevStepRef = useRef(0);
+  const autoTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  // Determine direction: 1 = forward, -1 = backward
   const direction = activeStep >= prevStepRef.current ? 1 : -1;
 
-  const handleStepChange = (newStep: number) => {
-    prevStepRef.current = activeStep;
-    setActiveStep(newStep);
-  };
+  const handleStepChange = useCallback(
+    (newStep: number) => {
+      prevStepRef.current = activeStep;
+      setActiveStep(newStep);
+      if (autoTimerRef.current) {
+        clearInterval(autoTimerRef.current);
+        autoTimerRef.current = null;
+      }
+    },
+    [activeStep]
+  );
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(!!entry?.isIntersecting),
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+    autoTimerRef.current = setInterval(() => {
+      setActiveStep((prev) => {
+        const next = (prev + 1) % STEP_IDS.length;
+        prevStepRef.current = prev;
+        return next;
+      });
+    }, AUTO_ADVANCE_MS);
+    return () => {
+      if (autoTimerRef.current) clearInterval(autoTimerRef.current);
+    };
+  }, [isInView]);
 
   return (
     <section
+      ref={sectionRef}
       id="como-trabajamos"
       className="py-16 md:py-24 md:pt-16 bg-white relative overflow-hidden"
     >

@@ -41,18 +41,11 @@ export default function ToliveagainContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            To Live Again es una ONG creada en 2016, con sede principal en Miami
-            (FL) y presencia en Perú. Dedicada única y exclusivamente a prevenir
-            y crear conciencia sobre el abuso doméstico, inspirar a víctimas a
-            buscar ayuda y empoderar a mujeres en situación de vulnerabilidad.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos toliveagain.org con WordPress: conócenos, qué
-            realizamos (inspirar, prevenir, crear conciencia), equipo
-            multidisciplinario con presencia en Florida y Perú, fundadora,
-            impacto en la comunidad, eventos y talleres, donaciones vía PayPal,
-            contacto e integración con Instagram.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -108,10 +101,7 @@ export default function ToliveagainContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy toliveagain.org presenta la misión de To Live Again, su equipo,
-            eventos y talleres de empoderamiento, impacto en la comunidad y el
-            canal de donaciones para ayudar a mujeres en situación de abuso en
-            Miami y Perú.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

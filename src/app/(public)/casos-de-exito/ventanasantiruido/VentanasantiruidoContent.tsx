@@ -39,19 +39,11 @@ export default function VentanasantiruidoContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Ventanas Antiruido de PVC es líder en fabricación e instalación de
-            ventanas antiruido en Lima. Nos contactaron para crear una web
-            informativa que presente sus ventanas, puertas y mamparas de PVC,
-            explique los beneficios del aislamiento acústico y facilite el
-            contacto con clientes.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos ventanasantiruido.com.pe con WordPress: hero con
-            propuesta de valor (aísla, protege, ahorra con PVC), secciones de
-            ventanas antiruido, puertas y mamparas, beneficios (durabilidad,
-            aislamiento acústico, resistencia, seguridad), testimonios, FAQ e
-            integración de contacto por WhatsApp.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -101,9 +93,7 @@ export default function VentanasantiruidoContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy ventanasantiruido.com.pe presenta las ventanas, puertas y
-            mamparas antiruido de PVC, con información sobre aislamiento
-            acústico, beneficios y contacto por WhatsApp para asesoría.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

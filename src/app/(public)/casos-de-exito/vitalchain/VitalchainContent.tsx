@@ -41,10 +41,7 @@ export default function VitalchainContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            VitalChain Academy es una iniciativa de bienestar integral que une
-            crecimiento espiritual con tecnología consciente. Nos contactaron
-            para crear su presencia web completa: sitio principal, plataforma
-            e-learning y un sistema de sorteo de gratitud con cuenta regresiva.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
@@ -156,9 +153,7 @@ export default function VitalchainContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy vitalchainacademy.com opera con programas en desarrollo, blog
-            activo, sorteo de gratitud en marcha y comunidad en crecimiento,
-            ofreciendo bienestar integral con transparencia digital.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

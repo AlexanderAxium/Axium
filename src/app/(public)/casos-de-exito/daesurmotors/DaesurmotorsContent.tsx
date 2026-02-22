@@ -41,21 +41,11 @@ export default function DaesurmotorsContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Daesur Motors es un taller especializado en reparación y venta de
-            repuestos vehiculares en Villa María del Triunfo. Nos contactaron
-            para crear una web informativa que presentara sus servicios,
-            transmitiera confianza y permitiera a los clientes solicitar
-            cotizaciones.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos daesurmotors.com con WordPress: hero con propuesta de
-            valor (reparación y repuestos confiables), sobre nosotros con
-            misión, visión y valores, catálogo de servicios (mantenimiento,
-            frenos, motor, transmisión, planchado, pintura, repuestos,
-            diagnóstico electrónico, SOAT, asistencia mecánica), proceso de
-            atención, testimonios, integración con Facebook y formulario de
-            cotización.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -109,10 +99,7 @@ export default function DaesurmotorsContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy daesurmotors.com presenta los servicios del taller, repuestos,
-            testimonios y el formulario de cotización para que los clientes del
-            cono sur de Lima puedan contactar a Daesur Motors y programar
-            reparaciones o consultar por repuestos.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

@@ -42,18 +42,11 @@ export default function SporttContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Sportt Peru es la tienda virtual de tenis de mesa y ping pong en
-            Perú. Nos contactaron para desarrollar una plataforma e-commerce que
-            permitiera vender equipamiento deportivo online, con catálogo
-            organizado por categorías, integración con CMS y pasarela de pagos.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos sporttperu.com como tienda virtual completa: catálogo
-            por categorías (equipamiento, raquetas, maderas, jebes, accesorios,
-            zapatillas, pelotitas, estuches), integración con CMS, pasarela de
-            pagos, carrito y checkout, libro de reclamaciones digital y canal de
-            contacto.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -183,10 +176,7 @@ export default function SporttContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy sporttperu.com opera como tienda virtual de tenis de mesa:
-            catálogo por categorías, integración CMS, pasarela de pagos, carrito
-            y checkout, y canal de contacto para jugadores y aficionados en
-            Perú.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "~/hooks/useTranslation";
@@ -44,7 +44,6 @@ export function ServicesSection() {
     >
       <div className="container-section">
         <div className="content-section relative">
-          {/* Section Header */}
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -64,7 +63,6 @@ export function ServicesSection() {
             </h2>
           </motion.div>
 
-          {/* Tabs */}
           <Tabs
             value={activeTab}
             onValueChange={setActiveTab}
@@ -82,82 +80,90 @@ export function ServicesSection() {
               ))}
             </TabsList>
 
-            {/* Tab Content */}
-            {SERVICE_IDS.map((id) => (
-              <TabsContent key={id} value={id} className="mt-0">
-                <motion.div
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
-                >
-                  {/* Left Column - Text */}
-                  <div>
-                    <h3 className="text-heading-2 text-gray-900 mb-6">
-                      {t(`home.services.items.${id}.title`)}
-                    </h3>
-                    <p className="text-body text-gray-600 mb-6">
-                      {t(`home.services.items.${id}.description`)}
-                    </p>
-                    <ul className="space-y-4 mb-8">
-                      {[0, 1, 2].map((i) => (
-                        <li
-                          key={i}
-                          className="flex items-start text-body text-gray-700"
-                        >
-                          <svg
-                            className="w-6 h-6 text-secondary mr-3 mt-0.5 flex-shrink-0"
-                            fill="none"
-                            strokeWidth="2"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            role="img"
-                            aria-label="Check icon"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                          </svg>
-                          {t(`home.services.items.${id}.benefits.${i}`)}
-                        </li>
-                      ))}
-                    </ul>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        handleWhatsApp(
-                          t(`home.services.items.${id}.whatsappMessage`)
-                        )
-                      }
-                      className="relative inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white font-semibold rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
+            <div className="relative min-h-[420px] md:min-h-[460px] lg:min-h-[500px]">
+              <AnimatePresence mode="wait">
+                {SERVICE_IDS.map((id) =>
+                  id === activeTab ? (
+                    <TabsContent
+                      key={id}
+                      value={id}
+                      className="mt-0"
+                      forceMount
                     >
-                      <span className="absolute inset-0 bg-gradient-to-r from-[#7ECFC3] to-[#0072CF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <span className="relative z-10">
-                        {t("home.services.cta")}
-                      </span>
-                    </button>
-                  </div>
+                      <motion.div
+                        key={id}
+                        className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -16 }}
+                        transition={{
+                          duration: 0.35,
+                          ease: smoothEase,
+                        }}
+                      >
+                        <div>
+                          <h3 className="text-heading-2 text-gray-900 mb-6">
+                            {t(`home.services.items.${id}.title`)}
+                          </h3>
+                          <p className="text-body text-gray-600 mb-6">
+                            {t(`home.services.items.${id}.description`)}
+                          </p>
+                          <ul className="space-y-4 mb-8">
+                            {[0, 1, 2].map((i) => (
+                              <li
+                                key={i}
+                                className="flex items-start text-body text-gray-700"
+                              >
+                                <svg
+                                  className="w-6 h-6 text-secondary mr-3 mt-0.5 flex-shrink-0"
+                                  fill="none"
+                                  strokeWidth="2"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                  role="img"
+                                  aria-label="Check icon"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                  />
+                                </svg>
+                                {t(`home.services.items.${id}.benefits.${i}`)}
+                              </li>
+                            ))}
+                          </ul>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleWhatsApp(
+                                t(`home.services.items.${id}.whatsappMessage`)
+                              )
+                            }
+                            className="relative inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white font-semibold rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
+                          >
+                            <span className="absolute inset-0 bg-gradient-to-r from-[#7ECFC3] to-[#0072CF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <span className="relative z-10">
+                              {t("home.services.cta")}
+                            </span>
+                          </button>
+                        </div>
 
-                  {/* Right Column - Image */}
-                  <motion.div
-                    className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2, ease: smoothEase }}
-                  >
-                    <Image
-                      src={SERVICE_IMAGES[id] ?? "/service1.png"}
-                      alt={t(`home.services.items.${id}.title`)}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                  </motion.div>
-                </motion.div>
-              </TabsContent>
-            ))}
+                        <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
+                          <Image
+                            src={SERVICE_IMAGES[id] ?? "/service1.png"}
+                            alt={t(`home.services.items.${id}.title`)}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                          />
+                        </div>
+                      </motion.div>
+                    </TabsContent>
+                  ) : null
+                )}
+              </AnimatePresence>
+            </div>
           </Tabs>
         </div>
       </div>

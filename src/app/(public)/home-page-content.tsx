@@ -1,9 +1,8 @@
 "use client";
 
+import { CaseContactCTA } from "@/components/axium/case-contact-cta";
 import { CasesSection } from "@/components/axium/cases-section";
-import { ContactSection } from "@/components/axium/contact-section";
 import { HeroSection } from "@/components/axium/hero-section";
-import { InspirationalSection } from "@/components/axium/inspirational-section";
 import { ProcessSection } from "@/components/axium/process-section";
 import { ServicesSection } from "@/components/axium/services-section";
 
@@ -14,8 +13,7 @@ export function HomePageContent() {
       <ServicesSection />
       <ProcessSection />
       <CasesSection />
-      <ContactSection />
-      <InspirationalSection />
+      <CaseContactCTA />
     </div>
   );
 }

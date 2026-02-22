@@ -40,20 +40,11 @@ export default function TransportesrumiContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Transportes Rumi es una empresa 100% peruana con más de 4 años de
-            experiencia en transporte de concentrado de minerales, mercancías y
-            cargas sobredimensionadas a nivel nacional. Nos contactaron para
-            crear un brochure digital de presentación corporativa y una web
-            informativa que respalden su posicionamiento ante empresas mineras e
-            industriales.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos el brochure digital y la web transportesrumi.com.pe
-            con misión, equipo, servicios por sector (minero, industrial,
-            construcción, comercio general), protocolos de seguridad,
-            testimonios y contacto por WhatsApp para cotizaciones y
-            coordinación.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -146,9 +137,7 @@ export default function TransportesrumiContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy Transportes Rumi cuenta con brochure digital y la web
-            transportesrumi.com.pe para presentar su equipo, servicios y
-            protocolos de seguridad ante empresas mineras e industriales.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

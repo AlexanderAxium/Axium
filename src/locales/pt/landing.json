@@ -182,11 +182,11 @@
   },
   "home": {
     "hero": {
-      "titlePrefix": "Software Personalizado para ",
-      "titleHighlight": "Empresas em Crescimento",
-      "titleSuffix": " e Grandes Organizações",
-      "description": "Parceiros de empresas e organizações de todos os setores, ajudando-as a construir equipes de engenharia de sucesso e criar produtos de software inovadores.",
-      "cta": "AGENDE UMA CHAMADA"
+      "titlePrefix": "Criamos Software que ",
+      "titleHighlight": "Impulsiona seu Negócio",
+      "titleSuffix": " ao Próximo Nível",
+      "description": "Nos associamos com empresas de todos os setores para criar produtos digitais que geram resultados reais.",
+      "cta": "VAMOS FALAR DO SEU PROJETO"
     },
     "services": {
       "eyebrow": "Nossos Serviços",
@@ -197,71 +197,71 @@
         "software": {
           "label": "Software Sob Medida",
           "title": "Software Sob Medida",
-          "description": "Desenvolvemos soluções enterprise adaptadas à sua arquitetura de negócios, com integrações nativas e escalabilidade garantida.",
+          "description": "Seu negócio tem processos únicos e merece ferramentas feitas para eles. Projetamos sistemas que se encaixam na sua operação real, integram com o que você já usa e crescem junto com você sem atritos.",
           "benefits": [
-            "Arquitetura personalizada",
-            "Escalabilidade horizontal",
-            "APIs integradas"
+            "Feito para seus processos, não o contrário",
+            "Integração direta com suas ferramentas atuais",
+            "Cresce no ritmo do seu negócio"
           ],
-          "whatsappMessage": "Olá, tenho interesse em saber mais sobre Software Sob Medida. Preciso de uma solução enterprise adaptada ao meu negócio."
+          "whatsappMessage": "Olá, tenho interesse em desenvolver um software sob medida para meu negócio. Podemos agendar uma conversa?"
         },
         "web": {
           "label": "Aplicações Web",
           "title": "Aplicações Web",
-          "description": "Construímos plataformas cloud-native com alta disponibilidade, segurança de nível enterprise e desempenho otimizado para milhares de usuários simultâneos.",
+          "description": "De plataformas internas a produtos digitais completos. Construímos aplicações web rápidas, seguras e preparadas para escalar, independentemente de quantos usuários acessem ao mesmo tempo.",
           "benefits": [
-            "99,9% de uptime garantido",
-            "Segurança multicamadas",
-            "Escalabilidade automática"
+            "Carregamento rápido e experiência fluida",
+            "Proteção de dados de ponta a ponta",
+            "Pronta para crescer sem reconstruir"
           ],
-          "whatsappMessage": "Olá, tenho interesse em saber mais sobre Aplicações Web. Busco uma plataforma cloud-native com alta disponibilidade."
+          "whatsappMessage": "Olá, preciso desenvolver uma aplicação web para meu projeto. Podemos conversar sobre os detalhes?"
         },
         "moviles": {
           "label": "Aplicações Móveis",
           "title": "Aplicações Móveis",
-          "description": "Desenvolvemos apps nativos e híbridos com tecnologias modernas que oferecem experiências fluidas em iOS e Android, com suporte offline completo.",
+          "description": "Criamos aplicativos para iOS e Android que parecem nativos, respondem instantaneamente e funcionam mesmo offline. Sua marca, sempre no bolso dos seus usuários.",
           "benefits": [
-            "Cross-platform otimizado",
-            "UX/UI de classe mundial",
-            "Sincronização offline"
+            "Disponível em iOS e Android com um único desenvolvimento",
+            "Interface intuitiva pensada para o usuário final",
+            "Funciona offline e sincroniza ao reconectar"
           ],
-          "whatsappMessage": "Olá, tenho interesse em saber mais sobre Aplicações Móveis. Preciso de um app para iOS e Android."
+          "whatsappMessage": "Olá, quero criar um aplicativo móvel. Podemos conversar sobre o que preciso?"
         },
         "automatizacion": {
           "label": "Automação de Processos",
           "title": "Automação de Processos",
-          "description": "Implementamos workflows inteligentes que reduzem tarefas manuais em até 80%, otimizando recursos e eliminando erros humanos.",
+          "description": "Liberamos sua equipe de tarefas repetitivas para que se concentre no que realmente importa. Projetamos fluxos inteligentes que reduzem erros, economizam tempo e mantêm sua operação funcionando como um relógio.",
           "benefits": [
-            "Redução de custos operacionais",
-            "Eficiência aumentada",
-            "Precisão de 99,9%"
+            "Sua equipe focada no estratégico",
+            "Menos erros, mais consistência",
+            "Processos que rodam sozinhos, 24/7"
           ],
-          "whatsappMessage": "Olá, tenho interesse em saber mais sobre Automação de Processos. Gostaria de saber como podem ajudar a otimizar nossos workflows."
+          "whatsappMessage": "Olá, tenho interesse em automatizar processos na minha empresa. Podemos avaliar juntos quais áreas otimizar?"
         },
         "analitica-ia": {
-          "label": "Analítica Preditiva e IA",
-          "title": "Analítica Preditiva e IA",
-          "description": "Transformamos seus dados em vantagens competitivas por meio de modelos de machine learning que antecipam tendências, otimizam decisões estratégicas e maximizam o ROI com precisão de 85-95%.",
+          "label": "Analítica e IA",
+          "title": "Analítica e Inteligência Artificial",
+          "description": "Transformamos os dados que você já gera em informações acionáveis. Com modelos de machine learning, identificamos padrões ocultos, antecipamos tendências e fornecemos as ferramentas para tomar decisões com maior certeza.",
           "benefits": [
-            "Previsão de tendências de mercado",
-            "Otimização de decisões estratégicas",
-            "ROI mensurável desde o primeiro trimestre"
+            "Decisões respaldadas por dados reais",
+            "Detecção antecipada de oportunidades e riscos",
+            "Dashboards claros e acionáveis"
           ],
-          "whatsappMessage": "Olá, tenho interesse em saber mais sobre Analítica Preditiva e IA. Preciso converter meus dados em vantagem competitiva."
+          "whatsappMessage": "Olá, quero aproveitar melhor os dados da minha empresa com analítica e IA. Podemos agendar uma reunião?"
         },
         "decisiones-ia": {
-          "label": "Decisões Inteligentes",
-          "title": "Decisões Inteligentes",
-          "description": "Implementamos sistemas de inteligência artificial que automatizam decisões complexas, otimizam operações em tempo real e geram economia de 30-50% por meio de algoritmos de otimização avançados.",
+          "label": "Assistentes com IA",
+          "title": "Assistentes com Inteligência Artificial",
+          "description": "Desenvolvemos agentes e assistentes inteligentes que se integram à sua operação diária: respondem consultas, processam informações e executam tarefas complexas em segundos, para que sua equipe se concentre no importante.",
           "benefits": [
-            "Automação de decisões estratégicas",
-            "Otimização em tempo real",
-            "Economia de 30-50% comprovável"
+            "Respostas imediatas para consultas frequentes",
+            "Processamento inteligente de documentos e dados",
+            "Integração direta com seus sistemas existentes"
           ],
-          "whatsappMessage": "Olá, tenho interesse em saber mais sobre Decisões Inteligentes. Busco otimizar decisões complexas com IA."
+          "whatsappMessage": "Olá, tenho interesse em implementar um assistente com IA na minha empresa. Podemos conversar sobre as possibilidades?"
         }
       },
-      "cta": "Consultar um assessor"
+      "cta": "Consultar agora"
     },
     "process": {
       "eyebrow": "Processo que Entrega Resultados",
@@ -326,6 +326,27 @@
       "line1": "Somos mais do que um provedor de tecnologia.",
       "line2": "Somos seu parceiro tecnológico estratégico.",
       "line3": "Comprometidos com o sucesso do seu negócio."
+    },
+    "contactCta": {
+      "title": "Pronto para transformar seu negócio?",
+      "step1": "Analisaremos seu projeto e prepararemos uma estimativa preliminar.",
+      "step2": "Nos reuniremos virtualmente ou presencialmente para discutir suas necessidades e alinhar os próximos passos.",
+      "ceoSectionTitle": "Prefere contato direto com nosso CEO?",
+      "ceoPosition": "Fundador & CEO",
+      "form": {
+        "namePlaceholder": "Seu nome",
+        "emailPlaceholder": "Email",
+        "messagePlaceholder": "Como podemos ajudá-lo?",
+        "attachFileLabel": "Anexar arquivo",
+        "submitLabel": "ENVIAR",
+        "submitting": "Enviando..."
+      },
+      "sourceTitle": "Como nos conheceu? (opcional)",
+      "sourceGoogle": "Google",
+      "sourceLinkedIn": "LinkedIn",
+      "sourceReferral": "Indicação",
+      "sourceSocial": "Redes Sociais",
+      "sourceOther": "Outro"
     }
   }
 }

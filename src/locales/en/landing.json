@@ -182,11 +182,11 @@
   },
   "home": {
     "hero": {
-      "titlePrefix": "Custom Software for ",
-      "titleHighlight": "Growing Companies",
-      "titleSuffix": " and Large Organizations",
-      "description": "We partner with businesses and organizations across all industries, helping them build successful engineering teams and create innovative software products.",
-      "cta": "SCHEDULE A CALL"
+      "titlePrefix": "We Build Software that ",
+      "titleHighlight": "Drives Your Business",
+      "titleSuffix": " to the Next Level",
+      "description": "We partner with companies across all industries to create digital products that deliver real results.",
+      "cta": "LET'S TALK ABOUT YOUR PROJECT"
     },
     "services": {
       "eyebrow": "Our Services",
@@ -197,71 +197,71 @@
         "software": {
           "label": "Custom Software",
           "title": "Custom Software",
-          "description": "We develop enterprise-grade solutions tailored to your business architecture, with native integrations and guaranteed scalability.",
+          "description": "Your business has unique processes, and it deserves tools built around them. We design systems that fit your actual workflow, integrate with what you already use, and scale with you without friction.",
           "benefits": [
-            "Custom architecture",
-            "Horizontal scalability",
-            "Integrated APIs"
+            "Built for your processes, not the other way around",
+            "Seamless integration with your current tools",
+            "Grows at the pace of your business"
           ],
-          "whatsappMessage": "Hi, I'm interested in learning more about Custom Software. I need an enterprise solution adapted to my business."
+          "whatsappMessage": "Hi, I'm interested in developing custom software for my business. Can we schedule a call?"
         },
         "web": {
           "label": "Web Applications",
           "title": "Web Applications",
-          "description": "We build cloud-native platforms with high availability, enterprise-level security, and performance optimized for thousands of concurrent users.",
+          "description": "From internal platforms to full digital products. We build fast, secure web applications ready to scale, no matter how many users access them at the same time.",
           "benefits": [
-            "99.9% guaranteed uptime",
-            "Multi-layer security",
-            "Automatic scaling"
+            "Fast loading and seamless experience",
+            "End-to-end data protection",
+            "Ready to grow without rebuilding"
           ],
-          "whatsappMessage": "Hi, I'm interested in learning more about Web Applications. I'm looking for a cloud-native platform with high availability."
+          "whatsappMessage": "Hi, I need to develop a web application for my project. Can we discuss the details?"
         },
         "moviles": {
           "label": "Mobile Applications",
           "title": "Mobile Applications",
-          "description": "We develop native and hybrid apps with modern technologies that deliver smooth experiences on iOS and Android, with full offline support.",
+          "description": "We create iOS and Android apps that feel native, respond instantly, and work even offline. Your brand, always in your users' pocket.",
           "benefits": [
-            "Optimized cross-platform",
-            "World-class UX/UI",
-            "Offline synchronization"
+            "Available on iOS and Android from a single codebase",
+            "Intuitive interface designed for end users",
+            "Works offline and syncs when reconnected"
           ],
-          "whatsappMessage": "Hi, I'm interested in learning more about Mobile Applications. I need an app for iOS and Android."
+          "whatsappMessage": "Hi, I want to create a mobile app. Can we talk about what I need?"
         },
         "automatizacion": {
           "label": "Process Automation",
           "title": "Process Automation",
-          "description": "We implement intelligent workflows that reduce manual tasks by up to 80%, optimizing resources and eliminating human error.",
+          "description": "We free your team from repetitive tasks so they can focus on what truly matters. We design intelligent workflows that reduce errors, save time, and keep your operation running like clockwork.",
           "benefits": [
-            "Reduced operational costs",
-            "Increased efficiency",
-            "99.9% precision"
+            "Your team focused on what's strategic",
+            "Fewer errors, more consistency",
+            "Processes that run on their own, 24/7"
           ],
-          "whatsappMessage": "Hi, I'm interested in learning more about Process Automation. I'd like to know how you can help optimize our workflows."
+          "whatsappMessage": "Hi, I'm interested in automating processes at my company. Can we evaluate which areas to optimize together?"
         },
         "analitica-ia": {
-          "label": "Predictive Analytics & AI",
-          "title": "Predictive Analytics & AI",
-          "description": "We transform your data into competitive advantages through machine learning models that anticipate trends, optimize strategic decisions, and maximize ROI with 85-95% precision.",
+          "label": "Analytics & AI",
+          "title": "Analytics & Artificial Intelligence",
+          "description": "We turn the data you already generate into actionable insights. With machine learning models, we uncover hidden patterns, anticipate trends, and give you the tools to make decisions with greater confidence.",
           "benefits": [
-            "Market trend prediction",
-            "Strategic decision optimization",
-            "Measurable ROI from first quarter"
+            "Decisions backed by real data",
+            "Early detection of opportunities and risks",
+            "Clear, actionable dashboards"
           ],
-          "whatsappMessage": "Hi, I'm interested in learning more about Predictive Analytics & AI. I need to turn my data into competitive advantage."
+          "whatsappMessage": "Hi, I want to better leverage my company's data with analytics and AI. Can we schedule a meeting?"
         },
         "decisiones-ia": {
-          "label": "Intelligent Decisions",
-          "title": "Intelligent Decisions",
-          "description": "We implement artificial intelligence systems that automate complex decisions, optimize operations in real time, and generate 30-50% savings through advanced optimization algorithms.",
+          "label": "AI Assistants",
+          "title": "AI-Powered Assistants",
+          "description": "We build intelligent agents and assistants that integrate into your daily operations: answering queries, processing information, and executing complex tasks in seconds, so your team can focus on what matters.",
           "benefits": [
-            "Strategic decision automation",
-            "Real-time optimization",
-            "30-50% verifiable savings"
+            "Instant responses to frequent inquiries",
+            "Intelligent document and data processing",
+            "Direct integration with your existing systems"
           ],
-          "whatsappMessage": "Hi, I'm interested in learning more about Intelligent Decisions. I'm looking to optimize complex decisions with AI."
+          "whatsappMessage": "Hi, I'm interested in implementing an AI assistant for my company. Can we discuss the possibilities?"
         }
       },
-      "cta": "Consult an advisor"
+      "cta": "Get a free consultation"
     },
     "process": {
       "eyebrow": "A Process that Delivers Results",
@@ -326,6 +326,27 @@
       "line1": "We are more than a technology provider.",
       "line2": "We are your strategic technology partner.",
       "line3": "Committed to your business success."
+    },
+    "contactCta": {
+      "title": "Ready to transform your business?",
+      "step1": "We'll analyze your project and prepare a preliminary estimate.",
+      "step2": "We'll meet virtually or in person to discuss your needs and align next steps.",
+      "ceoSectionTitle": "Prefer direct contact with our CEO?",
+      "ceoPosition": "Founder & CEO",
+      "form": {
+        "namePlaceholder": "Your name",
+        "emailPlaceholder": "Email",
+        "messagePlaceholder": "How can we help you?",
+        "attachFileLabel": "Attach file",
+        "submitLabel": "SEND",
+        "submitting": "Sending..."
+      },
+      "sourceTitle": "How did you find us? (optional)",
+      "sourceGoogle": "Google",
+      "sourceLinkedIn": "LinkedIn",
+      "sourceReferral": "Referral",
+      "sourceSocial": "Social Media",
+      "sourceOther": "Other"
     }
   }
 }

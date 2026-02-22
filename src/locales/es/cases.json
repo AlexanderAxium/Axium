@@ -338,5 +338,46 @@
       "Integración WhatsApp"
     ],
     "results": []
+  },
+  "huarmis": {
+    "title": "Huarmis",
+    "industry": "Educación / Impacto social",
+    "description": "Web informativa para Huarmis: organización peruana que transforma futuros con educación e innovación STEM. Programas (STEM, RESEARCH, PROJECT, ACADEMY, SPACE), sobre nosotros, fundadora Liz Quispe, equipo, testimonios de beneficiarios, noticias y canal de donaciones.",
+    "problem": "Huarmis necesitaba una web que presentara su misión de empoderar a niñas, niños y mujeres de comunidades vulnerables con STEM, mostrara sus programas, la fundadora, equipo, testimonios y facilitara contacto y donaciones.",
+    "solution": "Desarrollamos huarmis.org con WordPress: hero con propuesta (transformando futuros con educación e innovación), programas STEM, sobre nosotros, métricas, fundadora Liz Quispe, equipo, testimonios, noticias, contacto e integración para donaciones.",
+    "projectDescription": "Web informativa para Huarmis, organización peruana que lidera proyectos sociales con enfoque STEM. Empodera a niñas, niños, adolescentes y mujeres de comunidades vulnerables con ciencia, tecnología, ingeniería y matemática. Incluye programas (STEM, RESEARCH, PROJECT, ACADEMY, SPACE), fundadora Liz Quispe, equipo, testimonios, noticias y donaciones.",
+    "secondaryIndustry": "STEM / Proyectos sociales",
+    "forWhom": "Niñas, niños, adolescentes y mujeres de comunidades vulnerables en Perú, empresas y entidades con fines sociales que buscan proyectos STEM",
+    "services": [
+      "Web informativa",
+      "Programas STEM",
+      "Sobre nosotros",
+      "Fundadora y equipo",
+      "Testimonios",
+      "Noticias",
+      "Contacto",
+      "Donaciones"
+    ],
+    "results": []
+  },
+  "favorygracia": {
+    "title": "Favor & Gracia Church",
+    "industry": "Fe / Comunidad",
+    "description": "Web informativa para Favor & Gracia Church: comunidad cristiana que destaca la manifestación del poder y amor sobrenatural. Lo que creemos, valores, liderazgo (Ricardo y Fabiola Serquén), misión y visión, servicios en línea, dar y contacto.",
+    "problem": "Favor & Gracia Church necesitaba una web que presentara su visión, creencias, valores, liderazgo pastoral y facilitara el acceso a servicios en línea, donaciones, contacto e involucramiento.",
+    "solution": "Desarrollamos favorygraciachurch.org con React: hero de bienvenida, lo que creemos, valores, misión y visión, liderazgo (Ricardo y Fabiola Serquén), servicios en línea (6pm, 7pm), enlaces a dar, contactanos e involúcrate.",
+    "projectDescription": "Web informativa para Favor & Gracia Church, comunidad cristiana que destaca la manifestación del poder y amor sobrenatural. Pastores Ricardo y Fabiola Serquén. Incluye lo que creemos, valores, liderazgo, misión y visión, servicios en línea, dar y contacto.",
+    "secondaryIndustry": "Iglesia / Ministerio",
+    "forWhom": "Miembros de la congregación, visitantes y personas que buscan una comunidad cristiana con manifestación del poder y amor sobrenatural",
+    "services": [
+      "Web informativa",
+      "Lo que creemos",
+      "Liderazgo",
+      "Misión y visión",
+      "Servicios en línea",
+      "Dar / Donaciones",
+      "Contacto"
+    ],
+    "results": []
   }
 }

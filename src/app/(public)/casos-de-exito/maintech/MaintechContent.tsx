@@ -40,10 +40,7 @@ export default function MaintechContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Maintech es una empresa peruana dedicada a la capacitación
-            profesional. Nos buscaron sin presencia digital: no tenían logo, web
-            ni plataforma. Necesitaban construir todo desde cero y posicionarse
-            en el mercado de educación técnica en línea.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
@@ -173,10 +170,7 @@ export default function MaintechContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            En menos de un año, Maintech pasó de no tener presencia digital a
-            contar con un ecosistema completo: marca, web y academia. Hoy
-            maintech.com.pe opera con cursos activos, estudiantes inscritos y
-            certificados emitidos.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

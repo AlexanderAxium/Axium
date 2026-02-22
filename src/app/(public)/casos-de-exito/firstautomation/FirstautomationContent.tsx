@@ -41,19 +41,11 @@ export default function FirstautomationContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            First Automation es partner certificado de AVEVA y acelera la
-            transición de Latinoamérica hacia la Industria 4.0. Nos contactaron
-            para crear una web informativa que presentara sus soluciones de
-            control, gestión y optimización de operaciones industriales.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos first-automation.com con WordPress: hero con propuesta
-            de valor (digitalizamos operaciones industriales), soluciones AVEVA
-            (InTouch HMI, System Platform, Historian, Reports, Insight, PI
-            System), servicios (HMI/SCADA, plataforma IT/OT, transformación
-            digital), industrias que atienden, testimonios de clientes como TASA
-            y ONP, y blog de novedades.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -108,10 +100,7 @@ export default function FirstautomationContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy first-automation.com presenta las soluciones AVEVA, servicios de
-            HMI/SCADA, plataforma IT/OT y transformación digital, con
-            testimonios de ingenieros de TASA, ONP y otros clientes del sector
-            industrial.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

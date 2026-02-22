@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "generatorVersion": "0.1.0",
-  "generatedAt": "2026-02-22T02:04:08.506Z",
+  "generatedAt": "2026-02-22T03:34:10.935Z",
   "outputPath": "/Users/alexander/Documents/AXIUM-WEB/src/lib/zod",
   "files": [
     "schemas/enums/TransactionIsolationLevel.schema.ts",

@@ -42,18 +42,11 @@ export default function RedesVipContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Redes VIP es un proveedor de internet 100% fibra óptica en
-            Ventanilla-Callao. Nos contactaron para crear una web informativa
-            que transmitiera confianza, mostrara sus planes y facilitara el
-            contacto con clientes residenciales y corporativos.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos redesvip.com con diseño moderno y estética
-            tecnológica: hero con propuesta de valor (velocidad simétrica,
-            precio justo, soporte especializado), planes de internet (Hogar,
-            Duos VIP, Gamer), servicios VIP TV con +80 canales Full HD,
-            soluciones corporativas, testimonios y contacto por WhatsApp.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -136,9 +129,7 @@ export default function RedesVipContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy redesvip.com opera como web informativa para Redes VIP: planes
-            claros, servicios VIP TV y corporativos, testimonios y contacto
-            directo por WhatsApp.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

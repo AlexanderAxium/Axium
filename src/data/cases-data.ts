@@ -4,9 +4,11 @@ import antiruidopvcData from "./cases/antiruidopvc.json";
 import clefastData from "./cases/clefast.json";
 import daesurmotorsData from "./cases/daesurmotors.json";
 import enrafmedicaData from "./cases/enrafmedica.json";
+import favorygraciaData from "./cases/favorygracia.json";
 import fenizData from "./cases/feniz.json";
 import firstautomationData from "./cases/firstautomation.json";
 import happyartData from "./cases/happyart.json";
+import huarmisData from "./cases/huarmis.json";
 import innersoulbrightData from "./cases/innersoulbright.json";
 import lujanData from "./cases/lujan.json";
 import maintechData from "./cases/maintech.json";
@@ -117,6 +119,8 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(toliveagainData as CaseItemJSON),
   convertCaseFromJSON(podologiemtkData as CaseItemJSON),
   convertCaseFromJSON(enrafmedicaData as CaseItemJSON),
+  convertCaseFromJSON(huarmisData as CaseItemJSON),
+  convertCaseFromJSON(favorygraciaData as CaseItemJSON),
 ];
 
 export { cases };

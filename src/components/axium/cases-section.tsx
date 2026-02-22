@@ -35,6 +35,8 @@ const slugMap: Record<string, string> = {
   "To Live Again": "toliveagain",
   "Podologie MTK": "podologiemtk",
   EnrafMedica: "enrafmedica",
+  Huarmis: "huarmis",
+  "Favor & Gracia Church": "favorygracia",
 };
 
 export interface CasesSectionProps {
@@ -102,23 +104,21 @@ export function CasesSection({
       <div className="relative z-10">
         <div className="container-section">
           <div className="content-section">
-            <div className="flex items-center justify-between gap-4 mb-12 md:mb-16">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12 md:mb-16">
               <h2
                 className={`text-display ${isDark ? "text-white" : "text-[#060C20]"}`}
               >
                 {title}
               </h2>
-              <div className="flex items-center gap-4">
-                <Link
-                  href="/#casos"
-                  className={`text-body px-6 py-2 rounded-md font-medium whitespace-nowrap transition-colors ${
-                    isDark
-                      ? "border border-white text-white hover:bg-white/10"
-                      : "border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
-                  }`}
-                >
-                  {t("caseDetail.verPortafolio")}
-                </Link>
+              <div className="flex items-center gap-3 sm:gap-4">
+                {!isDark && (
+                  <Link
+                    href="/#casos"
+                    className="text-body px-4 sm:px-6 py-2 rounded-md font-medium whitespace-nowrap transition-colors border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
+                  >
+                    {t("caseDetail.verPortafolio")}
+                  </Link>
+                )}
                 <Button
                   variant="outline"
                   size="icon"
@@ -218,13 +218,7 @@ export function CasesSection({
                               </Badge>
 
                               <div className="absolute bottom-4 left-4 right-4">
-                                <h3
-                                  className={`mb-1 drop-shadow-lg ${
-                                    isDark
-                                      ? "text-heading-2 text-white"
-                                      : "text-2xl font-bold text-white"
-                                  }`}
-                                >
+                                <h3 className="text-heading-2 mb-1 drop-shadow-lg text-white">
                                   {caseItem.title}
                                 </h3>
                               </div>

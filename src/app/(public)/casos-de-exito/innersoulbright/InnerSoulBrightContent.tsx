@@ -41,16 +41,11 @@ export default function InnerSoulBrightContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Inner Soul Bright es un espacio de sanación espiritual y meditación.
-            Nos contactaron para crear un sitio web informativo que transmitiera
-            paz, claridad y conexión espiritual.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos innersoulbright.com con diseño inmersivo: fondos
-            cósmicos, hero impactante, sección de servicios (lectura energética,
-            limpieza energética, protección espiritual, alineación y propósito),
-            página «Sobre Mí» para conectar con visitantes.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -106,9 +101,7 @@ export default function InnerSoulBrightContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy innersoulbright.com opera como web informativa para crecimiento
-            espiritual, con diseño que transmite paz y servicios bien
-            presentados.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

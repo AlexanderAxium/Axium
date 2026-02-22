@@ -26,7 +26,7 @@ export function ContactSection() {
     const message = encodeURIComponent(
       t("home.contact.whatsappDefaultMessage")
     );
-    window.open(`https://wa.me/51999999999?text=${message}`, "_blank");
+    window.open(`https://wa.me/51991285679?text=${message}`, "_blank");
   };
 
   return (
@@ -185,7 +185,7 @@ export function ContactSection() {
                     <span>contacto@axium.com.pe</span>
                   </a>
                   <a
-                    href="tel:+51999999999"
+                    href="tel:+51991285679"
                     className="flex items-center gap-3 text-gray-600 hover:text-secondary transition-colors group"
                   >
                     <span className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-secondary/10 transition-colors">
@@ -205,7 +205,7 @@ export function ContactSection() {
                         />
                       </svg>
                     </span>
-                    <span>+51 999 999 999</span>
+                    <span>+51 991 285 679</span>
                   </a>
                 </div>
               </div>

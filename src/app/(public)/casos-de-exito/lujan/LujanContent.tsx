@@ -42,18 +42,11 @@ export default function LujanContent() {
           </p>
 
           <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
-            Vitivinícola Luján es una bodega en Santa Cruz de Flores, Cañete.
-            Nos contactaron para desarrollar una tienda virtual que permitiera
-            vender sus vinos, piscos, cremas y macerados online, con catálogo
-            organizado, integración con CMS y pasarela de pagos.
+            {data.projectDescription}
           </p>
 
           <p className="text-body mb-8 leading-relaxed text-[#334155]">
-            Desarrollamos vitivinicolalujan.com como tienda virtual completa:
-            catálogo por categorías (vinos, piscos, cremas, macerados),
-            integración con CMS, pasarela de pagos, carrito y checkout, libro de
-            reclamaciones digital, canal de contacto y anuncios publicitarios
-            para redes.
+            {data.solution}
           </p>
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
@@ -183,10 +176,7 @@ export default function LujanContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            Hoy vitivinicolalujan.com opera como tienda virtual de vinos y
-            piscos: catálogo por categorías, integración CMS, pasarela de pagos,
-            carrito y checkout, y presencia en redes con anuncios que
-            promocionan sus productos y experiencias en la vitivinícola.
+            {data.description}
           </p>
         </CaseArticleText>
       </CaseArticle>

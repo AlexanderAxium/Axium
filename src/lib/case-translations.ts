@@ -9,9 +9,11 @@ import antiruidopvcData from "~/data/cases/antiruidopvc.json";
 import clefastData from "~/data/cases/clefast.json";
 import daesurmotorsData from "~/data/cases/daesurmotors.json";
 import enrafmedicaData from "~/data/cases/enrafmedica.json";
+import favorygraciaData from "~/data/cases/favorygracia.json";
 import fenizData from "~/data/cases/feniz.json";
 import firstautomationData from "~/data/cases/firstautomation.json";
 import happyartData from "~/data/cases/happyart.json";
+import huarmisData from "~/data/cases/huarmis.json";
 import innersoulbrightData from "~/data/cases/innersoulbright.json";
 import lujanData from "~/data/cases/lujan.json";
 import maintechData from "~/data/cases/maintech.json";
@@ -51,6 +53,8 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   toliveagain: toliveagainData as Record<string, unknown>,
   podologiemtk: podologiemtkData as Record<string, unknown>,
   enrafmedica: enrafmedicaData as Record<string, unknown>,
+  huarmis: huarmisData as Record<string, unknown>,
+  favorygracia: favorygraciaData as Record<string, unknown>,
 };
 
 const translatableFields = [

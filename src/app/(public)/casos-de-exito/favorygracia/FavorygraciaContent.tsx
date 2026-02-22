@@ -5,34 +5,34 @@ import {
   CaseArticle,
   CaseArticleText,
   CaseArticleWide,
-  CaseFeatureShowcase,
-  CaseHeroSplit,
+  CaseHeroFullImage,
   CaseImages,
-  CaseMetrics,
   CaseNextProject,
+  CaseScopeList,
 } from "~/components/axium/case-blocks";
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
 import { useTranslation } from "~/hooks/useTranslation";
 import { useCaseContent } from "~/lib/case-translations";
 
-export default function FenizContent() {
-  const data = useCaseContent("feniz");
+export default function FavorygraciaContent() {
+  const data = useCaseContent("favorygracia");
   const { t } = useTranslation("landing");
 
   if (!data) return null;
 
   return (
     <div className="min-h-screen">
-      <CaseHeroSplit
+      <CaseHeroFullImage
         title={data.title}
         description={data.description}
         image={data.image}
         industry={data.industry}
         location={data.location}
-        gradient="linear-gradient(180deg, #0f172a 0%, #10293b 50%, #00122a 100%)"
         services={data.services}
         technologies={data.technologyStack}
         liveUrl={data.liveUrl}
+        fullHeight
+        overlayOpacity={0.55}
       />
 
       <CaseArticle>
@@ -81,25 +81,12 @@ export default function FenizContent() {
         </CaseArticleText>
 
         <CaseArticleWide>
-          <div className="mb-8 lg:mb-10">
-            <CaseImages
-              images={[
-                {
-                  src: "/images/proyects/feniz/feniz-dashboard.jpg",
-                  alt: "Feniz — dashboard de trader con métricas en tiempo real",
-                  caption: "Dashboard de trader",
-                },
-              ]}
-              columns={1}
-            />
-          </div>
           <div className="mb-12 lg:mb-16">
             <CaseImages
               images={[
                 {
-                  src: "/images/proyects/feniz/feniz-desktop-app.jpg",
-                  alt: "Feniz — aplicación de escritorio para operaciones en MetaTrader",
-                  caption: "App de escritorio — automatización en MetaTrader",
+                  src: "/images/proyects/favorygracia/favorygracia-credencias.jpg",
+                  alt: "Favor & Gracia Church — sección Lo que creemos",
                 },
               ]}
               columns={1}
@@ -107,43 +94,19 @@ export default function FenizContent() {
           </div>
         </CaseArticleWide>
 
-        <CaseFeatureShowcase
-          background="light"
-          subtitle="Plataforma SaaS"
-          title={t("caseDetail.funcionalidadesClave")}
-          features={[
-            {
-              icon: "BarChart3",
-              title: "Métricas en Tiempo Real",
-              description:
-                "Balance Total, P&L, Win Rate y conexiones activas en un dashboard intuitivo.",
-            },
-            {
-              icon: "Layers",
-              title: "Multi-Propfirm",
-              description:
-                "Conexión con más de 15 propfirms como FTMO en una sola plataforma centralizada.",
-            },
-            {
-              icon: "Zap",
-              title: "Acciones Rápidas",
-              description:
-                "Operaciones frecuentes accesibles con un solo clic para máxima eficiencia.",
-            },
-            {
-              icon: "Lock",
-              title: "Suscripciones Flexibles",
-              description:
-                "Planes adaptados a distintos niveles de traders con asesoría personalizada.",
-            },
-            {
-              icon: "Monitor",
-              title: "App de Escritorio",
-              description:
-                "Aplicación en Python para ejecutar operaciones en MetaTrader automáticamente, disponible para usuarios suscritos.",
-            },
+        <CaseScopeList
+          items={[
+            "Hero de bienvenida con propuesta de valor",
+            "Sección Lo que creemos (Biblia, deidad de Cristo, salvación, bautismo, etc.)",
+            "Nuestros valores y pilares de la visión",
+            "Misión y visión (evangelizar, afirmar, discipular, enviar)",
+            "Liderazgo: pastores Ricardo y Fabiola Serquén",
+            "Servicios en línea (6pm y 7pm) con enlace a Facebook Live",
+            "Más mensajes y recursos",
+            "Dar / Donaciones",
+            "Contacto e involúcrate",
+            "Diseño responsive con React",
           ]}
-          columns={2}
         />
 
         <CaseArticleText>
@@ -153,15 +116,7 @@ export default function FenizContent() {
         </CaseArticleText>
       </CaseArticle>
 
-      {data.results && data.results.length > 0 && (
-        <CaseMetrics
-          results={data.results}
-          variant="banner"
-          accentGradient="linear-gradient(135deg, #1a2332 0%, #2C3E50 55%, #FFA500 100%)"
-        />
-      )}
-
-      <CaseNextProject excludeSlug="feniz" />
+      <CaseNextProject excludeSlug="favorygracia" />
 
       <CaseContactCTA />
     </div>
