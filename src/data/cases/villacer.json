@@ -1,0 +1,32 @@
+{
+  "title": "Villacer",
+  "industry": "Construcción / Equipos",
+  "image": "/images/proyects/villacer/villacer-home.jpg",
+  "location": "Camaná, Arequipa",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "Villacer",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Alquiler de equipos y desarrollo de obras",
+  "forWhom": "Empresas y proyectos de construcción de mediana envergadura en el sur de Perú que buscan alquiler de equipos y desarrollo de obras",
+  "services": [
+    "Branding completo",
+    "Web informativa",
+    "Alquiler de equipos",
+    "Desarrollo de obras",
+    "Contacto"
+  ],
+  "description": "Branding completo y web para Villacer: empresa líder en alquiler de equipos y desarrollo de proyectos de construcción en Camaná. Identidad visual (logo, uniformes), web con quiénes somos, servicios y flota de equipos.",
+  "problem": "Villacer, establecida en Camaná desde 2017, necesitaba una identidad de marca profesional y presencia web para posicionarse ante el sector construcción, mostrando alquiler de equipos, desarrollo de obras y su expansión hacia minería.",
+  "solution": "Desarrollamos un servicio completo de branding (logo, identidad, aplicación en uniformes) y la web villacer.com.pe con quiénes somos, historia, servicios (alquiler de equipos, desarrollo de obras), flota, proyectos y contacto para cotizaciones.",
+  "results": [],
+  "projectDescription": "Branding completo y web para Villacer, empresa establecida en Camaná en 2017, líder en alquiler de equipos y desarrollo de proyectos de construcción de mediana envergadura. Incluye identidad visual aplicada en web y uniformes, web con misión, historia, servicios y formulario de cotización.",
+  "skillsAndDeliverables": [
+    "Branding",
+    "Identidad visual",
+    "WordPress",
+    "Diseño responsive"
+  ],
+  "publishedDate": "2025",
+  "liveUrl": "https://villacer.com.pe"
+}

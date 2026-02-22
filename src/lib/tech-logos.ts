@@ -1,0 +1,73 @@
+/** Mapeo de nombre de tecnología a ruta del logo. Solo tecnologías con logo propio. */
+export const TECH_LOGO_MAP: Record<string, string> = {
+  // Front End
+  "Next.js": "/images/tech-logos/nextjs.svg",
+  React: "/images/tech-logos/react.png",
+  "React.js": "/images/tech-logos/react.png",
+  Vue: "/images/tech-logos/vue.png",
+  "Vue.js": "/images/tech-logos/vue.png",
+  Angular: "/images/tech-logos/angular.png",
+  Svelte: "/images/tech-logos/svelte.png",
+  TypeScript: "/images/tech-logos/typescript.svg",
+  JavaScript: "/images/tech-logos/javascript.png",
+  PWA: "/images/tech-logos/pwa.png",
+  "HTML/CSS": "/images/tech-logos/html-css.png",
+  OpenCV: "/images/tech-logos/opencv.png",
+  "Tailwind CSS": "/images/tech-logos/tailwind-css.svg",
+  Motion: "/images/tech-logos/motion.svg",
+  // Back End
+  NestJS: "/images/tech-logos/nestjs.svg",
+  Flask: "/images/tech-logos/flask.png",
+  Django: "/images/tech-logos/django.png",
+  "Express.js": "/images/tech-logos/express-js.png",
+  ".NET": "/images/tech-logos/dot-net.png",
+  PHP: "/images/tech-logos/php.png",
+  Ruby: "/images/tech-logos/ruby.png",
+  "Java Spring": "/images/tech-logos/java-spring.png",
+  Python: "/images/tech-logos/python.png",
+  "C++": "/images/tech-logos/c-plusplus.png",
+  // DevOps & Cloud
+  Conan: "/images/tech-logos/conan.png",
+  CMake: "/images/tech-logos/cmake.png",
+  "Github Actions": "/images/tech-logos/github-actions.png",
+  "GitHub Actions": "/images/tech-logos/github-actions.png",
+  CUDA: "/images/tech-logos/cuda.png",
+  Datadog: "/images/tech-logos/datadog.png",
+  Grafana: "/images/tech-logos/grafana.png",
+  Kubernetes: "/images/tech-logos/kubernetes.png",
+  Podman: "/images/tech-logos/podman.png",
+  Docker: "/images/tech-logos/docker.png",
+  "Google Cloud": "/images/tech-logos/google-cloud.png",
+  // Database
+  MariaDB: "/images/tech-logos/mariadb.png",
+  Redis: "/images/tech-logos/redis.png",
+  Cassandra: "/images/tech-logos/cassandra.png",
+  MongoDB: "/images/tech-logos/mongodb.png",
+  "Oracle DB": "/images/tech-logos/oracle-db.png",
+  "SQL Server": "/images/tech-logos/sql-server.png",
+  PostgreSQL: "/images/tech-logos/postgresql.svg",
+  Elasticsearch: "/images/tech-logos/elasticsearch.png",
+  MySQL: "/images/tech-logos/mysql.png",
+  // Web3
+  EVM: "/images/tech-logos/evm.png",
+  Arbitrum: "/images/tech-logos/arbitrum.png",
+  NOWNodes: "/images/tech-logos/nownodes.png",
+  "Web3.js": "/images/tech-logos/web3-js.png",
+  Hardhat: "/images/tech-logos/hardhat.png",
+  "Ethers.js": "/images/tech-logos/ethers-js.png",
+  OpenZeppelin: "/images/tech-logos/openzeppelin.png",
+  Chainlink: "/images/tech-logos/chainlink.png",
+  Truffle: "/images/tech-logos/truffle.png",
+  Moralis: "/images/tech-logos/moralis.png",
+  Blockchain: "/images/tech-logos/blockchain.svg",
+  // AI/ML
+  DL4J: "/images/tech-logos/dl4j.png",
+  Chainer: "/images/tech-logos/chainer.png",
+  CNTK: "/images/tech-logos/cntk.png",
+  Caffe: "/images/tech-logos/caffe.png",
+  Theano: "/images/tech-logos/theano.png",
+};
+
+export function getTechLogo(tech: string): string | null {
+  return TECH_LOGO_MAP[tech] ?? null;
+}

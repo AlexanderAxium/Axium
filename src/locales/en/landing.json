@@ -150,5 +150,182 @@
     "titleHighlight": "Management",
     "subtitle": "Hear how professionals scale their operations faster, collaborate seamlessly, and manage with confidence using MyApp's powerful tools"
   },
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "caseDetail": {
+    "backLink": "Back to success cases",
+    "aboutProject": "About the project",
+    "funcionalidadesClave": "Key features",
+    "storeVirtual": "Virtual Store",
+    "viewLive": "View live",
+    "verDetalles": "View details",
+    "verPortafolio": "View portfolio",
+    "casosDeExito": "Success cases",
+    "masProyectos": "More projects",
+    "anterior": "Previous",
+    "siguiente": "Next",
+    "theChallenge": "The Challenge",
+    "theSolution": "The Solution",
+    "theResults": "The Results",
+    "measurableImpact": "Measurable Impact",
+    "projectDetails": "Project Details",
+    "industry": "Industry",
+    "platform": "Platform",
+    "duration": "Duration",
+    "client": "Client",
+    "services": "Services",
+    "techStack": "Technology Stack",
+    "projectView": "Project View",
+    "secondaryIndustry": "Secondary Industry",
+    "forWhom": "For whom",
+    "notFound": "Case not found",
+    "notFoundDescription": "The case you are looking for does not exist."
+  },
+  "home": {
+    "hero": {
+      "titlePrefix": "Custom Software for ",
+      "titleHighlight": "Growing Companies",
+      "titleSuffix": " and Large Organizations",
+      "description": "We partner with businesses and organizations across all industries, helping them build successful engineering teams and create innovative software products.",
+      "cta": "SCHEDULE A CALL"
+    },
+    "services": {
+      "eyebrow": "Our Services",
+      "titlePrefix": "Technology Solutions that ",
+      "titleHighlight": "Transform",
+      "titleSuffix": " Businesses",
+      "items": {
+        "software": {
+          "label": "Custom Software",
+          "title": "Custom Software",
+          "description": "We develop enterprise-grade solutions tailored to your business architecture, with native integrations and guaranteed scalability.",
+          "benefits": [
+            "Custom architecture",
+            "Horizontal scalability",
+            "Integrated APIs"
+          ],
+          "whatsappMessage": "Hi, I'm interested in learning more about Custom Software. I need an enterprise solution adapted to my business."
+        },
+        "web": {
+          "label": "Web Applications",
+          "title": "Web Applications",
+          "description": "We build cloud-native platforms with high availability, enterprise-level security, and performance optimized for thousands of concurrent users.",
+          "benefits": [
+            "99.9% guaranteed uptime",
+            "Multi-layer security",
+            "Automatic scaling"
+          ],
+          "whatsappMessage": "Hi, I'm interested in learning more about Web Applications. I'm looking for a cloud-native platform with high availability."
+        },
+        "moviles": {
+          "label": "Mobile Applications",
+          "title": "Mobile Applications",
+          "description": "We develop native and hybrid apps with modern technologies that deliver smooth experiences on iOS and Android, with full offline support.",
+          "benefits": [
+            "Optimized cross-platform",
+            "World-class UX/UI",
+            "Offline synchronization"
+          ],
+          "whatsappMessage": "Hi, I'm interested in learning more about Mobile Applications. I need an app for iOS and Android."
+        },
+        "automatizacion": {
+          "label": "Process Automation",
+          "title": "Process Automation",
+          "description": "We implement intelligent workflows that reduce manual tasks by up to 80%, optimizing resources and eliminating human error.",
+          "benefits": [
+            "Reduced operational costs",
+            "Increased efficiency",
+            "99.9% precision"
+          ],
+          "whatsappMessage": "Hi, I'm interested in learning more about Process Automation. I'd like to know how you can help optimize our workflows."
+        },
+        "analitica-ia": {
+          "label": "Predictive Analytics & AI",
+          "title": "Predictive Analytics & AI",
+          "description": "We transform your data into competitive advantages through machine learning models that anticipate trends, optimize strategic decisions, and maximize ROI with 85-95% precision.",
+          "benefits": [
+            "Market trend prediction",
+            "Strategic decision optimization",
+            "Measurable ROI from first quarter"
+          ],
+          "whatsappMessage": "Hi, I'm interested in learning more about Predictive Analytics & AI. I need to turn my data into competitive advantage."
+        },
+        "decisiones-ia": {
+          "label": "Intelligent Decisions",
+          "title": "Intelligent Decisions",
+          "description": "We implement artificial intelligence systems that automate complex decisions, optimize operations in real time, and generate 30-50% savings through advanced optimization algorithms.",
+          "benefits": [
+            "Strategic decision automation",
+            "Real-time optimization",
+            "30-50% verifiable savings"
+          ],
+          "whatsappMessage": "Hi, I'm interested in learning more about Intelligent Decisions. I'm looking to optimize complex decisions with AI."
+        }
+      },
+      "cta": "Consult an advisor"
+    },
+    "process": {
+      "eyebrow": "A Process that Delivers Results",
+      "titlePrefix": "Smart, Precise and ",
+      "titleHighlight": "Successful",
+      "description": "At Axium, we create solutions that capture customer attention, earn their trust, and build lasting relationships based on innovation and measurable success.",
+      "steps": {
+        "definir": {
+          "title": "Define",
+          "fullTitle": "Define What Matters",
+          "description": "We don't ask what you want to build. We ask what's worth building. From new products to platform migrations, we focus on what truly drives results."
+        },
+        "construir": {
+          "title": "Build",
+          "fullTitle": "Build to Scale",
+          "description": "Aesthetics matter, but function matters more. We design, code, and connect systems your team can use with ease. Scalable, fast, and ready to grow with you."
+        },
+        "lanzar": {
+          "title": "Launch",
+          "fullTitle": "Launch with Confidence",
+          "description": "No silent deliveries. We test hard, launch smart, and stay in the loop, ready to fix, improve, or scale as your needs change."
+        }
+      },
+      "badges": {
+        "primary": "Strategic Workshop",
+        "secondary": [
+          "Detailed Design",
+          "Scalable Architecture",
+          "Modular System"
+        ]
+      },
+      "cards": [
+        { "title": "Quality Review", "tag": "QA Testing" },
+        { "title": "Safe Launch", "tag": "Deploy" },
+        { "title": "Continuous Support", "tag": "24/7" }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "titlePrefix": "Ready to ",
+      "titleHighlight": "Start",
+      "titleSuffix": "?",
+      "description": "Tell us about your project and we'll get back to you in under 24 hours.",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "you@email.com",
+        "message": "Message",
+        "messagePlaceholder": "Tell us about your project...",
+        "submit": "Send Message",
+        "submitting": "Sending..."
+      },
+      "directContact": "Direct Contact",
+      "whatsappCta": "Prefer WhatsApp?",
+      "whatsappDescription": "Immediate response for quick inquiries.",
+      "openWhatsApp": "Open WhatsApp",
+      "responseTime": "Response in under 24 hours",
+      "whatsappDefaultMessage": "Hi, I'd like to learn more about AXIUM's services."
+    },
+    "inspirational": {
+      "line1": "We are more than a technology provider.",
+      "line2": "We are your strategic technology partner.",
+      "line3": "Committed to your business success."
+    }
+  }
 }

@@ -6,18 +6,18 @@
   "platform": "Web",
   "duration": "Dic '25 – Ene '26",
   "client": "Inner Soul Bright",
-  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS", "Motion"],
   "secondaryIndustry": "Desarrollo Personal",
   "forWhom": "Personas en búsqueda de crecimiento espiritual, sanación energética y conexión con su ser interior",
-  "services": ["Diseño Inmersivo", "Página Sobre Mí", "Sistema de Reservas"],
-  "description": "Sitio web profesional para medium espiritual y sanadora energética, con diseño inmersivo que transmite paz y conexión espiritual, sistema de reservas para consultas y presentación de servicios de sanación.",
-  "problem": "La cliente necesitaba una presencia digital profesional que transmitiera la esencia de sus servicios espirituales, generara confianza en potenciales clientes y facilitara la reserva de sesiones de sanación energética y consultas de mediumnidad.",
-  "solution": "Desarrollamos un sitio web moderno con diseño inmersivo que combina tonos cósmicos y elementos visuales de paz interior. Incluye secciones de servicios detalladas, página 'Sobre Mí' para generar conexión personal, sistema de reserva de consultas integrado y diseño responsive optimizado para conversiones.",
+  "services": ["Diseño Inmersivo", "Página Sobre Mí"],
+  "description": "Sitio web profesional para medium espiritual y sanadora energética, con diseño inmersivo que transmite paz y conexión espiritual, presentación de servicios de sanación.",
+  "problem": "La cliente necesitaba una presencia digital profesional que transmitiera la esencia de sus servicios espirituales, generara confianza en potenciales clientes y facilitara dar a conocer sus servicios de sanación energética y consultas de mediumnidad.",
+  "solution": "Desarrollamos un sitio web moderno con diseño inmersivo que combina tonos cósmicos y elementos visuales de paz interior. Incluye secciones de servicios detalladas, página 'Sobre Mí' para generar conexión personal, diseño responsive optimizado para conversiones.",
   "results": [
     {
       "icon": "Users",
       "metric": "150+",
-      "label": "consultas reservadas en el primer mes"
+      "label": "visitas al sitio en el primer mes"
     },
     {
       "icon": "TrendingUp",
@@ -30,16 +30,16 @@
       "label": "satisfacción del cliente con el diseño"
     }
   ],
-  "projectDescription": "Desarrollé este sitio web para Inner Soul Bright, una medium espiritual y sanadora energética que ofrece un espacio seguro para el crecimiento espiritual. El proyecto incluye un diseño visual inmersivo con fondos cósmicos y gradientes que evocan paz interior, página de inicio con hero impactante, sección de servicios de sanación energética y mediumnidad, página 'Sobre Mí' para conectar con visitantes, sistema integrado de reserva de consultas, y optimización SEO para servicios espirituales. El diseño transmite profesionalismo manteniendo la esencia espiritual de la marca.",
+  "projectDescription": "Desarrollamos este sitio web para Inner Soul Bright, una medium espiritual y sanadora energética que ofrece un espacio seguro para el crecimiento espiritual. El proyecto incluye un diseño visual inmersivo con fondos cósmicos y gradientes que evocan paz interior, página de inicio con hero impactante, sección de servicios de sanación energética y mediumnidad, página 'Sobre Mí' para conectar con visitantes, y optimización SEO para servicios espirituales. El diseño transmite profesionalismo manteniendo la esencia espiritual de la marca.",
   "skillsAndDeliverables": [
     "Next.js",
     "TypeScript",
     "Tailwind CSS",
-    "Framer Motion",
+    "Motion",
     "UI/UX Design",
     "Responsive Design",
-    "SEO Optimization",
-    "Booking Integration"
+    "SEO Optimization"
   ],
-  "publishedDate": "Jan 22, 2026"
+  "publishedDate": "Jan 22, 2026",
+  "liveUrl": "https://innersoulbright.com"
 }

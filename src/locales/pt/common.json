@@ -1,4 +1,31 @@
 {
+  "navbar": {
+    "casosDeExito": "Casos de Sucesso",
+    "servicios": "Serviços",
+    "comoTrabajamos": "Como Trabalhamos",
+    "contacto": "Contato",
+    "servicesMoviles": {
+      "title": "Aplicações Móveis",
+      "description": "Apps nativos e híbridos para iOS e Android com suporte offline."
+    },
+    "servicesWeb": {
+      "title": "Aplicações Web",
+      "description": "Plataformas cloud-native com alta disponibilidade e segurança enterprise."
+    },
+    "servicesSoftware": {
+      "title": "Software Sob Medida",
+      "description": "Soluções enterprise adaptadas à sua arquitetura de negócios."
+    },
+    "servicesAutomatizacion": {
+      "title": "Automação de Processos",
+      "description": "Workflows inteligentes que reduzem tarefas manuais em até 80%."
+    }
+  },
+  "footer": {
+    "quickLinks": "Links Rápidos",
+    "description": "Seu parceiro tecnológico de confiança. Desenvolvemos software sob medida que transforma processos manuais em sistemas eficientes e escaláveis.",
+    "location": "Lima, Peru"
+  },
   "signIn": "Entrar",
   "signUp": "Registrar",
   "dashboard": "Painel",

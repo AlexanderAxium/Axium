@@ -1,0 +1,32 @@
+{
+  "title": "EnrafMedica",
+  "industry": "Salud / Equipamiento médico",
+  "image": "/images/proyects/enrafmedica/enrafmedica-home.jpg",
+  "location": "Santa Beatriz, Lima",
+  "platform": "Web",
+  "duration": "2024",
+  "client": "EnrafMedica",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Importación y comercialización de equipos médicos",
+  "forWhom": "Profesionales de la salud, clínicas y hospitales en Perú que buscan equipamiento médico de primera categoría",
+  "services": [
+    "Web informativa",
+    "Catálogo de productos",
+    "Sobre nosotros",
+    "Contacto",
+    "Integración WhatsApp"
+  ],
+  "description": "Web informativa para EnrafMedica: empresa peruana desde 1998 dedicada a la importación y comercialización de equipos e instrumental médico. Catálogo por categorías (urología, cuidados intensivos, consulta externa, sala de operaciones, ultrasonido, equipos de rescate), sobre nosotros y contacto por WhatsApp.",
+  "problem": "EnrafMedica necesitaba una web que presentara su trayectoria, catálogo de equipos médicos por categoría y facilitara el contacto con profesionales de la salud, clínicas y hospitales en Lima y todo Perú.",
+  "solution": "Desarrollamos enrafmedica.com con WordPress: hero con propuesta de valor (excelencia en equipos médicos desde 1998), sobre nosotros, catálogo por categorías (urología, cuidados intensivos, consulta externa, sala de operaciones, ginecología, ultrasonido, mobiliario hospitalario, equipos de diagnóstico, equipos de rescate), últimos productos, contacto e integración con WhatsApp.",
+  "results": [],
+  "projectDescription": "Web informativa para EnrafMedica, empresa peruana fundada en 1998 dedicada a la importación y comercialización de equipos e instrumental médico de primera categoría. Incluye catálogo por categorías (urología, cuidados intensivos, consulta externa, sala de operaciones, ginecología, ultrasonido, mobiliario hospitalario, equipos de diagnóstico y rescate), sobre nosotros y contacto por WhatsApp.",
+  "skillsAndDeliverables": [
+    "WordPress",
+    "Diseño responsive",
+    "Catálogo de productos",
+    "Integración WhatsApp"
+  ],
+  "publishedDate": "2024",
+  "liveUrl": "https://enrafmedica.com"
+}

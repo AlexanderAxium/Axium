@@ -9,8 +9,15 @@
   "technologyStack": ["Next.js", "Tailwind CSS", "TypeScript", "PostgreSQL"],
   "secondaryIndustry": "Productos Ecológicos",
   "forWhom": "Empresas industriales y comerciales que buscan soluciones de limpieza ecológicas",
-  "services": ["E-commerce", "Catálogo de Productos", "Blog Corporativo"],
-  "description": "Plataforma e-commerce para detergentes ecológicos industriales con catálogo de productos, sistema de promociones, blog de noticias y gestión de contacto empresarial.",
+  "services": [
+    "Tienda Virtual",
+    "Catálogo por Categorías",
+    "Promociones",
+    "Blog",
+    "Checkout",
+    "Libro de Reclamaciones"
+  ],
+  "description": "Tienda virtual completa para detergentes ecológicos industriales: catálogo con categorías, carrito, checkout, promociones, blog y libro de reclamaciones integrado.",
   "problem": "Necesidad de una plataforma digital para comercializar detergentes ecológicos industriales, con catálogo organizado, promociones y canal de comunicación con clientes B2B.",
   "solution": "E-commerce moderno con catálogo de productos ecológicos, sistema de promociones, blog informativo, formulario de contacto empresarial y libro de reclamaciones digital integrado.",
   "results": [
@@ -30,13 +37,17 @@
       "label": "disponibilidad del catálogo online"
     }
   ],
-  "projectDescription": "Desarrollé esta plataforma e-commerce para Clefast, empresa especializada en detergentes ecológicos industriales. La solución incluye tienda online con catálogo de productos organizado por categorías, sistema de promociones, blog corporativo para noticias y contenido educativo, formulario de contacto empresarial y libro de reclamaciones digital cumpliendo con normativas peruanas.",
+  "projectDescription": "Desarrollamos esta tienda virtual completa para Clefast, empresa especializada en detergentes ecológicos para lavanderías industriales. La plataforma incluye: tienda online con catálogo de productos organizado por categorías (Línea Clásica, Especializada y Premium), carrito de compras, proceso de checkout, sistema de promociones y bonificaciones, blog con guías y noticias para lavanderías, catálogo descargable, formulario de contacto empresarial y libro de reclamaciones digital cumpliendo normativas peruanas.",
   "skillsAndDeliverables": [
     "Next.js",
     "Tailwind CSS",
     "TypeScript",
+    "PostgreSQL",
     "E-commerce",
+    "Carrito de Compras",
+    "Checkout",
     "SEO Optimization"
   ],
-  "publishedDate": "Jan 23, 2026"
+  "publishedDate": "Jan 23, 2026",
+  "liveUrl": "https://clefast.com.pe"
 }

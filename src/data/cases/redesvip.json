@@ -2,48 +2,33 @@
   "title": "Redes VIP",
   "industry": "Telecomunicaciones",
   "image": "/images/proyects/redesvip/redesvip-home.jpg",
-  "location": "Callao, Perú",
+  "location": "Ventanilla, Callao — Perú",
   "platform": "Web",
   "duration": "Ene '26",
   "client": "Redes VIP Telecomunicaciones",
-  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS", "Motion"],
   "secondaryIndustry": "ISP / Fibra Óptica",
-  "forWhom": "Hogares y empresas en Ventanilla-Callao que buscan internet de alta velocidad por fibra óptica con precio justo y soporte especializado",
+  "forWhom": "Hogares y empresas en Ventanilla-Callao que buscan internet por fibra óptica con velocidad simétrica, precio justo y soporte especializado",
   "services": [
-    "Catálogo de Planes",
-    "Sección Testimonios",
+    "Web informativa",
+    "Catálogo de planes",
+    "VIP TV y corporativo",
     "Integración WhatsApp"
   ],
-  "description": "Sitio web profesional para proveedor de internet por fibra óptica con más de 1500 usuarios y 5 años de experiencia, incluyendo presentación de planes, servicios VIP TV y soluciones corporativas.",
-  "problem": "Redes VIP necesitaba una presencia digital moderna que transmitiera confianza, mostrara sus planes de internet (Hogar, Duos VIP, Gamer) de forma clara, y facilitara la captación de nuevos clientes tanto residenciales como corporativos en la zona de Ventanilla-Callao.",
-  "solution": "Desarrollamos un sitio web con diseño moderno y temática tecnológica en tonos oscuros con acentos en verde y púrpura. Incluye hero impactante con propuesta de valor, sección de planes con precios claros, testimonios de clientes satisfechos, información de servicios VIP TV y soluciones corporativas, además de integración con WhatsApp para contacto directo.",
-  "results": [
-    {
-      "icon": "Users",
-      "metric": "+1500",
-      "label": "usuarios activos en la plataforma"
-    },
-    {
-      "icon": "TrendingUp",
-      "metric": "+150",
-      "label": "empresas con servicios corporativos"
-    },
-    {
-      "icon": "CheckCircle2",
-      "metric": "5+",
-      "label": "años de experiencia en el mercado"
-    }
-  ],
-  "projectDescription": "Desarrollé el sitio web para Redes VIP, un proveedor de internet 100% fibra óptica en Ventanilla-Callao, Perú. El proyecto incluye un diseño visual moderno con estética tecnológica, hero section con propuesta de valor clara (velocidad simétrica, precio justo, soporte especializado), presentación de planes de internet (Hogar 200Mbps, Duos VIP 400Mbps, Gamer 300Mbps), sección de servicios VIP TV con +80 canales Full HD, área de soluciones corporativas, testimonios de clientes satisfechos, y optimización para conversiones con botones de WhatsApp integrados.",
+  "description": "Web informativa para Redes VIP, proveedor de internet 100% fibra óptica en Ventanilla-Callao: planes (Hogar, Duos VIP, Gamer), VIP TV +80 canales, soluciones corporativas y contacto por WhatsApp.",
+  "problem": "Redes VIP necesitaba una web que transmitiera confianza, mostrara sus planes de internet de forma clara y facilitara el contacto con clientes residenciales y corporativos en Ventanilla-Callao.",
+  "solution": "Desarrollamos la web informativa redesvip.com con diseño moderno y estética tecnológica. Incluye hero con propuesta de valor, planes de internet, servicios VIP TV, soluciones corporativas, testimonios e integración con WhatsApp para contacto directo.",
+  "results": [],
+  "projectDescription": "Desarrollamos la web informativa para Redes VIP, proveedor de internet 100% fibra óptica en Ventanilla-Callao, Perú. La web presenta planes residenciales (Hogar 200 Mbps, Duos VIP 400 Mbps, Gamer 300 Mbps), servicios VIP TV con +80 canales Full HD, soluciones corporativas, testimonios de clientes y contacto por WhatsApp.",
   "skillsAndDeliverables": [
     "Next.js",
     "TypeScript",
     "Tailwind CSS",
-    "Framer Motion",
+    "Motion",
     "UI/UX Design",
     "Responsive Design",
-    "SEO Optimization",
-    "WhatsApp Integration"
+    "Integración WhatsApp"
   ],
-  "publishedDate": "Jan 23, 2026"
+  "publishedDate": "Ene 2026",
+  "liveUrl": "https://redesvip.com"
 }

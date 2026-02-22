@@ -1,0 +1,338 @@
+{
+  "maintech": {
+    "title": "Maintech",
+    "industry": "Education and Technology",
+    "description": "From visual identity to a complete e-learning platform: we built the brand, web ecosystem and Maintech's digital academy.",
+    "projectDescription": "Maintech is a Peruvian company dedicated to professional training. They came to us with no digital presence: no logo, website or platform. They needed to build everything from scratch and position themselves in the online technical education market.",
+    "secondaryIndustry": "Branding and E-Learning",
+    "forWhom": "Students, professionals and corporate teams in Peru",
+    "services": [
+      "Brand Design",
+      "Brand Manual",
+      "E-Learning Platform",
+      "Corporate Website"
+    ]
+  },
+  "vitalchain": {
+    "title": "VitalChain Academy",
+    "industry": "Wellness and Education",
+    "description": "Website, e-learning platform and raffle system: we developed VitalChain Academy's digital ecosystem for holistic wellbeing with blockchain transparency.",
+    "projectDescription": "VitalChain Academy is a holistic wellbeing initiative that combines spiritual growth with conscious technology.",
+    "secondaryIndustry": "Conscious Technology",
+    "forWhom": "People seeking personal development and holistic wellbeing",
+    "services": ["E-Learning Platform", "Raffle System", "Content Blog"]
+  },
+  "feniz": {
+    "title": "Feniz",
+    "industry": "Fintech / Trading",
+    "description": "SaaS platform for funded traders: website, metrics dashboard, desktop app with MetaTrader automation (Python) and connection to multiple propfirms.",
+    "problem": "Funded traders faced the challenge of managing multiple propfirm accounts in a scattered way, without a centralized view of their performance, P&L and key metrics.",
+    "solution": "We developed a comprehensive web platform that allows connecting multiple propfirm accounts in a single dashboard, viewing real-time metrics, managing active connections and optimizing trading strategies.",
+    "projectDescription": "We developed this complete SaaS platform for funded traders that revolutionizes how propfirm accounts are managed. Includes a dashboard with real-time metrics, connection with multiple propfirms like FTMO, centralized account management, subscription plans and quick actions.",
+    "secondaryIndustry": "PropFirms",
+    "forWhom": "Funded traders, propfirms and brokers seeking to manage multiple trading accounts",
+    "services": [
+      "Dashboard Analytics",
+      "Account Management",
+      "Desktop App",
+      "API Integration with Propfirms"
+    ],
+    "results": [
+      { "metric": "15+", "label": "active users" },
+      { "metric": "15+", "label": "integrated propfirms" },
+      { "metric": "Real-time", "label": "dashboard metrics" }
+    ]
+  },
+  "innersoulbright": {
+    "title": "Inner Soul Bright",
+    "industry": "Spiritual Wellness",
+    "description": "Professional website for spiritual medium and energy healer, with immersive design that conveys peace and spiritual connection, presentation of healing services.",
+    "problem": "The client needed a professional digital presence that conveyed the essence of her spiritual services, built trust with potential clients and facilitated awareness of her energy healing and mediumship services.",
+    "solution": "We developed a modern website with immersive design that combines cosmic tones and visual elements of inner peace. Includes detailed service sections, 'About Me' page for personal connection, responsive design optimized for conversions.",
+    "projectDescription": "We developed this website for Inner Soul Bright, a spiritual medium and energy healer who offers a safe space for spiritual growth. Includes immersive design with cosmic backgrounds, energy healing services section, 'About Me' page and SEO optimization.",
+    "secondaryIndustry": "Personal Development",
+    "forWhom": "People seeking spiritual growth, energy healing and connection with their inner self",
+    "services": ["Immersive Design", "About Me Page"],
+    "results": [
+      { "metric": "150+", "label": "site visits in the first month" },
+      { "metric": "85%", "label": "increase in online visibility" },
+      { "metric": "100%", "label": "client satisfaction with the design" }
+    ]
+  },
+  "clefast": {
+    "title": "Clefast",
+    "industry": "Industrial E-commerce",
+    "description": "Complete virtual store for industrial eco-friendly detergents: catalog with categories, cart, checkout, promotions, blog and integrated complaints book.",
+    "problem": "Need for a digital platform to market industrial eco-friendly detergents, with organized catalog, promotions and B2B customer communication channel.",
+    "solution": "Modern e-commerce with eco-friendly product catalog, promotions system, informative blog, corporate contact form and integrated digital complaints book.",
+    "projectDescription": "We developed this complete virtual store for Clefast, a company specialized in eco-friendly detergents for industrial laundries. Includes online store with catalog by categories, cart, checkout, promotions, blog, downloadable catalog and complaints book.",
+    "secondaryIndustry": "Eco-Friendly Products",
+    "forWhom": "Industrial and commercial companies seeking eco-friendly cleaning solutions",
+    "services": [
+      "Virtual Store",
+      "Catalog by Categories",
+      "Promotions",
+      "Blog",
+      "Checkout",
+      "Complaints Book"
+    ],
+    "results": [
+      { "metric": "100%", "label": "digital presence established" },
+      { "metric": "50%", "label": "increase in customer inquiries" },
+      { "metric": "24/7", "label": "online catalog availability" }
+    ]
+  },
+  "happyart": {
+    "title": "Happy Art",
+    "industry": "E-commerce / Personalized Gifts",
+    "description": "Brand identity, logo, brand manual and virtual store of personalized gifts in Arequipa: categories by occasion, cart, checkout, delivery, customization and WhatsApp advisory.",
+    "problem": "Happy Art needed a digital presence to market personalized gifts, with catalog organized by occasions, cart and checkout, and contact channel for advisory.",
+    "solution": "Full brand identity (logo, manual, stationery) and virtual store with WooCommerce: catalog by categories, my account with cart and checkout, advice blog, delivery, customization and WhatsApp advisory.",
+    "projectDescription": "We developed Happy Art's full brand identity — logo, brand manual, stationery — and the happyart.com.pe virtual store. Includes online store with categories by occasion, cart and checkout, my account, delivery, customization, blog, WhatsApp advisory and complaints book.",
+    "secondaryIndustry": "Personalized Gifts",
+    "forWhom": "Individuals and companies seeking personalized gifts for special occasions",
+    "services": [
+      "Brand Identity",
+      "Logo",
+      "Brand Manual",
+      "Virtual Store",
+      "Catalog by Categories",
+      "Delivery",
+      "Customization",
+      "My Account"
+    ],
+    "results": [
+      { "metric": "100%", "label": "digital presence established" },
+      { "metric": "24/7", "label": "store available online" },
+      { "metric": "B2C", "label": "direct-to-consumer sales" }
+    ]
+  },
+  "redesvip": {
+    "title": "Redes VIP",
+    "industry": "Telecommunications",
+    "description": "Informative website for Redes VIP, fiber optic internet provider in Ventanilla-Callao: plans (Hogar, Duos VIP, Gamer), VIP TV +80 channels, corporate solutions and WhatsApp contact.",
+    "problem": "Redes VIP needed a website that conveyed trust, clearly showed their internet plans and facilitated contact with residential and corporate customers in Ventanilla-Callao.",
+    "solution": "We developed the informative website with modern design and technological aesthetic. Includes hero with value proposition, internet plans, VIP TV services, corporate solutions, testimonials and WhatsApp integration.",
+    "projectDescription": "We developed the informative website for Redes VIP, a 100% fiber optic internet provider in Ventanilla-Callao, Peru. The site presents residential plans (Hogar, Duos VIP, Gamer), VIP TV services with +80 Full HD channels, corporate solutions, testimonials and WhatsApp contact.",
+    "secondaryIndustry": "ISP / Fiber Optic",
+    "forWhom": "Households and businesses in Ventanilla-Callao seeking fiber optic internet with fair pricing and specialized support",
+    "services": [
+      "Informative website",
+      "Plans catalog",
+      "VIP TV and corporate",
+      "WhatsApp integration"
+    ],
+    "results": []
+  },
+  "sportt": {
+    "title": "Sportt Peru",
+    "industry": "E-commerce / Sports",
+    "description": "Table tennis and ping pong virtual store: catalog with categories, CMS integration, payment gateway, cart, checkout and complaints book.",
+    "problem": "Sportt Peru needed a digital platform to sell table tennis equipment, with catalog organized by categories and customer contact channel.",
+    "solution": "E-commerce with sports product catalog, CMS integration, payment gateway, cart and checkout, digital complaints book integrated.",
+    "projectDescription": "We developed sporttperu.com as a virtual store for Sportt Peru, specializing in table tennis. Includes catalog by categories, CMS integration, payment gateway, cart and checkout, complaints book and contact channel.",
+    "secondaryIndustry": "Table Tennis",
+    "forWhom": "Table tennis players and enthusiasts seeking equipment, rackets, woods, rubbers and quality accessories",
+    "services": [
+      "Virtual Store",
+      "Catalog by Categories",
+      "CMS Integration",
+      "Payment Gateway",
+      "Instagram Ads",
+      "Complaints Book"
+    ],
+    "results": [
+      { "metric": "100%", "label": "digital presence established" },
+      { "metric": "24/7", "label": "store available online" },
+      { "metric": "B2C", "label": "direct-to-consumer sales" }
+    ]
+  },
+  "lujan": {
+    "title": "Vitivinícola Luján",
+    "industry": "E-commerce / Beverages",
+    "description": "Peruvian winery virtual store: wines, piscos, creams and macerates. Catalog by categories, CMS integration, payment gateway and advertising.",
+    "problem": "Vitivinícola Luján needed a digital platform to sell their wines, piscos and spirits online, with organized catalog and social presence.",
+    "solution": "E-commerce with catalog by categories, CMS integration, payment gateway, cart and checkout, complaints book and advertising for social media.",
+    "projectDescription": "We developed vitivinicolalujan.com as a virtual store for Vitivinícola Luján, in Santa Cruz de Flores, Cañete. Includes catalog of wines, piscos, creams and macerates; CMS integration, payment gateway; plus advertising for their social media.",
+    "secondaryIndustry": "Wines and Piscos",
+    "forWhom": "Consumers seeking quality Peruvian wines, piscos, creams and macerates",
+    "services": [
+      "Virtual Store",
+      "Catalog by Categories",
+      "CMS Integration",
+      "Payment Gateway",
+      "Advertising",
+      "Complaints Book"
+    ],
+    "results": [
+      { "metric": "100%", "label": "digital presence established" },
+      { "metric": "24/7", "label": "store available online" },
+      { "metric": "B2C", "label": "direct-to-consumer sales" }
+    ]
+  },
+  "ventanasantiruido": {
+    "title": "Ventanas Antiruido",
+    "industry": "Construction / Insulation",
+    "description": "Informative website for noise-reduction PVC windows in Lima: acoustic insulation, energy efficiency, durability and security. Catalog of noise-reduction windows, doors and partitions with advisory and direct contact.",
+    "problem": "Need for a website that presents noise-reduction PVC windows and doors, explains benefits (acoustic and thermal insulation, durability) and facilitates contact with interested customers in Lima.",
+    "solution": "We developed ventanasantiruido.com.pe with WordPress: hero with value proposition, sections on noise-reduction windows, doors and partitions, PVC benefits, testimonials, FAQ and WhatsApp contact integration.",
+    "projectDescription": "Informative website for Ventanas Antiruido de PVC, leaders in manufacture and installation of noise-reduction windows in Lima. Includes value proposition (insulate, protect, save with PVC), advantages over traditional windows, testimonials and WhatsApp contact.",
+    "secondaryIndustry": "PVC Windows and Doors",
+    "forWhom": "Households and projects in Lima seeking noise-reduction windows, acoustic insulation and energy efficiency",
+    "services": [
+      "Informative website",
+      "Noise-reduction windows",
+      "Noise-reduction doors",
+      "Noise-reduction partitions",
+      "WhatsApp contact"
+    ],
+    "results": []
+  },
+  "antiruidopvc": {
+    "title": "Decibeles",
+    "industry": "Construction / Insulation",
+    "description": "Decibeles website: noise-reduction PVC windows, doors and partitions in Lima and all of Peru. High-quality acoustic solutions to create spaces of calm, with thermal insulation and energy efficiency.",
+    "problem": "Need for an institutional website that positions Decibeles as a reference in noise-reduction PVC solutions, presents windows, doors and partitions, and facilitates contact with customers in Lima and all of Peru.",
+    "solution": "We developed antiruidopvc.pe with WordPress: hero with value proposition, catalog of windows, doors and partitions, PVC benefits (acoustic insulation, energy savings, durability), blog and WhatsApp contact.",
+    "projectDescription": "Institutional website for Decibeles, specialists in noise-reduction PVC windows, doors and partitions. Combines cutting-edge design with acoustic technology information. Includes product sections, benefits, blog and contact.",
+    "secondaryIndustry": "Noise-Reduction PVC Windows and Doors",
+    "forWhom": "Families and projects in Lima and Peru seeking spaces of calm with high-quality noise-reduction solutions",
+    "services": [
+      "Informative website",
+      "PVC Windows",
+      "PVC Doors",
+      "PVC Partitions",
+      "Blog",
+      "WhatsApp contact"
+    ],
+    "results": []
+  },
+  "transportesrumi": {
+    "title": "Transportes Rumi",
+    "industry": "Logistics / Mining",
+    "description": "Digital brochure and website for Transportes Rumi: Peruvian company specialized in mineral concentrate, general cargo and oversized load transportation. Mission, team, services by sector and contact.",
+    "problem": "Transportes Rumi needed corporate presentation material (brochure) and web presence to position themselves with mining and industrial companies, showing experience, team, services and safety protocols.",
+    "solution": "We developed digital brochure and transportesrumi.com.pe website with mission, team, services by sector, testimonials, safety and WhatsApp contact.",
+    "projectDescription": "Digital brochure and website for Transportes Rumi S.A.C., a 100% Peruvian company with over 4 years of experience in mineral concentrate, general cargo and oversized load transportation. Both pieces present team, services by sector and contact.",
+    "secondaryIndustry": "Heavy cargo transportation",
+    "forWhom": "Mining, industrial, construction and trade companies seeking concentrate, oversized load and general cargo transportation nationwide",
+    "services": [
+      "Digital brochure",
+      "Informative website",
+      "Team and services",
+      "WhatsApp contact"
+    ],
+    "results": []
+  },
+  "villacer": {
+    "title": "Villacer",
+    "industry": "Construction / Equipment",
+    "description": "Complete branding and website for Villacer: leading company in equipment rental and construction project development in Camaná. Visual identity (logo, uniforms), website with about us, services and equipment fleet.",
+    "problem": "Villacer, established in Camaná since 2017, needed a professional brand identity and web presence to position itself in the construction sector, showing equipment rental, project development and expansion toward mining.",
+    "solution": "We developed a complete branding service (logo, identity, application on uniforms) and the villacer.com.pe website with about us, history, services, fleet, projects and contact for quotes.",
+    "projectDescription": "Complete branding and website for Villacer, established in Camaná in 2017, leader in equipment rental and construction project development. Includes visual identity applied to web and uniforms, website with mission, history, services and quote form.",
+    "secondaryIndustry": "Equipment rental and project development",
+    "forWhom": "Companies and medium-scale construction projects in southern Peru seeking equipment rental and project development",
+    "services": [
+      "Complete branding",
+      "Informative website",
+      "Equipment rental",
+      "Project development",
+      "Contact"
+    ],
+    "results": []
+  },
+  "daesurmotors": {
+    "title": "Daesur Motors",
+    "industry": "Automotive / Workshop",
+    "description": "Informative website for Daesur Motors: repair shop and vehicle parts sales in VMT. Services (engine, brakes, transmission, bodywork, paint, SOAT), testimonials, service process and quote form.",
+    "problem": "Daesur Motors needed a website to present their repair and parts services, show their process and facilitate contact for quotes from Villa María del Triunfo and surrounding areas.",
+    "solution": "We developed daesurmotors.com with WordPress: hero with value proposition, about us, service catalog (maintenance, brakes, engine, transmission, parts, diagnostics, bodywork, paint, SOAT, mechanical assistance), testimonials, Facebook integration and quote form.",
+    "projectDescription": "Informative website for Daesur Motors EIRL, specialists in vehicle repair and parts in VMT. Includes full services, testimonials and quote form.",
+    "secondaryIndustry": "Vehicle repair and parts",
+    "forWhom": "Vehicle owners in southern Lima seeking repair, maintenance, parts and reliable automotive services",
+    "services": [
+      "Informative website",
+      "Service catalog",
+      "Quote form",
+      "Testimonials",
+      "Facebook integration"
+    ],
+    "results": []
+  },
+  "firstautomation": {
+    "title": "First Automation",
+    "industry": "Industrial / Technology",
+    "description": "Informative website for First Automation: certified AVEVA partner that digitizes industrial operations. Control, management, optimization and operational intelligence solutions. HMI/SCADA, IT/OT platform and digital transformation services.",
+    "problem": "First Automation needed a website to present their AVEVA partner offering, solutions, services and testimonials from industrial sector clients.",
+    "solution": "We developed first-automation.com with WordPress: hero with value proposition (digitize operations, Industry 4.0), AVEVA solutions, services (HMI/SCADA, IT/OT, digital transformation), testimonials and news blog.",
+    "projectDescription": "Informative website for First Automation, certified AVEVA partner. SCADA, IIoT and industrial data management solutions for fishing, oil & gas, energy, mining and manufacturing.",
+    "secondaryIndustry": "Industrial digitalization / Industry 4.0",
+    "forWhom": "Industrial companies seeking SCADA, IIoT and digital transformation solutions with AVEVA",
+    "services": [
+      "Informative website",
+      "AVEVA solutions",
+      "HMI/SCADA services",
+      "Testimonials",
+      "News blog"
+    ],
+    "results": []
+  },
+  "toliveagain": {
+    "title": "To Live Again",
+    "industry": "NGO / Wellness",
+    "description": "Informative website for To Live Again: NGO founded in 2016 dedicated to preventing and raising awareness about domestic abuse. Inspiring victims to seek help, preventing the next generation. Based in Miami with presence in Peru.",
+    "problem": "To Live Again needed a website to present its mission, team, events and workshops, and facilitate donations and contact to inspire victims and raise awareness about domestic abuse in Florida and Peru.",
+    "solution": "We developed toliveagain.org with WordPress: about us, what we do (inspire, prevent, raise awareness), multidisciplinary team, founder, community impact, events, donations via PayPal and Instagram integration.",
+    "projectDescription": "Informative website for To Live Again, NGO founded in 2016 with headquarters in Miami and presence in Peru. Dedicated to preventing domestic abuse, inspiring victims to seek help and raising awareness. Includes about us, events, team, founder, impact and donations.",
+    "secondaryIndustry": "Domestic abuse prevention",
+    "forWhom": "Women in vulnerable situations, domestic abuse victims and the community seeking information on prevention and awareness",
+    "services": [
+      "Informative website",
+      "About us",
+      "Events and workshops",
+      "Team",
+      "Donations",
+      "Contact"
+    ],
+    "results": []
+  },
+  "podologiemtk": {
+    "title": "Podologie MTK",
+    "industry": "Health / Podology",
+    "description": "Informative website for Podologie MTK: podology practice by Andrea Alberts in Schwalbach am Taunus, Germany. Podological treatments, diabetic foot care, ingrown nails, specialized techniques and podology services.",
+    "problem": "The podology practice needed a website to present its services (complex podological treatment, medical foot treatment, nail brace techniques, nail prosthetics), opening hours, location and allow patients to book appointments in Schwalbach am Taunus.",
+    "solution": "We developed podologie-mtk.de with WordPress: hero with value proposition, services, opening hours, contact, FAQs and appointment booking integration.",
+    "projectDescription": "Informative website for Podologie MTK (Andrea Alberts), podology practice in Schwalbach am Taunus, Germany. Specialists in podological treatment, diabetic foot, ingrown nails, nail brace techniques, orthoses, nail prosthetics and sports foot care. Includes services, opening hours, contact and appointment booking.",
+    "secondaryIndustry": "Foot medicine / Podology",
+    "forWhom": "Patients in Main-Taunus-Kreis (Germany) seeking podological treatment, diabetic foot care, ingrown nail treatment and specialized therapies",
+    "services": [
+      "Informative website",
+      "Services",
+      "Opening hours",
+      "Contact",
+      "FAQs",
+      "Appointment booking"
+    ],
+    "results": [],
+    "client": "Andrea Alberts Podology Practice"
+  },
+  "enrafmedica": {
+    "title": "EnrafMedica",
+    "industry": "Health / Medical Equipment",
+    "description": "Informative website for EnrafMedica: Peruvian company since 1998 dedicated to importing and distributing medical equipment and instruments. Catalog by category (urology, intensive care, outpatient, operating room, ultrasound, rescue equipment), about us and WhatsApp contact.",
+    "problem": "EnrafMedica needed a website to present its track record, medical equipment catalog by category and facilitate contact with healthcare professionals, clinics and hospitals in Lima and all of Peru.",
+    "solution": "We developed enrafmedica.com with WordPress: hero with value proposition (excellence in medical equipment since 1998), about us, catalog by category (urology, intensive care, outpatient, operating room, gynecology, ultrasound, hospital furniture, diagnostic equipment, rescue equipment), latest products, contact and WhatsApp integration.",
+    "projectDescription": "Informative website for EnrafMedica, Peruvian company founded in 1998 dedicated to importing and distributing first-class medical equipment and instruments. Includes catalog by category (urology, intensive care, outpatient, operating room, gynecology, ultrasound, hospital furniture, diagnostic and rescue equipment), about us and WhatsApp contact.",
+    "secondaryIndustry": "Import and distribution of medical equipment",
+    "forWhom": "Healthcare professionals, clinics and hospitals in Peru seeking first-class medical equipment",
+    "services": [
+      "Informative website",
+      "Product catalog",
+      "About us",
+      "Contact",
+      "WhatsApp integration"
+    ],
+    "results": []
+  }
+}

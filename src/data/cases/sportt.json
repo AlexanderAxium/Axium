@@ -1,0 +1,53 @@
+{
+  "title": "Sportt Peru",
+  "industry": "E-commerce / Deportes",
+  "image": "/images/proyects/sportt/sportt-home.jpg",
+  "location": "Perú",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "Sportt Peru",
+  "technologyStack": ["Next.js", "Tailwind CSS", "TypeScript"],
+  "secondaryIndustry": "Tenis de Mesa",
+  "forWhom": "Jugadores y aficionados al tenis de mesa que buscan equipamiento, raquetas, maderas, jebes y accesorios de calidad",
+  "services": [
+    "Tienda Virtual",
+    "Catálogo por Categorías",
+    "Integración CMS",
+    "Pasarela de pagos",
+    "Anuncios Instagram",
+    "Libro de Reclamaciones"
+  ],
+  "description": "Tienda virtual de tenis de mesa y ping pong: catálogo con categorías, integración CMS, pasarela de pagos, carrito, checkout y libro de reclamaciones.",
+  "problem": "Sportt Peru necesitaba una plataforma digital para comercializar equipamiento de tenis de mesa, con catálogo organizado por categorías y canal de contacto con clientes.",
+  "solution": "E-commerce con catálogo de productos deportivos, integración con CMS, pasarela de pagos, carrito y checkout, libro de reclamaciones digital integrado.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "100%",
+      "label": "presencia digital establecida"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "24/7",
+      "label": "tienda disponible online"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "B2C",
+      "label": "venta directa a consumidores"
+    }
+  ],
+  "projectDescription": "Desarrollamos sporttperu.com como tienda virtual para Sportt Peru, especializada en tenis de mesa y ping pong. La plataforma incluye: tienda online con catálogo organizado por categorías, integración con CMS para gestión de contenido, pasarela de pagos, carrito de compras, proceso de checkout, libro de reclamaciones digital y canal de contacto.",
+  "skillsAndDeliverables": [
+    "Next.js",
+    "Tailwind CSS",
+    "TypeScript",
+    "E-commerce",
+    "Carrito de Compras",
+    "Checkout",
+    "SEO Optimization"
+  ],
+  "publishedDate": "2025",
+  "liveUrl": "https://sporttperu.com",
+  "slug": "sportt"
+}

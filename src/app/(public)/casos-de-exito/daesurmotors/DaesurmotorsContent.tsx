@@ -1,0 +1,125 @@
+"use client";
+
+import { Clock, Globe, Monitor } from "lucide-react";
+import {
+  CaseArticle,
+  CaseArticleText,
+  CaseArticleWide,
+  CaseHeroSplit,
+  CaseImages,
+  CaseNextProject,
+} from "~/components/axium/case-blocks";
+import { CaseContactCTA } from "~/components/axium/case-contact-cta";
+import { useTranslation } from "~/hooks/useTranslation";
+import { useCaseContent } from "~/lib/case-translations";
+
+export default function DaesurmotorsContent() {
+  const data = useCaseContent("daesurmotors");
+  const { t } = useTranslation("landing");
+
+  if (!data) return null;
+
+  return (
+    <div className="min-h-screen">
+      <CaseHeroSplit
+        title={data.title}
+        description={data.description}
+        image={data.image}
+        industry={data.industry}
+        location={data.location}
+        gradient="linear-gradient(180deg, #080a0e 0%, #0c1018 50%, #101520 100%)"
+        blurOrbs={["rgba(30,50,80,0.12)", "rgba(40,60,95,0.08)"]}
+        services={data.services}
+        technologies={data.technologyStack}
+        liveUrl={data.liveUrl}
+      />
+
+      <CaseArticle>
+        <CaseArticleText>
+          <p className="text-overline mb-4 text-[#0072CF]">
+            {t("caseDetail.aboutProject")}
+          </p>
+
+          <p className="text-body-lg mb-6 leading-relaxed text-[#334155]">
+            Daesur Motors es un taller especializado en reparación y venta de
+            repuestos vehiculares en Villa María del Triunfo. Nos contactaron
+            para crear una web informativa que presentara sus servicios,
+            transmitiera confianza y permitiera a los clientes solicitar
+            cotizaciones.
+          </p>
+
+          <p className="text-body mb-8 leading-relaxed text-[#334155]">
+            Desarrollamos daesurmotors.com con WordPress: hero con propuesta de
+            valor (reparación y repuestos confiables), sobre nosotros con
+            misión, visión y valores, catálogo de servicios (mantenimiento,
+            frenos, motor, transmisión, planchado, pintura, repuestos,
+            diagnóstico electrónico, SOAT, asistencia mecánica), proceso de
+            atención, testimonios, integración con Facebook y formulario de
+            cotización.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#e2e8f0] bg-[#f1f5f9] px-3.5 py-1.5">
+              <Monitor className="h-3.5 w-3.5 text-[#0072CF]" />
+              <span className="text-pill text-[#64748b]">
+                {t("caseDetail.platform")}:
+              </span>
+              <span className="text-pill font-semibold text-[#0f172a]">
+                {data.platform}
+              </span>
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#e2e8f0] bg-[#f1f5f9] px-3.5 py-1.5">
+              <Clock className="h-3.5 w-3.5 text-[#0072CF]" />
+              <span className="text-pill text-[#64748b]">
+                {t("caseDetail.duration")}:
+              </span>
+              <span className="text-pill font-semibold text-[#0f172a]">
+                {data.duration}
+              </span>
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#e2e8f0] bg-[#f1f5f9] px-3.5 py-1.5">
+              <Globe className="h-3.5 w-3.5 text-[#0072CF]" />
+              <span className="text-pill text-[#64748b]">
+                {t("caseDetail.client")}:
+              </span>
+              <span className="text-pill font-semibold text-[#0f172a]">
+                {data.client}
+              </span>
+            </span>
+          </div>
+        </CaseArticleText>
+
+        <CaseArticleWide>
+          <div className="mb-12 lg:mb-16">
+            <CaseImages
+              images={[
+                {
+                  src: "/images/proyects/daesurmotors/daesurmotors-home.jpg",
+                  alt: "Daesur Motors — vista principal del sitio",
+                },
+                {
+                  src: "/images/proyects/daesurmotors/daesurmotors-servicios.jpg",
+                  alt: "Daesur Motors — sección de servicios",
+                },
+              ]}
+              columns={2}
+            />
+          </div>
+        </CaseArticleWide>
+
+        <CaseArticleText>
+          <p className="text-body-lg leading-relaxed text-[#334155]">
+            Hoy daesurmotors.com presenta los servicios del taller, repuestos,
+            testimonios y el formulario de cotización para que los clientes del
+            cono sur de Lima puedan contactar a Daesur Motors y programar
+            reparaciones o consultar por repuestos.
+          </p>
+        </CaseArticleText>
+      </CaseArticle>
+
+      <CaseNextProject excludeSlug="daesurmotors" />
+
+      <CaseContactCTA />
+    </div>
+  );
+}

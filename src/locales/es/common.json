@@ -1,4 +1,31 @@
 {
+  "navbar": {
+    "casosDeExito": "Casos de Éxito",
+    "servicios": "Servicios",
+    "comoTrabajamos": "Cómo Trabajamos",
+    "contacto": "Contacto",
+    "servicesMoviles": {
+      "title": "Aplicaciones Móviles",
+      "description": "Apps nativas e híbridas para iOS y Android con soporte offline."
+    },
+    "servicesWeb": {
+      "title": "Aplicaciones Web",
+      "description": "Plataformas cloud-native con alta disponibilidad y seguridad enterprise."
+    },
+    "servicesSoftware": {
+      "title": "Software a Medida",
+      "description": "Soluciones enterprise-grade adaptadas a tu arquitectura de negocio."
+    },
+    "servicesAutomatizacion": {
+      "title": "Automatización de Procesos",
+      "description": "Workflows inteligentes que reducen tareas manuales hasta en un 80%."
+    }
+  },
+  "footer": {
+    "quickLinks": "Enlaces Rápidos",
+    "description": "Tu socio tecnológico de confianza. Desarrollamos software a medida que transforma procesos manuales en sistemas eficientes y escalables.",
+    "location": "Lima, Perú"
+  },
   "signIn": "Iniciar Sesión",
   "signUp": "Registrarse",
   "dashboard": "Dashboard",

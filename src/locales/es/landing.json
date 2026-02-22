@@ -150,5 +150,182 @@
     "titleHighlight": "sin esfuerzo",
     "subtitle": "Escucha cómo profesionales escalan sus operaciones más rápido, colaboran sin problemas, y gestionan con confianza usando las poderosas herramientas de MyApp"
   },
-  "loading": "Cargando..."
+  "loading": "Cargando...",
+  "caseDetail": {
+    "backLink": "Volver a casos de éxito",
+    "aboutProject": "Sobre el proyecto",
+    "funcionalidadesClave": "Funcionalidades clave",
+    "storeVirtual": "Tienda Virtual",
+    "viewLive": "Ver en vivo",
+    "verDetalles": "Ver detalles",
+    "verPortafolio": "Ver portafolio",
+    "casosDeExito": "Casos de exito",
+    "masProyectos": "Más proyectos",
+    "anterior": "Anterior",
+    "siguiente": "Siguiente",
+    "theChallenge": "El Desafío",
+    "theSolution": "La Solución",
+    "theResults": "Los Resultados",
+    "measurableImpact": "Impacto Medible",
+    "projectDetails": "Detalles del Proyecto",
+    "industry": "Industria",
+    "platform": "Plataforma",
+    "duration": "Duración",
+    "client": "Cliente",
+    "services": "Servicios",
+    "techStack": "Stack Tecnológico",
+    "projectView": "Vista del Proyecto",
+    "secondaryIndustry": "Industria Secundaria",
+    "forWhom": "Para quién",
+    "notFound": "Caso no encontrado",
+    "notFoundDescription": "El caso que buscas no existe."
+  },
+  "home": {
+    "hero": {
+      "titlePrefix": "Software Personalizado para ",
+      "titleHighlight": "Empresas en Crecimiento",
+      "titleSuffix": " y Grandes Organizaciones",
+      "description": "Nos asociamos con empresas y organizaciones de todas las industrias ayudándolas a construir equipos de ingeniería exitosos y crear productos de software innovadores.",
+      "cta": "AGENDA UNA LLAMADA"
+    },
+    "services": {
+      "eyebrow": "Nuestros Servicios",
+      "titlePrefix": "Soluciones Tecnológicas que ",
+      "titleHighlight": "Transforman",
+      "titleSuffix": " Negocios",
+      "items": {
+        "software": {
+          "label": "Software a Medida",
+          "title": "Software a Medida",
+          "description": "Desarrollamos soluciones enterprise-grade adaptadas a tu arquitectura de negocio, con integraciones nativas y escalabilidad garantizada.",
+          "benefits": [
+            "Arquitectura personalizada",
+            "Escalabilidad horizontal",
+            "APIs integradas"
+          ],
+          "whatsappMessage": "Hola, me interesa conocer más sobre Software a Medida. Necesito una solución enterprise adaptada a mi negocio."
+        },
+        "web": {
+          "label": "Aplicaciones Web",
+          "title": "Aplicaciones Web",
+          "description": "Construimos plataformas cloud-native con alta disponibilidad, seguridad de nivel enterprise y rendimiento optimizado para miles de usuarios concurrentes.",
+          "benefits": [
+            "99.9% uptime garantizado",
+            "Seguridad multi-capa",
+            "Escalado automático"
+          ],
+          "whatsappMessage": "Hola, me interesa conocer más sobre Aplicaciones Web. Busco una plataforma cloud-native con alta disponibilidad."
+        },
+        "moviles": {
+          "label": "Aplicaciones Móviles",
+          "title": "Aplicaciones Móviles",
+          "description": "Desarrollamos apps nativas e híbridas con tecnologías modernas que ofrecen experiencias fluidas en iOS y Android, con soporte offline completo.",
+          "benefits": [
+            "Cross-platform optimizado",
+            "UX/UI de clase mundial",
+            "Sincronización offline"
+          ],
+          "whatsappMessage": "Hola, me interesa conocer más sobre Aplicaciones Móviles. Necesito una app para iOS y Android."
+        },
+        "automatizacion": {
+          "label": "Automatización de Procesos",
+          "title": "Automatización de Procesos",
+          "description": "Implementamos workflows inteligentes que reducen tareas manuales hasta en un 80%, optimizando recursos y eliminando errores humanos.",
+          "benefits": [
+            "Reducción de costos operativos",
+            "Eficiencia aumentada",
+            "Precisión del 99.9%"
+          ],
+          "whatsappMessage": "Hola, me interesa conocer más sobre Automatización de Procesos. Me gustaría saber cómo pueden ayudar a optimizar nuestros workflows."
+        },
+        "analitica-ia": {
+          "label": "Analítica Predictiva e IA",
+          "title": "Analítica Predictiva e IA",
+          "description": "Transformamos tus datos en ventajas competitivas mediante modelos de machine learning que anticipan tendencias, optimizan decisiones estratégicas y maximizan el ROI con precisión del 85-95%.",
+          "benefits": [
+            "Predicción de tendencias de mercado",
+            "Optimización de decisiones estratégicas",
+            "ROI medible desde el primer trimestre"
+          ],
+          "whatsappMessage": "Hola, me interesa conocer más sobre Analítica Predictiva e IA. Necesito convertir mis datos en ventaja competitiva."
+        },
+        "decisiones-ia": {
+          "label": "Decisiones Inteligentes",
+          "title": "Decisiones Inteligentes",
+          "description": "Implementamos sistemas de inteligencia artificial que automatizan decisiones complejas, optimizan operaciones en tiempo real y generan ahorros del 30-50% mediante algoritmos de optimización avanzados.",
+          "benefits": [
+            "Automatización de decisiones estratégicas",
+            "Optimización en tiempo real",
+            "Ahorros del 30-50% comprobables"
+          ],
+          "whatsappMessage": "Hola, me interesa conocer más sobre Decisiones Inteligentes. Busco optimizar decisiones complejas con IA."
+        }
+      },
+      "cta": "Consulta con un asesor"
+    },
+    "process": {
+      "eyebrow": "Proceso que Entrega Resultados",
+      "titlePrefix": "Inteligente, Preciso y ",
+      "titleHighlight": "Exitoso",
+      "description": "En Axium, creamos soluciones que capturan la atención del cliente, ganan su confianza y construyen relaciones duraderas basadas en innovación y éxito medible.",
+      "steps": {
+        "definir": {
+          "title": "Definir",
+          "fullTitle": "Definir lo que Importa",
+          "description": "No preguntamos qué quieres construir. Preguntamos qué vale la pena construir. Desde nuevos productos hasta migraciones de plataforma, nos enfocamos en lo que realmente impulsa resultados."
+        },
+        "construir": {
+          "title": "Construir",
+          "fullTitle": "Construir para Escalar",
+          "description": "La estética importa, pero la función importa más. Diseñamos, codificamos y conectamos sistemas que tu equipo puede usar con facilidad. Escalable, rápido y listo para crecer contigo."
+        },
+        "lanzar": {
+          "title": "Lanzar",
+          "fullTitle": "Lanzar con Confianza",
+          "description": "Sin entregas silenciosas. Testeamos fuerte, lanzamos inteligente, y nos quedamos en el ciclo, listos para arreglar, mejorar o escalar según tus necesidades cambien."
+        }
+      },
+      "badges": {
+        "primary": "Workshop Estratégico",
+        "secondary": [
+          "Diseño Detallado",
+          "Arquitectura Escalable",
+          "Sistema Modular"
+        ]
+      },
+      "cards": [
+        { "title": "Revisión de Calidad", "tag": "QA Testing" },
+        { "title": "Lanzamiento Seguro", "tag": "Deploy" },
+        { "title": "Soporte Continuo", "tag": "24/7" }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Contacto",
+      "titlePrefix": "¿Listo para ",
+      "titleHighlight": "Empezar",
+      "titleSuffix": "?",
+      "description": "Cuéntanos sobre tu proyecto y te responderemos en menos de 24 horas.",
+      "form": {
+        "name": "Nombre",
+        "namePlaceholder": "Tu nombre",
+        "email": "Email",
+        "emailPlaceholder": "tu@email.com",
+        "message": "Mensaje",
+        "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
+        "submit": "Enviar Mensaje",
+        "submitting": "Enviando..."
+      },
+      "directContact": "Contacto Directo",
+      "whatsappCta": "¿Prefieres WhatsApp?",
+      "whatsappDescription": "Respuesta inmediata para consultas rápidas.",
+      "openWhatsApp": "Abrir WhatsApp",
+      "responseTime": "Respuesta en menos de 24 horas",
+      "whatsappDefaultMessage": "Hola, me gustaría conocer más sobre los servicios de AXIUM."
+    },
+    "inspirational": {
+      "line1": "Somos más que un proveedor de tecnología.",
+      "line2": "Somos tu socio tecnológico estratégico.",
+      "line3": "Comprometidos con el éxito de tu negocio."
+    }
+  }
 }

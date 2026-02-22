@@ -1,0 +1,342 @@
+{
+  "maintech": {
+    "title": "Maintech",
+    "industry": "Educação e Tecnologia",
+    "description": "Da identidade visual a uma plataforma e-learning completa: construímos a marca, o ecossistema web e a academia digital da Maintech.",
+    "projectDescription": "Maintech é uma empresa peruana dedicada à capacitação profissional. Nos procuraram sem presença digital: não tinham logo, site nem plataforma. Precisavam construir tudo do zero e se posicionar no mercado de educação técnica online.",
+    "secondaryIndustry": "Branding e E-Learning",
+    "forWhom": "Estudantes, profissionais e equipes corporativas no Peru",
+    "services": [
+      "Design de Marca",
+      "Manual de Marca",
+      "Plataforma E-Learning",
+      "Website Corporativo"
+    ]
+  },
+  "vitalchain": {
+    "title": "VitalChain Academy",
+    "industry": "Bem-estar e Educação",
+    "description": "Website, plataforma e-learning e sistema de sorteios: desenvolvemos o ecossistema digital da VitalChain Academy para bem-estar integral com transparência blockchain.",
+    "projectDescription": "VitalChain Academy é uma iniciativa de bem-estar integral que une crescimento espiritual com tecnologia consciente.",
+    "secondaryIndustry": "Tecnologia Consciente",
+    "forWhom": "Pessoas em busca de desenvolvimento pessoal e bem-estar integral",
+    "services": [
+      "Plataforma E-Learning",
+      "Sistema de Sorteios",
+      "Blog de Conteúdo"
+    ]
+  },
+  "feniz": {
+    "title": "Feniz",
+    "industry": "Fintech / Trading",
+    "description": "Plataforma SaaS para funded traders: website, dashboard de métricas, app de desktop com automação no MetaTrader (Python) e conexão a múltiplas propfirms.",
+    "problem": "Funded traders enfrentavam o desafio de gerenciar múltiplas contas de propfirms de forma dispersa, sem visão centralizada de desempenho, P&L e métricas-chave.",
+    "solution": "Desenvolvemos uma plataforma web integral que permite conectar múltiplas contas de propfirms em um único dashboard, visualizar métricas em tempo real, gerenciar conexões ativas e otimizar estratégias de trading.",
+    "projectDescription": "Desenvolvemos esta plataforma SaaS completa para funded traders que revoluciona a gestão de contas de propfirms. Inclui dashboard com métricas em tempo real, conexão com múltiplas propfirms como FTMO, gestão centralizada de contas, planos de assinatura e ações rápidas.",
+    "secondaryIndustry": "PropFirms",
+    "forWhom": "Funded traders, propfirms e brokers que buscam gerenciar múltiplas contas de trading",
+    "services": [
+      "Dashboard Analytics",
+      "Gestão de Contas",
+      "App de Desktop",
+      "Integração API com Propfirms"
+    ],
+    "results": [
+      { "metric": "15+", "label": "usuários ativos" },
+      { "metric": "15+", "label": "propfirms integradas" },
+      { "metric": "Tempo real", "label": "métricas no dashboard" }
+    ]
+  },
+  "innersoulbright": {
+    "title": "Inner Soul Bright",
+    "industry": "Bem-estar Espiritual",
+    "description": "Website profissional para médium espiritual e curandeira energética, com design imersivo que transmite paz e conexão espiritual, apresentação de serviços de cura.",
+    "problem": "A cliente precisava de uma presença digital profissional que transmitisse a essência de seus serviços espirituais, gerasse confiança em clientes potenciais e facilitasse a divulgação de seus serviços.",
+    "solution": "Desenvolvemos um website moderno com design imersivo que combina tons cósmicos e elementos visuais de paz interior. Inclui seções detalhadas de serviços, página 'Sobre Mim' para conexão pessoal, design responsivo otimizado para conversões.",
+    "projectDescription": "Desenvolvemos este website para Inner Soul Bright, médium espiritual e curandeira energética que oferece um espaço seguro para crescimento espiritual. Inclui design imersivo com fundos cósmicos, seção de serviços de cura energética, página 'Sobre Mim' e otimização SEO.",
+    "secondaryIndustry": "Desenvolvimento Pessoal",
+    "forWhom": "Pessoas em busca de crescimento espiritual, cura energética e conexão com seu ser interior",
+    "services": ["Design Imersivo", "Página Sobre Mim"],
+    "results": [
+      { "metric": "150+", "label": "visitas ao site no primeiro mês" },
+      { "metric": "85%", "label": "aumento na visibilidade online" },
+      { "metric": "100%", "label": "satisfação do cliente com o design" }
+    ]
+  },
+  "clefast": {
+    "title": "Clefast",
+    "industry": "E-commerce Industrial",
+    "description": "Loja virtual completa para detergentes ecológicos industriais: catálogo com categorias, carrinho, checkout, promoções, blog e livro de reclamações integrado.",
+    "problem": "Necessidade de uma plataforma digital para comercializar detergentes ecológicos industriais, com catálogo organizado, promoções e canal de comunicação com clientes B2B.",
+    "solution": "E-commerce moderno com catálogo de produtos ecológicos, sistema de promoções, blog informativo, formulário de contato corporativo e livro de reclamações digital integrado.",
+    "projectDescription": "Desenvolvemos esta loja virtual completa para Clefast, empresa especializada em detergentes ecológicos para lavanderias industriais. Inclui loja online com catálogo por categorias, carrinho, checkout, promoções, blog, catálogo para download e livro de reclamações.",
+    "secondaryIndustry": "Produtos Ecológicos",
+    "forWhom": "Empresas industriais e comerciais que buscam soluções de limpeza ecológicas",
+    "services": [
+      "Loja Virtual",
+      "Catálogo por Categorias",
+      "Promoções",
+      "Blog",
+      "Checkout",
+      "Livro de Reclamações"
+    ],
+    "results": [
+      { "metric": "100%", "label": "presença digital estabelecida" },
+      { "metric": "50%", "label": "aumento em consultas de clientes" },
+      { "metric": "24/7", "label": "disponibilidade do catálogo online" }
+    ]
+  },
+  "happyart": {
+    "title": "Happy Art",
+    "industry": "E-commerce / Presentes Personalizados",
+    "description": "Identidade de marca, logo, manual de marca e loja virtual de presentes personalizados em Arequipa: categorias por ocasião, carrinho, checkout, entrega, personalização e assessoria por WhatsApp.",
+    "problem": "Happy Art precisava de uma presença digital para comercializar presentes personalizados, com catálogo organizado por ocasiões, carrinho e checkout, e canal de contato para assessoria.",
+    "solution": "Identidade de marca completa (logo, manual, papelaria) e loja virtual com WooCommerce: catálogo por categorias, minha conta com carrinho e checkout, blog de dicas, entrega, personalização e assessoria por WhatsApp.",
+    "projectDescription": "Desenvolvemos a identidade de marca completa da Happy Art — logo, manual de marca, papelaria — e a loja virtual happyart.com.pe. Inclui loja online com categorias por ocasião, carrinho e checkout, minha conta, entrega, personalização, blog, assessoria por WhatsApp e livro de reclamações.",
+    "secondaryIndustry": "Presentes Personalizados",
+    "forWhom": "Pessoas e empresas que buscam presentes personalizados para ocasiões especiais",
+    "services": [
+      "Identidade de Marca",
+      "Logo",
+      "Manual de Marca",
+      "Loja Virtual",
+      "Catálogo por Categorias",
+      "Entrega",
+      "Personalização",
+      "Minha Conta"
+    ],
+    "results": [
+      { "metric": "100%", "label": "presença digital estabelecida" },
+      { "metric": "24/7", "label": "loja disponível online" },
+      { "metric": "B2C", "label": "venda direta ao consumidor" }
+    ]
+  },
+  "redesvip": {
+    "title": "Redes VIP",
+    "industry": "Telecomunicações",
+    "description": "Website informativo para Redes VIP, provedor de internet 100% fibra óptica em Ventanilla-Callao: planos (Hogar, Duos VIP, Gamer), VIP TV +80 canais, soluções corporativas e contato por WhatsApp.",
+    "problem": "Redes VIP precisava de um website que transmitisse confiança, mostrasse seus planos de internet de forma clara e facilitasse o contato com clientes residenciais e corporativos em Ventanilla-Callao.",
+    "solution": "Desenvolvemos o website informativo com design moderno e estética tecnológica. Inclui hero com proposta de valor, planos de internet, serviços VIP TV, soluções corporativas, depoimentos e integração com WhatsApp.",
+    "projectDescription": "Desenvolvemos o website informativo para Redes VIP, provedor de internet 100% fibra óptica em Ventanilla-Callao, Peru. O site apresenta planos residenciais (Hogar, Duos VIP, Gamer), serviços VIP TV com +80 canais Full HD, soluções corporativas, depoimentos e contato por WhatsApp.",
+    "secondaryIndustry": "ISP / Fibra Óptica",
+    "forWhom": "Lares e empresas em Ventanilla-Callao que buscam internet por fibra óptica com preço justo e suporte especializado",
+    "services": [
+      "Website informativo",
+      "Catálogo de planos",
+      "VIP TV e corporativo",
+      "Integração WhatsApp"
+    ],
+    "results": []
+  },
+  "sportt": {
+    "title": "Sportt Peru",
+    "industry": "E-commerce / Esportes",
+    "description": "Loja virtual de tênis de mesa e pingue-pongue: catálogo com categorias, integração CMS, gateway de pagamento, carrinho, checkout e livro de reclamações.",
+    "problem": "Sportt Peru precisava de uma plataforma digital para comercializar equipamentos de tênis de mesa, com catálogo organizado por categorias e canal de contato com clientes.",
+    "solution": "E-commerce com catálogo de produtos esportivos, integração com CMS, gateway de pagamento, carrinho e checkout, livro de reclamações digital integrado.",
+    "projectDescription": "Desenvolvemos sporttperu.com como loja virtual para Sportt Peru, especializada em tênis de mesa. Inclui catálogo por categorias, integração CMS, gateway de pagamento, carrinho e checkout, livro de reclamações e canal de contato.",
+    "secondaryIndustry": "Tênis de Mesa",
+    "forWhom": "Jogadores e aficionados de tênis de mesa que buscam equipamentos, raquetes, madeiras, borrachas e acessórios de qualidade",
+    "services": [
+      "Loja Virtual",
+      "Catálogo por Categorias",
+      "Integração CMS",
+      "Gateway de Pagamento",
+      "Anúncios Instagram",
+      "Livro de Reclamações"
+    ],
+    "results": [
+      { "metric": "100%", "label": "presença digital estabelecida" },
+      { "metric": "24/7", "label": "loja disponível online" },
+      { "metric": "B2C", "label": "venda direta ao consumidor" }
+    ]
+  },
+  "lujan": {
+    "title": "Vitivinícola Luján",
+    "industry": "E-commerce / Bebidas",
+    "description": "Loja virtual de vitivinícola peruana: vinhos, piscos, cremes e macerados. Catálogo por categorias, integração CMS, gateway de pagamento e anúncios publicitários.",
+    "problem": "Vitivinícola Luján precisava de uma plataforma digital para vender seus vinhos, piscos e licores online, com catálogo organizado e presença nas redes.",
+    "solution": "E-commerce com catálogo por categorias, integração CMS, gateway de pagamento, carrinho e checkout, livro de reclamações e anúncios publicitários para redes.",
+    "projectDescription": "Desenvolvemos vitivinicolalujan.com como loja virtual para Vitivinícola Luján, em Santa Cruz de Flores, Cañete. Inclui catálogo de vinhos, piscos, cremes e macerados; integração CMS, gateway de pagamento; além de anúncios publicitários para redes sociais.",
+    "secondaryIndustry": "Vinhos e Piscos",
+    "forWhom": "Consumidores que buscam vinhos, piscos, cremes e macerados peruanos de qualidade",
+    "services": [
+      "Loja Virtual",
+      "Catálogo por Categorias",
+      "Integração CMS",
+      "Gateway de Pagamento",
+      "Anúncios Publicitários",
+      "Livro de Reclamações"
+    ],
+    "results": [
+      { "metric": "100%", "label": "presença digital estabelecida" },
+      { "metric": "24/7", "label": "loja disponível online" },
+      { "metric": "B2C", "label": "venda direta ao consumidor" }
+    ]
+  },
+  "ventanasantiruido": {
+    "title": "Ventanas Antiruido",
+    "industry": "Construção / Isolamento",
+    "description": "Website informativo para janelas antirruído de PVC em Lima: isolamento acústico, eficiência energética, durabilidade e segurança. Catálogo de janelas, portas e mamparas antirruído com assessoria e contato direto.",
+    "problem": "Necessidade de um website que apresente janelas e portas antirruído de PVC, explique benefícios (isolamento acústico, térmico, durabilidade) e facilite o contato com clientes interessados em Lima.",
+    "solution": "Desenvolvemos ventanasantiruido.com.pe com WordPress: hero com proposta de valor, seções de janelas, portas e mamparas antirruído, benefícios do PVC, depoimentos, FAQ e integração de contato por WhatsApp.",
+    "projectDescription": "Website informativo para Ventanas Antiruido de PVC, líderes em fabricação e instalação de janelas antirruído em Lima. Inclui proposta de valor (isola, protege, economiza com PVC), vantagens sobre janelas tradicionais, depoimentos e contato por WhatsApp.",
+    "secondaryIndustry": "Janelas e Portas de PVC",
+    "forWhom": "Lares e projetos em Lima que buscam janelas antirruído, isolamento acústico e eficiência energética",
+    "services": [
+      "Website informativo",
+      "Janelas antirruído",
+      "Portas antirruído",
+      "Mamparas antirruído",
+      "Contato WhatsApp"
+    ],
+    "results": []
+  },
+  "antiruidopvc": {
+    "title": "Decibeles",
+    "industry": "Construção / Isolamento",
+    "description": "Website da Decibeles: janelas, portas e mamparas de PVC antirruído em Lima e todo o Peru. Soluções acústicas de alta qualidade para criar espaços de calma, com isolamento térmico e eficiência energética.",
+    "problem": "Necessidade de um website institucional que posicione a Decibeles como referência em soluções antirruído de PVC, apresente janelas, portas e mamparas, e facilite o contato com clientes em Lima e todo o Peru.",
+    "solution": "Desenvolvemos antiruidopvc.pe com WordPress: hero com proposta de valor, catálogo de janelas, portas e mamparas, benefícios do PVC (isolamento acústico, economia energética, durabilidade), blog e contato por WhatsApp.",
+    "projectDescription": "Website institucional para Decibeles, especialistas em janelas, portas e mamparas de PVC antirruído. Combina design de vanguarda com informação sobre tecnologia acústica. Inclui seções de produtos, benefícios, blog e contato.",
+    "secondaryIndustry": "Janelas e Portas de PVC Antirruído",
+    "forWhom": "Famílias e projetos em Lima e Peru que buscam espaços de calma com soluções antirruído de alta qualidade",
+    "services": [
+      "Website informativo",
+      "Janelas de PVC",
+      "Portas de PVC",
+      "Mamparas de PVC",
+      "Blog",
+      "Contato WhatsApp"
+    ],
+    "results": []
+  },
+  "transportesrumi": {
+    "title": "Transportes Rumi",
+    "industry": "Logística / Mineração",
+    "description": "Brochure digital e website para Transportes Rumi: empresa peruana especializada em transporte de concentrado de minerais, mercadorias e cargas oversized. Missão, equipe, serviços por setor e contato.",
+    "problem": "Transportes Rumi precisava de material de apresentação corporativa (brochure) e presença web para se posicionar ante empresas minerais e industriais, mostrando experiência, equipe, serviços e protocolos de segurança.",
+    "solution": "Desenvolvemos brochure digital e website transportesrumi.com.pe com missão, equipe, serviços por setor, depoimentos, segurança e contato por WhatsApp.",
+    "projectDescription": "Brochure digital e website para Transportes Rumi S.A.C., empresa 100% peruana com mais de 4 anos de experiência em transporte de concentrado de minerais, mercadorias e cargas oversized. Ambas as peças apresentam equipe, serviços por setor e contato.",
+    "secondaryIndustry": "Transporte de carga pesada",
+    "forWhom": "Empresas de mineração, indústria, construção e comércio que buscam transporte de concentrados, cargas oversized e mercadorias em nível nacional",
+    "services": [
+      "Brochure digital",
+      "Website informativo",
+      "Equipe e serviços",
+      "Contato WhatsApp"
+    ],
+    "results": []
+  },
+  "villacer": {
+    "title": "Villacer",
+    "industry": "Construção / Equipamentos",
+    "description": "Branding completo e website para Villacer: empresa líder em aluguel de equipamentos e desenvolvimento de projetos de construção em Camaná. Identidade visual (logo, uniformes), website com quem somos, serviços e frota de equipamentos.",
+    "problem": "Villacer, estabelecida em Camaná desde 2017, precisava de identidade de marca profissional e presença web para se posicionar no setor de construção, mostrando aluguel de equipamentos, desenvolvimento de obras e expansão para mineração.",
+    "solution": "Desenvolvemos serviço completo de branding (logo, identidade, aplicação em uniformes) e o website villacer.com.pe com quem somos, história, serviços, frota, projetos e contato para orçamentos.",
+    "projectDescription": "Branding completo e website para Villacer, estabelecida em Camaná em 2017, líder em aluguel de equipamentos e desenvolvimento de projetos de construção. Inclui identidade visual aplicada em web e uniformes, website com missão, história, serviços e formulário de orçamento.",
+    "secondaryIndustry": "Aluguel de equipamentos e desenvolvimento de obras",
+    "forWhom": "Empresas e projetos de construção de média envergadura no sul do Peru que buscam aluguel de equipamentos e desenvolvimento de obras",
+    "services": [
+      "Branding completo",
+      "Website informativo",
+      "Aluguel de equipamentos",
+      "Desenvolvimento de obras",
+      "Contato"
+    ],
+    "results": []
+  },
+  "daesurmotors": {
+    "title": "Daesur Motors",
+    "industry": "Automotivo / Oficina",
+    "description": "Website informativo para Daesur Motors: oficina de reparação e venda de peças de veículos em VMT. Serviços (motor, freios, transmissão, funilaria, pintura, SOAT), depoimentos, processo de atendimento e formulário de orçamento.",
+    "problem": "Daesur Motors precisava de um website que apresentasse seus serviços de reparação e peças, mostrasse seu processo e facilitasse o contato para orçamentos de Villa María del Triunfo e áreas vizinhas.",
+    "solution": "Desenvolvemos daesurmotors.com com WordPress: hero com proposta de valor, sobre nós, catálogo de serviços (manutenção, freios, motor, transmissão, peças, diagnóstico, funilaria, pintura, SOAT, assistência mecânica), depoimentos, integração Facebook e formulário de orçamento.",
+    "projectDescription": "Website informativo para Daesur Motors EIRL, especialistas em reparação e peças de veículos em VMT. Inclui serviços completos, depoimentos e formulário de orçamento.",
+    "secondaryIndustry": "Reparação e peças de veículos",
+    "forWhom": "Proprietários de veículos no cone sul de Lima que buscam reparação, manutenção, peças e serviços automotivos confiáveis",
+    "services": [
+      "Website informativo",
+      "Catálogo de serviços",
+      "Formulário de orçamento",
+      "Depoimentos",
+      "Integração Facebook"
+    ],
+    "results": []
+  },
+  "firstautomation": {
+    "title": "First Automation",
+    "industry": "Industrial / Tecnologia",
+    "description": "Website informativo para First Automation: parceiro certificado AVEVA que digitaliza operações industriais. Soluções de controle, gestão, otimização e inteligência operacional. Serviços HMI/SCADA, plataforma IT/OT e transformação digital.",
+    "problem": "First Automation precisava de um website que apresentasse sua oferta como parceiro AVEVA, soluções, serviços e depoimentos de clientes do setor industrial.",
+    "solution": "Desenvolvemos first-automation.com com WordPress: hero com proposta (digitalizamos operações, Indústria 4.0), soluções AVEVA, serviços (HMI/SCADA, IT/OT, transformação digital), depoimentos e blog de novidades.",
+    "projectDescription": "Website informativo para First Automation, parceiro certificado AVEVA. Soluções SCADA, IIoT e gestão de dados industriais para pesca, hidrocarbonetos, energia, mineração e manufatura.",
+    "secondaryIndustry": "Digitalização industrial / Indústria 4.0",
+    "forWhom": "Empresas industriais que buscam soluções SCADA, IIoT e transformação digital com AVEVA",
+    "services": [
+      "Website informativo",
+      "Soluções AVEVA",
+      "Serviços HMI/SCADA",
+      "Depoimentos",
+      "Blog de novidades"
+    ],
+    "results": []
+  },
+  "toliveagain": {
+    "title": "To Live Again",
+    "industry": "ONG / Bem-estar",
+    "description": "Website informativo para To Live Again: ONG criada em 2016 dedicada a prevenir e criar consciência sobre o abuso doméstico. Inspirar vítimas a buscar ajuda, prevenir a próxima geração. Sede em Miami e presença no Peru.",
+    "problem": "To Live Again precisava de um website que apresentasse sua missão, equipe, eventos e oficinas, e facilitasse doações e contato para inspirar vítimas e criar consciência sobre o abuso doméstico na Flórida e no Peru.",
+    "solution": "Desenvolvemos toliveagain.org com WordPress: conheça-nos, o que fazemos (inspirar, prevenir, criar consciência), equipe multidisciplinar, fundadora, impacto na comunidade, eventos, doações via PayPal e integração com Instagram.",
+    "projectDescription": "Website informativo para To Live Again, ONG criada em 2016 com sede em Miami e presença no Peru. Dedicada a prevenir o abuso doméstico, inspirar vítimas a buscar ajuda e criar consciência. Inclui sobre nós, eventos, equipe, fundadora, impacto e doações.",
+    "secondaryIndustry": "Prevenção do abuso doméstico",
+    "forWhom": "Mulheres em situação de vulnerabilidade, vítimas de abuso doméstico e comunidade que busca informações sobre prevenção e consciência",
+    "services": [
+      "Website informativo",
+      "Sobre nós",
+      "Eventos e oficinas",
+      "Equipe",
+      "Doações",
+      "Contato"
+    ],
+    "results": []
+  },
+  "podologiemtk": {
+    "title": "Podologie MTK",
+    "industry": "Saúde / Podologia",
+    "description": "Website informativo para Podologie MTK: consultório de podologia de Andrea Alberts em Schwalbach am Taunus, Alemanha. Tratamentos podológicos, cuidado do pé diabético, unhas encravadas, técnicas especializadas e serviços de podologia.",
+    "problem": "O consultório de podologia precisava de um website que apresentasse seus serviços (tratamento complexo podológico, tratamento médico do pé, técnicas de órtese para unhas), horários, localização e permitisse que os pacientes agendassem consultas em Schwalbach am Taunus.",
+    "solution": "Desenvolvemos podologie-mtk.de com WordPress: hero com proposta de valor, serviços, horários, contato, perguntas frequentes e agendamento de consultas.",
+    "projectDescription": "Website informativo para Podologie MTK (Andrea Alberts), consultório de podologia em Schwalbach am Taunus, Alemanha. Especialistas em tratamento podológico, pé diabético, unhas encravadas, técnicas de órtese, órteses, próteses de unhas e cuidado de pés esportivos. Inclui serviços, horários, contato e agendamento.",
+    "secondaryIndustry": "Medicina do pé / Podologia",
+    "forWhom": "Pacientes no Main-Taunus-Kreis (Alemanha) que buscam tratamento podológico, cuidado do pé diabético, unhas encravadas e terapias especializadas",
+    "services": [
+      "Website informativo",
+      "Serviços",
+      "Horários",
+      "Contato",
+      "Perguntas frequentes",
+      "Agendamento"
+    ],
+    "results": [],
+    "client": "Consultório de podologia Andrea Alberts"
+  },
+  "enrafmedica": {
+    "title": "EnrafMedica",
+    "industry": "Saúde / Equipamentos médicos",
+    "description": "Website informativo para EnrafMedica: empresa peruana desde 1998 dedicada à importação e comercialização de equipamentos e instrumental médico. Catálogo por categorias (urologia, cuidados intensivos, consulta externa, sala de operações, ultrassom, equipamentos de resgate), sobre nós e contato por WhatsApp.",
+    "problem": "EnrafMedica precisava de um website que apresentasse sua trajetória, catálogo de equipamentos médicos por categoria e facilitasse o contato com profissionais de saúde, clínicas e hospitais em Lima e todo o Peru.",
+    "solution": "Desenvolvemos enrafmedica.com com WordPress: hero com proposta de valor (excelência em equipamentos médicos desde 1998), sobre nós, catálogo por categorias (urologia, cuidados intensivos, consulta externa, sala de operações, ginecologia, ultrassom, mobiliário hospitalar, equipamentos de diagnóstico, equipamentos de resgate), últimos produtos, contato e integração com WhatsApp.",
+    "projectDescription": "Website informativo para EnrafMedica, empresa peruana fundada em 1998 dedicada à importação e comercialização de equipamentos e instrumental médico de primeira categoria. Inclui catálogo por categorias (urologia, cuidados intensivos, consulta externa, sala de operações, ginecologia, ultrassom, mobiliário hospitalar, equipamentos de diagnóstico e resgate), sobre nós e contato por WhatsApp.",
+    "secondaryIndustry": "Importação e comercialização de equipamentos médicos",
+    "forWhom": "Profissionais de saúde, clínicas e hospitais no Peru que buscam equipamentos médicos de primeira categoria",
+    "services": [
+      "Website informativo",
+      "Catálogo de produtos",
+      "Sobre nós",
+      "Contato",
+      "Integração WhatsApp"
+    ],
+    "results": []
+  }
+}

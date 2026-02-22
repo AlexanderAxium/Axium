@@ -68,8 +68,8 @@ export function BentoSection() {
   ];
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-16 bg-gray-50/50 dark:bg-background">
-      <div className="container mx-auto max-w-7xl">
+    <section className="w-full container-section py-16 md:py-20 lg:py-16 bg-gray-50/50 dark:bg-background">
+      <div className="content-section">
         <div className="text-center mb-12 md:mb-16 lg:mb-20">
           {/* Subtle accent line */}
           <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6 md:mb-8" />

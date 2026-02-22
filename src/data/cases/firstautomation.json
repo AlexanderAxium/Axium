@@ -1,0 +1,27 @@
+{
+  "title": "First Automation",
+  "industry": "Industrial / Tecnología",
+  "image": "/images/proyects/firstautomation/firstautomation-home.jpg",
+  "location": "La Molina, Lima",
+  "platform": "Web",
+  "duration": "2024",
+  "client": "First Automation",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Digitalización industrial / Industria 4.0",
+  "forWhom": "Empresas industriales (pesquería, hidrocarburos, energía, minería, manufactura) que buscan soluciones SCADA, IIoT y transformación digital con AVEVA",
+  "services": [
+    "Web informativa",
+    "Soluciones AVEVA",
+    "Servicios HMI/SCADA",
+    "Testimonios",
+    "Blog de novedades"
+  ],
+  "description": "Web informativa para First Automation: partner certificado AVEVA que digitaliza operaciones industriales. Soluciones de control, gestión, optimización e inteligencia operacional con AVEVA. Servicios HMI/SCADA, plataforma IT/OT y transformación digital.",
+  "problem": "First Automation necesitaba una web que presentara su oferta como partner certificado AVEVA, mostrara sus soluciones (control, gestión, optimización, PI System), servicios y testimonios de clientes del sector industrial.",
+  "solution": "Desarrollamos first-automation.com con WordPress: hero con propuesta (digitalizamos operaciones industriales, Industria 4.0), soluciones AVEVA (InTouch, System Platform, Historian, Reports, Insight, PI System), servicios (HMI/SCADA, IT/OT, transformación digital), testimonios de TASA, ONP y blog de novedades.",
+  "results": [],
+  "projectDescription": "Web informativa para First Automation, partner certificado de AVEVA. Especialistas en soluciones SCADA, IIoT y gestión de datos industriales para pesquería, hidrocarburos, energía, minería y manufactura. Incluye soluciones por producto AVEVA, servicios y testimonios de ingenieros de clientes.",
+  "skillsAndDeliverables": ["WordPress", "Diseño responsive", "Blog"],
+  "publishedDate": "2024",
+  "liveUrl": "https://first-automation.com"
+}

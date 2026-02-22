@@ -6,35 +6,20 @@
   "platform": "Web",
   "duration": "Sep '25 – Ene '26",
   "client": "VitalChain Academy",
+  "liveUrl": "https://vitalchainacademy.com",
   "technologyStack": ["Next.js", "Tailwind CSS", "TypeScript", "Blockchain"],
   "secondaryIndustry": "Tecnología Consciente",
   "forWhom": "Personas en búsqueda de desarrollo personal y bienestar integral",
   "services": [
     "Plataforma E-Learning",
-    "Sistema de Giveaways",
+    "Sistema de Sorteos",
     "Blog de Contenido"
   ],
-  "description": "Plataforma de bienestar integral que combina crecimiento espiritual y tecnología blockchain para transparencia digital, con programas transformadores, blog de contenido y sistema de giveaways conscientes.",
-  "problem": "Necesidad de una plataforma que integre desarrollo personal con transparencia tecnológica mediante blockchain, ofreciendo contenido transformador y experiencias de crecimiento.",
-  "solution": "Plataforma web moderna que une sabiduría ancestral con metodologías modernas, implementando blockchain para transparencia en procesos, sistema de giveaways automatizado, blog de contenido educativo y newsletter para comunidad.",
-  "results": [
-    {
-      "icon": "Users",
-      "metric": "500+",
-      "label": "usuarios registrados en la plataforma"
-    },
-    {
-      "icon": "TrendingUp",
-      "metric": "100%",
-      "label": "transparencia en procesos con blockchain"
-    },
-    {
-      "icon": "CheckCircle2",
-      "metric": "98%",
-      "label": "satisfacción de usuarios con la experiencia"
-    }
-  ],
-  "projectDescription": "Desarrollé esta plataforma de bienestar integral que combina crecimiento espiritual con tecnología consciente. La solución incluye sistema de programas transformadores, blog con contenido sobre blockchain y desarrollo personal, sistema de giveaways con cuenta regresiva, integración con partner de viajes Akshaya Travel, y newsletter para mantener a la comunidad informada. Todo construido con un enfoque en transparencia digital mediante tecnología blockchain.",
+  "description": "Web, plataforma e-learning y sistema de sorteo: desarrollamos el ecosistema digital de VitalChain Academy para bienestar integral con transparencia blockchain.",
+  "problem": "",
+  "solution": "",
+  "results": [],
+  "projectDescription": "VitalChain Academy es una iniciativa de bienestar integral que une crecimiento espiritual con tecnología consciente.",
   "skillsAndDeliverables": [
     "Next.js",
     "Tailwind CSS",
@@ -42,5 +27,5 @@
     "Blockchain Integration",
     "Blog System"
   ],
-  "publishedDate": "Jan 20, 2026"
+  "publishedDate": "Ene 2026"
 }

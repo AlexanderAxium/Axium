@@ -11,11 +11,11 @@
     }
   ],
   "ceo": {
-    "name": "Juan Pérez",
+    "name": "Alexander Arancibia",
     "position": "Fundador & CEO",
     "image": "/images/contact/ceo-placeholder.svg",
-    "linkedin": "https://www.linkedin.com/in/",
-    "email": "ceo@axium.com.pe"
+    "linkedin": "https://www.linkedin.com/in/alexander-arancibia",
+    "email": "alexander@axium.com.pe"
   },
   "ceoSectionTitle": "¿Prefieres contacto directo con nuestro CEO?",
   "form": {
@@ -24,16 +24,6 @@
     "messagePlaceholder": "¿Cómo podemos ayudarte?",
     "attachFileLabel": "Adjuntar archivo",
     "submitLabel": "ENVIAR"
-  },
-  "budgetOptions": {
-    "title": "Presupuesto estimado (opcional)",
-    "options": [
-      { "id": "budget-1", "label": "hasta S/20k", "value": "0-20k" },
-      { "id": "budget-2", "label": "S/20k - S/50k", "value": "20k-50k" },
-      { "id": "budget-3", "label": "S/50k - S/100k", "value": "50k-100k" },
-      { "id": "budget-4", "label": "> S/100k", "value": "100k+" },
-      { "id": "budget-5", "label": "No estoy seguro", "value": "uncertain" }
-    ]
   },
   "sourceOptions": {
     "title": "¿Cómo nos conociste? (opcional)",

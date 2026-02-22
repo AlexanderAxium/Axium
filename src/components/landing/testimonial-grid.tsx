@@ -145,8 +145,8 @@ export function TestimonialGrid() {
   ];
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-start py-16 md:py-20 lg:py-24">
-      <div className="container mx-auto max-w-7xl">
+    <section className="w-full container-section overflow-hidden flex flex-col justify-start py-16 md:py-20 lg:py-24">
+      <div className="content-section">
         <div className="text-center mb-12 md:mb-16 lg:mb-20">
           {/* Subtle accent line */}
           <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6 md:mb-8" />

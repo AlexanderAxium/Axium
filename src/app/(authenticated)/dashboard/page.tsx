@@ -196,26 +196,28 @@ export default function DashboardPage() {
   return (
     <ProtectedRoute>
       <div className="min-h-screen bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-foreground mb-4">
-              {t("welcome", { name: user?.name || "Usuario" })}
-            </h1>
-            <p className="text-muted-foreground mb-8">{t("accountSetup")}</p>
-            <Card className="max-w-md mx-auto">
-              <CardHeader>
-                <CardTitle className="text-lg">
-                  {t("accountStatusTitle")}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {user?.emailVerified
-                    ? t("accountVerified")
-                    : t("accountNeedsVerification")}
-                </p>
-              </CardContent>
-            </Card>
+        <div className="container-section py-8">
+          <div className="content-section">
+            <div className="text-center">
+              <h1 className="text-2xl font-bold text-foreground mb-4">
+                {t("welcome", { name: user?.name || "Usuario" })}
+              </h1>
+              <p className="text-muted-foreground mb-8">{t("accountSetup")}</p>
+              <Card className="max-w-md mx-auto">
+                <CardHeader>
+                  <CardTitle className="text-lg">
+                    {t("accountStatusTitle")}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    {user?.emailVerified
+                      ? t("accountVerified")
+                      : t("accountNeedsVerification")}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>

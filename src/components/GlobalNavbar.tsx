@@ -40,32 +40,12 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-const services = [
-  {
-    icon: Smartphone,
-    title: "Aplicaciones Móviles",
-    description:
-      "Apps nativas e híbridas para iOS y Android con soporte offline.",
-  },
-  {
-    icon: Cloud,
-    title: "Aplicaciones Web",
-    description:
-      "Plataformas cloud-native con alta disponibilidad y seguridad enterprise.",
-  },
-  {
-    icon: Code,
-    title: "Software a Medida",
-    description:
-      "Soluciones enterprise-grade adaptadas a tu arquitectura de negocio.",
-  },
-  {
-    icon: Workflow,
-    title: "Automatización de Procesos",
-    description:
-      "Workflows inteligentes que reducen tareas manuales hasta en un 80%.",
-  },
-];
+const NAVBAR_SERVICES = [
+  { icon: Smartphone, key: "servicesMoviles" },
+  { icon: Cloud, key: "servicesWeb" },
+  { icon: Code, key: "servicesSoftware" },
+  { icon: Workflow, key: "servicesAutomatizacion" },
+] as const;
 
 export default function GlobalNavbar() {
   const _pathname = usePathname();
@@ -135,13 +115,13 @@ export default function GlobalNavbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[100] container-section transition-all duration-300 ${
           isScrolled
             ? "backdrop-blur-md bg-card/80 border-b border-border/50 shadow-sm"
             : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="content-section">
           <div className="flex justify-between items-center h-14 md:h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -164,7 +144,7 @@ export default function GlobalNavbar() {
                     : "text-white hover:text-white/80"
                 }`}
               >
-                Casos de Éxito
+                {t("navbar.casosDeExito")}
               </Link>
 
               {/* Services Dropdown */}
@@ -181,7 +161,7 @@ export default function GlobalNavbar() {
                       : "text-white hover:text-white/80"
                   }`}
                 >
-                  Servicios
+                  {t("navbar.servicios")}
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`}
                   />
@@ -196,25 +176,27 @@ export default function GlobalNavbar() {
                   >
                     <div className="flex items-center gap-2 mb-4">
                       <Grid className="h-5 w-5 text-secondary" />
-                      <h3 className="font-semibold text-gray-900">Servicios</h3>
+                      <h3 className="font-semibold text-gray-900">
+                        {t("navbar.servicios")}
+                      </h3>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
-                      {services.map((service) => (
+                      {NAVBAR_SERVICES.map(({ icon: Icon, key }) => (
                         <Link
-                          key={service.title}
+                          key={key}
                           href="#servicios"
                           className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
                         >
                           <div className="flex items-start gap-3">
                             <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
-                              <service.icon className="w-4 h-4 text-secondary" />
+                              <Icon className="w-4 h-4 text-secondary" />
                             </div>
                             <div>
                               <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-secondary transition-colors">
-                                {service.title}
+                                {t(`navbar.${key}.title`)}
                               </h4>
                               <p className="text-xs text-gray-600 leading-relaxed">
-                                {service.description}
+                                {t(`navbar.${key}.description`)}
                               </p>
                             </div>
                           </div>
@@ -233,7 +215,7 @@ export default function GlobalNavbar() {
                     : "text-white hover:text-white/80"
                 }`}
               >
-                Cómo Trabajamos
+                {t("navbar.comoTrabajamos")}
               </Link>
 
               <Link
@@ -244,7 +226,7 @@ export default function GlobalNavbar() {
                     : "text-white hover:text-white/80"
                 }`}
               >
-                Contacto
+                {t("navbar.contacto")}
               </Link>
             </div>
 
@@ -274,7 +256,7 @@ export default function GlobalNavbar() {
                             {user?.image ? (
                               <AvatarImage
                                 src={user.image}
-                                alt={user?.name || "Usuario"}
+                                alt={user?.name || t("user")}
                               />
                             ) : (
                               <AvatarFallback className="bg-primary text-primary-foreground">

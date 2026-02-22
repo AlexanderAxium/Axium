@@ -1,0 +1,32 @@
+{
+  "title": "Podologie MTK",
+  "industry": "Salud / Podología",
+  "image": "/images/proyects/podologiemtk/podologiemtk-home.jpg",
+  "location": "Schwalbach am Taunus, Alemania",
+  "platform": "Web",
+  "duration": "2024",
+  "client": "Consultorio de podología Andrea Alberts",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Medicina del pie / Podología",
+  "forWhom": "Pacientes en Main-Taunus-Kreis (Alemania) que buscan tratamiento podológico, cuidado del pie diabético, uñas encarnadas y terapias especializadas",
+  "services": [
+    "Web informativa",
+    "Servicios",
+    "Horarios",
+    "Contacto",
+    "Preguntas frecuentes",
+    "Reserva de citas"
+  ],
+  "description": "Web informativa para Podologie MTK: consultorio de podología de Andrea Alberts en Schwalbach am Taunus, Alemania. Tratamientos podológicos, cuidado del pie diabético, uñas encarnadas, técnicas especializadas y servicios de podología.",
+  "problem": "El consultorio de podología necesitaba una web que presentara sus servicios (tratamiento complejo podológico con y sin prescripción, tratamiento médico del pie, técnicas de espigas para uñas, prótesis de uñas), horarios, ubicación y permitiera reservar citas en Schwalbach am Taunus.",
+  "solution": "Desarrollamos podologie-mtk.de con WordPress: hero con propuesta de valor, servicios (tratamiento complejo con/sin prescripción médica, tratamiento médico del pie, técnicas de espigas, prótesis de uñas, órtesis, cuidado de pies deportivos), horarios, contacto, preguntas frecuentes y reserva de citas.",
+  "results": [],
+  "projectDescription": "Web informativa para Podologie MTK (Andrea Alberts), consultorio de podología en Schwalbach am Taunus, Alemania. Especialistas en tratamiento podológico, pie diabético, uñas encarnadas, técnicas de espigas (Ross-Fraser, 3TO), órtesis, prótesis de uñas y cuidado de pies deportivos. Incluye servicios, horarios, contacto y reserva de citas.",
+  "skillsAndDeliverables": [
+    "WordPress",
+    "Diseño responsive",
+    "Integración reserva de citas"
+  ],
+  "publishedDate": "2024",
+  "liveUrl": "https://www.podologie-mtk.de"
+}

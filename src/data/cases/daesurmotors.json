@@ -1,0 +1,32 @@
+{
+  "title": "Daesur Motors",
+  "industry": "Automotriz / Taller",
+  "image": "/images/proyects/daesurmotors/daesurmotors-home.jpg",
+  "location": "Villa María del Triunfo, Lima",
+  "platform": "Web",
+  "duration": "2024",
+  "client": "Daesur Motors EIRL",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Reparación y repuestos vehiculares",
+  "forWhom": "Propietarios de vehículos en el cono sur de Lima que buscan reparación, mantenimiento, repuestos y servicios automotrices confiables",
+  "services": [
+    "Web informativa",
+    "Catálogo de servicios",
+    "Formulario de cotización",
+    "Testimonios",
+    "Integración Facebook"
+  ],
+  "description": "Web informativa para Daesur Motors: taller de reparación y venta de repuestos vehiculares en VMT. Servicios (motor, frenos, transmisión, planchado, pintura, SOAT), testimonios, proceso de atención y formulario de cotización.",
+  "problem": "Daesur Motors necesitaba una web que presentara sus servicios de reparación y repuestos, mostrara su proceso (diagnóstico, propuesta, reparación, entrega) y facilitara el contacto para cotizaciones desde Villa María del Triunfo y zonas aledañas.",
+  "solution": "Desarrollamos daesurmotors.com con WordPress: hero con propuesta de valor, sobre nosotros (misión, visión, valores), catálogo de servicios (mantenimiento, frenos, motor, transmisión, repuestos, diagnóstico electrónico, planchado, pintura, SOAT, asistencia mecánica), testimonios, integración con Facebook y formulario de cotización.",
+  "results": [],
+  "projectDescription": "Web informativa para Daesur Motors EIRL, especialistas en reparación y repuestos vehiculares en Villa María del Triunfo. Incluye servicios completos (mantenimiento preventivo, frenos, motor, transmisión, planchado, pintura, venta de repuestos, diagnóstico electrónico, SOAT, asistencia en grúa), testimonios y formulario de cotización.",
+  "skillsAndDeliverables": [
+    "WordPress",
+    "Diseño responsive",
+    "Formulario de cotización",
+    "Integración Facebook"
+  ],
+  "publishedDate": "2024",
+  "liveUrl": "https://daesurmotors.com"
+}

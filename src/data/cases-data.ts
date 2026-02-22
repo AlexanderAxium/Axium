@@ -1,17 +1,22 @@
 import { CheckCircle2, Clock, TrendingUp, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import breezyData from "./cases/breezy.json";
+import antiruidopvcData from "./cases/antiruidopvc.json";
 import clefastData from "./cases/clefast.json";
-import edusuiteData from "./cases/edusuite-platform.json";
+import daesurmotorsData from "./cases/daesurmotors.json";
+import enrafmedicaData from "./cases/enrafmedica.json";
 import fenizData from "./cases/feniz.json";
+import firstautomationData from "./cases/firstautomation.json";
+import happyartData from "./cases/happyart.json";
 import innersoulbrightData from "./cases/innersoulbright.json";
-// Import JSON files directly (Next.js supports JSON imports)
+import lujanData from "./cases/lujan.json";
 import maintechData from "./cases/maintech.json";
-import medicareData from "./cases/medicare-emr.json";
+import podologiemtkData from "./cases/podologiemtk.json";
 import redesvipData from "./cases/redesvip.json";
-import retailPlatformData from "./cases/retail-cloud-platform.json";
-import sailicaData from "./cases/sailica-2-0.json";
-import starkResearchData from "./cases/stark-research-4-0.json";
+import sporttData from "./cases/sportt.json";
+import toliveagainData from "./cases/toliveagain.json";
+import transportesrumiData from "./cases/transportesrumi.json";
+import ventanasantiruidoData from "./cases/ventanasantiruido.json";
+import villacerData from "./cases/villacer.json";
 import vitalchainData from "./cases/vitalchain.json";
 
 export type CaseResult = {
@@ -41,6 +46,8 @@ export type CaseItem = {
   projectDescription?: string; // Detailed project description
   skillsAndDeliverables?: string[]; // Technologies and skills used
   publishedDate?: string; // Publication date (e.g., "Oct 18, 2025")
+  liveUrl?: string; // URL del sitio en vivo (para botón "Ver en vivo")
+  slug?: string; // URL slug (e.g., "maintech") for routing
 };
 
 // JSON types (icons as strings)
@@ -97,13 +104,19 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(fenizData as CaseItemJSON),
   convertCaseFromJSON(innersoulbrightData as CaseItemJSON),
   convertCaseFromJSON(clefastData as CaseItemJSON),
+  convertCaseFromJSON(happyartData as CaseItemJSON),
   convertCaseFromJSON(redesvipData as CaseItemJSON),
-  convertCaseFromJSON(breezyData as CaseItemJSON),
-  convertCaseFromJSON(starkResearchData as CaseItemJSON),
-  convertCaseFromJSON(sailicaData as CaseItemJSON),
-  convertCaseFromJSON(retailPlatformData as CaseItemJSON),
-  convertCaseFromJSON(edusuiteData as CaseItemJSON),
-  convertCaseFromJSON(medicareData as CaseItemJSON),
+  convertCaseFromJSON(sporttData as CaseItemJSON),
+  convertCaseFromJSON(lujanData as CaseItemJSON),
+  convertCaseFromJSON(ventanasantiruidoData as CaseItemJSON),
+  convertCaseFromJSON(antiruidopvcData as CaseItemJSON),
+  convertCaseFromJSON(transportesrumiData as CaseItemJSON),
+  convertCaseFromJSON(villacerData as CaseItemJSON),
+  convertCaseFromJSON(daesurmotorsData as CaseItemJSON),
+  convertCaseFromJSON(firstautomationData as CaseItemJSON),
+  convertCaseFromJSON(toliveagainData as CaseItemJSON),
+  convertCaseFromJSON(podologiemtkData as CaseItemJSON),
+  convertCaseFromJSON(enrafmedicaData as CaseItemJSON),
 ];
 
 export { cases };
