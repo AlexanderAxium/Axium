@@ -75,6 +75,39 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   "financial-management": financialManagementData as Record<string, unknown>,
 };
 
+/** Orden de casos en la lista (store-saas = 5º, financial-management = 8º) */
+const CASE_ORDER: string[] = [
+  "anjsports",
+  "maintech",
+  "vitalchain",
+  "feniz",
+  "store-saas",
+  "innersoulbright",
+  "clefast",
+  "financial-management",
+  "happyart",
+  "redesvip",
+  "sportt",
+  "lujan",
+  "ventanasantiruido",
+  "antiruidopvc",
+  "transportesrumi",
+  "villacer",
+  "daesurmotors",
+  "firstautomation",
+  "toliveagain",
+  "podologiemtk",
+  "enrafmedica",
+  "huarmis",
+  "favorygracia",
+  "hotelesparaiso",
+  "jcpingenieros",
+  "lifetoursfl",
+  "comunicarte",
+  "ghiperu",
+  "siclo",
+];
+
 const translatableFields = [
   "title",
   "industry",
@@ -139,9 +172,8 @@ export function getCaseContent(slug: string, locale: string): CaseItem | null {
  * Returns all cases with translated content for the given locale.
  */
 export function getAllCasesWithLocale(locale: string): CaseItem[] {
-  const slugs = Object.keys(baseCasesBySlug);
   const cases: CaseItem[] = [];
-  for (const slug of slugs) {
+  for (const slug of CASE_ORDER) {
     const caseItem = getCaseContent(slug, locale);
     if (caseItem) cases.push(caseItem);
   }

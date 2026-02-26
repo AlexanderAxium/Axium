@@ -108,14 +108,16 @@ function convertCaseFromJSON(caseJson: CaseItemJSON): CaseItem {
   };
 }
 
-// Load all JSON cases and convert them to CaseItem[]
+// Load all JSON cases and convert them to CaseItem[] (orden: store-saas = 5º, financial-management = 8º)
 const cases: CaseItem[] = [
   convertCaseFromJSON(anjsportsData as CaseItemJSON),
   convertCaseFromJSON(maintechData as CaseItemJSON),
   convertCaseFromJSON(vitalchainData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
+  convertCaseFromJSON(storeSaasData as CaseItemJSON),
   convertCaseFromJSON(innersoulbrightData as CaseItemJSON),
   convertCaseFromJSON(clefastData as CaseItemJSON),
+  convertCaseFromJSON(financialManagementData as CaseItemJSON),
   convertCaseFromJSON(happyartData as CaseItemJSON),
   convertCaseFromJSON(redesvipData as CaseItemJSON),
   convertCaseFromJSON(sporttData as CaseItemJSON),
@@ -137,8 +139,6 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(comunicarteData as CaseItemJSON),
   convertCaseFromJSON(ghiperuData as CaseItemJSON),
   convertCaseFromJSON(sicloData as CaseItemJSON),
-  convertCaseFromJSON(storeSaasData as CaseItemJSON),
-  convertCaseFromJSON(financialManagementData as CaseItemJSON),
 ];
 
 export { cases };
