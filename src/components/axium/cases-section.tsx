@@ -38,6 +38,15 @@ const slugMap: Record<string, string> = {
   EnrafMedica: "enrafmedica",
   Huarmis: "huarmis",
   "Favor & Gracia Church": "favorygracia",
+  "Hoteles Paraíso": "hotelesparaiso",
+  "JCP Ingenieros": "jcpingenieros",
+  "Travel Life": "lifetoursfl",
+  "Comunicarte Editores": "comunicarte",
+  "GHI Peru": "ghiperu",
+  "ANJ Sports": "anjsports",
+  "Instructor Management System": "siclo",
+  "E-commerce & Inventory SaaS": "store-saas",
+  "Financial Management System": "financial-management",
 };
 
 export interface CasesSectionProps {

@@ -22,6 +22,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
 import { getInitials } from "@/lib/utils/avatar";
 import {
+  Brain,
   ChevronDown,
   Cloud,
   Code,
@@ -29,6 +30,7 @@ import {
   LayoutDashboard,
   LogOut,
   Menu,
+  Palette,
   Settings,
   Shield,
   Smartphone,
@@ -41,10 +43,20 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const NAVBAR_SERVICES = [
-  { icon: Smartphone, key: "servicesMoviles" },
-  { icon: Cloud, key: "servicesWeb" },
-  { icon: Code, key: "servicesSoftware" },
-  { icon: Workflow, key: "servicesAutomatizacion" },
+  {
+    icon: Smartphone,
+    key: "servicesMoviles",
+    href: "/servicios/aplicaciones-moviles",
+  },
+  { icon: Cloud, key: "servicesWeb", href: "/servicios/aplicaciones-web" },
+  { icon: Code, key: "servicesSoftware", href: "/servicios/software-a-medida" },
+  {
+    icon: Workflow,
+    key: "servicesAutomatizacion",
+    href: "/servicios/automatizacion-de-procesos",
+  },
+  { icon: Brain, key: "servicesAnalitica", href: "/servicios/analitica-e-ia" },
+  { icon: Palette, key: "servicesBranding", href: "/servicios/branding-ui" },
 ] as const;
 
 export default function GlobalNavbar() {
@@ -170,7 +182,7 @@ export default function GlobalNavbar() {
                 {/* Services Mega Menu */}
                 {isServicesOpen && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
                     onMouseEnter={handleServicesMouseEnter}
                     onMouseLeave={handleServicesMouseLeave}
                   >
@@ -180,11 +192,11 @@ export default function GlobalNavbar() {
                         {t("navbar.servicios")}
                       </h3>
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      {NAVBAR_SERVICES.map(({ icon: Icon, key }) => (
+                    <div className="grid grid-cols-3 gap-3">
+                      {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
                         <Link
                           key={key}
-                          href="/#servicios"
+                          href={href}
                           className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
                         >
                           <div className="flex items-start gap-3">
@@ -360,14 +372,29 @@ export default function GlobalNavbar() {
                         <Shield className="h-4 w-4 text-gray-400" />
                         {t("navbar.casosDeExito")}
                       </Link>
-                      <Link
-                        href="/#servicios"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
-                      >
-                        <Grid className="h-4 w-4 text-gray-400" />
-                        {t("navbar.servicios")}
-                      </Link>
+                      <div className="px-4 pt-2 pb-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Grid className="h-4 w-4 text-gray-400" />
+                          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                            {t("navbar.servicios")}
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-1 pl-1">
+                          {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
+                            <Link
+                              key={key}
+                              href={href}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
+                            >
+                              <Icon className="h-3.5 w-3.5 flex-shrink-0 text-secondary" />
+                              <span className="text-xs leading-tight">
+                                {t(`navbar.${key}.title`)}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                       <Link
                         href="/#como-trabajamos"
                         onClick={() => setIsMenuOpen(false)}

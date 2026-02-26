@@ -1,8 +1,10 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "~/hooks/useTranslation";
 
@@ -12,7 +14,7 @@ const SERVICE_IDS = [
   "moviles",
   "automatizacion",
   "analitica-ia",
-  "decisiones-ia",
+  "branding-ui",
 ] as const;
 
 const SERVICE_IMAGES: Record<string, string> = {
@@ -21,7 +23,16 @@ const SERVICE_IMAGES: Record<string, string> = {
   moviles: "/service3.png",
   automatizacion: "/service4.png",
   "analitica-ia": "/service5.png",
-  "decisiones-ia": "/service6.png",
+  "branding-ui": "/service6.png",
+};
+
+const SERVICE_HREFS: Record<string, string> = {
+  software: "/servicios/software-a-medida",
+  web: "/servicios/aplicaciones-web",
+  moviles: "/servicios/aplicaciones-moviles",
+  automatizacion: "/servicios/automatizacion-de-procesos",
+  "analitica-ia": "/servicios/analitica-e-ia",
+  "branding-ui": "/servicios/branding-ui",
 };
 
 const smoothEase = [0.4, 0, 0.2, 1] as const;
@@ -133,20 +144,29 @@ export function ServicesSection() {
                               </li>
                             ))}
                           </ul>
-                          <button
-                            type="button"
-                            onClick={() =>
-                              handleWhatsApp(
-                                t(`home.services.items.${id}.whatsappMessage`)
-                              )
-                            }
-                            className="relative inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white font-semibold rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
-                          >
-                            <span className="absolute inset-0 bg-gradient-to-r from-[#7ECFC3] to-[#0072CF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <span className="relative z-10">
-                              {t("home.services.cta")}
-                            </span>
-                          </button>
+                          <div className="flex flex-wrap items-center gap-3">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handleWhatsApp(
+                                  t(`home.services.items.${id}.whatsappMessage`)
+                                )
+                              }
+                              className="relative inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white font-semibold rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
+                            >
+                              <span className="absolute inset-0 bg-gradient-to-r from-[#7ECFC3] to-[#0072CF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              <span className="relative z-10">
+                                {t("home.services.cta")}
+                              </span>
+                            </button>
+                            <Link
+                              href={SERVICE_HREFS[id] ?? "/#servicios"}
+                              className="inline-flex items-center gap-1.5 px-5 py-2.5 border border-gray-200 text-gray-700 font-semibold rounded-lg hover:border-[#0072CF] hover:text-[#0072CF] transition-all duration-200 text-sm"
+                            >
+                              Ver detalles
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </Link>
+                          </div>
                         </div>
 
                         <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">

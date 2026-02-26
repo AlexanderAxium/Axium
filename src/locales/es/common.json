@@ -19,6 +19,14 @@
     "servicesAutomatizacion": {
       "title": "Automatización de Procesos",
       "description": "Workflows inteligentes que reducen tareas manuales hasta en un 80%."
+    },
+    "servicesAnalitica": {
+      "title": "Analítica e IA",
+      "description": "Machine learning y dashboards que convierten tus datos en decisiones estratégicas."
+    },
+    "servicesBranding": {
+      "title": "Branding & UI",
+      "description": "Identidad visual y sistemas de diseño que diferencian tu marca en el mercado."
     }
   },
   "footer": {

@@ -375,5 +375,167 @@
       "Contact"
     ],
     "results": []
+  },
+  "hotelesparaiso": {
+    "title": "Hoteles Paraíso",
+    "industry": "Hospitality & Tourism",
+    "description": "Informative website for Hoteles Paraíso in northern Peru: digital presence with information on locations in Trujillo, Chiclayo and Piura, Instagram integration to showcase experiences and direct contact.",
+    "problem": "Need for a website that presents Hoteles Paraíso's offering in northern Peru, connects with travelers and leverages Instagram visual content to inspire bookings.",
+    "solution": "We developed hotelesparaiso.axium.com.pe with React: informative site with locations (Trujillo, Chiclayo, Piura), Instagram-integrated gallery, room and service information, and contact and booking channels.",
+    "projectDescription": "Hoteles Paraíso is a hotel chain in northern Peru with presence in Trujillo, Chiclayo and Piura. We developed an informative React website that presents each location, highlights the guest experience and integrates with Instagram to showcase the hotels' visual content in real time, making it easy for travelers to discover the facilities and get in touch for bookings.",
+    "secondaryIndustry": "Informative website",
+    "forWhom": "Travelers and tourists looking for accommodation in northern Peru",
+    "services": [
+      "Informative website",
+      "Instagram integration",
+      "Responsive design",
+      "Bookings and contact"
+    ],
+    "results": []
+  },
+  "jcpingenieros": {
+    "title": "JCP Ingenieros",
+    "industry": "Engineering & Consulting",
+    "description": "Informative website for JCP Ingenieros: comprehensive solutions for hospital equipment, specialized consulting for high-tech projects in Peru and Latin America.",
+    "problem": "JCP Ingenieros needed a professional web presence to showcase their hospital consulting services, track record and projects to attract healthcare sector clients.",
+    "solution": "We developed jcpingenieros.com on WordPress: informative site with services (technical briefs, construction execution, hospital equipment, pre-investment), track record, blog and contact.",
+    "projectDescription": "JCP Ingenieros is a leading hospital equipment consulting firm since 2013, with presence in Peru and Central America. They have developed over 49 technical briefs for healthcare facilities at all levels and use BIM methodology. We developed their informative WordPress website with service sections —technical briefs, construction execution, hospital equipment and pre-investment—, track record, mission and vision, about us, projects, blog and contact channels to position their offering with ministries, regional hospitals and healthcare sector entities.",
+    "secondaryIndustry": "Hospital equipment",
+    "forWhom": "Healthcare facilities, ministries and entities requiring hospital equipment consulting",
+    "services": [
+      "Technical Briefs",
+      "Construction Execution",
+      "Hospital Equipment",
+      "Pre-investment"
+    ],
+    "results": []
+  },
+  "lifetoursfl": {
+    "title": "Travel Life",
+    "industry": "Travel & Tourism",
+    "description": "Digital platform for Travel Life: travel agency with flight search, promotions, quotes, user registration, dashboard and payments built with Next.js and PostgreSQL.",
+    "problem": "Travel Life needed a modern web platform to centralize flights, promotions and quotes, with a client area and integrated payments, to compete as a digital travel agency.",
+    "solution": "We developed lifetoursfl.com with Next.js and PostgreSQL: flight catalog, promotions, quote form, authentication (login/register), user dashboard and payment gateway (Visa, Mastercard, Amex, PayPal).",
+    "projectDescription": "Travel Life is a digital travel agency based in Florida. We built a full platform with Next.js and PostgreSQL including: flight search and display, promotions section, quote requests, authentication (login and register), user dashboard once logged in, and payment gateway integration (Visa, Mastercard, Amex, PayPal). The PostgreSQL-backed architecture allows secure, scalable management of users, quotes and transactions, with a fast, responsive experience powered by Next.js.",
+    "secondaryIndustry": "Digital travel agency",
+    "forWhom": "Travelers looking for flights, promotions and quotes with an agile, secure digital experience",
+    "services": [
+      "Flight search and booking",
+      "Promotions and offers",
+      "Quote request",
+      "User account and dashboard",
+      "Payment gateway"
+    ],
+    "results": []
+  },
+  "comunicarte": {
+    "title": "Comunicarte Editores",
+    "industry": "Publishing & Culture",
+    "description": "Web ecosystem for Comunicarte Editores: purpose-driven publisher since 2013 — physical and international publishing, editorial and print services, online store, distribution, social programs and three-step editorial process.",
+    "problem": "Comunicarte needed a digital ecosystem that unified their editorial offer (physical and international publishing, editorial and print services), the book store, quote requests, social programs and presence at fairs like FIL Lima 2026, with a clear experience for authors and buyers.",
+    "solution": "We developed comunicarte.artacuri.net.pe with WordPress and WooCommerce: landing per publishing model (Physical, International, Editorial, Print), store with catalog and cart, custom quote form, global distribution and social programs (Las Aventuras de Amadeo, FESTILEC), news, interviews, testimonials and three-step flow (share your vision → roadmap → we publish your legacy).",
+    "projectDescription": "Comunicarte Editores is a purpose-driven publisher since 2013, an ally for independent authors. The project integrates four pillars: Physical Publishing (ISBN, Legal Deposit, INDECOPI, national distribution, FIL Lima presence), International Author (print on demand, eBook, Amazon, bookstores in 10 countries), Editorial Services (360° editing, cover design, layout, legal registration, launches) and Print Services (books, stationery, events). The site includes an online store with categories and cart, quote request with 24-hour response, global distribution and social programs (inclusion and reading promotion), news, interviews and testimonials. The author journey is presented in three steps: share vision, receive roadmap and publish legacy, reinforcing Comunicarte's position as a publisher with cultural impact.",
+    "secondaryIndustry": "Independent publishing and e-commerce",
+    "forWhom": "Independent authors, writers and readers looking to publish, distribute or buy books with a purpose-driven publisher",
+    "services": [
+      "Physical Publishing",
+      "International Author (POD and eBook)",
+      "Editorial Services",
+      "Print Services",
+      "Online store",
+      "Distribution and Social Programs"
+    ],
+    "results": []
+  },
+  "ghiperu": {
+    "title": "GHI Peru",
+    "industry": "Hotel Consulting",
+    "description": "Institutional website for GHI Peru — hotel consultants with experience in management, strategic planning, standards and implementation of quality systems for independent lodgings across Peru.",
+    "problem": "GHI Peru needed a web presence to communicate their hotel consulting offer, programs (group consulting, MicroTraining, managers meeting) and team, to reach independent hotels and associations.",
+    "solution": "We developed ghiperu.com: institutional site with about us, hotels they work with, GHI programs, Our Team (Guillermo Martínez de Pinillos, Pierina Valverde, Viviana Madrid) and contact.",
+    "projectDescription": "GHI Peru is a consulting brand with experience in management, strategic planning, definition of standards and implementation of systems for quality across all operational areas of independent lodgings. The site presents their focus on results (commercial objectives, operational efficiency, profitability), the hotels they support across Peru, exclusive programs —Group Consulting in Hotel Management, MicroTraining Hotelero, Annual Hotel Managers Meeting— and the expert team, with integrated contact channel.",
+    "secondaryIndustry": "Hotel consultants",
+    "forWhom": "Independent hotels and associations seeking management, strategic planning and quality standards",
+    "services": [
+      "Group Consulting in Hotel Management",
+      "MicroTraining Hotelero",
+      "Annual Hotel Managers Meeting"
+    ],
+    "results": []
+  },
+  "anjsports": {
+    "title": "ANJ Sports",
+    "industry": "Sports & E-commerce",
+    "description": "Table tennis online store for ANJ Sports: rackets, rubbers and accessories with catalog by brands, featured products, register to save and customer service.",
+    "problem": "ANJ Sports needed an online store to present their table tennis offer (rackets, rubbers, accessories), highlight leading brands and facilitate purchase and contact in Peru.",
+    "solution": "We developed anjsports.com with WordPress and WooCommerce: featured and latest products, catalog by brands (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer), testimonials section, register for offers, my account, customer service (FAQ, payment methods, returns) and complaints book.",
+    "projectDescription": "ANJ Sports is a table tennis specialty store in Peru. We developed their e-commerce with WordPress and WooCommerce: featured and latest products on the homepage, catalog with brands like Butterfly, VICTAS, XIOM, SANWEI and Dr. Neubauer, testimonials section, register-to-save campaign, My Account area (login, offers, order history), customer service with FAQs and payment methods, returns, and legal links including complaints book. The site reinforces ANJ's presence as a reference for table tennis rackets, rubbers and accessories.",
+    "secondaryIndustry": "Table tennis",
+    "forWhom": "Table tennis players and enthusiasts looking for rackets, rubbers and accessories in Peru",
+    "services": [
+      "Online store",
+      "Featured and latest products",
+      "Brands (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer)",
+      "Register and offers",
+      "Testimonials and news"
+    ],
+    "results": []
+  },
+  "siclo": {
+    "title": "Instructor Management System",
+    "industry": "SaaS / Education",
+    "description": "Instructor management SaaS: centralized administration, class registration, Excel import, payment calculation and documentation. Built with Next.js for performance and scalability.",
+    "problem": "A platform was needed to unify instructor management, class registration by discipline, bulk import from Excel, payment calculation by occupancy and category, and documentation for teams.",
+    "solution": "A SaaS was built with Next.js including: instructor management (disciplines, categories, status), class registration with occupancy and covers, bulk import with validation, automatic payment calculation with bonuses and penalties, configurable points system and centralized documentation.",
+    "projectDescription": "Instructor Management System is the name of the system: a SaaS platform that centralizes instructor management, weekly class registration by discipline, bulk import from Excel, automatic payment calculation by occupancy and custom formulas, and documentation for teams. It includes bonuses, penalties, covers and flexible configuration of periods and rates. Built with Next.js and TypeScript for a scalable and maintainable base.",
+    "secondaryIndustry": "Platform for instructors",
+    "forWhom": "Studios, gyms and teams that manage instructors, classes, payments and disciplines",
+    "services": [
+      "Instructor management",
+      "Class registration",
+      "Bulk import",
+      "Automatic payment calculation",
+      "Bonuses and penalties",
+      "Flexible configuration"
+    ],
+    "results": []
+  },
+  "store-saas": {
+    "title": "E-commerce & Inventory SaaS",
+    "industry": "SaaS / E-commerce",
+    "description": "Our own e-commerce and inventory SaaS: catalog with variants, stock and Kardex control, orders and POS, dashboard with revenue and trends, coupons and multi-store. One platform to sell and operate.",
+    "problem": "A unified platform was needed that combined online store, inventory management (stock, variants, restock alerts), orders and point of sale, sales analytics and payment methods, with multi-store and team support.",
+    "solution": "We built a SaaS with Next.js that integrates: product catalog with categories, collections and variants (size, color), prices and descriptions; inventory per variant with restock threshold and notifications; Kardex; online orders and POS; dashboard with revenue, orders, clients, sales trend and payment methods; coupons, content and page builder; multi-store and team management.",
+    "projectDescription": "E-commerce & Inventory SaaS is a platform we created that combines online store and inventory system in one product. It includes full product management (name, slug, provider, categories, collections, variants, prices, description, media), restock threshold and allow backorders; stock control per variant, inventory value and low-stock alerts; Kardex module for movements; orders and integrated point of sale; dashboard with date filters, total revenue, orders, clients, active and low-stock products, sales trend and breakdown by payment method; coupons, content and featured sections; multi-store (change store) and team management. Built with Next.js and TypeScript for scalability and maintainability.",
+    "secondaryIndustry": "E-commerce and inventory",
+    "forWhom": "Stores and brands that sell online and need catalog, orders, inventory and analytics control in one platform",
+    "services": [
+      "Product and catalog management",
+      "Inventory and Kardex control",
+      "Orders and POS",
+      "Dashboard and analytics",
+      "Coupons and content",
+      "Multi-store and team"
+    ],
+    "results": []
+  },
+  "financial-management": {
+    "title": "Financial Management System",
+    "industry": "SaaS / Finance",
+    "description": "Integrated financial management system to digitize accounting processes and regulatory compliance: SUNAT electronic record synchronization, bank account management with automated reconciliation, supplier database and chart of accounts tracking. Includes transaction matching, comprehensive reporting and tax compliance management.",
+    "problem": "A platform was needed to unify document management (vouchers, series, amounts, status), SUNAT validation and synchronization, bank account and reconciliation administration, supplier registry, chart of accounts and journal entries, and reporting and audit for compliance and financial decisions.",
+    "solution": "I designed and built a financial management system with Next.js that integrates: document management (type, series-number, dates, supplier, tax ID, subtotal, tax, total, withholding, pending, status); SUNAT validation and withholdings; bank accounts with reconciliation; movements with Excel/CSV import; accounting and journal entry templates; reports, CONCAR, audit logs and analytics.",
+    "projectDescription": "Financial Management System is a platform I designed and built to digitize accounting processes and regulatory compliance. The solution incorporates SUNAT electronic record synchronization, bank account management with automated reconciliation, supplier database administration, and detailed chart of accounts tracking. It delivers specialized capabilities for financial transaction matching, comprehensive reporting, and tax compliance management, providing businesses with a centralized system that optimizes financial operations and maintains precise accounting standards.",
+    "secondaryIndustry": "Financial and accounting management",
+    "forWhom": "Businesses that need to centralize accounts payable, bank reconciliation, SUNAT compliance and accounting reports in one platform",
+    "services": [
+      "Document management",
+      "SUNAT validation and tax compliance",
+      "Bank accounts and reconciliation",
+      "Suppliers and database",
+      "Accounting and chart of accounts",
+      "Reports, audit and analytics"
+    ],
+    "results": []
   }
 }

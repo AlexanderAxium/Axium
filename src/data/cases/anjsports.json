@@ -1,0 +1,27 @@
+{
+  "title": "ANJ Sports",
+  "industry": "Deportes y E-commerce",
+  "image": "/images/proyects/anjsports/anjsports-hero.jpg",
+  "location": "Perú",
+  "platform": "Web",
+  "duration": "2026",
+  "client": "ANJ Sports",
+  "technologyStack": ["WordPress", "WooCommerce", "PHP"],
+  "secondaryIndustry": "Tenis de mesa",
+  "forWhom": "Jugadores y aficionados al tenis de mesa que buscan raquetas, gomas y accesorios en Perú",
+  "services": [
+    "Tienda online",
+    "Productos destacados y últimos",
+    "Marcas (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer)",
+    "Registro y ofertas",
+    "Testimonios y noticias"
+  ],
+  "description": "Tienda online de tenis de mesa para ANJ Sports: raquetas, gomas y accesorios con catálogo por marcas, productos destacados, registro para ahorrar y servicio al cliente.",
+  "problem": "ANJ Sports necesitaba una tienda virtual que presentara su oferta de tenis de mesa (raquetas, gomas, accesorios), destacara marcas líderes y facilitara la compra y el contacto en Perú.",
+  "solution": "Desarrollamos anjsports.com con WordPress y WooCommerce: productos destacados y últimos, catálogo por marcas (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer), sección de testimonios, registro para ofertas, mi cuenta, servicio al cliente (FAQ, formas de pago, cambios y devoluciones) y libro de reclamaciones.",
+  "results": [],
+  "projectDescription": "ANJ Sports es una tienda especializada en tenis de mesa en Perú. Desarrollamos su e-commerce con WordPress y WooCommerce: productos destacados y últimos productos en portada, catálogo con marcas como Butterfly, VICTAS, XIOM, SANWEI y Dr. Neubauer, sección de testimonios, campaña de registro para ahorrar, área Mi cuenta (login, ofertas, historial de pedidos), servicio al cliente con preguntas frecuentes y formas de pago, cambios y devoluciones, y enlaces legales incluyendo libro de reclamaciones. La web refuerza la presencia de ANJ como referencia en raquetas, gomas y accesorios de tenis de mesa.",
+  "publishedDate": "2026",
+  "liveUrl": "https://anjsports.com",
+  "slug": "anjsports"
+}

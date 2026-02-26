@@ -1,0 +1,27 @@
+{
+  "title": "Financial Management System",
+  "industry": "SaaS / Finanzas",
+  "image": "/images/proyects/financial-management/financial-management-hero.png",
+  "location": "Perú",
+  "platform": "Web (SaaS)",
+  "duration": "2025",
+  "client": "Plataforma",
+  "technologyStack": ["Next.js", "NestJS", "TypeScript", "Tailwind CSS"],
+  "secondaryIndustry": "Gestión financiera y contable",
+  "forWhom": "Empresas que necesitan centralizar cuentas por pagar, conciliación bancaria, cumplimiento SUNAT y reportes contables en una sola plataforma",
+  "services": [
+    "Gestión de documentos",
+    "Validación SUNAT y cumplimiento tributario",
+    "Cuentas bancarias y conciliación",
+    "Proveedores y base de datos",
+    "Contabilidad y plan de cuentas",
+    "Reportes, auditoría y analíticas"
+  ],
+  "description": "Sistema integrado de gestión financiera para digitalizar procesos contables y cumplimiento regulatorio: sincronización con registros electrónicos SUNAT, cuentas bancarias con conciliación automática, base de proveedores y trazabilidad del plan de cuentas. Incluye matching de transacciones, reportes y gestión de cumplimiento tributario.",
+  "problem": "Se necesitaba una plataforma que unificara la gestión de documentos (comprobantes, series, montos, estados), la validación y sincronización con SUNAT, la administración de cuentas bancarias y conciliación, el registro de proveedores, el plan de cuentas y asientos, y los reportes y auditoría para cumplimiento y decisiones financieras.",
+  "solution": "Diseñé y construí un sistema de gestión financiera con Next.js que integra: gestión de documentos (tipo, serie-número, fechas, proveedor, RUC, subtotal, IGV, total, detracción, pendiente, estado); validación SUNAT y detracciones; cuentas bancarias (total, activas, inactivas) con número, tipo, alias, cuenta contable y moneda; movimientos/transacciones bancarias con importación Excel/CSV y exportación; conciliación; contabilidad y plantillas de asientos; reportes, CONCAR, audit logs y analytics.",
+  "results": [],
+  "projectDescription": "Financial Management System es una plataforma que diseñé y construí para digitalizar procesos contables y el cumplimiento regulatorio. La solución incorpora sincronización con registros electrónicos SUNAT, gestión de cuentas bancarias con conciliación automática, administración de la base de proveedores y seguimiento detallado del plan de cuentas. Ofrece capacidades específicas para el matching de transacciones financieras, reportes integrales y gestión de cumplimiento tributario, proporcionando a las empresas un sistema centralizado que optimiza las operaciones financieras y mantiene estándares contables precisos.",
+  "publishedDate": "2025",
+  "slug": "financial-management"
+}

@@ -379,5 +379,167 @@
       "Contacto"
     ],
     "results": []
+  },
+  "hotelesparaiso": {
+    "title": "Hoteles Paraíso",
+    "industry": "Hotelería y Turismo",
+    "description": "Web informativa para Hoteles Paraíso en el norte del Perú: presencia digital con información de sedes en Trujillo, Chiclayo y Piura, integración con Instagram para mostrar experiencias y contacto directo.",
+    "problem": "Necesidad de una web que presente la oferta de Hoteles Paraíso en el norte del Perú, conecte con viajeros y aproveche el contenido visual de Instagram para inspirar reservas.",
+    "solution": "Desarrollamos hotelesparaiso.axium.com.pe con React: sitio informativo con sedes (Trujillo, Chiclayo, Piura), galería integrada con Instagram, información de habitaciones y servicios, y canales de contacto y reservas.",
+    "projectDescription": "Hoteles Paraíso es una cadena de hoteles en el norte del Perú con presencia en Trujillo, Chiclayo y Piura. Desarrollamos una web informativa en React que presenta cada sede, destaca la experiencia del huésped y se integra con Instagram para mostrar en tiempo real el contenido visual de los hoteles, facilitando que los viajeros conozcan las instalaciones y se contacten para reservas.",
+    "secondaryIndustry": "Web informativa",
+    "forWhom": "Viajeros y turistas que buscan hospedaje en el norte del Perú",
+    "services": [
+      "Web informativa",
+      "Integración Instagram",
+      "Diseño responsive",
+      "Reservas y contacto"
+    ],
+    "results": []
+  },
+  "jcpingenieros": {
+    "title": "JCP Ingenieros",
+    "industry": "Ingeniería y Consultoría",
+    "description": "Web informativa para JCP Ingenieros: soluciones integrales para equipamiento hospitalario, consultoría especializada en proyectos de alta tecnología en Perú y Latinoamérica.",
+    "problem": "JCP Ingenieros necesitaba una presencia web profesional que presentara sus servicios de consultoría hospitalaria, trayectoria y proyectos para captar clientes del sector salud.",
+    "solution": "Desarrollamos jcpingenieros.com en WordPress: sitio informativo con servicios (expedientes técnicos, ejecución de obra, equipamiento, preinversión), trayectoria, blog y contacto.",
+    "projectDescription": "JCP Ingenieros es una empresa líder en consultoría de equipamiento hospitalario desde 2013, con presencia en Perú y Centroamérica. Han desarrollado más de 49 expedientes técnicos para establecimientos de salud de todos los niveles y utilizan metodología BIM. Desarrollamos su web informativa en WordPress con secciones de servicios —expedientes técnicos, ejecución de obra, equipamiento hospitalario y preinversión—, trayectoria, misión y visión, sobre nosotros, proyectos, blog y canales de contacto para posicionar su oferta ante ministerios, hospitales regionales y entidades del sector salud.",
+    "secondaryIndustry": "Equipamiento hospitalario",
+    "forWhom": "Establecimientos de salud, ministerios y entidades que requieren consultoría en equipamiento hospitalario",
+    "services": [
+      "Expedientes Técnicos",
+      "Ejecución de Obra",
+      "Equipamiento Hospitalario",
+      "Preinversión"
+    ],
+    "results": []
+  },
+  "lifetoursfl": {
+    "title": "Travel Life",
+    "industry": "Turismo y Viajes",
+    "description": "Plataforma digital para Travel Life: agencia de viajes con búsqueda de vuelos, promociones, cotizaciones, registro de usuarios, dashboard y pagos con Next.js y PostgreSQL.",
+    "problem": "Travel Life necesitaba una plataforma web moderna que centralizara vuelos, promociones y cotizaciones, con área de clientes y pagos integrados, para competir como agencia de viajes digital.",
+    "solution": "Desarrollamos lifetoursfl.com con Next.js y PostgreSQL: catálogo de vuelos, promociones, formulario de cotización, autenticación (login/registro), dashboard de usuario y pasarela de pagos (Visa, Mastercard, Amex, PayPal).",
+    "projectDescription": "Travel Life es una agencia de viajes digital con base en Florida. Desarrollamos una plataforma completa en Next.js y PostgreSQL que incluye: búsqueda y presentación de vuelos, sección de promociones, solicitud de cotización, sistema de autenticación (inicio de sesión y registro), dashboard para el usuario una vez autenticado, y integración con pasarela de pagos (Visa, Mastercard, Amex, PayPal). La arquitectura con base de datos PostgreSQL permite gestionar usuarios, cotizaciones y transacciones de forma segura y escalable, con una experiencia responsive y rápida gracias a Next.js.",
+    "secondaryIndustry": "Agencia de viajes digital",
+    "forWhom": "Viajeros que buscan vuelos, promociones y cotizaciones con una experiencia digital ágil y segura",
+    "services": [
+      "Búsqueda y reserva de vuelos",
+      "Promociones y ofertas",
+      "Solicitud de cotización",
+      "Cuenta de usuario y dashboard",
+      "Pasarela de pagos"
+    ],
+    "results": []
+  },
+  "comunicarte": {
+    "title": "Comunicarte Editores",
+    "industry": "Editorial y Cultura",
+    "description": "Ecosistema web para Comunicarte Editores: editorial con propósito desde 2013 — publicación física e internacional, servicios editoriales e imprenta, tienda online, distribución, obras sociales y proceso editorial en tres pasos.",
+    "problem": "Comunicarte necesitaba un ecosistema digital que unificara su oferta editorial (publicación física, autor internacional, servicios editoriales e imprenta), la tienda de libros, la solicitud de presupuestos, las obras sociales y la presencia en ferias como FIL Lima 2026, con una experiencia clara para autores y compradores.",
+    "solution": "Desarrollamos comunicarte.artacuri.net.pe con WordPress y WooCommerce: landing por modelos de publicación (Física, Internacional, Editoriales, Imprenta), tienda con catálogo y carrito, formulario de presupuesto personalizado, secciones de distribución global y obras sociales (Las Aventuras de Amadeo, FESTILEC), noticias, entrevistas, testimonios y flujo en tres pasos (comparte tu visión → hoja de ruta → publicamos tu legado).",
+    "projectDescription": "Comunicarte Editores es una editorial con propósito desde 2013, aliada de autores independientes. El proyecto integra cuatro pilares: Publicación Física (ISBN, Depósito Legal, INDECOPI, distribución nacional, presencia en FIL Lima), Autor Internacional (impresión bajo demanda, eBook, Amazon, librerías en 10 países), Servicios Editoriales (corrección 360°, diseño de portada, maquetación, registro legal, lanzamientos) y Servicios de Imprenta (libros, papelería, eventos). La web incluye tienda online con categorías y carrito, solicitud de presupuesto con respuesta en 24 horas, sección de distribución global y obras sociales (programas de inclusión y fomento lector), noticias, entrevistas y testimonios. El flujo para autores se presenta en tres pasos: compartir visión, recibir hoja de ruta y publicar legado, reforzando el posicionamiento de Comunicarte como casa editorial con impacto cultural.",
+    "secondaryIndustry": "Editorial independiente y e-commerce",
+    "forWhom": "Autores independientes, escritores y lectores que buscan publicar, distribuir o comprar libros con una editorial con propósito",
+    "services": [
+      "Publicación Física",
+      "Autor Internacional (POD y eBook)",
+      "Servicios Editoriales",
+      "Servicios de Imprenta",
+      "Tienda online",
+      "Distribución y Obras Sociales"
+    ],
+    "results": []
+  },
+  "ghiperu": {
+    "title": "GHI Peru",
+    "industry": "Consultoría Hotelera",
+    "description": "Web institucional para GHI Peru — asesores hoteleros con experiencia en gestión, planeamiento estratégico, estándares e implementación de sistemas de calidad para hospedajes independientes en todo el Perú.",
+    "problem": "GHI Peru necesitaba una presencia web que comunicara su oferta de consultoría hotelera, los programas (consultoría grupal, MicroTraining, encuentro de gerentes) y el equipo, para captar hoteles independientes y asociaciones.",
+    "solution": "Desarrollamos ghiperu.com: sitio institucional con quiénes somos, hoteles con los que trabajan, programas GHI, sección Nosotros con el equipo (Guillermo Martínez de Pinillos, Pierina Valverde, Viviana Madrid) y contacto.",
+    "projectDescription": "GHI Peru es una marca consultora con experiencia en gestión, planeamiento estratégico, definición de estándares e implementación de sistemas para la calidad en todas las áreas operativas de hospedajes independientes. La web presenta su enfoque en resultados (objetivos comerciales, eficiencia operativa, rentabilidad), los hoteles que acompañan en todo el Perú, los programas exclusivos —Consultoría Grupal en Gestión Hotelera, MicroTraining Hotelero, Encuentro anual de Gerentes Hoteleros— y el equipo de expertos, con canal de contacto integrado.",
+    "secondaryIndustry": "Asesores hoteleros",
+    "forWhom": "Hoteles independientes y gremios que buscan gestión, planeamiento estratégico y estándares de calidad",
+    "services": [
+      "Consultoría Grupal en Gestión Hotelera",
+      "MicroTraining Hotelero",
+      "Encuentro anual de Gerentes Hoteleros"
+    ],
+    "results": []
+  },
+  "anjsports": {
+    "title": "ANJ Sports",
+    "industry": "Deportes y E-commerce",
+    "description": "Tienda online de tenis de mesa para ANJ Sports: raquetas, gomas y accesorios con catálogo por marcas, productos destacados, registro para ahorrar y servicio al cliente.",
+    "problem": "ANJ Sports necesitaba una tienda virtual que presentara su oferta de tenis de mesa (raquetas, gomas, accesorios), destacara marcas líderes y facilitara la compra y el contacto en Perú.",
+    "solution": "Desarrollamos anjsports.com con WordPress y WooCommerce: productos destacados y últimos, catálogo por marcas (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer), sección de testimonios, registro para ofertas, mi cuenta, servicio al cliente (FAQ, formas de pago, cambios y devoluciones) y libro de reclamaciones.",
+    "projectDescription": "ANJ Sports es una tienda especializada en tenis de mesa en Perú. Desarrollamos su e-commerce con WordPress y WooCommerce: productos destacados y últimos productos en portada, catálogo con marcas como Butterfly, VICTAS, XIOM, SANWEI y Dr. Neubauer, sección de testimonios, campaña de registro para ahorrar, área Mi cuenta (login, ofertas, historial de pedidos), servicio al cliente con preguntas frecuentes y formas de pago, cambios y devoluciones, y enlaces legales incluyendo libro de reclamaciones. La web refuerza la presencia de ANJ como referencia en raquetas, gomas y accesorios de tenis de mesa.",
+    "secondaryIndustry": "Tenis de mesa",
+    "forWhom": "Jugadores y aficionados al tenis de mesa que buscan raquetas, gomas y accesorios en Perú",
+    "services": [
+      "Tienda online",
+      "Productos destacados y últimos",
+      "Marcas (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer)",
+      "Registro y ofertas",
+      "Testimonios y noticias"
+    ],
+    "results": []
+  },
+  "siclo": {
+    "title": "Instructor Management System",
+    "industry": "SaaS / Educación",
+    "description": "SaaS de gestión para instructores: administración centralizada, registro de clases, importación desde Excel, cálculo de pagos y documentación. Construido con Next.js para rendimiento y escalabilidad.",
+    "problem": "Se necesitaba una plataforma que unificara la gestión de instructores, el registro de clases por disciplina, la importación masiva desde Excel, el cálculo de pagos según ocupación y categoría, y la documentación para equipos.",
+    "solution": "Se desarrolló un SaaS con Next.js que incluye: gestión de instructores (disciplinas, categorías, estado), registro de clases con ocupación y covers, importación masiva con validación, cálculo automático de pagos con bonos y penalizaciones, sistema de puntos configurable y documentación centralizada.",
+    "projectDescription": "Instructor Management System es el nombre del sistema: una plataforma SaaS que centraliza la gestión de instructores, el registro de clases por semana y disciplina, la importación masiva desde Excel, el cálculo automático de pagos según ocupación y fórmulas personalizadas, y la documentación para equipos. Incluye bonos, penalizaciones, covers y configuración flexible de períodos y tarifas. Construido con Next.js y TypeScript para una base escalable y mantenible.",
+    "secondaryIndustry": "Plataforma para instructores",
+    "forWhom": "Estudios, gimnasios y equipos que gestionan instructores, clases, pagos y disciplinas",
+    "services": [
+      "Gestión de instructores",
+      "Registro de clases",
+      "Importación masiva",
+      "Cálculo automático de pagos",
+      "Bonos y penalizaciones",
+      "Configuración flexible"
+    ],
+    "results": []
+  },
+  "store-saas": {
+    "title": "E-commerce & Inventory SaaS",
+    "industry": "SaaS / E-commerce",
+    "description": "SaaS propio de e-commerce e inventario: catálogo con variantes, control de stock y Kardex, pedidos y POS, dashboard con ingresos y tendencias, cupones y multi-tienda. Una sola plataforma para vender y operar.",
+    "problem": "Se necesitaba una plataforma unificada que combinara tienda online, gestión de inventario (stock, variantes, alertas de reabastecimiento), pedidos y punto de venta, analíticas de ventas y métodos de pago, con soporte multi-tienda y equipo.",
+    "solution": "Desarrollamos un SaaS con Next.js que integra: catálogo de productos con categorías, colecciones y variantes (talla, color), precios y descripciones; inventario por variante con umbral de reabastecimiento y notificaciones; Kardex; pedidos online y POS; dashboard con ingresos, órdenes, clientes, tendencia de ventas y métodos de pago; cupones, contenido y page builder; multi-tienda y gestión de equipo.",
+    "projectDescription": "E-commerce & Inventory SaaS es una plataforma creada por nosotros que une tienda online y sistema de inventario en un solo producto. Incluye gestión completa de productos (nombre, slug, proveedor, categorías, colecciones, variantes, precios, descripción, media), umbral de reabastecimiento y permitir pedidos pendientes; control de stock por variante, valor de inventario y alertas de bajo stock; módulo Kardex para movimientos; pedidos y punto de venta integrado; dashboard con filtros por fecha, ingresos totales, órdenes, clientes, productos activos y bajo stock, tendencia de ventas y desglose por métodos de pago; cupones, contenido y secciones destacadas; multi-tienda (cambiar tienda) y gestión de equipo. Construido con Next.js y TypeScript para escalabilidad y mantenimiento.",
+    "secondaryIndustry": "E-commerce e inventario",
+    "forWhom": "Tiendas y marcas que venden online y necesitan control de catálogo, pedidos, inventario y analíticas en una sola plataforma",
+    "services": [
+      "Gestión de productos y catálogo",
+      "Control de inventario y Kardex",
+      "Pedidos y POS",
+      "Dashboard y analíticas",
+      "Cupones y contenido",
+      "Multi-tienda y equipo"
+    ],
+    "results": []
+  },
+  "financial-management": {
+    "title": "Financial Management System",
+    "industry": "SaaS / Finanzas",
+    "description": "Sistema integrado de gestión financiera para digitalizar procesos contables y cumplimiento regulatorio: sincronización con registros electrónicos SUNAT, cuentas bancarias con conciliación automática, base de proveedores y trazabilidad del plan de cuentas. Incluye matching de transacciones, reportes y gestión de cumplimiento tributario.",
+    "problem": "Se necesitaba una plataforma que unificara la gestión de documentos (comprobantes, series, montos, estados), la validación y sincronización con SUNAT, la administración de cuentas bancarias y conciliación, el registro de proveedores, el plan de cuentas y asientos, y los reportes y auditoría para cumplimiento y decisiones financieras.",
+    "solution": "Diseñé y construí un sistema de gestión financiera con Next.js que integra: gestión de documentos (tipo, serie-número, fechas, proveedor, RUC, subtotal, IGV, total, detracción, pendiente, estado); validación SUNAT y detracciones; cuentas bancarias con conciliación; movimientos con importación Excel/CSV; contabilidad y plantillas de asientos; reportes, CONCAR, audit logs y analytics.",
+    "projectDescription": "Financial Management System es una plataforma que diseñé y construí para digitalizar procesos contables y el cumplimiento regulatorio. La solución incorpora sincronización con registros electrónicos SUNAT, gestión de cuentas bancarias con conciliación automática, administración de la base de proveedores y seguimiento detallado del plan de cuentas. Ofrece capacidades específicas para el matching de transacciones financieras, reportes integrales y gestión de cumplimiento tributario, proporcionando a las empresas un sistema centralizado que optimiza las operaciones financieras y mantiene estándares contables precisos.",
+    "secondaryIndustry": "Gestión financiera y contable",
+    "forWhom": "Empresas que necesitan centralizar cuentas por pagar, conciliación bancaria, cumplimiento SUNAT y reportes contables en una sola plataforma",
+    "services": [
+      "Gestión de documentos",
+      "Validación SUNAT y cumplimiento tributario",
+      "Cuentas bancarias y conciliación",
+      "Proveedores y base de datos",
+      "Contabilidad y plan de cuentas",
+      "Reportes, auditoría y analíticas"
+    ],
+    "results": []
   }
 }

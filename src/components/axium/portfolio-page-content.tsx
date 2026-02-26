@@ -39,6 +39,15 @@ const slugMap: Record<string, string> = {
   EnrafMedica: "enrafmedica",
   Huarmis: "huarmis",
   "Favor & Gracia Church": "favorygracia",
+  "Hoteles Paraíso": "hotelesparaiso",
+  "JCP Ingenieros": "jcpingenieros",
+  "Travel Life": "lifetoursfl",
+  "Comunicarte Editores": "comunicarte",
+  "GHI Peru": "ghiperu",
+  "ANJ Sports": "anjsports",
+  "Instructor Management System": "siclo",
+  "E-commerce & Inventory SaaS": "store-saas",
+  "Financial Management System": "financial-management",
 };
 
 function getSlug(title: string, slug?: string) {
@@ -47,13 +56,27 @@ function getSlug(title: string, slug?: string) {
 
 // ─── Filter definitions ───────────────────────────────────────────────────────
 const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
-  { label: "E-commerce", slugs: ["clefast", "sportt", "lujan", "happyart"] },
+  {
+    label: "E-commerce",
+    slugs: [
+      "clefast",
+      "sportt",
+      "lujan",
+      "happyart",
+      "anjsports",
+      "store-saas",
+    ],
+  },
   {
     label: "Salud",
     slugs: ["podologiemtk", "enrafmedica", "toliveagain", "innersoulbright"],
   },
   { label: "Educación", slugs: ["maintech", "vitalchain", "huarmis"] },
-  { label: "Tecnología", slugs: ["feniz", "firstautomation", "redesvip"] },
+  {
+    label: "Tecnología",
+    slugs: ["feniz", "firstautomation", "redesvip", "siclo"],
+  },
+  { label: "Finanzas", slugs: ["financial-management"] },
   {
     label: "Construcción",
     slugs: ["antiruidopvc", "ventanasantiruido", "villacer"],
@@ -61,12 +84,24 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
   { label: "Automotriz", slugs: ["daesurmotors"] },
   { label: "Logística", slugs: ["transportesrumi"] },
   { label: "Organizaciones", slugs: ["favorygracia"] },
+  { label: "Hotelería", slugs: ["hotelesparaiso", "ghiperu"] },
+  { label: "Ingeniería", slugs: ["jcpingenieros"] },
+  { label: "Turismo", slugs: ["lifetoursfl"] },
+  { label: "Editorial / Cultura", slugs: ["comunicarte"] },
 ];
 
 const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
   {
     label: "Tienda Virtual",
-    slugs: ["clefast", "sportt", "lujan", "happyart"],
+    slugs: [
+      "clefast",
+      "sportt",
+      "lujan",
+      "happyart",
+      "comunicarte",
+      "anjsports",
+      "store-saas",
+    ],
   },
   { label: "E-Learning", slugs: ["maintech", "vitalchain"] },
   {
@@ -87,9 +122,17 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
       "redesvip",
       "huarmis",
       "favorygracia",
+      "hotelesparaiso",
+      "jcpingenieros",
+      "comunicarte",
+      "ghiperu",
+      "anjsports",
     ],
   },
-  { label: "Dashboard / App", slugs: ["feniz"] },
+  {
+    label: "Dashboard / App",
+    slugs: ["feniz", "lifetoursfl", "siclo", "financial-management"],
+  },
   { label: "Donaciones", slugs: ["toliveagain", "huarmis", "favorygracia"] },
 ];
 
@@ -104,6 +147,10 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "vitalchain",
       "redesvip",
       "innersoulbright",
+      "hotelesparaiso",
+      "lifetoursfl",
+      "siclo",
+      "financial-management",
     ],
   },
   {
@@ -121,9 +168,16 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "villacer",
       "huarmis",
       "happyart",
+      "jcpingenieros",
+      "comunicarte",
+      "ghiperu",
+      "anjsports",
     ],
   },
-  { label: "WooCommerce", slugs: ["lujan", "happyart"] },
+  {
+    label: "WooCommerce",
+    slugs: ["lujan", "happyart", "comunicarte", "anjsports"],
+  },
   { label: "Blockchain", slugs: ["vitalchain"] },
   {
     label: "TypeScript",
@@ -135,6 +189,9 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "vitalchain",
       "redesvip",
       "innersoulbright",
+      "hotelesparaiso",
+      "lifetoursfl",
+      "siclo",
     ],
   },
 ];

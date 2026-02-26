@@ -5,21 +5,30 @@ import casesEs from "@/locales/es/cases.json";
 import casesPt from "@/locales/pt/cases.json";
 import { useMemo } from "react";
 import type { CaseItem } from "~/data/cases-data";
+import anjsportsData from "~/data/cases/anjsports.json";
 import antiruidopvcData from "~/data/cases/antiruidopvc.json";
 import clefastData from "~/data/cases/clefast.json";
+import comunicarteData from "~/data/cases/comunicarte.json";
 import daesurmotorsData from "~/data/cases/daesurmotors.json";
 import enrafmedicaData from "~/data/cases/enrafmedica.json";
 import favorygraciaData from "~/data/cases/favorygracia.json";
 import fenizData from "~/data/cases/feniz.json";
+import financialManagementData from "~/data/cases/financial-management.json";
 import firstautomationData from "~/data/cases/firstautomation.json";
+import ghiperuData from "~/data/cases/ghiperu.json";
 import happyartData from "~/data/cases/happyart.json";
+import hotelesparaisoData from "~/data/cases/hotelesparaiso.json";
 import huarmisData from "~/data/cases/huarmis.json";
 import innersoulbrightData from "~/data/cases/innersoulbright.json";
+import jcpingenierosData from "~/data/cases/jcpingenieros.json";
+import lifetoursflData from "~/data/cases/lifetoursfl.json";
 import lujanData from "~/data/cases/lujan.json";
 import maintechData from "~/data/cases/maintech.json";
 import podologiemtkData from "~/data/cases/podologiemtk.json";
 import redesvipData from "~/data/cases/redesvip.json";
+import sicloData from "~/data/cases/siclo.json";
 import sporttData from "~/data/cases/sportt.json";
+import storeSaasData from "~/data/cases/store-saas.json";
 import toliveagainData from "~/data/cases/toliveagain.json";
 import transportesrumiData from "~/data/cases/transportesrumi.json";
 import ventanasantiruidoData from "~/data/cases/ventanasantiruido.json";
@@ -35,6 +44,7 @@ const casesByLocale: Record<string, Record<string, Record<string, unknown>>> = {
 };
 
 const baseCasesBySlug: Record<string, Record<string, unknown>> = {
+  anjsports: anjsportsData as Record<string, unknown>,
   maintech: maintechData as Record<string, unknown>,
   vitalchain: vitalchainData as Record<string, unknown>,
   feniz: fenizData as Record<string, unknown>,
@@ -55,6 +65,14 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   enrafmedica: enrafmedicaData as Record<string, unknown>,
   huarmis: huarmisData as Record<string, unknown>,
   favorygracia: favorygraciaData as Record<string, unknown>,
+  hotelesparaiso: hotelesparaisoData as Record<string, unknown>,
+  jcpingenieros: jcpingenierosData as Record<string, unknown>,
+  lifetoursfl: lifetoursflData as Record<string, unknown>,
+  comunicarte: comunicarteData as Record<string, unknown>,
+  ghiperu: ghiperuData as Record<string, unknown>,
+  siclo: sicloData as Record<string, unknown>,
+  "store-saas": storeSaasData as Record<string, unknown>,
+  "financial-management": financialManagementData as Record<string, unknown>,
 };
 
 const translatableFields = [

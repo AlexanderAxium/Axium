@@ -1,0 +1,26 @@
+{
+  "title": "JCP Ingenieros",
+  "industry": "Ingeniería y Consultoría",
+  "image": "/images/proyects/jcpingenieros/jcpingenieros-hero.jpg",
+  "location": "Perú y Latinoamérica",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "JCP Ingenieros",
+  "technologyStack": ["WordPress", "PHP", "CSS"],
+  "secondaryIndustry": "Equipamiento hospitalario",
+  "forWhom": "Establecimientos de salud, ministerios y entidades que requieren consultoría en equipamiento hospitalario",
+  "services": [
+    "Expedientes Técnicos",
+    "Ejecución de Obra",
+    "Equipamiento Hospitalario",
+    "Preinversión"
+  ],
+  "description": "Web informativa para JCP Ingenieros: soluciones integrales para equipamiento hospitalario, consultoría especializada en proyectos de alta tecnología en Perú y Latinoamérica.",
+  "problem": "JCP Ingenieros necesitaba una presencia web profesional que presentara sus servicios de consultoría hospitalaria, trayectoria y proyectos para captar clientes del sector salud.",
+  "solution": "Desarrollamos jcpingenieros.com en WordPress: sitio informativo con servicios (expedientes técnicos, ejecución de obra, equipamiento, preinversión), trayectoria, blog y contacto.",
+  "results": [],
+  "projectDescription": "JCP Ingenieros es una empresa líder en consultoría de equipamiento hospitalario desde 2013, con presencia en Perú y Centroamérica. Han desarrollado más de 49 expedientes técnicos para establecimientos de salud de todos los niveles y utilizan metodología BIM. Desarrollamos su web informativa en WordPress con secciones de servicios —expedientes técnicos, ejecución de obra, equipamiento hospitalario y preinversión—, trayectoria, misión y visión, sobre nosotros, proyectos, blog y canales de contacto para posicionar su oferta ante ministerios, hospitales regionales y entidades del sector salud.",
+  "publishedDate": "2025",
+  "liveUrl": "https://jcpingenieros.com",
+  "slug": "jcpingenieros"
+}

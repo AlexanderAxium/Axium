@@ -1,20 +1,29 @@
 import { CheckCircle2, Clock, TrendingUp, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import anjsportsData from "./cases/anjsports.json";
 import antiruidopvcData from "./cases/antiruidopvc.json";
 import clefastData from "./cases/clefast.json";
+import comunicarteData from "./cases/comunicarte.json";
 import daesurmotorsData from "./cases/daesurmotors.json";
 import enrafmedicaData from "./cases/enrafmedica.json";
 import favorygraciaData from "./cases/favorygracia.json";
 import fenizData from "./cases/feniz.json";
+import financialManagementData from "./cases/financial-management.json";
 import firstautomationData from "./cases/firstautomation.json";
+import ghiperuData from "./cases/ghiperu.json";
 import happyartData from "./cases/happyart.json";
+import hotelesparaisoData from "./cases/hotelesparaiso.json";
 import huarmisData from "./cases/huarmis.json";
 import innersoulbrightData from "./cases/innersoulbright.json";
+import jcpingenierosData from "./cases/jcpingenieros.json";
+import lifetoursflData from "./cases/lifetoursfl.json";
 import lujanData from "./cases/lujan.json";
 import maintechData from "./cases/maintech.json";
 import podologiemtkData from "./cases/podologiemtk.json";
 import redesvipData from "./cases/redesvip.json";
+import sicloData from "./cases/siclo.json";
 import sporttData from "./cases/sportt.json";
+import storeSaasData from "./cases/store-saas.json";
 import toliveagainData from "./cases/toliveagain.json";
 import transportesrumiData from "./cases/transportesrumi.json";
 import ventanasantiruidoData from "./cases/ventanasantiruido.json";
@@ -101,6 +110,7 @@ function convertCaseFromJSON(caseJson: CaseItemJSON): CaseItem {
 
 // Load all JSON cases and convert them to CaseItem[]
 const cases: CaseItem[] = [
+  convertCaseFromJSON(anjsportsData as CaseItemJSON),
   convertCaseFromJSON(maintechData as CaseItemJSON),
   convertCaseFromJSON(vitalchainData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
@@ -121,6 +131,14 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(enrafmedicaData as CaseItemJSON),
   convertCaseFromJSON(huarmisData as CaseItemJSON),
   convertCaseFromJSON(favorygraciaData as CaseItemJSON),
+  convertCaseFromJSON(hotelesparaisoData as CaseItemJSON),
+  convertCaseFromJSON(jcpingenierosData as CaseItemJSON),
+  convertCaseFromJSON(lifetoursflData as CaseItemJSON),
+  convertCaseFromJSON(comunicarteData as CaseItemJSON),
+  convertCaseFromJSON(ghiperuData as CaseItemJSON),
+  convertCaseFromJSON(sicloData as CaseItemJSON),
+  convertCaseFromJSON(storeSaasData as CaseItemJSON),
+  convertCaseFromJSON(financialManagementData as CaseItemJSON),
 ];
 
 export { cases };

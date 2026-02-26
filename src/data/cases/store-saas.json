@@ -1,0 +1,27 @@
+{
+  "title": "E-commerce & Inventory SaaS",
+  "industry": "SaaS / E-commerce",
+  "image": "/images/proyects/store-saas/store-saas-hero.png",
+  "location": "Perú",
+  "platform": "Web (SaaS)",
+  "duration": "2025",
+  "client": "Plataforma",
+  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS"],
+  "secondaryIndustry": "E-commerce e inventario",
+  "forWhom": "Tiendas y marcas que venden online y necesitan control de catálogo, pedidos, inventario y analíticas en una sola plataforma",
+  "services": [
+    "Gestión de productos y catálogo",
+    "Control de inventario y Kardex",
+    "Pedidos y POS",
+    "Dashboard y analíticas",
+    "Cupones y contenido",
+    "Multi-tienda y equipo"
+  ],
+  "description": "SaaS propio de e-commerce e inventario: catálogo con variantes, control de stock y Kardex, pedidos y POS, dashboard con ingresos y tendencias, cupones y multi-tienda. Una sola plataforma para vender y operar.",
+  "problem": "Se necesitaba una plataforma unificada que combinara tienda online, gestión de inventario (stock, variantes, alertas de reabastecimiento), pedidos y punto de venta, analíticas de ventas y métodos de pago, con soporte multi-tienda y equipo.",
+  "solution": "Desarrollamos un SaaS con Next.js que integra: catálogo de productos con categorías, colecciones y variantes (talla, color), precios y descripciones; inventario por variante con umbral de reabastecimiento y notificaciones; Kardex; pedidos online y POS; dashboard con ingresos, órdenes, clientes, tendencia de ventas y métodos de pago; cupones, contenido y page builder; multi-tienda y gestión de equipo.",
+  "results": [],
+  "projectDescription": "E-commerce & Inventory SaaS es una plataforma creada por nosotros que une tienda online y sistema de inventario en un solo producto. Incluye gestión completa de productos (nombre, slug, proveedor, categorías, colecciones, variantes, precios, descripción, media), umbral de reabastecimiento y permitir pedidos pendientes; control de stock por variante, valor de inventario y alertas de bajo stock; módulo Kardex para movimientos; pedidos y punto de venta integrado; dashboard con filtros por fecha, ingresos totales, órdenes, clientes, productos activos y bajo stock, tendencia de ventas y desglose por métodos de pago; cupones, contenido y secciones destacadas; multi-tienda (cambiar tienda) y gestión de equipo. Construido con Next.js y TypeScript para escalabilidad y mantenimiento.",
+  "publishedDate": "2025",
+  "slug": "store-saas"
+}

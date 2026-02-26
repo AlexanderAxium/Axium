@@ -249,16 +249,16 @@
           ],
           "whatsappMessage": "Hola, quiero aprovechar mejor los datos de mi empresa con analítica e IA. ¿Podemos agendar una reunión?"
         },
-        "decisiones-ia": {
-          "label": "Asistentes con IA",
-          "title": "Asistentes con Inteligencia Artificial",
-          "description": "Desarrollamos agentes y asistentes inteligentes que se integran a tu operación diaria: responden consultas, procesan información y ejecutan tareas complejas en segundos, para que tu equipo se concentre en lo importante.",
+        "branding-ui": {
+          "label": "Branding & UI",
+          "title": "Identidad de Marca y UI",
+          "description": "Construimos la identidad visual que diferencia a tu negocio: desde el logo y paleta de colores hasta sistemas de diseño completos y UI para tus productos digitales, todo con coherencia y propósito.",
           "benefits": [
-            "Respuestas inmediatas a consultas frecuentes",
-            "Procesamiento inteligente de documentos y datos",
-            "Integración directa con tus sistemas existentes"
+            "Marca memorable y diferenciada",
+            "Sistema de diseño escalable y consistente",
+            "UI pensada para la experiencia del usuario"
           ],
-          "whatsappMessage": "Hola, me interesa implementar un asistente con IA en mi empresa. ¿Podemos conversar sobre las posibilidades?"
+          "whatsappMessage": "Hola, me interesa desarrollar la identidad de marca y UI de mi empresa. ¿Podemos conversar?"
         }
       },
       "cta": "Consultar ahora"

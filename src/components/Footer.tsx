@@ -195,39 +195,55 @@ export function Footer() {
             {/* Quick Links */}
             <div className="space-y-4">
               <h4 className="font-semibold text-white">
-                {t("footer.quickLinks")}
+                {t("navbar.servicios")}
               </h4>
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/#servicios"
+                    href="/servicios/software-a-medida"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    {t("navbar.servicios")}
+                    Software a Medida
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/#casos"
+                    href="/servicios/aplicaciones-web"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    {t("navbar.casosDeExito")}
+                    Aplicaciones Web
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/#como-trabajamos"
+                    href="/servicios/aplicaciones-moviles"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    {t("navbar.comoTrabajamos")}
+                    Aplicaciones Móviles
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/#contacto"
+                    href="/servicios/automatizacion-de-procesos"
                     className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    {t("navbar.contacto")}
+                    Automatización
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/servicios/analitica-e-ia"
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    Analítica e IA
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/servicios/branding-ui"
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    Branding &amp; UI
                   </Link>
                 </li>
               </ul>

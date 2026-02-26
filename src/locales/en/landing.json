@@ -249,16 +249,16 @@
           ],
           "whatsappMessage": "Hi, I want to better leverage my company's data with analytics and AI. Can we schedule a meeting?"
         },
-        "decisiones-ia": {
-          "label": "AI Assistants",
-          "title": "AI-Powered Assistants",
-          "description": "We build intelligent agents and assistants that integrate into your daily operations: answering queries, processing information, and executing complex tasks in seconds, so your team can focus on what matters.",
+        "branding-ui": {
+          "label": "Branding & UI",
+          "title": "Brand Identity & UI",
+          "description": "We build the visual identity that sets your business apart: from logo and color palette to full design systems and UI for your digital products, all crafted with consistency and purpose.",
           "benefits": [
-            "Instant responses to frequent inquiries",
-            "Intelligent document and data processing",
-            "Direct integration with your existing systems"
+            "Memorable and differentiated brand",
+            "Scalable and consistent design system",
+            "UI designed for the user experience"
           ],
-          "whatsappMessage": "Hi, I'm interested in implementing an AI assistant for my company. Can we discuss the possibilities?"
+          "whatsappMessage": "Hi, I'm interested in developing the brand identity and UI for my company. Can we talk?"
         }
       },
       "cta": "Get a free consultation"
