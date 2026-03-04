@@ -1,190 +1,262 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import {
+  ArrowRight,
+  Bot,
+  Brain,
+  Code2,
+  Compass,
+  Cpu,
+  Database,
+  Network,
+} from "lucide-react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { useTranslation } from "~/hooks/useTranslation";
 
-const SERVICE_IDS = [
-  "software",
-  "web",
-  "moviles",
-  "automatizacion",
-  "analitica-ia",
-  "branding-ui",
-] as const;
+const SERVICE_IDS = ["discovery", "software-dev", "ai-systems"] as const;
 
-const SERVICE_IMAGES: Record<string, string> = {
-  software: "/service1.png",
-  web: "/service2.png",
-  moviles: "/service3.png",
-  automatizacion: "/service4.png",
-  "analitica-ia": "/service5.png",
-  "branding-ui": "/service6.png",
-};
+const SERVICE_ICONS = {
+  discovery: Compass,
+  "software-dev": Code2,
+  "ai-systems": Brain,
+} as const;
 
 const SERVICE_HREFS: Record<string, string> = {
-  software: "/servicios/software-a-medida",
-  web: "/servicios/aplicaciones-web",
-  moviles: "/servicios/aplicaciones-moviles",
-  automatizacion: "/servicios/automatizacion-de-procesos",
-  "analitica-ia": "/servicios/analitica-e-ia",
-  "branding-ui": "/servicios/branding-ui",
+  discovery: "/servicios/product-discovery",
+  "software-dev": "/servicios/software-development",
+  "ai-systems": "/servicios/ai-agentic-systems",
 };
+
+const CARD_IMAGES: Record<string, string> = {
+  discovery: "/images/services/card-discovery.png",
+  "software-dev": "/images/services/card-software.png",
+};
+
+const CARD_DARK_LABEL: Record<string, string> = {
+  "software-dev": "Desktop · Web · Mobile",
+};
+
+const AI_ORBIT_ICONS = [
+  { Icon: Brain, label: "LLM" },
+  { Icon: Bot, label: "Agent" },
+  { Icon: Database, label: "RAG" },
+  { Icon: Network, label: "Orchestration" },
+  { Icon: Cpu, label: "Inference" },
+];
+
+const ORBIT_RADIUS = 200;
+const ORBIT_DURATION = 60;
 
 const smoothEase = [0.4, 0, 0.2, 1] as const;
 
 export function ServicesSection() {
-  const [activeTab, setActiveTab] = useState<string>(
-    SERVICE_IDS[0] ?? "software"
-  );
   const { t } = useTranslation("landing");
 
-  const handleWhatsApp = (message: string) => {
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/51991285679?text=${encodedMessage}`, "_blank");
-  };
-
   return (
-    <section
-      id="servicios"
-      className="py-20 md:py-28 md:pb-16 bg-white relative overflow-hidden"
-    >
+    <section id="servicios" className="py-20 md:py-28 bg-gray-100/60">
       <div className="container-section">
-        <div className="content-section relative">
-          <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, ease: smoothEase }}
-          >
-            <span className="text-secondary font-semibold text-sm uppercase tracking-wide">
+        <div className="content-section">
+          {/* ── Section header ── */}
+          <div className="mb-12 text-center">
+            <motion.h2
+              className="text-heading-1 text-gray-900 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
               {t("home.services.eyebrow")}
-            </span>
-            <h2 className="text-heading-2 text-gray-900 mt-3 mb-4">
-              {t("home.services.titlePrefix")}
-              <span className="bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] bg-clip-text text-transparent">
-                {t("home.services.titleHighlight")}
-              </span>
-              {t("home.services.titleSuffix")}
-            </h2>
-          </motion.div>
+            </motion.h2>
+            <motion.p
+              className="text-gray-500 text-base leading-relaxed max-w-lg mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
+            >
+              {t("home.services.sectionSubtitle")}
+            </motion.p>
+          </div>
 
-          <Tabs
-            value={activeTab}
-            onValueChange={setActiveTab}
-            className="w-full"
+          {/* ── Cards: unified group with dividers ── */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.55, ease: smoothEase }}
           >
-            <TabsList className="w-full justify-start bg-transparent p-0 h-auto border-b border-gray-200 rounded-none mb-12 overflow-x-auto scrollbar-hide">
-              {SERVICE_IDS.map((id) => (
-                <TabsTrigger
+            {SERVICE_IDS.map((id) => {
+              const Icon = SERVICE_ICONS[id];
+              return (
+                <div
                   key={id}
-                  value={id}
-                  className="relative px-3 sm:px-4 md:px-6 py-4 text-sm sm:text-base font-medium text-gray-700 data-[state=active]:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:shadow-none rounded-none border-0 border-b-2 border-transparent data-[state=active]:border-b-secondary data-[state=active]:border-b-2 whitespace-nowrap flex-shrink-0"
+                  className="bg-white flex flex-col border border-gray-200 rounded-2xl overflow-hidden"
                 >
-                  {t(`home.services.items.${id}.label`)}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+                  {/* Top content */}
+                  <div className="p-7 pt-8 flex flex-col gap-5 flex-shrink-0">
+                    <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-gray-600" />
+                    </div>
 
-            <div className="relative min-h-[420px] md:min-h-[460px] lg:min-h-[500px]">
-              <AnimatePresence mode="wait">
-                {SERVICE_IDS.map((id) =>
-                  id === activeTab ? (
-                    <TabsContent
-                      key={id}
-                      value={id}
-                      className="mt-0"
-                      forceMount
+                    <h3
+                      className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] leading-[1.2] font-light text-gray-900"
+                      style={{ fontFamily: "var(--font-family-heading)" }}
                     >
-                      <motion.div
-                        key={id}
-                        className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center"
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -16 }}
-                        transition={{
-                          duration: 0.35,
-                          ease: smoothEase,
-                        }}
-                      >
-                        <div>
-                          <h3 className="text-heading-2 text-gray-900 mb-6">
-                            {t(`home.services.items.${id}.title`)}
-                          </h3>
-                          <p className="text-body text-gray-600 mb-6">
-                            {t(`home.services.items.${id}.description`)}
-                          </p>
-                          <ul className="space-y-4 mb-8">
-                            {[0, 1, 2].map((i) => (
-                              <li
-                                key={i}
-                                className="flex items-start text-body text-gray-700"
-                              >
-                                <svg
-                                  className="w-6 h-6 text-secondary mr-3 mt-0.5 flex-shrink-0"
-                                  fill="none"
-                                  strokeWidth="2"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                  role="img"
-                                  aria-label="Check icon"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  />
-                                </svg>
-                                {t(`home.services.items.${id}.benefits.${i}`)}
-                              </li>
-                            ))}
-                          </ul>
-                          <div className="flex flex-wrap items-center gap-3">
-                            <button
-                              type="button"
-                              onClick={() =>
-                                handleWhatsApp(
-                                  t(`home.services.items.${id}.whatsappMessage`)
-                                )
-                              }
-                              className="relative inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white font-semibold rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
-                            >
-                              <span className="absolute inset-0 bg-gradient-to-r from-[#7ECFC3] to-[#0072CF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <span className="relative z-10">
-                                {t("home.services.cta")}
-                              </span>
-                            </button>
-                            <Link
-                              href={SERVICE_HREFS[id] ?? "/#servicios"}
-                              className="inline-flex items-center gap-1.5 px-5 py-2.5 border border-gray-200 text-gray-700 font-semibold rounded-lg hover:border-[#0072CF] hover:text-[#0072CF] transition-all duration-200 text-sm"
-                            >
-                              Ver detalles
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </Link>
-                          </div>
-                        </div>
+                      {t(`home.services.items.${id}.title`)}
+                    </h3>
 
-                        <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
+                    <p className="text-sm text-gray-400 leading-relaxed line-clamp-3">
+                      {t(`home.services.items.${id}.description`)}
+                    </p>
+
+                    <Link
+                      href={SERVICE_HREFS[id] ?? "/"}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0072CF] hover:gap-3 transition-all duration-200 w-fit"
+                    >
+                      {t("home.services.viewService")}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+
+                  {/* Image area */}
+                  {id === "ai-systems" ? (
+                    /* ── AI card: orbit widget cut off at ~70% ── */
+                    <div className="flex-1 min-h-[240px] overflow-hidden relative">
+                      {/* Orbit center pushed down so icons visible, top not cut */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[90%]">
+                        {/* Concentric rings — 3 */}
+                        <div
+                          className="absolute rounded-full border border-gray-200"
+                          style={{
+                            width: 400,
+                            height: 400,
+                            left: -200,
+                            top: -200,
+                          }}
+                        />
+                        <div
+                          className="absolute rounded-full border border-gray-200"
+                          style={{
+                            width: 280,
+                            height: 280,
+                            left: -140,
+                            top: -140,
+                          }}
+                        />
+                        <div
+                          className="absolute rounded-full border border-gray-200"
+                          style={{
+                            width: 160,
+                            height: 160,
+                            left: -80,
+                            top: -80,
+                          }}
+                        />
+
+                        {/* Gradient glow — full orbit size, strong center, invisible edge */}
+                        <div
+                          className="absolute rounded-full pointer-events-none z-10"
+                          style={{
+                            width: 320,
+                            height: 320,
+                            left: -160,
+                            top: -160,
+                            background:
+                              "radial-gradient(circle, rgba(0,114,207,0.20) 0%, rgba(0,114,207,0.08) 45%, transparent 75%)",
+                          }}
+                        />
+
+                        {/* Center: dark circle + white logo */}
+                        <div className="absolute w-16 h-16 bg-[#111] rounded-full flex items-center justify-center z-20 overflow-hidden -translate-x-1/2 -translate-y-1/2 left-0 top-0">
                           <Image
-                            src={SERVICE_IMAGES[id] ?? "/service1.png"}
-                            alt={t(`home.services.items.${id}.title`)}
+                            src="/logoblanco.png"
+                            alt="Axium"
                             fill
-                            className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            className="object-contain p-2.5"
+                            sizes="64px"
                           />
                         </div>
-                      </motion.div>
-                    </TabsContent>
-                  ) : null
-                )}
-              </AnimatePresence>
-            </div>
-          </Tabs>
+
+                        {/* Rotating orbit */}
+                        <motion.div
+                          className="absolute"
+                          style={{
+                            width: ORBIT_RADIUS * 2,
+                            height: ORBIT_RADIUS * 2,
+                            left: -ORBIT_RADIUS,
+                            top: -ORBIT_RADIUS,
+                          }}
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: ORBIT_DURATION,
+                            repeat: Number.POSITIVE_INFINITY,
+                            ease: "linear",
+                          }}
+                        >
+                          {AI_ORBIT_ICONS.map(
+                            ({ Icon: OrbitIcon, label }, i) => {
+                              const angle =
+                                (i / AI_ORBIT_ICONS.length) * 2 * Math.PI;
+                              const x = Math.cos(angle) * ORBIT_RADIUS;
+                              const y = Math.sin(angle) * ORBIT_RADIUS;
+                              return (
+                                <motion.div
+                                  key={label}
+                                  className="absolute w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center shadow-sm"
+                                  style={{
+                                    left: `calc(50% + ${x}px - 16px)`,
+                                    top: `calc(50% + ${y}px - 16px)`,
+                                  }}
+                                  animate={{ rotate: -360 }}
+                                  transition={{
+                                    duration: ORBIT_DURATION,
+                                    repeat: Number.POSITIVE_INFINITY,
+                                    ease: "linear",
+                                  }}
+                                >
+                                  <OrbitIcon className="w-3.5 h-3.5 text-gray-900" />
+                                </motion.div>
+                              );
+                            }
+                          )}
+                        </motion.div>
+                      </div>
+                    </div>
+                  ) : id === "software-dev" ? (
+                    /* ── Software card: dark bg with image ── */
+                    <div className="bg-[#111] flex-1 flex flex-col w-[80%] md:max-w-[300px] justify-between items-center mx-auto p-3 rounded-2xl">
+                      <Image
+                        src={CARD_IMAGES[id] ?? ""}
+                        alt={t(`home.services.items.${id}.title`)}
+                        width={400}
+                        height={260}
+                        className="w-full object-contain rounded-md"
+                      />
+                      <p className="text-xs text-white font-medium tracking-widest uppercase pt-6 pb-4 px-3">
+                        {CARD_DARK_LABEL[id]}
+                      </p>
+                    </div>
+                  ) : (
+                    /* ── Default card: image bleeding to bottom ── */
+                    <div className="relative overflow-hidden min-h-[240px] flex-1">
+                      <Image
+                        src={
+                          CARD_IMAGES[id] ??
+                          "/images/services/card-discovery.png"
+                        }
+                        alt={t(`home.services.items.${id}.title`)}
+                        fill
+                        className="object-contain object-bottom"
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
     </section>

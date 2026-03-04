@@ -188,77 +188,61 @@
       "description": "Nos asociamos con empresas de todas las industrias para crear productos digitales que generan resultados reales.",
       "cta": "HABLEMOS DE TU PROYECTO"
     },
+    "about": {
+      "eyebrow": "Sobre Nosotros",
+      "title": "Ofrecemos soluciones digitales y consultoría para impulsar el crecimiento de tu negocio",
+      "statNumber": "40+",
+      "statLabel": "Proyectos",
+      "statSub": "Soluciones creativas que elevan marcas.",
+      "cardEyebrow": "Tu socio digital",
+      "cardTitle": "Transformamos ideas en resultados"
+    },
     "services": {
       "eyebrow": "Nuestros Servicios",
       "titlePrefix": "Soluciones Tecnológicas que ",
       "titleHighlight": "Transforman",
       "titleSuffix": " Negocios",
+      "sectionSubtitle": "Soluciones tecnológicas para construir mejores productos, escalar con confianza y adoptar la inteligencia artificial.",
+      "viewService": "Ver servicio",
       "items": {
-        "software": {
-          "label": "Software a Medida",
-          "title": "Software a Medida",
-          "description": "Tu negocio tiene procesos únicos, y merece herramientas que se adapten a ellos. Diseñamos sistemas que encajan con tu operación real, se integran con lo que ya usas y crecen contigo sin fricciones.",
+        "discovery": {
+          "title": "Descubrimiento de producto y diseño",
+          "description": "Nos aseguramos de que tu producto satisfaga las necesidades del usuario, impulse resultados de negocio y logre diferenciación en el mercado. Identificamos y validamos soluciones con el mayor potencial de encaje producto-mercado, definimos tu estrategia de producto y roadmap, y alineamos a los actores clave de tu organización.",
           "benefits": [
-            "Diseñado para tus procesos, no al revés",
-            "Integración directa con tus herramientas actuales",
-            "Crece al ritmo de tu negocio"
+            "Análisis de mercado y competidores",
+            "Investigación de usuarios",
+            "Requisitos de producto",
+            "Propuesta de valor North Star",
+            "Mapeo de funcionalidades y roadmap",
+            "Diseños de alta fidelidad en Figma"
           ],
-          "whatsappMessage": "Hola, me interesa desarrollar un software a medida para mi negocio. ¿Podemos agendar una llamada?"
+          "whatsappMessage": "Hola, me interesa el servicio de descubrimiento de producto y diseño. ¿Podemos agendar una llamada?"
         },
-        "web": {
-          "label": "Aplicaciones Web",
-          "title": "Aplicaciones Web",
-          "description": "Desde plataformas internas hasta productos digitales completos. Construimos aplicaciones web rápidas, seguras y preparadas para escalar, sin importar cuántos usuarios las utilicen al mismo tiempo.",
+        "software-dev": {
+          "title": "Desarrollo de software",
+          "description": "Construimos software de alto rendimiento, escalable y seguro usando un stack tecnológico moderno y estándar en la industria. Nos especializamos en desarrollo full-stack con JavaScript y TypeScript, incluyendo Next.js y React.js para el frontend web, React Native para el frontend móvil y Node.js en el backend.",
           "benefits": [
-            "Carga rápida y experiencia fluida",
-            "Protección de datos de extremo a extremo",
-            "Lista para crecer sin reconstruir"
+            "Desarrollo web",
+            "Desarrollo móvil",
+            "TypeScript",
+            "React.js & React Native",
+            "Next.js",
+            "Node.js"
           ],
-          "whatsappMessage": "Hola, necesito desarrollar una aplicación web para mi proyecto. ¿Podemos conversar sobre los detalles?"
+          "whatsappMessage": "Hola, me interesa el servicio de desarrollo de software. ¿Podemos hablar sobre mi proyecto?"
         },
-        "moviles": {
-          "label": "Aplicaciones Móviles",
-          "title": "Aplicaciones Móviles",
-          "description": "Creamos aplicaciones para iOS y Android que se sienten nativas, responden al instante y funcionan incluso sin conexión. Tu marca, siempre en el bolsillo de tus usuarios.",
+        "ai-systems": {
+          "title": "Sistemas de IA y agentes",
+          "description": "Desarrollamos sistemas basados en IA que automatizan flujos de trabajo, integran silos de datos y habilitan la toma de decisiones en tiempo real. Nuestra experiencia en LLMs, RAG y orquestación de IA permite construir sistemas autónomos que generan valor de negocio medible.",
           "benefits": [
-            "Disponible en iOS y Android desde un solo desarrollo",
-            "Interfaz intuitiva pensada para el usuario final",
-            "Funciona sin conexión y sincroniza al reconectar"
+            "Definición del espacio del problema",
+            "Evaluación de madurez de datos",
+            "Desarrollo de casos de uso",
+            "Marco de orquestación",
+            "Prototipado y escalamiento",
+            "Programación en Python"
           ],
-          "whatsappMessage": "Hola, quiero crear una aplicación móvil. ¿Podemos hablar sobre lo que necesito?"
-        },
-        "automatizacion": {
-          "label": "Automatización de Procesos",
-          "title": "Automatización de Procesos",
-          "description": "Liberamos a tu equipo de tareas repetitivas para que se enfoque en lo que realmente importa. Diseñamos flujos inteligentes que reducen errores, ahorran tiempo y hacen que tu operación funcione como reloj.",
-          "benefits": [
-            "Tu equipo enfocado en lo estratégico",
-            "Menos errores, más consistencia",
-            "Procesos que corren solos, 24/7"
-          ],
-          "whatsappMessage": "Hola, me interesa automatizar procesos en mi empresa. ¿Podemos evaluar juntos qué áreas optimizar?"
-        },
-        "analitica-ia": {
-          "label": "Analítica e IA",
-          "title": "Analítica e Inteligencia Artificial",
-          "description": "Convertimos los datos que ya generas en información accionable. Con modelos de machine learning, identificamos patrones ocultos, anticipamos tendencias y te damos las herramientas para tomar decisiones con mayor certeza.",
-          "benefits": [
-            "Decisiones respaldadas por datos reales",
-            "Detección temprana de oportunidades y riesgos",
-            "Dashboards claros y accionables"
-          ],
-          "whatsappMessage": "Hola, quiero aprovechar mejor los datos de mi empresa con analítica e IA. ¿Podemos agendar una reunión?"
-        },
-        "branding-ui": {
-          "label": "Branding & UI",
-          "title": "Identidad de Marca y UI",
-          "description": "Construimos la identidad visual que diferencia a tu negocio: desde el logo y paleta de colores hasta sistemas de diseño completos y UI para tus productos digitales, todo con coherencia y propósito.",
-          "benefits": [
-            "Marca memorable y diferenciada",
-            "Sistema de diseño escalable y consistente",
-            "UI pensada para la experiencia del usuario"
-          ],
-          "whatsappMessage": "Hola, me interesa desarrollar la identidad de marca y UI de mi empresa. ¿Podemos conversar?"
+          "whatsappMessage": "Hola, me interesa el servicio de IA y sistemas agénticos. ¿Podemos hablar sobre lo que necesito?"
         }
       },
       "cta": "Consultar ahora"
@@ -294,9 +278,18 @@
         ]
       },
       "cards": [
-        { "title": "Revisión de Calidad", "tag": "QA Testing" },
-        { "title": "Lanzamiento Seguro", "tag": "Deploy" },
-        { "title": "Soporte Continuo", "tag": "24/7" }
+        {
+          "title": "Revisión de Calidad",
+          "tag": "QA Testing"
+        },
+        {
+          "title": "Lanzamiento Seguro",
+          "tag": "Deploy"
+        },
+        {
+          "title": "Soporte Continuo",
+          "tag": "24/7"
+        }
       ]
     },
     "contact": {

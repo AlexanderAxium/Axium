@@ -4,21 +4,17 @@
     "servicios": "Services",
     "comoTrabajamos": "How We Work",
     "contacto": "Contact",
-    "servicesMoviles": {
-      "title": "Mobile Applications",
-      "description": "Native and hybrid apps for iOS and Android with offline support."
-    },
-    "servicesWeb": {
-      "title": "Web Applications",
-      "description": "Cloud-native platforms with high availability and enterprise security."
+    "servicesDiscovery": {
+      "title": "Product Discovery & Design",
+      "description": "We validate your idea, map user needs, and deliver high-fidelity designs ready for development."
     },
     "servicesSoftware": {
-      "title": "Custom Software",
-      "description": "Enterprise-grade solutions tailored to your business architecture."
+      "title": "Software Development",
+      "description": "Full-stack development with TypeScript, Next.js, React Native and Node.js. Scalable from day one."
     },
-    "servicesAutomatizacion": {
-      "title": "Process Automation",
-      "description": "Intelligent workflows that reduce manual tasks by up to 80%."
+    "servicesAI": {
+      "title": "AI & Agentic Systems",
+      "description": "Autonomous systems with LLMs, RAG and agent orchestration to automate real-time decisions."
     }
   },
   "footer": {

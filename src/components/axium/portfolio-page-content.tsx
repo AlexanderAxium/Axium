@@ -45,9 +45,11 @@ const slugMap: Record<string, string> = {
   "Comunicarte Editores": "comunicarte",
   "GHI Peru": "ghiperu",
   "ANJ Sports": "anjsports",
+  AmbientalPE: "ambientalpe",
   "Instructor Management System": "siclo",
   "E-commerce & Inventory SaaS": "store-saas",
   "Financial Management System": "financial-management",
+  "Feedback Management System": "feedback-management",
 };
 
 function getSlug(title: string, slug?: string) {
@@ -77,6 +79,11 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
     slugs: ["feniz", "firstautomation", "redesvip", "siclo"],
   },
   { label: "Finanzas", slugs: ["financial-management"] },
+  {
+    label: "Experiencia de cliente",
+    slugs: ["feedback-management"],
+  },
+  { label: "Medio ambiente", slugs: ["ambientalpe"] },
   {
     label: "Construcción",
     slugs: ["antiruidopvc", "ventanasantiruido", "villacer"],
@@ -131,7 +138,14 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
   },
   {
     label: "Dashboard / App",
-    slugs: ["feniz", "lifetoursfl", "siclo", "financial-management"],
+    slugs: [
+      "feniz",
+      "lifetoursfl",
+      "siclo",
+      "financial-management",
+      "feedback-management",
+      "ambientalpe",
+    ],
   },
   { label: "Donaciones", slugs: ["toliveagain", "huarmis", "favorygracia"] },
 ];
@@ -151,6 +165,8 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "lifetoursfl",
       "siclo",
       "financial-management",
+      "feedback-management",
+      "ambientalpe",
     ],
   },
   {

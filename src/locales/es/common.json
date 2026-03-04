@@ -4,29 +4,17 @@
     "servicios": "Servicios",
     "comoTrabajamos": "Cómo Trabajamos",
     "contacto": "Contacto",
-    "servicesMoviles": {
-      "title": "Aplicaciones Móviles",
-      "description": "Apps nativas e híbridas para iOS y Android con soporte offline."
-    },
-    "servicesWeb": {
-      "title": "Aplicaciones Web",
-      "description": "Plataformas cloud-native con alta disponibilidad y seguridad enterprise."
+    "servicesDiscovery": {
+      "title": "Product Discovery & Design",
+      "description": "Validamos tu idea, mapeamos necesidades de usuarios y entregamos diseños listos para desarrollo."
     },
     "servicesSoftware": {
-      "title": "Software a Medida",
-      "description": "Soluciones enterprise-grade adaptadas a tu arquitectura de negocio."
+      "title": "Software Development",
+      "description": "Desarrollo full-stack con TypeScript, Next.js, React Native y Node.js. Escalable desde el día uno."
     },
-    "servicesAutomatizacion": {
-      "title": "Automatización de Procesos",
-      "description": "Workflows inteligentes que reducen tareas manuales hasta en un 80%."
-    },
-    "servicesAnalitica": {
-      "title": "Analítica e IA",
-      "description": "Machine learning y dashboards que convierten tus datos en decisiones estratégicas."
-    },
-    "servicesBranding": {
-      "title": "Branding & UI",
-      "description": "Identidad visual y sistemas de diseño que diferencian tu marca en el mercado."
+    "servicesAI": {
+      "title": "AI & Agentic Systems",
+      "description": "Sistemas autónomos con LLMs, RAG y orquestación de agentes para automatizar decisiones en tiempo real."
     }
   },
   "footer": {

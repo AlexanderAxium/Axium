@@ -44,9 +44,11 @@ const slugMap: Record<string, string> = {
   "Comunicarte Editores": "comunicarte",
   "GHI Peru": "ghiperu",
   "ANJ Sports": "anjsports",
+  AmbientalPE: "ambientalpe",
   "Instructor Management System": "siclo",
   "E-commerce & Inventory SaaS": "store-saas",
   "Financial Management System": "financial-management",
+  "Feedback Management System": "feedback-management",
 };
 
 export interface CasesSectionProps {

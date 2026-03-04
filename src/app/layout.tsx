@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/AuthContext";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { RoleBasedRedirect } from "@/components/RoleBasedRedirect";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { StructuredData } from "@/components/StructuredData";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
@@ -34,7 +35,9 @@ export default function RootLayout({
         >
           <AuthProvider>
             <TRPCProvider>
-              <RoleBasedRedirect>{children}</RoleBasedRedirect>
+              <SmoothScroll>
+                <RoleBasedRedirect>{children}</RoleBasedRedirect>
+              </SmoothScroll>
               <Toaster />
             </TRPCProvider>
           </AuthProvider>

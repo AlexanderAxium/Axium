@@ -188,77 +188,61 @@
       "description": "We partner with companies across all industries to create digital products that deliver real results.",
       "cta": "LET'S TALK ABOUT YOUR PROJECT"
     },
+    "about": {
+      "eyebrow": "About Us",
+      "title": "We offer digital and consulting solutions to drive the growth of your business",
+      "statNumber": "40+",
+      "statLabel": "Projects",
+      "statSub": "Creative solutions that elevate brands.",
+      "cardEyebrow": "Your digital partner",
+      "cardTitle": "We turn ideas into results"
+    },
     "services": {
       "eyebrow": "Our Services",
       "titlePrefix": "Technology Solutions that ",
       "titleHighlight": "Transform",
       "titleSuffix": " Businesses",
+      "sectionSubtitle": "Technology solutions to build better products, scale with confidence, and adopt artificial intelligence.",
+      "viewService": "View service",
       "items": {
-        "software": {
-          "label": "Custom Software",
-          "title": "Custom Software",
-          "description": "Your business has unique processes, and it deserves tools built around them. We design systems that fit your actual workflow, integrate with what you already use, and scale with you without friction.",
+        "discovery": {
+          "title": "Product discovery & design",
+          "description": "We ensure your product meets user needs, drives business outcomes, and achieves market differentiation. We identify and validate solutions with the highest potential for product-market fit, shape your product strategy and roadmap, and align key stakeholders across your organization.",
           "benefits": [
-            "Built for your processes, not the other way around",
-            "Seamless integration with your current tools",
-            "Grows at the pace of your business"
+            "Market and competitor analysis",
+            "User research",
+            "Product requirements",
+            "North Star value proposition",
+            "Feature mapping and roadmap",
+            "High-fidelity Figma designs"
           ],
-          "whatsappMessage": "Hi, I'm interested in developing custom software for my business. Can we schedule a call?"
+          "whatsappMessage": "Hi, I'm interested in product discovery and design services. Can we schedule a call?"
         },
-        "web": {
-          "label": "Web Applications",
-          "title": "Web Applications",
-          "description": "From internal platforms to full digital products. We build fast, secure web applications ready to scale, no matter how many users access them at the same time.",
+        "software-dev": {
+          "title": "Software development",
+          "description": "We build high-performance, scalable, and secure software using a modern, industry-standard tech stack. We specialize in full-stack JavaScript development with TypeScript, including Next.js and React.js for web frontend, React Native for mobile frontend, and Node.js on the backend.",
           "benefits": [
-            "Fast loading and seamless experience",
-            "End-to-end data protection",
-            "Ready to grow without rebuilding"
+            "Web development",
+            "Mobile development",
+            "TypeScript",
+            "React.js & React Native",
+            "Next.js",
+            "Node.js"
           ],
-          "whatsappMessage": "Hi, I need to develop a web application for my project. Can we discuss the details?"
+          "whatsappMessage": "Hi, I'm interested in software development services. Can we discuss my project?"
         },
-        "moviles": {
-          "label": "Mobile Applications",
-          "title": "Mobile Applications",
-          "description": "We create iOS and Android apps that feel native, respond instantly, and work even offline. Your brand, always in your users' pocket.",
+        "ai-systems": {
+          "title": "AI & agentic systems",
+          "description": "We develop AI-driven systems that automate workflows, integrate data silos, and enable real-time decision-making. Our expertise in LLMs, RAG, and AI orchestration helps build autonomous systems that deliver measurable business value.",
           "benefits": [
-            "Available on iOS and Android from a single codebase",
-            "Intuitive interface designed for end users",
-            "Works offline and syncs when reconnected"
+            "Problem space definition",
+            "Data readiness assessment",
+            "Use case development",
+            "Orchestration framework",
+            "Prototyping and scaling",
+            "Programming in Python"
           ],
-          "whatsappMessage": "Hi, I want to create a mobile app. Can we talk about what I need?"
-        },
-        "automatizacion": {
-          "label": "Process Automation",
-          "title": "Process Automation",
-          "description": "We free your team from repetitive tasks so they can focus on what truly matters. We design intelligent workflows that reduce errors, save time, and keep your operation running like clockwork.",
-          "benefits": [
-            "Your team focused on what's strategic",
-            "Fewer errors, more consistency",
-            "Processes that run on their own, 24/7"
-          ],
-          "whatsappMessage": "Hi, I'm interested in automating processes at my company. Can we evaluate which areas to optimize together?"
-        },
-        "analitica-ia": {
-          "label": "Analytics & AI",
-          "title": "Analytics & Artificial Intelligence",
-          "description": "We turn the data you already generate into actionable insights. With machine learning models, we uncover hidden patterns, anticipate trends, and give you the tools to make decisions with greater confidence.",
-          "benefits": [
-            "Decisions backed by real data",
-            "Early detection of opportunities and risks",
-            "Clear, actionable dashboards"
-          ],
-          "whatsappMessage": "Hi, I want to better leverage my company's data with analytics and AI. Can we schedule a meeting?"
-        },
-        "branding-ui": {
-          "label": "Branding & UI",
-          "title": "Brand Identity & UI",
-          "description": "We build the visual identity that sets your business apart: from logo and color palette to full design systems and UI for your digital products, all crafted with consistency and purpose.",
-          "benefits": [
-            "Memorable and differentiated brand",
-            "Scalable and consistent design system",
-            "UI designed for the user experience"
-          ],
-          "whatsappMessage": "Hi, I'm interested in developing the brand identity and UI for my company. Can we talk?"
+          "whatsappMessage": "Hi, I'm interested in AI and agentic systems. Can we talk about what I need?"
         }
       },
       "cta": "Get a free consultation"
@@ -294,9 +278,18 @@
         ]
       },
       "cards": [
-        { "title": "Quality Review", "tag": "QA Testing" },
-        { "title": "Safe Launch", "tag": "Deploy" },
-        { "title": "Continuous Support", "tag": "24/7" }
+        {
+          "title": "Quality Review",
+          "tag": "QA Testing"
+        },
+        {
+          "title": "Safe Launch",
+          "tag": "Deploy"
+        },
+        {
+          "title": "Continuous Support",
+          "tag": "24/7"
+        }
       ]
     },
     "contact": {

@@ -5,6 +5,7 @@ import casesEs from "@/locales/es/cases.json";
 import casesPt from "@/locales/pt/cases.json";
 import { useMemo } from "react";
 import type { CaseItem } from "~/data/cases-data";
+import ambientalpeData from "~/data/cases/ambientalpe.json";
 import anjsportsData from "~/data/cases/anjsports.json";
 import antiruidopvcData from "~/data/cases/antiruidopvc.json";
 import clefastData from "~/data/cases/clefast.json";
@@ -12,6 +13,7 @@ import comunicarteData from "~/data/cases/comunicarte.json";
 import daesurmotorsData from "~/data/cases/daesurmotors.json";
 import enrafmedicaData from "~/data/cases/enrafmedica.json";
 import favorygraciaData from "~/data/cases/favorygracia.json";
+import feedbackManagementData from "~/data/cases/feedback-management.json";
 import fenizData from "~/data/cases/feniz.json";
 import financialManagementData from "~/data/cases/financial-management.json";
 import firstautomationData from "~/data/cases/firstautomation.json";
@@ -45,6 +47,7 @@ const casesByLocale: Record<string, Record<string, Record<string, unknown>>> = {
 
 const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   anjsports: anjsportsData as Record<string, unknown>,
+  ambientalpe: ambientalpeData as Record<string, unknown>,
   maintech: maintechData as Record<string, unknown>,
   vitalchain: vitalchainData as Record<string, unknown>,
   feniz: fenizData as Record<string, unknown>,
@@ -73,14 +76,16 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   siclo: sicloData as Record<string, unknown>,
   "store-saas": storeSaasData as Record<string, unknown>,
   "financial-management": financialManagementData as Record<string, unknown>,
+  "feedback-management": feedbackManagementData as Record<string, unknown>,
 };
 
-/** Orden de casos en la lista (store-saas = 5º, financial-management = 8º) */
+/** Orden de casos en la lista (ambientalpe = 5º, store-saas = 6º, financial-management = 9º) */
 const CASE_ORDER: string[] = [
   "anjsports",
   "maintech",
   "vitalchain",
   "feniz",
+  "ambientalpe",
   "store-saas",
   "innersoulbright",
   "clefast",
@@ -106,6 +111,7 @@ const CASE_ORDER: string[] = [
   "comunicarte",
   "ghiperu",
   "siclo",
+  "feedback-management",
 ];
 
 const translatableFields = [

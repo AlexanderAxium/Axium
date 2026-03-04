@@ -481,6 +481,18 @@
     ],
     "results": []
   },
+  "ambientalpe": {
+    "title": "AmbientalPE",
+    "industry": "Environment / Technology",
+    "description": "Three pieces for a cohesive presence: corporate website, social media strategy and internal management system. AmbientalPE, a leader in environmental and occupational monitoring.",
+    "problem": "AmbientalPE, a leader in environmental and occupational monitoring, wanted to consolidate its digital presence: a web that communicated its services and catalog, a social media strategy that generated engagement, and a system that organized clients, suppliers, equipment and quotes behind the scenes.",
+    "solution": "We built the ecosystem in three layers. First, the web: ambientalpe.com with services (environmental monitoring, occupational monitoring, plans and maps, equipment rental and sales), online catalog and contact. Second, social media: content and designs to communicate and connect. Third, the system: dashboard and modules for clients (credit line), suppliers, equipment (inventory, calibration), quotes and orders. Three services that support each other.",
+    "projectDescription": "AmbientalPE came with a clear vision: they needed three things that worked as one. The web was the starting point —ambientalpe.com—, where their environmental and occupational monitoring services, equipment catalog and contact channel are presented today. From there, we designed the social media strategy: content and visual pieces that reinforce the message and bring the brand closer to its audience. Finally, we developed the management system: an internal panel to manage clients, suppliers, equipment (inventory, calibration, status), quotes and orders. Three services, one story: digital presence, communication and operations aligned.",
+    "secondaryIndustry": "Environmental management and monitoring",
+    "forWhom": "Environmental consulting companies that need to manage clients, suppliers, monitoring equipment, quotes and service orders in one platform",
+    "services": ["Web", "Social media", "Management system"],
+    "results": []
+  },
   "siclo": {
     "title": "Instructor Management System",
     "industry": "SaaS / Education",
@@ -535,6 +547,23 @@
       "Suppliers and database",
       "Accounting and chart of accounts",
       "Reports, audit and analytics"
+    ],
+    "results": []
+  },
+  "feedback-management": {
+    "title": "Feedback Management System",
+    "industry": "SaaS / Customer experience",
+    "description": "Customer experience platform to optimize feedback collection and analysis: service evaluations, suggestion management, instructor performance analytics, and multi-branch administration. Includes NPS metrics, prioritization systems, and interactive dashboards.",
+    "problem": "A unified ecosystem was needed that combined service evaluation, suggestion management (status, priority, branch, area), ratings with NPS, analytics by instructor and branch, personnel management (managers, supervisors), and categorization by areas to turn feedback into concrete quality and satisfaction improvements.",
+    "solution": "I created this specialized platform with modules for suggestions (filters by status, priority, branch, area; KPIs for total, pending, resolved, resolution rate); ratings (general average, NPS, instructor rating; breakdown by cleanliness, audio, attention, amenities, punctuality); personnel management (manager/supervisor roles, contact, branches, status); instructors and locations; areas to categorize suggestions; and analytics with branch and instructor rankings and interactive dashboards.",
+    "projectDescription": "I created this customer experience platform to optimize feedback collection and analysis. The core purpose was to develop a unified ecosystem featuring service evaluations, suggestion management, instructor performance analytics, and multi-branch administration. I integrated advanced metrics like NPS, prioritization systems, and interactive dashboards that enable businesses to transform feedback into concrete quality and satisfaction improvements.",
+    "secondaryIndustry": "Feedback and satisfaction management",
+    "forWhom": "Businesses and multi-branch chains that need to centralize suggestions, ratings, NPS analytics and administration by location and instructor",
+    "services": [
+      "Suggestions and prioritization",
+      "Ratings and NPS",
+      "Personnel and multi-branch",
+      "Analytics and dashboards"
     ],
     "results": []
   }

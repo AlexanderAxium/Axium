@@ -24,39 +24,35 @@ import { getInitials } from "@/lib/utils/avatar";
 import {
   Brain,
   ChevronDown,
-  Cloud,
   Code,
   Grid,
   LayoutDashboard,
   LogOut,
   Menu,
-  Palette,
+  Search,
   Settings,
   Shield,
-  Smartphone,
   User,
   Workflow,
   Zap,
 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const NAVBAR_SERVICES = [
   {
-    icon: Smartphone,
-    key: "servicesMoviles",
-    href: "/servicios/aplicaciones-moviles",
+    icon: Search,
+    key: "servicesDiscovery",
+    href: "/servicios/product-discovery",
   },
-  { icon: Cloud, key: "servicesWeb", href: "/servicios/aplicaciones-web" },
-  { icon: Code, key: "servicesSoftware", href: "/servicios/software-a-medida" },
   {
-    icon: Workflow,
-    key: "servicesAutomatizacion",
-    href: "/servicios/automatizacion-de-procesos",
+    icon: Code,
+    key: "servicesSoftware",
+    href: "/servicios/software-development",
   },
-  { icon: Brain, key: "servicesAnalitica", href: "/servicios/analitica-e-ia" },
-  { icon: Palette, key: "servicesBranding", href: "/servicios/branding-ui" },
+  { icon: Brain, key: "servicesAI", href: "/servicios/ai-agentic-systems" },
 ] as const;
 
 export default function GlobalNavbar() {
@@ -129,7 +125,7 @@ export default function GlobalNavbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] container-section transition-all duration-300 ${
           isScrolled
-            ? "backdrop-blur-md bg-card/80 border-b border-border/50 shadow-sm"
+            ? "backdrop-blur-md bg-card/10 border-b border-border"
             : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
       >
@@ -180,43 +176,49 @@ export default function GlobalNavbar() {
                 </button>
 
                 {/* Services Mega Menu */}
-                {isServicesOpen && (
-                  <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
-                    onMouseEnter={handleServicesMouseEnter}
-                    onMouseLeave={handleServicesMouseLeave}
-                  >
-                    <div className="flex items-center gap-2 mb-4">
-                      <Grid className="h-5 w-5 text-secondary" />
-                      <h3 className="font-semibold text-gray-900">
-                        {t("navbar.servicios")}
-                      </h3>
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
-                        <Link
-                          key={key}
-                          href={href}
-                          className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
-                        >
-                          <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
-                              <Icon className="w-4 h-4 text-secondary" />
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                      transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
+                      onMouseEnter={handleServicesMouseEnter}
+                      onMouseLeave={handleServicesMouseLeave}
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <Grid className="h-5 w-5 text-secondary" />
+                        <h3 className="font-semibold text-gray-900">
+                          {t("navbar.servicios")}
+                        </h3>
+                      </div>
+                      <div className="grid grid-cols-3 gap-3">
+                        {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
+                          <Link
+                            key={key}
+                            href={href}
+                            className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
+                                <Icon className="w-4 h-4 text-secondary" />
+                              </div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-secondary transition-colors">
+                                  {t(`navbar.${key}.title`)}
+                                </h4>
+                                <p className="text-xs text-gray-600 leading-relaxed">
+                                  {t(`navbar.${key}.description`)}
+                                </p>
+                              </div>
                             </div>
-                            <div>
-                              <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-secondary transition-colors">
-                                {t(`navbar.${key}.title`)}
-                              </h4>
-                              <p className="text-xs text-gray-600 leading-relaxed">
-                                {t(`navbar.${key}.description`)}
-                              </p>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               <Link

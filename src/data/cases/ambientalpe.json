@@ -1,0 +1,35 @@
+{
+  "title": "AmbientalPE",
+  "industry": "Medio ambiente / Tecnología",
+  "image": "/images/proyects/ambientalpe/ambientalpe-hero.png",
+  "systemMockupImage": "/images/proyects/ambientalpe/amb-mockup.png",
+  "galleryImages": [
+    "/images/proyects/ambientalpe/amb1.jpg",
+    "/images/proyects/ambientalpe/amb2.jpg",
+    "/images/proyects/ambientalpe/amb3.png",
+    "/images/proyects/ambientalpe/amb4.png",
+    "/images/proyects/ambientalpe/amb5.png"
+  ],
+  "location": "Perú",
+  "platform": "Web + Sistema",
+  "duration": "2025",
+  "client": "AmbientalPE",
+  "technologyStack": [
+    "WordPress",
+    "WooCommerce",
+    "React",
+    "NestJS",
+    "TypeScript"
+  ],
+  "secondaryIndustry": "Monitoreo ambiental y ocupacional",
+  "forWhom": "Empresas que necesitan monitoreo ambiental, ocupacional, alquiler y venta de equipos, y gestión de clientes y cotizaciones",
+  "services": ["Web", "Redes sociales", "Sistema de gestión"],
+  "description": "Tres piezas para una presencia coherente: web institucional, estrategia en redes sociales y sistema de gestión interna. AmbientalPE, líder en monitoreo ambiental y ocupacional.",
+  "problem": "AmbientalPE, empresa líder en monitoreo ambiental y ocupacional, quería consolidar su presencia digital: una web que comunicara sus servicios y catálogo, una estrategia en redes que generara engagement, y un sistema que ordenara clientes, proveedores, equipos y cotizaciones detrás de escena.",
+  "solution": "Construimos el ecosistema en tres capas. Primero, la web: ambientalpe.com con servicios (monitoreo ambiental, ocupacional, planos y mapas, venta y alquiler de equipos), catálogo online y contacto. Segundo, las redes: contenido y diseños para comunicar y conectar. Tercero, el sistema: dashboard y módulos para clientes (línea de crédito), proveedores, equipos (inventario, calibración), cotizaciones y órdenes. Tres servicios que se apoyan entre sí.",
+  "results": [],
+  "projectDescription": "AmbientalPE llegó con una visión clara: necesitaba tres cosas que funcionaran como una sola. La web fue el punto de partida —ambientalpe.com—, donde hoy se presentan sus servicios de monitoreo ambiental y ocupacional, el catálogo de equipos y el canal de contacto. A partir de ahí, diseñamos la estrategia en redes sociales: contenido y piezas visuales que refuerzan el mensaje y acercan la marca a su audiencia. Por último, desarrollamos el sistema de gestión: un panel interno para administrar clientes, proveedores, equipamiento (inventario, calibración, estados), cotizaciones y órdenes. Tres servicios, una historia: presencia digital, comunicación y operación alineadas.",
+  "publishedDate": "2025",
+  "liveUrl": "https://ambientalpe.com",
+  "slug": "ambientalpe"
+}

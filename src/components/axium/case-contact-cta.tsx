@@ -65,22 +65,20 @@ export function CaseContactCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative overflow-hidden rounded-2xl p-6 md:p-8 lg:p-10 xl:p-12"
+            className="relative overflow-hidden rounded-2xl p-6 md:p-8 lg:p-10 xl:p-12 bg-cover bg-center"
             style={{
-              background:
-                "linear-gradient(135deg, #060C20 0%, #0a1628 50%, #0072CF 100%)",
+              backgroundImage: "url('/abs1.jpg')",
             }}
           >
-            <div className="absolute inset-0 rounded-2xl p-[1px] -z-10">
-              <div
-                className="absolute inset-0 rounded-2xl"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #7ECFC3 0%, #0072CF 50%, #7ECFC3 100%)",
-                  opacity: 0.3,
-                }}
-              />
-            </div>
+            {/* Overlay gradiente: oscuro a la izquierda, casi transparente a la derecha */}
+            <div
+              className="absolute inset-0 z-[1] rounded-2xl"
+              style={{
+                background:
+                  "linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)",
+              }}
+              aria-hidden
+            />
 
             <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-12">
               <div className="flex flex-col justify-between lg:w-[40%]">

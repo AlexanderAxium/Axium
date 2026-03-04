@@ -485,6 +485,18 @@
     ],
     "results": []
   },
+  "ambientalpe": {
+    "title": "AmbientalPE",
+    "industry": "Meio ambiente / Tecnologia",
+    "description": "Três peças para uma presença coerente: web institucional, estratégia em redes sociais e sistema de gestão interna. AmbientalPE, líder em monitoramento ambiental e ocupacional.",
+    "problem": "AmbientalPE, líder em monitoramento ambiental e ocupacional, queria consolidar sua presença digital: uma web que comunicasse seus serviços e catálogo, uma estratégia em redes que gerasse engagement e um sistema que organizasse clientes, fornecedores, equipamentos e cotizações nos bastidores.",
+    "solution": "Construímos o ecossistema em três camadas. Primeiro, a web: ambientalpe.com com serviços, catálogo online e contato. Segundo, as redes: conteúdo e designs para comunicar e conectar. Terceiro, o sistema: dashboard e módulos para clientes, fornecedores, equipamentos (inventário, calibração), cotizações e ordens. Três serviços que se apoiam mutuamente.",
+    "projectDescription": "AmbientalPE chegou com uma visão clara: precisava de três coisas que funcionassem como uma só. A web foi o ponto de partida —ambientalpe.com—, onde hoje se apresentam seus serviços de monitoramento ambiental e ocupacional, o catálogo de equipamentos e o canal de contato. A partir daí, desenhamos a estratégia em redes sociais: conteúdo e peças visuais que reforçam a mensagem e aproximam a marca do seu público. Por fim, desenvolvemos o sistema de gestão: um painel interno para administrar clientes, fornecedores, equipamentos (inventário, calibração, estados), cotizações e ordens. Três serviços, uma história: presença digital, comunicação e operação alinhadas.",
+    "secondaryIndustry": "Gestão ambiental e monitoramento",
+    "forWhom": "Empresas de consultoria ambiental que precisam gerir clientes, fornecedores, equipamentos de monitoramento, cotizações e ordens de serviço em uma única plataforma",
+    "services": ["Web", "Redes sociais", "Sistema de gestão"],
+    "results": []
+  },
   "siclo": {
     "title": "Instructor Management System",
     "industry": "SaaS / Educação",
@@ -539,6 +551,23 @@
       "Fornecedores e base de dados",
       "Contabilidade e plano de contas",
       "Relatórios, auditoria e analíticas"
+    ],
+    "results": []
+  },
+  "feedback-management": {
+    "title": "Feedback Management System",
+    "industry": "SaaS / Experiência do cliente",
+    "description": "Plataforma de experiência do cliente para otimizar a coleta e análise de feedback: avaliações de serviço, gestão de sugestões, analíticas de desempenho por instrutor e administração multi-unidade. Inclui métricas NPS, priorização e dashboards interativos.",
+    "problem": "Era necessário um ecossistema unificado que combinasse avaliação de serviços, gestão de sugestões (estado, prioridade, filial, área), avaliações com NPS, analíticas por instrutor e filial, gestão de pessoal (managers, supervisores) e categorização por áreas para transformar o feedback em melhorias concretas de qualidade e satisfação.",
+    "solution": "Criei esta plataforma especializada com módulos de sugestões (filtros por estado, prioridade, filial, área; KPIs total, pendentes, resolvidas, taxa de resolução); avaliações (média geral, NPS, avaliação por instrutor; desdobramento por limpeza, áudio, atenção, comodidades, pontualidade); gestão de pessoal (papéis manager/supervisor, contacto, filiais, estado); instrutores e locais; áreas para categorizar sugestões; e analíticas com ranking de filiais e instrutores e dashboards interativos.",
+    "projectDescription": "Criei esta plataforma de experiência do cliente para otimizar a coleta e análise de feedback. O propósito central foi desenvolver um ecossistema unificado com avaliações de serviço, gestão de sugestões, analíticas de desempenho por instrutor e administração multi-unidade. Integrei métricas avançadas como NPS, sistemas de priorização e dashboards interativos que permitem às empresas transformar o feedback em melhorias concretas de qualidade e satisfação.",
+    "secondaryIndustry": "Gestão de feedback e satisfação",
+    "forWhom": "Empresas e redes multi-unidade que precisam centralizar sugestões, avaliações, analíticas NPS e administração por locais e instrutores",
+    "services": [
+      "Sugestões e priorização",
+      "Avaliações e NPS",
+      "Pessoal e multi-unidade",
+      "Analíticas e dashboards"
     ],
     "results": []
   }
