@@ -60,6 +60,7 @@ export default function GlobalNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isBlogRoute = pathname.startsWith("/blog");
+  const isPortfolioRoute = pathname.startsWith("/portafolio");
   const isDark = isBlogRoute || isScrolled;
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -109,8 +110,10 @@ export default function GlobalNavbar() {
   useEffect(() => {
     const isServicesPage = pathname.startsWith("/servicios");
     const isBlogPage = pathname.startsWith("/blog");
+    const useHeroObserver = isServicesPage || isPortfolioRoute;
 
-    if (!isServicesPage && !isBlogPage) {
+    // Home (y rutas sin #page-hero): efecto al pasar 100vh
+    if (!useHeroObserver && !isBlogPage) {
       const handleScroll = () => {
         setIsScrolled(window.scrollY > window.innerHeight);
       };
@@ -119,7 +122,7 @@ export default function GlobalNavbar() {
       return () => window.removeEventListener("scroll", handleScroll);
     }
 
-    // Servicios: transición exactamente cuando termina el hero (IntersectionObserver)
+    // Portafolio (hero 40vh) / Servicios (su propia altura): efecto cuando el hero #page-hero sale del viewport
     let observer: IntersectionObserver | null = null;
 
     const setupObserver = () => {
@@ -159,14 +162,14 @@ export default function GlobalNavbar() {
     return () => {
       observer?.disconnect();
     };
-  }, [pathname]);
+  }, [pathname, isPortfolioRoute]);
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] container-section transition-all duration-300 ${
           isDark
-            ? "backdrop-blur-md bg-card/10 border-b border-black/10"
+            ? "backdrop-blur-md bg-card/10 border-b border-black/5"
             : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
       >
@@ -178,7 +181,11 @@ export default function GlobalNavbar() {
                 <img
                   src={isDark ? "/logo2.png" : "/logo3.png"}
                   alt="AXIUM"
-                  className="h-8 w-auto md:h-9 transition-all duration-300"
+                  className={`h-8 w-auto md:h-9 transition-all duration-300 ${
+                    isPortfolioRoute && !isDark
+                      ? "brightness-0 invert opacity-90 hover:opacity-100"
+                      : ""
+                  }`}
                 />
               </Link>
             </div>

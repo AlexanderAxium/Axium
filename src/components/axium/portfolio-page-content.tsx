@@ -275,19 +275,27 @@ function GridCard({
 }
 
 // ─── Accordion filter section ─────────────────────────────────────────────────
+const FILTER_VISIBLE_LIMIT = 8;
+
 function FilterSection({
   title,
   items,
   activeLabels,
   onToggle,
+  defaultOpen = false,
 }: {
   title: string;
   items: { label: string; slugs: string[] }[];
   activeLabels: Set<string>;
   onToggle: (label: string) => void;
+  defaultOpen?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen);
+  const [showAll, setShowAll] = useState(false);
   const hasActive = items.some((i) => activeLabels.has(i.label));
+  const hasMore = items.length > FILTER_VISIBLE_LIMIT;
+  const visibleItems =
+    hasMore && !showAll ? items.slice(0, FILTER_VISIBLE_LIMIT) : items;
 
   return (
     <div className="border-b border-gray-100 last:border-0">
@@ -309,7 +317,7 @@ function FilterSection({
 
       {open && (
         <div className="pb-3 flex flex-col gap-0.5">
-          {items.map(({ label, slugs }) => {
+          {visibleItems.map(({ label, slugs }) => {
             const active = activeLabels.has(label);
             return (
               <button
@@ -331,6 +339,17 @@ function FilterSection({
               </button>
             );
           })}
+          {hasMore && (
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="mt-1 px-2 py-1.5 text-xs text-[#0072CF] hover:text-[#005ba3] text-left transition-colors"
+            >
+              {showAll
+                ? "Ver menos"
+                : `Ver ${items.length - FILTER_VISIBLE_LIMIT} más`}
+            </button>
+          )}
         </div>
       )}
     </div>
@@ -430,26 +449,21 @@ export function PortfolioPageContent() {
     t("portfolio.sortDefault");
 
   return (
-    <main className="min-h-screen bg-gray-50 overflow-x-hidden">
-      {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative bg-[#060C20] pt-24 pb-10 md:pt-28 md:pb-12 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#0072CF]/15 rounded-full blur-[100px] pointer-events-none" />
-
+    <main className="min-h-screen bg-gray-50">
+      {/* Hero 40vh: el navbar aplica el efecto al salir de esta sección (home usa 100vh) */}
+      <section
+        id="page-hero"
+        className="relative min-h-[40vh] flex flex-col justify-end pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: "url('/abs12.png')" }}
+      >
+        <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 container-section">
           <div className="content-section">
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="text-overline text-[#7ECFC3] mb-3 tracking-widest uppercase"
+              className="text-overline text-white/80 mb-3 tracking-widest uppercase"
             >
               {t("portfolio.nuestroTrabajo")}
             </motion.p>
@@ -460,15 +474,13 @@ export function PortfolioPageContent() {
               className="text-display text-white mb-3 max-w-2xl"
             >
               {t("portfolio.titulo")}{" "}
-              <span className="text-[#0072CF]">
-                {t("portfolio.tituloBold")}
-              </span>
+              <span className="text-white  ">{t("portfolio.tituloBold")}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-body text-white/55 max-w-xl"
+              className="text-body text-white/70 max-w-xl"
             >
               {t("portfolio.subtitulo", {
                 count: String(cases.length),
@@ -480,11 +492,180 @@ export function PortfolioPageContent() {
       </section>
 
       {/* ── Sidebar + Grid ───────────────────────────────────────── */}
-      <div className="container-section overflow-x-hidden">
-        <div className="content-section max-w-full">
+      <div className="container-section">
+        <div className="content-section">
+          {/* ── Mobile filters ─────────────────────────────────────── */}
+          <div className="lg:hidden bg-gray-50 border-b border-gray-200 py-3 space-y-3">
+            <Sheet open={filterSheetOpen} onOpenChange={setFilterSheetOpen}>
+              <div className="flex items-center justify-between">
+                <span className="text-base font-semibold text-[#060C20]">
+                  {t("portfolio.filtros")}
+                </span>
+                <SheetTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full hover:bg-gray-100"
+                  >
+                    <Settings className="w-5 h-5 text-[#060C20]" />
+                    <span className="sr-only">{t("portfolio.filtros")}</span>
+                  </Button>
+                </SheetTrigger>
+              </div>
+              <SheetContent
+                side="right"
+                className="w-[85%] sm:max-w-md flex flex-col p-0 overflow-hidden"
+              >
+                <SheetHeader className="p-4 pb-2 pr-14 border-b border-gray-100 shrink-0">
+                  <SheetTitle className="text-xl font-bold text-[#060C20]">
+                    {t("portfolio.filtros")}
+                  </SheetTitle>
+                  {hasFilters && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        resetAll();
+                      }}
+                      className="text-sm text-gray-500 hover:text-[#0072CF] transition-colors underline underline-offset-2 text-left"
+                    >
+                      {t("portfolio.limpiarTodo")}
+                    </button>
+                  )}
+                </SheetHeader>
+                <div className="flex-1 overflow-y-auto p-4 space-y-2 [scrollbar-width:thin] [scrollbar-color:theme(colors.gray.300)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
+                  {/* Active chips */}
+                  {hasFilters && (
+                    <div className="flex flex-wrap gap-1.5 pb-3 border-b border-gray-100">
+                      {[...activeIndustry].map((lbl) => (
+                        <button
+                          type="button"
+                          key={lbl}
+                          onClick={() =>
+                            toggle(activeIndustry, setActiveIndustry, lbl)
+                          }
+                          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white"
+                        >
+                          {lbl} <X className="w-3 h-3" />
+                        </button>
+                      ))}
+                      {[...activeService].map((lbl) => (
+                        <button
+                          type="button"
+                          key={lbl}
+                          onClick={() =>
+                            toggle(activeService, setActiveService, lbl)
+                          }
+                          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#0072CF] text-white"
+                        >
+                          {lbl} <X className="w-3 h-3" />
+                        </button>
+                      ))}
+                      {[...activeTech].map((lbl) => (
+                        <button
+                          type="button"
+                          key={lbl}
+                          onClick={() => toggle(activeTech, setActiveTech, lbl)}
+                          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#7ECFC3] text-teal-900"
+                        >
+                          {lbl} <X className="w-3 h-3" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                  {/* Filter sections */}
+                  <div className="rounded-xl border border-gray-100 bg-gray-50/50 divide-y divide-gray-100 overflow-hidden">
+                    <FilterSection
+                      title={t("portfolio.industria")}
+                      items={INDUSTRY_FILTERS}
+                      activeLabels={activeIndustry}
+                      defaultOpen
+                      onToggle={(lbl) =>
+                        toggle(activeIndustry, setActiveIndustry, lbl)
+                      }
+                    />
+                    <FilterSection
+                      title={t("portfolio.servicios")}
+                      items={SERVICE_FILTERS}
+                      activeLabels={activeService}
+                      onToggle={(lbl) =>
+                        toggle(activeService, setActiveService, lbl)
+                      }
+                    />
+                    <FilterSection
+                      title={t("portfolio.tecnologia")}
+                      items={TECH_FILTERS}
+                      activeLabels={activeTech}
+                      onToggle={(lbl) => toggle(activeTech, setActiveTech, lbl)}
+                    />
+                  </div>
+                  {/* Sort */}
+                  <div className="pt-2">
+                    <p className="text-sm font-semibold text-[#060C20] mb-2">
+                      {t("portfolio.ordenar")}
+                    </p>
+                    <div className="flex flex-col gap-0.5">
+                      {SORT_OPTIONS.map((opt) => (
+                        <button
+                          key={opt.key}
+                          type="button"
+                          onClick={() => setSortKey(opt.key)}
+                          className={`flex items-center justify-between w-full text-left px-3 py-2.5 rounded-lg text-sm transition-all ${
+                            sortKey === opt.key
+                              ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
+                              : "text-gray-600 hover:bg-gray-100"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+            {/* Applied filters as badges */}
+            {hasFilters && (
+              <div className="flex flex-wrap gap-1.5">
+                {[...activeIndustry].map((lbl) => (
+                  <button
+                    type="button"
+                    key={lbl}
+                    onClick={() =>
+                      toggle(activeIndustry, setActiveIndustry, lbl)
+                    }
+                    className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#060C20] text-white"
+                  >
+                    {lbl} <X className="w-3 h-3" />
+                  </button>
+                ))}
+                {[...activeService].map((lbl) => (
+                  <button
+                    type="button"
+                    key={lbl}
+                    onClick={() => toggle(activeService, setActiveService, lbl)}
+                    className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#0072CF] text-white"
+                  >
+                    {lbl} <X className="w-3 h-3" />
+                  </button>
+                ))}
+                {[...activeTech].map((lbl) => (
+                  <button
+                    type="button"
+                    key={lbl}
+                    onClick={() => toggle(activeTech, setActiveTech, lbl)}
+                    className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#7ECFC3] text-teal-900"
+                  >
+                    {lbl} <X className="w-3 h-3" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 py-8 md:py-14 items-stretch lg:items-start">
-            {/* ── Sidebar ─────────────────────────────────────────── */}
-            <aside className="hidden lg:block w-56 xl:w-60 shrink-0 sticky top-20 self-start max-h-[calc(100vh-5rem)] overflow-y-auto [scrollbar-width:thin] [scrollbar-color:#d1d5db_transparent] [&::-webkit-scrollbar]:w-[3px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full">
+            {/* ── Desktop Sidebar ──────────────────────────────────── */}
+            <aside className="hidden lg:block w-56 xl:w-60 shrink-0 self-start bg-gray-50 py-1 -my-1">
               {/* Header */}
               <div className="flex items-center justify-between pb-4 mb-1 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-[#060C20] tracking-tight">
@@ -547,6 +728,7 @@ export function PortfolioPageContent() {
                   title={t("portfolio.industria")}
                   items={INDUSTRY_FILTERS}
                   activeLabels={activeIndustry}
+                  defaultOpen
                   onToggle={(lbl) =>
                     toggle(activeIndustry, setActiveIndustry, lbl)
                   }
@@ -568,182 +750,8 @@ export function PortfolioPageContent() {
               </div>
             </aside>
 
-            {/* ── Mobile filters: label + settings + badges ─────────── */}
-            <div className="lg:hidden w-full shrink-0 order-first space-y-3 pb-4 border-b border-gray-200">
-              <Sheet open={filterSheetOpen} onOpenChange={setFilterSheetOpen}>
-                <div className="flex items-center justify-between">
-                  <span className="text-base font-semibold text-[#060C20]">
-                    {t("portfolio.filtros")}
-                  </span>
-                  <SheetTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      className="rounded-full hover:bg-gray-100"
-                    >
-                      <Settings className="w-5 h-5 text-[#060C20]" />
-                      <span className="sr-only">{t("portfolio.filtros")}</span>
-                    </Button>
-                  </SheetTrigger>
-                </div>
-                <SheetContent
-                  side="right"
-                  className="w-[85%] sm:max-w-md flex flex-col p-0 overflow-hidden"
-                >
-                  <SheetHeader className="p-4 pb-2 pr-14 border-b border-gray-100 shrink-0">
-                    <SheetTitle className="text-xl font-bold text-[#060C20]">
-                      {t("portfolio.filtros")}
-                    </SheetTitle>
-                    {hasFilters && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          resetAll();
-                        }}
-                        className="text-sm text-gray-500 hover:text-[#0072CF] transition-colors underline underline-offset-2 text-left"
-                      >
-                        {t("portfolio.limpiarTodo")}
-                      </button>
-                    )}
-                  </SheetHeader>
-                  <div className="flex-1 overflow-y-auto p-4 space-y-2 [scrollbar-width:thin] [scrollbar-color:theme(colors.gray.300)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
-                    {/* Active chips */}
-                    {hasFilters && (
-                      <div className="flex flex-wrap gap-1.5 pb-3 border-b border-gray-100">
-                        {[...activeIndustry].map((lbl) => (
-                          <button
-                            type="button"
-                            key={lbl}
-                            onClick={() =>
-                              toggle(activeIndustry, setActiveIndustry, lbl)
-                            }
-                            className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white"
-                          >
-                            {lbl} <X className="w-3 h-3" />
-                          </button>
-                        ))}
-                        {[...activeService].map((lbl) => (
-                          <button
-                            type="button"
-                            key={lbl}
-                            onClick={() =>
-                              toggle(activeService, setActiveService, lbl)
-                            }
-                            className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#0072CF] text-white"
-                          >
-                            {lbl} <X className="w-3 h-3" />
-                          </button>
-                        ))}
-                        {[...activeTech].map((lbl) => (
-                          <button
-                            type="button"
-                            key={lbl}
-                            onClick={() =>
-                              toggle(activeTech, setActiveTech, lbl)
-                            }
-                            className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#7ECFC3] text-teal-900"
-                          >
-                            {lbl} <X className="w-3 h-3" />
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                    {/* Filter sections */}
-                    <div className="rounded-xl border border-gray-100 bg-gray-50/50 divide-y divide-gray-100 overflow-hidden">
-                      <FilterSection
-                        title={t("portfolio.industria")}
-                        items={INDUSTRY_FILTERS}
-                        activeLabels={activeIndustry}
-                        onToggle={(lbl) =>
-                          toggle(activeIndustry, setActiveIndustry, lbl)
-                        }
-                      />
-                      <FilterSection
-                        title={t("portfolio.servicios")}
-                        items={SERVICE_FILTERS}
-                        activeLabels={activeService}
-                        onToggle={(lbl) =>
-                          toggle(activeService, setActiveService, lbl)
-                        }
-                      />
-                      <FilterSection
-                        title={t("portfolio.tecnologia")}
-                        items={TECH_FILTERS}
-                        activeLabels={activeTech}
-                        onToggle={(lbl) =>
-                          toggle(activeTech, setActiveTech, lbl)
-                        }
-                      />
-                    </div>
-                    {/* Sort */}
-                    <div className="pt-2">
-                      <p className="text-sm font-semibold text-[#060C20] mb-2">
-                        {t("portfolio.ordenar")}
-                      </p>
-                      <div className="flex flex-col gap-0.5">
-                        {SORT_OPTIONS.map((opt) => (
-                          <button
-                            key={opt.key}
-                            type="button"
-                            onClick={() => setSortKey(opt.key)}
-                            className={`flex items-center justify-between w-full text-left px-3 py-2.5 rounded-lg text-sm transition-all ${
-                              sortKey === opt.key
-                                ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                                : "text-gray-600 hover:bg-gray-100"
-                            }`}
-                          >
-                            {opt.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </SheetContent>
-              </Sheet>
-              {/* Applied filters as badges */}
-              {hasFilters && (
-                <div className="flex flex-wrap gap-1.5">
-                  {[...activeIndustry].map((lbl) => (
-                    <button
-                      type="button"
-                      key={lbl}
-                      onClick={() =>
-                        toggle(activeIndustry, setActiveIndustry, lbl)
-                      }
-                      className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#060C20] text-white"
-                    >
-                      {lbl} <X className="w-3 h-3" />
-                    </button>
-                  ))}
-                  {[...activeService].map((lbl) => (
-                    <button
-                      type="button"
-                      key={lbl}
-                      onClick={() =>
-                        toggle(activeService, setActiveService, lbl)
-                      }
-                      className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#0072CF] text-white"
-                    >
-                      {lbl} <X className="w-3 h-3" />
-                    </button>
-                  ))}
-                  {[...activeTech].map((lbl) => (
-                    <button
-                      type="button"
-                      key={lbl}
-                      onClick={() => toggle(activeTech, setActiveTech, lbl)}
-                      className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#7ECFC3] text-teal-900"
-                    >
-                      {lbl} <X className="w-3 h-3" />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
             {/* ── Main content ────────────────────────────────────── */}
-            <div className="flex-1 min-w-0 w-full overflow-hidden">
+            <div className="flex-1 min-w-0 w-full overflow-x-hidden">
               {/* Toolbar */}
               <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
                 {/* count */}
