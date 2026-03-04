@@ -30,94 +30,100 @@ export interface ServicePageData {
 }
 
 export const SERVICES: Record<string, ServicePageData> = {
-  "product-discovery": {
-    slug: "product-discovery",
-    title: "Product Discovery & Design",
-    shortTitle: "Product Discovery",
+  "design-branding": {
+    slug: "design-branding",
+    title: "Design & Branding",
+    shortTitle: "Design & Branding",
     description:
-      "Nos aseguramos de que tu producto satisfaga necesidades reales, impulse resultados de negocio y logre diferenciación en el mercado. Identificamos y validamos soluciones con el mayor potencial de encaje producto-mercado, definimos tu estrategia y roadmap, y alineamos a tu equipo alrededor de lo que verdaderamente importa.",
+      "Construimos marcas que comunican, productos que enamoran y materiales que convierten. Desde la identidad visual hasta el diseño de producto — todo lo que necesitas para destacar en el mercado.",
     heroGradient:
       "linear-gradient(135deg, #060C20 0%, #0a1628 60%, #001a3a 100%)",
     accentColor: "#0072CF",
-    heroIcon: "Search",
+    heroIcon: "Palette",
     featuresTitle: "Qué incluye",
     featuresSubtitle:
-      "Un proceso estructurado para descubrir, definir y diseñar tu producto antes de escribir una sola línea de código.",
+      "De la estrategia visual al activo final — todo el espectro del diseño para marcas que quieren destacar.",
     features: [
       {
-        icon: "TrendingUp",
-        title: "Análisis de mercado y competidores",
+        icon: "Palette",
+        title: "Identidad visual y logo",
         description:
-          "Mapeamos tu panorama competitivo, identificamos brechas y oportunidades, y validamos dónde puede ganar tu producto.",
+          "Diseñamos marcas con propósito: logo, paleta de colores, tipografía y sistema visual que comunica quién eres.",
       },
       {
-        icon: "Users",
-        title: "Investigación de usuarios",
+        icon: "Layers",
+        title: "Brand guidelines",
         description:
-          "Entrevistas, encuestas y análisis de comportamiento para entender las necesidades reales, motivaciones y puntos de dolor de tus usuarios.",
+          "Manual completo de marca para que tu identidad sea consistente en cada punto de contacto, canal y equipo.",
       },
       {
-        icon: "ClipboardList",
-        title: "Requisitos de producto",
+        icon: "FileText",
+        title: "Materiales de marketing",
         description:
-          "Documentación estructurada de lo que el producto debe hacer, priorizada por valor de negocio e impacto en el usuario.",
-      },
-      {
-        icon: "Star",
-        title: "North Star y propuesta de valor",
-        description:
-          "Definimos el valor central que entrega tu producto y la métrica única que mide tu éxito.",
-      },
-      {
-        icon: "GitBranch",
-        title: "Mapeo de funcionalidades y roadmap",
-        description:
-          "Un roadmap priorizado por fases que equilibra victorias rápidas con la visión de producto a largo plazo.",
+          "Brochures, presentaciones, flyers, social media kits y cualquier material impreso o digital que necesites.",
       },
       {
         icon: "Eye",
-        title: "Diseños de alta fidelidad en Figma",
+        title: "UI/UX & Diseño de producto",
         description:
-          "Diseños de UI pixel-perfect que reflejan tu marca, validados con usuarios reales antes de comenzar el desarrollo.",
+          "Diseño de interfaces centradas en el usuario: wireframes, prototipos y diseños de alta fidelidad en Figma.",
+      },
+      {
+        icon: "Monitor",
+        title: "Diseño web y landing pages",
+        description:
+          "Páginas web y landing pages con diseño editorial que convierten visitantes en clientes.",
+      },
+      {
+        icon: "Image",
+        title: "Motion & presentaciones",
+        description:
+          "Animaciones de marca, pitch decks y presentaciones ejecutivas que hacen que tu historia se cuente sola.",
       },
     ],
     process: [
       {
         step: 1,
-        title: "Investigación",
+        title: "Descubrimiento",
         description:
-          "Análisis de mercado, benchmarking de competidores y entrevistas a usuarios para construir una visión completa del espacio del problema.",
+          "Entendemos tu marca, audiencia, competidores y objetivos. Definimos el brief creativo y la estrategia visual.",
       },
       {
         step: 2,
-        title: "Definición",
+        title: "Estrategia",
         description:
-          "Sintetizamos la investigación en requisitos claros de producto, historias de usuario y un backlog priorizado.",
+          "Desarrollamos el concepto de marca, moodboard, dirección creativa y arquitectura visual antes de diseñar.",
       },
       {
         step: 3,
         title: "Diseño",
         description:
-          "Wireframes, prototipos y diseños de alta fidelidad en Figma alineados con tu marca y las expectativas del usuario.",
+          "Creamos los activos visuales: logo, sistema de marca, materiales y entregables en Figma listos para uso.",
       },
       {
         step: 4,
-        title: "Validación",
+        title: "Entrega",
         description:
-          "Pruebas con usuarios y revisión con stakeholders para confirmar la solución antes de comprometerse con el desarrollo.",
+          "Entregamos archivos finales en todos los formatos, brand guidelines completo y soporte post-entrega.",
       },
     ],
-    technologies: ["Figma", "Miro", "Notion", "Google Analytics", "Hotjar"],
+    technologies: [
+      "Figma",
+      "Adobe Illustrator",
+      "Adobe Photoshop",
+      "After Effects",
+      "Framer",
+    ],
     benefits: [
-      "Reduce el riesgo antes de escribir código",
-      "Alinea a tu equipo alrededor de una visión compartida",
-      "Diseños validados y listos para desarrollo",
+      "Marca profesional lista para lanzar",
+      "Archivos editables en todos los formatos",
+      "Brand guidelines incluido siempre",
     ],
     whatsappMessage:
-      "Hola, me interesa el servicio de Product Discovery & Design. ¿Podemos agendar una llamada?",
-    metaTitle: "Product Discovery & Design | Axium",
+      "Hola, me interesa el servicio de Design & Branding. ¿Podemos agendar una llamada?",
+    metaTitle: "Design & Branding | Axium",
     metaDescription:
-      "Validamos tu idea de producto, mapeamos necesidades de usuarios y entregamos diseños de alta fidelidad listos para desarrollo. Estrategia antes que código.",
+      "Diseñamos identidades visuales, materiales de marketing y experiencias de producto que comunican, convierten y construyen marcas memorables.",
   },
 
   "software-development": {
@@ -316,7 +322,7 @@ export const SERVICES: Record<string, ServicePageData> = {
 };
 
 export const SERVICE_IMAGES: Record<string, string> = {
-  "product-discovery": "/images/services/discovery-hero.jpg",
+  "design-branding": "/images/services/design-branding-hero.jpg",
   "software-development": "/images/services/software-dev-hero.jpg",
   "ai-agentic-systems": "/images/services/ai-systems-hero.jpg",
 };

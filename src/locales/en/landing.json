@@ -206,17 +206,17 @@
       "viewService": "View service",
       "items": {
         "discovery": {
-          "title": "Product discovery & design",
-          "description": "We ensure your product meets user needs, drives business outcomes, and achieves market differentiation. We identify and validate solutions with the highest potential for product-market fit, shape your product strategy and roadmap, and align key stakeholders across your organization.",
+          "title": "Design & Branding",
+          "description": "We build brands that communicate, products that delight and materials that convert. Visual identity, branding, brochures and product design.",
           "benefits": [
-            "Market and competitor analysis",
-            "User research",
-            "Product requirements",
-            "North Star value proposition",
-            "Feature mapping and roadmap",
-            "High-fidelity Figma designs"
+            "Visual identity & logo",
+            "Brand guidelines",
+            "Marketing materials",
+            "UI/UX & Product design",
+            "Web design & landing pages",
+            "Motion & presentations"
           ],
-          "whatsappMessage": "Hi, I'm interested in product discovery and design services. Can we schedule a call?"
+          "whatsappMessage": "Hi, I am interested in the Design & Branding service. Can we schedule a call?"
         },
         "software-dev": {
           "title": "Software development",

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Blog",
+    "subtitle": "Ideias, tendências e boas práticas em software, produto e transformação digital.",
+    "readMore": "Ler mais",
+    "allPosts": "Todos os artigos",
+    "backToBlog": "Voltar ao blog",
+    "publishedOn": "Publicado em"
+  },
+  "posts": {
+    "transformacion-digital": {
+      "title": "Como a transformação digital acelera seu negócio",
+      "excerpt": "Chaves para priorizar iniciativas digitais que gerem impacto real em operações e experiência do cliente.",
+      "date": "15 Fev 2025",
+      "body": "A transformação digital não é só tecnologia: é repensar processos, cultura e experiência do cliente com foco em resultados mensuráveis. Neste artigo revisamos como priorizar iniciativas que gerem impacto real em operações e na relação com seus usuários.\n\nComeçar por um diagnóstico claro de maturidade digital permite identificar quick wins e projetos estratégicos a médio prazo. O alinhamento entre negócio, produto e tecnologia é fundamental para que os investimentos se traduzam em vantagens competitivas sustentáveis.\n\nNa prática, muitas empresas começam automatizando processos repetitivos —gestão documental, faturamento, inventários— e depois avançam para canais digitais de venda e atendimento ao cliente. A ordem importa: abordar primeiro o que libera capacidade operacional costuma gerar o retorno mais rápido.\n\nA experiência digital do cliente é outro pilar: um site ou app bem projetado não só atrai usuários, como reduz custos de suporte e cria dados que permitem melhorar produtos e serviços de forma contínua."
+    },
+    "metodologias-agiles": {
+      "title": "Metodologias ágeis em projetos de software",
+      "excerpt": "Por que Scrum e Kanban não são só para equipes técnicas: benefícios mensuráveis em prazos, qualidade e alinhamento com o negócio.",
+      "date": "28 Jan 2025",
+      "body": "Scrum, Kanban e práticas ágeis não são exclusivas de equipes de desenvolvimento: ajudam qualquer equipe a entregar valor de forma iterativa, com visibilidade e capacidade de ajuste constante.\n\nEm projetos de software, a aplicação de frameworks ágeis bem compreendidos melhora prazos, qualidade e alinhamento com o negócio. A chave está em adaptar o framework à realidade da equipe e da organização, não em seguir cerimônias por inércia.\n\nSprints curtos de duas ou três semanas permitem receber feedback cedo e corrigir o rumo sem grandes desperdícios. Os dailies, retrospectivas e backlog priorizado criam um ritmo que evita o \"big bang\" no final do projeto.\n\nQuando negócio e tecnologia trabalham juntos desde o início —com user stories claras, critérios de aceitação e demos frequentes— o resultado costuma se ajustar melhor ao que o mercado realmente precisa."
+    },
+    "ia-en-el-negocio": {
+      "title": "Inteligência artificial aplicada ao negócio",
+      "excerpt": "Da automação de processos a agentes conversacionais: casos de uso concretos e como começar com um MVP.",
+      "date": "10 Jan 2025",
+      "body": "A inteligência artificial abre possibilidades que vão da automação de tarefas repetitivas a agentes conversacionais e sistemas de recomendação. Para aproveitá-la sem dispersar esforços, convém identificar casos de uso concretos com impacto mensurável.\n\nComeçar com um MVP enxuto —por exemplo, um chatbot para consultas frequentes ou um assistente para resumir documentos— permite validar valor e complexidade antes de escalar. A combinação de dados de qualidade, modelos adequados e integração com sistemas existentes costuma marcar a diferença entre um piloto bem-sucedido e um que não decola.\n\nOs LLMs (grandes modelos de linguagem) facilitaram o acesso a capacidades como análise de texto, geração de conteúdo e resposta conversacional. Integrá-los via APIs aos seus fluxos atuais —CRM, e-mail, base de conhecimento— é um ponto de partida prático.\n\nDefinir métricas claras desde o início —tempo economizado, satisfação do usuário, taxa de resolução— ajuda a avaliar se o piloto vale a pena e em que direção escalar."
+    }
+  }
+}

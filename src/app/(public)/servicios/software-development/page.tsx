@@ -1,4 +1,4 @@
-import { ServicePageTemplate } from "~/components/axium/service-page-template";
+import { SoftwareDevelopmentPage } from "~/components/axium/software-development-page";
 import { SERVICES } from "~/data/services-data";
 
 const data = SERVICES["software-development"]!;
@@ -8,6 +8,6 @@ export const metadata = {
   description: data.metaDescription,
 };
 
-export default function SoftwareDevelopmentPage() {
-  return <ServicePageTemplate slug="software-development" />;
+export default function Page() {
+  return <SoftwareDevelopmentPage />;
 }

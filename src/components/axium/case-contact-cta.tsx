@@ -1,13 +1,32 @@
 "use client";
 
-import { Linkedin, Mail, Paperclip, Send } from "lucide-react";
+import { Mail, Paperclip, Send } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import contactData from "~/data/contact-cta-data.json";
 import { useTranslation } from "~/hooks/useTranslation";
 
-const smoothEase = [0.4, 0, 0.2, 1] as const;
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] as const },
+  },
+};
 
 const SOURCE_OPTIONS = [
   { id: "source-1", key: "sourceGoogle", value: "google" },
@@ -61,10 +80,10 @@ export function CaseContactCTA() {
       <div className="container-section">
         <div className="content-section">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
             className="relative overflow-hidden rounded-2xl p-6 md:p-8 lg:p-10 xl:p-12 bg-cover bg-center"
             style={{
               backgroundImage: "url('/abs1.jpg')",
@@ -75,7 +94,7 @@ export function CaseContactCTA() {
               className="absolute inset-0 z-[1] rounded-2xl"
               style={{
                 background:
-                  "linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)",
+                  "linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)",
               }}
               aria-hidden
             />
@@ -84,10 +103,7 @@ export function CaseContactCTA() {
               <div className="flex flex-col justify-between lg:w-[40%]">
                 <div>
                   <motion.h2
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
+                    variants={itemVariants}
                     className="text-heading-1 mb-4"
                     style={{
                       background:
@@ -101,10 +117,7 @@ export function CaseContactCTA() {
                   </motion.h2>
 
                   <motion.ul
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2, ease: smoothEase }}
+                    variants={itemVariants}
                     className="flex flex-col gap-3 text-body-sm text-gray-400 max-w-[400px]"
                   >
                     <li className="leading-relaxed">
@@ -119,13 +132,10 @@ export function CaseContactCTA() {
                 </div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3, ease: smoothEase }}
+                  variants={itemVariants}
                   className="hidden md:block mt-8"
                 >
-                  <p className="text-body-sm mb-3 text-white/80">
+                  <p className="text-body-sm mb-3 text-white/90">
                     {t("home.contactCta.ceoSectionTitle")}
                   </p>
                   <div className="relative flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-white/5 border border-white/10 max-w-[380px]">
@@ -177,10 +187,7 @@ export function CaseContactCTA() {
                 encType="multipart/form-data"
               >
                 <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2, ease: smoothEase }}
+                  variants={itemVariants}
                   className="flex flex-col sm:flex-row gap-3.5"
                 >
                   <div className="relative flex-1 group rounded-lg p-[1px] transition-all duration-300 bg-white/10 hover:bg-gradient-to-r hover:from-secondary hover:via-transparent hover:to-accent focus-within:bg-gradient-to-r focus-within:from-secondary focus-within:via-transparent focus-within:to-accent">
@@ -192,7 +199,7 @@ export function CaseContactCTA() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       required
-                      className="text-body h-11 md:h-12 w-full rounded-[7px] bg-[#0d1a30] px-4 text-white placeholder:text-gray-500 outline-none"
+                      className="text-body h-11 md:h-12 w-full rounded-[7px] bg-[#0d1a30] px-4 text-white placeholder:text-gray-400 outline-none"
                       name="name"
                     />
                   </div>
@@ -206,17 +213,14 @@ export function CaseContactCTA() {
                       }
                       required
                       autoComplete="email"
-                      className="text-body h-11 md:h-12 w-full rounded-[7px] bg-[#0d1a30] px-4 text-white placeholder:text-gray-500 outline-none"
+                      className="text-body h-11 md:h-12 w-full rounded-[7px] bg-[#0d1a30] px-4 text-white placeholder:text-gray-400 outline-none"
                       name="email"
                     />
                   </div>
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3, ease: smoothEase }}
+                  variants={itemVariants}
                   className="relative group rounded-lg p-[1px] transition-all duration-300 bg-white/10 hover:bg-gradient-to-r hover:from-secondary hover:via-transparent hover:to-accent focus-within:bg-gradient-to-r focus-within:from-secondary focus-within:via-transparent focus-within:to-accent"
                 >
                   <textarea
@@ -227,16 +231,13 @@ export function CaseContactCTA() {
                     }
                     required
                     rows={4}
-                    className="text-body w-full min-h-[110px] rounded-[7px] bg-[#0d1a30] px-4 py-3 text-white placeholder:text-gray-500 outline-none resize-none"
+                    className="text-body w-full min-h-[110px] rounded-[7px] bg-[#0d1a30] px-4 py-3 text-white placeholder:text-gray-400 outline-none resize-none"
                     name="message"
                   />
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.4, ease: smoothEase }}
+                  variants={itemVariants}
                   className="relative group w-fit"
                 >
                   <input
@@ -262,13 +263,10 @@ export function CaseContactCTA() {
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.5, ease: smoothEase }}
+                  variants={itemVariants}
                   className="mt-1 flex flex-col gap-2.5"
                 >
-                  <p className="text-body-sm text-white/80">
+                  <p className="text-body-sm text-white/90">
                     {t("home.contactCta.sourceTitle")}
                   </p>
                   <ul className="flex flex-wrap gap-2">
@@ -290,17 +288,11 @@ export function CaseContactCTA() {
                   </ul>
                 </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.6, ease: smoothEase }}
-                  className="mt-4"
-                >
+                <motion.div variants={itemVariants} className="mt-4">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="text-body-sm group flex h-11 md:h-12 items-center justify-center gap-2 rounded-lg bg-secondary px-7 font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent hover:text-primary disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="text-body-sm group flex h-11 md:h-12 items-center justify-center gap-2 rounded-lg bg-white/10 border border-white/50 px-7 font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-white/20 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       t("home.contactCta.form.submitting")
@@ -314,14 +306,8 @@ export function CaseContactCTA() {
                 </motion.div>
               </form>
 
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3, ease: smoothEase }}
-                className="md:hidden"
-              >
-                <p className="text-body-sm mb-3 text-white/80">
+              <motion.div variants={itemVariants} className="md:hidden">
+                <p className="text-body-sm mb-3 text-white/90">
                   {t("home.contactCta.ceoSectionTitle")}
                 </p>
                 <div className="relative flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-white/5 border border-white/10">
@@ -366,21 +352,6 @@ export function CaseContactCTA() {
                 </div>
               </motion.div>
             </div>
-
-            <div
-              className="pointer-events-none absolute -z-0 w-64 h-64 top-0 left-[10%] opacity-10 blur-3xl"
-              style={{
-                background:
-                  "radial-gradient(circle, #ffffff 0%, transparent 70%)",
-              }}
-            />
-            <div
-              className="pointer-events-none absolute -z-0 w-96 h-96 bottom-0 left-[5%] opacity-10 blur-3xl"
-              style={{
-                background:
-                  "radial-gradient(circle, #0072CF 0%, transparent 70%)",
-              }}
-            />
           </motion.div>
         </div>
       </div>

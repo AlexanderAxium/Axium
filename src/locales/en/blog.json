@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Blog",
+    "subtitle": "Ideas, trends and best practices in software, product and digital transformation.",
+    "readMore": "Read more",
+    "allPosts": "All articles",
+    "backToBlog": "Back to blog",
+    "publishedOn": "Published on"
+  },
+  "posts": {
+    "transformacion-digital": {
+      "title": "How digital transformation accelerates your business",
+      "excerpt": "Keys to prioritizing digital initiatives that deliver real impact on operations and customer experience.",
+      "date": "Feb 15, 2025",
+      "body": "Digital transformation is not just technology: it's rethinking processes, culture and customer experience with a focus on measurable results. In this article we look at how to prioritize initiatives that deliver real impact on operations and your relationship with users.\n\nStarting with a clear assessment of digital maturity helps identify quick wins and strategic projects for the medium term. Alignment between business, product and technology is essential for investments to turn into sustainable competitive advantages.\n\nIn practice, many companies start by automating repetitive processes —document management, billing, inventory— and then move on to digital sales and customer service channels. Order matters: tackling what frees up operational capacity first usually delivers the fastest return.\n\nDigital customer experience is another pillar: a well-designed website or app not only attracts users, but reduces support costs and creates data that enables continuous improvement of products and services."
+    },
+    "metodologias-agiles": {
+      "title": "Agile methodologies in software projects",
+      "excerpt": "Why Scrum and Kanban aren't just for technical teams: measurable benefits in timelines, quality and business alignment.",
+      "date": "Jan 28, 2025",
+      "body": "Scrum, Kanban and agile practices aren't exclusive to development teams: they help any team deliver value iteratively, with visibility and the ability to adjust constantly.\n\nIn software projects, applying well-understood agile frameworks improves timelines, quality and alignment with the business. The key is adapting the framework to the reality of the team and the organization, not following ceremonies by inertia.\n\nShort sprints of two or three weeks enable early feedback and course correction without major waste. Daily standups, retrospectives and a prioritized backlog create a rhythm that avoids the \"big bang\" at the end of the project.\n\nWhen business and technology work together from the start —with clear user stories, acceptance criteria and frequent demos— the outcome tends to better match what the market actually needs."
+    },
+    "ia-en-el-negocio": {
+      "title": "Artificial intelligence applied to business",
+      "excerpt": "From process automation to conversational agents: concrete use cases and how to start with an MVP.",
+      "date": "Jan 10, 2025",
+      "body": "Artificial intelligence opens possibilities from automating repetitive tasks to conversational agents and recommendation systems. To leverage it without spreading efforts thin, it helps to identify concrete use cases with measurable impact.\n\nStarting with a focused MVP —for example, a chatbot for frequent queries or an assistant to summarize documents— lets you validate value and complexity before scaling. The combination of quality data, suitable models and integration with existing systems often makes the difference between a successful pilot and one that never takes off.\n\nLLMs (large language models) have made it easier to access capabilities such as text analysis, content generation and conversational response. Integrating them via APIs with your current flows —CRM, email, knowledge base— is a practical starting point.\n\nDefining clear metrics from the start —time saved, user satisfaction, resolution rate— helps assess whether the pilot is worth it and which direction to scale."
+    }
+  }
+}

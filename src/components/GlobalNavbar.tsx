@@ -45,7 +45,7 @@ const NAVBAR_SERVICES = [
   {
     icon: Search,
     key: "servicesDiscovery",
-    href: "/servicios/product-discovery",
+    href: "/servicios/design-branding",
   },
   {
     icon: Code,
@@ -56,9 +56,11 @@ const NAVBAR_SERVICES = [
 ] as const;
 
 export default function GlobalNavbar() {
-  const _pathname = usePathname();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isBlogRoute = pathname.startsWith("/blog");
+  const isDark = isBlogRoute || isScrolled;
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { user, isAuthenticated, signOut } = useAuthContext();
@@ -105,27 +107,66 @@ export default function GlobalNavbar() {
   const userInitials = useMemo(() => getInitials(user?.name), [user?.name]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      setIsScrolled(scrollPosition > viewportHeight);
+    const isServicesPage = pathname.startsWith("/servicios");
+    const isBlogPage = pathname.startsWith("/blog");
+
+    if (!isServicesPage && !isBlogPage) {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > window.innerHeight);
+      };
+      handleScroll();
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+
+    // Servicios: transición exactamente cuando termina el hero (IntersectionObserver)
+    let observer: IntersectionObserver | null = null;
+
+    const setupObserver = () => {
+      const hero = document.getElementById("page-hero");
+      if (!hero) return false;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry) setIsScrolled(!entry.isIntersecting);
+        },
+        {
+          threshold: 0,
+          rootMargin: "0px 0px 0px 0px",
+          root: null,
+        }
+      );
+      observer.observe(hero);
+      return true;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    if (!setupObserver()) {
+      const retryId = window.setInterval(() => {
+        if (setupObserver()) window.clearInterval(retryId);
+      }, 50);
+      const timeoutId = window.setTimeout(
+        () => window.clearInterval(retryId),
+        3000
+      );
+      return () => {
+        window.clearInterval(retryId);
+        window.clearTimeout(timeoutId);
+        observer?.disconnect();
+      };
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (servicesTimeoutRef.current) {
-        clearTimeout(servicesTimeoutRef.current);
-      }
+      observer?.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] container-section transition-all duration-300 ${
-          isScrolled
-            ? "backdrop-blur-md bg-card/10 border-b border-border"
+          isDark
+            ? "backdrop-blur-md bg-card/10 border-b border-black/10"
             : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
       >
@@ -135,7 +176,7 @@ export default function GlobalNavbar() {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <img
-                  src={isScrolled ? "/logo2.png" : "/logo3.png"}
+                  src={isDark ? "/logo2.png" : "/logo3.png"}
                   alt="AXIUM"
                   className="h-8 w-auto md:h-9 transition-all duration-300"
                 />
@@ -147,7 +188,7 @@ export default function GlobalNavbar() {
               <Link
                 href="/portafolio"
                 className={`text-sm font-medium transition-colors ${
-                  isScrolled
+                  isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
                 }`}
@@ -164,7 +205,7 @@ export default function GlobalNavbar() {
                 <button
                   type="button"
                   className={`flex items-center gap-1 text-sm font-medium transition-colors ${
-                    isScrolled
+                    isDark
                       ? "text-foreground hover:text-secondary"
                       : "text-white hover:text-white/80"
                   }`}
@@ -224,7 +265,7 @@ export default function GlobalNavbar() {
               <Link
                 href="/#como-trabajamos"
                 className={`text-sm font-medium transition-colors ${
-                  isScrolled
+                  isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
                 }`}
@@ -235,7 +276,7 @@ export default function GlobalNavbar() {
               <Link
                 href="/#contacto"
                 className={`text-sm font-medium transition-colors ${
-                  isScrolled
+                  isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
                 }`}
@@ -247,13 +288,13 @@ export default function GlobalNavbar() {
             {/* Desktop Auth Section */}
             <div className="hidden lg:block">
               <div className="ml-4 flex items-center md:ml-6 gap-4">
-                <LanguageSelector isTransparent={!isScrolled} />
+                <LanguageSelector isTransparent={!isDark} />
                 {isAuthenticated ? (
                   <div className="flex items-center space-x-4">
                     {/* User Name */}
                     <span
                       className={`font-medium text-sm transition-colors ${
-                        isScrolled ? "text-foreground" : "text-white"
+                        isDark ? "text-foreground" : "text-white"
                       }`}
                     >
                       {user?.name || t("user")}
@@ -324,7 +365,7 @@ export default function GlobalNavbar() {
                       type="button"
                       onClick={handleSignIn}
                       className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm ${
-                        isScrolled
+                        isDark
                           ? "bg-primary text-primary-foreground hover:bg-primary/90"
                           : "bg-white text-gray-900 hover:bg-white/90 border border-white/20"
                       }`}
@@ -343,7 +384,7 @@ export default function GlobalNavbar() {
                   <button
                     type="button"
                     className={`inline-flex items-center justify-center p-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-inset ${
-                      isScrolled
+                      isDark
                         ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-400"
                         : "text-white/90 hover:text-white hover:bg-white/10 focus:ring-white/50"
                     }`}

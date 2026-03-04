@@ -140,8 +140,7 @@ export function Footer() {
             {/* Company Info */}
             <div className="md:col-span-2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
-                <img src="/logo.png" alt="AXIUM" className="h-10 w-auto" />
-                <span className="text-2xl font-semibold text-white">AXIUM</span>
+                <img src="/logo3.png" alt="AXIUM" className="h-10 w-auto" />
               </div>
               <p className="text-gray-400 text-sm leading-relaxed max-w-md">
                 {t("footer.description")}

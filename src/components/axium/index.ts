@@ -1,7 +1,15 @@
 export { HeroSection } from "./hero-section";
 export { ServicesSection } from "./services-section";
 export { InspirationalSection } from "./inspirational-section";
+export { BlogSection } from "./blog-section";
 export { CasesSection } from "./cases-section";
 export { ProcessSection } from "./process-section";
 export { ContactSection } from "./contact-section";
 export { CaseContactCTA } from "./case-contact-cta";
+export { ServiceHero } from "./service-hero";
+export { ServiceCtaCard } from "./service-cta-card";
+export { ServiceFaqSection } from "./service-faq-section";
+export type { FaqItem } from "./service-faq-section";
+export { BrandDesignPage } from "./brand-design-page";
+export { SoftwareDevelopmentPage } from "./software-development-page";
+export { AiAgenticSystemsPage } from "./ai-agentic-systems-page";

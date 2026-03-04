@@ -2,13 +2,16 @@
 
 import { useEffect, useMemo, useState } from "react";
 
+import blogEn from "@/locales/en/blog.json";
 import commonEn from "@/locales/en/common.json";
 import dashboardEn from "@/locales/en/dashboard.json";
 import landingEn from "@/locales/en/landing.json";
 // Import translations statically - Next.js will handle bundling
+import blogEs from "@/locales/es/blog.json";
 import commonEs from "@/locales/es/common.json";
 import dashboardEs from "@/locales/es/dashboard.json";
 import landingEs from "@/locales/es/landing.json";
+import blogPt from "@/locales/pt/blog.json";
 import commonPt from "@/locales/pt/common.json";
 import dashboardPt from "@/locales/pt/dashboard.json";
 import landingPt from "@/locales/pt/landing.json";
@@ -22,19 +25,22 @@ const translationsRegistry: Record<
   Record<string, TranslationRecord>
 > = {
   es: {
+    blog: blogEs as TranslationRecord,
     common: commonEs as TranslationRecord,
-    landing: landingEs as TranslationRecord,
     dashboard: dashboardEs as TranslationRecord,
+    landing: landingEs as TranslationRecord,
   },
   en: {
+    blog: blogEn as TranslationRecord,
     common: commonEn as TranslationRecord,
-    landing: landingEn as TranslationRecord,
     dashboard: dashboardEn as TranslationRecord,
+    landing: landingEn as TranslationRecord,
   },
   pt: {
+    blog: blogPt as TranslationRecord,
     common: commonPt as TranslationRecord,
-    landing: landingPt as TranslationRecord,
     dashboard: dashboardPt as TranslationRecord,
+    landing: landingPt as TranslationRecord,
   },
 };
 

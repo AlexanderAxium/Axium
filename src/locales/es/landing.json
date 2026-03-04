@@ -206,17 +206,17 @@
       "viewService": "Ver servicio",
       "items": {
         "discovery": {
-          "title": "Descubrimiento de producto y diseño",
-          "description": "Nos aseguramos de que tu producto satisfaga las necesidades del usuario, impulse resultados de negocio y logre diferenciación en el mercado. Identificamos y validamos soluciones con el mayor potencial de encaje producto-mercado, definimos tu estrategia de producto y roadmap, y alineamos a los actores clave de tu organización.",
+          "title": "Design & Branding",
+          "description": "Construimos marcas que comunican, productos que enamoran y materiales que convierten. Identidad visual, branding, brochures y diseño de producto.",
           "benefits": [
-            "Análisis de mercado y competidores",
-            "Investigación de usuarios",
-            "Requisitos de producto",
-            "Propuesta de valor North Star",
-            "Mapeo de funcionalidades y roadmap",
-            "Diseños de alta fidelidad en Figma"
+            "Identidad visual y logo",
+            "Brand guidelines",
+            "Materiales de marketing",
+            "UI/UX & Diseño de producto",
+            "Diseño web y landing pages",
+            "Motion & presentaciones"
           ],
-          "whatsappMessage": "Hola, me interesa el servicio de descubrimiento de producto y diseño. ¿Podemos agendar una llamada?"
+          "whatsappMessage": "Hola, me interesa el servicio de Design & Branding. ¿Podemos agendar una llamada?"
         },
         "software-dev": {
           "title": "Desarrollo de software",

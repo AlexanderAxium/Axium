@@ -101,9 +101,16 @@ export function CasesSection({
     <section
       id={id}
       className={`py-20 md:py-28 overflow-hidden relative ${
-        isDark ? "bg-gray-950" : "bg-gray-50"
+        isDark ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
+      {/* Dark variant: degradado ligeramente más claro */}
+      {isDark && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900/95 to-slate-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-slate-800/30 via-transparent to-gray-800/20" />
+        </>
+      )}
       {/* Light variant: mesh gradients */}
       {!isDark && (
         <>

@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Blog",
+    "subtitle": "Ideas, tendencias y buenas prácticas en software, producto y transformación digital.",
+    "readMore": "Leer más",
+    "allPosts": "Todos los artículos",
+    "backToBlog": "Volver al blog",
+    "publishedOn": "Publicado el"
+  },
+  "posts": {
+    "transformacion-digital": {
+      "title": "Cómo la transformación digital acelera tu negocio",
+      "excerpt": "Claves para priorizar iniciativas digitales que generen impacto real en operaciones y experiencia del cliente.",
+      "date": "15 Feb 2025",
+      "body": "La transformación digital no es solo tecnología: es replantear procesos, cultura y experiencia del cliente con foco en resultados medibles. En este artículo repasamos cómo priorizar iniciativas que generen impacto real en operaciones y en la relación con tus usuarios.\n\nComenzar por un diagnóstico claro de madurez digital permite identificar quick wins y proyectos estratégicos a medio plazo. La alineación entre negocio, producto y tecnología es fundamental para que las inversiones se traduzcan en ventajas competitivas sostenibles.\n\nEn la práctica, muchas empresas empiezan por automatizar procesos repetitivos —gestión documental, facturación, inventarios— y luego avanzan hacia canales digitales de venta y atención al cliente. El orden importa: abordar primero lo que libera capacidad operativa suele generar el retorno más rápido.\n\nLa experiencia del cliente digital es otro pilar: una web o app bien diseñada no solo atrae usuarios, sino que reduce costos de soporte y crea datos que permiten mejorar productos y servicios de forma continua."
+    },
+    "metodologias-agiles": {
+      "title": "Metodologías ágiles en proyectos de software",
+      "excerpt": "Por qué Scrum y Kanban no son solo para equipos técnicos: beneficios medibles en plazos, calidad y alineación con negocio.",
+      "date": "28 Ene 2025",
+      "body": "Scrum, Kanban y prácticas ágiles no son exclusivas de equipos de desarrollo: ayudan a cualquier equipo a entregar valor de forma iterativa, con visibilidad y capacidad de ajuste constante.\n\nEn proyectos de software, la aplicación de marcos ágiles bien entendidos mejora plazos, calidad y alineación con el negocio. La clave está en adaptar el marco a la realidad del equipo y la organización, no en seguir ceremonias por inercia.\n\nSprints cortos de dos o tres semanas permiten recibir feedback temprano y corregir el rumbo sin grandes derroches. Los daily standups, las retrospectivas y el backlog priorizado crean un ritmo que evita el \"big bang\" al final del proyecto.\n\nCuando negocio y tecnología trabajan juntos desde el inicio —con user stories claras, criterios de aceptación y demos frecuentes— el resultado suele ajustarse mejor a lo que el mercado realmente necesita."
+    },
+    "ia-en-el-negocio": {
+      "title": "Inteligencia artificial aplicada al negocio",
+      "excerpt": "Desde automatización de procesos hasta agentes conversacionales: casos de uso concretos y cómo empezar con un MVP.",
+      "date": "10 Ene 2025",
+      "body": "La inteligencia artificial abre posibilidades que van desde la automatización de tareas repetitivas hasta agentes conversacionales y sistemas de recomendación. Para aprovecharla sin dispersar esfuerzos, conviene identificar casos de uso concretos con impacto medible.\n\nEmpezar con un MVP acotado —por ejemplo, un chatbot para consultas frecuentes o un asistente para resumir documentos— permite validar valor y complejidad antes de escalar. La combinación de datos de calidad, modelos adecuados y integración con sistemas existentes suele marcar la diferencia entre un piloto exitoso y uno que no despega.\n\nLos LLM (grandes modelos de lenguaje) han facilitado el acceso a capacidades como análisis de texto, generación de contenido y respuesta conversacional. Integrarlos vía APIs con tus flujos actuales —CRM, correo, base de conocimientos— es un punto de partida práctico.\n\nDefinir métricas claras desde el inicio —tiempo ahorrado, satisfacción del usuario, tasa de resolución— ayuda a evaluar si el piloto vale la pena y en qué dirección escalar."
+    }
+  }
+}

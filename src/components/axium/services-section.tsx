@@ -24,7 +24,7 @@ const SERVICE_ICONS = {
 } as const;
 
 const SERVICE_HREFS: Record<string, string> = {
-  discovery: "/servicios/product-discovery",
+  discovery: "/servicios/design-branding",
   "software-dev": "/servicios/software-development",
   "ai-systems": "/servicios/ai-agentic-systems",
 };
