@@ -64,12 +64,9 @@ export function AboutSection() {
                   {t("home.about.title")}
                 </motion.h2>
 
-                <motion.div
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  whileInView={{ opacity: 1, scaleX: 1 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: 0.2, ease: smoothEase }}
-                  className="w-48 h-[5px] bg-secondary rounded-full origin-left"
+                <div
+                  className="w-[20%] lg:w-48 h-[5px] bg-secondary rounded-full shrink-0"
+                  aria-hidden
                 />
 
                 <motion.div
@@ -78,7 +75,7 @@ export function AboutSection() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: 0.3, ease: smoothEase }}
                 >
-                  <p className="text-heading-3 leading-tight text-gray-400">
+                  <p className="text-heading-2 leading-tight text-gray-400">
                     {t("home.about.statNumber")} {t("home.about.statLabel")}
                   </p>
                   <p className="text-sm text-gray-400 mt-1">
@@ -162,6 +159,7 @@ export function AboutSection() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 35vw"
+                  quality={90}
                   priority
                 />
 

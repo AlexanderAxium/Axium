@@ -38,7 +38,7 @@ export function HeroSection() {
             </motion.div>
 
             <motion.div
-              className="flex justify-end w-full mt-auto pb-8 lg:pb-16"
+              className="flex justify-center lg:justify-end w-full mt-auto pb-0 lg:pb-16"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: smoothEase }}

@@ -49,6 +49,8 @@ export function CaseHeroFullImage({
         alt={`${title} hero`}
         fill
         priority
+        quality={95}
+        sizes="100vw"
         className="object-cover object-center"
       />
       <div

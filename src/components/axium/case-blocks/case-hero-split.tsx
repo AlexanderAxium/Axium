@@ -123,6 +123,7 @@ export function CaseHeroSplit({
                 width={700}
                 height={480}
                 priority
+                quality={95}
                 className="relative w-full max-h-[280px] rounded-xl object-cover ring-1 ring-white/10 sm:max-h-[360px] lg:max-h-[440px] lg:rounded-2xl"
               />
             </motion.div>

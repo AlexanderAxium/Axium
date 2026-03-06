@@ -15,6 +15,7 @@ export interface ServicePageData {
   title: string;
   shortTitle: string;
   description: string;
+  heroImage: string;
   heroGradient: string;
   accentColor: string;
   heroIcon: string;
@@ -36,6 +37,7 @@ export const SERVICES: Record<string, ServicePageData> = {
     shortTitle: "Design & Branding",
     description:
       "Construimos marcas que comunican, productos que enamoran y materiales que convierten. Desde la identidad visual hasta el diseño de producto — todo lo que necesitas para destacar en el mercado.",
+    heroImage: "/abs6.png",
     heroGradient:
       "linear-gradient(135deg, #060C20 0%, #0a1628 60%, #001a3a 100%)",
     accentColor: "#0072CF",
@@ -132,6 +134,7 @@ export const SERVICES: Record<string, ServicePageData> = {
     shortTitle: "Software Dev",
     description:
       "Construimos software de alto rendimiento, escalable y seguro usando un stack tecnológico moderno y estándar en la industria. Full-stack JavaScript con TypeScript, Next.js, React, React Native y Node.js — desde la idea hasta producción.",
+    heroImage: "/abs13.png",
     heroGradient:
       "linear-gradient(135deg, #060C20 0%, #001020 60%, #002040 100%)",
     accentColor: "#0072CF",
@@ -229,6 +232,7 @@ export const SERVICES: Record<string, ServicePageData> = {
     shortTitle: "AI & Agents",
     description:
       "Desarrollamos sistemas potenciados por IA que automatizan flujos de trabajo, integran silos de datos y habilitan la toma de decisiones en tiempo real. LLMs, RAG, orquestación de IA — sistemas autónomos que generan valor de negocio medible.",
+    heroImage: "/abs14.png",
     heroGradient:
       "linear-gradient(135deg, #060C20 0%, #0a0a20 60%, #001030 100%)",
     accentColor: "#7ECFC3",

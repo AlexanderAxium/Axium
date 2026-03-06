@@ -13,7 +13,7 @@ export function BlogSection() {
   const { t } = useTranslation("blog");
 
   return (
-    <section id="blog" className="py-20 md:py-24 pb-16 md:pb-16 bg-white">
+    <section id="blog" className="py-16 md:py-24 pb-16 md:pb-16 bg-white">
       <div className="container-section">
         <div className="content-section">
           <div className="mb-12 md:mb-16">
@@ -27,7 +27,7 @@ export function BlogSection() {
               {t("meta.title")}
             </motion.h2>
             <motion.p
-              className="text-gray-500 text-base leading-relaxed max-w-xl"
+              className="text-gray-500 text-body max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}

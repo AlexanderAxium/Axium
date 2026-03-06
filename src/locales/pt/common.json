@@ -5,15 +5,15 @@
     "comoTrabajamos": "Como Trabalhamos",
     "contacto": "Contato",
     "servicesDiscovery": {
-      "title": "Design & Branding",
+      "title": "Design e Identidade de Marca",
       "description": "Identidade visual, branding, materiais de marketing e design de produto que constroem marcas memoráveis."
     },
     "servicesSoftware": {
-      "title": "Software Development",
+      "title": "Desenvolvimento de Software",
       "description": "Desenvolvimento full-stack com TypeScript, Next.js, React Native e Node.js. Escalável desde o primeiro dia."
     },
     "servicesAI": {
-      "title": "AI & Agentic Systems",
+      "title": "IA e Sistemas Agénticos",
       "description": "Sistemas autônomos com LLMs, RAG e orquestração de agentes para automatizar decisões em tempo real."
     }
   },

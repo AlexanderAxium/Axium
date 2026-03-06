@@ -1,174 +1,210 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 export default function TermsPage() {
   return (
-    <div className="container-section py-8">
-      <div className="content-section max-w-4xl">
-        <div className="space-y-8">
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-foreground">
-              Términos y Condiciones
-            </h1>
-            <p className="text-muted-foreground">
-              Última actualización: {new Date().toLocaleDateString("es-ES")}
+    <div className="container-section py-12 md:py-16">
+      <div className="content-section max-w-3xl">
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-overline text-gray-400">Legal</span>
+          <h1 className="text-heading-1 text-gray-900 mt-3 mb-2">
+            Términos y Condiciones
+          </h1>
+          <p className="text-body-sm text-gray-400">
+            Última actualización: 1 de marzo de 2025
+          </p>
+        </div>
+
+        {/* Sections */}
+        <div className="divide-y divide-gray-100">
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              1. Aceptación de los términos
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Al contratar los servicios de Axium o al acceder a este sitio web,
+              usted acepta quedar vinculado a estos Términos y Condiciones. Si
+              no está de acuerdo con alguna parte de los mismos, le pedimos que
+              no utilice nuestros servicios.
             </p>
-          </div>
+            <p className="text-body text-gray-500">
+              Estos términos se aplican a todos los clientes, visitantes y
+              personas que accedan o interactúen con Axium S.A.C., empresa
+              constituida bajo las leyes de la República del Perú.
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>1. Aceptación de los Términos</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Al acceder y utilizar MyApp, usted acepta estar sujeto a estos
-                términos y condiciones de uso. Si no está de acuerdo con alguna
-                parte de estos términos, no debe utilizar nuestro servicio.
-              </p>
-              <p className="text-muted-foreground">
-                Estos términos se aplican a todos los visitantes, usuarios y
-                otras personas que accedan o utilicen el servicio.
-              </p>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              2. Descripción del servicio
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Axium es una agencia especializada en el desarrollo de software a
+              medida, diseño de identidad visual y sistemas de inteligencia
+              artificial. Nuestros servicios incluyen, entre otros:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside">
+              <li>Desarrollo de aplicaciones web y móviles</li>
+              <li>Diseño de identidad de marca y branding</li>
+              <li>Implementación de sistemas de IA y agentes autónomos</li>
+              <li>Consultoría tecnológica y arquitectura de software</li>
+              <li>Mantenimiento y soporte post-entrega</li>
+            </ul>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>2. Descripción del Servicio</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                MyApp es una plataforma moderna de gestión que permite a los
-                usuarios gestionar contenido, usuarios y configuraciones, y
-                utilizar herramientas de análisis y automatización.
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Gestión de usuarios y roles</li>
-                <li>Configuración de permisos y acceso</li>
-                <li>Herramientas de análisis y reportes</li>
-                <li>Automatización de procesos</li>
-                <li>API para integraciones personalizadas</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              3. Propuesta y contratación
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Cada proyecto comienza con una propuesta formal que detalla el
+              alcance, los entregables, los plazos y los honorarios acordados.
+              La propuesta se considera aceptada cuando el cliente la aprueba
+              por escrito o realiza el pago inicial correspondiente.
+            </p>
+            <p className="text-body text-gray-500">
+              Cualquier modificación al alcance del proyecto debe ser acordada
+              por escrito entre ambas partes. Los cambios fuera del alcance
+              original se cotizarán y facturarán por separado.
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>3. Cuentas de Usuario</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Para utilizar nuestros servicios, debe crear una cuenta
-                proporcionando información precisa y actualizada. Es responsable
-                de:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Mantener la confidencialidad de su contraseña</li>
-                <li>Notificar inmediatamente cualquier uso no autorizado</li>
-                <li>Proporcionar información de contacto actualizada</li>
-                <li>Ser responsable de todas las actividades en su cuenta</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              4. Pagos y facturación
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Los honorarios y la estructura de pagos se establecen en la
+              propuesta de cada proyecto. Como regla general:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside">
+              <li>Se requiere un adelanto para iniciar cualquier proyecto</li>
+              <li>
+                Los pagos intermedios se realizan por hitos o entregas acordadas
+              </li>
+              <li>
+                El saldo final se abona antes de la entrega de archivos
+                definitivos
+              </li>
+              <li>
+                Las facturas vencen a los 7 días de su emisión, salvo acuerdo
+                distinto
+              </li>
+            </ul>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>4. Suscripciones y Pagos</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Nuestros servicios están disponibles mediante planes de
-                suscripción:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Los pagos se procesan mensualmente</li>
-                <li>Puede cancelar su suscripción en cualquier momento</li>
-                <li>No ofrecemos reembolsos por períodos parciales</li>
-                <li>Los precios pueden cambiar con notificación previa</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              5. Propiedad intelectual
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Una vez realizado el pago completo del proyecto, el cliente
+              adquiere los derechos de propiedad intelectual sobre los
+              entregables finales acordados (diseños, código fuente,
+              documentación). Axium conserva el derecho de mencionar el proyecto
+              en su portafolio salvo acuerdo de confidencialidad expreso.
+            </p>
+            <p className="text-body text-gray-500">
+              Los activos de terceros (fuentes tipográficas, librerías de código
+              abierto, imágenes con licencia) se rigen por sus respectivas
+              licencias, que serán informadas al cliente al momento de la
+              entrega.
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>5. Uso Aceptable</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Usted se compromete a no utilizar el servicio para:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Actividades ilegales o fraudulentas</li>
-                <li>Interferir con el funcionamiento del servicio</li>
-                <li>Intentar acceder a cuentas de otros usuarios</li>
-                <li>Distribuir malware o contenido malicioso</li>
-                <li>Violar derechos de propiedad intelectual</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              6. Confidencialidad
+            </h2>
+            <p className="text-body text-gray-500">
+              Axium trata con reserva toda la información de negocio,
+              estratégica o técnica que el cliente comparta durante el
+              desarrollo del proyecto. Para proyectos que requieran un nivel de
+              confidencialidad adicional, podemos firmar un Acuerdo de No
+              Divulgación (NDA) antes de iniciar.
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>6. Limitación de Responsabilidad</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                MyApp se proporciona "tal como está" sin garantías de ningún
-                tipo. No somos responsables por:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Pérdidas derivadas del uso de la plataforma</li>
-                <li>Interrupciones del servicio</li>
-                <li>Pérdida de datos</li>
-                <li>Decisiones basadas en nuestros análisis</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              7. Garantías y correcciones
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Axium garantiza que todos los entregables cumplen con las
+              especificaciones acordadas en la propuesta. En caso de detectar
+              errores o defectos imputables a Axium dentro de los 30 días
+              posteriores a la entrega final, los corregimos sin costo
+              adicional.
+            </p>
+            <p className="text-body text-gray-500">
+              Esta garantía no aplica a modificaciones realizadas por el cliente
+              ni a entornos de infraestructura no gestionados por Axium.
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>7. Modificaciones</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Nos reservamos el derecho de modificar estos términos en
-                cualquier momento. Las modificaciones entrarán en vigor
-                inmediatamente después de su publicación. Su uso continuado del
-                servicio constituye aceptación de los términos modificados.
-              </p>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              8. Limitación de responsabilidad
+            </h2>
+            <p className="text-body text-gray-500">
+              La responsabilidad máxima de Axium ante cualquier reclamación
+              derivada de los servicios prestados se limita al monto total
+              facturado en el proyecto en cuestión. Axium no será responsable
+              por lucro cesante, pérdidas indirectas o daños consecuentes que no
+              sean previsibles al momento de la contratación.
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>8. Contacto</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Si tiene preguntas sobre estos términos y condiciones, puede
-                contactarnos en:
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              9. Modificaciones
+            </h2>
+            <p className="text-body text-gray-500">
+              Axium se reserva el derecho de actualizar estos Términos y
+              Condiciones en cualquier momento. Los cambios se publicarán en
+              este sitio con la fecha de última actualización. El uso continuado
+              de nuestros servicios implica la aceptación de los términos
+              vigentes.
+            </p>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              10. Legislación aplicable
+            </h2>
+            <p className="text-body text-gray-500">
+              Estos términos se rigen por las leyes de la República del Perú.
+              Cualquier controversia que no pueda resolverse de forma amistosa
+              se someterá a la jurisdicción de los tribunales de la ciudad de
+              Lima.
+            </p>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">11. Contacto</h2>
+            <p className="text-body text-gray-500 mb-4">
+              Para consultas sobre estos términos, puede contactarnos en:
+            </p>
+            <div className="space-y-2 text-body text-gray-500">
+              <p>
+                Email:{" "}
+                <a
+                  href="mailto:legal@axium.com.pe"
+                  className="text-secondary hover:underline"
+                >
+                  legal@axium.com.pe
+                </a>
               </p>
-              <div className="mt-4 space-y-2">
-                <p className="text-muted-foreground">
-                  Email:{" "}
-                  <a
-                    href="mailto:legal@myapp.com"
-                    className="text-primary hover:underline"
-                  >
-                    legal@myapp.com
-                  </a>
-                </p>
-                <p className="text-muted-foreground">
-                  Teléfono:{" "}
-                  <a
-                    href="tel:+51991285679"
-                    className="text-primary hover:underline"
-                  >
-                    +1 (234) 567-890
-                  </a>
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+              <p>
+                Teléfono:{" "}
+                <a
+                  href="tel:+51991285679"
+                  className="text-secondary hover:underline"
+                >
+                  +51 991 285 679
+                </a>
+              </p>
+              <p>Dirección: Lima, Perú</p>
+            </div>
+          </section>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 
@@ -140,7 +141,14 @@ export function Footer() {
             {/* Company Info */}
             <div className="md:col-span-2 space-y-4">
               <div className="flex items-center gap-3 mb-4">
-                <img src="/logo3.png" alt="AXIUM" className="h-10 w-auto" />
+                <Image
+                  src="/logo3.png"
+                  alt="AXIUM"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                  quality={90}
+                />
               </div>
               <p className="text-gray-400 text-sm leading-relaxed max-w-md">
                 {t("footer.description")}

@@ -142,6 +142,20 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Lenis smooth scroll: allow full document height when active (recommended by Lenis docs) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
 /* Custom animations and utilities */
 @layer components {
   .animate-blob {
@@ -188,13 +202,13 @@ body {
 
   /* H1 - Main section titles */
   .text-heading-1 {
-    @apply text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] leading-[1.15];
+    @apply text-[26px] sm:text-[26px] md:text-[30px] lg:text-[38px];
     font-family: var(--font-family-heading);
   }
 
   /* H2 - Subsection titles */
   .text-heading-2 {
-    @apply text-[20px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2];
+    @apply text-[22px] sm:text-[22px] md:text-[26px] lg:text-[30px] leading-[1.2];
     font-family: var(--font-family-heading);
   }
 
@@ -216,7 +230,7 @@ body {
 
   /* Body - Default text */
   .text-body {
-    @apply text-[14px] sm:text-[15px] leading-[1.65];
+    @apply text-[15px] sm:text-[16px] leading-[1.65];
   }
 
   /* Body small - Captions, meta info */

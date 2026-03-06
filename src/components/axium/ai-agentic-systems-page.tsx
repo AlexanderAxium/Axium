@@ -15,20 +15,14 @@ import { motion } from "motion/react";
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
 import { ServiceFaqSection } from "~/components/axium/service-faq-section";
 import { ServiceHero } from "~/components/axium/service-hero";
-import { SERVICES } from "~/data/services-data";
+import { smoothEase } from "~/components/axium/service-shared";
+import { SERVICES, type ServicePageData } from "~/data/services-data";
 
-const data = SERVICES["ai-agentic-systems"]!;
-
-const smoothEase = [0.4, 0, 0.2, 1] as const;
+const raw = SERVICES["ai-agentic-systems"];
+if (!raw) throw new Error("Missing service data for ai-agentic-systems");
+const data: ServicePageData = raw;
 const ACCENT = "#7ECFC3";
 const BLUE = "#0072CF";
-
-const gridBg: React.CSSProperties = {
-  backgroundImage: [
-    "repeating-linear-gradient(0deg, rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px, transparent 1px, transparent 60px)",
-    "repeating-linear-gradient(90deg, rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px, transparent 1px, transparent 60px)",
-  ].join(","),
-};
 
 // ── Section 3: service rows ──────────────────────────────────────────────────
 const SERVICE_ROWS = [
@@ -158,7 +152,7 @@ const FOR_WHO = [
   },
 ];
 
-// ── Section 6: bento grid — Por qué Axium ────────────────────────────────────
+// ── Section 6: capacidades técnicas ──────────────────────────────────────────
 const CAPABILITIES = [
   {
     title: "Ingeniería de LLMs",
@@ -218,10 +212,6 @@ const FAQS = [
     q: "¿Pueden integrarse con nuestros sistemas actuales?",
     a: "Sí, es nuestra especialidad. Integramos con cualquier sistema que tenga una API: CRMs, ERPs, bases de datos, Slack, email y sistemas propietarios. La IA se convierte en una capa inteligente sobre tus herramientas existentes.",
   },
-  {
-    q: "¿Cuánto cuesta mantener un sistema de IA en producción?",
-    a: "Depende del volumen y los modelos utilizados. Los costos de API son variables según el uso. Ofrecemos planes de monitoreo y optimización para minimizar costos sin sacrificar calidad. Te asesoramos en la selección del modelo más eficiente para tu caso.",
-  },
 ];
 
 export function AiAgenticSystemsPage() {
@@ -231,7 +221,7 @@ export function AiAgenticSystemsPage() {
       <ServiceHero data={data} />
 
       {/* ── S2: Split stats ───────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container-section">
           <div className="content-section">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -242,28 +232,31 @@ export function AiAgenticSystemsPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <p
-                  className="text-xs font-medium uppercase tracking-widest mb-4"
-                  style={{ color: ACCENT }}
-                >
-                  — 01 &nbsp; Qué son los AI & Agentic Systems
-                </p>
-                <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-7 h-0.5 rounded-full"
+                    style={{ background: ACCENT }}
+                  />
+                  <span className="text-overline text-gray-500">
+                    01 — Qué son los AI & Agentic Systems
+                  </span>
+                </div>
+                <h2 className="text-heading-1 text-gray-900 mb-6">
                   IA que trabaja para tu negocio, no solo que impresiona en
                   demos
                 </h2>
-                <p className="text-gray-500 leading-relaxed mb-4">
+                <p className="text-body text-gray-500 mb-4">
                   No construimos prototipos de IA que nunca llegan a producción.
                   Diseñamos e implementamos sistemas autónomos que resuelven
                   problemas reales — reducen costos, aceleran procesos y generan
                   valor medible.
                 </p>
-                <p className="text-gray-500 leading-relaxed mb-4">
+                <p className="text-body text-gray-500 mb-4">
                   En Axium combinamos LLMs, RAG y orquestación de agentes para
                   crear soluciones que se integran con tus sistemas existentes y
                   mejoran con el tiempo.
                 </p>
-                <p className="text-gray-500 leading-relaxed">
+                <p className="text-body text-gray-500">
                   Desde chatbots inteligentes hasta pipelines de procesamiento
                   autónomo — construimos la capa de inteligencia que transforma
                   cómo opera tu empresa.
@@ -282,7 +275,7 @@ export function AiAgenticSystemsPage() {
                   <p className="text-6xl sm:text-7xl font-light text-gray-900 leading-none mb-3">
                     10<span style={{ color: ACCENT }}>×</span>
                   </p>
-                  <p className="text-gray-700 text-lg leading-snug">
+                  <p className="text-body text-gray-700">
                     más rápido que los procesos manuales — sistemas de IA que
                     procesan en segundos lo que toma horas.
                   </p>
@@ -291,7 +284,7 @@ export function AiAgenticSystemsPage() {
                   <p className="text-6xl sm:text-7xl font-light text-gray-900 leading-none mb-3">
                     100<span style={{ color: ACCENT }}>%</span>
                   </p>
-                  <p className="text-gray-700 text-lg leading-snug">
+                  <p className="text-body text-gray-700">
                     anclado en resultados de negocio — ningún proyecto sin KPIs
                     claros definidos desde el inicio.
                   </p>
@@ -303,7 +296,7 @@ export function AiAgenticSystemsPage() {
       </section>
 
       {/* ── S3: Service rows ──────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-gray-50" style={gridBg}>
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="container-section">
           <div className="content-section">
             <motion.div
@@ -313,13 +306,16 @@ export function AiAgenticSystemsPage() {
               transition={{ duration: 0.45, ease: smoothEase }}
               className="mb-12"
             >
-              <p
-                className="text-xs font-medium uppercase tracking-widest mb-4"
-                style={{ color: ACCENT }}
-              >
-                — 02 &nbsp; Qué automatizamos
-              </p>
-              <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900 max-w-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-7 h-0.5 rounded-full"
+                  style={{ background: ACCENT }}
+                />
+                <span className="text-overline text-gray-500">
+                  02 — Qué automatizamos
+                </span>
+              </div>
+              <h2 className="text-heading-1 text-gray-900 max-w-xl">
                 Casos de uso de IA con impacto real
               </h2>
             </motion.div>
@@ -337,19 +333,19 @@ export function AiAgenticSystemsPage() {
                       delay: i * 0.06,
                       ease: smoothEase,
                     }}
-                    className="grid grid-cols-1 md:grid-cols-[160px_1fr_2fr] gap-2 md:gap-4 py-5 md:py-6 group"
+                    className="grid grid-cols-1 md:grid-cols-[160px_1fr_2fr] gap-2 md:gap-4 py-5 md:py-6"
                   >
                     <span
-                      className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider self-start"
+                      className="inline-flex items-center gap-1.5 text-overline self-start"
                       style={{ color: ACCENT }}
                     >
-                      <Icon className="w-3.5 h-3.5" />
+                      <Icon className="w-3.5 h-3.5 flex-shrink-0" />
                       {tag}
                     </span>
-                    <p className="text-gray-900 font-medium self-start">
+                    <p className="text-body font-medium text-gray-900 self-start">
                       {title}
                     </p>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <p className="text-body-sm text-gray-500 leading-relaxed">
                       {description}
                     </p>
                   </motion.div>
@@ -361,7 +357,7 @@ export function AiAgenticSystemsPage() {
       </section>
 
       {/* ── S4: Process — circular icons + dashed connector ───────────────── */}
-      <section className="py-20 md:py-28 bg-white overflow-hidden">
+      <section className="py-16 md:py-24 bg-white overflow-hidden">
         <div className="container-section">
           <div className="content-section">
             <motion.div
@@ -369,15 +365,18 @@ export function AiAgenticSystemsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, ease: smoothEase }}
-              className="mb-16"
+              className="mb-12"
             >
-              <p
-                className="text-xs font-medium uppercase tracking-widest mb-4"
-                style={{ color: ACCENT }}
-              >
-                — 03 &nbsp; Proceso
-              </p>
-              <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900 max-w-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-7 h-0.5 rounded-full"
+                  style={{ background: ACCENT }}
+                />
+                <span className="text-overline text-gray-500">
+                  03 — Proceso
+                </span>
+              </div>
+              <h2 className="text-heading-1 text-gray-900 max-w-xl">
                 De la definición del problema al deploy en semanas
               </h2>
             </motion.div>
@@ -413,14 +412,14 @@ export function AiAgenticSystemsPage() {
                     <p className="text-4xl sm:text-5xl font-light text-gray-200 leading-none mb-3 select-none">
                       {num}
                     </p>
-                    <h3 className="text-gray-900 font-medium text-base sm:text-lg mb-4">
+                    <h3 className="text-heading-3 text-gray-900 mb-4">
                       {title}
                     </h3>
                     <ul className="space-y-1.5 text-left w-full max-w-[160px]">
                       {bullets.map((b) => (
                         <li
                           key={b}
-                          className="flex items-start gap-2 text-xs sm:text-sm text-gray-500"
+                          className="flex items-start gap-2 text-body-sm text-gray-500"
                         >
                           <span
                             className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
@@ -439,7 +438,7 @@ export function AiAgenticSystemsPage() {
       </section>
 
       {/* ── S5: ¿Para quién es? — dark bg + cards ────────────────────────── */}
-      <section className="py-20 md:py-28 bg-[#060C20]">
+      <section className="py-16 md:py-24 bg-[#060C20]">
         <div className="container-section">
           <div className="content-section">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -449,16 +448,19 @@ export function AiAgenticSystemsPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <p
-                  className="text-xs font-medium uppercase tracking-widest mb-4"
-                  style={{ color: ACCENT }}
-                >
-                  — 04 &nbsp; Ideal para
-                </p>
-                <h2 className="text-3xl sm:text-4xl leading-tight text-white mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-7 h-0.5 rounded-full"
+                    style={{ background: ACCENT }}
+                  />
+                  <span className="text-overline text-white/40">
+                    04 — Ideal para
+                  </span>
+                </div>
+                <h2 className="text-heading-1 text-white mb-6">
                   ¿Para quién son los AI & Agentic Systems?
                 </h2>
-                <p className="text-white/50 leading-relaxed">
+                <p className="text-body text-white/50">
                   Trabajamos con organizaciones que tienen problemas reales que
                   resolver — no con quienes buscan IA por moda.
                 </p>
@@ -484,10 +486,8 @@ export function AiAgenticSystemsPage() {
                     }}
                     className="border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors"
                   >
-                    <h3 className="text-white font-medium mb-2">{title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">
-                      {description}
-                    </p>
+                    <h3 className="text-heading-3 text-white mb-2">{title}</h3>
+                    <p className="text-body-sm text-white/50">{description}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -496,8 +496,8 @@ export function AiAgenticSystemsPage() {
         </div>
       </section>
 
-      {/* ── S6: Capacidades técnicas — table ──────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white" style={gridBg}>
+      {/* ── S6: Capacidades técnicas ───────────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-white">
         <div className="container-section">
           <div className="content-section">
             <motion.div
@@ -507,13 +507,16 @@ export function AiAgenticSystemsPage() {
               transition={{ duration: 0.45, ease: smoothEase }}
               className="mb-12"
             >
-              <p
-                className="text-xs font-medium uppercase tracking-widest mb-4"
-                style={{ color: ACCENT }}
-              >
-                — 05 &nbsp; Capacidades técnicas
-              </p>
-              <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900 max-w-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-7 h-0.5 rounded-full"
+                  style={{ background: ACCENT }}
+                />
+                <span className="text-overline text-gray-500">
+                  05 — Capacidades técnicas
+                </span>
+              </div>
+              <h2 className="text-heading-1 text-gray-900 max-w-xl">
                 Lo que podemos construir
               </h2>
             </motion.div>
@@ -532,10 +535,10 @@ export function AiAgenticSystemsPage() {
                   }}
                   className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-2 md:gap-8 py-5 md:py-6"
                 >
-                  <p className="text-gray-900 font-medium self-start">
+                  <p className="text-body font-medium text-gray-900 self-start">
                     {title}
                   </p>
-                  <p className="text-gray-500 text-sm leading-relaxed">
+                  <p className="text-body-sm text-gray-500 leading-relaxed">
                     {description}
                   </p>
                 </motion.div>
@@ -556,7 +559,7 @@ export function AiAgenticSystemsPage() {
         bg="bg-gray-50"
       />
 
-      {/* ── S9: CTA ───────────────────────────────────────────────────────── */}
+      {/* ── S8: CTA ───────────────────────────────────────────────────────── */}
       <CaseContactCTA />
     </>
   );

@@ -79,6 +79,7 @@ export function CaseGalleryMockup({
                     alt={heroImage.alt}
                     width={1400}
                     height={720}
+                    quality={95}
                     className="h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

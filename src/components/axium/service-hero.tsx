@@ -3,9 +3,8 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { smoothEase } from "~/components/axium/service-shared";
 import type { ServicePageData } from "~/data/services-data";
-
-const smoothEase = [0.4, 0, 0.2, 1] as const;
 
 interface ServiceHeroProps {
   data: ServicePageData;
@@ -21,7 +20,7 @@ export function ServiceHero({ data }: ServiceHeroProps) {
     <section
       id="page-hero"
       className="relative min-h-[70vh] overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/abs6.png')" }}
+      style={{ backgroundImage: `url('${data.heroImage}')` }}
     >
       <div
         className="absolute inset-0 z-[1]"
@@ -39,7 +38,7 @@ export function ServiceHero({ data }: ServiceHeroProps) {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: smoothEase }}
-              className="mb-4 flex items-center gap-2 text-sm text-white/40"
+              className="mb-4 flex items-center gap-2 text-body-sm text-white/40"
             >
               <Link href="/" className="transition-colors hover:text-white/70">
                 Inicio
@@ -54,7 +53,7 @@ export function ServiceHero({ data }: ServiceHeroProps) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.08, ease: smoothEase }}
-              className="text-3xl leading-tight text-white sm:text-4xl md:text-5xl"
+              className="text-display text-white"
             >
               {data.title}
             </motion.h1>
@@ -63,7 +62,7 @@ export function ServiceHero({ data }: ServiceHeroProps) {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.12, ease: smoothEase }}
-              className="mt-2 max-w-xl text-base leading-relaxed text-white/70"
+              className="mt-3 max-w-xl text-body text-white/70"
             >
               {data.description}
             </motion.p>
@@ -72,7 +71,7 @@ export function ServiceHero({ data }: ServiceHeroProps) {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.18, ease: smoothEase }}
-              className="mt-6 flex flex-wrap gap-4"
+              className="mt-7 flex flex-wrap gap-4"
             >
               <button
                 type="button"

@@ -2,6 +2,7 @@
 
 import { Play } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 
 const smoothEase = [0.4, 0, 0.2, 1] as const;
@@ -67,10 +68,13 @@ export function CaseVideoEmbed({
                   className="group relative flex h-full w-full items-center justify-center"
                 >
                   {thumbSrc && (
-                    <img
+                    <Image
                       src={thumbSrc}
                       alt="Video thumbnail"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 1024px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      quality={90}
                     />
                   )}
                   <div className="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:bg-black/30" />

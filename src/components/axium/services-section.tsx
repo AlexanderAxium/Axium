@@ -55,7 +55,7 @@ export function ServicesSection() {
   const { t } = useTranslation("landing");
 
   return (
-    <section id="servicios" className="py-20 md:py-28 bg-gray-100/60">
+    <section id="servicios" className="py-16 md:py-22 bg-gray-100/60">
       <div className="container-section">
         <div className="content-section">
           {/* ── Section header ── */}
@@ -70,7 +70,7 @@ export function ServicesSection() {
               {t("home.services.eyebrow")}
             </motion.h2>
             <motion.p
-              className="text-gray-500 text-base leading-relaxed max-w-lg mx-auto"
+              className="text-gray-500 text-body max-w-xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -80,20 +80,22 @@ export function ServicesSection() {
             </motion.p>
           </div>
 
-          {/* ── Cards: unified group with dividers ── */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-5"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.55, ease: smoothEase }}
-          >
-            {SERVICE_IDS.map((id) => {
+          {/* ── Cards: cada una con su propia animación (en móvil se ven por separado) ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {SERVICE_IDS.map((id, index) => {
               const Icon = SERVICE_ICONS[id];
               return (
-                <div
+                <motion.div
                   key={id}
-                  className="bg-white flex flex-col border border-gray-200 rounded-2xl overflow-hidden"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{
+                    duration: 0.55,
+                    delay: 0.05 * index,
+                    ease: smoothEase,
+                  }}
+                  className="bg-white flex flex-col border border-gray-200 rounded-2xl overflow-hidden pb-"
                 >
                   {/* Top content */}
                   <div className="p-7 pt-8 flex flex-col gap-5 flex-shrink-0">
@@ -126,7 +128,7 @@ export function ServicesSection() {
                     /* ── AI card: orbit widget cut off at ~70% ── */
                     <div className="flex-1 min-h-[240px] overflow-hidden relative">
                       {/* Orbit center pushed down so icons visible, top not cut */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[90%]">
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[90%] lg:top-[85%]">
                         {/* Concentric rings — 3 */}
                         <div
                           className="absolute rounded-full border border-gray-200"
@@ -227,12 +229,12 @@ export function ServicesSection() {
                     </div>
                   ) : id === "software-dev" ? (
                     /* ── Software card: dark bg with image ── */
-                    <div className="bg-[#111] flex-1 flex flex-col w-[80%] md:max-w-[300px] justify-between items-center mx-auto p-3 rounded-2xl">
+                    <div className="bg-[#111] mb-4 flex-1 flex flex-col w-[80%] md:max-w-[300px] justify-between items-center mx-auto p-3 rounded-2xl">
                       <Image
                         src={CARD_IMAGES[id] ?? ""}
                         alt={t(`home.services.items.${id}.title`)}
-                        width={400}
-                        height={260}
+                        width={380}
+                        height={220}
                         className="w-full object-contain rounded-md"
                       />
                       <p className="text-xs text-white font-medium tracking-widest uppercase pt-6 pb-4 px-3">
@@ -253,10 +255,10 @@ export function ServicesSection() {
                       />
                     </div>
                   )}
-                </div>
+                </motion.div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

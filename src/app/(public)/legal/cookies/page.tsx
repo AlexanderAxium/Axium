@@ -1,238 +1,222 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 export default function CookiesPage() {
   return (
-    <div className="container-section py-8">
-      <div className="content-section max-w-4xl">
-        <div className="space-y-8">
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-foreground">
-              Política de Cookies
-            </h1>
-            <p className="text-muted-foreground">
-              Última actualización: {new Date().toLocaleDateString("es-ES")}
+    <div className="container-section py-12 md:py-16">
+      <div className="content-section max-w-3xl">
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-overline text-gray-400">Legal</span>
+          <h1 className="text-heading-1 text-gray-900 mt-3 mb-2">
+            Política de Cookies
+          </h1>
+          <p className="text-body-sm text-gray-400">
+            Última actualización: 1 de marzo de 2025
+          </p>
+        </div>
+
+        {/* Sections */}
+        <div className="divide-y divide-gray-100">
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              1. ¿Qué son las cookies?
+            </h2>
+            <p className="text-body text-gray-500">
+              Las cookies son pequeños archivos de texto que un sitio web
+              almacena en su dispositivo cuando lo visita. Permiten que el sitio
+              recuerde sus preferencias y mejore su experiencia en visitas
+              posteriores. No contienen información personal identificable por
+              sí solas.
             </p>
-          </div>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>¿Qué son las Cookies?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Las cookies son pequeños archivos de texto que se almacenan en
-                su dispositivo cuando visita nuestro sitio web. Nos ayudan a
-                mejorar su experiencia de navegación y a proporcionar
-                funcionalidades personalizadas.
-              </p>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              2. Cookies que utilizamos
+            </h2>
+            <p className="text-body text-gray-500 mb-5">
+              En el sitio web de Axium utilizamos los siguientes tipos de
+              cookies:
+            </p>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Tipos de Cookies que Utilizamos</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
+            <div className="space-y-5">
               <div>
-                <h4 className="font-semibold text-foreground mb-2">
-                  Cookies Esenciales
-                </h4>
-                <p className="text-muted-foreground mb-2">
-                  Estas cookies son necesarias para el funcionamiento básico del
-                  sitio web:
+                <h3 className="text-body font-semibold text-gray-800 mb-1">
+                  Cookies esenciales
+                </h3>
+                <p className="text-body-sm text-gray-500">
+                  Necesarias para el funcionamiento básico del sitio. Incluyen
+                  la gestión de sesión y preferencias de idioma. No pueden
+                  desactivarse sin afectar la funcionalidad del sitio.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
-                  <li>Mantener su sesión de usuario activa</li>
-                  <li>Recordar sus preferencias de idioma</li>
-                  <li>Gestionar la autenticación</li>
-                  <li>Proporcionar seguridad básica</li>
-                </ul>
               </div>
 
               <div>
-                <h4 className="font-semibold text-foreground mb-2">
-                  Cookies de Funcionalidad
-                </h4>
-                <p className="text-muted-foreground mb-2">
-                  Estas cookies mejoran la funcionalidad del sitio web:
+                <h3 className="text-body font-semibold text-gray-800 mb-1">
+                  Cookies de analítica
+                </h3>
+                <p className="text-body-sm text-gray-500">
+                  Utilizamos Google Analytics para entender cómo los visitantes
+                  interactúan con el sitio (páginas visitadas, tiempo de
+                  permanencia, origen del tráfico). La información se agrega y
+                  es anónima — no se vincula a ningún usuario individual. Puede
+                  optar por excluirse instalando el complemento de
+                  inhabilitación de Google Analytics para navegadores.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
-                  <li>Recordar configuraciones de la plataforma</li>
-                  <li>Personalizar la interfaz de usuario</li>
-                  <li>Guardar preferencias de visualización</li>
-                  <li>Mantener configuraciones de la plataforma</li>
-                </ul>
               </div>
 
               <div>
-                <h4 className="font-semibold text-foreground mb-2">
-                  Cookies de Análisis
-                </h4>
-                <p className="text-muted-foreground mb-2">
-                  Estas cookies nos ayudan a entender cómo utiliza nuestro
-                  sitio:
+                <h3 className="text-body font-semibold text-gray-800 mb-1">
+                  Cookies de preferencias
+                </h3>
+                <p className="text-body-sm text-gray-500">
+                  Guardan sus elecciones dentro del sitio, como el idioma
+                  seleccionado, para que no tenga que configurarlo en cada
+                  visita.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
-                  <li>Analizar el tráfico del sitio web</li>
-                  <li>Identificar páginas más visitadas</li>
-                  <li>Mejorar la experiencia del usuario</li>
-                  <li>Optimizar el rendimiento</li>
-                </ul>
               </div>
+            </div>
+          </section>
 
-              <div>
-                <h4 className="font-semibold text-foreground mb-2">
-                  Cookies de Marketing
-                </h4>
-                <p className="text-muted-foreground mb-2">
-                  Estas cookies se utilizan para mostrar contenido relevante:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
-                  <li>Personalizar anuncios</li>
-                  <li>Medir la efectividad de campañas</li>
-                  <li>Proporcionar contenido relacionado</li>
-                  <li>Retargeting de usuarios</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Cookies de Terceros</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Utilizamos servicios de terceros que pueden establecer sus
-                propias cookies:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>
-                  <strong>Google Analytics:</strong> Para análisis de tráfico
-                  web
-                </li>
-                <li>
-                  <strong>Stripe:</strong> Para procesamiento de pagos
-                </li>
-                <li>
-                  <strong>PayPal:</strong> Para procesamiento de pagos
-                </li>
-                <li>
-                  <strong>MercadoPago:</strong> Para procesamiento de pagos
-                </li>
-                <li>
-                  <strong>Intercom:</strong> Para soporte al cliente
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Gestión de Cookies</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Puede controlar y gestionar las cookies de varias maneras:
-              </p>
-
-              <div className="space-y-4">
-                <h4 className="font-semibold text-foreground">
-                  Configuración del Navegador
-                </h4>
-                <p className="text-muted-foreground">
-                  La mayoría de los navegadores web le permiten controlar las
-                  cookies a través de su configuración. Puede:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
-                  <li>Ver qué cookies están almacenadas</li>
-                  <li>Eliminar cookies individuales o todas</li>
-                  <li>Bloquear cookies de sitios específicos</li>
-                  <li>Configurar notificaciones antes de aceptar cookies</li>
-                </ul>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="font-semibold text-foreground">
-                  Configuración de la Plataforma
-                </h4>
-                <p className="text-muted-foreground">
-                  En su panel de usuario puede:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
-                  <li>Gestionar preferencias de cookies</li>
-                  <li>Optar por no recibir cookies de marketing</li>
-                  <li>Configurar notificaciones</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Consecuencias de Deshabilitar Cookies</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Si deshabilita las cookies, algunas funcionalidades de nuestro
-                sitio web pueden no funcionar correctamente:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground mt-4">
-                <li>No podrá mantener su sesión iniciada</li>
-                <li>Sus preferencias no se guardarán</li>
-                <li>
-                  Algunas funciones de la plataforma pueden no estar disponibles
-                </li>
-                <li>La experiencia de usuario puede verse afectada</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Actualizaciones de esta Política</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Podemos actualizar esta política de cookies ocasionalmente para
-                reflejar cambios en nuestras prácticas o por otras razones
-                operativas, legales o regulatorias. Le recomendamos revisar esta
-                página periódicamente.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Contacto</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Si tiene preguntas sobre nuestra política de cookies, puede
-                contactarnos:
-              </p>
-              <div className="mt-4 space-y-2">
-                <p className="text-muted-foreground">
-                  Email:{" "}
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              3. Cookies de terceros
+            </h2>
+            <p className="text-body text-gray-500 mb-4">
+              Algunos servicios integrados en nuestro sitio pueden establecer
+              sus propias cookies:
+            </p>
+            <div className="space-y-3">
+              <div className="flex gap-3">
+                <span className="text-body-sm font-medium text-gray-700 min-w-[120px]">
+                  Google Analytics
+                </span>
+                <span className="text-body-sm text-gray-500">
+                  Analítica de uso anónima. Consulte la{" "}
                   <a
-                    href="mailto:privacy@myapp.com"
-                    className="text-primary hover:underline"
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-secondary hover:underline"
                   >
-                    privacy@myapp.com
+                    política de privacidad de Google
                   </a>
-                </p>
-                <p className="text-muted-foreground">
-                  Teléfono:{" "}
-                  <a
-                    href="tel:+51991285679"
-                    className="text-primary hover:underline"
-                  >
-                    +1 (234) 567-890
-                  </a>
-                </p>
+                  .
+                </span>
               </div>
-            </CardContent>
-          </Card>
+              <div className="flex gap-3">
+                <span className="text-body-sm font-medium text-gray-700 min-w-[120px]">
+                  Vercel
+                </span>
+                <span className="text-body-sm text-gray-500">
+                  Plataforma de alojamiento web. Puede establecer cookies
+                  técnicas para el enrutamiento y rendimiento del sitio.
+                </span>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              4. Gestión de cookies
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Puede controlar y eliminar las cookies desde la configuración de
+              su navegador. A continuación encontrará instrucciones para los
+              navegadores más comunes:
+            </p>
+            <ul className="space-y-2 text-body-sm text-gray-500 list-disc list-inside">
+              <li>
+                <a
+                  href="https://support.google.com/chrome/answer/95647"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-secondary hover:underline"
+                >
+                  Google Chrome
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-secondary hover:underline"
+                >
+                  Mozilla Firefox
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://support.apple.com/es-es/guide/safari/sfri11471/mac"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-secondary hover:underline"
+                >
+                  Safari
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-secondary hover:underline"
+                >
+                  Microsoft Edge
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              5. Consecuencias de deshabilitar cookies
+            </h2>
+            <p className="text-body text-gray-500">
+              Deshabilitar las cookies esenciales puede afectar el correcto
+              funcionamiento del sitio, como la selección de idioma. Las cookies
+              de analítica son opcionales; desactivarlas no afecta su
+              experiencia de navegación.
+            </p>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              6. Actualizaciones de esta política
+            </h2>
+            <p className="text-body text-gray-500">
+              Podemos revisar esta Política de Cookies cuando actualicemos el
+              sitio o incorporemos nuevos servicios. Le recomendamos consultarla
+              periódicamente. Los cambios entran en vigor desde su publicación
+              en esta página.
+            </p>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">7. Contacto</h2>
+            <p className="text-body text-gray-500 mb-4">
+              Si tiene preguntas sobre el uso de cookies en nuestro sitio:
+            </p>
+            <div className="space-y-2 text-body text-gray-500">
+              <p>
+                Email:{" "}
+                <a
+                  href="mailto:privacidad@axium.com.pe"
+                  className="text-secondary hover:underline"
+                >
+                  privacidad@axium.com.pe
+                </a>
+              </p>
+              <p>
+                Teléfono:{" "}
+                <a
+                  href="tel:+51991285679"
+                  className="text-secondary hover:underline"
+                >
+                  +51 991 285 679
+                </a>
+              </p>
+            </div>
+          </section>
         </div>
       </div>
     </div>

@@ -2,8 +2,23 @@
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+const MOBILE_MAX_WIDTH = 640;
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`);
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return isMobile;
+}
 import { MagneticCursorArrow } from "~/components/axium/magnetic-cursor-arrow";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
@@ -79,20 +94,36 @@ export function CasesSection({
   const [api, setApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const isMobile = useIsMobile();
+
+  const carouselOpts = useMemo(
+    () => ({
+      align: "start" as const,
+      loop: true,
+      skipSnaps: false,
+      dragFree: false,
+    }),
+    []
+  );
 
   const filtered = excludeSlug
     ? cases.filter((c) => (c.slug ?? slugMap[c.title]) !== excludeSlug)
     : cases;
   const items = filtered;
+  const displayItems = isMobile ? items.slice(0, 12) : items;
 
   useEffect(() => {
     if (!api) return;
     setCanScrollPrev(api.canScrollPrev());
     setCanScrollNext(api.canScrollNext());
-    api.on("select", () => {
+    const onSelect = () => {
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
-    });
+    };
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
 
   const isDark = variant === "dark";
@@ -100,7 +131,7 @@ export function CasesSection({
   return (
     <section
       id={id}
-      className={`py-20 md:py-28 overflow-hidden relative ${
+      className={`py-16 md:py-28 overflow-hidden relative ${
         isDark ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
@@ -123,16 +154,25 @@ export function CasesSection({
       <div className="relative z-10">
         <div className="container-section">
           <div className="content-section">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12 md:mb-16">
-              <h2
-                className={`text-display ${isDark ? "text-white" : "text-[#060C20]"}`}
-              >
-                {title}
-              </h2>
-              <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-16">
+              <div>
+                <h2
+                  className={`text-heading-1 ${isDark ? "text-white" : "text-[#060C20]"}`}
+                >
+                  {title}
+                </h2>
+                <p
+                  className={`mt-2 sm:hidden text-sm leading-relaxed ${
+                    isDark ? "text-gray-400" : "text-gray-500"
+                  }`}
+                >
+                  {t("caseDetail.sectionDescription")}
+                </p>
+              </div>
+              <div className="hidden sm:flex items-center gap-2 sm:gap-4 flex-shrink-0">
                 <Link
                   href="/portafolio"
-                  className={`text-body px-4 sm:px-6 py-2 rounded-md font-medium whitespace-nowrap transition-colors ${
+                  className={`text-body px-6 py-2 rounded-md font-medium whitespace-nowrap transition-colors ${
                     isDark
                       ? "border border-white/20 text-white hover:bg-white/10"
                       : "border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
@@ -140,57 +180,54 @@ export function CasesSection({
                 >
                   {t("caseDetail.verPortafolio")}
                 </Link>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className={`size-8 rounded-full ${
-                    isDark
-                      ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
-                      : "border-[#060C20]/20 bg-white text-[#060C20] hover:bg-[#060C20]/5"
-                  }`}
-                  disabled={!canScrollPrev}
-                  onClick={() => api?.scrollPrev()}
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  <span className="sr-only">{t("caseDetail.anterior")}</span>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className={`size-8 rounded-full ${
-                    isDark
-                      ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
-                      : "border-[#060C20]/20 bg-white text-[#060C20] hover:bg-[#060C20]/5"
-                  }`}
-                  disabled={!canScrollNext}
-                  onClick={() => api?.scrollNext()}
-                >
-                  <ArrowRight className="w-4 h-4" />
-                  <span className="sr-only">{t("caseDetail.siguiente")}</span>
-                </Button>
+                <div className="flex items-center gap-1.5">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className={`size-8 rounded-full ${
+                      isDark
+                        ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        : "border-[#060C20]/20 bg-white text-[#060C20] hover:bg-[#060C20]/5"
+                    }`}
+                    disabled={!canScrollPrev}
+                    onClick={() => api?.scrollPrev()}
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    <span className="sr-only">{t("caseDetail.anterior")}</span>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className={`size-8 rounded-full ${
+                      isDark
+                        ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        : "border-[#060C20]/20 bg-white text-[#060C20] hover:bg-[#060C20]/5"
+                    }`}
+                    disabled={!canScrollNext}
+                    onClick={() => api?.scrollNext()}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    <span className="sr-only">{t("caseDetail.siguiente")}</span>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div className="container-section">
-          <div className="content-section overflow-visible">
-            <div className="relative -mr-4 sm:-mr-6 lg:-mr-8">
+          <div className="content-section relative">
+            <div className="relative sm:-mr-6 lg:-mr-8">
               <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                  skipSnaps: false,
-                  dragFree: true,
-                }}
+                opts={carouselOpts}
                 setApi={setApi}
-                className="w-full overflow-visible"
+                className="w-full overflow-hidden sm:overflow-visible"
               >
-                <CarouselContent className="pr-4 sm:pr-6 lg:pr-8 gap-4 sm:gap-6 ml-0">
-                  {items.map((caseItem, idx) => (
+                <CarouselContent className="sm:pr-6 lg:pr-8 gap-3 sm:gap-6 ml-0">
+                  {displayItems.map((caseItem, idx) => (
                     <CarouselItem
                       key={`${caseItem.title}-${idx}`}
-                      className="shrink-0 basis-[85%] sm:basis-[70%] md:basis-[60%] lg:basis-[45%] xl:basis-[35%] pl-0"
+                      className="shrink-0 basis-full sm:basis-[70%] md:basis-[60%] lg:basis-[45%] xl:basis-[35%] pl-0"
                     >
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -213,16 +250,19 @@ export function CasesSection({
                               }`}
                             >
                               <div
-                                className={`relative h-[320px] overflow-hidden ${
+                                className={`relative h-[230px] sm:h-[200px] lg:h-[320px] overflow-hidden ${
                                   isDark
                                     ? "bg-gradient-to-br from-gray-800 to-gray-900"
                                     : "bg-gradient-to-br from-gray-100 to-gray-200"
                                 }`}
                               >
-                                <img
+                                <Image
                                   src={caseItem.image}
                                   alt={caseItem.title}
-                                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                                  quality={85}
                                 />
                                 <div
                                   className={`absolute inset-0 bg-gradient-to-t ${
@@ -233,7 +273,7 @@ export function CasesSection({
                                 />
 
                                 <Badge
-                                  className={`absolute top-4 left-4 shadow-lg ${
+                                  className={`absolute top-4 left-4 shadow-lg hidden sm:inline-flex ${
                                     isDark
                                       ? "bg-secondary text-white hover:bg-secondary/90 border-0"
                                       : "bg-[#0072CF] text-white border-0 hover:bg-[#0072CF]/90"
@@ -249,7 +289,7 @@ export function CasesSection({
                                 </div>
                               </div>
 
-                              <CardContent className="p-6 flex flex-col gap-4">
+                              <CardContent className="p-4 sm:p-6 flex flex-col gap-3 sm:gap-4">
                                 <p
                                   className={`text-body-sm line-clamp-2 ${
                                     isDark ? "text-gray-300" : "text-gray-600"
@@ -258,13 +298,13 @@ export function CasesSection({
                                   {caseItem.description}
                                 </p>
 
-                                <div className="flex flex-wrap gap-2 mt-auto">
+                                <div className="flex flex-wrap gap-1 sm:gap-2 mt-auto">
                                   {caseItem.services
                                     .slice(0, 2)
                                     .map((service) => (
                                       <span
                                         key={service}
-                                        className={`rounded-full px-3 py-1 text-xs font-medium ${
+                                        className={`rounded-full px-2 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium ${
                                           isDark
                                             ? "bg-accent/20 border border-accent/40 text-accent"
                                             : "border border-[#0072CF]/30 bg-[#0072CF]/10 text-[#0072CF]"
@@ -275,7 +315,7 @@ export function CasesSection({
                                     ))}
                                   {caseItem.services.length > 2 && (
                                     <span
-                                      className={`rounded-full px-3 py-1 text-xs font-medium ${
+                                      className={`rounded-full px-2 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium ${
                                         isDark
                                           ? "bg-gray-700/50 border border-gray-600 text-gray-300"
                                           : "border border-gray-200 bg-gray-100 text-gray-600"
@@ -294,6 +334,19 @@ export function CasesSection({
                   ))}
                 </CarouselContent>
               </Carousel>
+            </div>
+            {/* Botón Ver portafolio debajo de los cards solo en móvil */}
+            <div className="sm:hidden mt-4 flex justify-center">
+              <Link
+                href="/portafolio"
+                className={`text-sm px-5 py-2.5 rounded-md font-medium transition-colors ${
+                  isDark
+                    ? "border border-white/20 text-white hover:bg-white/10"
+                    : "border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
+                }`}
+              >
+                {t("caseDetail.verPortafolio")}
+              </Link>
             </div>
           </div>
         </div>

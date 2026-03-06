@@ -1,4 +1,14 @@
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  images: {
+    // Calidad por defecto alta para no pixelar; heroes/banners usan quality={95}
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    remotePatterns: [
+      { protocol: "https", hostname: "img.youtube.com", pathname: "/**" },
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/**" },
+    ],
+  },
+};
 
 export default config;

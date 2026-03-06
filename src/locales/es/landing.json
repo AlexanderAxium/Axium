@@ -160,6 +160,7 @@
     "verDetalles": "Ver detalles",
     "verPortafolio": "Ver portafolio",
     "casosDeExito": "Casos de exito",
+    "sectionDescription": "Proyectos reales que hemos desarrollado para empresas de distintas industrias.",
     "masProyectos": "Más proyectos",
     "anterior": "Anterior",
     "siguiente": "Siguiente",
@@ -249,26 +250,30 @@
     },
     "process": {
       "eyebrow": "Proceso que Entrega Resultados",
-      "titlePrefix": "Inteligente, Preciso y ",
-      "titleHighlight": "Exitoso",
-      "description": "En Axium, creamos soluciones que capturan la atención del cliente, ganan su confianza y construyen relaciones duraderas basadas en innovación y éxito medible.",
+      "titlePrefix": "Un proceso que entrega ",
+      "titleHighlight": "resultados",
+      "description": "Metodología clara, entregas a tiempo y resultados medibles. Definimos con criterio, construimos con estándares altos y lanzamos con confianza.",
       "steps": {
         "definir": {
           "title": "Definir",
           "fullTitle": "Definir lo que Importa",
-          "description": "No preguntamos qué quieres construir. Preguntamos qué vale la pena construir. Desde nuevos productos hasta migraciones de plataforma, nos enfocamos en lo que realmente impulsa resultados."
+          "description": "No preguntamos qué quieres construir. Preguntamos qué vale la pena construir. Desde nuevos productos hasta migraciones de plataforma, nos enfocamos en lo que realmente impulsa resultados.",
+          "short": "Definimos prioridades y qué vale la pena construir para tu negocio."
         },
         "construir": {
           "title": "Construir",
           "fullTitle": "Construir para Escalar",
-          "description": "La estética importa, pero la función importa más. Diseñamos, codificamos y conectamos sistemas que tu equipo puede usar con facilidad. Escalable, rápido y listo para crecer contigo."
+          "description": "La estética importa, pero la función importa más. Diseñamos, codificamos y conectamos sistemas que tu equipo puede usar con facilidad. Escalable, rápido y listo para crecer contigo.",
+          "short": "Diseñamos, desarrollamos y conectamos sistemas listos para escalar."
         },
         "lanzar": {
           "title": "Lanzar",
           "fullTitle": "Lanzar con Confianza",
-          "description": "Sin entregas silenciosas. Testeamos fuerte, lanzamos inteligente, y nos quedamos en el ciclo, listos para arreglar, mejorar o escalar según tus necesidades cambien."
+          "description": "Sin entregas silenciosas. Testeamos fuerte, lanzamos inteligente, y nos quedamos en el ciclo, listos para arreglar, mejorar o escalar según tus necesidades cambien.",
+          "short": "Probamos, lanzamos y damos soporte continuo para seguir mejorando."
         }
       },
+      "includesLabel": "Incluye:",
       "badges": {
         "primary": "Workshop Estratégico",
         "secondary": [
@@ -365,6 +370,10 @@
     "verProyecto": "VER PROYECTO • VER PROYECTO • ",
     "sinResultados": "Sin resultados",
     "sinResultadosDesc": "No hay proyectos con los filtros seleccionados.",
-    "verTodos": "Ver todos los proyectos"
+    "verTodos": "Ver todos los proyectos",
+    "pagina": "Página",
+    "paginaDe": "Página {current} de {total}",
+    "anterior": "Anterior",
+    "siguiente": "Siguiente"
   }
 }

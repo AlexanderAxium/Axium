@@ -87,6 +87,7 @@ export function CaseGalleryGrid({
                   alt={img.alt}
                   width={1400}
                   height={720}
+                  quality={95}
                   className={`w-full object-cover transition duration-500 hover:scale-[1.02] ${aspectClass}`}
                 />
                 {isDark && (
@@ -161,6 +162,7 @@ export function CaseGalleryGrid({
                     alt={img.alt}
                     width={img.span === 2 ? 1200 : 600}
                     height={400}
+                    quality={95}
                     className={`h-full w-full object-cover transition duration-500 hover:scale-[1.03] ${aspectClass}`}
                   />
                 </div>

@@ -17,18 +17,13 @@ import { motion } from "motion/react";
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
 import { ServiceFaqSection } from "~/components/axium/service-faq-section";
 import { ServiceHero } from "~/components/axium/service-hero";
-import { SERVICES } from "~/data/services-data";
+import { smoothEase } from "~/components/axium/service-shared";
+import { SERVICES, type ServicePageData } from "~/data/services-data";
 
-const data = SERVICES["design-branding"]!;
-
-const smoothEase = [0.4, 0, 0.2, 1] as const;
-
-const gridBg: React.CSSProperties = {
-  backgroundImage: [
-    "repeating-linear-gradient(0deg, rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px, transparent 1px, transparent 60px)",
-    "repeating-linear-gradient(90deg, rgba(0,0,0,0.035) 0px, rgba(0,0,0,0.035) 1px, transparent 1px, transparent 60px)",
-  ].join(","),
-};
+const raw = SERVICES["design-branding"];
+if (!raw) throw new Error("Missing service data for design-branding");
+const data: ServicePageData = raw;
+const ACCENT = "#0072CF";
 
 // ── Section 3: service rows ──────────────────────────────────────────────────
 const SERVICE_ROWS = [
@@ -94,7 +89,7 @@ const PROCESS_STEPS: {
       "Definición de audiencia",
     ],
     icon: Search,
-    color: "#0072CF",
+    color: ACCENT,
   },
   {
     num: "02",
@@ -118,7 +113,7 @@ const PROCESS_STEPS: {
       "Revisiones iterativas",
     ],
     icon: PenTool,
-    color: "#0072CF",
+    color: ACCENT,
   },
   {
     num: "04",
@@ -181,10 +176,6 @@ const FAQS = [
     a: "El diseño de landing pages y websites es un servicio adicional que puede complementar el branding. Podemos cotizarlos juntos o por separado según tus necesidades.",
   },
   {
-    q: "¿Trabajan con empresas fuera de Perú?",
-    a: "Sí, trabajamos 100% en remoto con clientes de cualquier país. Hemos colaborado con empresas en Latinoamérica, Estados Unidos y Europa sin ningún problema de coordinación.",
-  },
-  {
     q: "¿Cuántas revisiones están incluidas?",
     a: "Incluimos hasta 3 rondas de revisiones en cada etapa del proyecto. Si necesitas ajustes adicionales fuera de ese alcance, los cotizamos por separado de forma transparente.",
   },
@@ -197,7 +188,7 @@ export function BrandDesignPage() {
       <ServiceHero data={data} />
 
       {/* ── S2: Split stats ───────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container-section">
           <div className="content-section">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -208,24 +199,27 @@ export function BrandDesignPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <p className="text-xs font-medium uppercase tracking-widest text-[#0072CF] mb-4">
-                  — 01 &nbsp; Qué es Design & Branding
-                </p>
-                <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-7 h-0.5 bg-secondary rounded-full" />
+                  <span className="text-overline text-gray-500">
+                    01 — Qué es Design & Branding
+                  </span>
+                </div>
+                <h2 className="text-heading-1 text-gray-900 mb-6">
                   Tu marca es la primera impresión que no puedes repetir
                 </h2>
-                <p className="text-gray-500 leading-relaxed mb-4">
+                <p className="text-body text-gray-500 mb-4">
                   El diseño no es solo cómo se ve algo — es cómo funciona, cómo
                   se siente y qué comunica sin decir una palabra. Una identidad
                   visual sólida genera reconocimiento, confianza y
                   diferenciación en mercados saturados.
                 </p>
-                <p className="text-gray-500 leading-relaxed mb-4">
+                <p className="text-body text-gray-500 mb-4">
                   En Axium combinamos estrategia y creatividad para construir
                   marcas que no solo se ven bien, sino que conectan con las
                   personas correctas en el momento correcto.
                 </p>
-                <p className="text-gray-500 leading-relaxed">
+                <p className="text-body text-gray-500">
                   Desde el logo hasta el manual de marca completo, los
                   materiales de marketing y el diseño de producto — cubrimos
                   todo el espectro visual de tu empresa.
@@ -242,18 +236,18 @@ export function BrandDesignPage() {
               >
                 <div className="border border-gray-200 rounded-2xl p-8 bg-gray-50">
                   <p className="text-6xl sm:text-7xl font-light text-gray-900 leading-none mb-3">
-                    3<span className="text-[#0072CF]">×</span>
+                    3<span className="text-secondary">×</span>
                   </p>
-                  <p className="text-gray-700 text-lg leading-snug">
+                  <p className="text-body text-gray-700">
                     más reconocimiento de marca con una identidad visual
                     consistente aplicada en todos los canales.
                   </p>
                 </div>
                 <div className="border border-gray-200 rounded-2xl p-8 bg-gray-50">
                   <p className="text-6xl sm:text-7xl font-light text-gray-900 leading-none mb-3">
-                    100<span className="text-[#0072CF]">%</span>
+                    100<span className="text-secondary">%</span>
                   </p>
-                  <p className="text-gray-700 text-lg leading-snug">
+                  <p className="text-body text-gray-700">
                     de la estrategia al activo visual final — entregamos todo,
                     desde el concepto hasta los archivos listos para usar.
                   </p>
@@ -265,7 +259,7 @@ export function BrandDesignPage() {
       </section>
 
       {/* ── S3: Service rows ──────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-gray-50" style={gridBg}>
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="container-section">
           <div className="content-section">
             <motion.div
@@ -275,10 +269,13 @@ export function BrandDesignPage() {
               transition={{ duration: 0.45, ease: smoothEase }}
               className="mb-12"
             >
-              <p className="text-xs font-medium uppercase tracking-widest text-[#0072CF] mb-4">
-                — 02 &nbsp; Servicios incluidos
-              </p>
-              <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900 max-w-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-7 h-0.5 bg-secondary rounded-full" />
+                <span className="text-overline text-gray-500">
+                  02 — Servicios incluidos
+                </span>
+              </div>
+              <h2 className="text-heading-1 text-gray-900 max-w-xl">
                 Todo lo que necesitas para construir una marca poderosa
               </h2>
             </motion.div>
@@ -296,16 +293,16 @@ export function BrandDesignPage() {
                       delay: i * 0.06,
                       ease: smoothEase,
                     }}
-                    className="grid grid-cols-1 md:grid-cols-[160px_1fr_2fr] gap-2 md:gap-4 py-5 md:py-6 group"
+                    className="grid grid-cols-1 md:grid-cols-[160px_1fr_2fr] gap-2 md:gap-4 py-5 md:py-6"
                   >
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0072CF] uppercase tracking-wider self-start">
-                      <Icon className="w-3.5 h-3.5" />
+                    <span className="inline-flex items-center gap-1.5 text-overline text-secondary self-start">
+                      <Icon className="w-3.5 h-3.5 flex-shrink-0" />
                       {tag}
                     </span>
-                    <p className="text-gray-900 font-medium self-start">
+                    <p className="text-body font-medium text-gray-900 self-start">
                       {title}
                     </p>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <p className="text-body-sm text-gray-500 leading-relaxed">
                       {description}
                     </p>
                   </motion.div>
@@ -317,7 +314,7 @@ export function BrandDesignPage() {
       </section>
 
       {/* ── S4: Process — circular icons + dashed connector ───────────────── */}
-      <section className="py-20 md:py-28 bg-white overflow-hidden">
+      <section className="py-16 md:py-24 bg-white overflow-hidden">
         <div className="container-section">
           <div className="content-section">
             <motion.div
@@ -325,12 +322,15 @@ export function BrandDesignPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, ease: smoothEase }}
-              className="mb-16"
+              className="mb-12"
             >
-              <p className="text-xs font-medium uppercase tracking-widest text-[#0072CF] mb-4">
-                — 03 &nbsp; Proceso
-              </p>
-              <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900 max-w-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-7 h-0.5 bg-secondary rounded-full" />
+                <span className="text-overline text-gray-500">
+                  03 — Proceso
+                </span>
+              </div>
+              <h2 className="text-heading-1 text-gray-900 max-w-xl">
                 De la estrategia a los activos finales en semanas
               </h2>
             </motion.div>
@@ -371,7 +371,7 @@ export function BrandDesignPage() {
                     </p>
 
                     {/* Title */}
-                    <h3 className="text-gray-900 font-medium text-base sm:text-lg mb-4">
+                    <h3 className="text-heading-3 text-gray-900 mb-4">
                       {title}
                     </h3>
 
@@ -380,7 +380,7 @@ export function BrandDesignPage() {
                       {bullets.map((b) => (
                         <li
                           key={b}
-                          className="flex items-start gap-2 text-xs sm:text-sm text-gray-500"
+                          className="flex items-start gap-2 text-body-sm text-gray-500"
                         >
                           <span
                             className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
@@ -399,7 +399,7 @@ export function BrandDesignPage() {
       </section>
 
       {/* ── S5: ¿Para quién es? — dark bg + cards ────────────────────────── */}
-      <section className="py-20 md:py-28 bg-[#060C20]">
+      <section className="py-16 md:py-24 bg-[#060C20]">
         <div className="container-section">
           <div className="content-section">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -410,13 +410,16 @@ export function BrandDesignPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <p className="text-xs font-medium uppercase tracking-widest text-[#7ECFC3] mb-4">
-                  — 04 &nbsp; Ideal para
-                </p>
-                <h2 className="text-3xl sm:text-4xl leading-tight text-white mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-7 h-0.5 bg-accent rounded-full" />
+                  <span className="text-overline text-white/40">
+                    04 — Ideal para
+                  </span>
+                </div>
+                <h2 className="text-heading-1 text-white mb-6">
                   ¿Para quién es Design & Branding?
                 </h2>
-                <p className="text-white/50 leading-relaxed">
+                <p className="text-body text-white/50">
                   Trabajamos con todo tipo de organizaciones que necesitan
                   comunicar su valor de forma clara, coherente y memorable.
                 </p>
@@ -443,10 +446,8 @@ export function BrandDesignPage() {
                     }}
                     className="border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors"
                   >
-                    <h3 className="text-white font-medium mb-2">{title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">
-                      {description}
-                    </p>
+                    <h3 className="text-heading-3 text-white mb-2">{title}</h3>
+                    <p className="text-body-sm text-white/50">{description}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -458,14 +459,14 @@ export function BrandDesignPage() {
       {/* ── S6: FAQ ───────────────────────────────────────────────────────── */}
       <ServiceFaqSection
         faqs={FAQS}
-        accentColor="#0072CF"
+        accentColor={ACCENT}
         sectionLabel={<>— 05 &nbsp; Preguntas frecuentes</>}
         ctaTitle="¿Listo para construir tu marca?"
         ctaSubtitle="Conversemos sobre tu proyecto. Sin compromiso, sin presión."
         whatsappMessage={data.whatsappMessage}
       />
 
-      {/* ── S8: CTA ───────────────────────────────────────────────────────── */}
+      {/* ── S7: CTA ───────────────────────────────────────────────────────── */}
       <CaseContactCTA />
     </>
   );

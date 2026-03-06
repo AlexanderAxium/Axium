@@ -37,6 +37,7 @@ import {
   Zap,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -61,13 +62,14 @@ export default function GlobalNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const isBlogRoute = pathname.startsWith("/blog");
   const isPortfolioRoute = pathname.startsWith("/portafolio");
-  const isDark = isBlogRoute || isScrolled;
+  const isLegalRoute = pathname.startsWith("/legal");
+  const isDark = isBlogRoute || isLegalRoute || isScrolled;
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { user, isAuthenticated, signOut } = useAuthContext();
   const { primaryRole } = useUser();
   const router = useRouter();
-  const { t } = useTranslation("common");
+  const { t, locale, setLocale } = useTranslation("common");
 
   const handleServicesMouseEnter = useCallback(() => {
     if (servicesTimeoutRef.current) {
@@ -87,11 +89,6 @@ export default function GlobalNavbar() {
     await signOut();
     setIsMenuOpen(false);
   }, [signOut]);
-
-  const handleSignIn = useCallback(() => {
-    router.push("/signin");
-    setIsMenuOpen(false);
-  }, [router]);
 
   const getDashboardUrl = useCallback(() => {
     switch (primaryRole) {
@@ -178,14 +175,17 @@ export default function GlobalNavbar() {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
-                <img
+                <Image
                   src={isDark ? "/logo2.png" : "/logo3.png"}
                   alt="AXIUM"
+                  width={112}
+                  height={36}
                   className={`h-8 w-auto md:h-9 transition-all duration-300 ${
                     isPortfolioRoute && !isDark
                       ? "brightness-0 invert opacity-90 hover:opacity-100"
                       : ""
                   }`}
+                  quality={90}
                 />
               </Link>
             </div>
@@ -367,19 +367,7 @@ export default function GlobalNavbar() {
                     </DropdownMenu>
                   </div>
                 ) : (
-                  <div className="flex items-center space-x-4">
-                    <button
-                      type="button"
-                      onClick={handleSignIn}
-                      className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm ${
-                        isDark
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                          : "bg-white text-gray-900 hover:bg-white/90 border border-white/20"
-                      }`}
-                    >
-                      {t("signIn")}
-                    </button>
-                  </div>
+                  <div aria-hidden />
                 )}
               </div>
             </div>
@@ -405,186 +393,164 @@ export default function GlobalNavbar() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className="w-96 bg-white border-gray-200"
+                  className="w-full max-w-sm bg-white p-0 flex flex-col border-l border-gray-100"
                 >
-                  <SheetHeader className="px-2">
-                    <SheetTitle className="text-white text-lg">
-                      {t("mainMenu")}
-                    </SheetTitle>
+                  <SheetHeader className="sr-only">
+                    <SheetTitle>{t("mainMenu")}</SheetTitle>
                   </SheetHeader>
-                  <div className="mt-6 px-2">
-                    <nav className="flex flex-col gap-1 mb-6">
-                      <Link
-                        href="/portafolio"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
-                      >
-                        <Shield className="h-4 w-4 text-gray-400" />
-                        {t("navbar.casosDeExito")}
-                      </Link>
-                      <div className="px-4 pt-2 pb-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Grid className="h-4 w-4 text-gray-400" />
-                          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-                            {t("navbar.servicios")}
-                          </span>
-                        </div>
-                        <div className="grid grid-cols-2 gap-1 pl-1">
-                          {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
-                            <Link
-                              key={key}
-                              href={href}
-                              onClick={() => setIsMenuOpen(false)}
-                              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
-                            >
-                              <Icon className="h-3.5 w-3.5 flex-shrink-0 text-secondary" />
-                              <span className="text-xs leading-tight">
-                                {t(`navbar.${key}.title`)}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      <Link
-                        href="/#como-trabajamos"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
-                      >
-                        <Workflow className="h-4 w-4 text-gray-400" />
-                        {t("navbar.comoTrabajamos")}
-                      </Link>
-                      <Link
-                        href="/#contacto"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-secondary transition-colors"
-                      >
-                        <Zap className="h-4 w-4 text-gray-400" />
-                        {t("navbar.contacto")}
-                      </Link>
-                    </nav>
 
-                    <div className="border-t border-gray-200 pt-4 mb-4">
-                      <div className="px-2">
-                        <LanguageSelector />
-                      </div>
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-6 h-16 border-b border-gray-100 flex-shrink-0">
+                    <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                      <Image
+                        src="/logo2.png"
+                        alt="AXIUM"
+                        width={100}
+                        height={32}
+                        className="h-7 w-auto"
+                        quality={90}
+                      />
+                    </Link>
+                  </div>
+
+                  {/* Navigation */}
+                  <div className="flex-1 overflow-y-auto px-4 py-6 flex flex-col gap-1">
+                    <Link
+                      href="/portafolio"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-3.5 rounded-xl text-base font-medium text-gray-800 hover:bg-gray-50 hover:text-secondary transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Shield className="h-4 w-4 text-gray-500" />
+                      </span>
+                      {t("navbar.casosDeExito")}
+                    </Link>
+
+                    {/* Services group */}
+                    <div className="mt-2 mb-1">
+                      <p className="px-3 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
+                        {t("navbar.servicios")}
+                      </p>
+                      {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
+                        <Link
+                          key={key}
+                          href={href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-secondary transition-colors"
+                        >
+                          <span className="w-8 h-8 rounded-lg bg-secondary/8 flex items-center justify-center flex-shrink-0">
+                            <Icon className="h-4 w-4 text-secondary" />
+                          </span>
+                          {t(`navbar.${key}.title`)}
+                        </Link>
+                      ))}
                     </div>
+
+                    <Link
+                      href="/#como-trabajamos"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-3.5 rounded-xl text-base font-medium text-gray-800 hover:bg-gray-50 hover:text-secondary transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Workflow className="h-4 w-4 text-gray-500" />
+                      </span>
+                      {t("navbar.comoTrabajamos")}
+                    </Link>
+
+                    <Link
+                      href="/#contacto"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-3.5 rounded-xl text-base font-medium text-gray-800 hover:bg-gray-50 hover:text-secondary transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Zap className="h-4 w-4 text-gray-500" />
+                      </span>
+                      {t("navbar.contacto")}
+                    </Link>
+                  </div>
+
+                  {/* Footer: language + auth */}
+                  <div className="flex-shrink-0 border-t border-gray-100 px-4 py-5 space-y-4">
+                    {/* Inline language selector */}
+                    <div className="flex items-center gap-2">
+                      {[
+                        { code: "es", flag: "🇪🇸", label: "ES" },
+                        { code: "en", flag: "🇺🇸", label: "EN" },
+                        { code: "pt", flag: "🇵🇹", label: "PT" },
+                      ].map(({ code, flag, label }) => (
+                        <button
+                          key={code}
+                          type="button"
+                          onClick={() => setLocale(code)}
+                          className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                            locale === code
+                              ? "bg-secondary/10 text-secondary"
+                              : "text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                          }`}
+                        >
+                          <span className="text-base leading-none">{flag}</span>
+                          <span>{label}</span>
+                        </button>
+                      ))}
+                    </div>
+
                     {isAuthenticated ? (
-                      <div className="space-y-4">
-                        {/* User Info */}
-                        <div className="flex items-center space-x-3 px-3 py-2">
-                          <Avatar>
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-gray-50 mb-3">
+                          <Avatar className="h-9 w-9">
                             {user?.image ? (
                               <AvatarImage
                                 src={user.image}
                                 alt={user?.name || t("user")}
                               />
                             ) : (
-                              <AvatarFallback className="bg-primary text-primary-foreground">
+                              <AvatarFallback className="bg-primary text-primary-foreground text-sm">
                                 {userInitials}
                               </AvatarFallback>
                             )}
                           </Avatar>
-                          <div className="flex flex-col">
-                            <span className="text-sm font-medium text-white">
+                          <div className="flex flex-col min-w-0">
+                            <span className="text-sm font-semibold text-gray-900 truncate">
                               {user?.name || t("user")}
                             </span>
-                            <span className="text-xs text-gray-300">
+                            <span className="text-xs text-gray-500 truncate">
                               {user?.email || ""}
                             </span>
                           </div>
                         </div>
-
-                        {/* Dashboard Link */}
                         <button
                           type="button"
                           onClick={() => {
                             router.push(getDashboardUrl());
                             setIsMenuOpen(false);
                           }}
-                          className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white hover:bg-accent w-full"
+                          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                         >
-                          <LayoutDashboard className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
-                          <div className="flex-1 text-left">
-                            <div className="font-medium text-white">
-                              {t("dashboard")}
-                            </div>
-                            <div className="text-xs text-gray-400">
-                              {t("mainPanel")}
-                            </div>
-                          </div>
+                          <LayoutDashboard className="h-4 w-4 text-gray-400" />
+                          {t("dashboard")}
                         </button>
-
-                        {/* Settings Link */}
-                        <button
-                          type="button"
-                          onClick={() => {
-                            router.push("/dashboard/settings");
-                            setIsMenuOpen(false);
-                          }}
-                          className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white hover:bg-accent w-full"
-                        >
-                          <Settings className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
-                          <div className="flex-1 text-left">
-                            <div className="font-medium text-white">
-                              {t("settings")}
-                            </div>
-                            <div className="text-xs text-gray-400">
-                              {t("accountSettings")}
-                            </div>
-                          </div>
-                        </button>
-
-                        {/* Profile Link */}
                         <button
                           type="button"
                           onClick={() => {
                             router.push("/dashboard/profile");
                             setIsMenuOpen(false);
                           }}
-                          className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white hover:bg-accent w-full"
+                          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                         >
-                          <User className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
-                          <div className="flex-1 text-left">
-                            <div className="font-medium text-white">
-                              {t("profile")}
-                            </div>
-                            <div className="text-xs text-gray-400">
-                              {t("personalInfo")}
-                            </div>
-                          </div>
+                          <User className="h-4 w-4 text-gray-400" />
+                          {t("profile")}
                         </button>
-
-                        {/* Logout Button */}
-                        <div className="pt-4 border-t border-gray-700">
-                          <button
-                            type="button"
-                            onClick={handleSignOut}
-                            className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-red-400 hover:text-red-300 hover:bg-red-900/20 w-full"
-                          >
-                            <LogOut className="mr-3 h-5 w-5" />
-                            <div className="flex-1 text-left">
-                              <div className="font-medium">{t("signOut")}</div>
-                            </div>
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-4">
                         <button
                           type="button"
-                          onClick={handleSignIn}
-                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg font-medium transition-colors"
+                          onClick={handleSignOut}
+                          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-red-500 hover:bg-red-50 transition-colors"
                         >
-                          {t("signIn")}
+                          <LogOut className="h-4 w-4" />
+                          {t("signOut")}
                         </button>
-                        <Link
-                          href="/signup"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="w-full bg-transparent border border-gray-600 text-white hover:bg-gray-700 px-4 py-2 rounded-lg font-medium transition-colors block text-center"
-                        >
-                          {t("signUp")}
-                        </Link>
                       </div>
+                    ) : (
+                      <div aria-hidden />
                     )}
                   </div>
                 </SheetContent>

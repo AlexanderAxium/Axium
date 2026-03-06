@@ -1,7 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -26,31 +24,22 @@ export default function ComplaintsPage() {
     subject: "",
     description: "",
     expectedResolution: "",
-    attachments: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 2000));
-
     toast.success(
-      "Reclamo enviado exitosamente. Recibirá una respuesta en 24-48 horas."
+      "Reclamo enviado correctamente. Recibirá una respuesta en un plazo máximo de 30 días calendario."
     );
     setIsSubmitting(false);
-
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -61,164 +50,203 @@ export default function ComplaintsPage() {
       subject: "",
       description: "",
       expectedResolution: "",
-      attachments: "",
     });
   };
 
   return (
-    <div className="container-section py-8">
-      <div className="content-section max-w-4xl">
-        <div className="space-y-8">
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-foreground">
-              Libro de Reclamaciones
-            </h1>
-            <p className="text-muted-foreground">
-              Su opinión es importante para nosotros. Utilice este formulario
-              para presentar reclamos, quejas o sugerencias.
-            </p>
-          </div>
+    <div className="container-section py-12 md:py-16">
+      <div className="content-section max-w-3xl">
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-overline text-gray-400">Legal</span>
+          <h1 className="text-heading-1 text-gray-900 mt-3 mb-2">
+            Libro de Reclamaciones
+          </h1>
+          <p className="text-body text-gray-500 max-w-xl">
+            De acuerdo con el Código de Protección y Defensa del Consumidor (Ley
+            N.° 29571), Axium S.A.C. pone a su disposición este Libro de
+            Reclamaciones virtual para registrar quejas y reclamos.
+          </p>
+        </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Información del Libro de Reclamaciones</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                De acuerdo con la normativa peruana, MyApp mantiene un Libro de
-                Reclamaciones para registrar y resolver las quejas de nuestros
-                usuarios.
-              </p>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-900 mb-2">
-                  Tiempo de Respuesta:
-                </h4>
-                <ul className="text-sm text-blue-800 space-y-1">
-                  <li>• Reclamos simples: 24 horas</li>
-                  <li>• Reclamos complejos: 48 horas</li>
-                  <li>• Reclamos técnicos: 72 horas</li>
-                </ul>
+        <div className="divide-y divide-gray-100">
+          {/* Info block */}
+          <section className="pb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="bg-gray-50 rounded-xl p-5">
+                <p className="text-label font-semibold text-gray-800 mb-1">
+                  Reclamos simples
+                </p>
+                <p className="text-body-sm text-gray-500">
+                  Respuesta en hasta 15 días hábiles
+                </p>
               </div>
-            </CardContent>
-          </Card>
+              <div className="bg-gray-50 rounded-xl p-5">
+                <p className="text-label font-semibold text-gray-800 mb-1">
+                  Reclamos complejos
+                </p>
+                <p className="text-body-sm text-gray-500">
+                  Respuesta en hasta 30 días calendario
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl p-5">
+                <p className="text-label font-semibold text-gray-800 mb-1">
+                  Confirmación
+                </p>
+                <p className="text-body-sm text-gray-500">
+                  Número de seguimiento por email
+                </p>
+              </div>
+            </div>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Formulario de Reclamo</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-foreground">
-                    Información Personal
-                  </h4>
+          {/* Form */}
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-6">
+              Formulario de reclamo
+            </h2>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Nombre Completo *</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          handleInputChange("name", e.target.value)
-                        }
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Correo Electrónico *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Teléfono</Label>
-                      <Input
-                        id="phone"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          handleInputChange("phone", e.target.value)
-                        }
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="documentType">Tipo de Documento</Label>
-                      <Select
-                        value={formData.documentType}
-                        onValueChange={(value) =>
-                          handleInputChange("documentType", value)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Seleccionar tipo" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="dni">DNI</SelectItem>
-                          <SelectItem value="passport">Pasaporte</SelectItem>
-                          <SelectItem value="ce">
-                            Carné de Extranjería
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Personal data */}
+              <div>
+                <p className="text-label font-semibold text-gray-700 mb-4">
+                  Datos personales
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="name"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Nombre completo <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) =>
+                        handleInputChange("name", e.target.value)
+                      }
+                      required
+                      placeholder="Juan Pérez"
+                    />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="documentNumber">Número de Documento</Label>
+                    <Label
+                      htmlFor="email"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Correo electrónico <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        handleInputChange("email", e.target.value)
+                      }
+                      required
+                      placeholder="correo@ejemplo.com"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="phone"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Teléfono
+                    </Label>
+                    <Input
+                      id="phone"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        handleInputChange("phone", e.target.value)
+                      }
+                      placeholder="+51 999 999 999"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="documentType"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Tipo de documento
+                    </Label>
+                    <Select
+                      value={formData.documentType}
+                      onValueChange={(v) =>
+                        handleInputChange("documentType", v)
+                      }
+                    >
+                      <SelectTrigger id="documentType">
+                        <SelectValue placeholder="Seleccionar" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="dni">DNI</SelectItem>
+                        <SelectItem value="passport">Pasaporte</SelectItem>
+                        <SelectItem value="ce">Carné de Extranjería</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label
+                      htmlFor="documentNumber"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Número de documento
+                    </Label>
                     <Input
                       id="documentNumber"
                       value={formData.documentNumber}
                       onChange={(e) =>
                         handleInputChange("documentNumber", e.target.value)
                       }
+                      className="sm:max-w-xs"
                     />
                   </div>
                 </div>
+              </div>
 
-                {/* Complaint Information */}
+              {/* Complaint data */}
+              <div>
+                <p className="text-label font-semibold text-gray-700 mb-4">
+                  Datos del reclamo
+                </p>
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-foreground">
-                    Información del Reclamo
-                  </h4>
-
                   <div className="space-y-2">
-                    <Label htmlFor="complaintType">Tipo de Reclamo *</Label>
+                    <Label
+                      htmlFor="complaintType"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Tipo de reclamo <span className="text-red-500">*</span>
+                    </Label>
                     <Select
                       value={formData.complaintType}
-                      onValueChange={(value) =>
-                        handleInputChange("complaintType", value)
+                      onValueChange={(v) =>
+                        handleInputChange("complaintType", v)
                       }
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="complaintType">
                         <SelectValue placeholder="Seleccionar tipo de reclamo" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="service">
-                          Problema con el Servicio
+                          Disconformidad con el servicio recibido
                         </SelectItem>
                         <SelectItem value="billing">
-                          Problema de Facturación
+                          Problema de facturación o pago
                         </SelectItem>
-                        <SelectItem value="technical">
-                          Problema Técnico
+                        <SelectItem value="delivery">
+                          Incumplimiento de plazo de entrega
+                        </SelectItem>
+                        <SelectItem value="quality">
+                          Calidad del entregable
                         </SelectItem>
                         <SelectItem value="support">
-                          Atención al Cliente
-                        </SelectItem>
-                        <SelectItem value="feature">
-                          Solicitud de Funcionalidad
+                          Atención al cliente
                         </SelectItem>
                         <SelectItem value="other">Otro</SelectItem>
                       </SelectContent>
@@ -226,7 +254,12 @@ export default function ComplaintsPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Asunto *</Label>
+                    <Label
+                      htmlFor="subject"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Asunto <span className="text-red-500">*</span>
+                    </Label>
                     <Input
                       id="subject"
                       value={formData.subject}
@@ -234,26 +267,36 @@ export default function ComplaintsPage() {
                         handleInputChange("subject", e.target.value)
                       }
                       required
+                      placeholder="Resumen breve del reclamo"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="description">Descripción Detallada *</Label>
+                    <Label
+                      htmlFor="description"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Descripción detallada{" "}
+                      <span className="text-red-500">*</span>
+                    </Label>
                     <Textarea
                       id="description"
                       value={formData.description}
                       onChange={(e) =>
                         handleInputChange("description", e.target.value)
                       }
-                      rows={6}
+                      rows={5}
                       required
-                      placeholder="Describa detalladamente su reclamo, incluyendo fechas, horas y cualquier información relevante..."
+                      placeholder="Describa su reclamo con el mayor detalle posible: fechas, entregables involucrados y cualquier evidencia relevante."
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="expectedResolution">
-                      Resolución Esperada
+                    <Label
+                      htmlFor="expectedResolution"
+                      className="text-body-sm text-gray-700"
+                    >
+                      Resolución esperada
                     </Label>
                     <Textarea
                       id="expectedResolution"
@@ -262,78 +305,77 @@ export default function ComplaintsPage() {
                         handleInputChange("expectedResolution", e.target.value)
                       }
                       rows={3}
-                      placeholder="¿Qué resolución espera para su reclamo?"
+                      placeholder="¿Qué solución espera recibir?"
                     />
                   </div>
                 </div>
-
-                <div className="bg-yellow-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-yellow-900 mb-2">
-                    Información Importante:
-                  </h4>
-                  <ul className="text-sm text-yellow-800 space-y-1">
-                    <li>• Todos los campos marcados con * son obligatorios</li>
-                    <li>
-                      • Proporcione información detallada para una mejor
-                      resolución
-                    </li>
-                    <li>
-                      • Recibirá un número de seguimiento por correo electrónico
-                    </li>
-                    <li>• Mantenemos confidencialidad de su información</li>
-                  </ul>
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Enviando Reclamo..." : "Enviar Reclamo"}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Información de Contacto</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                También puede contactarnos directamente para presentar su
-                reclamo:
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">
-                    Correo Electrónico
-                  </h4>
-                  <p className="text-muted-foreground">
-                    <a
-                      href="mailto:reclamos@myapp.com"
-                      className="text-primary hover:underline"
-                    >
-                      reclamos@myapp.com
-                    </a>
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">
-                    Teléfono
-                  </h4>
-                  <p className="text-muted-foreground">
-                    <a
-                      href="tel:+51991285679"
-                      className="text-primary hover:underline"
-                    >
-                      +1 (234) 567-890
-                    </a>
-                  </p>
-                </div>
               </div>
-            </CardContent>
-          </Card>
+
+              {/* Notice */}
+              <p className="text-body-sm text-gray-400 border-l-2 border-gray-200 pl-3">
+                Los campos marcados con <span className="text-red-400">*</span>{" "}
+                son obligatorios. Su información es tratada con estricta
+                confidencialidad conforme a la Ley N.° 29733.
+              </p>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-xl text-sm font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Enviando reclamo…" : "Enviar reclamo"}
+              </button>
+            </form>
+          </section>
+
+          {/* Contact info */}
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-4">
+              Contacto directo
+            </h2>
+            <p className="text-body text-gray-500 mb-5">
+              También puede presentar su reclamo directamente por los siguientes
+              medios:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <p className="text-label font-semibold text-gray-700 mb-1">
+                  Correo electrónico
+                </p>
+                <a
+                  href="mailto:reclamos@axium.com.pe"
+                  className="text-body text-secondary hover:underline"
+                >
+                  reclamos@axium.com.pe
+                </a>
+              </div>
+              <div>
+                <p className="text-label font-semibold text-gray-700 mb-1">
+                  Teléfono
+                </p>
+                <a
+                  href="tel:+51991285679"
+                  className="text-body text-secondary hover:underline"
+                >
+                  +51 991 285 679
+                </a>
+              </div>
+              <div>
+                <p className="text-label font-semibold text-gray-700 mb-1">
+                  Dirección
+                </p>
+                <p className="text-body text-gray-500">Lima, Perú</p>
+              </div>
+              <div>
+                <p className="text-label font-semibold text-gray-700 mb-1">
+                  Horario de atención
+                </p>
+                <p className="text-body text-gray-500">
+                  Lun – Vie, 9:00 – 18:00 (GMT-5)
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

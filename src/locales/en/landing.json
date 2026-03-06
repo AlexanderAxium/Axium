@@ -160,6 +160,7 @@
     "verDetalles": "View details",
     "verPortafolio": "View portfolio",
     "casosDeExito": "Success cases",
+    "sectionDescription": "Real projects we have developed for companies across different industries.",
     "masProyectos": "More projects",
     "anterior": "Previous",
     "siguiente": "Next",
@@ -249,26 +250,30 @@
     },
     "process": {
       "eyebrow": "A Process that Delivers Results",
-      "titlePrefix": "Smart, Precise and ",
-      "titleHighlight": "Successful",
-      "description": "At Axium, we create solutions that capture customer attention, earn their trust, and build lasting relationships based on innovation and measurable success.",
+      "titlePrefix": "A process that delivers ",
+      "titleHighlight": "results",
+      "description": "Clear methodology, on-time delivery, and measurable results. We define with rigor, build to high standards, and launch with confidence.",
       "steps": {
         "definir": {
           "title": "Define",
           "fullTitle": "Define What Matters",
-          "description": "We don't ask what you want to build. We ask what's worth building. From new products to platform migrations, we focus on what truly drives results."
+          "description": "We don't ask what you want to build. We ask what's worth building. From new products to platform migrations, we focus on what truly drives results.",
+          "short": "We define priorities and what's worth building for your business."
         },
         "construir": {
           "title": "Build",
           "fullTitle": "Build to Scale",
-          "description": "Aesthetics matter, but function matters more. We design, code, and connect systems your team can use with ease. Scalable, fast, and ready to grow with you."
+          "description": "Aesthetics matter, but function matters more. We design, code, and connect systems your team can use with ease. Scalable, fast, and ready to grow with you.",
+          "short": "We design, build, and connect systems ready to scale."
         },
         "lanzar": {
           "title": "Launch",
           "fullTitle": "Launch with Confidence",
-          "description": "No silent deliveries. We test hard, launch smart, and stay in the loop, ready to fix, improve, or scale as your needs change."
+          "description": "No silent deliveries. We test hard, launch smart, and stay in the loop, ready to fix, improve, or scale as your needs change.",
+          "short": "We test, launch, and provide ongoing support to keep improving."
         }
       },
+      "includesLabel": "Includes:",
       "badges": {
         "primary": "Strategic Workshop",
         "secondary": [
@@ -365,6 +370,10 @@
     "verProyecto": "VIEW PROJECT • VIEW PROJECT • ",
     "sinResultados": "No results",
     "sinResultadosDesc": "No projects match the selected filters.",
-    "verTodos": "View all projects"
+    "verTodos": "View all projects",
+    "pagina": "Page",
+    "paginaDe": "Page {current} of {total}",
+    "anterior": "Previous",
+    "siguiente": "Next"
   }
 }

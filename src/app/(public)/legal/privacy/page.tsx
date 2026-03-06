@@ -1,215 +1,216 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 export default function PrivacyPage() {
   return (
-    <div className="container-section py-8">
-      <div className="content-section max-w-4xl">
-        <div className="space-y-8">
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-foreground">
-              Política de Privacidad
-            </h1>
-            <p className="text-muted-foreground">
-              Última actualización: {new Date().toLocaleDateString("es-ES")}
+    <div className="container-section py-12 md:py-16">
+      <div className="content-section max-w-3xl">
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-overline text-gray-400">Legal</span>
+          <h1 className="text-heading-1 text-gray-900 mt-3 mb-2">
+            Política de Privacidad
+          </h1>
+          <p className="text-body-sm text-gray-400">
+            Última actualización: 1 de marzo de 2025
+          </p>
+        </div>
+
+        {/* Sections */}
+        <div className="divide-y divide-gray-100">
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              1. Responsable del tratamiento
+            </h2>
+            <p className="text-body text-gray-500">
+              Axium S.A.C. es el responsable del tratamiento de los datos
+              personales que usted nos proporciona a través de este sitio web o
+              mediante cualquier canal de comunicación. Operamos conforme a la
+              Ley N.° 29733, Ley de Protección de Datos Personales del Perú, y
+              su reglamento.
             </p>
-          </div>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>1. Información que Recopilamos</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Recopilamos información que nos proporciona directamente y la
-                que recopilamos automáticamente cuando utiliza nuestros
-                servicios.
-              </p>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              2. Información que recopilamos
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Recopilamos únicamente la información que usted nos facilita de
+              forma voluntaria a través de nuestros formularios de contacto:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside mb-3">
+              <li>Nombre completo</li>
+              <li>Dirección de correo electrónico</li>
+              <li>Mensaje o descripción del proyecto</li>
+              <li>Adjuntos que usted decida incluir voluntariamente</li>
+            </ul>
+            <p className="text-body text-gray-500">
+              Adicionalmente, nuestro sitio puede recopilar de forma automática
+              datos de navegación (dirección IP, tipo de navegador, páginas
+              visitadas) a través de herramientas de analítica, con el único
+              propósito de mejorar la experiencia del usuario.
+            </p>
+          </section>
 
-              <div className="space-y-4">
-                <h4 className="font-semibold">Información Personal:</h4>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-                  <li>Nombre y dirección de correo electrónico</li>
-                  <li>Información de contacto (teléfono, dirección)</li>
-                  <li>Información de facturación y pago</li>
-                  <li>Preferencias de idioma y configuración</li>
-                </ul>
-              </div>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              3. Finalidad del tratamiento
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Los datos que nos proporciona se utilizan exclusivamente para:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside">
+              <li>Responder a su consulta o solicitud de servicio</li>
+              <li>Elaborar propuestas y presupuestos personalizados</li>
+              <li>Gestionar la relación contractual si decide contratarnos</li>
+              <li>
+                Enviar información relevante sobre nuestros servicios, previa
+                aceptación
+              </li>
+            </ul>
+          </section>
 
-              <div className="space-y-4">
-                <h4 className="font-semibold">Información de la Plataforma:</h4>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-                  <li>Datos de cuentas conectadas</li>
-                  <li>Información de configuraciones</li>
-                  <li>Preferencias de usuario</li>
-                  <li>Historial de actividad en la plataforma</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              4. Compartición de datos
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Axium no vende, alquila ni comparte sus datos personales con
+              terceros con fines comerciales. Podemos compartir información
+              únicamente en los siguientes casos:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside">
+              <li>
+                Con proveedores de servicios que nos asisten operativamente (ej.
+                plataformas de email, análisis web), quienes están obligados a
+                tratar los datos con la misma confidencialidad
+              </li>
+              <li>
+                Cuando sea requerido por autoridades competentes en cumplimiento
+                de la ley peruana
+              </li>
+            </ul>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>2. Cómo Utilizamos su Información</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Utilizamos la información recopilada para:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Proporcionar y mantener nuestros servicios</li>
-                <li>Procesar pagos y gestionar suscripciones</li>
-                <li>Gestionar usuarios y permisos</li>
-                <li>Generar análisis y reportes personalizados</li>
-                <li>Mejorar la funcionalidad de la plataforma</li>
-                <li>Enviar notificaciones importantes del servicio</li>
-                <li>Proporcionar soporte al cliente</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              5. Seguridad de los datos
+            </h2>
+            <p className="text-body text-gray-500">
+              Implementamos medidas técnicas y organizativas razonables para
+              proteger sus datos personales frente a accesos no autorizados,
+              pérdida o divulgación indebida. Toda comunicación entre su
+              navegador y nuestro sitio se realiza mediante conexión cifrada
+              (HTTPS).
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>3. Compartir Información</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                No vendemos, alquilamos ni compartimos su información personal
-                con terceros, excepto en las siguientes circunstancias:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Con su consentimiento explícito</li>
-                <li>Para cumplir con obligaciones legales</li>
-                <li>Con proveedores de servicios que nos ayudan a operar</li>
-                <li>En caso de fusión, adquisición o venta de activos</li>
-                <li>Para proteger nuestros derechos y seguridad</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              6. Sus derechos
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              De conformidad con la Ley N.° 29733, usted tiene derecho a:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside mb-3">
+              <li>
+                <span className="font-medium text-gray-700">Acceso:</span>{" "}
+                conocer qué datos suyos tenemos almacenados
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">
+                  Rectificación:
+                </span>{" "}
+                solicitar la corrección de datos inexactos
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">Cancelación:</span>{" "}
+                pedir la eliminación de sus datos cuando ya no sean necesarios
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">Oposición:</span>{" "}
+                oponerse al tratamiento en determinadas circunstancias
+              </li>
+            </ul>
+            <p className="text-body text-gray-500">
+              Para ejercer cualquiera de estos derechos, escríbanos a{" "}
+              <a
+                href="mailto:privacidad@axium.com.pe"
+                className="text-secondary hover:underline"
+              >
+                privacidad@axium.com.pe
+              </a>
+              .
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>4. Seguridad de los Datos</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Implementamos medidas de seguridad técnicas y organizativas para
-                proteger su información:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Encriptación de datos en tránsito y en reposo</li>
-                <li>Acceso restringido a información personal</li>
-                <li>Monitoreo regular de seguridad</li>
-                <li>Copias de seguridad regulares</li>
-                <li>Capacitación del personal en privacidad</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              7. Retención de datos
+            </h2>
+            <p className="text-body text-gray-500">
+              Conservamos sus datos personales durante el tiempo necesario para
+              cumplir con la finalidad por la que fueron recabados, y en todo
+              caso por el periodo mínimo que exige la legislación tributaria y
+              mercantil peruana. Una vez cumplido dicho periodo, los datos se
+              eliminan de forma segura.
+            </p>
+          </section>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>5. Sus Derechos</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Tiene los siguientes derechos respecto a su información
-                personal:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>Acceder a su información personal</li>
-                <li>Corregir información inexacta</li>
-                <li>Solicitar la eliminación de sus datos</li>
-                <li>Restringir el procesamiento de sus datos</li>
-                <li>Portabilidad de datos</li>
-                <li>Oponerse al procesamiento</li>
-              </ul>
-              <p className="text-muted-foreground">
-                Para ejercer estos derechos, contacte a:
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">8. Cookies</h2>
+            <p className="text-body text-gray-500">
+              Nuestro sitio web utiliza cookies propias y de terceros para
+              mejorar la experiencia de navegación y analizar el tráfico. Puede
+              consultar nuestra{" "}
+              <a
+                href="/legal/cookies"
+                className="text-secondary hover:underline"
+              >
+                Política de Cookies
+              </a>{" "}
+              para más información.
+            </p>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              9. Cambios a esta política
+            </h2>
+            <p className="text-body text-gray-500">
+              Podemos actualizar esta Política de Privacidad cuando sea
+              necesario. Le informaremos de cambios relevantes publicando la
+              versión actualizada en esta página con la nueva fecha de
+              efectividad.
+            </p>
+          </section>
+
+          <section className="py-8">
+            <h2 className="text-heading-3 text-gray-900 mb-3">10. Contacto</h2>
+            <p className="text-body text-gray-500 mb-4">
+              Para cualquier consulta relacionada con el tratamiento de sus
+              datos personales:
+            </p>
+            <div className="space-y-2 text-body text-gray-500">
+              <p>
+                Email:{" "}
                 <a
-                  href="mailto:privacy@myapp.com"
-                  className="text-primary hover:underline ml-1"
+                  href="mailto:privacidad@axium.com.pe"
+                  className="text-secondary hover:underline"
                 >
-                  privacy@myapp.com
+                  privacidad@axium.com.pe
                 </a>
               </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>6. Cookies y Tecnologías Similares</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                Utilizamos cookies y tecnologías similares para mejorar su
-                experiencia. Para más información, consulte nuestra
+              <p>
+                Teléfono:{" "}
                 <a
-                  href="/legal/cookies"
-                  className="text-primary hover:underline ml-1"
+                  href="tel:+51991285679"
+                  className="text-secondary hover:underline"
                 >
-                  Política de Cookies
+                  +51 991 285 679
                 </a>
-                .
               </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>7. Retención de Datos</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Conservamos su información personal durante el tiempo necesario
-                para cumplir con los propósitos descritos en esta política, a
-                menos que la ley requiera un período de retención más largo.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>8. Cambios a esta Política</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Podemos actualizar esta política de privacidad ocasionalmente.
-                Le notificaremos sobre cambios significativos por correo
-                electrónico o mediante un aviso en nuestro sitio web.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>9. Contacto</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                Si tiene preguntas sobre esta política de privacidad, contacte
-                a:
-              </p>
-              <div className="mt-4 space-y-2">
-                <p className="text-muted-foreground">
-                  Email:{" "}
-                  <a
-                    href="mailto:privacy@myapp.com"
-                    className="text-primary hover:underline"
-                  >
-                    privacy@myapp.com
-                  </a>
-                </p>
-                <p className="text-muted-foreground">
-                  Teléfono:{" "}
-                  <a
-                    href="tel:+51991285679"
-                    className="text-primary hover:underline"
-                  >
-                    +1 (234) 567-890
-                  </a>
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+              <p>Dirección: Lima, Perú</p>
+            </div>
+          </section>
         </div>
       </div>
     </div>

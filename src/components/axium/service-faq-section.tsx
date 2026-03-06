@@ -113,7 +113,7 @@ export function ServiceFaqSection({
             </motion.div>
 
             {/* CTA card — mobile only */}
-            <div className="lg:hidden">
+            <div className="lg:hidden mt-8">
               <ServiceCtaCard
                 title={ctaTitle}
                 subtitle={ctaSubtitle}

@@ -12,10 +12,19 @@ import {
 } from "@/components/ui/sheet";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useCasesWithLocale } from "@/lib/case-translations";
-import { ChevronDown, LayoutGrid, List, Settings, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Settings,
+  X,
+} from "lucide-react";
+import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+const ITEMS_PER_PAGE = 20;
 
 // ─── Slug helper ──────────────────────────────────────────────────────────────
 const slugMap: Record<string, string> = {
@@ -79,10 +88,7 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
     slugs: ["feniz", "firstautomation", "redesvip", "siclo"],
   },
   { label: "Finanzas", slugs: ["financial-management"] },
-  {
-    label: "Experiencia de cliente",
-    slugs: ["feedback-management"],
-  },
+  { label: "Experiencia de cliente", slugs: ["feedback-management"] },
   { label: "Medio ambiente", slugs: ["ambientalpe"] },
   {
     label: "Construcción",
@@ -213,18 +219,29 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
 ];
 
 type SortKey = "default" | "az" | "za";
-type ViewMode = "grid" | "list";
 
-// ─── Grid card with magnetic cursor arrow ────────────────────────────────────
-function GridCard({
+function getAllowedSlugs(
+  active: Set<string>,
+  filterList: { label: string; slugs: string[] }[]
+): Set<string> | null {
+  if (active.size === 0) return null;
+  const s = new Set<string>();
+  for (const lbl of active) {
+    filterList.find((x) => x.label === lbl)?.slugs.forEach((sl) => s.add(sl));
+  }
+  return s;
+}
+
+// ─── Card ─────────────────────────────────────────────────────────────────────
+function PortfolioCard({
   caseItem,
-  idx,
+  index,
   industryLabel,
   serviceLabel,
   slug,
 }: {
   caseItem: { title: string; image: string; description?: string };
-  idx: number;
+  index: number;
   industryLabel: string;
   serviceLabel?: string;
   slug: string;
@@ -233,26 +250,22 @@ function GridCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.4,
-        delay: Math.min(idx * 0.04, 0.32),
-        ease: [0.4, 0, 0.2, 1],
-      }}
+      transition={{ duration: 0.35, delay: Math.min(index * 0.03, 0.24) }}
     >
       <MagneticCursorArrow label={t("portfolio.verProyecto")}>
         <Link href={`/casos-de-exito/${slug}`} className="group block">
-          {/* Image */}
-          <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-gray-100 mb-4 min-w-0">
-            <img
+          <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-gray-100 mb-4">
+            <Image
               src={caseItem.image}
               alt={caseItem.title}
-              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 max-w-full"
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+              quality={85}
             />
           </div>
-
-          {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-2">
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-200 text-gray-500 bg-white">
               {industryLabel}
@@ -263,9 +276,7 @@ function GridCard({
               </span>
             )}
           </div>
-
-          {/* Title */}
-          <h2 className="text-heading-2 text-[#060C20] group-hover:text-[#0072CF] transition-colors duration-200 leading-snug break-words">
+          <h2 className="text-heading-2 text-[#060C20] group-hover:text-[#0072CF] transition-colors duration-200 leading-snug">
             {caseItem.title}
           </h2>
         </Link>
@@ -274,8 +285,68 @@ function GridCard({
   );
 }
 
-// ─── Accordion filter section ─────────────────────────────────────────────────
-const FILTER_VISIBLE_LIMIT = 8;
+// ─── Active filter chips (reusable) ────────────────────────────────────────────
+function ActiveFilterChips({
+  activeIndustry,
+  activeService,
+  activeTech,
+  onToggleIndustry,
+  onToggleService,
+  onToggleTech,
+}: {
+  activeIndustry: Set<string>;
+  activeService: Set<string>;
+  activeTech: Set<string>;
+  onToggleIndustry: (lbl: string) => void;
+  onToggleService: (lbl: string) => void;
+  onToggleTech: (lbl: string) => void;
+}) {
+  const toggle = (
+    label: string,
+    _set: Set<string>,
+    onToggle: (l: string) => void
+  ) => {
+    onToggle(label);
+  };
+
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {[...activeIndustry].map((lbl) => (
+        <button
+          key={`ind-${lbl}`}
+          type="button"
+          onClick={() => toggle(lbl, activeIndustry, onToggleIndustry)}
+          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white hover:opacity-90"
+        >
+          {lbl} <X className="w-3 h-3" />
+        </button>
+      ))}
+      {[...activeService].map((lbl) => (
+        <button
+          key={`srv-${lbl}`}
+          type="button"
+          onClick={() => toggle(lbl, activeService, onToggleService)}
+          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#0072CF] text-white hover:opacity-90"
+        >
+          {lbl} <X className="w-3 h-3" />
+        </button>
+      ))}
+      {[...activeTech].map((lbl) => (
+        <button
+          key={`tech-${lbl}`}
+          type="button"
+          onClick={() => toggle(lbl, activeTech, onToggleTech)}
+          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#7ECFC3] text-teal-900 hover:opacity-90"
+        >
+          {lbl} <X className="w-3 h-3" />
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// ─── Filter accordion section ───────────────────────────────────────────────────
+const FILTER_VISIBLE = 8;
 
 function FilterSection({
   title,
@@ -293,9 +364,11 @@ function FilterSection({
   const [open, setOpen] = useState(defaultOpen);
   const [showAll, setShowAll] = useState(false);
   const hasActive = items.some((i) => activeLabels.has(i.label));
-  const hasMore = items.length > FILTER_VISIBLE_LIMIT;
-  const visibleItems =
-    hasMore && !showAll ? items.slice(0, FILTER_VISIBLE_LIMIT) : items;
+  const visible =
+    items.length > FILTER_VISIBLE && !showAll
+      ? items.slice(0, FILTER_VISIBLE)
+      : items;
+  const hasMore = items.length > FILTER_VISIBLE;
 
   return (
     <div className="border-b border-gray-100 last:border-0">
@@ -311,43 +384,39 @@ function FilterSection({
           )}
         </span>
         <ChevronDown
-          className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
         />
       </button>
-
       {open && (
         <div className="pb-3 flex flex-col gap-0.5">
-          {visibleItems.map(({ label, slugs }) => {
-            const active = activeLabels.has(label);
-            return (
-              <button
-                key={label}
-                type="button"
-                onClick={() => onToggle(label)}
-                className={`flex items-center justify-between w-full text-left px-2 py-2 rounded-lg text-sm transition-all ${
-                  active
-                    ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                    : "text-gray-500 hover:bg-gray-50 hover:text-[#060C20]"
-                }`}
+          {visible.map(({ label, slugs }) => (
+            <button
+              key={label}
+              type="button"
+              onClick={() => onToggle(label)}
+              className={`flex items-center justify-between w-full text-left px-2 py-2 rounded-lg text-sm transition-all ${
+                activeLabels.has(label)
+                  ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
+                  : "text-gray-500 hover:bg-gray-50 hover:text-[#060C20]"
+              }`}
+            >
+              <span>{label}</span>
+              <span
+                className={`text-xs tabular-nums ${activeLabels.has(label) ? "text-slate-500" : "text-gray-300"}`}
               >
-                <span>{label}</span>
-                <span
-                  className={`text-xs tabular-nums ${active ? "text-slate-500" : "text-gray-300"}`}
-                >
-                  {slugs.length}
-                </span>
-              </button>
-            );
-          })}
+                {slugs.length}
+              </span>
+            </button>
+          ))}
           {hasMore && (
             <button
               type="button"
               onClick={() => setShowAll((v) => !v)}
-              className="mt-1 px-2 py-1.5 text-xs text-[#0072CF] hover:text-[#005ba3] text-left transition-colors"
+              className="mt-1 px-2 py-1.5 text-xs text-[#0072CF] hover:text-[#005ba3] text-left"
             >
               {showAll
                 ? "Ver menos"
-                : `Ver ${items.length - FILTER_VISIBLE_LIMIT} más`}
+                : `Ver ${items.length - FILTER_VISIBLE} más`}
             </button>
           )}
         </div>
@@ -356,7 +425,7 @@ function FilterSection({
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Main ─────────────────────────────────────────────────────────────────────
 export function PortfolioPageContent() {
   const cases = useCasesWithLocale();
   const { t } = useTranslation("landing");
@@ -365,92 +434,130 @@ export function PortfolioPageContent() {
   const [activeService, setActiveService] = useState<Set<string>>(new Set());
   const [activeTech, setActiveTech] = useState<Set<string>>(new Set());
   const [sortKey, setSortKey] = useState<SortKey>("default");
-  const [viewMode, setViewMode] = useState<ViewMode>("grid");
+  const [currentPage, setCurrentPage] = useState(1);
   const [sortOpen, setSortOpen] = useState(false);
   const [filterSheetOpen, setFilterSheetOpen] = useState(false);
 
-  function toggle(
-    set: Set<string>,
+  const toggleFilter = (
     setter: (s: Set<string>) => void,
+    current: Set<string>,
     label: string
-  ) {
-    const next = new Set(set);
+  ) => {
+    const next = new Set(current);
     if (next.has(label)) next.delete(label);
     else next.add(label);
     setter(next);
-  }
-
-  const resetAll = () => {
-    setActiveIndustry(new Set());
-    setActiveService(new Set());
-    setActiveTech(new Set());
   };
 
-  const hasFilters =
-    activeIndustry.size > 0 || activeService.size > 0 || activeTech.size > 0;
-
-  const industryAllowed = useMemo(() => {
-    if (activeIndustry.size === 0) return null;
-    const s = new Set<string>();
-    for (const lbl of activeIndustry) {
-      INDUSTRY_FILTERS.find((x) => x.label === lbl)?.slugs.forEach((sl) =>
-        s.add(sl)
-      );
-    }
-    return s;
-  }, [activeIndustry]);
-
-  const serviceAllowed = useMemo(() => {
-    if (activeService.size === 0) return null;
-    const s = new Set<string>();
-    for (const lbl of activeService) {
-      SERVICE_FILTERS.find((x) => x.label === lbl)?.slugs.forEach((sl) =>
-        s.add(sl)
-      );
-    }
-    return s;
-  }, [activeService]);
-
-  const techAllowed = useMemo(() => {
-    if (activeTech.size === 0) return null;
-    const s = new Set<string>();
-    for (const lbl of activeTech) {
-      TECH_FILTERS.find((x) => x.label === lbl)?.slugs.forEach((sl) =>
-        s.add(sl)
-      );
-    }
-    return s;
-  }, [activeTech]);
+  const industryAllowed = useMemo(
+    () => getAllowedSlugs(activeIndustry, INDUSTRY_FILTERS),
+    [activeIndustry]
+  );
+  const serviceAllowed = useMemo(
+    () => getAllowedSlugs(activeService, SERVICE_FILTERS),
+    [activeService]
+  );
+  const techAllowed = useMemo(
+    () => getAllowedSlugs(activeTech, TECH_FILTERS),
+    [activeTech]
+  );
 
   const filtered = useMemo(() => {
-    const base = cases.filter((c) => {
+    let list = cases.filter((c) => {
       const slug = getSlug(c.title, c.slug);
       if (industryAllowed && !industryAllowed.has(slug)) return false;
       if (serviceAllowed && !serviceAllowed.has(slug)) return false;
       if (techAllowed && !techAllowed.has(slug)) return false;
       return true;
     });
-
     if (sortKey === "az")
-      return [...base].sort((a, b) => a.title.localeCompare(b.title, "es"));
+      list = [...list].sort((a, b) => a.title.localeCompare(b.title, "es"));
     if (sortKey === "za")
-      return [...base].sort((a, b) => b.title.localeCompare(a.title, "es"));
-    return base;
+      list = [...list].sort((a, b) => b.title.localeCompare(a.title, "es"));
+    return list;
   }, [cases, industryAllowed, serviceAllowed, techAllowed, sortKey]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const pageItems = useMemo(
+    () => filtered.slice(start, start + ITEMS_PER_PAGE),
+    [filtered, start]
+  );
+
+  // Reset to page 1 when filters or sort change
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intent is to reset page when any of these change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeIndustry, activeService, activeTech, sortKey]);
+
+  const hasFilters =
+    activeIndustry.size > 0 || activeService.size > 0 || activeTech.size > 0;
+  const resetAll = () => {
+    setActiveIndustry(new Set());
+    setActiveService(new Set());
+    setActiveTech(new Set());
+  };
 
   const SORT_OPTIONS: { key: SortKey; label: string }[] = [
     { key: "default", label: t("portfolio.sortDefault") },
     { key: "az", label: t("portfolio.sortAZ") },
     { key: "za", label: t("portfolio.sortZA") },
   ];
-
-  const activeSortLabel =
+  const sortLabel =
     SORT_OPTIONS.find((o) => o.key === sortKey)?.label ??
     t("portfolio.sortDefault");
 
+  const filterPanel = (
+    <>
+      <div className="rounded-xl border border-gray-100 bg-gray-50/50 overflow-hidden">
+        <FilterSection
+          title={t("portfolio.industria")}
+          items={INDUSTRY_FILTERS}
+          activeLabels={activeIndustry}
+          defaultOpen
+          onToggle={(lbl) =>
+            toggleFilter(setActiveIndustry, activeIndustry, lbl)
+          }
+        />
+        <FilterSection
+          title={t("portfolio.servicios")}
+          items={SERVICE_FILTERS}
+          activeLabels={activeService}
+          onToggle={(lbl) => toggleFilter(setActiveService, activeService, lbl)}
+        />
+        <FilterSection
+          title={t("portfolio.tecnologia")}
+          items={TECH_FILTERS}
+          activeLabels={activeTech}
+          onToggle={(lbl) => toggleFilter(setActiveTech, activeTech, lbl)}
+        />
+      </div>
+      <div className="pt-2">
+        <p className="text-sm font-semibold text-[#060C20] mb-2">
+          {t("portfolio.ordenar")}
+        </p>
+        <div className="flex flex-col gap-0.5">
+          {SORT_OPTIONS.map((opt) => (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => setSortKey(opt.key)}
+              className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-all ${
+                sortKey === opt.key
+                  ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* Hero 40vh: el navbar aplica el efecto al salir de esta sección (home usa 100vh) */}
       <section
         id="page-hero"
         className="relative min-h-[40vh] flex flex-col justify-end pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-cover bg-center"
@@ -474,7 +581,7 @@ export function PortfolioPageContent() {
               className="text-display text-white mb-3 max-w-2xl"
             >
               {t("portfolio.titulo")}{" "}
-              <span className="text-white  ">{t("portfolio.tituloBold")}</span>
+              <span className="text-white">{t("portfolio.tituloBold")}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -491,11 +598,10 @@ export function PortfolioPageContent() {
         </div>
       </section>
 
-      {/* ── Sidebar + Grid ───────────────────────────────────────── */}
       <div className="container-section">
         <div className="content-section">
-          {/* ── Mobile filters ─────────────────────────────────────── */}
-          <div className="lg:hidden bg-gray-50 border-b border-gray-200 py-3 space-y-3">
+          {/* Mobile filters */}
+          <div className="lg:hidden border-b border-gray-200 py-3 space-y-3">
             <Sheet open={filterSheetOpen} onOpenChange={setFilterSheetOpen}>
               <div className="flex items-center justify-between">
                 <span className="text-base font-semibold text-[#060C20]">
@@ -524,149 +630,55 @@ export function PortfolioPageContent() {
                   {hasFilters && (
                     <button
                       type="button"
-                      onClick={() => {
-                        resetAll();
-                      }}
-                      className="text-sm text-gray-500 hover:text-[#0072CF] transition-colors underline underline-offset-2 text-left"
+                      onClick={resetAll}
+                      className="text-sm text-gray-500 hover:text-[#0072CF] underline underline-offset-2 text-left"
                     >
                       {t("portfolio.limpiarTodo")}
                     </button>
                   )}
                 </SheetHeader>
-                <div className="flex-1 overflow-y-auto p-4 space-y-2 [scrollbar-width:thin] [scrollbar-color:theme(colors.gray.300)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
-                  {/* Active chips */}
+                <div className="flex-1 overflow-y-auto p-4 space-y-2">
                   {hasFilters && (
-                    <div className="flex flex-wrap gap-1.5 pb-3 border-b border-gray-100">
-                      {[...activeIndustry].map((lbl) => (
-                        <button
-                          type="button"
-                          key={lbl}
-                          onClick={() =>
-                            toggle(activeIndustry, setActiveIndustry, lbl)
-                          }
-                          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white"
-                        >
-                          {lbl} <X className="w-3 h-3" />
-                        </button>
-                      ))}
-                      {[...activeService].map((lbl) => (
-                        <button
-                          type="button"
-                          key={lbl}
-                          onClick={() =>
-                            toggle(activeService, setActiveService, lbl)
-                          }
-                          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#0072CF] text-white"
-                        >
-                          {lbl} <X className="w-3 h-3" />
-                        </button>
-                      ))}
-                      {[...activeTech].map((lbl) => (
-                        <button
-                          type="button"
-                          key={lbl}
-                          onClick={() => toggle(activeTech, setActiveTech, lbl)}
-                          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#7ECFC3] text-teal-900"
-                        >
-                          {lbl} <X className="w-3 h-3" />
-                        </button>
-                      ))}
+                    <div className="pb-3 border-b border-gray-100">
+                      <ActiveFilterChips
+                        activeIndustry={activeIndustry}
+                        activeService={activeService}
+                        activeTech={activeTech}
+                        onToggleIndustry={(l) =>
+                          toggleFilter(setActiveIndustry, activeIndustry, l)
+                        }
+                        onToggleService={(l) =>
+                          toggleFilter(setActiveService, activeService, l)
+                        }
+                        onToggleTech={(l) =>
+                          toggleFilter(setActiveTech, activeTech, l)
+                        }
+                      />
                     </div>
                   )}
-                  {/* Filter sections */}
-                  <div className="rounded-xl border border-gray-100 bg-gray-50/50 divide-y divide-gray-100 overflow-hidden">
-                    <FilterSection
-                      title={t("portfolio.industria")}
-                      items={INDUSTRY_FILTERS}
-                      activeLabels={activeIndustry}
-                      defaultOpen
-                      onToggle={(lbl) =>
-                        toggle(activeIndustry, setActiveIndustry, lbl)
-                      }
-                    />
-                    <FilterSection
-                      title={t("portfolio.servicios")}
-                      items={SERVICE_FILTERS}
-                      activeLabels={activeService}
-                      onToggle={(lbl) =>
-                        toggle(activeService, setActiveService, lbl)
-                      }
-                    />
-                    <FilterSection
-                      title={t("portfolio.tecnologia")}
-                      items={TECH_FILTERS}
-                      activeLabels={activeTech}
-                      onToggle={(lbl) => toggle(activeTech, setActiveTech, lbl)}
-                    />
-                  </div>
-                  {/* Sort */}
-                  <div className="pt-2">
-                    <p className="text-sm font-semibold text-[#060C20] mb-2">
-                      {t("portfolio.ordenar")}
-                    </p>
-                    <div className="flex flex-col gap-0.5">
-                      {SORT_OPTIONS.map((opt) => (
-                        <button
-                          key={opt.key}
-                          type="button"
-                          onClick={() => setSortKey(opt.key)}
-                          className={`flex items-center justify-between w-full text-left px-3 py-2.5 rounded-lg text-sm transition-all ${
-                            sortKey === opt.key
-                              ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                              : "text-gray-600 hover:bg-gray-100"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  {filterPanel}
                 </div>
               </SheetContent>
             </Sheet>
-            {/* Applied filters as badges */}
             {hasFilters && (
-              <div className="flex flex-wrap gap-1.5">
-                {[...activeIndustry].map((lbl) => (
-                  <button
-                    type="button"
-                    key={lbl}
-                    onClick={() =>
-                      toggle(activeIndustry, setActiveIndustry, lbl)
-                    }
-                    className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#060C20] text-white"
-                  >
-                    {lbl} <X className="w-3 h-3" />
-                  </button>
-                ))}
-                {[...activeService].map((lbl) => (
-                  <button
-                    type="button"
-                    key={lbl}
-                    onClick={() => toggle(activeService, setActiveService, lbl)}
-                    className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#0072CF] text-white"
-                  >
-                    {lbl} <X className="w-3 h-3" />
-                  </button>
-                ))}
-                {[...activeTech].map((lbl) => (
-                  <button
-                    type="button"
-                    key={lbl}
-                    onClick={() => toggle(activeTech, setActiveTech, lbl)}
-                    className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs bg-[#7ECFC3] text-teal-900"
-                  >
-                    {lbl} <X className="w-3 h-3" />
-                  </button>
-                ))}
-              </div>
+              <ActiveFilterChips
+                activeIndustry={activeIndustry}
+                activeService={activeService}
+                activeTech={activeTech}
+                onToggleIndustry={(l) =>
+                  toggleFilter(setActiveIndustry, activeIndustry, l)
+                }
+                onToggleService={(l) =>
+                  toggleFilter(setActiveService, activeService, l)
+                }
+                onToggleTech={(l) => toggleFilter(setActiveTech, activeTech, l)}
+              />
             )}
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 py-8 md:py-14 items-stretch lg:items-start">
-            {/* ── Desktop Sidebar ──────────────────────────────────── */}
-            <aside className="hidden lg:block w-56 xl:w-60 shrink-0 self-start bg-gray-50 py-1 -my-1">
-              {/* Header */}
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 py-8 md:py-14">
+            {/* Desktop sidebar */}
+            <aside className="hidden lg:block w-56 xl:w-60 shrink-0">
               <div className="flex items-center justify-between pb-4 mb-1 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-[#060C20] tracking-tight">
                   {t("portfolio.filtros")}
@@ -675,273 +687,94 @@ export function PortfolioPageContent() {
                   <button
                     type="button"
                     onClick={resetAll}
-                    className="text-xs text-gray-400 hover:text-[#060C20] transition-colors underline underline-offset-2"
+                    className="text-xs text-gray-400 hover:text-[#060C20] underline underline-offset-2"
                   >
                     {t("portfolio.limpiarTodo")}
                   </button>
                 )}
               </div>
-
-              {/* Active chips */}
               {hasFilters && (
                 <div className="flex flex-wrap gap-1.5 py-3 border-b border-gray-200">
-                  {[...activeIndustry].map((lbl) => (
-                    <button
-                      type="button"
-                      key={lbl}
-                      onClick={() =>
-                        toggle(activeIndustry, setActiveIndustry, lbl)
-                      }
-                      className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white hover:bg-[#060C20]/80"
-                    >
-                      {lbl} <X className="w-3 h-3" />
-                    </button>
-                  ))}
-                  {[...activeService].map((lbl) => (
-                    <button
-                      type="button"
-                      key={lbl}
-                      onClick={() =>
-                        toggle(activeService, setActiveService, lbl)
-                      }
-                      className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#0072CF] text-white hover:bg-[#0072CF]/80"
-                    >
-                      {lbl} <X className="w-3 h-3" />
-                    </button>
-                  ))}
-                  {[...activeTech].map((lbl) => (
-                    <button
-                      type="button"
-                      key={lbl}
-                      onClick={() => toggle(activeTech, setActiveTech, lbl)}
-                      className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#7ECFC3] text-teal-900 hover:bg-[#7ECFC3]/80"
-                    >
-                      {lbl} <X className="w-3 h-3" />
-                    </button>
-                  ))}
+                  <ActiveFilterChips
+                    activeIndustry={activeIndustry}
+                    activeService={activeService}
+                    activeTech={activeTech}
+                    onToggleIndustry={(l) =>
+                      toggleFilter(setActiveIndustry, activeIndustry, l)
+                    }
+                    onToggleService={(l) =>
+                      toggleFilter(setActiveService, activeService, l)
+                    }
+                    onToggleTech={(l) =>
+                      toggleFilter(setActiveTech, activeTech, l)
+                    }
+                  />
                 </div>
               )}
-
-              {/* Accordions */}
-              <div>
-                <FilterSection
-                  title={t("portfolio.industria")}
-                  items={INDUSTRY_FILTERS}
-                  activeLabels={activeIndustry}
-                  defaultOpen
-                  onToggle={(lbl) =>
-                    toggle(activeIndustry, setActiveIndustry, lbl)
-                  }
-                />
-                <FilterSection
-                  title={t("portfolio.servicios")}
-                  items={SERVICE_FILTERS}
-                  activeLabels={activeService}
-                  onToggle={(lbl) =>
-                    toggle(activeService, setActiveService, lbl)
-                  }
-                />
-                <FilterSection
-                  title={t("portfolio.tecnologia")}
-                  items={TECH_FILTERS}
-                  activeLabels={activeTech}
-                  onToggle={(lbl) => toggle(activeTech, setActiveTech, lbl)}
-                />
-              </div>
+              {filterPanel}
             </aside>
 
-            {/* ── Main content ────────────────────────────────────── */}
-            <div className="flex-1 min-w-0 w-full overflow-x-hidden">
-              {/* Toolbar */}
+            {/* Grid + pagination */}
+            <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
-                {/* count */}
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={filtered.length}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-body-sm text-gray-400"
+                <p className="text-body-sm text-gray-400">
+                  {hasFilters
+                    ? t("portfolio.proyectosFiltrado", {
+                        filtered: String(filtered.length),
+                        total: String(cases.length),
+                      })
+                    : t("portfolio.proyectosCount", {
+                        count: String(cases.length),
+                      })}
+                </p>
+                <div className="relative hidden lg:block">
+                  <button
+                    type="button"
+                    onClick={() => setSortOpen((v) => !v)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-600 border border-gray-200 bg-white hover:border-gray-300"
                   >
-                    {hasFilters
-                      ? t("portfolio.proyectosFiltrado", {
-                          filtered: String(filtered.length),
-                          total: String(cases.length),
-                        })
-                      : t("portfolio.proyectosCount", {
-                          count: String(cases.length),
-                        })}
-                  </motion.p>
-                </AnimatePresence>
-
-                {/* Sort (desktop only) + view toggle (always) */}
-                <div className="flex items-center gap-2">
-                  {/* Sort dropdown - desktop only */}
-                  <div className="relative hidden lg:block">
-                    <button
-                      type="button"
-                      onClick={() => setSortOpen((v) => !v)}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-600 border border-gray-200 bg-white hover:border-gray-300 transition-colors"
-                    >
-                      {activeSortLabel}
-                      <ChevronDown
-                        className={`w-3.5 h-3.5 text-gray-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
+                    {sortLabel}
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 text-gray-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {sortOpen && (
+                    <>
+                      <div
+                        className="fixed inset-0 z-10"
+                        onClick={() => setSortOpen(false)}
+                        onKeyDown={(e) =>
+                          e.key === "Escape" && setSortOpen(false)
+                        }
+                        role="button"
+                        tabIndex={-1}
+                        aria-hidden
                       />
-                    </button>
-
-                    {sortOpen && (
-                      <>
-                        {/* backdrop */}
-                        <div
-                          className="fixed inset-0 z-10"
-                          onClick={() => setSortOpen(false)}
-                          onKeyDown={(e) =>
-                            e.key === "Escape" && setSortOpen(false)
-                          }
-                          role="button"
-                          tabIndex={0}
-                          aria-label="Close sort menu"
-                        />
-                        <div className="absolute right-0 top-full mt-1.5 z-20 bg-white border border-gray-100 rounded-xl shadow-lg py-1 w-40 overflow-hidden">
-                          {SORT_OPTIONS.map((opt) => (
-                            <button
-                              key={opt.key}
-                              type="button"
-                              onClick={() => {
-                                setSortKey(opt.key);
-                                setSortOpen(false);
-                              }}
-                              className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                                sortKey === opt.key
-                                  ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                                  : "text-gray-600 hover:bg-gray-50"
-                              }`}
-                            >
-                              {opt.label}
-                            </button>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
-
-                  {/* View toggle */}
-                  <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-white">
-                    <button
-                      type="button"
-                      onClick={() => setViewMode("grid")}
-                      className={`p-2 transition-colors ${
-                        viewMode === "grid"
-                          ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700"
-                          : "text-gray-400 hover:text-gray-600 hover:bg-gray-50"
-                      }`}
-                      title={t("portfolio.vistaGrid")}
-                    >
-                      <LayoutGrid className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setViewMode("list")}
-                      className={`p-2 transition-colors ${
-                        viewMode === "list"
-                          ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700"
-                          : "text-gray-400 hover:text-gray-600 hover:bg-gray-50"
-                      }`}
-                      title={t("portfolio.vistaLista")}
-                    >
-                      <List className="w-4 h-4" />
-                    </button>
-                  </div>
+                      <div className="absolute right-0 top-full mt-1.5 z-20 bg-white border border-gray-100 rounded-xl shadow-lg py-1 w-40">
+                        {SORT_OPTIONS.map((opt) => (
+                          <button
+                            key={opt.key}
+                            type="button"
+                            onClick={() => {
+                              setSortKey(opt.key);
+                              setSortOpen(false);
+                            }}
+                            className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                              sortKey === opt.key
+                                ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
+                                : "text-gray-600 hover:bg-gray-50"
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
-              {/* Cards */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${[...activeIndustry].join()}-${[...activeService].join()}-${[...activeTech].join()}-${sortKey}-${viewMode}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className={
-                    viewMode === "grid"
-                      ? "grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10 min-w-0"
-                      : "flex flex-col gap-4 min-w-0"
-                  }
-                >
-                  {filtered.map((caseItem, idx) => {
-                    const slug = getSlug(caseItem.title, caseItem.slug);
-                    const industryLabel =
-                      INDUSTRY_FILTERS.find((f) => f.slugs.includes(slug))
-                        ?.label ?? caseItem.industry;
-                    const serviceLabel = SERVICE_FILTERS.find((f) =>
-                      f.slugs.includes(slug)
-                    )?.label;
-
-                    if (viewMode === "list") {
-                      return (
-                        <motion.div
-                          key={caseItem.title}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.3,
-                            delay: Math.min(idx * 0.03, 0.2),
-                          }}
-                        >
-                          <Link
-                            href={`/casos-de-exito/${slug}`}
-                            className="group flex gap-4 sm:gap-5 p-4 rounded-2xl border border-gray-100 hover:border-[#0072CF]/25 hover:shadow-md transition-all duration-300 bg-white min-w-0 overflow-hidden"
-                          >
-                            {/* image */}
-                            <div className="shrink-0 w-36 h-28 sm:w-44 sm:h-32 rounded-xl overflow-hidden bg-gray-100">
-                              <img
-                                src={caseItem.image}
-                                alt={caseItem.title}
-                                className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500"
-                              />
-                            </div>
-                            {/* text */}
-                            <div className="flex flex-col justify-center gap-2 min-w-0">
-                              <div className="flex flex-wrap gap-1.5">
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-200 text-gray-500 bg-white">
-                                  {industryLabel}
-                                </span>
-                                {serviceLabel &&
-                                  serviceLabel !== industryLabel && (
-                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-200 text-gray-500 bg-white">
-                                      {serviceLabel}
-                                    </span>
-                                  )}
-                              </div>
-                              <h2 className="text-heading-3 text-[#060C20] group-hover:text-[#0072CF] transition-colors leading-snug truncate">
-                                {caseItem.title}
-                              </h2>
-                              <p className="text-body-sm text-gray-400 line-clamp-2 hidden sm:block">
-                                {caseItem.description}
-                              </p>
-                            </div>
-                          </Link>
-                        </motion.div>
-                      );
-                    }
-
-                    // Grid card
-                    return (
-                      <GridCard
-                        key={caseItem.title}
-                        caseItem={caseItem}
-                        idx={idx}
-                        industryLabel={industryLabel}
-                        serviceLabel={serviceLabel}
-                        slug={slug}
-                      />
-                    );
-                  })}
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Empty state */}
-              {filtered.length === 0 && (
+              {filtered.length === 0 ? (
                 <div className="py-24 text-center">
                   <p className="text-heading-3 text-gray-300 mb-2">
                     {t("portfolio.sinResultados")}
@@ -957,6 +790,67 @@ export function PortfolioPageContent() {
                     {t("portfolio.verTodos")}
                   </button>
                 </div>
+              ) : (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10">
+                    {pageItems.map((caseItem, idx) => {
+                      const slug = getSlug(caseItem.title, caseItem.slug);
+                      const industryLabel =
+                        INDUSTRY_FILTERS.find((f) => f.slugs.includes(slug))
+                          ?.label ?? caseItem.industry;
+                      const serviceLabel = SERVICE_FILTERS.find((f) =>
+                        f.slugs.includes(slug)
+                      )?.label;
+                      return (
+                        <PortfolioCard
+                          key={caseItem.title}
+                          caseItem={caseItem}
+                          index={idx}
+                          industryLabel={industryLabel}
+                          serviceLabel={serviceLabel}
+                          slug={slug}
+                        />
+                      );
+                    })}
+                  </div>
+
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-between gap-4 mt-10 pt-6 border-t border-gray-200">
+                      <p className="text-sm text-gray-500">
+                        {t("portfolio.paginaDe", {
+                          current: String(currentPage),
+                          total: String(totalPages),
+                        })}
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() =>
+                            setCurrentPage((p) => Math.max(1, p - 1))
+                          }
+                          disabled={currentPage <= 1}
+                          className="gap-1"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                          {t("portfolio.anterior")}
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() =>
+                            setCurrentPage((p) => Math.min(totalPages, p + 1))
+                          }
+                          disabled={currentPage >= totalPages}
+                          className="gap-1"
+                        >
+                          {t("portfolio.siguiente")}
+                          <ChevronRight className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </>
               )}
             </div>
           </div>

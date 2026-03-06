@@ -84,14 +84,26 @@ export function CaseContactCTA() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-2xl p-6 md:p-8 lg:p-10 xl:p-12 bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/abs1.jpg')",
-            }}
+            className="relative overflow-hidden rounded-2xl p-6 md:p-8 lg:p-10 xl:p-12"
           >
-            {/* Overlay gradiente: oscuro a la izquierda, casi transparente a la derecha */}
+            {/* Background móvil: mesh gradient oscuro sutil (sin imagen) */}
             <div
-              className="absolute inset-0 z-[1] rounded-2xl"
+              className="absolute inset-0 z-[1] rounded-2xl sm:hidden"
+              style={{
+                background:
+                  "radial-gradient(1200px 700px at 20% 20%, rgba(56,189,248,0.10) 0%, rgba(56,189,248,0) 55%), radial-gradient(900px 600px at 80% 30%, rgba(99,102,241,0.10) 0%, rgba(99,102,241,0) 60%), radial-gradient(900px 650px at 40% 85%, rgba(20,184,166,0.08) 0%, rgba(20,184,166,0) 55%), linear-gradient(180deg, #07101f 0%, #050b16 100%)",
+              }}
+              aria-hidden
+            />
+
+            {/* Background desktop: imagen + overlay */}
+            <div
+              className="absolute inset-0 z-[1] rounded-2xl hidden sm:block bg-cover bg-center"
+              style={{ backgroundImage: "url('/abs1.jpg')" }}
+              aria-hidden
+            />
+            <div
+              className="absolute inset-0 z-[2] rounded-2xl hidden sm:block"
               style={{
                 background:
                   "linear-gradient(to right, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)",
@@ -116,9 +128,16 @@ export function CaseContactCTA() {
                     {t("home.contactCta.title")}
                   </motion.h2>
 
+                  <motion.p
+                    variants={itemVariants}
+                    className="sm:hidden text-body-sm text-gray-300 max-w-[400px] leading-relaxed"
+                  >
+                    {t("home.contactCta.step1")} {t("home.contactCta.step2")}
+                  </motion.p>
+
                   <motion.ul
                     variants={itemVariants}
-                    className="flex flex-col gap-3 text-body-sm text-gray-400 max-w-[400px]"
+                    className="hidden sm:flex flex-col gap-3 text-body-sm text-gray-400 max-w-[400px]"
                   >
                     <li className="leading-relaxed">
                       <span className="text-accent font-semibold">1.</span>{" "}
@@ -238,7 +257,7 @@ export function CaseContactCTA() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="relative group w-fit"
+                  className="relative group w-fit hidden sm:block"
                 >
                   <input
                     ref={fileInputRef}
@@ -264,12 +283,12 @@ export function CaseContactCTA() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="mt-1 flex flex-col gap-2.5"
+                  className="mt-1 hidden sm:flex flex-col gap-2.5"
                 >
                   <p className="text-body-sm text-white/90">
                     {t("home.contactCta.sourceTitle")}
                   </p>
-                  <ul className="flex flex-wrap gap-2">
+                  <ul className="hidden sm:flex flex-wrap gap-2">
                     {SOURCE_OPTIONS.map((option) => (
                       <li key={option.id}>
                         <button
@@ -292,7 +311,7 @@ export function CaseContactCTA() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="text-body-sm group flex h-11 md:h-12 items-center justify-center gap-2 rounded-lg bg-white/10 border border-white/50 px-7 font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-white/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="text-body-sm group flex h-11 md:h-12 items-center justify-center gap-2 rounded-lg bg-white/10 border border-white/10 px-7 font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-white/20 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       t("home.contactCta.form.submitting")
