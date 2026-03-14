@@ -9,6 +9,7 @@ import daesurmotorsData from "./cases/daesurmotors.json";
 import enrafmedicaData from "./cases/enrafmedica.json";
 import favorygraciaData from "./cases/favorygracia.json";
 import feedbackManagementData from "./cases/feedback-management.json";
+import fenalsaData from "./cases/fenalsa.json";
 import fenizData from "./cases/feniz.json";
 import financialManagementData from "./cases/financial-management.json";
 import firstautomationData from "./cases/firstautomation.json";
@@ -31,6 +32,7 @@ import transportesrumiData from "./cases/transportesrumi.json";
 import ventanasantiruidoData from "./cases/ventanasantiruido.json";
 import villacerData from "./cases/villacer.json";
 import vitalchainData from "./cases/vitalchain.json";
+import webScrapingAiData from "./cases/web-scraping-ai.json";
 
 export type CaseResult = {
   icon: LucideIcon;
@@ -115,6 +117,7 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(anjsportsData as CaseItemJSON),
   convertCaseFromJSON(maintechData as CaseItemJSON),
   convertCaseFromJSON(vitalchainData as CaseItemJSON),
+  convertCaseFromJSON(fenalsaData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
   convertCaseFromJSON(ambientalpeData as CaseItemJSON),
   convertCaseFromJSON(storeSaasData as CaseItemJSON),
@@ -142,6 +145,7 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(comunicarteData as CaseItemJSON),
   convertCaseFromJSON(ghiperuData as CaseItemJSON),
   convertCaseFromJSON(sicloData as CaseItemJSON),
+  convertCaseFromJSON(webScrapingAiData as CaseItemJSON),
   convertCaseFromJSON(feedbackManagementData as CaseItemJSON),
 ];
 

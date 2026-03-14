@@ -14,6 +14,7 @@ import daesurmotorsData from "~/data/cases/daesurmotors.json";
 import enrafmedicaData from "~/data/cases/enrafmedica.json";
 import favorygraciaData from "~/data/cases/favorygracia.json";
 import feedbackManagementData from "~/data/cases/feedback-management.json";
+import fenalsaData from "~/data/cases/fenalsa.json";
 import fenizData from "~/data/cases/feniz.json";
 import financialManagementData from "~/data/cases/financial-management.json";
 import firstautomationData from "~/data/cases/firstautomation.json";
@@ -36,6 +37,7 @@ import transportesrumiData from "~/data/cases/transportesrumi.json";
 import ventanasantiruidoData from "~/data/cases/ventanasantiruido.json";
 import villacerData from "~/data/cases/villacer.json";
 import vitalchainData from "~/data/cases/vitalchain.json";
+import webScrapingAiData from "~/data/cases/web-scraping-ai.json";
 import { useTranslation } from "~/hooks/useTranslation";
 import { mapIcon } from "./case-translations-icons";
 
@@ -50,6 +52,7 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   ambientalpe: ambientalpeData as Record<string, unknown>,
   maintech: maintechData as Record<string, unknown>,
   vitalchain: vitalchainData as Record<string, unknown>,
+  fenalsa: fenalsaData as Record<string, unknown>,
   feniz: fenizData as Record<string, unknown>,
   innersoulbright: innersoulbrightData as Record<string, unknown>,
   clefast: clefastData as Record<string, unknown>,
@@ -74,6 +77,7 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   comunicarte: comunicarteData as Record<string, unknown>,
   ghiperu: ghiperuData as Record<string, unknown>,
   siclo: sicloData as Record<string, unknown>,
+  "web-scraping-ai": webScrapingAiData as Record<string, unknown>,
   "store-saas": storeSaasData as Record<string, unknown>,
   "financial-management": financialManagementData as Record<string, unknown>,
   "feedback-management": feedbackManagementData as Record<string, unknown>,
@@ -84,6 +88,7 @@ const CASE_ORDER: string[] = [
   "anjsports",
   "maintech",
   "vitalchain",
+  "fenalsa",
   "feniz",
   "ambientalpe",
   "store-saas",
@@ -111,6 +116,7 @@ const CASE_ORDER: string[] = [
   "comunicarte",
   "ghiperu",
   "siclo",
+  "web-scraping-ai",
   "feedback-management",
 ];
 

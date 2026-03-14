@@ -26,6 +26,22 @@
       "Blog de Conteúdo"
     ]
   },
+  "fenalsa": {
+    "title": "Fenalsa",
+    "industry": "Alimentação e Limpeza",
+    "description": "Website corporativo para Fenalsa: empresa arequipenha especializada em serviços de alimentação coletiva, limpeza profissional, desinfeção e catering. Apresenta missão, visão, serviços e contato.",
+    "projectDescription": "Fenalsa é uma empresa arequipenha que oferece serviços de alimentação e limpeza. Desenvolvemos seu website corporativo para apresentar a equipe especializada, os serviços de limpeza (integral, desinfeção, manutenção) e de cozinha (gourmet, catering, alta gastronomia em casa). O site inclui missão, visão, depoimentos e canais de contato para orçamentos.",
+    "secondaryIndustry": "Serviços de limpeza e cozinha",
+    "forWhom": "Empresas que buscam serviços de alimentação coletiva, limpeza profissional, desinfeção e catering",
+    "services": [
+      "Website informativo",
+      "Limpeza integral",
+      "Desinfeção de espaços",
+      "Cozinha gourmet",
+      "Catering para eventos",
+      "Contato e orçamentos"
+    ]
+  },
   "feniz": {
     "title": "Feniz",
     "industry": "Fintech / Trading",
@@ -515,6 +531,22 @@
       "Configuração flexível"
     ],
     "results": []
+  },
+  "web-scraping-ai": {
+    "title": "AI-Powered Web Scraping Pipeline",
+    "industry": "Data Engineering / IA",
+    "description": "Pipeline de web scraping potenciado com IA: extrai dados de sites, processa com LLM para estruturar automaticamente e persiste em base de dados. Sitemaps, Playwright e PostgreSQL.",
+    "projectDescription": "Pipeline de web scraping assistido por IA: percorre sites usando sitemaps e técnicas de scraping (BeautifulSoup para HTML estático, Playwright para páginas dinâmicas), envia o conteúdo extraído a um LLM para normalizar e estruturar a informação, e armazena os resultados em PostgreSQL. Concebido para ser genérico e reutilizável em diferentes domínios de dados.",
+    "secondaryIndustry": "Automatização e extração de dados",
+    "forWhom": "Empresas que precisam extrair, estruturar e armazenar dados de fontes web de forma automatizada",
+    "services": [
+      "Web scraping",
+      "Processamento com LLM",
+      "Extração estruturada",
+      "Suporte a sitemaps",
+      "Armazenamento PostgreSQL",
+      "Containerização Docker"
+    ]
   },
   "store-saas": {
     "title": "E-commerce & Inventory SaaS",

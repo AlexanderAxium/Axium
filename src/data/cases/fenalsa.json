@@ -1,0 +1,33 @@
+{
+  "title": "Fenalsa",
+  "industry": "Alimentación y Limpieza",
+  "image": "/images/proyects/fenalsa/fenalsa-hero.jpg",
+  "location": "Arequipa, Perú",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "Fenalsa Servicios Generales SAC",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Servicios de limpieza y cocina",
+  "forWhom": "Empresas que buscan servicios de alimentación colectiva, limpieza profesional, desinfección y catering",
+  "services": [
+    "Web informativa",
+    "Limpieza integral",
+    "Desinfección de espacios",
+    "Cocina gourmet",
+    "Catering para eventos",
+    "Contacto y cotizaciones"
+  ],
+  "description": "Web corporativa para Fenalsa: empresa arequipeña especializada en servicios de alimentación colectiva, limpieza profesional, desinfección y catering. Presenta misión, visión, servicios y contacto.",
+  "problem": "Fenalsa necesitaba una presencia digital que comunicara su oferta de servicios de limpieza impecables y experiencias culinarias de alta gastronomía, facilitando que empresas y hogares los contacten para cotizaciones.",
+  "solution": "Desarrollamos fenalsa.com con WordPress: sitio corporativo con secciones de Nosotros (misión, visión), servicios de limpieza (integral, especiales, desinfección) y cocina (gourmet, alta gastronomía, catering), testimoniales, formulario de contacto y integración WhatsApp.",
+  "results": [],
+  "projectDescription": "Fenalsa es una empresa arequipeña que ofrece servicios de alimentación y limpieza. Desarrollamos su web corporativa para presentar al equipo especializado, los servicios de limpieza (integral, desinfección, mantenimiento) y de cocina (gourmet, catering, alta gastronomía en casa). El sitio incluye misión, visión, testimonios y canales de contacto para cotizaciones.",
+  "skillsAndDeliverables": [
+    "WordPress",
+    "Diseño responsive",
+    "Integración WhatsApp"
+  ],
+  "publishedDate": "2025",
+  "liveUrl": "https://www.fenalsa.com",
+  "slug": "fenalsa"
+}
