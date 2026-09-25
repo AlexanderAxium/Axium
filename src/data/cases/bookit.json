@@ -1,0 +1,36 @@
+{
+  "title": "Bookit",
+  "industry": "SaaS / Citas",
+  "image": "/images/proyects/bookit/bookit-portada-v2.jpg",
+  "location": "Perú",
+  "platform": "Web (SaaS) multi-tenant",
+  "duration": "En producción",
+  "client": "Producto propio",
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "tRPC",
+    "Prisma",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "Mercado Pago"
+  ],
+  "liveUrl": "https://bookit.com.pe",
+  "secondaryIndustry": "Reservas, agenda, cobros y web propia",
+  "forWhom": "Consultorios, clínicas, salones, estudios y todo negocio que trabaja con cita",
+  "services": [
+    "Diseño de producto",
+    "Web pública",
+    "Desarrollo web",
+    "Plataforma SaaS multi-tenant",
+    "Pagos online"
+  ],
+  "description": "Plataforma propia para negocios con cita: cada negocio recibe reservas en su propia web, las ve en la agenda de su equipo y cobra sin comisiones.",
+  "problem": "Los consultorios y salones reciben sus citas por WhatsApp y llamadas, las anotan a mano y cobran aparte; los directorios de reservas cobran comisión y ponen su marca delante de la del negocio.",
+  "solution": "Diseñamos y desarrollamos una plataforma multi-tenant donde la web del negocio, las reservas online, la agenda del equipo, los cobros y las fichas de clientes funcionan juntas, y rediseñamos la web pública de Bookit con su marca nueva.",
+  "results": [],
+  "projectDescription": "Bookit es un producto creado por Axium para negocios que trabajan con cita. La reserva nace en la web del propio negocio, con su marca: el cliente elige servicio, profesional y horario, paga al reservar desde el plan Business y la cita llega a la agenda del equipo.",
+  "publishedDate": "2026",
+  "slug": "bookit"
+}

@@ -60,10 +60,19 @@ export default function GlobalNavbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [sectionTone, setSectionTone] = useState<"dark" | "light" | null>(null);
+  const [sectionBg, setSectionBg] = useState<string | null>(null);
   const isBlogRoute = pathname.startsWith("/blog");
   const isPortfolioRoute = pathname.startsWith("/portafolio");
   const isLegalRoute = pathname.startsWith("/legal");
-  const isDark = isBlogRoute || isLegalRoute || isScrolled;
+  // Una sección con data-nav-theme bajo la barra manda sobre el automatismo:
+  // "dark" = fondo oscuro (texto blanco), "light" = fondo claro (texto oscuro).
+  const isDark =
+    sectionTone === "light"
+      ? true
+      : sectionTone === "dark"
+        ? false
+        : isBlogRoute || isLegalRoute || isScrolled;
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { user, isAuthenticated, signOut } = useAuthContext();
@@ -161,6 +170,54 @@ export default function GlobalNavbar() {
     };
   }, [pathname, isPortfolioRoute]);
 
+  // Secciones con tono propio (data-nav-theme="dark" | "light"): mientras
+  // pasan bajo la barra, la barra usa la versión legible sobre ese fondo.
+  // Si hay secciones anidadas, gana la más interna. En las oscuras la barra
+  // toma además el color de la sección: el texto blanco no se pierde cuando
+  // pasa una captura clara por debajo.
+  useEffect(() => {
+    if (!pathname) return;
+    let frame = 0;
+    const backgroundOf = (el: HTMLElement | null) => {
+      for (let node = el; node; node = node.parentElement) {
+        const bg = getComputedStyle(node).backgroundColor;
+        if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") return bg;
+      }
+      return null;
+    };
+    const check = () => {
+      frame = 0;
+      const probe = 32;
+      const sections =
+        document.querySelectorAll<HTMLElement>("[data-nav-theme]");
+      let tone: "dark" | "light" | null = null;
+      let toneSection: HTMLElement | null = null;
+      for (const section of sections) {
+        const { top, bottom } = section.getBoundingClientRect();
+        if (top <= probe && bottom >= probe) {
+          const value = section.dataset.navTheme;
+          if (value === "dark" || value === "light") {
+            tone = value;
+            toneSection = section;
+          }
+        }
+      }
+      setSectionTone(tone);
+      setSectionBg(tone ? backgroundOf(toneSection) : null);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(check);
+    };
+    check();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [pathname]);
+
   return (
     <>
       <nav
@@ -169,6 +226,13 @@ export default function GlobalNavbar() {
             ? "backdrop-blur-md bg-card/10 border-b border-black/5"
             : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
+        style={
+          sectionTone && sectionBg
+            ? {
+                backgroundColor: `color-mix(in srgb, ${sectionBg} 85%, transparent)`,
+              }
+            : undefined
+        }
       >
         <div className="content-section">
           <div className="flex justify-between items-center h-14 md:h-16">

@@ -1,0 +1,36 @@
+{
+  "title": "LumioLearn",
+  "industry": "SaaS / Educación",
+  "image": "/images/proyects/lumiolearn/lumiolearn-portada-v7.jpg",
+  "location": "Perú",
+  "platform": "Web (SaaS)",
+  "duration": "En producción",
+  "client": "Producto propio",
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "tRPC",
+    "Prisma",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "Gemini"
+  ],
+  "liveUrl": "https://lumiolearn.com",
+  "secondaryIndustry": "Academias online marca blanca",
+  "forWhom": "Profesores independientes, academias con equipo y empresas que forman a su gente",
+  "services": [
+    "Diseño de producto",
+    "Desarrollo web",
+    "Plataforma SaaS marca blanca",
+    "Tutor con IA",
+    "Constructor de sitios"
+  ],
+  "description": "Plataforma propia para crear y vender cursos con marca y dominio propios: tutor con IA, evaluaciones, certificados verificables y constructor de sitios, sin comisiones.",
+  "problem": "Quien enseña en línea suele depender de marketplaces que cobran comisión por venta y muestran su marca antes que la del creador, con herramientas separadas para vender, evaluar, certificar y dar soporte.",
+  "solution": "Construimos un LMS marca blanca multi-tenant: cada academia opera con su subdominio o su propio dominio con SSL automático, cursos con capítulos en video, quizzes con nota mínima, certificados con verificación por código, un tutor con IA que responde con el contexto de la clase, un constructor de sitios y cobros con Mercado Pago y PayPal.",
+  "results": [],
+  "projectDescription": "LumioLearn es un producto creado por Axium. Cada academia es un espacio aislado con su marca, sus cursos y sus alumnos, y cuatro portales según el rol: administración, profesor, alumno y el editor de su sitio. El tutor con IA se entrena con los subtítulos y las notas de cada capítulo, los exámenes se generan con IA y los certificados se emiten al completar el curso con un código verificable. Todo se integra además por una API REST pública.",
+  "publishedDate": "2026",
+  "slug": "lumiolearn"
+}

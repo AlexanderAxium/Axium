@@ -375,5 +375,38 @@
     "paginaDe": "Page {current} of {total}",
     "anterior": "Previous",
     "siguiente": "Next"
+  },
+  "highlights": {
+    "overline": "Our own products",
+    "title": "Our work",
+    "intro": "Software we design, build and run ourselves.",
+    "visit": "Visit site",
+    "cursor": "VISIT WEBSITE • VISIT WEBSITE • ",
+    "items": {
+      "vendiq": {
+        "name": "Vendiq",
+        "category": "E-commerce",
+        "summary": "Online store, point of sale and SUNAT invoicing",
+        "description": "Online store, point of sale, inventory and SUNAT invoicing on one shared catalog. Payments through Mercado Pago, Culqi or PayPal, for a fixed monthly price and with no commission per sale."
+      },
+      "rematch": {
+        "name": "Rematch",
+        "category": "Sports",
+        "summary": "Sports court booking",
+        "description": "A marketplace to find and book football, padel, tennis courts and more across Peru. Clubs manage schedules, bookings, occupancy and revenue in real time from a single dashboard, even across multiple venues."
+      },
+      "lumiolearn": {
+        "name": "LumioLearn",
+        "category": "Education",
+        "summary": "Branded online academies",
+        "description": "A platform to create and sell courses under your own brand and domain, commission-free. It includes an AI tutor trained on each academy's content, assessments, certificates and analytics. Built for independent teachers, academies with teams and companies that train their people."
+      },
+      "bookit": {
+        "name": "Bookit",
+        "category": "Appointments",
+        "summary": "Scheduling for clinics and salons",
+        "description": "Website, online booking, calendar and payments for clinics, salons and studios. Each business takes bookings on its own branded website: clients choose the professional and time, can pay at booking, and the appointment lands in the team's calendar, with no commission per booking."
+      }
+    }
   }
 }

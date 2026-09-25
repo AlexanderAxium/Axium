@@ -8,6 +8,7 @@ import type { CaseItem } from "~/data/cases-data";
 import ambientalpeData from "~/data/cases/ambientalpe.json";
 import anjsportsData from "~/data/cases/anjsports.json";
 import antiruidopvcData from "~/data/cases/antiruidopvc.json";
+import bookitData from "~/data/cases/bookit.json";
 import clefastData from "~/data/cases/clefast.json";
 import comunicarteData from "~/data/cases/comunicarte.json";
 import daesurmotorsData from "~/data/cases/daesurmotors.json";
@@ -26,14 +27,17 @@ import innersoulbrightData from "~/data/cases/innersoulbright.json";
 import jcpingenierosData from "~/data/cases/jcpingenieros.json";
 import lifetoursflData from "~/data/cases/lifetoursfl.json";
 import lujanData from "~/data/cases/lujan.json";
+import lumiolearnData from "~/data/cases/lumiolearn.json";
 import maintechData from "~/data/cases/maintech.json";
 import podologiemtkData from "~/data/cases/podologiemtk.json";
 import redesvipData from "~/data/cases/redesvip.json";
+import rematchData from "~/data/cases/rematch.json";
 import sicloData from "~/data/cases/siclo.json";
 import sporttData from "~/data/cases/sportt.json";
 import storeSaasData from "~/data/cases/store-saas.json";
 import toliveagainData from "~/data/cases/toliveagain.json";
 import transportesrumiData from "~/data/cases/transportesrumi.json";
+import vendiqData from "~/data/cases/vendiq.json";
 import ventanasantiruidoData from "~/data/cases/ventanasantiruido.json";
 import villacerData from "~/data/cases/villacer.json";
 import vitalchainData from "~/data/cases/vitalchain.json";
@@ -48,6 +52,10 @@ const casesByLocale: Record<string, Record<string, Record<string, unknown>>> = {
 };
 
 const baseCasesBySlug: Record<string, Record<string, unknown>> = {
+  rematch: rematchData as Record<string, unknown>,
+  lumiolearn: lumiolearnData as Record<string, unknown>,
+  bookit: bookitData as Record<string, unknown>,
+  vendiq: vendiqData as Record<string, unknown>,
   anjsports: anjsportsData as Record<string, unknown>,
   ambientalpe: ambientalpeData as Record<string, unknown>,
   maintech: maintechData as Record<string, unknown>,
@@ -85,6 +93,11 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
 
 /** Orden de casos en la lista (ambientalpe = 5º, store-saas = 6º, financial-management = 9º) */
 const CASE_ORDER: string[] = [
+  // Productos propios (también son los highlights del home)
+  "rematch",
+  "lumiolearn",
+  "bookit",
+  "vendiq",
   "anjsports",
   "maintech",
   "vitalchain",

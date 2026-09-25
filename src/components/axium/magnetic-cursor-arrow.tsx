@@ -12,11 +12,14 @@ export function MagneticCursorArrow({
   label,
   className = "",
   arrowColor = "text-[#000000]",
+  labelColor = "rgba(0,0,0,0.45)",
 }: {
   children: ReactNode;
   label: string;
   className?: string;
   arrowColor?: string;
+  /** Color del texto circular; sobre portadas oscuras conviene uno claro */
+  labelColor?: string;
 }) {
   const id = useId().replace(/:/g, "-");
   const [hovered, setHovered] = useState(false);
@@ -101,7 +104,7 @@ export function MagneticCursorArrow({
             style={{
               fontSize: "7.2px",
               letterSpacing: "0.18em",
-              fill: "rgba(0,0,0,0.45)",
+              fill: labelColor,
               fontWeight: 500,
               fontFamily: "inherit",
             }}

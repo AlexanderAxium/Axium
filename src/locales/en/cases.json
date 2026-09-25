@@ -1,4 +1,77 @@
 {
+  "rematch": {
+    "title": "Rematch",
+    "industry": "SaaS / Sports",
+    "description": "Our own platform for sports centers: court bookings, academies, leagues and tournaments in one system, with online payments and live results.",
+    "problem": "Sports centers manage bookings over WhatsApp, classes in spreadsheets, leagues in group chats and tournaments on paper: every activity in a different tool and nothing connected.",
+    "solution": "We designed and built a multi-tenant platform where the club runs everything from a single dashboard: a court calendar with bookings and payments, academies with classes, subscriptions and QR attendance, leagues with divisions that move up and down, and tournaments with draws, six formats and real-time results.",
+    "projectDescription": "Rematch is a product created by Axium for sports centers. Bookings, academies, leagues and tournaments share the same court calendar, the same customers and the same payments; on the public side, players book from their phones and follow tournaments on live.rematch.pe.",
+    "secondaryIndustry": "Bookings, academies, leagues and tournaments",
+    "forWhom": "Sports complexes, clubs, academies and league and tournament organizers",
+    "services": [
+      "Product design",
+      "Web development",
+      "Multi-tenant SaaS platform",
+      "Real time",
+      "Recurring payments"
+    ],
+    "results": []
+  },
+  "lumiolearn": {
+    "title": "LumioLearn",
+    "industry": "SaaS / Education",
+    "description": "Our own platform to create and sell courses under your own brand and domain: AI tutor, assessments, verifiable certificates and a website builder, with no commissions.",
+    "problem": "People who teach online usually depend on marketplaces that take a commission on every sale and show their own brand before the creator's, with separate tools to sell, assess, certify and support students.",
+    "solution": "We built a multi-tenant white-label LMS: each academy runs on its subdomain or its own domain with automatic SSL, courses with video chapters, quizzes with a passing score, certificates verifiable by code, an AI tutor that answers with the lesson's context, a website builder and payments with Mercado Pago and PayPal.",
+    "projectDescription": "LumioLearn is a product created by Axium. Each academy is an isolated space with its brand, courses and students, and four portals by role: administration, teacher, student and the editor of its website. The AI tutor learns from each chapter's subtitles and notes, exams are generated with AI and certificates are issued on course completion with a verifiable code. Everything also integrates through a public REST API.",
+    "secondaryIndustry": "White-label online academies",
+    "forWhom": "Independent teachers, academies with teams and companies that train their people",
+    "services": [
+      "Product design",
+      "Web development",
+      "White-label SaaS platform",
+      "AI tutor",
+      "Website builder"
+    ],
+    "results": []
+  },
+  "bookit": {
+    "title": "Bookit",
+    "industry": "SaaS / Appointments",
+    "description": "Our own platform for appointment-based businesses: each business takes bookings on its own website, sees them in its team's calendar and gets paid with no commissions.",
+    "problem": "Clinics and salons take appointments over WhatsApp and phone calls, write them down by hand and collect payment separately; booking directories charge a commission and put their brand ahead of the business's.",
+    "solution": "We designed and built a multi-tenant platform where the business's website, online booking, team calendar, payments and client records work together, and we redesigned Bookit's public website with its new brand.",
+    "projectDescription": "Bookit is a product built by Axium for appointment-based businesses. The booking starts on the business's own branded website: clients choose the service, professional and time, pay at booking from the Business plan, and the appointment lands in the team's calendar.",
+    "secondaryIndustry": "Bookings, calendar, payments and own website",
+    "forWhom": "Clinics, salons, studios and any business that works by appointment",
+    "services": [
+      "Product design",
+      "Public website",
+      "Web development",
+      "Multi-tenant SaaS platform",
+      "Online payments"
+    ],
+    "results": []
+  },
+  "vendiq": {
+    "title": "Vendiq",
+    "industry": "SaaS / E-commerce",
+    "description": "Our own commerce platform: each store sells on its website and in its physical store with the same catalog and the same stock, issues its SUNAT receipts and takes payments with no commission per sale.",
+    "problem": "Small businesses sell with scattered tools: a website for the store, a system for the register, a spreadsheet for stock, a program for receipts and chat for orders; every sale is recorded several times, and the big platforms take a commission on each sale.",
+    "solution": "We designed and built a multi-tenant platform where the online store, the point of sale, inventory and SUNAT invoicing work on one shared catalog, and we redesigned Vendiq's public website with its new brand.",
+    "projectDescription": "Vendiq is a product built by Axium for businesses in Peru. Each store publishes its website under its own brand, takes payments with Mercado Pago, Culqi or PayPal and keeps stock and receipts in the same dashboard, for a fixed monthly price and 0% commission per sale.",
+    "secondaryIndustry": "Online store, point of sale, inventory and SUNAT invoicing",
+    "forWhom": "Peruvian stores, brands and distributors that sell online and in their own store",
+    "services": [
+      "Product design",
+      "Public website",
+      "Web development",
+      "Multi-tenant SaaS platform",
+      "Online payments",
+      "Electronic invoicing"
+    ],
+    "results": []
+  },
   "maintech": {
     "title": "Maintech",
     "industry": "Education and Technology",
@@ -54,9 +127,18 @@
       "API Integration with Propfirms"
     ],
     "results": [
-      { "metric": "15+", "label": "active users" },
-      { "metric": "15+", "label": "integrated propfirms" },
-      { "metric": "Real-time", "label": "dashboard metrics" }
+      {
+        "metric": "15+",
+        "label": "active users"
+      },
+      {
+        "metric": "15+",
+        "label": "integrated propfirms"
+      },
+      {
+        "metric": "Real-time",
+        "label": "dashboard metrics"
+      }
     ]
   },
   "innersoulbright": {
@@ -70,9 +152,18 @@
     "forWhom": "People seeking spiritual growth, energy healing and connection with their inner self",
     "services": ["Immersive Design", "About Me Page"],
     "results": [
-      { "metric": "150+", "label": "site visits in the first month" },
-      { "metric": "85%", "label": "increase in online visibility" },
-      { "metric": "100%", "label": "client satisfaction with the design" }
+      {
+        "metric": "150+",
+        "label": "site visits in the first month"
+      },
+      {
+        "metric": "85%",
+        "label": "increase in online visibility"
+      },
+      {
+        "metric": "100%",
+        "label": "client satisfaction with the design"
+      }
     ]
   },
   "clefast": {
@@ -93,9 +184,18 @@
       "Complaints Book"
     ],
     "results": [
-      { "metric": "100%", "label": "digital presence established" },
-      { "metric": "50%", "label": "increase in customer inquiries" },
-      { "metric": "24/7", "label": "online catalog availability" }
+      {
+        "metric": "100%",
+        "label": "digital presence established"
+      },
+      {
+        "metric": "50%",
+        "label": "increase in customer inquiries"
+      },
+      {
+        "metric": "24/7",
+        "label": "online catalog availability"
+      }
     ]
   },
   "happyart": {
@@ -118,9 +218,18 @@
       "My Account"
     ],
     "results": [
-      { "metric": "100%", "label": "digital presence established" },
-      { "metric": "24/7", "label": "store available online" },
-      { "metric": "B2C", "label": "direct-to-consumer sales" }
+      {
+        "metric": "100%",
+        "label": "digital presence established"
+      },
+      {
+        "metric": "24/7",
+        "label": "store available online"
+      },
+      {
+        "metric": "B2C",
+        "label": "direct-to-consumer sales"
+      }
     ]
   },
   "redesvip": {
@@ -158,9 +267,18 @@
       "Complaints Book"
     ],
     "results": [
-      { "metric": "100%", "label": "digital presence established" },
-      { "metric": "24/7", "label": "store available online" },
-      { "metric": "B2C", "label": "direct-to-consumer sales" }
+      {
+        "metric": "100%",
+        "label": "digital presence established"
+      },
+      {
+        "metric": "24/7",
+        "label": "store available online"
+      },
+      {
+        "metric": "B2C",
+        "label": "direct-to-consumer sales"
+      }
     ]
   },
   "lujan": {
@@ -181,9 +299,18 @@
       "Complaints Book"
     ],
     "results": [
-      { "metric": "100%", "label": "digital presence established" },
-      { "metric": "24/7", "label": "store available online" },
-      { "metric": "B2C", "label": "direct-to-consumer sales" }
+      {
+        "metric": "100%",
+        "label": "digital presence established"
+      },
+      {
+        "metric": "24/7",
+        "label": "store available online"
+      },
+      {
+        "metric": "B2C",
+        "label": "direct-to-consumer sales"
+      }
     ]
   },
   "ventanasantiruido": {

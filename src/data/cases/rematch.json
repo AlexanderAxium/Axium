@@ -1,0 +1,36 @@
+{
+  "title": "Rematch",
+  "industry": "SaaS / Deportes",
+  "image": "/images/proyects/rematch/rematch-portada-v3.jpg",
+  "location": "Perú",
+  "platform": "Web (SaaS) y móvil",
+  "duration": "En producción",
+  "client": "Producto propio",
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "tRPC",
+    "Prisma",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "Mercado Pago"
+  ],
+  "liveUrl": "https://rematch.pe",
+  "secondaryIndustry": "Reservas, academias, ligas y torneos",
+  "forWhom": "Complejos deportivos, clubes, academias y organizadores de ligas y torneos",
+  "services": [
+    "Diseño de producto",
+    "Desarrollo web",
+    "Plataforma SaaS multi-tenant",
+    "Tiempo real",
+    "Pagos recurrentes"
+  ],
+  "description": "Plataforma propia para centros deportivos: reservas de canchas, academias, ligas y torneos en un solo sistema, con pagos online y resultados en vivo.",
+  "problem": "Los centros deportivos gestionan las reservas por WhatsApp, las clases en hojas de cálculo, las ligas en grupos de chat y los torneos en papel: cada actividad en una herramienta distinta y nada conectado.",
+  "solution": "Diseñamos y desarrollamos una plataforma multi-tenant donde el club opera todo desde un solo panel: calendario de canchas con reservas y pagos, academias con clases, suscripciones y asistencia por QR, ligas con divisiones que suben y bajan, y torneos con sorteo, seis formatos y resultados en tiempo real.",
+  "results": [],
+  "projectDescription": "Rematch es un producto creado por Axium para centros deportivos. Reservas, academias, ligas y torneos comparten el mismo calendario de canchas, los mismos clientes y los mismos cobros; y del lado público, los deportistas reservan desde el celular y siguen los torneos en live.rematch.pe.",
+  "publishedDate": "2026",
+  "slug": "rematch"
+}

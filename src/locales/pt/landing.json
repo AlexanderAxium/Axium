@@ -375,5 +375,38 @@
     "paginaDe": "Página {current} de {total}",
     "anterior": "Anterior",
     "siguiente": "Próximo"
+  },
+  "highlights": {
+    "overline": "Produtos próprios",
+    "title": "Nosso trabalho",
+    "intro": "Software que projetamos, desenvolvemos e operamos nós mesmos.",
+    "visit": "Visitar site",
+    "cursor": "VISITAR SITE • VISITAR SITE • ",
+    "items": {
+      "vendiq": {
+        "name": "Vendiq",
+        "category": "E-commerce",
+        "summary": "Loja online, ponto de venda e faturamento SUNAT",
+        "description": "Loja online, ponto de venda, estoque e faturamento SUNAT sobre um mesmo catálogo. Cobra com Mercado Pago, Culqi ou PayPal, com preço fixo por mês e sem comissão por venda."
+      },
+      "rematch": {
+        "name": "Rematch",
+        "category": "Esportes",
+        "summary": "Reserva de quadras esportivas",
+        "description": "Marketplace para encontrar e reservar quadras de futebol, padel, tênis e mais em todo o Peru. Os clubes gerenciam horários, reservas, ocupação e receita em tempo real em um único painel, mesmo com várias unidades."
+      },
+      "lumiolearn": {
+        "name": "LumioLearn",
+        "category": "Educação",
+        "summary": "Academias online com marca própria",
+        "description": "Plataforma para criar e vender cursos com marca e domínio próprios, sem comissões. Inclui um tutor com IA treinado com o conteúdo de cada academia, avaliações, certificados e análises. Pensada para professores independentes, academias com equipe e empresas que capacitam suas equipes."
+      },
+      "bookit": {
+        "name": "Bookit",
+        "category": "Agendamentos",
+        "summary": "Agenda para consultórios e salões",
+        "description": "Site, reservas online, agenda e cobranças para consultórios, salões e estúdios. Cada negócio recebe reservas no seu próprio site, com a sua marca: os clientes escolhem profissional e horário, podem pagar ao reservar e o agendamento chega à agenda da equipe, sem comissão por reserva."
+      }
+    }
   }
 }

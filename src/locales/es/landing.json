@@ -375,5 +375,38 @@
     "paginaDe": "Página {current} de {total}",
     "anterior": "Anterior",
     "siguiente": "Siguiente"
+  },
+  "highlights": {
+    "overline": "Productos propios",
+    "title": "Nuestro trabajo",
+    "intro": "Software que diseñamos, desarrollamos y operamos nosotros mismos.",
+    "visit": "Visitar sitio",
+    "cursor": "VISITAR SITIO • VISITAR SITIO • ",
+    "items": {
+      "vendiq": {
+        "name": "Vendiq",
+        "category": "E-commerce",
+        "summary": "Tienda online, punto de venta y facturación SUNAT",
+        "description": "Tienda online, punto de venta, inventario y facturación SUNAT sobre un mismo catálogo. Cobra con Mercado Pago, Culqi o PayPal, con un precio fijo al mes y sin comisión por venta."
+      },
+      "rematch": {
+        "name": "Rematch",
+        "category": "Deportes",
+        "summary": "Reserva de canchas deportivas",
+        "description": "Marketplace para encontrar y reservar canchas de fútbol, pádel, tenis y más en todo el Perú. Los clubes gestionan horarios, reservas, ocupación e ingresos en tiempo real desde un solo panel, aunque tengan varias sedes."
+      },
+      "lumiolearn": {
+        "name": "LumioLearn",
+        "category": "Educación",
+        "summary": "Academias online con marca propia",
+        "description": "Plataforma para crear y vender cursos con marca y dominio propios, sin comisiones. Incluye un tutor con IA entrenado con el contenido de cada academia, evaluaciones, certificados y analítica. Pensada para profesores independientes, academias con equipo y empresas que forman a su gente."
+      },
+      "bookit": {
+        "name": "Bookit",
+        "category": "Citas",
+        "summary": "Agenda para consultorios y salones",
+        "description": "Web, reservas online, agenda y cobros para consultorios, salones y estudios. Cada negocio recibe reservas en su propia web, con su marca: sus clientes eligen profesional y horario, pueden pagar al reservar y la cita llega a la agenda del equipo, sin comisiones por reserva."
+      }
+    }
   }
 }

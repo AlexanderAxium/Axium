@@ -1,0 +1,39 @@
+{
+  "title": "Vendiq",
+  "industry": "SaaS / E-commerce",
+  "image": "/images/proyects/vendiq/vendiq-portada-v2.jpg",
+  "location": "Perú",
+  "platform": "Web (SaaS) multi-tenant",
+  "duration": "En producción",
+  "client": "Producto propio",
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "tRPC",
+    "Prisma",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "Mercado Pago",
+    "Culqi",
+    "PayPal"
+  ],
+  "liveUrl": "https://vendiq.pe",
+  "secondaryIndustry": "Tienda online, punto de venta, inventario y facturación SUNAT",
+  "forWhom": "Tiendas, marcas y distribuidores del Perú que venden por internet y en su local",
+  "services": [
+    "Diseño de producto",
+    "Web pública",
+    "Desarrollo web",
+    "Plataforma SaaS multi-tenant",
+    "Pagos online",
+    "Facturación electrónica"
+  ],
+  "description": "Plataforma propia de comercio: cada tienda vende en su web y en su local con el mismo catálogo y el mismo stock, emite sus comprobantes SUNAT y cobra sin comisión por venta.",
+  "problem": "Los comercios pequeños venden con herramientas sueltas: una web para la tienda, un sistema para la caja, una hoja de cálculo para el stock, un programa para las boletas y el chat para los pedidos; cada venta se anota varias veces y las plataformas grandes cobran comisión por venta.",
+  "solution": "Diseñamos y desarrollamos una plataforma multi-tenant donde la tienda online, el punto de venta, el inventario y la facturación SUNAT trabajan sobre un mismo catálogo, y rediseñamos la web pública de Vendiq con su marca nueva.",
+  "results": [],
+  "projectDescription": "Vendiq es un producto creado por Axium para comercios del Perú. Cada tienda publica su web con su marca, cobra con Mercado Pago, Culqi o PayPal y lleva stock y comprobantes en el mismo panel, con un precio fijo al mes y 0 % de comisión por venta.",
+  "publishedDate": "2026",
+  "slug": "vendiq"
+}
