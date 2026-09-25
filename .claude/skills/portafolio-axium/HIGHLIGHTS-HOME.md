@@ -375,3 +375,30 @@ Descartes de pieza: `bookit/pieza-reserva.png` (es la marca vieja, azul marino);
 elegir; `bookit-servicios.png` (la lista de servicios) — dice «catálogo», no «reserva». Las
 demos `tuconsultorio.bookit.com.pe` y `demo.bookit.com.pe` no resuelven, así que el selector del
 propio bookit.com.pe es la UI de reserva real disponible.
+
+#### Rematch v8 corregida el mismo día: pelotas de pádel, no de tenis (2026-09-25)
+
+`highlights/rematch-v8.jpg` es el recorte 16:10 (2048×1280 desde y=52) de la portada del carrusel,
+así que hereda cualquier arreglo de esa portada. Alexander: *«si es paleta de pádel, las bolas
+deben ser de pádel; si es de tenis, pelotas de tenis»*.
+
+La escena era toda de pádel —pala maciza perforada, pista de vidrio, césped azul— menos las dos
+pelotas, que eran de tenis: pelusa larga con halo de hilos sueltos y costura gruesa y blanquecina.
+Se editó la escena verde original en Higgsfield pasándola como referencia y pidiendo solo las
+pelotas (pelusa corta y densa, costura fina, y **PADEL** impreso en la de delante), conservando
+encuadre, luz y la pantalla verde. Un solo tiro, **2,75 créditos**. Detalle y comando en
+CASO-REMATCH.md § 10.
+
+Dos cosas que valen para el home:
+
+- **El recorte 16:10 desde y=52 sigue sirviendo**: no corta ni la parte alta de la pala ni las
+  pelotas, y a 360 px de ancho —el tamaño real de la tarjeta en el móvil— «PADEL» todavía se lee.
+  Es lo que hace que la corrección se note en el home y no solo en /portafolio.
+- **Reemplazar un archivo sin cambiar de nombre obliga a limpiar la caché**: `/_next/image` seguía
+  sirviendo la versión con pelotas de tenis hasta borrar `.next/cache/images`. Ya estaba en
+  COMPOSITOR.md; acá volvió a pasar.
+
+La pantalla del celular se rehízo además al aspecto real del dispositivo (1170×2532) en vez del
+hueco medido (0,42): la tipografía deja de salir achatada un 9 %. Se ve algo menos de la agenda,
+pero a 360 la agenda no era legible de todos modos y lo que carga la tarjeta es el titular, el
+botón oscuro y el lima.

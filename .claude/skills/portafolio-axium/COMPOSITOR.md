@@ -406,3 +406,25 @@ jugar» (Reserva una cancha / Entrena en una academia), que no estaba en ninguna
 Regla: el tramo se elige con la galería delante, no solo por lo bonito que se ve solo.
 Descartar también los tramos con un bloque vacío: el hero de Live tiene ~1000 px casi negros
 arriba y, a 460 px de pantalla en la pieza final, el celular se leía apagado.
+
+### Coherencia del atrezo: el deporte tiene que ser uno solo (2026-09-25)
+
+La portada de Rematch pasó dos revisiones con **pelotas de tenis junto a una pala de pádel**.
+Alexander: *«si es paleta de pádel, las bolas deben ser de pádel; si es de tenis, pelotas de
+tenis»*. El modelo, al pedirle "padel racket on a court", pone pelotas de stock de tenis: pelusa
+larga con halo de hilos sueltos y costura gruesa blanquecina.
+
+**Antes de dar por buena una escena, mirar a zoom cada objeto del atrezo** —pelota, superficie,
+cancha del fondo, raqueta— y comprobar que sean del mismo deporte. Vale igual para cualquier
+escena con utilería: si la marca es de un oficio, las herramientas tienen que ser de ese oficio.
+
+**Corregir editando, no regenerando.** Si la escena está bien salvo un objeto, se pasa **la escena
+verde original** como `medias` con rol `image_references` a `gpt_image_2_5` y se pide solo ese
+cambio, con la instrucción de reproducir la referencia exactamente y un bloque CRÍTICO que exija
+que la pantalla siga siendo verde liso #00FF00, mate y vacía. En Rematch salió a la primera y el
+cuadrilátero verde quedó a **±2 px** del original, así que `--caja`, `--brillo` y el encuadre se
+reutilizan tal cual y lo único que cambia en la imagen final es el objeto pedido.
+
+Dos detalles de coste: **`gpt_image_2_5` high 2k cuesta 2,75, no 3** (comprobado con
+`get_cost: true`, que no envía trabajo), y la referencia se sube con `media_upload` → `curl -X PUT`
+→ `media_confirm`; en `medias[].value` va el `media_id`, nunca la URL.

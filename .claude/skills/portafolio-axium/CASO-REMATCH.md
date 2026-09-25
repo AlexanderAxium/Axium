@@ -253,3 +253,51 @@ a 3x) y `capturas-saas/rematch/piezas-2026-09/` (secciones por elemento, móvile
 
 Textos: alts de tipografía, paleta, portada, secciones, móviles, precios y Live reescritos, y el
 «Enfoque» ahora cuenta las dos puertas (rematch.pe para el club, Rematch Live para el jugador), en es/en/pt.
+
+## 10. Pelotas de tenis en una escena de pádel (2026-09-25)
+
+Alexander, sobre la portada: *«si es paleta de pádel, las bolas deben ser de pádel; si es de
+tenis, pelotas de tenis»*.
+
+**La incoherencia**: en `escenas/rematch-portada-raqueta.png` todo era pádel —pala maciza
+perforada de carbono, pista con paredes de vidrio, césped azul, y en la propia pantalla «Tu club ·
+Pádel» con las columnas Pádel 1/2/3— menos las dos pelotas, que eran **de tenis**: pelusa larga y
+desordenada con halo de hilos sueltos (pelota gastada de tenis), costura gruesa y blanquecina de
+tenis, y de hecho mal dibujada (en la de delante la costura era una raya que no cerraba).
+
+**El arreglo, en un solo tiro**: en vez de rehacer la escena se **editó** la escena verde original
+pasándola como `image_references` a `gpt_image_2_5` (high, 2k, 3:2) y pidiendo **solo** el cambio
+de las pelotas: pelusa corta y densa sin hilos sueltos, costura fina y de poco contraste, un poco
+más blandas, y la palabra **PADEL** impresa en la de delante. El prompt repite «reproduce la
+referencia exactamente» y marca como CRÍTICO que la pantalla siga siendo verde liso #00FF00, mate
+y vacía. Salió a la primera: el cuadrilátero verde quedó a ±2 px del original
+((950,462) (1190,452) (1097,1052) (839,1038) contra (948,463) (1190,452) (1097,1052) (838,1038)),
+así que la caja y el encuadre se reutilizaron tal cual. Escena nueva:
+`escenas/rematch-portada-raqueta-v2.png`. **Coste: 2,75 créditos** (no 3: el preflight `get_cost`
+de `gpt_image_2_5` high 2k da 2,75). Saldo 7,77 → 5,02. El segundo tiro del presupuesto no se gastó.
+
+**La pantalla, rehecha al aspecto real del celular.** De paso se aplicó la lección del mismo día
+(COMPOSITOR.md § «Celular en una escena»): `pantalla-celular-rematch.html` estaba a 1170×2786, el
+aspecto del **hueco medido** (0,42). El celular está girado sobre su eje vertical y ese 0,42 es el
+escorzo, que la homografía ya aplica; armarla así achataba la tipografía un 9 % y metía 879 px CSS
+de página, más de lo que cabe en un iPhone real. Ahora va a **1170×2532** (0,462, el aspecto real)
+y se compone con `--sin-recorte`: 794 px CSS de página, que es justo lo que muestra el viewport de
+un iPhone 15 Pro. Se ve menos agenda (cabecera + 17:00 y 18:00) pero la tipografía es la correcta.
+
+Comando final:
+
+```
+python3 scripts/componer_pantalla.py \
+  capturas-saas/escenas/rematch-portada-raqueta-v2.png pantalla.png salida.jpg \
+  --bordes --caja 800,420,1210,1090 --ancla arriba --brillo 0.9 --sin-recorte
+```
+
+Verificado: 0 píxeles de verde residual dentro de la caja, las cuatro esquinas redondeadas limpias
+y sin inclinación, y la pieza funciona a 2048 y a 360 (a 360 «PADEL» aún se lee). Sustituidos los
+tres archivos —`proyects/rematch/rematch-portada-v3.jpg`, `highlights/rematch-v8.jpg` (recorte
+16:10 desde y=52) y la copia `escenas/mock-rematch-portada-v3.jpg`— sin cambiar rutas, así que hubo
+que borrar `.next/cache/images` para que el dev server dejara de servir la versión vieja.
+
+**Regla que queda**: una escena generada tiene que ser coherente en *todo* el atrezo, no solo en el
+objeto principal. Antes de dar por buena una escena deportiva, mirar a zoom pelota, superficie,
+cancha del fondo y raqueta, y comprobar que sean del mismo deporte.

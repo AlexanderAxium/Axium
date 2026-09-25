@@ -44,11 +44,10 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     url: "https://rematch.pe",
     caseHref: "/casos-de-exito/rematch",
     domain: "rematch.pe",
-    // Cantidad: cuatro pistas de pádel de cristal a plomo, de noche, y encima la
-    // «Agenda de hoy» entera de rematch.pe — cuatro canchas, cinco reservas, las
-    // nuevas en lima. v7 (2026-09-25): la v6 (fondo liso + llaves + tarjetita)
-    // tenía la misma anatomía que Bookit
-    cover: "/images/highlights/rematch-v7.jpg",
+    // La misma portada que en /portafolio (Alexander, 2026-09-25: «me gustan más»),
+    // recortada a 16:10 para que la tarjeta no la corte sola: el celular sobre la
+    // pala de pádel, de noche, con el inicio móvil de rematch.pe
+    cover: "/images/highlights/rematch-v8.jpg",
     logo: {
       src: "/images/highlights/logos/rematch.png",
       width: 939,
@@ -60,7 +59,9 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     url: "https://lumiolearn.com",
     caseHref: "/casos-de-exito/lumiolearn",
     domain: "lumiolearn.com",
-    cover: "/images/highlights/lumiolearn-v11.jpg",
+    // La misma portada que en /portafolio: la tableta en plano cenital sobre el
+    // escritorio violeta
+    cover: "/images/highlights/lumiolearn-v12.jpg",
     logo: {
       src: "/images/highlights/logos/lumiolearn.png",
       width: 757,
@@ -72,13 +73,8 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     url: "https://bookit.com.pe",
     caseHref: "/casos-de-exito/bookit",
     domain: "bookit.com.pe",
-    // Singularidad, justo lo contrario de Rematch: una fila de losas de pino y
-    // UNA que sale encendida en verde —una hora que se aparta— con el selector
-    // real de bookit.com.pe apoyado en ella: servicio, profesional, día y horas
-    // libres, con el 16:30 elegido en brote. El chip verde y la losa encendida
-    // son el mismo gesto. v9 (2026-09-25): la v8 mostraba la cita ya hecha, que
-    // es el resultado y no la web donde se reserva
-    cover: "/images/highlights/bookit-v9.jpg",
+    // La misma portada que en /portafolio: la laptop sobre el mármol verde
+    cover: "/images/highlights/bookit-v10.jpg",
     logo: {
       src: "/images/highlights/logos/bookit-v2.png",
       width: 1600,
