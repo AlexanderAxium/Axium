@@ -45,9 +45,14 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     caseHref: "/casos-de-exito/rematch",
     domain: "rematch.pe",
     // La misma portada que en /portafolio (Alexander, 2026-09-25: «me gustan más»),
-    // recortada a 16:10 para que la tarjeta no la corte sola: el celular sobre la
-    // pala de pádel, de noche, con el inicio móvil de rematch.pe
-    cover: "/images/highlights/rematch-v8.jpg",
+    // recortada a 16:10 (desde y=52) para que la tarjeta no la corte sola: el celular
+    // apoyado en la pala de pádel, de noche, con el inicio móvil de rematch.pe.
+    // v10 (2026-09-26): la pantalla ahora sí trae la cabecera del sitio (logo Rematch
+    // + menú). La cabecera es position:fixed y el fullPage la perdía; se captura el
+    // viewport real (390×794 @3x). Se descartó una escena nueva —el celular contra la
+    // red, a ras de suelo— porque la cancha no se leía realista (red de cuerda gruesa,
+    // escala rota); ver CASO-REMATCH.md § 12
+    cover: "/images/highlights/rematch-v10.jpg",
     logo: {
       src: "/images/highlights/logos/rematch.png",
       width: 939,

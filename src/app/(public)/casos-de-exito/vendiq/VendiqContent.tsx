@@ -421,7 +421,7 @@ export default function VendiqContent() {
           name: "Rematch",
           tagline: c.nextTagline,
           href: "/casos-de-exito/rematch",
-          image: "/images/proyects/rematch/rematch-portada-v3.jpg",
+          image: "/images/proyects/rematch/rematch-portada-v5.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

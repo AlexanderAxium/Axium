@@ -402,3 +402,44 @@ La pantalla del celular se rehízo además al aspecto real del dispositivo (1170
 hueco medido (0,42): la tipografía deja de salir achatada un 9 %. Se ve algo menos de la agenda,
 pero a 360 la agenda no era legible de todos modos y lo que carga la tarjeta es el titular, el
 botón oscuro y el lima.
+
+### Novena vuelta: la escena de la red se descarta, y Rematch gana cabecera (2026-09-26)
+
+Alexander, sobre la portada del carrusel: *«cambia esa imagen a otra cosa»*. Como el highlight del home
+es el recorte 16:10 de esa misma portada, lo que se decida ahí cambia las dos.
+
+**Se generó una escena nueva y se descartó.** El celular de pie contra la base de la red de la pista,
+cámara a ras de suelo, sin atrezo. Contra las otras tres cumplía la regla de sobra (celular /
+contrapicado a ras de suelo, frente a: ningún dispositivo y diagrama plano en Vendiq, tableta cenital
+en LumioLearn, laptop a tres cuartos en Bookit), y el celular salía un 59 % más grande de área. Pero
+Alexander: *«no parece una cancha realista»*, y mirada a 1:1 tenía razón — la red era una **malla de
+cuerda gruesa** con cuadros de medio celular de ancho (escala rota) y el fondo tenía un riel arqueado
+y luces flotando dentro del cristal. Detalle en CASO-REMATCH.md § 11.
+
+**Regla nueva para las escenas generadas de esta sección**: *lo desenfocado también se juzga a 1:1*.
+En miniatura el bokeh tapa la geometría imposible y uno aprueba una escena que no aguanta el tamaño
+grande. Y una **cancha en primer plano** es de lo más difícil de generar: falla por geometría y por
+escala a la vez. Las escenas que sí han funcionado en esta sección son las **aéreas** o las que traen
+un **objeto del oficio** en primer plano con la cancha lejos y desenfocada.
+
+**Lo que sí cambió**: `highlights/rematch-v8.jpg` → **`highlights/rematch-v10.jpg`** (y
+`proyects/rematch/rematch-portada-v3.jpg` → **`rematch-portada-v5.jpg`**). Misma escena de siempre —el
+celular sobre la pala, de noche— pero **la pantalla ahora trae la cabecera de rematch.pe**: el logo
+Rematch y el menú.
+
+**Por qué faltaba**: la cabecera del sitio es `position: fixed` y la captura era un **fullPage**, que
+la pierde y deja un hueco gris. Se recaptura el **viewport real** (390×794 @3x = 1170×2382) →
+`rematch/rediseno-2026-09/web-m-vp0.png`. **No cuesta contenido**: la cabecera ocupa exactamente el
+hueco que dejaba el fullPage, así que el titular, los botones y la agenda quedan donde estaban.
+Comprobado a 1440 y a 360 en el home. Es el mismo error que ya estaba escrito en COMPOSITOR.md por
+live.rematch.pe: **cualquier pieza de celular de esta sección se captura por viewport, nunca por
+recorte del fullPage.**
+
+**Coste de la vuelta**: una sola generación, `gpt_image_2_5` high 2k 3:2 = **2,75 créditos**
+(saldo 5,02 → 2,27). Con 2,27 ya no había otra `high`/2k, y se decidió **no** gastar en una
+`medium`/2k (1) ni en una `high`/1k (1,5): el fallo era de renderizado y escala, que es justo lo que
+empeora al bajar calidad. Mejor la escena fotográfica que ya estaba aprobada, con la cabecera puesta.
+
+**Y tres referencias en código, no dos**: además de `rematch.json` y `highlights-section.tsx`, la
+tarjeta «Siguiente» de la ficha de Vendiq (`VendiqContent.tsx:424`) apunta a la portada de Rematch.
+Grepear el nombre del archivo en todo `src/`, no solo los JSON de casos.

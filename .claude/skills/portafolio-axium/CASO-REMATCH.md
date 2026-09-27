@@ -301,3 +301,128 @@ que borrar `.next/cache/images` para que el dev server dejara de servir la versi
 **Regla que queda**: una escena generada tiene que ser coherente en *todo* el atrezo, no solo en el
 objeto principal. Antes de dar por buena una escena deportiva, mirar a zoom pelota, superficie,
 cancha del fondo y raqueta, y comprobar que sean del mismo deporte.
+
+## 11. Una escena nueva que no pasó: el celular contra la red (2026-09-26)
+
+Alexander, mirando la portada del carrusel: *«cambia esa imagen a otra cosa»*. Escena nueva, no
+retoque. **Resultado: se generó, se compuso, se enseñó y se descartó.** Queda escrita porque la mitad
+del experimento funcionó muy bien y la otra mitad enseña dónde está el límite de generar canchas.
+
+### La escena y el prompt
+
+`gpt_image_2_5`, `quality: high`, `resolution: 2k`, `aspect_ratio: 3:2` = **2,75 créditos**
+(preflight con `get_cost: true`, que no envía trabajo). Saldo **5,02 → 2,27**, que ya no daba para un
+segundo tiro, así que el prompt se escribió entero antes de disparar. Escena:
+`escenas/rematch-portada-red.png`.
+
+Pedido: el celular de pie sobre el césped azul, apoyado contra la base de la red, **cámara a ras de
+suelo** mirando ligeramente hacia arriba, malla y poste detrás, paredes de vidrio y reflectores en
+bokeh al fondo, **cero atrezo suelto**.
+
+**Lo que salió perfecto** (y hay que reutilizar):
+1. **La pantalla verde pedida como el bloque más importante del prompt**, en mayúsculas y con la lista
+   larga de negaciones (sin interfaz, iconos, reflejos, brillo, degradado ni derrame de luz verde).
+   Salió #00FF00 liso y mate, y el compositor midió el cuadrilátero a la primera.
+2. **Prohibir el lima en la escena**: *"the ONLY green anywhere in the image is the phone screen"*.
+   Por primera vez en esta portada **no hizo falta `--caja`**: el bbox de la máscara era exactamente
+   el celular (825,248,1178,984), cero verde parásito. Es el arreglo definitivo del problema del filo
+   lima que arrastraba el cuadrilátero.
+3. **La lista de prohibiciones de atrezo** (sin pelotas, palas, bolsas, botellas, personas, manos):
+   el error del 2026-09-25 convertido en instrucción. No apareció ni un objeto de más.
+4. **Celular casi de frente y grande**: la pantalla pasó de 249×597 a 322×732 px (+29 % de ancho,
+   +59 % de área). El producto dejaba de ser un detalle.
+
+**Lo que falló, y es lo que la tumbó.** Alexander: *«no se ve el header y además no parece una cancha
+realista»*. Mirando la escena a 1:1 —no en miniatura, donde parecía bien— tenía razón:
+- **La red no es una red de pádel**: es una **malla de cuerda gruesa trenzada**, con cuadros de casi
+  medio celular de ancho. Una red de pádel es de hilo fino y cuadro pequeño. La **escala está rota**:
+  al lado de un objeto de 15 cm, esos cuadros dicen «red de carga» o «jaula de bateo».
+- **La geometría del fondo no cierra**: un riel superior que se arquea (los rieles no se arquean),
+  paneles de vidrio con montantes que no coinciden con nada y luces flotando dentro del cristal sin
+  lógica de reflejo.
+- La profundidad de campo muy corta que pedí convirtió la cancha en una mancha: el modelo rellenó lo
+  desenfocado con formas plausibles pero incoherentes.
+
+**La lección**: en una escena generada, **lo que está desenfocado también hay que juzgarlo a 1:1**.
+En miniatura el bokeh tapa la incoherencia y uno da por buena una geometría imposible. Y una cancha
+en primer plano es de lo más difícil de generar: falla por geometría y por escala, las dos cosas que
+menos perdona un ojo que conoce el deporte.
+
+La escena queda en `escenas/rematch-portada-red.png` como registro; no se usa.
+
+## 12. La cabecera que faltaba, y la vuelta a la pala (2026-09-26)
+
+De los dos peros de Alexander, el primero **no costaba un crédito** y valía para cualquier portada:
+
+### «No se ve el header» — era la captura, no la escena
+
+`pantalla-celular-rematch.html` metía `rematch/rediseno-2026-09/web-m-full.jpg`, un **fullPage**. La
+cabecera de rematch.pe es `position: fixed` (medida: `top: 8`, `height: 56`, con el logo
+`LOGO_PRINCIPAL_2.webp`), y **un fullPage la pierde**: en su lugar queda un hueco gris. Está en
+COMPOSITOR.md desde el 2026-09-25 por lo mismo en live.rematch.pe, y volvió a morder.
+
+Arreglo: capturar el **viewport real** de rematch.pe a **390×794 @3x = 1170×2382** —justo el alto de
+`.pagina`— con `isMobile`, `locale: es-PE`, aceptando el banner de cookies, recorriendo la página para
+disparar las animaciones, volviendo arriba y esperando a que la agenda llegue a «5 reservas».
+Resultado versionado en `capturas-saas/rematch/rediseno-2026-09/web-m-vp0.png`.
+
+**Lo mejor: no cuesta nada de contenido.** El hueco gris que dejaba el fullPage es exactamente el que
+ocupa la cabecera fija, así que el logo y el menú entran sin empujar nada: la píldora, el titular, los
+dos botones y la agenda quedan donde estaban. Se comprobó que el logo se lee a 2048 y en la tarjeta de
+`/portafolio` a 504 px; a 360 px es una marca lima reconocible, no una palabra legible —a ese tamaño
+el celular entero mide ~56 px y eso es física, no un defecto.
+
+### «No parece una cancha realista» — se volvió a la pala, sin gastar
+
+Con **2,27 créditos** ya no había `high`/2k (2,75). Las alternativas preflighteadas eran
+`medium`/2k (1) y `high`/1k (1,5). **Se decidió no gastar**, por tres razones:
+
+1. El fallo era de **renderizado y escala** (la malla de cuerda, el riel arqueado), no de encuadre.
+   Recortar no lo arregla, y **bajar calidad empeora justo la geometría**: habría sido gastar para
+   quedar peor, sin crédito para rehacerlo.
+2. La escena de la pala (`escenas/rematch-portada-raqueta-v2.png`) **sí es creíble a 1:1**: postes
+   verticales, riel superior recto, paneles de vidrio coherentes, y la pala con trama de carbono,
+   perforaciones y protector de verdad. Comparadas a 1:1 no hay discusión.
+3. Alexander ya la había dado por buena, y sus pelotas se corrigieron ese mismo día.
+
+Así que la portada vuelve a la pala **con la cabecera puesta**: es la versión que él aprobó, mejorada.
+
+```
+python3 scripts/componer_pantalla.py \
+  capturas-saas/escenas/rematch-portada-raqueta-v2.png pantalla.png salida.jpg \
+  --bordes --caja 800,420,1210,1090 --ancla arriba --brillo 0.9 --sin-recorte
+```
+
+`--caja` vuelve a hacer falta: el filo lima de la pala sí engaña a la máscara (el script avisa
+«verde fuerte fuera de la caja (118,253,1557,801)» y lo ignora, que es lo correcto).
+
+### Verificación
+
+- **0 píxeles** de verde residual **dentro** del celular, con umbral 120 y con 60. Los 914 de fuera
+  son el filo de la pala y las pelotas: contenido de la escena, no fallo de composición.
+- Cuadrilátero (949,459) (1192,448) (1098,1056) (837,1041), aspecto 0,42 — a ±1 px del de la v3, así
+  que la caja y el encuadre se reutilizaron tal cual.
+- Cabecera con logo Rematch y menú visible; UI sin achatar (pantalla HTML a 1170×2532 + `--sin-recorte`).
+- En el sitio real (:3111): `/portafolio` a 1440 y a 360, y el home a 1440 y a 360. Sin desbordes,
+  gutters iguales, ninguna imagen rota.
+
+### Archivos y referencias
+
+| Antes | Ahora |
+|---|---|
+| `proyects/rematch/rematch-portada-v3.jpg` | **`rematch-portada-v5.jpg`** (2048×1360, 485 KB) |
+| `highlights/rematch-v8.jpg` | **`rematch-v10.jpg`** (16:10 desde y=52, 456 KB) |
+| `escenas/mock-rematch-portada-v3.jpg` | `escenas/mock-rematch-portada-v5.jpg` |
+
+(v4 y v9 fueron la escena de la red; existieron unos minutos y se borraron.)
+
+**Tres** referencias en código, no dos — la tercera es la que se olvida:
+- `src/data/cases/rematch.json` › `image`
+- `src/components/axium/highlights-section.tsx` › `cover`
+- `src/app/(public)/casos-de-exito/vendiq/VendiqContent.tsx:424` — **la tarjeta «Siguiente» de la ficha
+  de Vendiq apunta a la portada de Rematch**. Grepear el nombre del archivo en todo `src/`, no solo
+  los JSON de casos.
+
+Nombres nuevos en cada vuelta y `.next/cache/images` borrado.
+
+**Crédito gastado en total: 2,75. Saldo final: 2,27.**

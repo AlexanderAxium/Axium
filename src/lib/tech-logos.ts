@@ -59,7 +59,6 @@ export const TECH_LOGO_MAP: Record<string, string> = {
   Chainlink: "/images/tech-logos/chainlink.png",
   Truffle: "/images/tech-logos/truffle.png",
   Moralis: "/images/tech-logos/moralis.png",
-  Blockchain: "/images/tech-logos/blockchain.svg",
   // AI/ML
   DL4J: "/images/tech-logos/dl4j.png",
   Chainer: "/images/tech-logos/chainer.png",

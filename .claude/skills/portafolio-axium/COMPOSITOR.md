@@ -428,3 +428,61 @@ reutilizan tal cual y lo único que cambia en la imagen final es el objeto pedid
 Dos detalles de coste: **`gpt_image_2_5` high 2k cuesta 2,75, no 3** (comprobado con
 `get_cost: true`, que no envía trabajo), y la referencia se sube con `media_upload` → `curl -X PUT`
 → `media_confirm`; en `medias[].value` va el `media_id`, nunca la URL.
+
+### Lo desenfocado también se juzga a 1:1 (2026-09-26)
+
+Una escena generada para la portada de Rematch (celular contra la red de la pista, a ras de suelo)
+pasó todas mis revisiones **en miniatura** y Alexander la tumbó de un vistazo: *«no parece una cancha
+realista»*. Mirada a 1:1 era evidente y yo no la había mirado así:
+
+- La red era una **malla de cuerda gruesa trenzada**, con cuadros de casi medio celular de ancho. Una
+  red de pádel es de hilo fino y cuadro pequeño: la **escala estaba rota** contra un objeto de 15 cm.
+- El fondo no cerraba: un riel superior **arqueado** (los rieles no se arquean), montantes de vidrio
+  que no coincidían con nada y luces flotando dentro del cristal sin lógica de reflejo.
+- Pedir **profundidad de campo muy corta** fue parte del problema: el modelo rellena lo desenfocado
+  con formas plausibles pero incoherentes, y el bokeh las disimula hasta que se amplía.
+
+**Reglas que quedan:**
+1. Antes de componer, mirar la escena **a 1:1 por zonas**, incluidas las desenfocadas. Si una miniatura
+   es lo único que se ha visto, no se ha revisado nada.
+2. **Comprobar la escala contra el dispositivo**: el celular mide 15 cm y es la regla de la foto. Si
+   un elemento de textura (cuadro de red, junta, baldosa) mide media pantalla, está mal.
+3. **Una cancha en primer plano es lo más difícil de generar** (geometría + escala a la vez). Lo que
+   sí ha funcionado: la **aérea** (`rematch-aerea-a`) o un **objeto del oficio** en primer plano con la
+   cancha lejos y desenfocada (`rematch-portada-raqueta-v2`). Pedir el mundo en primer plano es pedir
+   el fallo.
+4. Si el fallo es de **renderizado o escala**, no se arregla recortando **ni** regenerando a menos
+   calidad: `medium`/`1k` degradan justo la geometría. O se paga la calidad completa, o se vuelve a
+   una escena que ya funcionaba.
+
+### Prohibir el color de marca en el prompt sustituye a `--caja` (2026-09-26)
+
+El filo lima de la pala obligaba a `--caja` en todas las composiciones de esa portada. En la escena
+nueva se añadió al prompt: *"no lime green, acid green or yellow-green object, light, edge, trim or
+reflection anywhere in the scene — the ONLY green anywhere in the image is the phone screen"*.
+Resultado: el bbox de la máscara fue **exactamente** el celular y se compuso **sin `--caja`**.
+
+**Regla:** cuando la marca es verde o lima, prohibirla explícitamente en la escena y dejar que el color
+lo aporte la UI compuesta. Se gana una máscara limpia y se pierde poco: el fondo con la tinta de la
+marca ya dice la marca.
+
+Y el bloque de la pantalla verde funciona mejor si se le dice al modelo que es lo más importante del
+prompt ("this is the most important instruction in the whole prompt"), en mayúsculas y con la lista
+larga de negaciones (sin interfaz, iconos, texto, reflejos, brillo, degradado ni **derrame de luz verde
+sobre el cuerpo del dispositivo o el suelo**).
+
+### La cabecera fija se pierde en el fullPage — otra vez (2026-09-26)
+
+Alexander: *«no se ve el header»*. La pantalla de la portada de Rematch venía de
+`rematch/rediseno-2026-09/web-m-full.jpg`, un **fullPage**. La cabecera de rematch.pe es
+`position: fixed` (`top: 8`, `height: 56`, con el logo): el fullPage la pierde y deja un hueco gris
+donde debería estar el logotipo. Ya estaba escrito arriba por live.rematch.pe y volvió a morder.
+
+**Regla sin excepciones: la pantalla de un celular se captura por viewport, nunca recortando un
+fullPage.** Viewport al alto exacto de `.pagina` (390×794 @3x = 1170×2382 para el HTML de 1170×2532),
+`isMobile`, `locale: es-PE`, aceptar cookies, recorrer la página para disparar animaciones, volver
+arriba, esperar el estado que se quiere (aquí, que la agenda llegue a «5 reservas») y recién entonces
+disparar. Se versiona como `capturas-saas/<slug>/<rediseño>/<pagina>-m-vp<y>.png`.
+
+**Dato útil:** la cabecera fija ocupa justo el hueco que el fullPage deja en blanco, así que recuperarla
+**no empuja el contenido**: se gana el logo sin perder nada de lo que ya se veía.
