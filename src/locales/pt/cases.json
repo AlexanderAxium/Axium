@@ -427,20 +427,18 @@
   },
   "toliveagain": {
     "title": "To Live Again",
-    "industry": "ONG / Bem-estar",
-    "description": "Website informativo para To Live Again: ONG criada em 2016 dedicada a prevenir e criar consciência sobre o abuso doméstico. Inspirar vítimas a buscar ajuda, prevenir a próxima geração. Sede em Miami e presença no Peru.",
-    "problem": "To Live Again precisava de um website que apresentasse sua missão, equipe, eventos e oficinas, e facilitasse doações e contato para inspirar vítimas e criar consciência sobre o abuso doméstico na Flórida e no Peru.",
-    "solution": "Desenvolvemos toliveagain.org com WordPress: conheça-nos, o que fazemos (inspirar, prevenir, criar consciência), equipe multidisciplinar, fundadora, impacto na comunidade, eventos, doações via PayPal e integração com Instagram.",
-    "projectDescription": "Website informativo para To Live Again, ONG criada em 2016 com sede em Miami e presença no Peru. Dedicada a prevenir o abuso doméstico, inspirar vítimas a buscar ajuda e criar consciência. Inclui sobre nós, eventos, equipe, fundadora, impacto e doações.",
-    "secondaryIndustry": "Prevenção do abuso doméstico",
-    "forWhom": "Mulheres em situação de vulnerabilidade, vítimas de abuso doméstico e comunidade que busca informações sobre prevenção e consciência",
+    "industry": "ONG / Prevenção do abuso doméstico",
+    "description": "O site da sede em Miami da fundação contra o abuso doméstico, refeito do zero: bilíngue, com a doação em primeiro plano e o certificado 501(c)(3) à vista.",
+    "problem": "A fundação tinha crescido — dez anos, dois países, oficinas, reconhecimentos — e seu site continuava sendo o folheto de WordPress do começo, em espanhol e com a doação resolvida por um botão de PayPal. E é uma página difícil de escrever: a mesma tela precisa convencer quem pode doar de Miami e, ao mesmo tempo, não assustar quem a abre de dentro de uma relação da qual ainda não sabe como sair.",
+    "solution": "Refizemos o toliveagain.org inteiro, em espanhol e em inglês. A capa abre com duas portas — «quero ajudar» e «preciso de ajuda» —, depois nomeia o tráfico de pessoas com o dado que mais incomoda e só então conta quem são. Doar deixou de ser um botão solto: tem página própria com três caminhos, cartão, PayPal e Zelle. A fundação, sua fundadora, os reconhecimentos e os encontros têm seu espaço, o certificado 501(c)(3) abre pelo menu e, a partir da página da fundação, o site cruza para o Volver a Vivir, seu anexo peruano.",
+    "projectDescription": "To Live Again é uma fundação sem fins lucrativos criada em Miami em 2016 por uma sobrevivente de abuso doméstico. Dez anos depois trabalha em dois países — Flórida e Peru, onde opera como Volver a Vivir — em torno de três verbos: inspirar as vítimas a buscar ajuda, prevenir o abuso na próxima geração e criar consciência.",
+    "secondaryIndustry": "Fundação 501(c)(3)",
+    "forWhom": "Fundação que arrecada nos Estados Unidos, trabalha em dois países e precisa se ler igualmente bem em espanhol e em inglês",
     "services": [
-      "Website informativo",
-      "Sobre nós",
-      "Eventos e oficinas",
-      "Equipe",
-      "Doações",
-      "Contato"
+      "Redesenho do site",
+      "Desenvolvimento web",
+      "Design UX/UI",
+      "Versão bilíngue ES/EN"
     ],
     "results": []
   },
@@ -855,5 +853,23 @@
     ],
     "results": [],
     "client": "Capptura · Studio by Elena Gutiérrez"
+  },
+  "cesaracosta": {
+    "title": "Academia César Acosta",
+    "industry": "Esporte / Academia de tênis",
+    "description": "Site para a Academia César Acosta, uma academia de tênis de Lima com duas sedes: cada grupo mostra a vaga que de fato lhe resta, e o site se lê como a academia treina, com método.",
+    "problem": "As academias de tênis se apresentam com um horário em PDF e um número de WhatsApp. O pai que quer matricular o filho não sabe se o grupo da idade dele continua aberto, em que sede fica nem a que horas treina, então escreve para perguntar o básico e a academia responde a mesma coisa vinte vezes. E quando um grupo lota, a página continua dizendo “inscreva-se”.",
+    "solution": "Demos à academia um sistema de design próprio — uma única família tipográfica com contraste de escala forte, navy como tinta de todos os títulos, um verde-limão escasso reservado à ação, cantos quase retos — e construímos o site em cima dele: os grupos abertos saem do sistema de gestão da própria academia com a vaga que lhes resta, filtram-se por sede e por idade, e cada programa leva seus dias e seu horário à vista. O método é explicado em quatro pilares, as sedes aparecem no nível da quadra, e tudo é pensado primeiro para o celular, que é onde o pai olha.",
+    "projectDescription": "A Academia César Acosta ensina tênis em dois clubes de Lima, do baby tênis de três anos até adultos que querem competir, sempre em grupos reduzidos. Seu argumento não é o slogan: é o método, as quadras e a vaga. O site foi construído em torno dessas três coisas e hoje está pronto, à espera de que a academia o publique.",
+    "secondaryIndustry": "Formação de tênis para crianças e adultos",
+    "forWhom": "Academia esportiva com várias sedes que precisa mostrar, grupo a grupo, as vagas que de fato restam",
+    "services": [
+      "Identidade visual",
+      "Design web",
+      "Desenvolvimento web",
+      "Design UX/UI"
+    ],
+    "results": [],
+    "client": "Academia César Acosta"
   }
 }

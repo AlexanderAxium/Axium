@@ -101,17 +101,11 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
   },
   {
     label: "Salud",
-    slugs: [
-      "moviflex",
-      "podologiemtk",
-      "enrafmedica",
-      "toliveagain",
-      "innersoulbright",
-    ],
+    slugs: ["moviflex", "podologiemtk", "enrafmedica", "innersoulbright"],
   },
   {
     label: "Educación",
-    slugs: ["lumiolearn", "maintech", "vitalchain", "huarmis"],
+    slugs: ["lumiolearn", "maintech", "vitalchain", "huarmis", "cesaracosta"],
   },
   {
     label: "Tecnología",
@@ -133,7 +127,10 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
   },
   { label: "Automotriz", slugs: ["daesurmotors"] },
   { label: "Logística", slugs: ["transportesrumi"] },
-  { label: "Organizaciones", slugs: ["favorygracia", "volveravivir"] },
+  {
+    label: "Organizaciones",
+    slugs: ["favorygracia", "volveravivir", "toliveagain"],
+  },
   { label: "Hotelería", slugs: ["hotelesparaiso", "ghiperu"] },
   { label: "Ingeniería", slugs: ["jcpingenieros"] },
   { label: "Turismo", slugs: ["lifetoursfl"] },
@@ -157,7 +154,13 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
   { label: "E-Learning", slugs: ["maintech", "vitalchain"] },
   {
     label: "Branding",
-    slugs: ["maintech", "happyart", "villacer", "innersoulbright"],
+    slugs: [
+      "maintech",
+      "happyart",
+      "villacer",
+      "innersoulbright",
+      "cesaracosta",
+    ],
   },
   {
     label: "Web Informativa",
@@ -178,6 +181,7 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
       "comunicarte",
       "ghiperu",
       "anjsports",
+      "cesaracosta",
     ],
   },
   {
@@ -198,6 +202,7 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
   {
     label: "Next.js",
     slugs: [
+      "toliveagain",
       "feniz",
       "maintech",
       "sportt",
@@ -211,6 +216,7 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "financial-management",
       "feedback-management",
       "ambientalpe",
+      "cesaracosta",
     ],
   },
   {
@@ -222,7 +228,6 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "firstautomation",
       "lujan",
       "podologiemtk",
-      "toliveagain",
       "transportesrumi",
       "ventanasantiruido",
       "villacer",
@@ -242,6 +247,7 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
   {
     label: "TypeScript",
     slugs: [
+      "toliveagain",
       "feniz",
       "maintech",
       "sportt",
@@ -252,6 +258,7 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "hotelesparaiso",
       "lifetoursfl",
       "siclo",
+      "cesaracosta",
     ],
   },
 ];

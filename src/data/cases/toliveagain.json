@@ -1,33 +1,26 @@
 {
   "title": "To Live Again",
-  "industry": "ONG / Bienestar",
-  "image": "/images/proyects/toliveagain/toliveagain-home.jpg",
-  "location": "Miami, FL — Perú",
+  "industry": "ONG / Prevención del abuso doméstico",
+  "image": "/images/proyects/toliveagain/toliveagain-portada.jpg",
+  "location": "Miami, Florida",
   "platform": "Web",
-  "duration": "2024",
+  "duration": "En producción",
   "client": "To Live Again",
-  "technologyStack": ["WordPress"],
-  "secondaryIndustry": "Prevención del abuso doméstico",
-  "forWhom": "Mujeres en situación de vulnerabilidad, víctimas de abuso doméstico y comunidad que busca información sobre prevención y conciencia",
+  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "liveUrl": "https://toliveagain.org",
+  "secondaryIndustry": "Fundación 501(c)(3)",
+  "forWhom": "Fundación que recauda en Estados Unidos, trabaja en dos países y tiene que leerse igual de bien en español y en inglés",
   "services": [
-    "Web informativa",
-    "Sobre nosotros",
-    "Eventos y talleres",
-    "Equipo",
-    "Donaciones",
-    "Contacto"
+    "Rediseño del sitio",
+    "Desarrollo web",
+    "Diseño UX/UI",
+    "Versión bilingüe ES/EN"
   ],
-  "description": "Web informativa para To Live Again: ONG creada en 2016 dedicada a prevenir y crear conciencia sobre el abuso doméstico. Inspirar a víctimas a buscar ayuda, prevenir a la próxima generación. Sede en Miami y presencia en Perú.",
-  "problem": "To Live Again necesitaba una web que presentara su misión, equipo, eventos y talleres, y facilitara donaciones y contacto para inspirar a víctimas y crear conciencia sobre el abuso doméstico en Florida y Perú.",
-  "solution": "Desarrollamos toliveagain.org con WordPress: conócenos, qué realizamos (inspirar, prevenir, crear conciencia), equipo multidisciplinario, fundadora, impacto en la comunidad, eventos, donaciones vía PayPal e integración con Instagram.",
+  "description": "El sitio de la casa matriz en Miami de la fundación contra el abuso doméstico, rehecho de cero: bilingüe, con la donación en primera línea y el certificado 501(c)(3) a la vista.",
+  "problem": "La fundación había crecido —diez años, dos países, talleres, reconocimientos— y su web seguía siendo el folleto de WordPress del principio, en español y con la donación resuelta con un botón de PayPal. Y es una página difícil de escribir: la misma pantalla tiene que convencer a quien puede donar desde Miami y no asustar a quien la abre desde una relación de la que todavía no sabe cómo salir.",
+  "solution": "Rehicimos toliveagain.org entero, en español y en inglés. La portada abre con dos puertas —«quiero ayudar» y «necesito ayuda»—, después nombra la trata de personas con el dato que más incomoda y recién entonces cuenta quiénes son. Donar dejó de ser un botón suelto: tiene página propia con tres caminos, tarjeta, PayPal y Zelle. La fundación, su fundadora, los reconocimientos y los encuentros tienen su espacio, el certificado 501(c)(3) se abre desde el menú y, desde la página de la fundación, se cruza a Volver a Vivir, su anexo peruano.",
   "results": [],
-  "projectDescription": "Web informativa para To Live Again, ONG creada en 2016 con sede en Miami y presencia en Perú. Dedicada a prevenir el abuso doméstico, inspirar a víctimas a buscar ayuda y crear conciencia. Incluye sobre nosotros, eventos, equipo, fundadora, impacto y donaciones.",
-  "skillsAndDeliverables": [
-    "WordPress",
-    "Diseño responsive",
-    "Integración PayPal",
-    "Contacto"
-  ],
-  "publishedDate": "2024",
-  "liveUrl": "https://toliveagain.org"
+  "projectDescription": "To Live Again es una fundación sin fines de lucro creada en Miami en 2016 por una sobreviviente de abuso doméstico. Diez años después trabaja en dos países —Florida y el Perú, donde opera como Volver a Vivir— alrededor de tres verbos: inspirar a las víctimas a buscar ayuda, prevenir el abuso en la próxima generación y crear conciencia.",
+  "publishedDate": "2026",
+  "slug": "toliveagain"
 }

@@ -12,6 +12,7 @@ import auroreData from "~/data/cases/aurore.json";
 import blendetData from "~/data/cases/blendet.json";
 import bookitData from "~/data/cases/bookit.json";
 import cappturaData from "~/data/cases/capptura.json";
+import cesaracostaData from "~/data/cases/cesaracosta.json";
 import clefastData from "~/data/cases/clefast.json";
 import comunicarteData from "~/data/cases/comunicarte.json";
 import daesurmotorsData from "~/data/cases/daesurmotors.json";
@@ -71,6 +72,7 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   fenalsa: fenalsaData as Record<string, unknown>,
   feniz: fenizData as Record<string, unknown>,
   innersoulbright: innersoulbrightData as Record<string, unknown>,
+  cesaracosta: cesaracostaData as Record<string, unknown>,
   clefast: clefastData as Record<string, unknown>,
   happyart: happyartData as Record<string, unknown>,
   redesvip: redesvipData as Record<string, unknown>,
@@ -141,6 +143,7 @@ const CASE_ORDER: string[] = [
   "volveravivir",
   "podologiemtk",
   "enrafmedica",
+  "cesaracosta",
   "huarmis",
   "jarumi",
   "favorygracia",

@@ -427,20 +427,18 @@
   },
   "toliveagain": {
     "title": "To Live Again",
-    "industry": "ONG / Bienestar",
-    "description": "Web informativa para To Live Again: ONG creada en 2016 dedicada a prevenir y crear conciencia sobre el abuso doméstico. Inspirar a víctimas a buscar ayuda, prevenir a la próxima generación. Sede en Miami y presencia en Perú.",
-    "problem": "To Live Again necesitaba una web que presentara su misión, equipo, eventos y talleres, y facilitara donaciones y contacto para inspirar a víctimas y crear conciencia sobre el abuso doméstico en Florida y Perú.",
-    "solution": "Desarrollamos toliveagain.org con WordPress: conócenos, qué realizamos (inspirar, prevenir, crear conciencia), equipo multidisciplinario, fundadora, impacto en la comunidad, eventos, donaciones vía PayPal e integración con Instagram.",
-    "projectDescription": "Web informativa para To Live Again, ONG creada en 2016 con sede en Miami y presencia en Perú. Dedicada a prevenir el abuso doméstico, inspirar a víctimas a buscar ayuda y crear conciencia. Incluye sobre nosotros, eventos, equipo, fundadora, impacto y donaciones.",
-    "secondaryIndustry": "Prevención del abuso doméstico",
-    "forWhom": "Mujeres en situación de vulnerabilidad, víctimas de abuso doméstico y comunidad que busca información sobre prevención y conciencia",
+    "industry": "ONG / Prevención del abuso doméstico",
+    "description": "El sitio de la casa matriz en Miami de la fundación contra el abuso doméstico, rehecho de cero: bilingüe, con la donación en primera línea y el certificado 501(c)(3) a la vista.",
+    "problem": "La fundación había crecido —diez años, dos países, talleres, reconocimientos— y su web seguía siendo el folleto de WordPress del principio, en español y con la donación resuelta con un botón de PayPal. Y es una página difícil de escribir: la misma pantalla tiene que convencer a quien puede donar desde Miami y no asustar a quien la abre desde una relación de la que todavía no sabe cómo salir.",
+    "solution": "Rehicimos toliveagain.org entero, en español y en inglés. La portada abre con dos puertas —«quiero ayudar» y «necesito ayuda»—, después nombra la trata de personas con el dato que más incomoda y recién entonces cuenta quiénes son. Donar dejó de ser un botón suelto: tiene página propia con tres caminos, tarjeta, PayPal y Zelle. La fundación, su fundadora, los reconocimientos y los encuentros tienen su espacio, el certificado 501(c)(3) se abre desde el menú y, desde la página de la fundación, se cruza a Volver a Vivir, su anexo peruano.",
+    "projectDescription": "To Live Again es una fundación sin fines de lucro creada en Miami en 2016 por una sobreviviente de abuso doméstico. Diez años después trabaja en dos países —Florida y el Perú, donde opera como Volver a Vivir— alrededor de tres verbos: inspirar a las víctimas a buscar ayuda, prevenir el abuso en la próxima generación y crear conciencia.",
+    "secondaryIndustry": "Fundación 501(c)(3)",
+    "forWhom": "Fundación que recauda en Estados Unidos, trabaja en dos países y tiene que leerse igual de bien en español y en inglés",
     "services": [
-      "Web informativa",
-      "Sobre nosotros",
-      "Eventos y talleres",
-      "Equipo",
-      "Donaciones",
-      "Contacto"
+      "Rediseño del sitio",
+      "Desarrollo web",
+      "Diseño UX/UI",
+      "Versión bilingüe ES/EN"
     ],
     "results": []
   },
@@ -855,5 +853,23 @@
     ],
     "results": [],
     "client": "Capptura · Studio by Elena Gutiérrez"
+  },
+  "cesaracosta": {
+    "title": "Academia César Acosta",
+    "industry": "Deporte / Academia de tenis",
+    "description": "Sitio para la Academia César Acosta, una academia de tenis de Lima con dos sedes: cada grupo muestra el cupo que de verdad le queda, y el sitio se lee como la academia entrena, con método.",
+    "problem": "Las academias de tenis se presentan con un horario en PDF y un número de WhatsApp. El padre que quiere inscribir a su hijo no sabe si el grupo de su edad sigue abierto, en qué sede está ni a qué hora entrena, así que escribe para preguntar lo básico y la academia contesta lo mismo veinte veces. Y cuando un grupo se llena, la página sigue diciendo «inscríbete».",
+    "solution": "Le dimos a la academia un sistema de diseño propio —una sola familia tipográfica con contraste de escala fuerte, navy como tinta de todos los títulos, un verde lima escaso reservado a la acción, esquinas casi rectas— y construimos el sitio encima: los grupos abiertos salen del sistema de gestión de la academia con el cupo que les queda, se filtran por sede y por edad, y cada programa lleva sus días y su horario a la vista. El método se explica en cuatro pilares, las sedes se ven a nivel de cancha, y todo está pensado primero para el celular, que es donde el padre mira.",
+    "projectDescription": "La Academia César Acosta enseña tenis en dos clubes de Lima, desde baby tenis de tres años hasta adultos que quieren competir, siempre en grupos reducidos. Su argumento no es el eslogan: es el método, las canchas y el cupo. El sitio se construyó alrededor de esas tres cosas y hoy está terminado, a la espera de que la academia lo publique.",
+    "secondaryIndustry": "Formación de tenis para niños y adultos",
+    "forWhom": "Academia deportiva con varias sedes que necesita mostrar, grupo por grupo, los cupos que de verdad quedan",
+    "services": [
+      "Identidad visual",
+      "Diseño web",
+      "Desarrollo web",
+      "Diseño UX/UI"
+    ],
+    "results": [],
+    "client": "Academia César Acosta"
   }
 }

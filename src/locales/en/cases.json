@@ -423,20 +423,18 @@
   },
   "toliveagain": {
     "title": "To Live Again",
-    "industry": "NGO / Wellness",
-    "description": "Informative website for To Live Again: NGO founded in 2016 dedicated to preventing and raising awareness about domestic abuse. Inspiring victims to seek help, preventing the next generation. Based in Miami with presence in Peru.",
-    "problem": "To Live Again needed a website to present its mission, team, events and workshops, and facilitate donations and contact to inspire victims and raise awareness about domestic abuse in Florida and Peru.",
-    "solution": "We developed toliveagain.org with WordPress: about us, what we do (inspire, prevent, raise awareness), multidisciplinary team, founder, community impact, events, donations via PayPal and Instagram integration.",
-    "projectDescription": "Informative website for To Live Again, NGO founded in 2016 with headquarters in Miami and presence in Peru. Dedicated to preventing domestic abuse, inspiring victims to seek help and raising awareness. Includes about us, events, team, founder, impact and donations.",
-    "secondaryIndustry": "Domestic abuse prevention",
-    "forWhom": "Women in vulnerable situations, domestic abuse victims and the community seeking information on prevention and awareness",
+    "industry": "Nonprofit / Domestic abuse prevention",
+    "description": "The site of the Miami headquarters of the foundation against domestic abuse, rebuilt from scratch: bilingual, with donating up front and the 501(c)(3) certificate in plain sight.",
+    "problem": "The foundation had grown — ten years, two countries, workshops, awards — and its website was still the WordPress brochure it started with, in Spanish, with donations settled by a PayPal button. And it is a hard page to write: the same screen has to convince someone who can donate from Miami and, at the same time, not frighten someone opening it from inside a relationship she does not yet know how to leave.",
+    "solution": "We rebuilt toliveagain.org from the ground up, in Spanish and in English. The home page opens with two doors — «I want to help» and «I need help» —, then names human trafficking with the figure that hurts most, and only then says who they are. Donating is no longer a stray button: it has a page of its own with three routes, card, PayPal and Zelle. The foundation, its founder, the awards and the gatherings each get their space, the 501(c)(3) certificate opens from the menu and, from the foundation page, the site crosses over to Volver a Vivir, its Peruvian arm.",
+    "projectDescription": "To Live Again is a nonprofit founded in Miami in 2016 by a survivor of domestic abuse. Ten years on it works in two countries — Florida and Peru, where it operates as Volver a Vivir — around three verbs: inspiring victims to seek help, preventing abuse in the next generation and raising awareness.",
+    "secondaryIndustry": "501(c)(3) foundation",
+    "forWhom": "A foundation that raises funds in the United States, works across two countries and has to read just as well in Spanish and in English",
     "services": [
-      "Informative website",
-      "About us",
-      "Events and workshops",
-      "Team",
-      "Donations",
-      "Contact"
+      "Website redesign",
+      "Web development",
+      "UX/UI design",
+      "Bilingual ES/EN version"
     ],
     "results": []
   },
@@ -851,5 +849,23 @@
     ],
     "results": [],
     "client": "Capptura · Studio by Elena Gutiérrez"
+  },
+  "cesaracosta": {
+    "title": "Academia César Acosta",
+    "industry": "Sport / Tennis academy",
+    "description": "A website for Academia César Acosta, a tennis academy in Lima with two venues: every group shows the places it actually has left, and the site reads the way the academy trains, with a method.",
+    "problem": "Tennis academies introduce themselves with a PDF timetable and a WhatsApp number. A parent who wants to enrol a child cannot tell whether the group for that age is still open, which venue it runs at or at what time, so they write in to ask the basics and the academy answers the same thing twenty times over. And when a group fills up, the page still says “sign up”.",
+    "solution": "We gave the academy a design system of its own — a single typeface family with a hard contrast of scale, navy as the ink of every heading, a scarce lime green reserved for action, corners kept almost square — and built the site on top of it: open groups come from the academy's own management system with the places they have left, they filter by venue and by age, and every programme carries its days and its timetable in plain sight. The method is explained in four pillars, the venues are shown at court level, and the whole thing is designed for the phone first, which is where the parent looks.",
+    "projectDescription": "Academia César Acosta teaches tennis at two clubs in Lima, from baby tennis at three years old to adults who want to compete, always in small groups. Its argument is not the slogan: it is the method, the courts and the places left. The site was built around those three things and is now finished, waiting for the academy to publish it.",
+    "secondaryIndustry": "Tennis coaching for children and adults",
+    "forWhom": "A multi-venue sports academy that needs to show, group by group, the places it actually has left",
+    "services": [
+      "Visual identity",
+      "Web design",
+      "Web development",
+      "UX/UI design"
+    ],
+    "results": [],
+    "client": "Academia César Acosta"
   }
 }

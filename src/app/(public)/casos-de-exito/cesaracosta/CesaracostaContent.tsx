@@ -13,30 +13,30 @@ import { CaseContactCTA } from "~/components/axium/case-contact-cta";
 import { useTranslation } from "~/hooks/useTranslation";
 import { useCaseContent } from "~/lib/case-translations";
 
-export default function ToliveagainContent() {
-  const data = useCaseContent("toliveagain");
+export default function CesaracostaContent() {
+  const data = useCaseContent("cesaracosta");
   const { t } = useTranslation("landing");
 
   if (!data) return null;
 
   return (
     <div className="min-h-screen">
+      {/* Sin liveUrl: el sitio esta construido pero todavia no publicado. */}
       <CaseHeroSplit
         title={data.title}
         description={data.description}
         image={data.image}
         industry={data.industry}
         location={data.location}
+        gradient="linear-gradient(180deg, #012045 0%, #0A3466 55%, #1B5E9C 100%)"
+        blurOrbs={["rgba(177,233,11,0.16)", "rgba(10,52,102,0.28)"]}
         services={data.services}
         technologies={data.technologyStack}
-        liveUrl={data.liveUrl}
-        gradient="linear-gradient(180deg, #2B1018 0%, #822C4C 45%, #C97B88 100%)"
-        blurOrbs={["rgba(253,214,215,0.20)", "rgba(198,155,88,0.14)"]}
       />
 
       <CaseArticle>
         <CaseArticleText>
-          <p className="text-overline mb-4 text-[#994556]">
+          <p className="text-overline mb-4 text-[#557305]">
             {t("caseDetail.aboutProject")}
           </p>
 
@@ -50,7 +50,7 @@ export default function ToliveagainContent() {
 
           <div className="flex flex-wrap items-center gap-3 mb-12 lg:mb-16">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#e2e8f0] bg-[#f1f5f9] px-3.5 py-1.5">
-              <Monitor className="h-3.5 w-3.5 text-[#994556]" />
+              <Monitor className="h-3.5 w-3.5 text-[#557305]" />
               <span className="text-pill text-[#64748b]">
                 {t("caseDetail.platform")}:
               </span>
@@ -59,7 +59,7 @@ export default function ToliveagainContent() {
               </span>
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-[#e2e8f0] bg-[#f1f5f9] px-3.5 py-1.5">
-              <Clock className="h-3.5 w-3.5 text-[#994556]" />
+              <Clock className="h-3.5 w-3.5 text-[#557305]" />
               <span className="text-pill text-[#64748b]">
                 {t("caseDetail.duration")}:
               </span>
@@ -68,7 +68,7 @@ export default function ToliveagainContent() {
               </span>
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-[#e2e8f0] bg-[#f1f5f9] px-3.5 py-1.5">
-              <Globe className="h-3.5 w-3.5 text-[#994556]" />
+              <Globe className="h-3.5 w-3.5 text-[#557305]" />
               <span className="text-pill text-[#64748b]">
                 {t("caseDetail.client")}:
               </span>
@@ -84,12 +84,12 @@ export default function ToliveagainContent() {
             <CaseImages
               images={[
                 {
-                  src: "/images/proyects/toliveagain/toliveagain-impacto.jpg",
-                  alt: "To Live Again: el bloque de impacto en la comunidad, con los talleres y las cifras de la fundación",
+                  src: "/images/proyects/cesaracosta/cesaracosta-grupos.jpg",
+                  alt: "Academia César Acosta: los grupos abiertos, cada uno con los cupos que le quedan",
                 },
                 {
-                  src: "/images/proyects/toliveagain/toliveagain-donar.jpg",
-                  alt: "To Live Again: la página de donaciones con tarjeta, PayPal y Zelle, y en el celular el anexo peruano",
+                  src: "/images/proyects/cesaracosta/cesaracosta-sedes.jpg",
+                  alt: "Academia César Acosta: las sedes en escritorio y el método en el celular",
                 },
               ]}
               columns={2}
@@ -100,12 +100,12 @@ export default function ToliveagainContent() {
 
         <CaseArticleText>
           <p className="text-body-lg leading-relaxed text-[#334155]">
-            {data.description}
+            {data.problem}
           </p>
         </CaseArticleText>
       </CaseArticle>
 
-      <CaseNextProject excludeSlug="toliveagain" />
+      <CaseNextProject excludeSlug="cesaracosta" />
 
       <CaseContactCTA />
     </div>
