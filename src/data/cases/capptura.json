@@ -1,0 +1,26 @@
+{
+  "title": "Capptura",
+  "industry": "Fotografía / Estudio",
+  "image": "/images/proyects/capptura/capptura-portada.jpg",
+  "location": "Lima, Perú",
+  "platform": "Web + reservas en línea",
+  "duration": "En producción",
+  "client": "Capptura · Studio by Elena Gutiérrez",
+  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "liveUrl": "https://cappturafotografia.com",
+  "secondaryIndustry": "Fotografía de maternidad, familia y retrato",
+  "forWhom": "Estudio fotográfico que vende conversando y quiere que la sesión se reserve sola, en su propio dominio",
+  "services": [
+    "Diseño de producto",
+    "Desarrollo web",
+    "Diseño UX/UI",
+    "Reservas en línea"
+  ],
+  "description": "Sitio de Capptura en su propio dominio: el trabajo ordenado por tipo de sesión y la reserva en tres pasos, con la marca del estudio de punta a punta.",
+  "problem": "Un estudio de fotografía vende conversando: la clienta escribe por WhatsApp para preguntar qué incluye el paquete, cuánto dura la sesión y si queda fecha. Cada consulta cuesta una tarde, y las que llegan de madrugada se contestan al día siguiente. Además, un estudio que vende recuerdos no puede vivir en un subdominio prestado.",
+  "solution": "Capptura corre sobre Bookit con dominio propio, cappturafotografia.com, y con su paleta —espresso, oro y rosa— en todo el recorrido, incluida la reserva. El sitio cuenta el trabajo por tipo de sesión, cada una con su galería: maternidad, new born, familiar, cumpleaños, bodas, corporativo. Y reservar es una página más del mismo sitio: servicio, fecha y hora, tus datos. Quien prefiere hablar sigue teniendo el WhatsApp a un clic.",
+  "results": [],
+  "projectDescription": "Capptura es el estudio de Elena Gutiérrez en Lima: más de diez años fotografiando maternidad, recién nacidos, familias y retratos. La web reúne los tipos de sesión con su galería, la historia de quién está detrás de la cámara y una reserva en línea de tres pasos, todo bajo su propio dominio.",
+  "publishedDate": "2026",
+  "slug": "capptura"
+}

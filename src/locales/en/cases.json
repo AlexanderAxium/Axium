@@ -725,5 +725,131 @@
       "Analytics and dashboards"
     ],
     "results": []
+  },
+  "aurore": {
+    "title": "Aurore",
+    "industry": "E-commerce / Perfumery",
+    "description": "Online store for Aurore: a perfume catalogue you browse by house, olfactory family, collection and occasion, instead of a product grid.",
+    "problem": "A perfume catalogue is not searched the way an appliance is. People arrive knowing a house, a note or an occasion (something fresh, something for the evening, a gift) and almost never the exact product name. A grid with filters forces you to know what you want before you start.",
+    "solution": "We designed and built the store around that way of searching: navigation by house, olfactory family, collection and occasion; editorial blocks on the home page that lead straight into the collection they announce; product pages that tell the story of the fragrance next to the buy button; and search that resolves brands and names as you type. Mobile is the primary layout, not an adaptation.",
+    "projectDescription": "Aurore brings together designer houses, niche perfumery and Arabic perfumery. The store is built so that catalogue can be explored: collections such as woods and oud, fresh and citrus, or addictive gourmands sit alongside the classic categories, and every block on the home page is a door into one of them.",
+    "secondaryIndustry": "Designer, niche and Arabic perfumery",
+    "forWhom": "An independent perfumery selling online that needs its catalogue read like a menu, not a list",
+    "services": [
+      "Product design",
+      "Web development",
+      "Online store",
+      "UX/UI design"
+    ],
+    "results": [],
+    "client": "Aurore"
+  },
+  "blendet": {
+    "title": "Blendet Beauty Studio",
+    "industry": "Beauty / Appointment-based studio",
+    "description": "Website for Blendet Beauty Studio, the nail, lash and brow studio in San Miguel, Lima: its price menu, its gallery of real work, and an appointment that closes itself, with no waiting for a reply.",
+    "problem": "A studio that takes one client at a time lives off its calendar. When booking runs on messages, every appointment costs two or three exchanges (which service, which day, how much) and the ones that arrive at midnight or mid-service are simply lost. On top of that, nobody searches for \"nails\": they search for rubber, polygel, softgel or sculpted, and they want the price before they write.",
+    "solution": "We gave Blendet a site with its own brand: its gold, its wine red, its typeface, with everything the client needs sitting before the button. The menu is grouped by family (nails, lashes, brows, pedicure) with the length and starting price of each technique; the Instagram feed where the day's work goes up; a gallery of work done in the studio; and the address with opening hours. Booking is three steps: service, date and time, details. Behind it runs Bookit, Axium's booking platform, holding the calendar and confirming instantly; from the outside, the client only ever sees Blendet.",
+    "projectDescription": "Blendet Beauty Studio is a beauty studio in San Miguel, Lima, working by appointment and one client at a time: nails in rubber, polygel, softgel, acrylic and sculpted; lash extensions from classic to Russian volume, plus lifting; brows with waxing, henna, lamination and straightening; and gel pedicure. The site lays that menu out so it reads at a glance, and turns it into a booking.",
+    "secondaryIndustry": "Nails, lashes, brows and pedicure",
+    "forWhom": "A beauty studio working by appointment that wants the booking to close on its own website, not in a WhatsApp thread",
+    "services": [
+      "Brand website",
+      "Online booking",
+      "Service and price menu",
+      "UX/UI design"
+    ],
+    "results": [],
+    "client": "Blendet Beauty Studio"
+  },
+  "jarumi": {
+    "title": "Beautyroom by Jaru",
+    "industry": "Beauty / Appointment-based studio",
+    "description": "Website for Beautyroom by Jaru, Jarumi Enriquez's studio in Lima: a menu with rates and durations, a page per service, and online booking for a professional who works alone.",
+    "problem": "When the person doing the treatment is the same one answering messages, every enquiry interrupts a service. And the questions are always the same: do you take walk-ins, how long does it take, how much is it, how do I reschedule, what payment do you accept. Without a site that answers them, the calendar fills with conversation and empties of appointments.",
+    "solution": "We built the site around those questions. The menu lists every service with its rate and its real duration, the one that includes prep and aftercare; each service has its own page explaining what it does and how long the result lasts; and an FAQ block answers the appointment-only rule, the 24-hour rescheduling window and the payment methods up front. The lash lifting course she teaches has its own space, because it is a second business inside the same studio. Booking is three steps and confirms on the spot: behind it is Bookit, Axium's booking platform, and what the client sees is only her brand.",
+    "projectDescription": "Beautyroom by Jaru is Jarumi Enriquez's studio in Comas, Lima, which also works at clients' homes: lash lifting, brow lamination and shaping, facial cleansing, social make-up, manicure, acrylic nails and pedicure. She works strictly by appointment, one client per slot, and also trains other professionals with a hands-on lash lifting course.",
+    "secondaryIndustry": "Eyes, nails and facial care",
+    "forWhom": "A professional working alone, one client per slot, who needs the website to act as the front desk",
+    "services": [
+      "Brand website",
+      "Online booking",
+      "Page per service",
+      "UX/UI design"
+    ],
+    "results": [],
+    "client": "Jarumi Enriquez"
+  },
+  "volveravivir": {
+    "title": "Volver a Vivir",
+    "industry": "Nonprofit / Domestic abuse prevention",
+    "description": "The Peruvian arm of To Live Again: the same foundation against domestic abuse, now with a home of its own in Peru.",
+    "problem": "To Live Again already had its site in the United States, but in Peru the foundation lived on Instagram and a WhatsApp number. And it is a hard page to write: the same screen has to convince someone who can donate and, at the same time, not frighten someone opening it from inside a relationship she does not yet know how to leave.",
+    "solution": "We built volveravivir.pe with two doors from the first screen: «I want to help» and «I need help». The home page does not open by asking for money: it opens by teaching how to recognise the first signs — control, isolation, fear — and only then says who they are. The foundation, its founder, the gatherings and the ways to donate each get their own page, and WhatsApp stays within reach on all of them.",
+    "projectDescription": "Volver a Vivir is the Peruvian arm of To Live Again, the 501(c)(3) nonprofit founded in Miami in 2016. Same mission, same team, two countries. The site gathers what the foundation does in Lima — inspiring victims to seek help, preventing abuse in the next generation and raising awareness — the story of its founder and the gatherings it runs.",
+    "secondaryIndustry": "Nonprofit foundation",
+    "forWhom": "A foundation that has to speak to two people at once: the one who can donate and the one asking for help",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Content and structure"
+    ],
+    "results": [],
+    "client": "Fundación Volver a Vivir"
+  },
+  "moviflex": {
+    "title": "Moviflex",
+    "industry": "Health / Physiotherapy",
+    "description": "Website for Moviflex: three clinics in northern Lima, four specialties and an appointment that starts on the page itself.",
+    "problem": "Moviflex works out of three clinics in Carabayllo and Comas, and they do not all do the same thing: paediatric physiotherapy exists only at the Santa Isabel clinic, and each one has its own address, hours and phone number. With that spread across Instagram and WhatsApp, patients ended up asking the same question three times before they could book.",
+    "solution": "We ordered the site the way a patient asks: what can you treat, what will the care be like, where is the clinic for me. Each specialty says what it is for and which clinic offers it; each clinic carries its address, hours, phone, directions and its own booking button; and the care path — booking, assessment, treatment, discharge — is written step by step so nobody walks into a first session blind.",
+    "projectDescription": "Moviflex is a physiotherapy and rehabilitation centre with eight years behind it and three clinics in northern Lima. It treats injuries and chronic pain, neurological rehabilitation, paediatric physiotherapy and massage therapy, with plans built after a functional assessment. The site is now its front door and where the appointment begins.",
+    "secondaryIndustry": "Physiotherapy and rehabilitation",
+    "forWhom": "A multi-site physiotherapy centre that needs patients to pick clinic, specialty and time without calling",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Local SEO"
+    ],
+    "results": [],
+    "client": "Moviflex · Terapia física y rehabilitación"
+  },
+  "qintitec": {
+    "title": "Qintitec",
+    "industry": "Fintech / Technology",
+    "description": "Corporate site for Qinti Tec: a fintech serving both individuals and financial firms, with the site split into those two doors.",
+    "problem": "Qinti Tec sells two things that have nothing in common: financial solutions for a person and technical support for a financial company. Told together, visitors cannot tell which one is theirs — or which number to write to, since the fintech operates in Peru and Ecuador — and the enquiry is lost before it starts.",
+    "solution": "The site splits the two audiences into a block cut down the middle, personal and business, each with its own path and its own contact number. Before that fork it settles what a fintech has to prove quickly: who they are, mission and vision, the values they work by and the team with names and faces. The form and WhatsApp close the page.",
+    "projectDescription": "Qinti Tec is a fintech operating in Peru and Ecuador. It provides technological financial solutions to users and technical support to financial companies, with financial inclusion as its banner. The site is its calling card: who they are, what they solve and where to write depending on what you need.",
+    "secondaryIndustry": "Financial solutions and technical support",
+    "forWhom": "A fintech selling to two very different audiences — the person and the financial firm — that needs to separate them from the home page",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Corporate website"
+    ],
+    "results": [],
+    "client": "Qinti Tec"
+  },
+  "capptura": {
+    "title": "Capptura",
+    "industry": "Photography / Studio",
+    "description": "Capptura on its own domain: the work sorted by type of session and booking in three steps, with the studio's brand throughout.",
+    "problem": "A photography studio sells by talking: the client writes on WhatsApp to ask what the package includes, how long the session lasts and whether there is a date free. Every enquiry costs an afternoon, and the ones that arrive at midnight are answered the next day. And a studio that sells memories cannot live on a borrowed subdomain.",
+    "solution": "Capptura runs on Bookit with its own domain, cappturafotografia.com, and with its palette — espresso, gold and pink — across the whole journey, booking included. The site tells the work by type of session, each with its own gallery: maternity, newborn, family, birthdays, weddings, corporate. And booking is just another page of the same site: service, date and time, your details. Anyone who would rather talk still has WhatsApp one click away.",
+    "projectDescription": "Capptura is Elena Gutiérrez's studio in Lima: more than ten years photographing maternity, newborns, families and portraits. The site brings together the types of session with their galleries, the story of who is behind the camera and a three-step online booking, all under its own domain.",
+    "secondaryIndustry": "Maternity, family and portrait photography",
+    "forWhom": "A photography studio that sells by conversation and wants the session to book itself, on its own domain",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Online booking"
+    ],
+    "results": [],
+    "client": "Capptura · Studio by Elena Gutiérrez"
   }
 }

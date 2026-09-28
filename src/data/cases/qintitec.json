@@ -1,0 +1,26 @@
+{
+  "title": "Qintitec",
+  "industry": "Fintech / Tecnología",
+  "image": "/images/proyects/qintitec/qintitec-portada.jpg",
+  "location": "Lima, Perú — Ecuador",
+  "platform": "Web",
+  "duration": "En producción",
+  "client": "Qinti Tec",
+  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "liveUrl": "https://qintitec.com.pe",
+  "secondaryIndustry": "Soluciones financieras y asistencia técnica",
+  "forWhom": "Fintech que vende a dos públicos que no se parecen —la persona y la empresa financiera— y necesita separarlos desde la portada",
+  "services": [
+    "Diseño de producto",
+    "Desarrollo web",
+    "Diseño UX/UI",
+    "Web corporativa"
+  ],
+  "description": "Web corporativa para Qinti Tec: una fintech que atiende a personas y a empresas financieras, con el sitio partido en esas dos puertas.",
+  "problem": "Qinti Tec vende dos cosas que no se parecen: soluciones financieras para una persona y asistencia técnica para una empresa financiera. Contadas juntas, el visitante no sabe cuál de las dos le corresponde —ni a qué número escribir, porque la fintech opera en Perú y en Ecuador— y la consulta se pierde antes de empezar.",
+  "solution": "El sitio separa los dos públicos en un bloque partido por la mitad, personales y empresariales, cada uno con su camino y con su número de contacto propio. Antes de esa bifurcación resuelve lo que una fintech tiene que demostrar rápido: quiénes son, misión y visión, los valores con los que trabajan y el equipo con nombre y cara. El formulario y el WhatsApp cierran la página.",
+  "results": [],
+  "projectDescription": "Qinti Tec es una fintech con presencia en Perú y Ecuador. Da soluciones financieras tecnológicas a usuarios y asistencia técnica a empresas financieras, con la inclusión financiera como bandera. La web es su carta de presentación: quiénes son, qué resuelven y por dónde se les escribe según lo que uno necesite.",
+  "publishedDate": "2026",
+  "slug": "qintitec"
+}

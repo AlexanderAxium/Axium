@@ -729,5 +729,131 @@
       "Analíticas e dashboards"
     ],
     "results": []
+  },
+  "aurore": {
+    "title": "Aurore",
+    "industry": "E-commerce / Perfumaria",
+    "description": "Loja online para a Aurore: um catálogo de perfumaria percorrido por casa, família olfativa, coleção e ocasião, em vez de uma grade de produtos.",
+    "problem": "Um catálogo de perfumes não se procura como se procura um eletrodoméstico. As pessoas chegam sabendo uma casa, uma nota ou uma ocasião (algo fresco, algo para a noite, um presente) e quase nunca o nome exato do produto. Uma grade com filtros obriga a saber de antemão o que se quer.",
+    "solution": "Desenhamos e desenvolvemos a loja em torno dessa forma de procurar: navegação por casa, família olfativa, coleção e ocasião; blocos editoriais na capa que levam direto à coleção que anunciam; páginas de produto que contam a fragrância ao lado do botão de compra; e uma busca que resolve marcas e nomes enquanto se digita. O celular é o layout principal, não uma adaptação.",
+    "projectDescription": "A Aurore reúne casas de designer, alta perfumaria de nicho e perfumaria árabe. A loja é construída para que esse catálogo seja explorado: coleções como madeiras e oud, frescos e cítricos ou gourmands viciantes convivem com as categorias clássicas, e cada bloco da capa é uma porta para uma delas.",
+    "secondaryIndustry": "Perfumaria de designer, de nicho e árabe",
+    "forWhom": "Perfumaria de autor que vende online e precisa que seu catálogo seja lido como um menu, não como uma lista",
+    "services": [
+      "Design de produto",
+      "Desenvolvimento web",
+      "Loja online",
+      "Design UX/UI"
+    ],
+    "results": [],
+    "client": "Aurore"
+  },
+  "blendet": {
+    "title": "Blendet Beauty Studio",
+    "industry": "Beleza / Estúdio com hora marcada",
+    "description": "Site do Blendet Beauty Studio, o estúdio de unhas, cílios e sobrancelhas de San Miguel, em Lima: a sua tabela de preços, a galeria de trabalho real e o agendamento que se fecha sozinho, sem esperar resposta.",
+    "problem": "Um estúdio que atende uma cliente por vez vive da agenda. Quando a reserva passa por mensagens, cada horário custa duas ou três idas e vindas (qual serviço, qual dia, quanto sai) e as que chegam de madrugada ou no meio de um atendimento perdem-se. Além disso, quem procura unhas não pergunta por «unhas»: pergunta por rubber, polygel, softgel ou esculpidas, e quer saber o preço antes de escrever.",
+    "solution": "Demos ao Blendet um site com a sua própria marca: o dourado, o vinho, a tipografia, com tudo o que a cliente precisa antes do botão. A tabela está agrupada por família (unhas, cílios, sobrancelhas, pedicure) com a duração e o preço a partir de cada técnica; o Instagram onde sobe o trabalho do dia; uma galeria feita no estúdio; e a morada com os horários. Agendar são três passos: serviço, data e hora, e dados. Por trás corre o Bookit, a plataforma de agendamentos da Axium, que sustenta a agenda e confirma na hora; de fora, a cliente só vê o Blendet.",
+    "projectDescription": "O Blendet Beauty Studio é um estúdio de beleza em San Miguel, Lima, que trabalha com hora marcada e uma cliente de cada vez: unhas em rubber, polygel, softgel, acrílicas e esculpidas; extensão de cílios do clássico ao volume russo, e lifting; sobrancelhas com depilação, hena, laminação e alisamento; e pedicure em gel. O site organiza essa tabela para que se entenda num relance, e transforma-a num agendamento.",
+    "secondaryIndustry": "Unhas, cílios, sobrancelhas e pedicure",
+    "forWhom": "Estúdio de beleza que atende com hora marcada e quer que a reserva se feche no seu próprio site, não numa conversa de WhatsApp",
+    "services": [
+      "Site de marca",
+      "Agendamento online",
+      "Tabela de serviços e preços",
+      "Design UX/UI"
+    ],
+    "results": [],
+    "client": "Blendet Beauty Studio"
+  },
+  "jarumi": {
+    "title": "Beautyroom by Jaru",
+    "industry": "Beleza / Estúdio com hora marcada",
+    "description": "Site do Beautyroom by Jaru, o estúdio de Jarumi Enriquez em Lima: uma tabela com tarifas e durações, uma página por serviço e o agendamento online de uma profissional que atende sozinha.",
+    "problem": "Quando quem atende é a mesma pessoa que responde às mensagens, cada consulta interrompe um atendimento. E as perguntas são sempre as mesmas: se atende sem hora marcada, quanto dura, quanto custa, como se remarca, que formas de pagamento aceita. Sem um site que as responda, a agenda enche-se de conversa e esvazia-se de horários.",
+    "solution": "Construímos o site em torno dessas perguntas. A tabela lista cada serviço com a tarifa e a duração real, a que inclui preparação e cuidado final; cada um tem a sua própria página com o que faz e quanto dura o efeito; e um bloco de perguntas frequentes responde de antemão à hora marcada, à remarcação até 24 horas antes e às formas de pagamento. O curso de lifting de cílios que ela ministra tem o seu próprio espaço, porque é outro negócio dentro do mesmo estúdio. O agendamento tem três passos e confirma na hora: por trás está o Bookit, a plataforma de agendamentos da Axium, e diante da cliente está apenas a marca dela.",
+    "projectDescription": "O Beautyroom by Jaru é o estúdio de Jarumi Enriquez em Comas, Lima, que também atende ao domicílio: lifting de cílios, laminação e design de sobrancelhas, limpeza facial, maquilhagem social, manicure, unhas acrílicas e pedicure. Trabalha exclusivamente com hora marcada e uma cliente por turno, e também forma outras profissionais com um curso prático de lash lifting.",
+    "secondaryIndustry": "Olhar, unhas e cuidado facial",
+    "forWhom": "Profissional que trabalha sozinha, atende uma cliente por turno e precisa que o site faça de receção",
+    "services": [
+      "Site de marca",
+      "Agendamento online",
+      "Página por serviço",
+      "Design UX/UI"
+    ],
+    "results": [],
+    "client": "Jarumi Enriquez"
+  },
+  "volveravivir": {
+    "title": "Volver a Vivir",
+    "industry": "ONG / Prevenção do abuso doméstico",
+    "description": "O braço peruano da To Live Again: a mesma fundação contra o abuso doméstico, agora com casa própria no Peru.",
+    "problem": "A To Live Again já tinha seu site nos Estados Unidos, mas no Peru a fundação existia no Instagram e num WhatsApp. E é uma página difícil de escrever: a mesma tela precisa convencer quem pode doar e, ao mesmo tempo, não assustar quem a abre de dentro de uma relação da qual ainda não sabe como sair.",
+    "solution": "Construímos volveravivir.pe com duas portas desde a primeira tela: «quero ajudar» e «preciso de ajuda». A capa não começa pedindo dinheiro: começa ensinando a reconhecer os primeiros sinais — o controle, o isolamento, o medo — e só depois conta quem são. A fundação, sua fundadora, os encontros e as formas de doar têm cada um sua página, e o WhatsApp fica à mão em todas.",
+    "projectDescription": "Volver a Vivir é o braço no Peru da To Live Again, a ONG 501(c)(3) fundada em 2016 em Miami. Mesma missão, mesma equipe, dois países. O site reúne o que a fundação faz em Lima — inspirar as vítimas a buscar ajuda, prevenir o abuso na próxima geração e criar consciência —, a história de sua fundadora e os encontros que organiza.",
+    "secondaryIndustry": "Fundação sem fins lucrativos",
+    "forWhom": "Fundação que precisa falar com duas pessoas ao mesmo tempo: a que pode doar e a que está pedindo ajuda",
+    "services": [
+      "Design de produto",
+      "Desenvolvimento web",
+      "Design UX/UI",
+      "Conteúdo e estrutura"
+    ],
+    "results": [],
+    "client": "Fundación Volver a Vivir"
+  },
+  "moviflex": {
+    "title": "Moviflex",
+    "industry": "Saúde / Fisioterapia",
+    "description": "Site para a Moviflex: três unidades no norte de Lima, quatro especialidades e uma consulta que se agenda na própria página.",
+    "problem": "A Moviflex atende em três unidades de Carabayllo e Comas, e nem todas fazem o mesmo: a fisioterapia pediátrica só existe na unidade Santa Isabel, e cada local tem seu endereço, seu horário e seu telefone. Com essa informação espalhada entre Instagram e WhatsApp, o paciente acabava perguntando a mesma coisa três vezes antes de conseguir agendar.",
+    "solution": "Organizamos o site na ordem em que um paciente pergunta: o que vocês tratam, como vai ser o atendimento, onde fica a unidade que me serve. Cada especialidade diz para que serve e em qual unidade é oferecida; cada unidade traz endereço, horário, telefone, como chegar e seu próprio botão de agendamento; e o caminho de atendimento — agenda, avaliação, tratamento, alta — está escrito passo a passo para que ninguém chegue às cegas à primeira sessão.",
+    "projectDescription": "A Moviflex é um centro de fisioterapia e reabilitação com oito anos e três unidades no norte de Lima. Trata lesões e dor crônica, reabilitação neurológica, fisioterapia pediátrica e massoterapia, com planos montados depois de uma avaliação funcional. O site é hoje sua porta de entrada e o lugar onde a consulta começa.",
+    "secondaryIndustry": "Fisioterapia e reabilitação",
+    "forWhom": "Centro de fisioterapia com várias unidades que precisa que o paciente escolha local, especialidade e horário sem ligar",
+    "services": [
+      "Design de produto",
+      "Desenvolvimento web",
+      "Design UX/UI",
+      "SEO local"
+    ],
+    "results": [],
+    "client": "Moviflex · Terapia física y rehabilitación"
+  },
+  "qintitec": {
+    "title": "Qintitec",
+    "industry": "Fintech / Tecnologia",
+    "description": "Site corporativo para a Qinti Tec: uma fintech que atende pessoas e empresas financeiras, com o site dividido nessas duas portas.",
+    "problem": "A Qinti Tec vende duas coisas que não se parecem: soluções financeiras para uma pessoa e assistência técnica para uma empresa financeira. Contadas juntas, o visitante não sabe qual delas lhe cabe — nem para qual número escrever, porque a fintech opera no Peru e no Equador — e a consulta se perde antes de começar.",
+    "solution": "O site separa os dois públicos em um bloco dividido ao meio, pessoais e empresariais, cada um com seu caminho e com seu próprio número de contato. Antes dessa bifurcação resolve o que uma fintech precisa provar rápido: quem são, missão e visão, os valores com que trabalham e a equipe com nome e rosto. O formulário e o WhatsApp fecham a página.",
+    "projectDescription": "A Qinti Tec é uma fintech com presença no Peru e no Equador. Oferece soluções financeiras tecnológicas a usuários e assistência técnica a empresas financeiras, com a inclusão financeira como bandeira. O site é seu cartão de visita: quem são, o que resolvem e para onde escrever conforme o que se precisa.",
+    "secondaryIndustry": "Soluções financeiras e assistência técnica",
+    "forWhom": "Fintech que vende a dois públicos muito diferentes — a pessoa e a empresa financeira — e precisa separá-los desde a capa",
+    "services": [
+      "Design de produto",
+      "Desenvolvimento web",
+      "Design UX/UI",
+      "Site corporativo"
+    ],
+    "results": [],
+    "client": "Qinti Tec"
+  },
+  "capptura": {
+    "title": "Capptura",
+    "industry": "Fotografia / Estúdio",
+    "description": "O site da Capptura em domínio próprio: o trabalho organizado por tipo de sessão e a reserva em três passos, com a marca do estúdio do início ao fim.",
+    "problem": "Um estúdio de fotografia vende conversando: a cliente escreve pelo WhatsApp para perguntar o que o pacote inclui, quanto dura a sessão e se há data livre. Cada consulta custa uma tarde, e as que chegam de madrugada são respondidas no dia seguinte. E um estúdio que vende lembranças não pode viver num subdomínio emprestado.",
+    "solution": "A Capptura roda sobre o Bookit com domínio próprio, cappturafotografia.com, e com sua paleta — espresso, ouro e rosa — em todo o percurso, reserva incluída. O site conta o trabalho por tipo de sessão, cada uma com sua galeria: maternidade, newborn, família, aniversários, casamentos, corporativo. E reservar é mais uma página do mesmo site: serviço, data e hora, seus dados. Quem prefere falar continua com o WhatsApp a um clique.",
+    "projectDescription": "A Capptura é o estúdio de Elena Gutiérrez em Lima: mais de dez anos fotografando maternidade, recém-nascidos, famílias e retratos. O site reúne os tipos de sessão com sua galeria, a história de quem está atrás da câmera e uma reserva online de três passos, tudo sob domínio próprio.",
+    "secondaryIndustry": "Fotografia de maternidade, família e retrato",
+    "forWhom": "Estúdio fotográfico que vende conversando e quer que a sessão se reserve sozinha, em domínio próprio",
+    "services": [
+      "Design de produto",
+      "Desenvolvimento web",
+      "Design UX/UI",
+      "Reservas online"
+    ],
+    "results": [],
+    "client": "Capptura · Studio by Elena Gutiérrez"
   }
 }

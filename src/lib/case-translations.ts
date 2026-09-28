@@ -8,7 +8,10 @@ import type { CaseItem } from "~/data/cases-data";
 import ambientalpeData from "~/data/cases/ambientalpe.json";
 import anjsportsData from "~/data/cases/anjsports.json";
 import antiruidopvcData from "~/data/cases/antiruidopvc.json";
+import auroreData from "~/data/cases/aurore.json";
+import blendetData from "~/data/cases/blendet.json";
 import bookitData from "~/data/cases/bookit.json";
+import cappturaData from "~/data/cases/capptura.json";
 import clefastData from "~/data/cases/clefast.json";
 import comunicarteData from "~/data/cases/comunicarte.json";
 import daesurmotorsData from "~/data/cases/daesurmotors.json";
@@ -24,12 +27,15 @@ import happyartData from "~/data/cases/happyart.json";
 import hotelesparaisoData from "~/data/cases/hotelesparaiso.json";
 import huarmisData from "~/data/cases/huarmis.json";
 import innersoulbrightData from "~/data/cases/innersoulbright.json";
+import jarumiData from "~/data/cases/jarumi.json";
 import jcpingenierosData from "~/data/cases/jcpingenieros.json";
 import lifetoursflData from "~/data/cases/lifetoursfl.json";
 import lujanData from "~/data/cases/lujan.json";
 import lumiolearnData from "~/data/cases/lumiolearn.json";
 import maintechData from "~/data/cases/maintech.json";
+import moviflexData from "~/data/cases/moviflex.json";
 import podologiemtkData from "~/data/cases/podologiemtk.json";
+import qintitecData from "~/data/cases/qintitec.json";
 import redesvipData from "~/data/cases/redesvip.json";
 import rematchData from "~/data/cases/rematch.json";
 import sicloData from "~/data/cases/siclo.json";
@@ -41,6 +47,7 @@ import vendiqData from "~/data/cases/vendiq.json";
 import ventanasantiruidoData from "~/data/cases/ventanasantiruido.json";
 import villacerData from "~/data/cases/villacer.json";
 import vitalchainData from "~/data/cases/vitalchain.json";
+import volveravivirData from "~/data/cases/volveravivir.json";
 import webScrapingAiData from "~/data/cases/web-scraping-ai.json";
 import { useTranslation } from "~/hooks/useTranslation";
 import { mapIcon } from "./case-translations-icons";
@@ -57,6 +64,7 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   bookit: bookitData as Record<string, unknown>,
   vendiq: vendiqData as Record<string, unknown>,
   anjsports: anjsportsData as Record<string, unknown>,
+  aurore: auroreData as Record<string, unknown>,
   ambientalpe: ambientalpeData as Record<string, unknown>,
   maintech: maintechData as Record<string, unknown>,
   vitalchain: vitalchainData as Record<string, unknown>,
@@ -73,11 +81,17 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   transportesrumi: transportesrumiData as Record<string, unknown>,
   villacer: villacerData as Record<string, unknown>,
   daesurmotors: daesurmotorsData as Record<string, unknown>,
+  blendet: blendetData as Record<string, unknown>,
+  capptura: cappturaData as Record<string, unknown>,
+  moviflex: moviflexData as Record<string, unknown>,
+  qintitec: qintitecData as Record<string, unknown>,
+  volveravivir: volveravivirData as Record<string, unknown>,
   firstautomation: firstautomationData as Record<string, unknown>,
   toliveagain: toliveagainData as Record<string, unknown>,
   podologiemtk: podologiemtkData as Record<string, unknown>,
   enrafmedica: enrafmedicaData as Record<string, unknown>,
   huarmis: huarmisData as Record<string, unknown>,
+  jarumi: jarumiData as Record<string, unknown>,
   favorygracia: favorygraciaData as Record<string, unknown>,
   hotelesparaiso: hotelesparaisoData as Record<string, unknown>,
   jcpingenieros: jcpingenierosData as Record<string, unknown>,
@@ -98,6 +112,8 @@ const CASE_ORDER: string[] = [
   "lumiolearn",
   "bookit",
   "vendiq",
+  // Clientes: Aurore primero, por pedido de Alexander
+  "aurore",
   "anjsports",
   "maintech",
   "vitalchain",
@@ -114,17 +130,23 @@ const CASE_ORDER: string[] = [
   "lujan",
   "ventanasantiruido",
   "antiruidopvc",
+  "moviflex",
   "transportesrumi",
   "villacer",
+  "capptura",
   "daesurmotors",
+  "blendet",
   "firstautomation",
   "toliveagain",
+  "volveravivir",
   "podologiemtk",
   "enrafmedica",
   "huarmis",
+  "jarumi",
   "favorygracia",
   "hotelesparaiso",
   "jcpingenieros",
+  "qintitec",
   "lifetoursfl",
   "comunicarte",
   "ghiperu",

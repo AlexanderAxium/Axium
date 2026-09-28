@@ -1,0 +1,26 @@
+{
+  "title": "Beautyroom by Jaru",
+  "industry": "Belleza / Estudio con cita",
+  "image": "/images/proyects/jarumi/jarumi-portada.jpg",
+  "location": "Lima, Perú",
+  "platform": "Web (sitio público + reservas)",
+  "duration": "En producción",
+  "client": "Jarumi Enriquez",
+  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "liveUrl": "https://jarumi.bookit.com.pe",
+  "secondaryIndustry": "Mirada, uñas y cuidado facial",
+  "forWhom": "Profesional que trabaja sola, atiende una clienta por turno y necesita que la web haga de recepción",
+  "services": [
+    "Sitio de marca",
+    "Reservas en línea",
+    "Ficha por servicio",
+    "Diseño UX/UI"
+  ],
+  "description": "Sitio de Beautyroom by Jaru, el estudio de Jarumi Enriquez en Lima: una carta con tarifas y duraciones, una ficha por servicio y la reserva en línea de una profesional que atiende sola.",
+  "problem": "Cuando la que atiende es la misma que responde los mensajes, cada consulta interrumpe un servicio. Y las preguntas son siempre las mismas: si atiende sin cita, cuánto dura, cuánto cuesta, cómo se reprograma, qué métodos de pago acepta. Sin un sitio que las conteste, la agenda se llena de conversación y se vacía de citas.",
+  "solution": "Construimos el sitio alrededor de esas preguntas. La carta lista cada servicio con su tarifa y su duración real —la que incluye preparación y cuidado final—, cada uno tiene su propia ficha con lo que hace y cuánto dura el efecto, y un bloque de preguntas frecuentes responde de antemano lo de la cita previa, la reprogramación a 24 horas y el pago. El curso de lifting de pestañas que dicta tiene su propio espacio, porque es otro negocio dentro del mismo estudio. La reserva es de tres pasos y confirma al momento: por detrás está Bookit, la plataforma de reservas de Axium, y de cara a la clienta solo está su marca.",
+  "results": [],
+  "projectDescription": "Beautyroom by Jaru es el estudio de Jarumi Enriquez en Comas, Lima, que además atiende a domicilio: lifting de pestañas, laminado y depilación de cejas, limpieza facial, maquillaje social, manicure, uñas acrílicas y pedicure. Trabaja exclusivamente con cita previa y una clienta por turno, y también forma a otras profesionales con un curso práctico de lash lifting.",
+  "publishedDate": "2026",
+  "slug": "jarumi"
+}

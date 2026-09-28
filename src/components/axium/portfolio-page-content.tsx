@@ -67,9 +67,18 @@ function getSlug(title: string, slug?: string) {
 
 // ─── Filter definitions ───────────────────────────────────────────────────────
 const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
+  // Un caso puede estar en más de un filtro. Ojo al agregar uno nuevo: si no entra
+  // en ninguna lista, queda invisible para quien filtra (pasó con los cuatro SaaS
+  // propios y con las siete fichas de 2026-09).
+  {
+    label: "Productos propios",
+    slugs: ["rematch", "lumiolearn", "bookit", "vendiq"],
+  },
   {
     label: "E-commerce",
     slugs: [
+      "vendiq",
+      "aurore",
       "clefast",
       "sportt",
       "lujan",
@@ -79,15 +88,43 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
     ],
   },
   {
-    label: "Salud",
-    slugs: ["podologiemtk", "enrafmedica", "toliveagain", "innersoulbright"],
+    label: "Reservas y citas",
+    slugs: [
+      "bookit",
+      "rematch",
+      "capptura",
+      "blendet",
+      "jarumi",
+      "moviflex",
+      "podologiemtk",
+    ],
   },
-  { label: "Educación", slugs: ["maintech", "vitalchain", "huarmis"] },
+  {
+    label: "Salud",
+    slugs: [
+      "moviflex",
+      "podologiemtk",
+      "enrafmedica",
+      "toliveagain",
+      "innersoulbright",
+    ],
+  },
+  {
+    label: "Educación",
+    slugs: ["lumiolearn", "maintech", "vitalchain", "huarmis"],
+  },
   {
     label: "Tecnología",
-    slugs: ["feniz", "firstautomation", "redesvip", "siclo"],
+    slugs: [
+      "qintitec",
+      "web-scraping-ai",
+      "feniz",
+      "firstautomation",
+      "redesvip",
+      "siclo",
+    ],
   },
-  { label: "Finanzas", slugs: ["financial-management"] },
+  { label: "Finanzas", slugs: ["financial-management", "qintitec"] },
   { label: "Experiencia de cliente", slugs: ["feedback-management"] },
   { label: "Medio ambiente", slugs: ["ambientalpe"] },
   {
@@ -96,10 +133,11 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
   },
   { label: "Automotriz", slugs: ["daesurmotors"] },
   { label: "Logística", slugs: ["transportesrumi"] },
-  { label: "Organizaciones", slugs: ["favorygracia"] },
+  { label: "Organizaciones", slugs: ["favorygracia", "volveravivir"] },
   { label: "Hotelería", slugs: ["hotelesparaiso", "ghiperu"] },
   { label: "Ingeniería", slugs: ["jcpingenieros"] },
   { label: "Turismo", slugs: ["lifetoursfl"] },
+  { label: "Consumo masivo", slugs: ["fenalsa"] },
   { label: "Editorial / Cultura", slugs: ["comunicarte"] },
 ];
 
