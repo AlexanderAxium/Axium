@@ -1,58 +1,50 @@
 {
   "title": "Feniz",
-  "industry": "Fintech / Trading",
-  "image": "/images/proyects/feniz/feniz-home.png",
+  "industry": "Fintech · Trading de cuentas de fondeo",
+  "image": "/images/proyects/feniz/fz-portada-cifras-v2.jpg",
   "location": "Internacional",
-  "platform": "Web",
-  "duration": "Nov '25 – Ene '26",
+  "platform": "Plataforma web",
+  "duration": "Sep '25 – Ene '26",
   "client": "Feniz",
+  "liveUrl": "https://sistemafeniz.com",
   "technologyStack": [
     "Next.js",
     "TypeScript",
-    "Tailwind CSS",
+    "tRPC",
+    "Prisma",
     "PostgreSQL",
-    "Python",
-    "MetaTrader"
+    "Tailwind CSS",
+    "MQL5 · MetaTrader 5"
   ],
-  "secondaryIndustry": "PropFirms",
-  "forWhom": "Funded traders, propfirms y brokers que buscan gestionar múltiples cuentas de trading",
+  "secondaryIndustry": "PropFirms y brokers",
+  "forWhom": "Traders de cuentas de fondeo que operan a la vez con una propfirm y con su propio bróker",
   "services": [
-    "Dashboard Analytics",
-    "Gestión de Cuentas",
-    "App de Escritorio",
-    "Integración API con Propfirms"
+    "Producto SaaS a medida",
+    "Autenticación y correo transaccional",
+    "Área del trader y panel de administración",
+    "Integración con MetaTrader 5",
+    "Cobros con Paddle y MercadoPago"
   ],
-  "description": "Plataforma SaaS para funded traders: web, dashboard de métricas, app de escritorio con automatización en MetaTrader (Python) y conexión a múltiples propfirms.",
-  "problem": "Los funded traders enfrentaban el desafío de gestionar múltiples cuentas de propfirms de forma dispersa, sin una visión centralizada de su rendimiento, P&L y métricas clave, lo que dificultaba optimizar sus estrategias de trading.",
-  "solution": "Desarrollamos una plataforma web integral que permite conectar múltiples cuentas de propfirms en un solo dashboard, visualizar métricas en tiempo real (Balance, P&L, Win Rate), gestionar conexiones activas y optimizar estrategias de trading con datos consolidados.",
-  "results": [
-    {
-      "icon": "Users",
-      "metric": "15+",
-      "label": "usuarios activos"
-    },
-    {
-      "icon": "CheckCircle2",
-      "metric": "15+",
-      "label": "propfirms integradas"
-    },
-    {
-      "icon": "TrendingUp",
-      "metric": "Tiempo real",
-      "label": "métricas en dashboard"
-    }
-  ],
-  "projectDescription": "Desarrollamos esta plataforma SaaS completa para funded traders que revoluciona la forma de gestionar cuentas de propfirms. La solución incluye un dashboard intuitivo con métricas en tiempo real (Balance Total, P&L, Conexiones Activas, Win Rate), sistema de conexión con múltiples propfirms como FTMO, gestión centralizada de cuentas de trading, planes de suscripción flexibles, sistema de asesoría personalizada y acciones rápidas para operaciones frecuentes. Todo construido con un enfoque en UX/UI moderno y rendimiento óptimo.",
+  "description": "El producto entero de una plataforma para traders de cuentas de fondeo: sitio y legales, autenticación, área del trader, panel de administración y un Expert Advisor de MetaTrader 5 generado para cada usuario.",
+  "problem": "Un trader de fondeo opera la cuenta de una propfirm y, en paralelo, la suya en un bróker, y llevaba las dos a mano, sin una sola vista de su rendimiento. Lo difícil no era el panel: MetaTrader 5 no expone una API hacia fuera, así que las operaciones había que ir a buscarlas.",
+  "solution": "Construimos la plataforma completa sobre Next.js, tRPC y Prisma, con roles y permisos granulares y cobro por Paddle y MercadoPago. Y escribimos el puente que faltaba: Feniz genera un Expert Advisor en MQL5 para cada trader, con su webhook y su clave dentro, que corre en MetaTrader 5 y envía sus operaciones cada cinco segundos.",
+  "results": [],
+  "projectDescription": "Feniz es una plataforma para traders de cuentas de fondeo: conecta la cuenta de una propfirm con la de un bróker, registra las operaciones y muestra balance, resultado y aciertos en un solo panel. Llegaron sin producto: se construyó entero, del sitio público al panel de administración.",
   "skillsAndDeliverables": [
+    "Producto SaaS a medida",
     "Next.js",
     "TypeScript",
+    "tRPC",
+    "Prisma",
+    "PostgreSQL",
     "Tailwind CSS",
-    "Dashboard Analytics",
-    "API Integration",
-    "Real-time Metrics",
-    "User Authentication",
-    "Subscription System"
+    "better-auth",
+    "AWS SES",
+    "Paddle",
+    "MercadoPago",
+    "MQL5 · MetaTrader 5",
+    "Roles y permisos",
+    "SEO técnico"
   ],
-  "publishedDate": "Jan 22, 2026",
-  "liveUrl": "https://sistemafeniz.com"
+  "publishedDate": "Jan 2026"
 }

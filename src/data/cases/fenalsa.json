@@ -6,7 +6,7 @@
   "platform": "Web",
   "duration": "2025",
   "client": "Fenalsa Servicios Generales SAC",
-  "technologyStack": ["WordPress"],
+  "technologyStack": ["WordPress", "Elementor"],
   "secondaryIndustry": "Servicios de limpieza y cocina",
   "forWhom": "Empresas que buscan servicios de alimentación colectiva, limpieza profesional, desinfección y catering",
   "services": [
@@ -24,6 +24,7 @@
   "projectDescription": "Fenalsa es una empresa arequipeña que ofrece servicios de alimentación y limpieza. Desarrollamos su web corporativa para presentar al equipo especializado, los servicios de limpieza (integral, desinfección, mantenimiento) y de cocina (gourmet, catering, alta gastronomía en casa). El sitio incluye misión, visión, testimonios y canales de contacto para cotizaciones.",
   "skillsAndDeliverables": [
     "WordPress",
+    "Elementor",
     "Diseño responsive",
     "Integración WhatsApp"
   ],

@@ -45,14 +45,15 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     caseHref: "/casos-de-exito/rematch",
     domain: "rematch.pe",
     // La misma portada que en /portafolio (Alexander, 2026-09-25: «me gustan más»),
-    // recortada a 16:10 (desde y=52) para que la tarjeta no la corte sola: el celular
-    // apoyado en la pala de pádel, de noche, con el inicio móvil de rematch.pe.
-    // v10 (2026-09-26): la pantalla ahora sí trae la cabecera del sitio (logo Rematch
-    // + menú). La cabecera es position:fixed y el fullPage la perdía; se captura el
-    // viewport real (390×794 @3x). Se descartó una escena nueva —el celular contra la
-    // red, a ras de suelo— porque la cancha no se leía realista (red de cuerda gruesa,
-    // escala rota); ver CASO-REMATCH.md § 12
-    cover: "/images/highlights/rematch-v10.jpg",
+    // recortada a 16:10 (desde y=40: la banda de cielo es lo sacrificable).
+    // v11 (2026-09-30): cuatro pistas de pádel acristaladas, de noche, vacías, con el
+    // asfalto mojado devolviendo la luz. Sin dispositivo y sin pelotas: es la única
+    // portada de los cuatro SaaS propios que enseña un LUGAR y no una pantalla, que es
+    // lo que la separa de Bookit, LumioLearn y Vendiq. Sustituye al celular sobre la
+    // pala (v10), que era la cuarta escena oscura con dispositivo de la rejilla y
+    // llevaba dos pelotas —lo que la guía de marca de Rematch pide evitar—.
+    // Ver CASO-REMATCH.md § 13
+    cover: "/images/highlights/rematch-v11.jpg",
     logo: {
       src: "/images/highlights/logos/rematch.png",
       width: 939,

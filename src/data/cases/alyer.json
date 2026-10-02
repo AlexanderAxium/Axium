@@ -1,0 +1,27 @@
+{
+  "title": "Alyer",
+  "industry": "Branding · Transporte y fabricación metálica",
+  "image": "/images/proyects/alyer/al-portada.jpg",
+  "location": "Perú",
+  "platform": "Impreso y digital · sin plataforma web",
+  "duration": "Entregado",
+  "client": "Alyer",
+  "technologyStack": ["Adobe Illustrator", "Adobe InDesign", "Adobe Photoshop"],
+  "secondaryIndustry": "Transporte de carga minera y fabricación de semirremolques",
+  "forWhom": "Empresa industrial con dos líneas de negocio que necesita una sola marca y un manual que la sostenga en el acero, en la ropa de trabajo y en el papel",
+  "services": [
+    "Identidad de marca",
+    "Manual de marca",
+    "Sistema tipográfico",
+    "Aplicaciones de marca",
+    "Merchandising",
+    "Diseño editorial"
+  ],
+  "description": "La marca de Alyer entera: el símbolo, la paleta, la pareja tipográfica, un manual de identidad de 35 láminas, la rotulación de flota, el merchandising y el brochure comercial de su línea de fabricación.",
+  "problem": "Una marca de transporte pesado no se juega en una pantalla: se juega a treinta metros, de perfil, sucia y en movimiento. Y Alyer necesitaba que la misma marca firmara dos negocios distintos —la flota que mueve la carga y el taller que fabrica las unidades— sin partirse en dos logotipos que compiten entre sí.",
+  "solution": "Un símbolo construido sobre la «A» de Alyer, fragmentada y orientada a la derecha, que se lee a la vez como movimiento y como pieza mecánica. Alrededor, un sistema corto y duro: negro, rojo y cuatro grises, Quadrat Serial para el logotipo y Acumin Variable Wide para todo lo demás. Un manual de 35 láminas fija construcción, área de seguridad, tamaño mínimo, escala de grises, usos incorrectos sobre fotografía y expresión textual. Las dos líneas, Transportes y Producción, comparten símbolo, palabra y color: solo cambia el descriptor.",
+  "results": [],
+  "projectDescription": "Alyer es un grupo industrial peruano con dos líneas: Transportes, que mueve concentrado de mineral, carga peligrosa y carga sobredimensionada por trece ciudades del país, y Producción —Industrias Metálicas Alyer—, que fabrica las tolvas, cisternas y semirremolques que esa flota arrastra. El encargo fue de marca, no de plataforma: identidad, manual, aplicaciones en flota y ropa de trabajo, merchandising y el brochure comercial de la línea de fabricación.",
+  "publishedDate": "2026",
+  "slug": "alyer"
+}

@@ -1,53 +1,49 @@
 {
   "title": "Clefast",
   "industry": "E-commerce Industrial",
-  "image": "/images/proyects/clefast/clefast-home.png",
+  "image": "/images/proyects/clefast/cf-portada-gama-v2.jpg",
   "location": "Perú",
   "platform": "Web",
-  "duration": "Oct '25 – Ene '26",
+  "duration": "Jul – Set '26",
   "client": "Clefast",
-  "technologyStack": ["Next.js", "Tailwind CSS", "TypeScript", "PostgreSQL"],
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "TanStack Query",
+    "Radix UI",
+    "Framer Motion",
+    "PostgreSQL",
+    "Vendiq"
+  ],
   "secondaryIndustry": "Productos Ecológicos",
-  "forWhom": "Empresas industriales y comerciales que buscan soluciones de limpieza ecológicas",
+  "forWhom": "Lavanderías industriales, hoteles, clínicas y empresas que compran detergente ecológico por volumen",
   "services": [
     "Tienda Virtual",
-    "Catálogo por Categorías",
-    "Promociones",
-    "Blog",
-    "Checkout",
-    "Libro de Reclamaciones"
+    "Checkout Propio",
+    "Envíos por Zona",
+    "Migración de Contenido",
+    "Chat de Atención",
+    "SEO Técnico"
   ],
-  "description": "Tienda virtual completa para detergentes ecológicos industriales: catálogo con categorías, carrito, checkout, promociones, blog y libro de reclamaciones integrado.",
-  "problem": "Necesidad de una plataforma digital para comercializar detergentes ecológicos industriales, con catálogo organizado, promociones y canal de comunicación con clientes B2B.",
-  "solution": "E-commerce moderno con catálogo de productos ecológicos, sistema de promociones, blog informativo, formulario de contacto empresarial y libro de reclamaciones digital integrado.",
-  "results": [
-    {
-      "icon": "Users",
-      "metric": "100%",
-      "label": "presencia digital establecida"
-    },
-    {
-      "icon": "TrendingUp",
-      "metric": "50%",
-      "label": "incremento en consultas de clientes"
-    },
-    {
-      "icon": "CheckCircle2",
-      "metric": "24/7",
-      "label": "disponibilidad del catálogo online"
-    }
-  ],
-  "projectDescription": "Desarrollamos esta tienda virtual completa para Clefast, empresa especializada en detergentes ecológicos para lavanderías industriales. La plataforma incluye: tienda online con catálogo de productos organizado por categorías (Línea Clásica, Especializada y Premium), carrito de compras, proceso de checkout, sistema de promociones y bonificaciones, blog con guías y noticias para lavanderías, catálogo descargable, formulario de contacto empresarial y libro de reclamaciones digital cumpliendo normativas peruanas.",
+  "description": "Tienda de detergentes ecológicos para lavandería industrial rehecha entera sobre Vendiq: 35 productos en once categorías con 205 presentaciones, checkout propio de cuatro pasos y envío cotizado por la dirección del comprador.",
+  "problem": "La tienda vivía en un gestor de contenidos a medida que ya no se mantenía, y había que trasladarla sin perder catálogo, páginas ni enlaces. Además, el envío se ofrecía sin mirar la dirección: el comprador podía elegir cualquiera de las ocho zonas del tarifario.",
+  "solution": "Se reconstruyó la tienda pieza por pieza sobre nuestra plataforma de comercio, en el mismo dominio, y se le hizo un checkout propio donde la tarifa de envío se cotiza con el subtotal, el país, el departamento y el distrito; los distritos homónimos se ofrecen calificados con su provincia.",
+  "results": [],
+  "projectDescription": "Clefast fabrica detergentes ecológicos para lavanderías, hoteles y clínicas del Perú. Su tienda se rehízo entera sobre Vendiq, el producto de comercio de Axium, sin perder un registro: 35 productos publicados, once categorías, 205 presentaciones de 100 ml a 200 kg, dos entradas de blog y tres catálogos en PDF. Se le construyó un checkout propio de cuatro pasos —carrito, información, envío y pago— con el ubigeo encadenado y la tarjeta tokenizada en el navegador, y un chat de atención que comparte panel con WhatsApp.",
   "skillsAndDeliverables": [
+    "Diseño UX/UI",
+    "Desarrollo web",
+    "Comercio electrónico",
+    "Checkout y pasarelas",
+    "Migración de contenido",
+    "SEO técnico",
+    "Accesibilidad",
     "Next.js",
-    "Tailwind CSS",
     "TypeScript",
-    "PostgreSQL",
-    "E-commerce",
-    "Carrito de Compras",
-    "Checkout",
-    "SEO Optimization"
+    "Tailwind CSS"
   ],
-  "publishedDate": "Jan 23, 2026",
+  "publishedDate": "Sep 24, 2026",
   "liveUrl": "https://clefast.com.pe"
 }

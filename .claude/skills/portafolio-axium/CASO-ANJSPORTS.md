@@ -267,3 +267,170 @@ es para promocionar ANJ sino para promocionar mi trabajo"*. Las dos, ciertas.
 5. **¿Construyo ya la ficha con las 5 imágenes sin IA**, y la F se suma después?
    Es lo que recomiendo: tienes el caso funcionando hoy y la pieza cara llega
    cuando llegue.
+
+---
+
+# 8. Tercera pasada · ficha larga y capítulo técnico (2026-09-30)
+
+La v2 de 2026-09-02 **se revirtió el 2026-09-11**: la ficha volvió a la plantilla
+vieja de 146 líneas con dos imágenes, y con ella volvió el dato falso de
+WordPress. Esta pasada la rehace entera con el formato largo de `CaseStory` y
+añade lo que **no tenía ninguna otra ficha del portafolio**.
+
+## 8.1 · El dato falso, corregido otra vez y medido otra vez
+
+`technologyStack` decía `["WordPress","WooCommerce","PHP"]` y los tres locales
+decían *«Desarrollamos su e-commerce con WordPress y WooCommerce»*. Medido en
+vivo el 2026-09-30:
+
+| Prueba | Resultado |
+|---|---|
+| Cabeceras | `x-powered-by: Next.js` · `x-nextjs-prerender: 1` · `x-nextjs-stale-time: 300` |
+| `wp-content` / `wp-includes` | **cero** |
+| Chunks | `/_next/static/chunks/…`, rutas de App Router |
+| Imágenes | `pub-a15fad1bb05e4ecbb92c9d83b643a721.r2.dev` servidas por `/_next/image` |
+| API | `anjsports.com/api/z/{products,categories,collections,brands,currencies,payment-methods,orders}` |
+| Fuentes y tokens | `vendiq.pe/fonts/custom/*` y `--gc-*` en el `<style>` inline |
+
+Publicado ahora: `["Vendiq","Next.js","App Router","React","TypeScript","Tailwind CSS","Cloudflare R2"]`,
+y los textos de `es/en/pt` reescritos con el stack real.
+
+## 8.2 · Datos nuevos, todos medidos contra la API pública de la tienda
+
+| Dato | Valor | De dónde sale |
+|---|---|---|
+| Productos | **251** en `/productos` (la API devuelve 252) | se publica el que ve el visitante |
+| Variantes | **555** en total; hasta **12** en un producto | `DR. NEUBAUER DESPERADO RELOADED`: 4 colores × 3 grosores (0.5 · 1.0 · OX) |
+| Multi-variante | 120 de 252 productos | casi la mitad del catálogo |
+| Categorías | 13 | `/api/z/categories` |
+| Marcas | 5 (BUTTERFLY, DR. NEUBAUER, SANWEI, VICTAS, XIOM) | `/api/z/brands`; XIOM sola son 164 productos |
+| Colecciones | «Colección de ropa Xiom 2026» (39), «Popular en Butterfly» (8), «Popular en Xiom» (8) | `/api/z/collections` |
+| Monedas | PEN y USD | `/api/z/currencies` |
+| Cobro | **Culqi** (tarjeta, `pk_live_…`) + transferencia bancaria | `/api/z/payment-methods` |
+| Checkout | 4 pasos en `anjsports.com/checkout` | carrito → información → envío y pago → confirmación |
+| Tallas | XS · S · M · L · XL · 2XL · 3XL | filtro de `/productos` |
+
+## 8.3 · La pieza que nadie más tiene: el diagrama de arquitectura
+
+Es lo que Viget hace mejor que nadie (`referencias/capturas/viget/caso-goodbids-d06..d08`):
+un bloque **TECHNICAL DECISIONS → un párrafo → el diagrama a todo el ancho sobre
+un campo de color de marca**. ANJ era el caso perfecto porque el alcance tiene
+dos mitades reales: la tienda a medida y el motor.
+
+- Fuente: `capturas-clientes/anjsports/taller/diagrama-anjsports.html`.
+- Se genera en **es/en/pt y en dos formatos**: 2:1 (1400×700) para escritorio y
+  4:3 (800×600) apilado para el celular. El texto vive DENTRO de la imagen, así
+  que el i18n de la ficha no lo alcanza: la ficha elige el archivo por `lang`.
+- **El lienzo del diagrama es 1400×700, no 1600×800.** Una pieza `wide` de
+  `CaseStory` se sirve a 1312 px en un viewport de 1440: a 1400 el texto llega
+  casi a 1:1 y se lee; a 1600 se encoge a 0,82 y las subetiquetas caen a 10 px.
+- **La versión de celular es el ESPINAZO, no el diagrama entero.** A 328 px de
+  ancho —lo que mide de verdad una pieza en el móvil— catorce cajas salen
+  ilegibles. La apilada deja solo los dos paneles con su resumen de una línea,
+  las dos flechas y el remate, con el titular a 32 px sobre el lienzo de 800.
+- Tipografía del cliente: **Druk Wide Bold** y **AdihausDIN**, bajadas de
+  `vendiq.pe/fonts/custom/` (las mismas que sirve su web).
+
+## 8.4 · El acento del caso
+
+`CaseStory` pide `{ base, dark, deep }` y los dos primeros tienen que pasar
+4,5:1. El neón de XIOM (`#2BE8C8`) da **1,56:1 sobre blanco**: no sirve de
+`base`. Quedó:
+
+| | Color | Contraste |
+|---|---|---|
+| `base` (sobre claro) | `#0B7A6A` | 5,24:1 sobre blanco |
+| `dark` (sobre la tinta) | `#2BE8C8` — el neón exacto de su web | 12,47:1 sobre `#060C20` |
+| `deep` | `#04211D` | — |
+
+## 8.5 · Las piezas (todas en `public/images/proyects/anjsports/`)
+
+Once en la galería —**cinco anchas (2:1, 1600×800 CSS) y tres pares de cuadradas
+(1:1, 800×800 CSS)**— ninguna repite sujeto, más el héroe, el logotipo y la portada.
+
+| Archivo | Bloque | Qué enseña | Cómo se hizo |
+|---|---|---|---|
+| `anj-xiom` | par | La portada en su estado XIOM, en cian | tarjeta sin cromo de 736 px + glow de marca + micro-rótulo |
+| `anj-butterfly` | par | La misma portada un slide después, Butterfly en magenta | idem, glow y filo magenta |
+| `anj-catalogo` | ancha | El panel de filtros con XIOM marcado y «1-9 de 164 productos» | R19 ventana de navegador |
+| `anj-goma` | par | QUÉ se vende: la goma y sus cinco colores, la foto entera | tarjeta, recorte 495×582 CSS al 1,25 |
+| `anj-matriz` | par | CÓMO se vende: las doce casillas, el precio y el stock | tarjeta, recorte 500×410 CSS al 1,40 — el texto pasa de 10,4 px servidos a 14,9 |
+| `anj-coleccion` | ancha | «Ropa Xiom 2026» filtrada a talla M: 22 de 251 | R19 |
+| `anj-deportistas` | ancha | Los jugadores patrocinados, «POWERED BY XIOM» y **los cinco logotipos** | tarjeta a sangre sobre negro |
+| `anj-celular-tienda` | par | Portada y catálogo a 390×844 @3x | dos teléfonos (272 y 300 px) sobre el degradado cian→magenta |
+| `anj-celular-filtros` | par | El **cajón de filtros**, solo y grande | un teléfono a 316 px, centrado |
+| `anj-arquitectura-{es,en,pt}` | ancha | **El diagrama de la integración** | HTML, § 8.3 |
+| `anj-checkout` | ancha | Los cuatro pasos, las líneas del pedido y el total, en su dominio | R19 |
+| `anj-hero` | — | Arena de tenis de mesa vacía, de noche | Higgsfield · escena, sin UI |
+| `anj-portada` | — | La tienda en una ventana sobre la superficie de una mesa, con el lockup real | Higgsfield (superficie) + composición |
+| `anj-logo` | — | El logotipo real de su web, 150×36 escalado ×10 con LANCZOS y el alfa re-umbralizado | — |
+
+Se borraron `anjsports-hero.jpg` y `anjsports-desc.jpg`: eran mockups de
+dispositivo genéricos, con el botón de WhatsApp a la vista, y su sujeto (el hero)
+ya lo cuentan `anj-xiom` y `anj-butterfly`.
+
+**El 2026-09-30 se borraron también `anj-marcas`, `anj-variantes` y `anj-movil`**
+(con sus variantes `-movil`), las tres anchas que se partieron en los tres pares
+de arriba. Alexander: «veo que todo lo has puesto imagen columna entera, puedes
+usar 2 columnas también para variar» — ANJ era la única ficha del portafolio con
+cero pares. No se retiquetó nada: **una ancha se sirve a 1312×656 y una cuadrada
+de un par a 648×648**, así que recortar la ancha perdía la mitad y las tres
+piezas se volvieron a componer en el taller. Solo se partió donde la pieza ya era
+dos cosas; el diagrama, el catálogo, la colección, los deportistas y el checkout
+se quedan anchos porque su contenido es horizontal y en 648 px no se leería.
+
+## 8.6 · Higgsfield: 2 prompts, 6 imágenes, 5,50 créditos
+
+`gpt_image_2_5` · `quality: high` · `resolution: 2k` · `count: 3` · **2,75 por
+lote**. Dos lotes: la arena (16:9) y la superficie de mesa (3:2). **Las dos
+salieron a la primera** y no hizo falta una segunda tanda.
+
+Lo que funcionó del prompt, y que vale para cualquier escena de oficio:
+- **Foco profundo y cámara lejos** (`35 mm at f/8, deep focus, the table edge,
+  the floor grain and the far wall all sharp`). El bokeh fabrica fallos.
+- **Una sola luz dura declarada** («one hard overhead arena spotlight … everything
+  else falls off into deep black with no fill light»).
+- **Los dos neones del cliente por hex** y como luz de ambiente, no como objeto.
+- Para la superficie de la portada, **`completely empty composition`** con el
+  hueco pedido por zonas («the centre and the right of the frame are completely
+  empty»): el modelo deja el sitio libre para la ventana.
+- Negativo específico del rubro: `no tennis balls, no fuzzy felt balls` — la
+  pelota tenía que ser de tenis de mesa, mate, 40 mm (la lección de la pala de
+  pádel con pelotas de tenis, COMPOSITOR § Coherencia del atrezo).
+
+Revisadas **a 1:1 por zonas** antes de componer: red (malla fina, escala correcta
+contra una pelota de 40 mm), fondo, suelo y el riel de la mesa. Sin letras
+inventadas, sin geometría rota.
+
+## 8.7 · El ritmo, medido
+
+Regla: ningún tramo de más de ~700 px sin imagen, a 1440. Coste medido de cada
+bloque de `CaseStory`: **`text` ≈ 300 px · `act` ≈ 600 px · `highlights` ≈ 650 px
+· `tags` ≈ 640 px** (con el titular de «Más proyectos» detrás). O sea que **dos
+bloques sin imagen seguidos siempre pasan de 700**.
+
+La primera versión ponía «Reto» pegado al acto 01 (880 px) y «Resultados» pegado
+a `tags` al cierre (920 px). El arreglo fue de **orden, no de cantidad**: cada
+bloque de texto va solo entre dos imágenes y el único que queda al final es
+`tags`. De ahí también que la ficha **cierre con el checkout y no con el
+diagrama**: la última línea del diagrama dice que el jugador no cambia de dominio
+ni una vez, y la pieza siguiente es esa compra terminando en `anjsports.com`.
+
+| Ficha | Tramos sin imagen @1440 | El peor (sin contar el CTA compartido) |
+|---|---|---|
+| Aurore | 9 | 808 px |
+| Alyer | 9 | 643 px |
+| **ANJ Sports** | **8** | **659 px** |
+
+A 360: ANJ 744 px en el peor tramo, contra 745 de Aurore y 792 de Alyer — y ese
+tramo es estructural de `CaseStory` (`tags` + «Más proyectos»), igual en las tres.
+
+## 8.8 · Lo que sigue pendiente
+
+- **Métricas de negocio**: siguen sin existir. `results` vacío a propósito.
+- **El pie de su web dice «Desarrollado por Emet Studio»**. Conviene confirmar
+  con Alexander si eso se queda o se cambia, porque la ficha publica el trabajo
+  como propio.
+- El **paso 3 del checkout** («Envío y Pago», con Culqi y las transferencias a la
+  vista) daría una novena pieza fuerte, pero exige rellenar el formulario de una
+  tienda real; se dejó fuera.

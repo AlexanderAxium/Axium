@@ -3,23 +3,29 @@
   "industry": "Deporte / Academia de tenis",
   "image": "/images/proyects/cesaracosta/cesaracosta-portada.jpg",
   "location": "Lima, Perú",
-  "platform": "Web (sitio de la academia)",
+  "platform": "Web, sobre la API de Rematch",
   "duration": "Construido, a la espera de publicarse",
   "client": "Academia César Acosta",
-  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "API de Rematch"
+  ],
   "secondaryIndustry": "Formación de tenis para niños y adultos",
   "forWhom": "Academia deportiva con varias sedes que necesita mostrar, grupo por grupo, los cupos que de verdad quedan",
   "services": [
-    "Identidad visual",
     "Diseño web",
+    "Diseño UX/UI",
     "Desarrollo web",
-    "Diseño UX/UI"
+    "Integración con API"
   ],
-  "description": "Sitio para la Academia César Acosta, una academia de tenis de Lima con dos sedes: cada grupo muestra el cupo que de verdad le queda, y el sitio se lee como la academia entrena, con método.",
+  "description": "Sitio para la Academia César Acosta, una academia de tenis de Lima con dos sedes: los grupos, los cupos, los horarios y la tienda salen en vivo de la API de Rematch, la plataforma con la que la academia ya opera.",
   "problem": "Las academias de tenis se presentan con un horario en PDF y un número de WhatsApp. El padre que quiere inscribir a su hijo no sabe si el grupo de su edad sigue abierto, en qué sede está ni a qué hora entrena, así que escribe para preguntar lo básico y la academia contesta lo mismo veinte veces. Y cuando un grupo se llena, la página sigue diciendo «inscríbete».",
-  "solution": "Le dimos a la academia un sistema de diseño propio —una sola familia tipográfica con contraste de escala fuerte, navy como tinta de todos los títulos, un verde lima escaso reservado a la acción, esquinas casi rectas— y construimos el sitio encima: los grupos abiertos salen del sistema de gestión de la academia con el cupo que les queda, se filtran por sede y por edad, y cada programa lleva sus días y su horario a la vista. El método se explica en cuatro pilares, las sedes se ven a nivel de cancha, y todo está pensado primero para el celular, que es donde el padre mira.",
+  "solution": "Construimos el sitio encima de la API v1 de Rematch: los grupos abiertos llegan con el cupo que de verdad les queda, se filtran por sede y por edad, y cada programa lleva su horario de la semana y sus planes con precio; la tienda, las clases particulares y las inscripciones también salen de ahí, con la llave viviendo solo del lado del servidor. Sobre ese dato montamos el sistema de diseño de la web —Barlow con un contraste de escala fuerte, navy como tinta de todos los títulos y como velo sobre cada foto, un lima escaso reservado a la acción, esquinas casi rectas—, pensado primero para el celular, que es donde el padre mira. La identidad del club ya existía y no se tocó.",
   "results": [],
-  "projectDescription": "La Academia César Acosta enseña tenis en dos clubes de Lima, desde baby tenis de tres años hasta adultos que quieren competir, siempre en grupos reducidos. Su argumento no es el eslogan: es el método, las canchas y el cupo. El sitio se construyó alrededor de esas tres cosas y hoy está terminado, a la espera de que la academia lo publique.",
+  "projectDescription": "La Academia César Acosta enseña tenis en dos clubes de Lima, desde baby tenis de tres años hasta adultos que quieren competir, siempre en grupos reducidos. Su argumento no es el eslogan: es el método, las canchas y el cupo. El sitio se construyó alrededor de esas tres cosas, encima de la plataforma con la que la academia ya administra sus grupos y su tienda, y hoy está terminado, a la espera de que la academia lo publique.",
   "publishedDate": "2026",
   "slug": "cesaracosta"
 }

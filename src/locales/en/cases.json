@@ -73,27 +73,39 @@
     "results": []
   },
   "maintech": {
-    "title": "Maintech",
-    "industry": "Education and Technology",
-    "description": "From visual identity to a complete e-learning platform: we built the brand, web ecosystem and Maintech's digital academy.",
-    "projectDescription": "Maintech is a Peruvian company dedicated to professional training. They came to us with no digital presence: no logo, website or platform. They needed to build everything from scratch and position themselves in the online technical education market.",
-    "secondaryIndustry": "Branding and E-Learning",
-    "forWhom": "Students, professionals and corporate teams in Peru",
+    "title": "MainTech",
+    "industry": "Branding · Technical training and industrial consulting",
+    "description": "MainTech's whole brand and the site it lives in: symbol, type system, palette, applied brand and a nine-page Next.js site with a course catalogue and certificate verification.",
+    "problem": "A technical school sells trust before it sells content: whoever pays for a reliability programme wants to know the certificate will hold. And one brand had to carry both sides of the business, training and consulting, without either looking like a branch of the other.",
+    "solution": "A symbol built from a grid of blocks in indigo, cyan and pink, working just as well at 32 pixels as at one metre, locked up with the wordmark and the descriptor. Around it, Orbitron for headlines and Poppins in five weights, and a Next.js site whose entry screen separates MainTech Academy from MainTech Solutions without splitting the brand.",
+    "projectDescription": "MainTech trains maintenance and reliability engineers out of Arequipa: live and recorded courses for mining and industry, specialisation programmes and verifiable certificates, plus a consulting line for plant and fleet. They arrived with no brand and no site.",
+    "secondaryIndustry": "Maintenance, reliability and asset management",
+    "forWhom": "Maintenance engineers and technicians in mining and industry, and the companies that hire them",
     "services": [
-      "Brand Design",
-      "Brand Manual",
-      "E-Learning Platform",
-      "Corporate Website"
-    ]
+      "Brand identity",
+      "Type system",
+      "Brand architecture",
+      "Brand applications",
+      "Web design and build",
+      "Technical SEO"
+    ],
+    "results": [],
+    "client": "MainTech"
   },
   "vitalchain": {
     "title": "VitalChain Academy",
     "industry": "Wellness and Education",
-    "description": "Website, e-learning platform and raffle system: we developed VitalChain Academy's digital ecosystem for holistic wellbeing with blockchain transparency.",
-    "projectDescription": "VitalChain Academy is a holistic wellbeing initiative that combines spiritual growth with conscious technology.",
+    "description": "VitalChain Academy's website: seven public pages, the raffle funnel with a number verifiable on chain, Web3 guides in ten languages, a blog with its own editor and the portal where buyers check their ticket.",
+    "projectDescription": "VitalChain Academy is a wellbeing academy operating from Europe with its eyes on Latin America: training, retreats, Web3 guides and a raffle that funds its medical missions.",
     "secondaryIndustry": "Conscious Technology",
     "forWhom": "People seeking personal development and holistic wellbeing",
-    "services": ["E-Learning Platform", "Raffle System", "Content Blog"]
+    "services": [
+      "Web design and development",
+      "Content architecture",
+      "Content management",
+      "Private area with sign-up",
+      "Technical SEO"
+    ]
   },
   "fenalsa": {
     "title": "Fenalsa",
@@ -113,90 +125,50 @@
   },
   "feniz": {
     "title": "Feniz",
-    "industry": "Fintech / Trading",
-    "description": "SaaS platform for funded traders: website, metrics dashboard, desktop app with MetaTrader automation (Python) and connection to multiple propfirms.",
-    "problem": "Funded traders faced the challenge of managing multiple propfirm accounts in a scattered way, without a centralized view of their performance, P&L and key metrics.",
-    "solution": "We developed a comprehensive web platform that allows connecting multiple propfirm accounts in a single dashboard, viewing real-time metrics, managing active connections and optimizing trading strategies.",
-    "projectDescription": "We developed this complete SaaS platform for funded traders that revolutionizes how propfirm accounts are managed. Includes a dashboard with real-time metrics, connection with multiple propfirms like FTMO, centralized account management, subscription plans and quick actions.",
-    "secondaryIndustry": "PropFirms",
-    "forWhom": "Funded traders, propfirms and brokers seeking to manage multiple trading accounts",
+    "industry": "Fintech · Funded-account trading",
+    "description": "The whole product of a platform for funded-account traders: website and legals, authentication, trader area, admin panel and a MetaTrader 5 Expert Advisor generated for each user.",
+    "problem": "A funded trader runs a propfirm account and, in parallel, their own at a broker, and kept both by hand with no single view of how they were doing. The hard part was not the panel: MetaTrader 5 exposes no outbound API, so the trades had to be fetched.",
+    "solution": "We built the whole platform on Next.js, tRPC and Prisma, with granular roles and permissions and payments through Paddle and MercadoPago. And we wrote the missing bridge: Feniz generates an MQL5 Expert Advisor for each trader, carrying their webhook and key inside, which runs in MetaTrader 5 and posts their trades every five seconds.",
+    "projectDescription": "Feniz is a platform for funded-account traders: it links a propfirm account to a broker one, records the trades and shows balance, result and win rate in a single panel. They arrived with no product: it was built whole, from the public website to the admin panel.",
+    "secondaryIndustry": "Propfirms and brokers",
+    "forWhom": "Funded-account traders running a propfirm account and their own broker account at the same time",
     "services": [
-      "Dashboard Analytics",
-      "Account Management",
-      "Desktop App",
-      "API Integration with Propfirms"
+      "Custom SaaS product",
+      "Authentication and transactional email",
+      "Trader area and admin panel",
+      "MetaTrader 5 integration",
+      "Payments with Paddle and MercadoPago"
     ],
-    "results": [
-      {
-        "metric": "15+",
-        "label": "active users"
-      },
-      {
-        "metric": "15+",
-        "label": "integrated propfirms"
-      },
-      {
-        "metric": "Real-time",
-        "label": "dashboard metrics"
-      }
-    ]
+    "results": [],
+    "client": "Feniz"
   },
   "innersoulbright": {
     "title": "Inner Soul Bright",
     "industry": "Spiritual Wellness",
-    "description": "Professional website for spiritual medium and energy healer, with immersive design that conveys peace and spiritual connection, presentation of healing services.",
-    "problem": "The client needed a professional digital presence that conveyed the essence of her spiritual services, built trust with potential clients and facilitated awareness of her energy healing and mediumship services.",
-    "solution": "We developed a modern website with immersive design that combines cosmic tones and visual elements of inner peace. Includes detailed service sections, 'About Me' page for personal connection, responsive design optimized for conversions.",
-    "projectDescription": "We developed this website for Inner Soul Bright, a spiritual medium and energy healer who offers a safe space for spiritual growth. Includes immersive design with cosmic backgrounds, energy healing services section, 'About Me' page and SEO optimization.",
+    "description": "Inner Soul Bright's website: three pages holding the four accompaniment services, the step-by-step process and the code of ethics, published in five languages, every section animated on entry.",
+    "projectDescription": "Inner Soul Bright is a spiritual accompaniment and energy healing practice that works online and in person, with an audience spread across several countries. The engagement was its website.",
     "secondaryIndustry": "Personal Development",
-    "forWhom": "People seeking spiritual growth, energy healing and connection with their inner self",
-    "services": ["Immersive Design", "About Me Page"],
-    "results": [
-      {
-        "metric": "150+",
-        "label": "site visits in the first month"
-      },
-      {
-        "metric": "85%",
-        "label": "increase in online visibility"
-      },
-      {
-        "metric": "100%",
-        "label": "client satisfaction with the design"
-      }
-    ]
+    "forWhom": "People looking for spiritual accompaniment, energy clearing and clarity at a time of change",
+    "services": ["Web design and development", "Site in five languages"]
   },
   "clefast": {
     "title": "Clefast",
     "industry": "Industrial E-commerce",
-    "description": "Complete virtual store for industrial eco-friendly detergents: catalog with categories, cart, checkout, promotions, blog and integrated complaints book.",
-    "problem": "Need for a digital platform to market industrial eco-friendly detergents, with organized catalog, promotions and B2B customer communication channel.",
-    "solution": "Modern e-commerce with eco-friendly product catalog, promotions system, informative blog, corporate contact form and integrated digital complaints book.",
-    "projectDescription": "We developed this complete virtual store for Clefast, a company specialized in eco-friendly detergents for industrial laundries. Includes online store with catalog by categories, cart, checkout, promotions, blog, downloadable catalog and complaints book.",
-    "secondaryIndustry": "Eco-Friendly Products",
-    "forWhom": "Industrial and commercial companies seeking eco-friendly cleaning solutions",
+    "description": "An eco-friendly detergent store for industrial laundries, rebuilt in full on Vendiq: 35 products across eleven categories with 205 sizes, a four-step custom checkout and shipping quoted from the buyer's address.",
+    "problem": "The store ran on a bespoke CMS that was no longer maintained, and it had to move without losing catalogue, pages or links. On top of that, shipping was offered without looking at the address: the buyer could pick any of the eight zones in the rate card.",
+    "solution": "The store was rebuilt piece by piece on our commerce platform, on the same domain, with a custom checkout where the shipping rate is quoted from the subtotal, the country, the department and the district; districts that share a name are offered qualified with their province.",
+    "projectDescription": "Clefast makes eco-friendly detergents for laundries, hotels and clinics across Peru. Its store was rebuilt in full on Vendiq, Axium's commerce product, without losing a record: 35 published products, eleven categories, 205 sizes from 100 ml to 200 kg, two blog posts and three PDF catalogues. We built a four-step custom checkout — cart, details, shipping and payment — with chained geography and the card tokenised in the browser, plus a support chat that shares a panel with WhatsApp.",
+    "secondaryIndustry": "Eco-friendly Products",
+    "forWhom": "Industrial laundries, hotels, clinics and companies buying eco-friendly detergent in bulk",
     "services": [
-      "Virtual Store",
-      "Catalog by Categories",
-      "Promotions",
-      "Blog",
-      "Checkout",
-      "Complaints Book"
+      "Online Store",
+      "Custom Checkout",
+      "Shipping by Zone",
+      "Content Migration",
+      "Support Chat",
+      "Technical SEO"
     ],
-    "results": [
-      {
-        "metric": "100%",
-        "label": "digital presence established"
-      },
-      {
-        "metric": "50%",
-        "label": "increase in customer inquiries"
-      },
-      {
-        "metric": "24/7",
-        "label": "online catalog availability"
-      }
-    ]
+    "results": []
   },
   "happyart": {
     "title": "Happy Art",
@@ -434,6 +406,7 @@
       "Website redesign",
       "Web development",
       "UX/UI design",
+      "Content and structure",
       "Bilingual ES/EN version"
     ],
     "results": []
@@ -606,19 +579,20 @@
   },
   "anjsports": {
     "title": "ANJ Sports",
-    "industry": "Sports & E-commerce",
-    "description": "Table tennis online store for ANJ Sports: rackets, rubbers and accessories with catalog by brands, featured products, register to save and customer service.",
-    "problem": "ANJ Sports needed an online store to present their table tennis offer (rackets, rubbers, accessories), highlight leading brands and facilitate purchase and contact in Peru.",
-    "solution": "We developed anjsports.com with WordPress and WooCommerce: featured and latest products, catalog by brands (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer), testimonials section, register for offers, my account, customer service (FAQ, payment methods, returns) and complaints book.",
-    "projectDescription": "ANJ Sports is a table tennis specialty store in Peru. We developed their e-commerce with WordPress and WooCommerce: featured and latest products on the homepage, catalog with brands like Butterfly, VICTAS, XIOM, SANWEI and Dr. Neubauer, testimonials section, register-to-save campaign, My Account area (login, offers, order history), customer service with FAQs and payment methods, returns, and legal links including complaints book. The site reinforces ANJ's presence as a reference for table tennis rackets, rubbers and accessories.",
+    "industry": "E-commerce · Table tennis",
+    "description": "A custom storefront for ANJ Sports on Vendiq: 251 products from five brands, variants by colour and thickness, live stock and checkout inside anjsports.com.",
+    "problem": "A table tennis rubber is not one product: it is a matrix of colour by thickness, and every cell has its own price and its own stock. With 251 products, five brands distributed, apparel collections by size and a sports identity that changes colour with the brand on show, an off-the-shelf store template forces you to choose between the catalogue and the brand.",
+    "solution": "We built the custom storefront in Next.js with the App Router —black, wide display type, the carousel that changes colour with the brand— and put it on Vendiq, Axium's commerce product. Vendiq holds the catalogue, the variants with their SKUs, the stock and the orders; the storefront exposes that API on its own domain, so the filtered catalogue, the product page with its variants, the cart and the four-step checkout all happen without leaving anjsports.com.",
+    "projectDescription": "ANJ Sports has distributed XIOM, Butterfly, VICTAS, SANWEI and Dr. Neubauer in Peru since 2010, and sponsors the players who compete. Their brand already existed: the job was the store and the engine behind it.",
     "secondaryIndustry": "Table tennis",
-    "forWhom": "Table tennis players and enthusiasts looking for rackets, rubbers and accessories in Peru",
+    "forWhom": "A sports distributor with a multi-brand, variant-heavy catalogue that needs a store with its own face and a real commerce engine",
     "services": [
-      "Online store",
-      "Featured and latest products",
-      "Brands (Butterfly, VICTAS, XIOM, SANWEI, Dr. Neubauer)",
-      "Register and offers",
-      "Testimonials and news"
+      "UX/UI design",
+      "Web development",
+      "Custom online store",
+      "Vendiq integration",
+      "Catalogue and variants",
+      "Checkout and payments"
     ],
     "results": []
   },
@@ -669,25 +643,7 @@
       "Docker containerization"
     ]
   },
-  "store-saas": {
-    "title": "E-commerce & Inventory SaaS",
-    "industry": "SaaS / E-commerce",
-    "description": "Our own e-commerce and inventory SaaS: catalog with variants, stock and Kardex control, orders and POS, dashboard with revenue and trends, coupons and multi-store. One platform to sell and operate.",
-    "problem": "A unified platform was needed that combined online store, inventory management (stock, variants, restock alerts), orders and point of sale, sales analytics and payment methods, with multi-store and team support.",
-    "solution": "We built a SaaS with Next.js that integrates: product catalog with categories, collections and variants (size, color), prices and descriptions; inventory per variant with restock threshold and notifications; Kardex; online orders and POS; dashboard with revenue, orders, clients, sales trend and payment methods; coupons, content and page builder; multi-store and team management.",
-    "projectDescription": "E-commerce & Inventory SaaS is a platform we created that combines online store and inventory system in one product. It includes full product management (name, slug, provider, categories, collections, variants, prices, description, media), restock threshold and allow backorders; stock control per variant, inventory value and low-stock alerts; Kardex module for movements; orders and integrated point of sale; dashboard with date filters, total revenue, orders, clients, active and low-stock products, sales trend and breakdown by payment method; coupons, content and featured sections; multi-store (change store) and team management. Built with Next.js and TypeScript for scalability and maintainability.",
-    "secondaryIndustry": "E-commerce and inventory",
-    "forWhom": "Stores and brands that sell online and need catalog, orders, inventory and analytics control in one platform",
-    "services": [
-      "Product and catalog management",
-      "Inventory and Kardex control",
-      "Orders and POS",
-      "Dashboard and analytics",
-      "Coupons and content",
-      "Multi-store and team"
-    ],
-    "results": []
-  },
+
   "financial-management": {
     "title": "Financial Management System",
     "industry": "SaaS / Finance",
@@ -726,21 +682,43 @@
   },
   "aurore": {
     "title": "Aurore",
-    "industry": "E-commerce / Perfumery",
-    "description": "Online store for Aurore: a perfume catalogue you browse by house, olfactory family, collection and occasion, instead of a product grid.",
-    "problem": "A perfume catalogue is not searched the way an appliance is. People arrive knowing a house, a note or an occasion (something fresh, something for the evening, a gift) and almost never the exact product name. A grid with filters forces you to know what you want before you start.",
-    "solution": "We designed and built the store around that way of searching: navigation by house, olfactory family, collection and occasion; editorial blocks on the home page that lead straight into the collection they announce; product pages that tell the story of the fragrance next to the buy button; and search that resolves brands and names as you type. Mobile is the primary layout, not an adaptation.",
-    "projectDescription": "Aurore brings together designer houses, niche perfumery and Arabic perfumery. The store is built so that catalogue can be explored: collections such as woods and oud, fresh and citrus, or addictive gourmands sit alongside the classic categories, and every block on the home page is a door into one of them.",
-    "secondaryIndustry": "Designer, niche and Arabic perfumery",
-    "forWhom": "An independent perfumery selling online that needs its catalogue read like a menu, not a list",
+    "industry": "Branding / E-commerce · Perfumery",
+    "description": "Aurore's brand and store, from scratch: logo, monogram, type system and palette, its applications, and the store where 278 fragrances are browsed by house, by note and by occasion.",
+    "problem": "Aurore had no brand, and a perfume catalogue is not searched the way an appliance is: people arrive knowing a house, a note or an occasion, almost never the exact product name. On top of that the business sells two things of the same perfume, the full bottle and the decant, and if every size is a separate product the catalogue doubles.",
+    "solution": "First the brand: monogram, type pairing (Sainte Colombe and Avenir) and a palette of five colours, plus four editorial colours that are the four doors into the catalogue. Then the applications: decant label, stationery, bag and box. Then the store, built around how a perfume is really looked for: houses with their counts, collections with their own headers, olfactory notes as a way in, and decant sizes inside the product itself. Mobile is the primary layout, not an adaptation.",
+    "projectDescription": "Aurore is a Peruvian perfumery that brings together designer houses, niche perfumery and Arabic perfumery, and sells both the full bottle and the decant of the same scent. The brand was created for this project — there was no logo, no type system and no palette — and the applications and the store were built on top of it.",
+    "secondaryIndustry": "Niche, designer and Arabic perfumery",
+    "forWhom": "An independent perfumery that needs a brand of its own and a store where its catalogue reads like a menu, not a list",
     "services": [
-      "Product design",
+      "Brand identity",
+      "Type system",
+      "Brand applications",
+      "UX/UI design",
       "Web development",
-      "Online store",
-      "UX/UI design"
+      "Online store"
     ],
     "results": [],
     "client": "Aurore"
+  },
+  "alyer": {
+    "title": "Alyer",
+    "industry": "Branding · Freight transport and metal fabrication",
+    "description": "Alyer's entire brand: the symbol, the palette, the type pairing, a 35-page identity manual, the fleet livery, the merchandising and the commercial brochure for its manufacturing line.",
+    "problem": "A heavy-haulage brand is not decided on a screen: it is decided at thirty metres, side on, dirty and moving. And Alyer needed the same brand to sign two different businesses —the fleet that moves the cargo and the workshop that builds the units— without splitting into two logos competing with each other.",
+    "solution": "A symbol built on Alyer's «A», fragmented and pointed to the right, which reads at once as movement and as a machined part. Around it, a short, hard system: black, red and four greys, Quadrat Serial for the logotype and Acumin Variable Wide for everything else. A 35-page manual fixes construction, clear space, minimum size, greyscale, incorrect uses over photography and textual expression. The two lines, Transportes and Producción, share symbol, wordmark and colour: only the descriptor changes.",
+    "projectDescription": "Alyer is a Peruvian industrial group with two lines: Transportes, which hauls mineral concentrate, hazardous and oversize cargo across thirteen cities of the country, and Producción —Industrias Metálicas Alyer—, which builds the hoppers, tankers and semi-trailers that fleet pulls. The brief was brand, not platform: identity, manual, applications on fleet and workwear, merchandising and the commercial brochure for the manufacturing line.",
+    "secondaryIndustry": "Mining freight transport and semi-trailer manufacturing",
+    "forWhom": "An industrial company with two business lines that needs a single brand and a manual able to hold it on steel, on workwear and on paper",
+    "services": [
+      "Brand identity",
+      "Brand manual",
+      "Type system",
+      "Brand applications",
+      "Merchandising",
+      "Editorial design"
+    ],
+    "results": [],
+    "client": "Alyer"
   },
   "blendet": {
     "title": "Blendet Beauty Studio",
@@ -853,17 +831,17 @@
   "cesaracosta": {
     "title": "Academia César Acosta",
     "industry": "Sport / Tennis academy",
-    "description": "A website for Academia César Acosta, a tennis academy in Lima with two venues: every group shows the places it actually has left, and the site reads the way the academy trains, with a method.",
+    "description": "A website for Academia César Acosta, a tennis academy in Lima with two venues: the groups, the places left, the timetables and the store come live from the Rematch API, the platform the academy already runs on.",
     "problem": "Tennis academies introduce themselves with a PDF timetable and a WhatsApp number. A parent who wants to enrol a child cannot tell whether the group for that age is still open, which venue it runs at or at what time, so they write in to ask the basics and the academy answers the same thing twenty times over. And when a group fills up, the page still says “sign up”.",
-    "solution": "We gave the academy a design system of its own — a single typeface family with a hard contrast of scale, navy as the ink of every heading, a scarce lime green reserved for action, corners kept almost square — and built the site on top of it: open groups come from the academy's own management system with the places they have left, they filter by venue and by age, and every programme carries its days and its timetable in plain sight. The method is explained in four pillars, the venues are shown at court level, and the whole thing is designed for the phone first, which is where the parent looks.",
+    "solution": "We built the site on top of the Rematch v1 API: open groups arrive with the places they actually have left, they filter by venue and by age, and every programme carries its weekly timetable and its priced plans; the store, the private lessons and the enrolments come from there too, with the key living only on the server side. On top of that data we built the web design system — Barlow with a hard contrast of scale, navy as the ink of every heading and as a veil over every photo, a scarce lime reserved for action, corners kept almost square — designed for the phone first, which is where the parent looks. The club's identity already existed and was left untouched.",
     "projectDescription": "Academia César Acosta teaches tennis at two clubs in Lima, from baby tennis at three years old to adults who want to compete, always in small groups. Its argument is not the slogan: it is the method, the courts and the places left. The site was built around those three things and is now finished, waiting for the academy to publish it.",
     "secondaryIndustry": "Tennis coaching for children and adults",
     "forWhom": "A multi-venue sports academy that needs to show, group by group, the places it actually has left",
     "services": [
-      "Visual identity",
       "Web design",
+      "UX/UI design",
       "Web development",
-      "UX/UI design"
+      "API integration"
     ],
     "results": [],
     "client": "Academia César Acosta"

@@ -160,7 +160,7 @@ export function Footer() {
                   <Mail className="h-4 w-4 text-blue-500" />
                   <a
                     href="mailto:contacto@axium.com.pe"
-                    className="hover:text-blue-400 transition-colors"
+                    className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
                   >
                     contacto@axium.com.pe
                   </a>
@@ -169,7 +169,7 @@ export function Footer() {
                   <Phone className="h-4 w-4 text-blue-500" />
                   <a
                     href="tel:+51991285679"
-                    className="hover:text-blue-400 transition-colors"
+                    className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
                   >
                     +51 991 285 679
                   </a>
@@ -207,50 +207,26 @@ export function Footer() {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/servicios/software-a-medida"
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                    href="/servicios/design-branding"
+                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    Software a Medida
+                    {t("home.services.items.discovery.title")}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/servicios/aplicaciones-web"
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                    href="/servicios/software-development"
+                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    Aplicaciones Web
+                    {t("home.services.items.software-dev.title")}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/servicios/aplicaciones-moviles"
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                    href="/servicios/ai-agentic-systems"
+                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    Aplicaciones Móviles
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/servicios/automatizacion-de-procesos"
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    Automatización
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/servicios/analitica-e-ia"
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    Analítica e IA
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/servicios/branding-ui"
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    Branding &amp; UI
+                    {t("home.services.items.ai-systems.title")}
                   </Link>
                 </li>
               </ul>
@@ -264,7 +240,7 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                      className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -285,19 +261,19 @@ export function Footer() {
               <div className="flex gap-6 text-sm text-gray-400">
                 <Link
                   href="/legal/terms"
-                  className="hover:text-blue-400 transition-colors"
+                  className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
                 >
                   {t("terms")}
                 </Link>
                 <Link
                   href="/legal/privacy"
-                  className="hover:text-blue-400 transition-colors"
+                  className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
                 >
                   {t("privacy")}
                 </Link>
                 <Link
                   href="/legal/cookies"
-                  className="hover:text-blue-400 transition-colors"
+                  className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
                 >
                   {t("cookies")}
                 </Link>

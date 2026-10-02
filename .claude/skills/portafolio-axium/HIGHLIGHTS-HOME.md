@@ -443,3 +443,28 @@ empeora al bajar calidad. Mejor la escena fotográfica que ya estaba aprobada, c
 **Y tres referencias en código, no dos**: además de `rematch.json` y `highlights-section.tsx`, la
 tarjeta «Siguiente» de la ficha de Vendiq (`VendiqContent.tsx:424`) apunta a la portada de Rematch.
 Grepear el nombre del archivo en todo `src/`, no solo los JSON de casos.
+
+---
+
+## Décima vuelta — Rematch deja de ser un dispositivo (2026-09-30)
+
+`highlights/rematch-v10.jpg` → **`highlights/rematch-v11.jpg`**: cuatro pistas de pádel
+acristaladas, de noche, vacías, con el asfalto mojado devolviendo la luz. Recorte 16:10 **desde
+y=40** de `proyects/rematch/rematch-portada-v6.jpg`. Detalle completo en `CASO-REMATCH.md § 13`.
+
+**Lo que esta vuelta corrige, y que es de esta sección y no del caso**: los cuatro highlights eran
+**cuatro escenas oscuras con un dispositivo sobre una superficie** (laptop sobre mármol, tableta
+cenital, monitor sobre repisa, celular sobre la pala). A tamaño de tarjeta las cuatro son la misma
+mancha. Es la queja del § 8 —*«son muy similares»*— que se había resuelto para los highlights de la
+primera época y había vuelto a aparecer al unificar portada de carrusel y portada de home.
+
+**La regla que queda para esta sección**: entre cuatro productos propios, **cada portada tiene que
+cambiar de género, no solo de atrezo**. Cambiar el dispositivo (laptop → tableta → monitor →
+celular) no basta: los cuatro géneros siguen siendo «bodegón de producto oscuro». Rematch pasa a
+**lugar**, y con eso la columna deja de leerse como una sola imagen repetida.
+
+**Y la corrección a la regla anterior**: arriba quedó escrito que lo que funciona es la aérea o el
+objeto en primer plano con la cancha desenfocada. Es incompleto. **Lo que falla no es la cancha: es
+la profundidad de campo corta**, porque el modelo rellena el desenfoque con formas plausibles e
+incoherentes. Con **foco profundo (f/8) y cámara lejana y ortogonal**, una cancha entera en el
+encuadre sale bien. Comprobado a 1:1 en cinco recortes.

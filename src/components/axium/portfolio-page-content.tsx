@@ -3,28 +3,24 @@
 import { CaseContactCTA } from "@/components/axium/case-contact-cta";
 import { MagneticCursorArrow } from "@/components/axium/magnetic-cursor-arrow";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useCasesWithLocale } from "@/lib/case-translations";
-import {
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  Settings,
-  X,
-} from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-const ITEMS_PER_PAGE = 20;
+/**
+ * Múltiplo de las tres anchuras de rejilla (3 · 2 · 1), para que ninguna página
+ * completa termine en una fila coja. Con 20 la última fila quedaba con 2 de 3.
+ */
+const ITEMS_PER_PAGE = 24;
+
+/** Respeta a quien pidió menos movimiento en su sistema. */
+const prefiereMenosMovimiento = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // ─── Slug helper ──────────────────────────────────────────────────────────────
 const slugMap: Record<string, string> = {
@@ -56,7 +52,6 @@ const slugMap: Record<string, string> = {
   "ANJ Sports": "anjsports",
   AmbientalPE: "ambientalpe",
   "Instructor Management System": "siclo",
-  "E-commerce & Inventory SaaS": "store-saas",
   "Financial Management System": "financial-management",
   "Feedback Management System": "feedback-management",
 };
@@ -66,16 +61,21 @@ function getSlug(title: string, slug?: string) {
 }
 
 // ─── Filter definitions ───────────────────────────────────────────────────────
-const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
-  // Un caso puede estar en más de un filtro. Ojo al agregar uno nuevo: si no entra
-  // en ninguna lista, queda invisible para quien filtra (pasó con los cuatro SaaS
-  // propios y con las siete fichas de 2026-09).
+// Barra superior, no columna lateral: las referencias (basic, upstatement, viget,
+// barrel) nunca enseñan más de 3–8 etiquetas de un eje a la vez. De ahí que el
+// eje de sector pase de 18 etiquetas a 8 agrupadas.
+//
+// REGLA: un caso puede estar en más de un filtro, pero **ningún slug de
+// CASE_ORDER puede faltar en los tres ejes a la vez**: si no entra en ninguna
+// lista, queda invisible para quien filtra (pasó con los cuatro SaaS propios y
+// con las siete fichas de 2026-09).
+
+// Eje 1 — Qué hacemos. Es el eje por defecto: las referencias clasifican por el
+// trabajo entregado (upstatement: Brands/Products/Editorial/Websites), no por el
+// rubro del cliente.
+const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
   {
-    label: "Productos propios",
-    slugs: ["rematch", "lumiolearn", "bookit", "vendiq"],
-  },
-  {
-    label: "E-commerce",
+    label: "Tienda online",
     slugs: [
       "vendiq",
       "aurore",
@@ -83,12 +83,12 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
       "sportt",
       "lujan",
       "happyart",
+      "comunicarte",
       "anjsports",
-      "store-saas",
     ],
   },
   {
-    label: "Reservas y citas",
+    label: "Reservas y agenda",
     slugs: [
       "bookit",
       "rematch",
@@ -97,73 +97,32 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
       "jarumi",
       "moviflex",
       "podologiemtk",
+      "cesaracosta",
+      "lifetoursfl",
     ],
   },
   {
-    label: "Salud",
-    slugs: ["moviflex", "podologiemtk", "enrafmedica", "innersoulbright"],
+    label: "Plataforma a medida",
+    slugs: [
+      "rematch",
+      "lumiolearn",
+      "bookit",
+      "vendiq",
+      "feniz",
+      "siclo",
+      "financial-management",
+      "feedback-management",
+      "ambientalpe",
+      "qintitec",
+      "web-scraping-ai",
+    ],
   },
   {
-    label: "Educación",
+    label: "Formación online",
     slugs: ["lumiolearn", "maintech", "vitalchain", "huarmis", "cesaracosta"],
   },
   {
-    label: "Tecnología",
-    slugs: [
-      "qintitec",
-      "web-scraping-ai",
-      "feniz",
-      "firstautomation",
-      "redesvip",
-      "siclo",
-    ],
-  },
-  { label: "Finanzas", slugs: ["financial-management", "qintitec"] },
-  { label: "Experiencia de cliente", slugs: ["feedback-management"] },
-  { label: "Medio ambiente", slugs: ["ambientalpe"] },
-  {
-    label: "Construcción",
-    slugs: ["antiruidopvc", "ventanasantiruido", "villacer"],
-  },
-  { label: "Automotriz", slugs: ["daesurmotors"] },
-  { label: "Logística", slugs: ["transportesrumi"] },
-  {
-    label: "Organizaciones",
-    slugs: ["favorygracia", "volveravivir", "toliveagain"],
-  },
-  { label: "Hotelería", slugs: ["hotelesparaiso", "ghiperu"] },
-  { label: "Ingeniería", slugs: ["jcpingenieros"] },
-  { label: "Turismo", slugs: ["lifetoursfl"] },
-  { label: "Consumo masivo", slugs: ["fenalsa"] },
-  { label: "Editorial / Cultura", slugs: ["comunicarte"] },
-];
-
-const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
-  {
-    label: "Tienda Virtual",
-    slugs: [
-      "clefast",
-      "sportt",
-      "lujan",
-      "happyart",
-      "comunicarte",
-      "anjsports",
-      "store-saas",
-    ],
-  },
-  { label: "E-Learning", slugs: ["maintech", "vitalchain"] },
-  {
-    label: "Branding",
-    slugs: [
-      "maintech",
-      "happyart",
-      "villacer",
-      "innersoulbright",
-      "cesaracosta",
-    ],
-  },
-  {
-    label: "Web Informativa",
+    label: "Web de marca",
     slugs: [
       "antiruidopvc",
       "daesurmotors",
@@ -171,6 +130,7 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
       "firstautomation",
       "podologiemtk",
       "toliveagain",
+      "volveravivir",
       "transportesrumi",
       "ventanasantiruido",
       "redesvip",
@@ -182,40 +142,146 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
       "ghiperu",
       "anjsports",
       "cesaracosta",
-    ],
-  },
-  {
-    label: "Dashboard / App",
-    slugs: [
-      "feniz",
-      "lifetoursfl",
-      "siclo",
-      "financial-management",
-      "feedback-management",
+      "fenalsa",
+      "villacer",
+      "innersoulbright",
+      "qintitec",
+      "blendet",
+      "jarumi",
+      "capptura",
+      "moviflex",
       "ambientalpe",
     ],
   },
-  { label: "Donaciones", slugs: ["toliveagain", "huarmis", "favorygracia"] },
+  {
+    label: "Identidad de marca",
+    slugs: [
+      "aurore",
+      "alyer",
+      "maintech",
+      "happyart",
+      "villacer",
+      "cesaracosta",
+      "blendet",
+      "jarumi",
+    ],
+  },
 ];
 
+// Eje 2 — Sector. Ocho categorías amplias (barrel enseña cuatro para todo su
+// catálogo). Las 18 anteriores mezclaban rubro con tipo de producto:
+// «E-commerce» y «Reservas y citas» se fueron al eje de servicio, donde
+// pertenecen, y los rubros de un solo caso se agruparon por comprador.
+const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
+  {
+    label: "Productos propios",
+    slugs: ["rematch", "lumiolearn", "bookit", "vendiq"],
+  },
+  {
+    label: "Retail y consumo",
+    slugs: [
+      "vendiq",
+      "aurore",
+      "clefast",
+      "sportt",
+      "lujan",
+      "happyart",
+      "anjsports",
+      "comunicarte",
+      "fenalsa",
+    ],
+  },
+  {
+    label: "Salud y bienestar",
+    slugs: [
+      "moviflex",
+      "podologiemtk",
+      "enrafmedica",
+      "innersoulbright",
+      "blendet",
+      "jarumi",
+      "vitalchain",
+    ],
+  },
+  {
+    label: "Educación y deporte",
+    slugs: [
+      "lumiolearn",
+      "maintech",
+      "vitalchain",
+      "huarmis",
+      "cesaracosta",
+      "siclo",
+      "rematch",
+      "anjsports",
+      "sportt",
+    ],
+  },
+  {
+    label: "Tecnología y finanzas",
+    slugs: [
+      "feniz",
+      "qintitec",
+      "financial-management",
+      "feedback-management",
+      "web-scraping-ai",
+      "redesvip",
+      "firstautomation",
+      "siclo",
+    ],
+  },
+  {
+    label: "Industria y construcción",
+    slugs: [
+      "alyer",
+      "transportesrumi",
+      "villacer",
+      "ventanasantiruido",
+      "antiruidopvc",
+      "daesurmotors",
+      "jcpingenieros",
+      "ambientalpe",
+      "firstautomation",
+    ],
+  },
+  {
+    label: "Hotelería, turismo y ocio",
+    slugs: ["hotelesparaiso", "ghiperu", "lifetoursfl", "capptura"],
+  },
+  {
+    label: "Organizaciones",
+    slugs: ["favorygracia", "volveravivir", "toliveagain", "huarmis"],
+  },
+];
+
+// Eje 3 — Tecnología. Cinco. Fuera «TypeScript», que duplicaba casi exactamente
+// a Next.js sin decir nada distinto al cliente.
 const TECH_FILTERS: { label: string; slugs: string[] }[] = [
   {
     label: "Next.js",
     slugs: [
+      "rematch",
+      "lumiolearn",
+      "bookit",
+      "vendiq",
+      "aurore",
       "toliveagain",
+      "volveravivir",
       "feniz",
       "maintech",
       "sportt",
       "clefast",
       "vitalchain",
       "redesvip",
-      "innersoulbright",
       "hotelesparaiso",
       "lifetoursfl",
       "siclo",
       "financial-management",
-      "feedback-management",
-      "ambientalpe",
+      "moviflex",
+      "capptura",
+      "blendet",
+      "jarumi",
+      "qintitec",
       "cesaracosta",
     ],
   },
@@ -237,33 +303,28 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "comunicarte",
       "ghiperu",
       "anjsports",
+      "fenalsa",
+      "ambientalpe",
     ],
   },
   {
     label: "WooCommerce",
-    slugs: ["lujan", "happyart", "comunicarte", "anjsports"],
+    slugs: ["lujan", "happyart", "comunicarte", "anjsports", "ambientalpe"],
   },
-  { label: "Blockchain", slugs: ["vitalchain"] },
   {
-    label: "TypeScript",
+    label: "React",
     slugs: [
-      "toliveagain",
-      "feniz",
-      "maintech",
-      "sportt",
-      "clefast",
-      "vitalchain",
-      "redesvip",
+      "favorygracia",
+      "feedback-management",
+      "ambientalpe",
       "innersoulbright",
-      "hotelesparaiso",
-      "lifetoursfl",
-      "siclo",
-      "cesaracosta",
     ],
   },
+  { label: "IA y datos", slugs: ["web-scraping-ai", "lumiolearn", "feniz"] },
 ];
 
 type SortKey = "default" | "az" | "za";
+type AxisKey = "service" | "industry" | "tech";
 
 function getAllowedSlugs(
   active: Set<string>,
@@ -330,146 +391,6 @@ function PortfolioCard({
   );
 }
 
-// ─── Active filter chips (reusable) ────────────────────────────────────────────
-function ActiveFilterChips({
-  activeIndustry,
-  activeService,
-  activeTech,
-  onToggleIndustry,
-  onToggleService,
-  onToggleTech,
-}: {
-  activeIndustry: Set<string>;
-  activeService: Set<string>;
-  activeTech: Set<string>;
-  onToggleIndustry: (lbl: string) => void;
-  onToggleService: (lbl: string) => void;
-  onToggleTech: (lbl: string) => void;
-}) {
-  const toggle = (
-    label: string,
-    _set: Set<string>,
-    onToggle: (l: string) => void
-  ) => {
-    onToggle(label);
-  };
-
-  return (
-    <div className="flex flex-wrap gap-1.5">
-      {[...activeIndustry].map((lbl) => (
-        <button
-          key={`ind-${lbl}`}
-          type="button"
-          onClick={() => toggle(lbl, activeIndustry, onToggleIndustry)}
-          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white hover:opacity-90"
-        >
-          {lbl} <X className="w-3 h-3" />
-        </button>
-      ))}
-      {[...activeService].map((lbl) => (
-        <button
-          key={`srv-${lbl}`}
-          type="button"
-          onClick={() => toggle(lbl, activeService, onToggleService)}
-          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#0072CF] text-white hover:opacity-90"
-        >
-          {lbl} <X className="w-3 h-3" />
-        </button>
-      ))}
-      {[...activeTech].map((lbl) => (
-        <button
-          key={`tech-${lbl}`}
-          type="button"
-          onClick={() => toggle(lbl, activeTech, onToggleTech)}
-          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#7ECFC3] text-teal-900 hover:opacity-90"
-        >
-          {lbl} <X className="w-3 h-3" />
-        </button>
-      ))}
-    </div>
-  );
-}
-
-// ─── Filter accordion section ───────────────────────────────────────────────────
-const FILTER_VISIBLE = 8;
-
-function FilterSection({
-  title,
-  items,
-  activeLabels,
-  onToggle,
-  defaultOpen = false,
-}: {
-  title: string;
-  items: { label: string; slugs: string[] }[];
-  activeLabels: Set<string>;
-  onToggle: (label: string) => void;
-  defaultOpen?: boolean;
-}) {
-  const [open, setOpen] = useState(defaultOpen);
-  const [showAll, setShowAll] = useState(false);
-  const hasActive = items.some((i) => activeLabels.has(i.label));
-  const visible =
-    items.length > FILTER_VISIBLE && !showAll
-      ? items.slice(0, FILTER_VISIBLE)
-      : items;
-  const hasMore = items.length > FILTER_VISIBLE;
-
-  return (
-    <div className="border-b border-gray-100 last:border-0">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between py-4 text-base font-semibold text-[#060C20] hover:text-[#0072CF] transition-colors"
-      >
-        <span className="flex items-center gap-2">
-          {title}
-          {hasActive && (
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0072CF]" />
-          )}
-        </span>
-        <ChevronDown
-          className={`h-4 w-4 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </button>
-      {open && (
-        <div className="pb-3 flex flex-col gap-0.5">
-          {visible.map(({ label, slugs }) => (
-            <button
-              key={label}
-              type="button"
-              onClick={() => onToggle(label)}
-              className={`flex items-center justify-between w-full text-left px-2 py-2 rounded-lg text-sm transition-all ${
-                activeLabels.has(label)
-                  ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                  : "text-gray-500 hover:bg-gray-50 hover:text-[#060C20]"
-              }`}
-            >
-              <span>{label}</span>
-              <span
-                className={`text-xs tabular-nums ${activeLabels.has(label) ? "text-slate-500" : "text-gray-300"}`}
-              >
-                {slugs.length}
-              </span>
-            </button>
-          ))}
-          {hasMore && (
-            <button
-              type="button"
-              onClick={() => setShowAll((v) => !v)}
-              className="mt-1 px-2 py-1.5 text-xs text-[#0072CF] hover:text-[#005ba3] text-left"
-            >
-              {showAll
-                ? "Ver menos"
-                : `Ver ${items.length - FILTER_VISIBLE} más`}
-            </button>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export function PortfolioPageContent() {
   const cases = useCasesWithLocale();
@@ -481,7 +402,7 @@ export function PortfolioPageContent() {
   const [sortKey, setSortKey] = useState<SortKey>("default");
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOpen, setSortOpen] = useState(false);
-  const [filterSheetOpen, setFilterSheetOpen] = useState(false);
+  const [openAxis, setOpenAxis] = useState<AxisKey | null>("service");
 
   const toggleFilter = (
     setter: (s: Set<string>) => void,
@@ -523,6 +444,30 @@ export function PortfolioPageContent() {
   }, [cases, industryAllowed, serviceAllowed, techAllowed, sortKey]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+  /**
+   * Al cambiar de página hay que volver al principio de la rejilla; si no, se
+   * aterriza al final de las tarjetas nuevas. Hay que hacerlo DESPUÉS de repintar:
+   * medir en el mismo clic da la posición vieja, y un desplazamiento suave lanzado
+   * antes del repintado lo cancela el propio cambio de altura del documento.
+   */
+  const rejillaRef = useRef<HTMLDivElement | null>(null);
+  const subirTrasPintar = useRef(false);
+  const irAPagina = (n: number) => {
+    subirTrasPintar.current = true;
+    setCurrentPage(n);
+  };
+  // El salto ocurre cuando la página cambia y la rejilla ya se repintó.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: currentPage es el disparador, no se lee dentro
+  useEffect(() => {
+    if (!subirTrasPintar.current) return;
+    subirTrasPintar.current = false;
+    const caja = rejillaRef.current?.getBoundingClientRect();
+    if (!caja) return;
+    window.scrollTo({
+      top: Math.max(0, window.scrollY + caja.top - 96),
+      behavior: prefiereMenosMovimiento() ? "auto" : "smooth",
+    });
+  }, [currentPage]);
   const start = (currentPage - 1) * ITEMS_PER_PAGE;
   const pageItems = useMemo(
     () => filtered.slice(start, start + ITEMS_PER_PAGE),
@@ -552,54 +497,57 @@ export function PortfolioPageContent() {
     SORT_OPTIONS.find((o) => o.key === sortKey)?.label ??
     t("portfolio.sortDefault");
 
-  const filterPanel = (
-    <>
-      <div className="rounded-xl border border-gray-100 bg-gray-50/50 overflow-hidden">
-        <FilterSection
-          title={t("portfolio.industria")}
-          items={INDUSTRY_FILTERS}
-          activeLabels={activeIndustry}
-          defaultOpen
-          onToggle={(lbl) =>
-            toggleFilter(setActiveIndustry, activeIndustry, lbl)
-          }
-        />
-        <FilterSection
-          title={t("portfolio.servicios")}
-          items={SERVICE_FILTERS}
-          activeLabels={activeService}
-          onToggle={(lbl) => toggleFilter(setActiveService, activeService, lbl)}
-        />
-        <FilterSection
-          title={t("portfolio.tecnologia")}
-          items={TECH_FILTERS}
-          activeLabels={activeTech}
-          onToggle={(lbl) => toggleFilter(setActiveTech, activeTech, lbl)}
-        />
-      </div>
-      <div className="pt-2">
-        <p className="text-sm font-semibold text-[#060C20] mb-2">
-          {t("portfolio.ordenar")}
-        </p>
-        <div className="flex flex-col gap-0.5">
-          {SORT_OPTIONS.map((opt) => (
-            <button
-              key={opt.key}
-              type="button"
-              onClick={() => setSortKey(opt.key)}
-              className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-all ${
-                sortKey === opt.key
-                  ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-      </div>
-    </>
-  );
+  const AXES: {
+    key: AxisKey;
+    label: string;
+    items: { label: string; slugs: string[] }[];
+    active: Set<string>;
+    onToggle: (label: string) => void;
+  }[] = [
+    {
+      key: "service",
+      label: t("portfolio.queHacemos"),
+      items: SERVICE_FILTERS,
+      active: activeService,
+      onToggle: (l) => toggleFilter(setActiveService, activeService, l),
+    },
+    {
+      key: "industry",
+      label: t("portfolio.sector"),
+      items: INDUSTRY_FILTERS,
+      active: activeIndustry,
+      onToggle: (l) => toggleFilter(setActiveIndustry, activeIndustry, l),
+    },
+    {
+      key: "tech",
+      label: t("portfolio.tecnologia"),
+      items: TECH_FILTERS,
+      active: activeTech,
+      onToggle: (l) => toggleFilter(setActiveTech, activeTech, l),
+    },
+  ];
+
+  const openAxisData = AXES.find((a) => a.key === openAxis);
+
+  const activeChips: { axis: AxisKey; label: string }[] = [
+    ...[...activeService].map((label) => ({
+      axis: "service" as AxisKey,
+      label,
+    })),
+    ...[...activeIndustry].map((label) => ({
+      axis: "industry" as AxisKey,
+      label,
+    })),
+    ...[...activeTech].map((label) => ({ axis: "tech" as AxisKey, label })),
+  ];
+
+  const removeChip = (axis: AxisKey, label: string) => {
+    if (axis === "service")
+      toggleFilter(setActiveService, activeService, label);
+    if (axis === "industry")
+      toggleFilter(setActiveIndustry, activeIndustry, label);
+    if (axis === "tech") toggleFilter(setActiveTech, activeTech, label);
+  };
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -645,89 +593,102 @@ export function PortfolioPageContent() {
 
       <div className="container-section">
         <div className="content-section">
-          {/* Mobile filters */}
-          <div className="lg:hidden border-b border-gray-200 py-3 space-y-3">
-            <Sheet open={filterSheetOpen} onOpenChange={setFilterSheetOpen}>
-              <div className="flex items-center justify-between">
-                <span className="text-base font-semibold text-[#060C20]">
-                  {t("portfolio.filtros")}
-                </span>
-                <SheetTrigger asChild>
-                  <Button
+          {/* ─── Barra superior de filtros ─────────────────────────────────── */}
+          <div className="border-b border-gray-200">
+            {/* Fila 1: ejes + conteo */}
+            <div className="flex items-center justify-between gap-4 pt-6 pb-3 md:pt-8">
+              <div className="flex items-center gap-4 sm:gap-7 overflow-x-auto scrollbar-hide min-w-0 [mask-image:linear-gradient(to_right,black_calc(100%-24px),transparent)] sm:[mask-image:none]">
+                <button
+                  type="button"
+                  onClick={() => {
+                    resetAll();
+                    setOpenAxis(null);
+                  }}
+                  className={`inline-flex min-h-6 min-w-6 shrink-0 items-center justify-center whitespace-nowrap border-b-2 pb-1 text-sm sm:text-base tracking-wide transition-colors ${
+                    !hasFilters && openAxis === null
+                      ? "border-[#060C20] text-[#060C20] font-semibold"
+                      : "border-transparent text-gray-500 hover:text-[#060C20]"
+                  }`}
+                >
+                  {t("portfolio.todos")}
+                </button>
+                {AXES.map((axis) => (
+                  <button
+                    key={axis.key}
                     type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full hover:bg-gray-100"
+                    onClick={() =>
+                      setOpenAxis((v) => (v === axis.key ? null : axis.key))
+                    }
+                    className={`shrink-0 whitespace-nowrap border-b-2 pb-1 text-sm sm:text-base tracking-wide transition-colors flex items-center gap-1.5 ${
+                      openAxis === axis.key
+                        ? "border-[#060C20] text-[#060C20] font-semibold"
+                        : "border-transparent text-gray-500 hover:text-[#060C20]"
+                    }`}
                   >
-                    <Settings className="w-5 h-5 text-[#060C20]" />
-                    <span className="sr-only">{t("portfolio.filtros")}</span>
-                  </Button>
-                </SheetTrigger>
+                    {axis.label}
+                    {axis.active.size > 0 && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0072CF]" />
+                    )}
+                  </button>
+                ))}
               </div>
-              <SheetContent
-                side="right"
-                className="w-[85%] sm:max-w-md flex flex-col p-0 overflow-hidden"
-              >
-                <SheetHeader className="p-4 pb-2 pr-14 border-b border-gray-100 shrink-0">
-                  <SheetTitle className="text-xl font-bold text-[#060C20]">
-                    {t("portfolio.filtros")}
-                  </SheetTitle>
-                  {hasFilters && (
-                    <button
-                      type="button"
-                      onClick={resetAll}
-                      className="text-sm text-gray-500 hover:text-[#0072CF] underline underline-offset-2 text-left"
-                    >
-                      {t("portfolio.limpiarTodo")}
-                    </button>
-                  )}
-                </SheetHeader>
-                <div className="flex-1 overflow-y-auto p-4 space-y-2">
-                  {hasFilters && (
-                    <div className="pb-3 border-b border-gray-100">
-                      <ActiveFilterChips
-                        activeIndustry={activeIndustry}
-                        activeService={activeService}
-                        activeTech={activeTech}
-                        onToggleIndustry={(l) =>
-                          toggleFilter(setActiveIndustry, activeIndustry, l)
-                        }
-                        onToggleService={(l) =>
-                          toggleFilter(setActiveService, activeService, l)
-                        }
-                        onToggleTech={(l) =>
-                          toggleFilter(setActiveTech, activeTech, l)
-                        }
-                      />
-                    </div>
-                  )}
-                  {filterPanel}
-                </div>
-              </SheetContent>
-            </Sheet>
-            {hasFilters && (
-              <ActiveFilterChips
-                activeIndustry={activeIndustry}
-                activeService={activeService}
-                activeTech={activeTech}
-                onToggleIndustry={(l) =>
-                  toggleFilter(setActiveIndustry, activeIndustry, l)
-                }
-                onToggleService={(l) =>
-                  toggleFilter(setActiveService, activeService, l)
-                }
-                onToggleTech={(l) => toggleFilter(setActiveTech, activeTech, l)}
-              />
-            )}
-          </div>
+              <p className="hidden sm:block shrink-0 text-sm text-gray-400 tabular-nums uppercase tracking-wider">
+                {t("portfolio.mostrando")}{" "}
+                <span className="text-[#060C20] font-semibold">
+                  ({filtered.length}
+                  {hasFilters ? ` / ${cases.length}` : ""})
+                </span>
+              </p>
+            </div>
 
-          <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 py-8 md:py-14">
-            {/* Desktop sidebar */}
-            <aside className="hidden lg:block w-56 xl:w-60 shrink-0">
-              <div className="flex items-center justify-between pb-4 mb-1 border-b border-gray-200">
-                <h2 className="text-xl font-bold text-[#060C20] tracking-tight">
-                  {t("portfolio.filtros")}
-                </h2>
+            {/* Fila 2: opciones del eje abierto */}
+            {openAxisData && (
+              <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-3 [mask-image:linear-gradient(to_right,black_calc(100%-28px),transparent)] lg:flex-wrap lg:gap-y-2 lg:overflow-visible lg:[mask-image:none]">
+                {openAxisData.items.map(({ label, slugs }) => {
+                  const on = openAxisData.active.has(label);
+                  return (
+                    <button
+                      key={label}
+                      type="button"
+                      onClick={() => openAxisData.onToggle(label)}
+                      className={`shrink-0 inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm whitespace-nowrap transition-colors ${
+                        on
+                          ? "bg-[#060C20] border-[#060C20] text-white"
+                          : "bg-white border-gray-200 text-gray-600 hover:border-[#060C20] hover:text-[#060C20]"
+                      }`}
+                    >
+                      {label}
+                      <span
+                        className={`text-[11px] tabular-nums ${on ? "text-white/60" : "text-gray-300"}`}
+                      >
+                        {slugs.length}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Fila 3: filtros activos + orden */}
+            <div className="flex items-center justify-between gap-x-3 gap-y-2 pb-4 flex-wrap">
+              <div className="flex items-center gap-2 flex-wrap min-w-0">
+                <p className="sm:hidden shrink-0 text-xs text-gray-400 tabular-nums uppercase tracking-wider">
+                  {t("portfolio.mostrando")}{" "}
+                  <span className="text-[#060C20] font-semibold">
+                    ({filtered.length}
+                    {hasFilters ? ` / ${cases.length}` : ""})
+                  </span>
+                </p>
+                {activeChips.map(({ axis, label }) => (
+                  <button
+                    key={`${axis}-${label}`}
+                    type="button"
+                    onClick={() => removeChip(axis, label)}
+                    className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white hover:opacity-90"
+                  >
+                    {label} <X className="w-3 h-3" />
+                  </button>
+                ))}
                 {hasFilters && (
                   <button
                     type="button"
@@ -738,166 +699,135 @@ export function PortfolioPageContent() {
                   </button>
                 )}
               </div>
-              {hasFilters && (
-                <div className="flex flex-wrap gap-1.5 py-3 border-b border-gray-200">
-                  <ActiveFilterChips
-                    activeIndustry={activeIndustry}
-                    activeService={activeService}
-                    activeTech={activeTech}
-                    onToggleIndustry={(l) =>
-                      toggleFilter(setActiveIndustry, activeIndustry, l)
-                    }
-                    onToggleService={(l) =>
-                      toggleFilter(setActiveService, activeService, l)
-                    }
-                    onToggleTech={(l) =>
-                      toggleFilter(setActiveTech, activeTech, l)
-                    }
+              <div className="relative shrink-0 ml-auto">
+                <button
+                  type="button"
+                  onClick={() => setSortOpen((v) => !v)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-600 border border-gray-200 bg-white hover:border-gray-300"
+                >
+                  {sortLabel}
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-gray-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
                   />
-                </div>
-              )}
-              {filterPanel}
-            </aside>
-
-            {/* Grid + pagination */}
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between gap-3 mb-6 flex-wrap">
-                <p className="text-body-sm text-gray-400">
-                  {hasFilters
-                    ? t("portfolio.proyectosFiltrado", {
-                        filtered: String(filtered.length),
-                        total: String(cases.length),
-                      })
-                    : t("portfolio.proyectosCount", {
-                        count: String(cases.length),
-                      })}
-                </p>
-                <div className="relative hidden lg:block">
-                  <button
-                    type="button"
-                    onClick={() => setSortOpen((v) => !v)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-600 border border-gray-200 bg-white hover:border-gray-300"
-                  >
-                    {sortLabel}
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 text-gray-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
+                </button>
+                {sortOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-10"
+                      onClick={() => setSortOpen(false)}
+                      onKeyDown={(e) =>
+                        e.key === "Escape" && setSortOpen(false)
+                      }
+                      role="button"
+                      tabIndex={-1}
+                      aria-hidden
                     />
-                  </button>
-                  {sortOpen && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-10"
-                        onClick={() => setSortOpen(false)}
-                        onKeyDown={(e) =>
-                          e.key === "Escape" && setSortOpen(false)
-                        }
-                        role="button"
-                        tabIndex={-1}
-                        aria-hidden
-                      />
-                      <div className="absolute right-0 top-full mt-1.5 z-20 bg-white border border-gray-100 rounded-xl shadow-lg py-1 w-40">
-                        {SORT_OPTIONS.map((opt) => (
-                          <button
-                            key={opt.key}
-                            type="button"
-                            onClick={() => {
-                              setSortKey(opt.key);
-                              setSortOpen(false);
-                            }}
-                            className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                              sortKey === opt.key
-                                ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                                : "text-gray-600 hover:bg-gray-50"
-                            }`}
-                          >
-                            {opt.label}
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              {filtered.length === 0 ? (
-                <div className="py-24 text-center">
-                  <p className="text-heading-3 text-gray-300 mb-2">
-                    {t("portfolio.sinResultados")}
-                  </p>
-                  <p className="text-body text-gray-400 mb-4">
-                    {t("portfolio.sinResultadosDesc")}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={resetAll}
-                    className="text-sm text-[#0072CF] underline"
-                  >
-                    {t("portfolio.verTodos")}
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10">
-                    {pageItems.map((caseItem, idx) => {
-                      const slug = getSlug(caseItem.title, caseItem.slug);
-                      const industryLabel =
-                        INDUSTRY_FILTERS.find((f) => f.slugs.includes(slug))
-                          ?.label ?? caseItem.industry;
-                      const serviceLabel = SERVICE_FILTERS.find((f) =>
-                        f.slugs.includes(slug)
-                      )?.label;
-                      return (
-                        <PortfolioCard
-                          key={caseItem.title}
-                          caseItem={caseItem}
-                          index={idx}
-                          industryLabel={industryLabel}
-                          serviceLabel={serviceLabel}
-                          slug={slug}
-                        />
-                      );
-                    })}
-                  </div>
-
-                  {totalPages > 1 && (
-                    <div className="flex items-center justify-between gap-4 mt-10 pt-6 border-t border-gray-200">
-                      <p className="text-sm text-gray-500">
-                        {t("portfolio.paginaDe", {
-                          current: String(currentPage),
-                          total: String(totalPages),
-                        })}
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() =>
-                            setCurrentPage((p) => Math.max(1, p - 1))
-                          }
-                          disabled={currentPage <= 1}
-                          className="gap-1"
+                    <div className="absolute right-0 top-full mt-1.5 z-20 bg-white border border-gray-100 rounded-xl shadow-lg py-1 w-40">
+                      {SORT_OPTIONS.map((opt) => (
+                        <button
+                          key={opt.key}
+                          type="button"
+                          onClick={() => {
+                            setSortKey(opt.key);
+                            setSortOpen(false);
+                          }}
+                          className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
+                            sortKey === opt.key
+                              ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
+                              : "text-gray-600 hover:bg-gray-50"
+                          }`}
                         >
-                          <ChevronLeft className="w-4 h-4" />
-                          {t("portfolio.anterior")}
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() =>
-                            setCurrentPage((p) => Math.min(totalPages, p + 1))
-                          }
-                          disabled={currentPage >= totalPages}
-                          className="gap-1"
-                        >
-                          {t("portfolio.siguiente")}
-                          <ChevronRight className="w-4 h-4" />
-                        </Button>
-                      </div>
+                          {opt.label}
+                        </button>
+                      ))}
                     </div>
-                  )}
-                </>
-              )}
+                  </>
+                )}
+              </div>
             </div>
+          </div>
+
+          {/* ─── Rejilla + paginación ──────────────────────────────────────── */}
+          <div className="py-8 md:py-12">
+            {filtered.length === 0 ? (
+              <div className="py-24 text-center">
+                <p className="text-heading-3 text-gray-300 mb-2">
+                  {t("portfolio.sinResultados")}
+                </p>
+                <p className="text-body text-gray-400 mb-4">
+                  {t("portfolio.sinResultadosDesc")}
+                </p>
+                <button
+                  type="button"
+                  onClick={resetAll}
+                  className="text-sm text-[#0072CF] underline"
+                >
+                  {t("portfolio.verTodos")}
+                </button>
+              </div>
+            ) : (
+              <>
+                <div
+                  ref={rejillaRef}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10"
+                >
+                  {pageItems.map((caseItem, idx) => {
+                    const slug = getSlug(caseItem.title, caseItem.slug);
+                    const industryLabel =
+                      INDUSTRY_FILTERS.find((f) => f.slugs.includes(slug))
+                        ?.label ?? caseItem.industry;
+                    const serviceLabel = SERVICE_FILTERS.find((f) =>
+                      f.slugs.includes(slug)
+                    )?.label;
+                    return (
+                      <PortfolioCard
+                        key={caseItem.title}
+                        caseItem={caseItem}
+                        index={idx}
+                        industryLabel={industryLabel}
+                        serviceLabel={serviceLabel}
+                        slug={slug}
+                      />
+                    );
+                  })}
+                </div>
+
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-between gap-4 mt-10 pt-6 border-t border-gray-200">
+                    <p className="text-sm text-gray-500">
+                      {t("portfolio.paginaDe", {
+                        current: String(currentPage),
+                        total: String(totalPages),
+                      })}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => irAPagina(Math.max(1, currentPage - 1))}
+                        disabled={currentPage <= 1}
+                        className="gap-1"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                        {t("portfolio.anterior")}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          irAPagina(Math.min(totalPages, currentPage + 1))
+                        }
+                        disabled={currentPage >= totalPages}
+                        className="gap-1"
+                      >
+                        {t("portfolio.siguiente")}
+                        <ChevronRight className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>

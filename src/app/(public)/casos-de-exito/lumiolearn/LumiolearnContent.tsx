@@ -47,8 +47,7 @@ type Copy = {
     landing: string;
     landingMoviles: string;
     precios: string;
-    operar: string;
-    funciones: string;
+    clase: string;
   };
   nextTagline: string;
 };
@@ -66,7 +65,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "Construimos una plataforma para que cada academia enseñe y venda sus cursos con su propia marca, sin comisiones por venta.",
     context:
-      "LumioLearn es un producto propio de Axium: un LMS marca blanca donde cada academia tiene su sitio, sus cursos y sus alumnos, con un tutor con IA que conoce cada clase.",
+      "Producto propio de Axium: un LMS marca blanca con un tutor con IA que conoce cada clase.",
     highlightsTitle: ["Lo que", "construimos"],
     highlights: [
       {
@@ -104,10 +103,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Reto",
     challenge:
-      "Quien enseña en línea suele depender de marketplaces que cobran comisión por cada venta y muestran su marca antes que la del profesor. Lo demás se arma con herramientas sueltas: una para el video, otra para evaluar, otra para certificar y otra para responder dudas, sin que ninguna sepa lo que pasó en las demás.",
+      "Quien enseña en línea depende de marketplaces que cobran comisión por venta y ponen su marca antes que la del profesor. Lo demás se arma con herramientas sueltas: una para el video, otra para evaluar, otra para certificar, otra para las dudas.",
     approachTitle: "Enfoque",
     approach:
-      "Diseñamos un LMS marca blanca y multi-tenant: cada academia es un espacio aislado con su sitio, su dominio y sus alumnos. Todo lo que ocurre entre la primera clase y el certificado vive en el mismo lugar, y el tutor con IA trabaja con el contenido real de cada capítulo en lugar de respuestas genéricas.",
+      "Diseñamos un LMS marca blanca y multi-tenant: cada academia es un espacio aislado con su sitio, su dominio y sus alumnos. De la primera clase al certificado todo vive en el mismo lugar, y el tutor con IA lee el contenido del capítulo.",
     outcomesTitle: "Resultados",
     outcomes:
       "LumioLearn está en producción en lumiolearn.com: las academias publican su sitio, venden sus cursos y emiten sus certificados sin comisiones.",
@@ -137,10 +136,8 @@ const COPY: Record<StoryLang, Copy> = {
         "lumiolearn.com en el celular: el inicio con el asistente de cursos, las herramientas para operar y el plan Business",
       precios:
         "Página de precios de lumiolearn.com: planes Starter, Business y Business Pro",
-      operar:
-        "Sección de lumiolearn.com con cupones, correos con tu marca, roles, gamificación, productos y API",
-      funciones:
-        "Página de funciones de lumiolearn.com: el tutor que responde 24/7 y los exámenes en segundos",
+      clase:
+        "El mismo capítulo desde los dos lados: el quiz que el profesor configura en el panel y, delante, las notas personales que la alumna escribe mientras ve la clase",
     },
     nextTagline: "Reservas, agenda y cobros en la web de cada negocio",
   },
@@ -156,7 +153,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "We built a platform so every academy can teach and sell its courses under its own brand, with no commission per sale.",
     context:
-      "LumioLearn is Axium's own product: a white-label LMS where each academy has its site, its courses and its students, with an AI tutor that knows every lesson.",
+      "Axium's own product: a white-label LMS with an AI tutor that knows every lesson.",
     highlightsTitle: ["What we", "built"],
     highlights: [
       {
@@ -194,10 +191,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Challenge",
     challenge:
-      "People who teach online usually depend on marketplaces that take a commission on every sale and show their own brand before the teacher's. Everything else is patched together with separate tools: one for video, another for assessments, another for certificates and another for questions, none of them aware of what happened in the others.",
+      "People who teach online depend on marketplaces that take a commission on every sale and put their own brand ahead of the teacher's. The rest is patched together from separate tools: one for video, one for assessments, one for certificates, one for questions.",
     approachTitle: "Approach",
     approach:
-      "We designed a white-label, multi-tenant LMS: each academy is an isolated space with its own site, domain and students. Everything between the first lesson and the certificate lives in one place, and the AI tutor works with the real content of each chapter instead of generic answers.",
+      "We designed a white-label, multi-tenant LMS: each academy is an isolated space with its own site, domain and students. From the first lesson to the certificate everything lives in one place, and the AI tutor reads the chapter's own content.",
     outcomesTitle: "Outcomes",
     outcomes:
       "LumioLearn is in production at lumiolearn.com: academies publish their site, sell their courses and issue their certificates with no commissions.",
@@ -226,10 +223,8 @@ const COPY: Record<StoryLang, Copy> = {
         "lumiolearn.com on mobile: the home page with the course assistant, the tools to run an academy and the Business plan",
       precios:
         "The lumiolearn.com pricing page: Starter, Business and Business Pro plans",
-      operar:
-        "A lumiolearn.com section with coupons, branded emails, roles, gamification, products and API",
-      funciones:
-        "The lumiolearn.com features page: the AI tutor that answers 24/7 and quizzes in seconds",
+      clase:
+        "The same chapter from both sides: the quiz the teacher sets up in the dashboard and, in front of it, the personal notes the student writes while watching the class",
     },
     nextTagline:
       "Bookings, calendar and payments on each business's own website",
@@ -246,7 +241,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "Construímos uma plataforma para que cada academia ensine e venda seus cursos com sua própria marca, sem comissão por venda.",
     context:
-      "O LumioLearn é um produto próprio da Axium: um LMS white label em que cada academia tem seu site, seus cursos e seus alunos, com um tutor com IA que conhece cada aula.",
+      "Produto próprio da Axium: um LMS white label com um tutor com IA que conhece cada aula.",
     highlightsTitle: ["O que", "construímos"],
     highlights: [
       {
@@ -284,10 +279,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Desafio",
     challenge:
-      "Quem ensina online costuma depender de marketplaces que cobram comissão por cada venda e mostram a própria marca antes da do professor. O resto é montado com ferramentas soltas: uma para o vídeo, outra para avaliar, outra para certificar e outra para tirar dúvidas, sem que nenhuma saiba o que aconteceu nas demais.",
+      "Quem ensina online depende de marketplaces que cobram comissão por venda e põem a própria marca antes da do professor. O resto é montado com ferramentas soltas: uma para o vídeo, outra para avaliar, outra para certificar, outra para as dúvidas.",
     approachTitle: "Abordagem",
     approach:
-      "Desenhamos um LMS white label e multi-tenant: cada academia é um espaço isolado com seu site, seu domínio e seus alunos. Tudo o que acontece entre a primeira aula e o certificado vive no mesmo lugar, e o tutor com IA trabalha com o conteúdo real de cada capítulo em vez de respostas genéricas.",
+      "Desenhamos um LMS white label e multi-tenant: cada academia é um espaço isolado com seu site, seu domínio e seus alunos. Da primeira aula ao certificado tudo vive no mesmo lugar, e o tutor com IA lê o conteúdo do capítulo.",
     outcomesTitle: "Resultados",
     outcomes:
       "O LumioLearn está em produção em lumiolearn.com: as academias publicam seu site, vendem seus cursos e emitem seus certificados sem comissões.",
@@ -316,10 +311,8 @@ const COPY: Record<StoryLang, Copy> = {
         "lumiolearn.com no celular: a página inicial com o assistente de cursos, as ferramentas para operar e o plano Business",
       precios:
         "Página de preços de lumiolearn.com: planos Starter, Business e Business Pro",
-      operar:
-        "Seção de lumiolearn.com com cupons, e-mails com sua marca, papéis, gamificação, produtos e API",
-      funciones:
-        "Página de recursos de lumiolearn.com: o tutor que responde 24/7 e as provas em segundos",
+      clase:
+        "O mesmo capítulo pelos dois lados: o quiz que o professor configura no painel e, à frente, as notas pessoais que a aluna escreve enquanto assiste à aula",
     },
     nextTagline: "Reservas, agenda e cobranças no site de cada negócio",
   },
@@ -381,11 +374,16 @@ function bloques(c: Copy): StoryBlock[] {
       },
     },
     {
-      kind: "pair",
-      images: [
-        { src: `${IMG}/bv-operar.jpg`, alt: c.alt.operar },
-        { src: `${IMG}/bv-funciones.jpg`, alt: c.alt.funciones },
-      ],
+      // Antes: par bv-operar + bv-funciones, dos capturas de la web de marketing
+      // con el mismo molde que bv-precios y bv-progreso, y cuyo contenido ya lo
+      // dicen los highlights. Ahora, una sola pieza con la pantalla de producto
+      // que faltaba: el mismo capítulo desde los dos lados.
+      kind: "wide",
+      image: {
+        src: `${IMG}/bv-clase.jpg`,
+        alt: c.alt.clase,
+        mobileSrc: `${IMG}/bv-clase-movil.jpg`,
+      },
     },
     {
       kind: "wide",
@@ -414,6 +412,9 @@ export default function LumiolearnContent() {
   return (
     <>
       <CaseStory
+        // El acento sale de la marca del cliente, no de Axium: violeta · violeta claro · indigo.
+        // base va sobre claro y dark sobre la tinta; los dos pasan 4.5:1.
+        accent={{ base: "#7A35D6", dark: "#A96BF5", deep: "#0B1440" }}
         name="LumioLearn"
         tagline={c.tagline}
         heroImage={`${IMG}/bv-hero.jpg`}

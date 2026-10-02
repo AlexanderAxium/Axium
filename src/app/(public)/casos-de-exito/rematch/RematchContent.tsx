@@ -63,7 +63,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "Construimos la plataforma con la que un centro deportivo gestiona sus reservas, academias, ligas y torneos desde un solo lugar.",
     context:
-      "Rematch es un producto propio de Axium para complejos deportivos, clubes y academias. Los deportistas reservan y pagan desde el celular, y los torneos se siguen en vivo en live.rematch.pe.",
+      "Producto propio de Axium para complejos deportivos, clubes y academias. Los deportistas reservan y pagan desde el celular, y los torneos se siguen en vivo en live.rematch.pe.",
     highlightsTitle: ["Lo que", "construimos"],
     highlights: [
       {
@@ -101,10 +101,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Reto",
     challenge:
-      "Un centro deportivo suele trabajar con varias herramientas a la vez: reservas por WhatsApp, clases en hojas de cálculo, ligas en grupos de chat y torneos en papel. Ninguna comparte las mismas canchas, los mismos clientes ni los mismos cobros, así que las dobles reservas, las mensualidades sin cobrar y las horas cruzando datos se vuelven parte de la rutina.",
+      "Un centro deportivo trabaja con varias herramientas: reservas por WhatsApp, clases en hojas de cálculo, ligas en grupos de chat y torneos en papel. Ninguna comparte canchas, clientes ni cobros, así que las dobles reservas y las mensualidades sin cobrar son rutina.",
     approachTitle: "Enfoque",
     approach:
-      "Diseñamos la plataforma alrededor de la cancha: su ocupación es la única fuente de verdad, así una reserva, una clase o un partido de liga nunca se cruzan. Sobre esa agenda construimos cuatro módulos con la misma anatomía, que comparten clientes y cobros, y una capa en vivo para que jugadores y público sigan cada torneo desde el celular. Con la web rehecha, el club entra por rematch.pe y ve la agenda del día en la portada, y los jugadores entran por Rematch Live: canchas, academias y torneos en un mismo directorio.",
+      "Diseñamos la plataforma alrededor de la cancha: su ocupación es la única fuente de verdad, así una reserva, una clase y un partido de liga nunca se cruzan. Sobre esa agenda van cuatro módulos que comparten clientes y cobros.",
     outcomesTitle: "Resultados",
     outcomes:
       "Rematch está en producción: los clubes reservan, cobran y organizan sus competencias en rematch.pe, y los torneos se transmiten en live.rematch.pe.",
@@ -152,7 +152,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "We built the platform a sports center uses to run its bookings, academies, leagues and tournaments from one place.",
     context:
-      "Rematch is Axium's own product for sports complexes, clubs and academies. Players book and pay from their phones, and tournaments are followed live on live.rematch.pe.",
+      "Axium's own product for sports complexes, clubs and academies. Players book and pay from their phones, and tournaments are followed live on live.rematch.pe.",
     highlightsTitle: ["What we", "built"],
     highlights: [
       {
@@ -190,10 +190,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Challenge",
     challenge:
-      "A sports center usually runs on several tools at once: bookings over WhatsApp, classes in spreadsheets, leagues in group chats and tournaments on paper. None of them share the same courts, customers or payments, so double bookings, unpaid fees and hours spent reconciling data become routine.",
+      "A sports center runs on several tools: bookings over WhatsApp, classes in spreadsheets, leagues in group chats and tournaments on paper. None of them share courts, customers or payments, so double bookings and unpaid fees are routine.",
     approachTitle: "Approach",
     approach:
-      "We designed the platform around the court: its occupancy is the single source of truth, so a booking, a class or a league match never overlap. On top of that schedule we built four modules with the same anatomy that share customers and payments, plus a live layer so players and spectators can follow every tournament from their phones. With the redesigned website, clubs come in through rematch.pe and see the day's schedule on the homepage, while players come in through Rematch Live: courts, academies and tournaments in one directory.",
+      "We designed the platform around the court: its occupancy is the single source of truth, so a booking, a class and a league match never overlap. Four modules sit on that schedule and share customers and payments.",
     outcomesTitle: "Outcomes",
     outcomes:
       "Rematch is in production: clubs book, collect payments and organize their competitions on rematch.pe, and tournaments are broadcast on live.rematch.pe.",
@@ -241,7 +241,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "Construímos a plataforma com a qual um centro esportivo gerencia reservas, academias, ligas e torneios em um só lugar.",
     context:
-      "O Rematch é um produto próprio da Axium para complexos esportivos, clubes e academias. Os atletas reservam e pagam pelo celular, e os torneios são acompanhados ao vivo em live.rematch.pe.",
+      "Produto próprio da Axium para complexos esportivos, clubes e academias. Os atletas reservam e pagam pelo celular, e os torneios são acompanhados ao vivo em live.rematch.pe.",
     highlightsTitle: ["O que", "construímos"],
     highlights: [
       {
@@ -279,10 +279,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Desafio",
     challenge:
-      "Um centro esportivo costuma trabalhar com várias ferramentas ao mesmo tempo: reservas pelo WhatsApp, aulas em planilhas, ligas em grupos de conversa e torneios no papel. Nenhuma compartilha as mesmas quadras, clientes ou pagamentos, e reservas duplicadas, mensalidades em aberto e horas cruzando dados viram rotina.",
+      "Um centro esportivo trabalha com várias ferramentas: reservas pelo WhatsApp, aulas em planilhas, ligas em grupos de conversa e torneios no papel. Nenhuma compartilha quadras, clientes ou pagamentos, e reservas duplicadas e mensalidades em aberto viram rotina.",
     approachTitle: "Abordagem",
     approach:
-      "Desenhamos a plataforma em torno da quadra: sua ocupação é a única fonte de verdade, então uma reserva, uma aula ou um jogo de liga nunca se sobrepõem. Sobre essa agenda construímos quatro módulos com a mesma anatomia, que compartilham clientes e pagamentos, e uma camada ao vivo para que jogadores e público acompanhem cada torneio pelo celular. Com o site refeito, o clube entra por rematch.pe e vê a agenda do dia na página inicial, e os jogadores entram pelo Rematch Live: quadras, academias e torneios em um só diretório.",
+      "Desenhamos a plataforma em torno da quadra: sua ocupação é a única fonte de verdade, então uma reserva, uma aula e um jogo de liga nunca se sobrepõem. Sobre essa agenda vão quatro módulos que compartilham clientes e pagamentos.",
     outcomesTitle: "Resultados",
     outcomes:
       "O Rematch está em produção: os clubes reservam, cobram e organizam suas competições em rematch.pe, e os torneios são transmitidos em live.rematch.pe.",
@@ -399,6 +399,9 @@ export default function RematchContent() {
   return (
     <>
       <CaseStory
+        // El acento sale de la marca del cliente, no de Axium: lima oscuro · lima · tinta.
+        // base va sobre claro y dark sobre la tinta; los dos pasan 4.5:1.
+        accent={{ base: "#5C7000", dark: "#B4DF00", deep: "#001D30" }}
         name="Rematch"
         tagline={c.tagline}
         heroImage={`${IMG}/bv-hero.jpg`}

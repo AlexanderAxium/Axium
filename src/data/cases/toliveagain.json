@@ -1,12 +1,19 @@
 {
   "title": "To Live Again",
   "industry": "ONG / Prevención del abuso doméstico",
-  "image": "/images/proyects/toliveagain/toliveagain-portada.jpg",
+  "image": "/images/proyects/toliveagain/tla-portada.jpg",
   "location": "Miami, Florida",
   "platform": "Web",
   "duration": "En producción",
   "client": "To Live Again",
-  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "sharp",
+    "Cloudflare"
+  ],
   "liveUrl": "https://toliveagain.org",
   "secondaryIndustry": "Fundación 501(c)(3)",
   "forWhom": "Fundación que recauda en Estados Unidos, trabaja en dos países y tiene que leerse igual de bien en español y en inglés",
@@ -14,6 +21,7 @@
     "Rediseño del sitio",
     "Desarrollo web",
     "Diseño UX/UI",
+    "Contenido y estructura",
     "Versión bilingüe ES/EN"
   ],
   "description": "El sitio de la casa matriz en Miami de la fundación contra el abuso doméstico, rehecho de cero: bilingüe, con la donación en primera línea y el certificado 501(c)(3) a la vista.",

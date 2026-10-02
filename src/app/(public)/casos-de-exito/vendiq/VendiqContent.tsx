@@ -67,18 +67,18 @@ const COPY: Record<StoryLang, Copy> = {
       ["Plataforma", "Web (SaaS) multi-tenant"],
     ],
     statement:
-      "Construimos la plataforma con la que un comercio del Perú vende en su web y en su local con el mismo catálogo, el mismo stock y sus comprobantes SUNAT.",
+      "Construimos la plataforma con la que un comercio vende en su web y en su local con el mismo catálogo, el mismo stock y sus comprobantes SUNAT.",
     context:
-      "Vendiq es un producto propio de Axium para comercios que venden por internet y en mostrador. Cada tienda publica su web con su marca, cobra con las pasarelas que ya usan sus clientes y lleva inventario y facturación en el mismo panel, con un precio fijo al mes y sin comisión por venta.",
+      "Producto propio de Axium para comercios que venden por internet y en mostrador. Cada tienda publica su web con su marca, cobra con las pasarelas que ya usan sus clientes y lleva inventario y facturación en el mismo panel.",
     highlightsTitle: ["Lo que", "construimos"],
     highlights: [
       {
         lead: "Tienda online",
-        text: "catálogo con variantes y colecciones, carrito, checkout y cuenta de cliente, con el logo y los colores de cada marca.",
+        text: "catálogo con variantes y colecciones, carrito, checkout y cuenta de cliente, con la marca de cada tienda.",
       },
       {
         lead: "Punto de venta",
-        text: "cobro en el local con lector de códigos o la cámara del celular, descontando del mismo stock, desde el plan Business.",
+        text: "cobro en el local con lector de códigos o la cámara del celular, sobre el mismo stock; desde Business.",
       },
       {
         lead: "Inventario",
@@ -86,7 +86,7 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Facturación SUNAT",
-        text: "boletas, facturas y notas de crédito emitidas desde el pedido con el certificado de cada comercio, desde el plan Business.",
+        text: "boletas, facturas y notas de crédito desde el pedido, con el certificado de cada comercio; desde Business.",
       },
       {
         lead: "Cobros sin comisión",
@@ -94,11 +94,11 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Envíos por distrito",
-        text: "zonas con los distritos del Perú y tarifa plana, por peso, por monto o gratis, desde el plan Business.",
+        text: "zonas con los distritos del Perú y tarifa plana, por peso, por monto o gratis; desde Business.",
       },
       {
         lead: "Editor visual con IA",
-        text: "la web se arma con bloques; desde Business, un asistente con Gemini propone una sección o una página con los productos y los colores de la tienda.",
+        text: "la web se arma con bloques; desde Business, un asistente con Gemini propone secciones con los productos y los colores de la tienda.",
       },
       {
         lead: "Fidelidad y API",
@@ -107,10 +107,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Reto",
     challenge:
-      "Un comercio pequeño suele vender con herramientas sueltas: una web para la tienda, un sistema para la caja, una hoja de cálculo para el stock, otro programa para las boletas y el chat para los pedidos. Cada venta se anota varias veces y el stock nunca coincide; las plataformas grandes, además, cobran comisión por cada venta.",
+      "Un comercio pequeño vende con herramientas sueltas: una web, un sistema de caja, una hoja de cálculo para el stock, otro programa para las boletas y el chat para los pedidos. Cada venta se anota varias veces y el stock nunca coincide.",
     approachTitle: "Enfoque",
     approach:
-      "Diseñamos Vendiq alrededor de un solo catálogo: la tienda online, el punto de venta, el inventario y los comprobantes leen y descuentan de los mismos productos. La web pública lo cuenta con la interfaz dibujada sobre una rejilla técnica y un solo pedido: el cliente compra en la tienda, Vendiq descuenta el stock en web y local, y sale la boleta aceptada por SUNAT.",
+      "Diseñamos Vendiq alrededor de un solo catálogo: la tienda online, el punto de venta, el inventario y los comprobantes descuentan de los mismos productos. El cliente compra, el stock baja en web y local, y sale la boleta aceptada por SUNAT.",
     outcomesTitle: "Resultados",
     outcomes:
       "Vendiq está en producción en vendiq.pe: una perfumería de nicho, dos tiendas de tenis de mesa, un taller de aceites y una marca de productos de lavandería venden con él.",
@@ -155,18 +155,18 @@ const COPY: Record<StoryLang, Copy> = {
       ["Platform", "Multi-tenant web (SaaS)"],
     ],
     statement:
-      "We built the platform a Peruvian business uses to sell on its website and in its store with the same catalog, the same stock and its SUNAT receipts.",
+      "We built the platform a business uses to sell on its website and in its store with the same catalog, the same stock and its SUNAT receipts.",
     context:
-      "Vendiq is Axium's own product for businesses that sell online and over the counter. Each store publishes its website under its own brand, takes payments through the gateways its customers already use, and keeps inventory and invoicing in the same dashboard, for a fixed monthly price and with no commission per sale.",
+      "Axium's own product for businesses that sell online and over the counter. Each store publishes its website under its own brand, takes payments through the gateways its customers already use, and keeps inventory and invoicing in the same dashboard.",
     highlightsTitle: ["What we", "built"],
     highlights: [
       {
         lead: "Online store",
-        text: "a catalog with variants and collections, cart, checkout and customer accounts, with each brand's logo and colors.",
+        text: "a catalog with variants and collections, cart, checkout and customer accounts, with each store's brand.",
       },
       {
         lead: "Point of sale",
-        text: "in-store checkout with a barcode scanner or the phone's camera, drawing from the same stock, from the Business plan.",
+        text: "in-store checkout with a barcode scanner or the phone's camera, on the same stock; from Business.",
       },
       {
         lead: "Inventory",
@@ -174,7 +174,7 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "SUNAT invoicing",
-        text: "receipts, invoices and credit notes issued from the order with each business's own certificate, from the Business plan.",
+        text: "receipts, invoices and credit notes from the order, with each business's own certificate; from Business.",
       },
       {
         lead: "No-commission payments",
@@ -182,11 +182,11 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Shipping by district",
-        text: "zones built from Peru's districts with flat, weight-based, order-based or free rates, from the Business plan.",
+        text: "zones built from Peru's districts with flat, weight-based, order-based or free rates; from Business.",
       },
       {
         lead: "Visual editor with AI",
-        text: "the website is built with blocks; from Business, an assistant powered by Gemini drafts a section or a page with the store's products and colors.",
+        text: "the website is built with blocks; from Business, an assistant powered by Gemini drafts sections with the store's products and colors.",
       },
       {
         lead: "Loyalty and API",
@@ -195,10 +195,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Challenge",
     challenge:
-      "A small business usually sells with scattered tools: a website for the store, a system for the register, a spreadsheet for stock, another program for receipts and chat for orders. Every sale gets recorded several times and the stock never matches; on top of that, the big platforms take a commission on every sale.",
+      "A small business sells with scattered tools: a website, a register system, a spreadsheet for stock, another program for receipts and chat for orders. Every sale gets recorded several times and the stock never matches.",
     approachTitle: "Approach",
     approach:
-      "We designed Vendiq around a single catalog: the online store, the point of sale, inventory and receipts all read from and draw down the same products. The public website tells that story with the interface drawn over a technical grid and a single order: the customer buys in the store, Vendiq draws down stock online and in store, and the receipt comes out accepted by SUNAT.",
+      "We designed Vendiq around a single catalog: the online store, the point of sale, inventory and receipts all draw down the same products. The customer buys, stock falls online and in store, and the receipt comes out accepted by SUNAT.",
     outcomesTitle: "Outcomes",
     outcomes:
       "Vendiq is in production at vendiq.pe: a niche perfumery, two table tennis shops, a motor oil workshop and a laundry products brand sell with it.",
@@ -242,18 +242,18 @@ const COPY: Record<StoryLang, Copy> = {
       ["Plataforma", "Web (SaaS) multi-tenant"],
     ],
     statement:
-      "Construímos a plataforma com a qual um comércio do Peru vende no seu site e na sua loja com o mesmo catálogo, o mesmo estoque e os seus comprovantes SUNAT.",
+      "Construímos a plataforma com a qual um comércio vende no seu site e na sua loja com o mesmo catálogo, o mesmo estoque e os seus comprovantes SUNAT.",
     context:
-      "O Vendiq é um produto próprio da Axium para comércios que vendem pela internet e no balcão. Cada loja publica seu site com sua marca, cobra com os meios de pagamento que seus clientes já usam e controla estoque e faturamento no mesmo painel, com um preço fixo por mês e sem comissão por venda.",
+      "Produto próprio da Axium para comércios que vendem pela internet e no balcão. Cada loja publica seu site com sua marca, cobra com os meios de pagamento que seus clientes já usam e controla estoque e faturamento no mesmo painel.",
     highlightsTitle: ["O que", "construímos"],
     highlights: [
       {
         lead: "Loja online",
-        text: "catálogo com variações e coleções, carrinho, checkout e conta de cliente, com o logo e as cores de cada marca.",
+        text: "catálogo com variações e coleções, carrinho, checkout e conta de cliente, com a marca de cada loja.",
       },
       {
         lead: "Ponto de venda",
-        text: "cobrança na loja com leitor de códigos ou a câmera do celular, descontando do mesmo estoque, a partir do plano Business.",
+        text: "cobrança na loja com leitor de códigos ou a câmera do celular, sobre o mesmo estoque; a partir do Business.",
       },
       {
         lead: "Estoque",
@@ -261,7 +261,7 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Faturamento SUNAT",
-        text: "boletas, faturas e notas de crédito emitidas a partir do pedido com o certificado de cada comércio, a partir do plano Business.",
+        text: "boletas, faturas e notas de crédito a partir do pedido, com o certificado de cada comércio; a partir do Business.",
       },
       {
         lead: "Cobranças sem comissão",
@@ -269,11 +269,11 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Entregas por distrito",
-        text: "zonas com os distritos do Peru e tarifa fixa, por peso, por valor ou grátis, a partir do plano Business.",
+        text: "zonas com os distritos do Peru e tarifa fixa, por peso, por valor ou grátis; a partir do Business.",
       },
       {
         lead: "Editor visual com IA",
-        text: "o site é montado com blocos; a partir do Business, um assistente com Gemini propõe uma seção ou uma página com os produtos e as cores da loja.",
+        text: "o site é montado com blocos; a partir do Business, um assistente com Gemini propõe seções com os produtos e as cores da loja.",
       },
       {
         lead: "Fidelidade e API",
@@ -282,10 +282,10 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     challengeTitle: "Desafio",
     challenge:
-      "Um comércio pequeno costuma vender com ferramentas soltas: um site para a loja, um sistema para o caixa, uma planilha para o estoque, outro programa para os comprovantes e o chat para os pedidos. Cada venda é anotada várias vezes e o estoque nunca bate; além disso, as grandes plataformas cobram comissão por cada venda.",
+      "Um comércio pequeno vende com ferramentas soltas: um site, um sistema de caixa, uma planilha para o estoque, outro programa para os comprovantes e o chat para os pedidos. Cada venda é anotada várias vezes e o estoque nunca bate.",
     approachTitle: "Abordagem",
     approach:
-      "Desenhamos o Vendiq em torno de um único catálogo: a loja online, o ponto de venda, o estoque e os comprovantes leem e descontam dos mesmos produtos. O site público conta isso com a interface desenhada sobre uma grade técnica e um único pedido: o cliente compra na loja, o Vendiq desconta o estoque na web e na loja física, e sai a boleta aceita pela SUNAT.",
+      "Desenhamos o Vendiq em torno de um único catálogo: a loja online, o ponto de venda, o estoque e os comprovantes descontam dos mesmos produtos. O cliente compra, o estoque cai na web e na loja, e sai a boleta aceita pela SUNAT.",
     outcomesTitle: "Resultados",
     outcomes:
       "O Vendiq está em produção em vendiq.pe: uma perfumaria de nicho, duas lojas de tênis de mesa, uma oficina de óleos e uma marca de produtos de lavanderia vendem com ele.",
@@ -401,6 +401,9 @@ export default function VendiqContent() {
   return (
     <>
       <CaseStory
+        // El acento sale de la marca del cliente, no de Axium: azul de acción · señal · grafito.
+        // base va sobre claro y dark sobre la tinta; los dos pasan 4.5:1.
+        accent={{ base: "#1F5BFF", dark: "#6CCBFF", deep: "#0B0D12" }}
         name="Vendiq"
         tagline={c.tagline}
         heroImage={`${IMG}/bv-hero.jpg`}
@@ -415,13 +418,11 @@ export default function VendiqContent() {
         statement={c.statement}
         context={c.context}
         blocks={bloques(c)}
-        // El caso anónimo «E-commerce & Inventory SaaS» describe el mismo producto
-        hideCases={["store-saas"]}
         next={{
           name: "Rematch",
           tagline: c.nextTagline,
           href: "/casos-de-exito/rematch",
-          image: "/images/proyects/rematch/rematch-portada-v5.jpg",
+          image: "/images/proyects/rematch/rematch-portada-agenda.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

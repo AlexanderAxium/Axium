@@ -15,7 +15,9 @@ import { usePathname } from "next/navigation";
 import {
   type CSSProperties,
   type ReactNode,
+  createContext,
   useCallback,
+  useContext,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -43,11 +45,39 @@ import { useCasesWithLocale } from "~/lib/case-translations";
  *
  * Móvil: mismo gutter que el resto de la página (container-section), meta como
  * tabla de dos columnas, piezas anchas a 4:3 y pares apilados para que la UI se lea.
+ *
+ * Bloques añadidos el 2026-09-29 para las fichas cuyo alcance no es solo producto
+ * (la primera es Aurore: identidad + aplicaciones + tienda). Son opcionales: las
+ * cuatro fichas de los SaaS no los usan y no cambian.
+ *   · `act`     — apertura de acto: numeral, título y entradilla, con filete arriba.
+ *                 Da forma visible a una ficha de varios entregables.
+ *   · `tags`    — el stack declarado al pie, mezclando disciplina y tecnología.
+ *                 Viene del «AREAS OF EXPERTISE» de Viget (viget.com/work).
+ *   · `wide.lead`      — la frase de lo que se construyó, encima de su pantalla real.
+ *   · `StoryImage.caption` — la línea al pie que nombra la pantalla o la tecnología.
+ *                 Las dos vienen de Barrel (barrelny.com/work) y de Viget: un bloque
+ *                 es una frase + un estado de interfaz, no una vista bonita.
  */
 
-const ACCENT = "#0072CF";
-/** El azul de marca no llega a 4.5:1 sobre la tinta; en fondos oscuros va este. */
-const ACCENT_DARK = "#4BA3F5";
+/**
+ * El acento es de la MARCA DEL CASO, no de Axium (Alexander, 2026-09-29: «los
+ * colores azul deberían cambiar de acuerdo a la marca, en aurore no combina»).
+ * `base` va sobre fondo claro y `dark` sobre la tinta: los dos tienen que pasar
+ * 4.5:1 contra su fondo, y por eso casi nunca son el mismo color de la paleta.
+ * Sin `accent`, el caso usa el azul de Axium y nada cambia.
+ */
+// Las piezas se sirven a quality=92: el 75 por defecto de Next es una SEGUNDA pasada
+// con pérdida sobre nuestros JPEG, que ya salen a ~0,5 bits/px, y en interfaz con texto
+// se nota. El comentario de next.config decía que los héroes iban a 95 y no era cierto:
+// no había ningún `quality` en este componente. (2026-10-01)
+export type Acento = { base: string; dark: string; deep: string };
+const ACENTO_AXIUM: Acento = {
+  base: "#0072CF",
+  dark: "#4BA3F5",
+  deep: "#003A6E",
+};
+const AcentoCtx = createContext<Acento>(ACENTO_AXIUM);
+const useAcento = () => useContext(AcentoCtx);
 const INK = "#060C20";
 const HEADING = { fontFamily: "var(--font-family-heading)" } as const;
 const ease = [0.4, 0, 0.2, 1] as const;
@@ -63,10 +93,13 @@ export type StoryImage = {
   mobilePosition?: string;
   /** Pieza propia para móvil cuando recortar no alcanza (p. ej. una ventana de navegador). */
   mobileSrc?: string;
+  /** Línea al pie que nombra la pantalla o la tecnología (Viget). */
+  caption?: string;
 };
 
 export type StoryBlock =
-  | { kind: "wide"; image: StoryImage }
+  /** `lead`: la frase de lo que se construyó, encima de su pantalla real (Barrel). */
+  | { kind: "wide"; image: StoryImage; lead?: string }
   | { kind: "pair"; images: [StoryImage, StoryImage] }
   | {
       kind: "highlights";
@@ -79,7 +112,17 @@ export type StoryBlock =
       title: string;
       body: string;
       bullets?: string[];
-    };
+    }
+  /** Apertura de acto: el numeral, el título y una entradilla. Para fichas con varios entregables. */
+  | {
+      kind: "act";
+      id?: string;
+      index: string;
+      title: [string, string];
+      body: string;
+    }
+  /** El stack declarado al pie, mezclando disciplina y tecnología (Viget). */
+  | { kind: "tags"; title: string; items: string[] };
 
 export type StoryLang = "es" | "en" | "pt";
 
@@ -164,13 +207,20 @@ export const STORY_LABELS: Record<StoryLang, StoryLabels> = {
 };
 
 export type CaseStoryProps = {
+  /** El acento de la marca del caso. Sin esto, el azul de Axium. */
+  accent?: Acento;
   name: string;
   tagline: string;
   heroImage: string;
   /** object-position de la foto del hero; en móvil la tarjeta es vertical y recorta mucho. */
   heroPosition?: string;
   logo: { src: string; width: number; height: number };
-  liveUrl: string;
+  /**
+   * Sin `liveUrl` no se pinta ningún enlace al sitio: es el caso de un proyecto
+   * terminado pero todavía sin publicar (Academia César Acosta). La ficha se
+   * queda sin el botón del hero y sin el de «visitar el sitio en vivo».
+   */
+  liveUrl?: string;
   meta: [string, string][];
   statement: string;
   context: string;
@@ -214,13 +264,30 @@ function Titulo({
   accent: string;
   dark?: boolean;
 }) {
+  const acento = useAcento();
   return (
     <h2
       className="text-[34px] leading-[1.05] tracking-tight sm:text-[56px] sm:leading-[1.02] lg:text-[68px]"
-      style={{ color: dark ? "#FFFFFF" : INK }}
+      style={{ color: dark ? "#FFFFFF" : INK, wordSpacing: "-0.12em" }}
     >
-      {lead ? <span className="font-medium">{lead} </span> : null}
-      <span style={{ ...HEADING, color: dark ? ACCENT_DARK : ACCENT }}>
+      {/*
+        Dos familias, no dos pesos. La regla global de `h2` pone GuarujaTitle en todo
+        el titular, así que el contraste que describe el comentario de arriba no
+        ocurría: la primera mitad hay que devolverla a Gilroy a mano. Y el peso 500
+        se cae porque GuarujaTitle solo trae el 400 y Chrome sintetizaba una falsa
+        negrita — la mitad oscura salía emborronada al lado de la mitad acentuada.
+        `word-spacing` negativo compensa el `tracking-tight`: a 68 px los espacios
+        entre palabras salían a ~26 px con las letras tocándose.
+      */}
+      {lead ? (
+        <span
+          className="font-medium"
+          style={{ fontFamily: "var(--font-family-sans)" }}
+        >
+          {lead}{" "}
+        </span>
+      ) : null}
+      <span style={{ ...HEADING, color: dark ? acento.dark : acento.base }}>
         {accent}
       </span>
     </h2>
@@ -241,6 +308,7 @@ function Plegable({
   /** Total de viñetas si el contenido es una lista. */
   lista?: number;
 }) {
+  const acento = useAcento();
   const [abierto, setAbierto] = useState(false);
   const [alturas, setAlturas] = useState<{
     cerrado: number;
@@ -307,7 +375,7 @@ function Plegable({
           onClick={() => setAbierto((v) => !v)}
           aria-expanded={abierto}
           className="mt-2 inline-flex h-11 items-center gap-1.5 text-sm font-semibold"
-          style={{ color: ACCENT }}
+          style={{ color: acento.base }}
         >
           {texto}
           <ChevronDown
@@ -328,8 +396,8 @@ function Pieza({
   className: string;
   sizes: string;
 }) {
-  return (
-    <figure
+  const marco = (
+    <div
       className={`relative overflow-hidden rounded-[16px] bg-[#F3F4F6] md:rounded-[18px] ${className}`}
     >
       {image.mobileSrc ? (
@@ -338,6 +406,7 @@ function Pieza({
             src={image.mobileSrc}
             alt={image.alt}
             fill
+            quality={92}
             sizes="100vw"
             className="object-cover sm:hidden"
           />
@@ -346,6 +415,7 @@ function Pieza({
             alt=""
             aria-hidden
             fill
+            quality={92}
             sizes={sizes}
             className="hidden object-cover sm:block"
           />
@@ -355,6 +425,7 @@ function Pieza({
           src={image.src}
           alt={image.alt}
           fill
+          quality={92}
           sizes={sizes}
           className="object-cover"
           style={
@@ -364,6 +435,15 @@ function Pieza({
           }
         />
       )}
+    </div>
+  );
+  if (!image.caption) return marco;
+  return (
+    <figure>
+      {marco}
+      <figcaption className="mt-3 text-sm leading-relaxed text-[#6B7280]">
+        {image.caption}
+      </figcaption>
     </figure>
   );
 }
@@ -438,6 +518,7 @@ function MasProyectos({
   hide: string[];
   labels: StoryLabels;
 }) {
+  const acento = useAcento();
   const casos = useCasesWithLocale();
   const pathname = usePathname();
   const plugins = useMemo(() => [WheelGesturesPlugin()], []);
@@ -479,7 +560,7 @@ function MasProyectos({
           <div className="content-section">
             <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-5">
               <Reveal>
-                <p className="text-overline" style={{ color: ACCENT_DARK }}>
+                <p className="text-overline" style={{ color: acento.dark }}>
                   {labels.upNext}
                 </p>
                 <div className="mt-3">
@@ -534,7 +615,7 @@ function MasProyectos({
                           {t.next ? (
                             <span
                               className="shrink-0 rounded-full px-3 py-1 text-xs font-semibold text-white"
-                              style={{ backgroundColor: ACCENT }}
+                              style={{ backgroundColor: acento.base }}
                             >
                               {labels.nextBadge}
                             </span>
@@ -563,7 +644,7 @@ function MasProyectos({
                     draggable={false}
                     className="group flex h-full min-h-[360px] flex-col justify-between rounded-[22px] p-7 text-white md:p-8"
                     style={{
-                      background: `linear-gradient(150deg, ${ACCENT} 0%, #003A6E 100%)`,
+                      background: `linear-gradient(150deg, ${acento.base} 0%, ${acento.deep} 100%)`,
                     }}
                   >
                     <p className="text-overline text-white/70">
@@ -622,8 +703,13 @@ export function CaseStory({
   next,
   hideCases = [],
   labels,
+  accent = ACENTO_AXIUM,
 }: CaseStoryProps) {
-  const esPieza = (b?: StoryBlock) => b?.kind === "wide" || b?.kind === "pair";
+  const acento = accent;
+  /** Una pieza «desnuda» (sin frase ni pie) es la que se pega a la de al lado. */
+  const esPieza = (b?: StoryBlock) =>
+    (b?.kind === "wide" && !b.lead && !b.image.caption) ||
+    (b?.kind === "pair" && !b.images.some((i) => i.caption));
   /** Ritmo vertical: piezas pegadas entre sí (12/16px), todo lo demás respira igual. */
   const espacio = (i: number) => {
     if (i === 0) return "";
@@ -633,235 +719,302 @@ export function CaseStory({
   };
 
   return (
-    <div data-nav-theme="light" className="bg-white" style={{ color: INK }}>
-      {/*
+    <AcentoCtx.Provider value={accent}>
+      <div data-nav-theme="light" className="bg-white" style={{ color: INK }}>
+        {/*
         Hero a sangre (ancho completo y oscuro, pedido de Alexander): el mundo del
         producto con velo, su logo enorme y la meta abajo. Empieza detrás del navbar,
         que toma el tono oscuro de la sección; el texto se alinea al contenido.
       */}
-      <section
-        data-nav-theme="dark"
-        className="relative isolate overflow-hidden bg-[#0B1020] text-white"
-      >
-        <Image
-          src={heroImage}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: heroPosition ?? "center" }}
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[#060C20]/35 sm:bg-[#060C20]/55"
-        />
-        {/* Móvil: oscuro arriba (navbar y texto) y abajo (meta); la foto respira en el medio */}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-[#060C20]/85 via-[#060C20]/10 to-[#060C20]/90 sm:hidden"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 hidden bg-gradient-to-r from-[#060C20]/85 via-[#060C20]/35 to-transparent sm:block"
-        />
-        {/* Desktop: sombra bajo el navbar y bajo la meta */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 top-0 hidden h-40 bg-gradient-to-b from-[#060C20]/70 to-transparent sm:block"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 hidden h-72 bg-gradient-to-t from-[#060C20]/85 to-transparent sm:block"
-        />
-        <Image
-          src={logo.src}
-          alt=""
-          aria-hidden
-          width={logo.width}
-          height={logo.height}
-          className="pointer-events-none absolute top-1/2 left-1/2 hidden w-[56%] max-w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.1] brightness-0 invert sm:block"
-        />
+        <section
+          data-nav-theme="dark"
+          className="relative isolate overflow-hidden bg-[#0B1020] text-white"
+        >
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            priority
+            quality={92}
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: heroPosition ?? "center" }}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[#060C20]/25 sm:bg-[#060C20]/40"
+          />
+          {/* Móvil: oscuro arriba (navbar y texto) y abajo (meta); la foto respira en el medio */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-b from-[#060C20]/85 via-[#060C20]/10 to-[#060C20]/90 sm:hidden"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 hidden bg-gradient-to-r from-[#060C20]/85 via-[#060C20]/35 to-transparent sm:block"
+          />
+          {/* Desktop: sombra bajo el navbar y bajo la meta */}
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 hidden h-40 bg-gradient-to-b from-[#060C20]/70 to-transparent sm:block"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 hidden h-72 bg-gradient-to-t from-[#060C20]/85 to-transparent sm:block"
+          />
+          <Image
+            src={logo.src}
+            alt=""
+            aria-hidden
+            width={logo.width}
+            height={logo.height}
+            className="pointer-events-none absolute top-1/2 left-1/2 hidden w-[56%] max-w-[900px] -translate-x-1/2 -translate-y-1/2 opacity-[0.1] brightness-0 invert sm:block"
+          />
 
-        <div className="container-section relative">
-          <div className="content-section flex flex-col pt-28 pb-6 sm:min-h-[760px] sm:justify-between sm:pt-36 sm:pb-12 md:min-h-[860px] lg:pb-16">
-            <Reveal>
-              <nav
-                aria-label="breadcrumb"
-                className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-white/80"
-              >
-                <Link href="/" className="hover:text-white">
-                  {labels.home}
-                </Link>
-                <ChevronRight className="size-3.5 opacity-60" />
-                <Link href="/portafolio" className="hover:text-white">
-                  {labels.cases}
-                </Link>
-                <ChevronRight className="size-3.5 opacity-60" />
-                <span className="text-white/55">{name}</span>
-              </nav>
-              <h1
-                className="mt-5 text-[length:clamp(2.75rem,15vw,4rem)] leading-[0.95] sm:mt-6 sm:text-[96px] lg:text-[120px]"
-                style={HEADING}
-              >
-                {name}
-              </h1>
-              <p className="text-body-lg mt-3 max-w-md text-white/85 sm:mt-4">
-                {tagline}
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3 sm:mt-8">
-                <a
-                  href={`#${resultId}`}
-                  className="inline-flex h-12 flex-auto items-center justify-center rounded-full px-5 text-sm font-semibold whitespace-nowrap text-white transition-transform hover:scale-[1.02] sm:flex-none sm:px-6"
-                  style={{ backgroundColor: ACCENT }}
+          <div className="container-section relative">
+            <div className="content-section flex flex-col pt-28 pb-6 sm:min-h-[760px] sm:justify-between sm:pt-36 sm:pb-12 md:min-h-[860px] lg:pb-16">
+              <Reveal>
+                <nav
+                  aria-label="breadcrumb"
+                  className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-white/80"
                 >
-                  {labels.seeResult}
-                </a>
-                <a
-                  href={liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 flex-auto items-center justify-center gap-1.5 rounded-full border border-white/30 px-5 text-sm font-semibold whitespace-nowrap text-white hover:bg-white/10 sm:flex-none sm:px-6"
+                  <Link
+                    href="/"
+                    className="inline-flex min-h-6 items-center hover:text-white"
+                  >
+                    {labels.home}
+                  </Link>
+                  <ChevronRight className="size-3.5 opacity-60" />
+                  <Link
+                    href="/portafolio"
+                    className="inline-flex min-h-6 items-center hover:text-white"
+                  >
+                    {labels.cases}
+                  </Link>
+                  <ChevronRight className="size-3.5 opacity-60" />
+                  <span className="text-white/55">{name}</span>
+                </nav>
+                <h1
+                  className="mt-5 text-[length:clamp(2.75rem,15vw,4rem)] leading-[0.95] sm:mt-6 sm:text-[96px] lg:text-[120px]"
+                  style={HEADING}
                 >
-                  {labels.live} <ArrowUpRight className="size-4" />
-                </a>
-              </div>
-            </Reveal>
-
-            <dl className="mt-28 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 sm:border-t sm:border-white/15 sm:pt-8 lg:grid-cols-4">
-              {meta.map(([k, v]) => (
-                <div
-                  key={k}
-                  className="grid grid-cols-[7rem_1fr] items-baseline gap-4 border-t border-white/15 py-3.5 sm:block sm:border-0 sm:py-0"
-                >
-                  <dt className="text-overline text-white/55">{k}</dt>
-                  <dd className="text-body text-white sm:mt-1">{v}</dd>
+                  {name}
+                </h1>
+                <p className="text-body-lg mt-3 max-w-md text-white/85 sm:mt-4">
+                  {tagline}
+                </p>
+                <div className="mt-7 flex flex-wrap gap-3 sm:mt-8">
+                  <a
+                    href={`#${resultId}`}
+                    className="inline-flex h-12 flex-auto items-center justify-center rounded-full px-5 text-sm font-semibold whitespace-nowrap text-white transition-transform hover:scale-[1.02] sm:flex-none sm:px-6"
+                    style={{ backgroundColor: acento.base }}
+                  >
+                    {labels.seeResult}
+                  </a>
+                  {liveUrl ? (
+                    <a
+                      href={liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-12 flex-auto items-center justify-center gap-1.5 rounded-full border border-white/30 px-5 text-sm font-semibold whitespace-nowrap text-white hover:bg-white/10 sm:flex-none sm:px-6"
+                    >
+                      {labels.live} <ArrowUpRight className="size-4" />
+                    </a>
+                  ) : null}
                 </div>
-              ))}
-            </dl>
+              </Reveal>
+
+              <dl className="mt-28 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 sm:border-t sm:border-white/15 sm:pt-8 lg:grid-cols-4">
+                {meta.map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="grid grid-cols-[7rem_1fr] items-baseline gap-4 border-t border-white/15 py-3.5 sm:block sm:border-0 sm:py-0"
+                  >
+                    <dt className="text-overline text-white/55">{k}</dt>
+                    <dd className="text-body text-white sm:mt-1">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* La frase: qué logró el proyecto, y el contexto */}
-      <section className="container-section pt-16 pb-14 md:pt-28 md:pb-24">
-        <Reveal className="content-section max-w-4xl sm:text-center">
-          <p className="text-[24px] leading-[1.3] tracking-tight sm:text-[34px] sm:leading-[1.25]">
-            {statement}
-          </p>
-          <p className="text-body mt-5 max-w-2xl text-[#4A5263] sm:mx-auto sm:mt-6">
-            {context}
-          </p>
-          <a
-            href={liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-7 inline-flex h-11 items-center gap-1.5 rounded-full border border-[#D9DDE3] px-5 text-sm font-medium hover:bg-[#F3F4F6] sm:mt-8"
-          >
-            {labels.discoverLive} <ArrowUpRight className="size-4" />
-          </a>
-        </Reveal>
-      </section>
+        {/* La frase: qué logró el proyecto, y el contexto */}
+        <section className="container-section pt-16 pb-14 md:pt-28 md:pb-24">
+          <Reveal className="content-section max-w-4xl sm:text-center">
+            <p className="text-[24px] leading-[1.3] tracking-tight sm:text-[34px] sm:leading-[1.25]">
+              {statement}
+            </p>
+            <p className="text-body mt-5 max-w-2xl text-[#4A5263] sm:mx-auto sm:mt-6">
+              {context}
+            </p>
+            {liveUrl ? (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex h-11 items-center gap-1.5 rounded-full border border-[#D9DDE3] px-5 text-sm font-medium hover:bg-[#F3F4F6] sm:mt-8"
+              >
+                {labels.discoverLive} <ArrowUpRight className="size-4" />
+              </a>
+            ) : null}
+          </Reveal>
+        </section>
 
-      {/* Relato + galería */}
-      <div className="container-section pb-16 md:pb-24">
-        <div className="content-section">
-          {blocks.map((block, i) => {
-            const key = `${block.kind}-${i}`;
-            if (block.kind === "wide") {
-              return (
-                <Reveal key={key} className={espacio(i)}>
-                  <Pieza
-                    image={block.image}
-                    className="aspect-[4/3] sm:aspect-[2/1]"
-                    sizes="(min-width: 1536px) 1536px, 100vw"
-                  />
-                </Reveal>
-              );
-            }
-            if (block.kind === "pair") {
-              return (
-                <div
-                  key={key}
-                  className={`grid gap-3 sm:grid-cols-2 md:gap-4 ${espacio(i)}`}
-                >
-                  {block.images.map((image, j) => (
-                    <Reveal key={image.src} delay={j * 0.08}>
-                      <Pieza
-                        image={image}
-                        className="aspect-square"
-                        sizes="(min-width: 1536px) 768px, (min-width: 640px) 50vw, 100vw"
-                      />
-                    </Reveal>
-                  ))}
-                </div>
-              );
-            }
-            if (block.kind === "highlights") {
-              return (
-                <section key={key} className={espacio(i)}>
-                  <Reveal>
-                    <Titulo lead={block.title[0]} accent={block.title[1]} />
+        {/* Relato + galería */}
+        <div className="container-section pb-16 md:pb-24">
+          <div className="content-section">
+            {blocks.map((block, i) => {
+              const key = `${block.kind}-${i}`;
+              if (block.kind === "wide") {
+                return (
+                  <Reveal key={key} className={espacio(i)}>
+                    {block.lead ? (
+                      <p className="mb-6 max-w-3xl text-[19px] leading-[1.45] font-medium tracking-tight sm:text-[23px] md:mb-8">
+                        {block.lead}
+                      </p>
+                    ) : null}
+                    <Pieza
+                      image={block.image}
+                      className="aspect-[4/3] sm:aspect-[2/1]"
+                      sizes="(min-width: 1536px) 1536px, 100vw"
+                    />
                   </Reveal>
-                  <div className="mt-6 max-w-3xl md:mt-8">
-                    <Plegable labels={labels} lista={block.items.length}>
-                      <ul className="space-y-4 md:space-y-3">
-                        {block.items.map((item) => (
-                          <li key={item.lead} className="text-body flex gap-3">
-                            <span
-                              aria-hidden
-                              className="mt-[0.65em] size-1.5 shrink-0 rounded-full"
-                              style={{ backgroundColor: INK }}
-                            />
-                            <span className="text-[#4A5263]">
-                              <strong className="font-semibold text-[#060C20]">
-                                {item.lead}:
-                              </strong>{" "}
-                              {item.text}
-                            </span>
+                );
+              }
+              if (block.kind === "pair") {
+                return (
+                  <div
+                    key={key}
+                    className={`grid gap-3 sm:grid-cols-2 md:gap-4 ${espacio(i)}`}
+                  >
+                    {block.images.map((image, j) => (
+                      <Reveal key={image.src} delay={j * 0.08}>
+                        <Pieza
+                          image={image}
+                          className="aspect-square"
+                          sizes="(min-width: 1536px) 768px, (min-width: 640px) 50vw, 100vw"
+                        />
+                      </Reveal>
+                    ))}
+                  </div>
+                );
+              }
+              if (block.kind === "highlights") {
+                return (
+                  <section key={key} className={espacio(i)}>
+                    <Reveal>
+                      <Titulo lead={block.title[0]} accent={block.title[1]} />
+                    </Reveal>
+                    <div className="mt-6 max-w-[34rem] md:mt-8">
+                      <Plegable labels={labels} lista={block.items.length}>
+                        <ul className="space-y-4 md:space-y-3">
+                          {block.items.map((item) => (
+                            <li
+                              key={item.lead}
+                              className="text-body flex gap-3"
+                            >
+                              <span
+                                aria-hidden
+                                className="mt-[0.65em] size-1.5 shrink-0 rounded-full"
+                                style={{ backgroundColor: INK }}
+                              />
+                              <span className="text-[#4A5263]">
+                                <strong className="font-semibold text-[#060C20]">
+                                  {item.lead}:
+                                </strong>{" "}
+                                {item.text}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </Plegable>
+                    </div>
+                  </section>
+                );
+              }
+              if (block.kind === "act") {
+                return (
+                  <section
+                    key={key}
+                    id={block.id}
+                    className={`scroll-mt-24 border-t border-[#E4E7EC] pt-10 md:scroll-mt-28 md:pt-14 ${espacio(i)}`}
+                  >
+                    <Reveal>
+                      <p
+                        className="text-overline mb-4"
+                        style={{ color: acento.base }}
+                      >
+                        {block.index}
+                      </p>
+                      <Titulo lead={block.title[0]} accent={block.title[1]} />
+                    </Reveal>
+                    <Reveal delay={0.08}>
+                      <p className="text-body mt-5 max-w-[34rem] text-[#4A5263] md:mt-7">
+                        {block.body}
+                      </p>
+                    </Reveal>
+                  </section>
+                );
+              }
+              if (block.kind === "tags") {
+                return (
+                  <section key={key} className={espacio(i)}>
+                    <Reveal>
+                      <p className="text-overline text-[#6B7280]">
+                        {block.title}
+                      </p>
+                      <ul className="mt-5 flex flex-wrap gap-2.5">
+                        {block.items.map((t) => (
+                          <li
+                            key={t}
+                            className="rounded-full border border-[#D9DDE3] px-4 py-2 text-sm font-medium"
+                            style={{ color: acento.base }}
+                          >
+                            {t}
                           </li>
                         ))}
                       </ul>
+                    </Reveal>
+                  </section>
+                );
+              }
+              return (
+                <section
+                  key={key}
+                  id={block.id}
+                  className={`scroll-mt-24 md:scroll-mt-28 ${espacio(i)}`}
+                >
+                  <Reveal>
+                    <Titulo accent={block.title} />
+                  </Reveal>
+                  <div className="mt-5 max-w-[34rem] md:mt-8">
+                    <Plegable labels={labels}>
+                      <p className="text-body text-[#4A5263]">{block.body}</p>
                     </Plegable>
+                    {block.bullets ? (
+                      <ul className="mt-6 space-y-3">
+                        {block.bullets.map((b) => (
+                          <li key={b} className="text-body flex gap-3">
+                            <span
+                              aria-hidden
+                              className="mt-[0.65em] size-1.5 shrink-0 rounded-full"
+                              style={{ backgroundColor: acento.base }}
+                            />
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </div>
                 </section>
               );
-            }
-            return (
-              <section
-                key={key}
-                id={block.id}
-                className={`scroll-mt-24 md:scroll-mt-28 ${espacio(i)}`}
-              >
-                <Reveal>
-                  <Titulo accent={block.title} />
-                </Reveal>
-                <div className="mt-5 max-w-3xl md:mt-8">
-                  <Plegable labels={labels}>
-                    <p className="text-body text-[#4A5263]">{block.body}</p>
-                  </Plegable>
-                  {block.bullets ? (
-                    <ul className="mt-6 space-y-3">
-                      {block.bullets.map((b) => (
-                        <li key={b} className="text-body flex gap-3">
-                          <span
-                            aria-hidden
-                            className="mt-[0.65em] size-1.5 shrink-0 rounded-full"
-                            style={{ backgroundColor: ACCENT }}
-                          />
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </div>
-              </section>
-            );
-          })}
+            })}
+          </div>
         </div>
-      </div>
 
-      <MasProyectos next={next} hide={hideCases} labels={labels} />
-    </div>
+        <MasProyectos next={next} hide={hideCases} labels={labels} />
+      </div>
+    </AcentoCtx.Provider>
   );
 }

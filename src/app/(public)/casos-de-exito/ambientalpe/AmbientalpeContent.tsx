@@ -110,15 +110,43 @@ export default function AmbientalpeContent() {
                 }))}
                 columns={2}
               />
+              {/*
+                Las tres publicaciones de catálogo eran tres archivos del mismo
+                molde en fila: se leían como tres capturas. Hoy son UNA pieza
+                compuesta, en dos encuadres: en fila para el escritorio y en
+                cascada vertical para el móvil, porque a 360 px tres fichas en
+                fila quedan a 100 px y no se lee ni el nombre del equipo.
+              */}
               {galleryImages.length >= 3 && (
-                <CaseImages
-                  images={galleryImages.slice(2).map((src, i) => ({
-                    src,
-                    alt: `${data.title} — publicación ${i + 3}`,
-                    aspect: "4/3" as const,
-                  }))}
-                  columns={3}
-                />
+                <>
+                  <div className="hidden md:block">
+                    <CaseImages
+                      images={galleryImages.slice(2).map((src, i) => ({
+                        src,
+                        alt: `${data.title} — publicación ${i + 3}`,
+                        aspect: "4/3" as const,
+                      }))}
+                      columns={
+                        galleryImages.length - 2 >= 3
+                          ? 3
+                          : galleryImages.length - 2 === 2
+                            ? 2
+                            : 1
+                      }
+                    />
+                  </div>
+                  <div className="md:hidden">
+                    <CaseImages
+                      images={[
+                        {
+                          src: "/images/proyects/ambientalpe/amb-catalogo-movil.jpg",
+                          alt: `${data.title} — fichas de catálogo para redes: estación meteorológica, generador portátil y tren de muestreo de gases, con el mismo molde`,
+                        },
+                      ]}
+                      columns={1}
+                    />
+                  </div>
+                </>
               )}
             </div>
           </CaseArticleWide>

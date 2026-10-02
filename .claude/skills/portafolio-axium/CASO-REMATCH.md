@@ -426,3 +426,121 @@ python3 scripts/componer_pantalla.py \
 Nombres nuevos en cada vuelta y `.next/cache/images` borrado.
 
 **Crédito gastado en total: 2,75. Saldo final: 2,27.**
+
+## 13. La portada deja de ser un dispositivo y pasa a ser un lugar (2026-09-30)
+
+Alexander: *«mejora esto, hazlo más profesional»* y, al precisar, *«me refiero a su portada de
+rematch. busca otra, inspírate de nuestras referencias»*.
+
+### El diagnóstico, mirando la v5 a 1:1 y mirándola entre sus vecinas
+
+Dos cosas que en miniatura no se ven:
+
+1. **Las pelotas siguen siendo de tenis, y ahora además llevan un cartel.** El arreglo del
+   2026-09-25 les puso «PADEL» impreso en una gruesa sin marca. A 1:1 eso no es una pelota de
+   pádel: es **una pelota rotulada para explicar la foto**. Una foto profesional no subtitula su
+   atrezo. Y la guía de marca de Rematch pide evitar **pelotas** y trofeos: la v5 la incumplía dos
+   veces.
+2. **El fondo tiene el mismo defecto que tumbó la escena de la red**, solo que más disimulado:
+   de la mitad derecha hacia fuera son manchas de luz flotando dentro del cristal, sin lámpara que
+   las sostenga. Lo que salvó a la v5 fue que el primer plano era creíble, no que el fondo lo fuera.
+
+Y el problema mayor, que no se ve mirando la imagen sola sino **la rejilla**: Bookit (laptop sobre
+mármol), LumioLearn (tableta cenital), Vendiq (monitor sobre repisa) y Rematch (celular sobre la
+pala) son **cuatro escenas oscuras con un dispositivo encima de una superficie**. En una tarjeta de
+380 px las cuatro son la misma mancha. Es exactamente la queja que Alexander hizo en el § 8 sobre
+Bookit y LumioLearn, nunca resuelta para el carrusel.
+
+### Las tres direcciones (generadas las tres, juzgadas a 1:1)
+
+Con 962 créditos ya **no había que apostar a un solo tiro**, que es lo que hundió las vueltas
+anteriores: se generaron las tres y se decidió mirando, no imaginando. 3 × 2,75 = **8,25 créditos**.
+
+| | Dirección | Veredicto |
+|---|---|---|
+| **A** | **El club como arquitectura**: cuatro pistas acristaladas de noche, vacías, cámara lejana y elevada, f/8 y foco profundo | **Elegida** |
+| B | Bodegón de estudio: la pala y el celular sobre piedra, fondo de papel tinta, una sola luz rasante | Correcta pero plana, y **derramaba verde sobre la piedra**; sigue siendo «dispositivo sobre superficie» |
+| C | El celular sobre un pretil con el fondo disuelto en pura luz | Técnicamente impecable y **mudo**: es el mockup de cualquier app, no dice deporte |
+
+### Por qué A, y contra qué referencia se defiende
+
+**BAO**, y en su formulación más tajante: *la tarjeta del índice es fotografía del mundo del
+cliente y nunca una pantalla; la ficha son solo pantallas y nunca una foto.* La ficha de Rematch ya
+tiene 20+ capturas reales: **la división del trabajo ya estaba medio construida y la portada la
+rompía.**
+
+**Upstatement contradice a BAO** (sus tarjetas son mosaicos de pantallas) y hay que elegir. La
+elección no es «BAO tiene razón»: es que **las dos aplican la misma regla por debajo — la tarjeta
+tiene que ser lo que su rejilla no tiene todavía**. BAO prohíbe pantallas porque sus 44 tarjetas
+serían 44 capturas iguales; Upstatement puede permitírselas porque su rejilla es cartelería,
+señalética e ilustración y el mosaico es el raro. **En la rejilla de Axium lo que falta es un
+lugar, no una pantalla.** Por eso, aquí, BAO.
+
+Se descartaron por colisión: el **hero-tarjeta de brandvm** (mundo velado + logotipo enorme) choca
+de frente con Alyer, que ya es logotipo sobre acero; y el **antetítulo de entregable de viget** es
+maquetación, no imagen — y sus portadas de archivo son justo lo que su propio análisis señala como
+su punto flojo.
+
+### Por qué la geometría sí aguantó esta vez
+
+El § 11 dejó escrito que una cancha en primer plano falla por geometría y por escala. **La causa no
+era la cancha: era la profundidad de campo corta.** Al pedir bokeh, el modelo rellena lo
+desenfocado con formas plausibles e incoherentes. Esta escena pide lo contrario —**35 mm, f/8, foco
+profundo de delante a atrás, tilt-shift, «sin desenfoque de fondo»**— y encima **cámara lejana y
+ortogonal**, que es la zona segura que ya había demostrado la aérea.
+
+Comprobado a 1:1 en cinco recortes (izquierda, centro, derecha, postes y suelo): mallas metálicas
+de cuadro fino en los paños altos —detalle real de pádel—, red con su cinta blanca y su caída,
+paños de vidrio con bisagras y herrajes visibles, montantes verticales y rieles horizontales rectos
+y paralelos, luminarias con cuerpo físico y su cono de luz, líneas de saque correctas, y el asfalto
+mojado devolviendo las luces en vetas alineadas con las lámparas. **Ni un objeto de más, ni una luz
+huérfana, ni una letra.**
+
+Al prompt se le añadió, además de lo de siempre: **«toda línea estructural perfectamente recta,
+rieles horizontales y paralelos, montantes verticales, ninguna luz que flote sin luminaria visible,
+sin destellos ni bolas de bokeh»**, y la lista de prohibiciones de atrezo del § 10 ampliada con
+pelotas, palas, marcadores, banderolas y patrocinadores.
+
+**Regla nueva**: cuando la escena es un lugar, **pedir foco profundo y cámara lejana**. El bokeh no
+esconde los fallos de una cancha: los fabrica.
+
+### Lo que se gana y lo que se pierde
+
+Gana: **se lee a 180 px** (la banda de pistas encendidas más los reflejos sobrevive a cualquier
+recorte, cosa que el celular de 56 px no hacía); es **la única de las cuatro portadas propias que
+enseña un lugar**; cumple la guía de marca; y en el home ilustra literalmente la frase del panel
+(*«marketplace para encontrar y reservar canchas…»*).
+
+Pierde: **no se ve el producto**. Es una decisión, no un descuido —la ficha lo enseña entero—, pero
+es el punto que Alexander puede querer discutir. Si lo quiere de vuelta, la dirección B está
+generada y el bodegón se compone con el flujo de siempre.
+
+### Archivos y referencias
+
+| Antes | Ahora |
+|---|---|
+| `proyects/rematch/rematch-portada-v5.jpg` | **`rematch-portada-v6.jpg`** (2048×1360, 494 KB) |
+| `highlights/rematch-v10.jpg` | **`rematch-v11.jpg`** (16:10 desde **y=40**, 467 KB) |
+| — | `escenas/rematch-portada-club.png` (la escena cruda) |
+
+`escenas/mock-rematch-portada-v5.jpg` **se conserva**: es la v5 byte a byte y es la red de
+seguridad para volver atrás sin generar nada.
+
+**Cuatro** referencias en código, no tres — la cuarta apareció en esta vuelta:
+- `src/data/cases/rematch.json` › `image`
+- `src/components/axium/highlights-section.tsx` › `cover`
+- `src/app/(public)/casos-de-exito/vendiq/VendiqContent.tsx` › `next.image`
+- **`src/app/(public)/casos-de-exito/cesaracosta/CesaracostaContent.tsx` › `next.image`** — la ficha
+  de César Acosta también encadena con Rematch. **Grepear el nombre del archivo en todo `src/`
+  siempre**, porque la lista crece cada vez que se añade una ficha.
+
+### Verificación
+
+- `npx tsc --noEmit` y `npx biome check` limpios.
+- En :3111, código HTTP **200** en `/`, `/portafolio`, `/casos-de-exito/rematch`, `/casos-de-exito/vendiq`
+  y `/casos-de-exito/cesaracosta`; **404** en las dos rutas viejas; `/_next/image` sirve las dos nuevas.
+- A 1440 y a 360: **cero desborde** (`scrollWidth == clientWidth`), **cero imágenes rotas** en las
+  cinco páginas, gutters de **16 px iguales** a 360 y tarjeta de 328 px.
+- `.next/cache/images` borrado, y nombres nuevos, para que el optimizador no sirva la vieja.
+
+**Crédito gastado: 8,25. Saldo: 962,27 → 954,02.**

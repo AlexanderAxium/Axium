@@ -82,18 +82,19 @@ export default function SporttContent() {
 
         <CaseArticleWide>
           <div className="mb-12 lg:mb-16">
+            {/*
+              Una sola pieza. `sportt-vista-home.jpg` era el MISMO archivo que
+              el hero (idéntico byte a byte): la ficha enseñaba dos veces la
+              misma imagen. Se borró, y el catálogo pasa a ancho completo.
+            */}
             <CaseImages
               images={[
-                {
-                  src: "/images/proyects/sportt/sportt-vista-home.jpg",
-                  alt: "Sportt Peru — vista principal de la tienda",
-                },
                 {
                   src: "/images/proyects/sportt/sportt-vista-tienda.jpg",
                   alt: "Sportt Peru — catálogo de productos de tenis de mesa",
                 },
               ]}
-              columns={2}
+              columns={1}
             />
           </div>
         </CaseArticleWide>

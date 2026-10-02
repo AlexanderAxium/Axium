@@ -1,31 +1,35 @@
 {
   "title": "VitalChain Academy",
   "industry": "Bienestar y Educación",
-  "image": "/images/proyects/vitalchain/vitalchain-home.png",
+  "image": "/images/proyects/vitalchain/vc-portada.jpg",
   "location": "Internacional",
   "platform": "Web",
   "duration": "Sep '25 – Ene '26",
   "client": "VitalChain Academy",
   "liveUrl": "https://vitalchainacademy.com",
-  "technologyStack": ["Next.js", "Tailwind CSS", "TypeScript", "Blockchain"],
+  "technologyStack": ["Next.js", "React", "Tailwind CSS", "Railway"],
   "secondaryIndustry": "Tecnología Consciente",
   "forWhom": "Personas en búsqueda de desarrollo personal y bienestar integral",
   "services": [
-    "Plataforma E-Learning",
-    "Sistema de Sorteos",
-    "Blog de Contenido"
+    "Diseño y desarrollo web",
+    "Arquitectura de contenido",
+    "Gestor de contenido",
+    "Área privada con registro",
+    "SEO técnico"
   ],
-  "description": "Web, plataforma e-learning y sistema de sorteo: desarrollamos el ecosistema digital de VitalChain Academy para bienestar integral con transparencia blockchain.",
+  "description": "Sitio web de VitalChain Academy: siete páginas públicas, el embudo del sorteo con número verificable en blockchain, guías Web3 en diez idiomas, blog con gestor propio y el portal donde el comprador revisa su ticket.",
   "problem": "",
   "solution": "",
   "results": [],
-  "projectDescription": "VitalChain Academy es una iniciativa de bienestar integral que une crecimiento espiritual con tecnología consciente.",
+  "projectDescription": "VitalChain Academy es una academia de bienestar que opera desde Europa mirando a Latinoamérica: formación, retiros, guías Web3 y un sorteo que financia sus misiones médicas.",
   "skillsAndDeliverables": [
+    "Diseño y desarrollo web",
+    "Arquitectura de contenido",
     "Next.js",
     "Tailwind CSS",
-    "TypeScript",
-    "Blockchain Integration",
-    "Blog System"
+    "Gestor de contenido",
+    "Área privada con registro",
+    "SEO técnico"
   ],
   "publishedDate": "Ene 2026"
 }

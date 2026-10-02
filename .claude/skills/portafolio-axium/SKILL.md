@@ -44,13 +44,14 @@ pasadas) y `creator/DIVERGENCIA.md`. No duplicar acá lo que ya está allá.
 
 | Archivo | Qué es | Cuándo leerlo |
 |---|---|---|
+| **[ESTANDAR-FICHA.md](ESTANDAR-FICHA.md)** | **La vara de aceptación de una ficha**: qué tiene que cumplir para darse por buena. Cada regla nace de una corrección concreta de Alexander y la cita. Recetas de producción en COMPOSITOR.md; esto es el listón | **Antes de construir o rehacer cualquier ficha, no al entregarla** |
 | **[REJILLA.md](REJILLA.md)** | Las 12 dimensiones con las que se desarma una referencia, y por qué cada una importa | Cada vez que entra una referencia nueva |
 | **[PATRONES.md](PATRONES.md)** | La síntesis viva: 16 patrones confirmados, señales, tensiones (y cuáles cerró Alexander), veredictos textuales y **la dirección que la propuesta va a defender**. **Es el archivo que se escribe, no solo se lee** | Al ingerir (para actualizar) y al proponer (para decidir) |
 | **[IMAGENES.md](IMAGENES.md)** | La doctrina de imagen —por qué la UI nunca se inventa— y la anatomía de los 9 slots del prompt | Al analizar el tratamiento de imagen de una referencia, y al escribir prompts |
 | **[AXIUM.md](AXIUM.md)** | El estado real de la web hoy: archivos, tokens, los 33 proyectos, el inventario de assets y las debilidades detectadas | Antes de proponer cualquier cosa, y al juzgar si una referencia le aplica a Axium |
 | **[referencias/](referencias/)** | Un `.md` por portafolio analizado + `capturas/<slug>/` con las capturas | Al sintetizar y al proponer |
 | **[ESTILO.md](ESTILO.md)** | La tabla comparativa de estilo: paleta, tipografía, hero, CTA y movimiento de todas las referencias en las mismas columnas, con ideas para el hero y el CTA de Axium | Al ingerir (agregar la fila) y al proponer el hero/CTA |
-| **[PROMPTS-ANJSPORTS.md](PROMPTS-ANJSPORTS.md)** | Los 5 prompts de Higgsfield para ANJ, con dónde va cada imagen. Modelo para escribir los de los demás casos | Cuando Alexander vaya a generar |
+| **[PROMPTS-ANJSPORTS.md](PROMPTS-ANJSPORTS.md)** | Los 5 prompts de ANJ, con dónde va cada imagen. Modelo para escribir los de los demás casos (reescribirlos con las plantillas de OpenAI de `IMAGENES.md` al reutilizarlos) | Cuando Alexander vaya a generar |
 | **[COMPOSITOR.md](COMPOSITOR.md)** | Cómo se producen las imágenes **sin IA**: HTML/CSS + Playwright. El flujo, la plantilla, las recetas con código probado y los errores que ya mordieron | Al producir las imágenes de cualquier caso |
 | **[CASO-ANJSPORTS.md](CASO-ANJSPORTS.md)** | El primer caso trabajado de punta a punta: hallazgos, ADN visual, las 5 imágenes y la ficha. **Revertido en la web el 2026-09-11**; queda como aprendizaje | Como modelo para el siguiente caso |
 | **[HIGHLIGHTS-HOME.md](HIGHLIGHTS-HOME.md)** | La sección oscura de highlights del home (modelo Koto) con Vendiq, Rematch, LumioLearn y Bookit: estructura, portadas, prompts de fondo, assets y hallazgos en esos sitios | Al tocar el home, al hacer la página tipo koto.com/work, o al producir portadas de un SaaS |
@@ -166,10 +167,10 @@ cada uno:
    preguntar.
 7. **Producir las imágenes** con `COMPOSITOR.md` (HTML/CSS + Playwright, sin
    IA salvo que haga falta un fondo que no exista).
-8. **Escribir los prompts** en `PROMPTS-<SLUG>.md` para que Alexander genere en
-   Higgsfield — **siempre**, aunque la mayoría de las imágenes salgan de
-   composición. Él quiere generarlas él; no dárselos es quitarle una
-   herramienta.
+8. **Escribir los prompts** en `PROMPTS-<SLUG>.md` — **siempre**, aunque la
+   mayoría de las imágenes salgan de composición. Él quiere poder generarlas él;
+   no dárselos es quitarle una herramienta. Se escriben con las plantillas de
+   `IMAGENES.md`, listas para la API de OpenAI.
 9. **Construir la ficha** con el modelo **Stormborn** (ver `PATRONES.md`):
    hero + Overview con bullets + El reto + Enfoque y resultado + **la web
    completa como tira larga**. Techo: ~200 palabras. Si el cliente tiene una identidad fuerte, la ficha
@@ -318,9 +319,18 @@ transferible.
 - **Los SaaS propios de Alexander (Rematch, Lumio, NextFact, Vendiq, Bookit)
   van al final.** La primera fase es solo trabajo para clientes: *"déjalas para
   el final, concentrémonos en lo que ya tenemos"* (2026-09-01). Ver `AXIUM.md`.
-- **Higgsfield es la herramienta de generación y puedo operarla yo** con su
-  cuenta, vía navegador. Antes de cada tanda se anuncia qué se va a generar y
-  cuántas imágenes (gasta sus créditos). Ver `IMAGENES.md`.
+- **La herramienta de generación es OpenAI** (Alexander, 2026-10-01: *«ya
+  dejaremos de usar higgsfield, no me parece muy bueno»*). Clave en
+  `~/Documents/AXIUM-TI/credenciales/openai.env`, cargada con
+  `set -a; . ~/Documents/AXIUM-TI/credenciales.env; set +a`. Modelos
+  `gpt-image-2.5-flare` y `gpt-image-2.5-sunburst`. **Antes de cada tanda se
+  anuncia qué se va a generar y se consulta el coste; después se registra el
+  gasto** — nunca se calcula el saldo restando de un número recordado. El manual
+  de prompting, las cinco plantillas y las tres limitaciones que OpenAI documenta
+  (texto, layout y consistencia de marca) están en `IMAGENES.md`.
+- **Antes de generar nada, la pregunta del §0 de `ESTANDAR-FICHA.md`: ¿esta pieza
+  se puede hacer con HTML y Playwright?** Las tres mejores del portafolio —la
+  lámina del EA de Feniz, su diagrama y la losa partida de Clefast— costaron cero.
 - **La skill tiene que cubrir todos los tipos de proyecto**, no solo webs: web,
   app móvil, SaaS, branding, manual de marca, brochure, redes sociales,
   e-learning, backend sin pantalla, y sus combinaciones. La taxonomía está en

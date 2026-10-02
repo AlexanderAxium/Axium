@@ -22,6 +22,13 @@
 > simples como un degradado y una captura de pantalla bordeada etc, pero por lo
 > general si querre ediciones bien hechas"
 
+> **Ver también `brandvm-retail.md`** (2026-09-29): los mismos bloques aplicados
+> a dos casos de **producto de consumo** (KILO, streetwear + WooCommerce; Beanie
+> Coffee Co., café + WooCommerce). La conclusión corta: en retail la plantilla
+> **amputa el bloque de sistema y el bloque de UI** y los reemplaza por nueve
+> imágenes 2:1 de fotografía de producto seguidas — un caso de tienda que no
+> enseña la tienda.
+
 **Lectura:** la pasó como ejemplo positivo de *imágenes*, no necesariamente de
 estructura. Lo que le atrae es el acabado profesional de las composiciones —
 y él mismo intuye que es edición, no IA. **Pendiente preguntarle** si la grilla

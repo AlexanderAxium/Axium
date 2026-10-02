@@ -162,6 +162,17 @@ por gusto: un proyecto con una sola captura del home no puede usar la R6.
 | **R22** | **Hoja de iconos / sistema** | Campo claro → los iconos, componentes o colores del sistema de diseño dispuestos en grilla suelta | No | fiddle (7_narrow); Axium ya tiene `case-color-palette` y `case-feature-showcase` |
 | **R23** | **Mosaico de momentos** | Campo del color de marca → grilla regular (4×4, 3×3) de celdas 3:4 con **una pieza distinta cada una**: producto, paisaje, móvil, tipografía, retrato, logo. La síntesis del proyecto en una imagen — el equivalente estático de un video de marca | No | adelt (farm-09) — y **Alexander lo llamó "buenos mockups"** |
 | **R24** | **Panel + columna** (layout de ficha, no imagen) | Panel fijo con la metadata a la izquierda; columna de imágenes de ancho fijo con radio a la derecha, alturas libres | — | adelt; parientes: undersight (ancho+radio fijos), fiddle (retícula de metadata) |
+| **R25** | **Hero de producto a plena altura** | Patrón o color de la marca ampliado y desenfocado → **el producto real ocupando todo el alto del cuadro**, centrado, con sombra de estudio → dos frases de la propia marca fantasmeadas a izquierda y derecha | El fondo, opcional | brandvm-retail (Beanie Coffee) — **la portada natural de un frasco de perfume** |
+| **R26** | **Carrusel arrastrable del entregable** | Campo de color de marca → las láminas reales del documento de diseño como slides con radio, numeradas `01/03`, con cursor `DRAG` | No | BASIC (Murad) — enseña el documento de trabajo como prueba |
+| **R27** | **Marquesina de capturas crudas sobre oscuro** | Campo oscuro uniforme → 2–3 hileras de capturas **reales, sin marco ni dispositivo**, todas del mismo tamaño y con radio, desplazándose en direcciones opuestas; la de móvil inclinada ~−15°, la de escritorio frontal | No — Playwright + CSS | BAO (Omorovicza, Haeckels) — **18 pantallas al costo de una tarde; la más rentable de la biblioteca** |
+
+> **Corrección de doctrina (2026-09-29, tanda de e-commerce).** «Ninguna
+> captura cruda» es una regla **del índice**, no de la ficha. Dentro del caso,
+> By Association Only enseña 18 capturas crudas en marquesina (R27) y se lee
+> mejor que cualquier composición, porque **lo que vende una tienda es que se
+> lea el botón**. La consecuencia de costo es grande: el techo de 6–9 medias
+> por ficha (A2) aplica a imágenes *compuestas*; una marquesina de capturas no
+> cuenta contra ese presupuesto.
 
 **R1–R10 salen de una sola referencia; R11–R14 son hipótesis para los
 entregables que brandvm no muestra.** Es la lista de partida, no la final: cada
@@ -305,7 +316,232 @@ Se tabulan para los 33 desde `src/data/cases/*.json`:
 
 ---
 
-## Herramienta de generación: Higgsfield (decidido 2026-09-01)
+## Herramienta de generación: OpenAI (decidido 2026-10-01)
+
+Alexander: *«ya dejaremos de usar higgsfield, no me parece muy bueno... necesito
+que tus imágenes generadas con openAI sean súper profesionales, más que nada para
+webs, SaaS, etc.»*
+
+Modelos: **`gpt-image-2.5-flare`** para el día a día y **`gpt-image-2.5-sunburst`**
+cuando mande la precisión de edición. Calidad hasta `max`. Medidas **a WIDTHxHEIGHT
+libre, en múltiplos de 16, hasta 3840 px por lado** — o sea que las piezas se
+generan **a su medida final exacta** (2800×1400 las anchas, 1600×1600 las de par)
+y no se reencuadra ni se amplía nada. Fondo transparente nativo y endpoint de
+edición con máscara.
+
+---
+
+### Las tres limitaciones que OpenAI documenta — y que justifican nuestras reglas
+
+Esto no es criterio nuestro: lo dice su propia documentación. Y cada una
+**confirma por separado** una regla que ya teníamos.
+
+| Lo que dicen sus docs | La regla que ya seguíamos |
+|---|---|
+| *«el modelo todavía puede tener problemas con la colocación y la claridad precisas del texto»* | **La interfaz jamás se genera.** No es una regla de honradez solamente: es que el modelo **no sabe** escribir texto fiable. Nada de rótulos, etiquetas, menús ni cifras generados |
+| *«puede tener dificultad para colocar elementos con precisión en composiciones estructuradas o sensibles al layout»* | **Se genera el escenario VACÍO y se compone encima.** Nunca se le pide que coloque la pantalla, el teléfono y el objeto en su sitio: eso lo hace el compositor, donde la posición es exacta y medible |
+| *«puede costarle mantener la consistencia visual de personajes o elementos de marca recurrentes entre generaciones»* | **El logotipo del cliente nunca se dibuja.** Se compone el archivo real. Y una serie de piezas no se fía de que el modelo repita el mismo mundo: el campo se fija en CSS |
+
+**Conclusión operativa:** el modelo sirve para **materia, luz y espacio**. Para
+nada que lleve significado.
+
+---
+
+### Lo que estos modelos sí hacen bien: especificación estructurada
+
+Su propio recetario muestra que responden mejor a una **especificación por
+categorías** que a una frase bonita. El esqueleto que vamos a usar:
+
+```
+ESCENA        qué superficie y qué espacio, sin un solo objeto encima
+MATERIA       de qué está hecha la superficie: veta, grano, poro, trama, desgaste
+LUZ           una sola fuente, de dónde viene, dura o difusa, y la caída
+CÁMARA        altura, distancia, lente equivalente, FOCO PROFUNDO
+PALETA        los hex reales de la marca del cliente
+PROFUNDIDAD   qué hay detrás y a cuánto, fuera de foco por distancia, no por bokeh
+VACÍO         «la superficie está completamente vacía; no hay objetos, ni
+              dispositivos, ni papeles, ni texto, ni logotipos en ninguna parte»
+```
+
+El último slot es el más importante y el que más veces hay que repetir. Un
+escenario con un portátil ya dibujado no sirve: encima va **nuestra captura real**.
+
+---
+
+### El cambio de método que permite la edición con máscara
+
+Es la mejora grande frente a lo que hacíamos, y va en la dirección de nuestra
+regla fundacional:
+
+**Antes (Higgsfield):** generar una escena con una pantalla verde → enmascarar el
+verde → deformar la captura por perspectiva → componer. Cuatro pasos, y el recorte
+fallaba (en Clefast costó tres intentos sacar un alfa limpio).
+
+**Ahora:** se le da **nuestra captura real** más una **máscara que la protege**, y
+el modelo construye **la habitación alrededor**. La interfaz no se toca por
+construcción, no por disciplina.
+
+⚠️ **La regla no obvia, de su documentación:** con máscara, **el prompt describe la
+imagen entera resultante, no solo la zona que se edita**. Describir únicamente el
+fondo da resultados incoherentes.
+
+Y: **si se pide fondo transparente en el prompt, se activa solo.** Para recortes de
+objeto, pedirlo en texto en vez de pelearse con un umbral.
+
+---
+
+### Lo nuestro que sigue valiendo, y está medido
+
+Nada de esto cambia de proveedor:
+
+- **Foco profundo y cámara lejana.** El bokeh no esconde fallos: **los fabrica**.
+  Al pedir desenfoque el modelo rellena con formas plausibles e incoherentes. Es lo
+  que hundió dos vueltas de la portada de Rematch.
+- **Varias variantes y elegir mirándolas a 1:1.** Apostar a un solo tiro ya salió
+  mal dos veces.
+- **El atrezo pertenece al oficio del cliente.** Pala de pádel → pelotas de pádel.
+  Y si hay que rotular el atrezo para que se entienda, la escena no funciona: una
+  foto profesional no subtitula sus objetos.
+- **Nada puede brillar más que el sujeto**, y el sujeto se compone después: así que
+  la escena se genera con **la zona del sujeto más apagada que el resto**.
+- **La escena se juzga bajo el velo de la tarjeta** si va a ser portada (§7 bis del
+  estándar): lo luminoso arriba, lo oscuro abajo.
+- **Las cinco preguntas de la novena generación de `COMPOSITOR.md`** se contestan
+  antes de escribir el prompt, no después de ver el resultado.
+
+---
+
+### Disciplina de coste
+
+Su tarifa por imagen es **sensiblemente más alta** que la de Higgsfield, así que:
+**consultar el precio antes de cada tanda, registrar lo gastado, y nunca calcular
+el saldo restando de un número recordado.** Así se pasó de creer que quedaban 664
+créditos a descubrir que quedaban 0,77.
+
+Pocas generaciones y buenas. Y antes de generar nada, la pregunta del §0 del
+estándar: **¿esta pieza se puede hacer con HTML y Playwright?** Las tres mejores
+del portafolio —la lámina del EA de Feniz, su diagrama y la losa partida de
+Clefast— costaron cero.
+
+---
+
+### Al escenario hay que ponerle la CÁMARA (primera tanda con OpenAI, 2026-10-01)
+
+El primer suelo generado para Clefast era bonito y **no servía**, y el motivo no era
+la luz: era la cámara. Fotogrametría sobre las lavadoras del fondo (altura conocida
+≈1,05 m) dio **cámara a 0,35–0,70 m del suelo y horizonte al 6–11 % del alto**. Con
+esa geometría, un bidón de 0,92 m que quepa entero tiene que estar a **≥5,7 m**, y
+entonces mide **18–25 % del alto**: imposible llegar al 40–60 % de ocupación que pide
+el §9. **La relación es invariante a la escala: ni recortando ni ampliando se
+arregla.** Era una plancha de suelo, no un plató de producto.
+
+**Entonces el prompt de escenario lleva siempre tres datos, además de los siete
+slots:**
+1. **Altura de cámara** en metros, y si está nivelada o inclinada.
+2. **Dónde cae el horizonte** dentro del cuadro (p. ej. «en el tercio alto»).
+3. **A qué distancia está el fondo**, en metros.
+
+Con esos tres, la escena es componible **y el producto se coloca por geometría en
+vez de a ojo**: el horizonte da la línea y la escala del suelo sale de
+`S(y) = (y − y_horizonte) / altura_de_cámara` px/m. Cada pieza se escala por su
+**altura física real** desde la `y` donde apoya.
+
+**Y la escena se audita ANTES de componer nada.** Un objeto vertical de altura
+conocida al fondo da el horizonte y los px/m; de ahí se deduce si la ocupación del
+§9 es alcanzable. Son cinco líneas de numpy y ahorran una tanda entera.
+
+**`n: 2` en una sola llamada** cuesta lo mismo que dos llamadas sueltas y cumple la
+regla de generar varias variantes y elegirlas mirando. Coste medido de la portada
+entera: **6.729 tokens de imagen** (tres variantes a 2.243 cada una, 2400×1600,
+calidad `high`).
+
+---
+
+### Las cinco plantillas, para webs y SaaS
+
+Rellenar los corchetes. Todas terminan con el mismo cierre de vacío, que es lo que
+impide que el modelo meta una pantalla inventada.
+
+**CIERRE OBLIGATORIO**, al final de los cinco:
+> `The surface is completely empty. No devices, no screens, no laptops, no phones,
+> no papers, no products, no text, no letters, no numbers, no logos, no signage
+> anywhere in the frame. Deep focus, everything sharp from front to back. No bokeh,
+> no shallow depth of field.`
+
+---
+
+**1 · Mesa para una captura de escritorio** — la más usada
+
+> `A [walnut / brushed steel / honed concrete] desk surface photographed from
+> [30]° above, [waist] height, 50mm equivalent, filling the frame. The material
+> shows [visible grain running left to right / a fine brushed grain / a matte
+> aggregate speckle]. A single [hard / soft] light from the [upper left], falling
+> off toward the [lower right], with a clean shadow gradient. Background: a
+> [workshop / office] interior [4] metres behind, unlit, reading as a dark field.
+> Palette limited to [#hex, #hex]. Centre of the frame slightly darker than the
+> edges.` + CIERRE
+
+*El centro más apagado porque ahí va la captura compuesta: nada puede brillar más
+que el sujeto.*
+
+---
+
+**2 · Mano y teléfono** — para enseñar lo responsive de verdad
+
+> `A [left] hand holding a modern smartphone, seen from [above and slightly
+> behind], the screen facing the camera and perfectly rectangular with no
+> perspective distortion. THE PHONE SCREEN IS A FLAT, UNIFORM [#00FF00] RECTANGLE
+> with nothing on it. Natural skin, visible texture, no retouching. Background:
+> [a café table / a factory floor], [1] metre below, out of focus by distance
+> only. Single [window] light from the [left].` + CIERRE *(adaptado: la pantalla
+> verde es lo único que sí va)*
+
+*Con el endpoint de edición y máscara esto mejora: se pasa la captura real y la
+máscara, y se pide la mano y el entorno alrededor.*
+
+---
+
+**3 · Superficie del oficio, para un objeto real** — la que le falta a Clefast
+
+> `The floor of an industrial [laundry], photographed from [1] metre height at
+> [15]° down. [Sealed concrete with faint drainage channels and water staining].
+> Shot from [3] metres back so the far wall falls out of focus by distance.
+> [Fluorescent] light from above and [left], hard enough to cast a defined
+> contact shadow where an object would stand. Palette [#hex, #hex].` + CIERRE
+
+*Encima se compone el bidón recortado. Esta es la pieza que hoy lee a ciclorama de
+estudio y que Alexander señaló.*
+
+---
+
+**4 · Campo de marca para una lámina** — fondo, no escena
+
+> `An abstract field of [deep gold #hex] fading to [bronze #hex] toward the
+> bottom, with a soft radial glow in the [upper left]. Subtle [paper / linen]
+> grain at low contrast. No gradient banding. Flat, no objects, no horizon.` +
+> CIERRE
+
+*Barato, y resuelve el defecto de «degradado de CSS» sin inventar nada.*
+
+---
+
+**5 · Edición con máscara sobre una captura real** — el método nuevo
+
+Se envían: la captura real + una máscara que la protege entera. Y el prompt
+**describe la imagen completa resultante**, no solo el fondo:
+
+> `A photograph of a [laptop] standing on a [walnut desk] in a [design studio],
+> its screen displaying the interface shown in the provided image, unchanged. The
+> desk shows visible grain. A single hard light from the upper left casts a defined
+> contact shadow under the [laptop] and a long soft shadow to the right. The room
+> behind is [4] metres back and unlit. Palette [#hex, #hex]. Deep focus throughout.`
+
+⚠️ Describir solo el fondo da resultados incoherentes: lo dice su documentación y
+es el error fácil.
+
+---
+
+## Herramienta anterior: Higgsfield (2026-09-01 → 2026-10-01, superada)
 
 Alexander: *"tengo cuenta de Higgsfield, para que puedas tú mismo mandar tus
 prompts y generar el portafolio para algunas ocasiones"*.
@@ -341,3 +577,194 @@ obligatorio.
 - [ ] **¿Grilla policroma (color del cliente, como brandvm) o monocroma (paleta
       Axium)?** Es una decisión de identidad, no de técnica, y cambia el slot 7
       de todos los prompts.
+
+---
+
+## Repertorio de ideas (brandvm, 2026-10-01)
+
+Alexander, mirando dos fichas nuevas de brandvm: *«por acabados me refiero a la
+**creatividad** de las imágenes, lo nuestro se ve muy simple y sin alma, lo de
+ellos creativo y elegante profesional»*.
+
+El diagnóstico honesto de nuestro portafolio en ese momento: **producto sobre
+suelo, pantalla sobre campo, pantalla sobre campo, pantalla sobre campo.**
+Piezas correctas y sin concepto. Lo de brandvm es **una idea distinta por
+pieza**. Esto es el inventario de esas ideas, descritas por lo que se le ocurrió
+a alguien *antes* de abrir el programa — no por la técnica.
+
+### Las 16 losas, una frase cada una
+
+**myHSA · employee benefits** (`referencias/capturas/eb/`)
+
+| # | La idea |
+|---|---|
+| l01 | El portátil con la web, y la respuesta a «¿para quién es esto?» **recortada de la propia página y sacada fuera de la pantalla** como una pegatina que flota delante |
+| l02 | Díptico de fotografía corporativa del cliente, con una tarjeta de la UI flotando **sobre la costura** entre las dos fotos |
+| l03 | Una sección entera del sitio **a sangre y sin marco**: el degradado de marca a pantalla completa con su titular |
+| l04 | Tres funciones del producto, **cada una dentro de un círculo de color de marca**, en fila como tres planetas; la UI desborda el círculo por arriba y por abajo |
+| l05 | Tríptico de los tres atributos de marca: tres fotos verticales a sangre, cada una con su titular en blanco y su icono en un círculo |
+| l06 | La escena de uso real: alguien **de espaldas** usando el sitio, con las tarjetas de la UI saliendo de la pantalla hacia el espectador |
+| l07 | Mitad y mitad: a la izquierda la UI real sobre un círculo de color, a la derecha **el titular y el botón reales tratados como tipografía editorial** |
+| l08 | El móvil flotando sobre **anillos concéntricos** de color de marca, con un fragmento de la UI desprendido a un lado |
+
+**Paquin · entertainment group** (`referencias/capturas/et/`)
+
+| # | La idea |
+|---|---|
+| l01 | El portátil **sobre un pedestal de piedra negra**, luz teatral: la web como objeto de exposición |
+| l02 | El portátil **en escorzo extremo sobre una barra de luz de color**, la pantalla casi en diagonal, el logotipo pequeño arriba y el copyright abajo: un cartel, no una captura |
+| l03 | Díptico: dos móviles girados en el aire a la izquierda; a la derecha el isotipo flotando con halo sobre el público desenfocado |
+| l04 | Las piezas del catálogo del cliente como **naipes esparcidos en arco sobre negro**, con el nombre encima: el repertorio hecho constelación |
+| l05 | Dos mitades: la **tipografía de marca a tamaño descomunal** («Aa») y, al lado, las fichas de color con sus hex, como el manual abierto |
+| l06 | La mano con el móvil a la izquierda; a la derecha **la misma retícula de la pantalla ampliada a tamaño mural** |
+| l07 | Las páginas del sitio **volcadas en perspectiva isométrica**, como planos extendidos sobre una mesa |
+| l08 | Tres móviles **escalonados en el aire** delante de una sección del sitio ampliada al fondo |
+
+### Las dos listas
+
+**Dependen de material que no tenemos** (fotografía corporativa, personas,
+catálogo fotográfico del cliente). El §9 nos prohíbe fabricarlo, así que estas
+ideas solo se usan cuando el cliente nos da las fotos: **eb/l02, eb/l05, eb/l06,
+et/l03, et/l04, et/l06.**
+
+**Puro concepto — se pueden hacer mañana con lo que ya hay** (capturas reales,
+fotos de producto del cliente, el logotipo, y una escena generada vacía):
+
+1. **eb/l01 · El fragmento desprendido.** Un trozo de la UI real sale de la
+   pantalla y flota delante. Dice *qué* hace la pantalla sin pedir que se lea
+   entera.
+2. **eb/l03 · La sección a sangre.** El campo de marca a pantalla completa. Es
+   nuestra R20, confirmada.
+3. **eb/l04 · El círculo de marca.** Contenido dentro de un disco de color
+   saturado, desbordándolo. Barato y rompe la cuadrícula de tarjetas.
+4. **eb/l07 · Mitad UI, mitad tipografía.** El copy real del cliente tratado
+   como titular editorial, no como captura.
+5. **eb/l08 · Los anillos concéntricos.** Objeto flotando sobre aros de marca.
+6. **et/l01 · El pedestal.** Luz de museo sobre el objeto: la web como pieza.
+7. **et/l02 · El escorzo sobre la barra de luz.** La captura girada en 3D sobre
+   una franja de color de marca. **La más rentable: una línea de `transform`.**
+8. **et/l05 · El espécimen tipográfico.** La tipografía y los hex del cliente a
+   tamaño descomunal.
+9. **et/l07 · La isometría.** Las pantallas volcadas como planos.
+10. **et/l08 · El escalonado en el aire.** Dos o tres piezas en profundidad.
+
+### Lo que la lista enseña, y que es lo que faltaba
+
+- **Ninguna de las dieciséis es «la pantalla X sobre un campo».** En todas pasa
+  algo *además* de enseñar la pantalla: se recorta un trozo y se saca fuera, se
+  gira, se mete en un círculo, se amplía a mural, se vuelca en isometría.
+- **El color de marca va a plena fuerza**, como campo que manda, no como glow
+  insinuado detrás de una tarjeta blanca.
+- **Nada está entero dentro del cuadro.** El sangrado es la norma, no la
+  excepción.
+- **Una pieza se defiende con una frase.** Si la frase es «es la captura del
+  catálogo», la pieza no tiene idea todavía.
+
+### Aplicado a Clefast (2026-10-02)
+
+Once piezas, once frases. La que manda la ficha entera sale **del propio
+argumento**: *«205 presentaciones, de 100 ml a 200 kg»*.
+
+| pieza | la idea | de dónde sale |
+|---|---|---|
+| portada | La gama entera alineada como un perfil ascendente, del frasco de 100 ml al bidón de 200 kg, con luz dura y sombras paralelas sobre el verde de marca | et/l04 + luz dura |
+| hero | El catálogo entero: los 31 envases reales en retícula sobre verde de marca, sangrando por los cuatro cantos | brandvm losa-02 |
+| cf-tienda | La portada real **en escorzo sobre una barra de luz verde**: un cartel, no una captura | et/l02 |
+| cf-catalogo | La columna de categorías **sale de la pantalla** y flota delante del catálogo | eb/l01 |
+| cf-ficha | El selector real de presentaciones arriba y **los cinco envases reales a escala relativa verdadera** debajo: la UI y la materia diciendo la misma frase | eb/l07 |
+| cf-distrito | El desplegable cae **dentro de dos anillos de marca** y los desborda | eb/l04 + l08 |
+| cf-resumen | Los dos momentos del checkout como **dos naipes escalonados en el aire** | et/l08 |
+| cf-celular | Lo mismo a dos escalas: **en la mano y ampliado a mural** detrás | et/l06 |
+| cf-chat | La burbuja real del chat **sale de la pantalla** y se lee a tamaño mural | eb/l01 |
+| cf-mudanza | Media losa clara con el dato, media losa de color saturado con el producto | eb/l05 (estructura) |
+| cf-envio | La tarifa medida, en tarjeta blanca sobre el campo verde | eb/l03 |
+
+**La prueba de que la idea es buena: es verificable.** «De 100 ml a 200 kg» no
+es un adorno, es la frase que ya estaba en la ficha y que ahora se ve.
+
+### Rechazada por Alexander (2026-10-02)
+
+**et/l02 — «el escorzo sobre la barra de luz».** Probada en `cf-tienda` y
+rechazada: *«las perspectivas no me gustan mucho, a no ser que sea tipo
+mockup»*. La regla que queda, y que vale para las 40 fichas:
+
+> **Una captura girada en 3D solo vale si el giro lo justifica un dispositivo
+> real** —la pantalla dentro de un portátil, un monitor o un teléfono, con su
+> materia y su perspectiva física correcta—. Girar la captura «a secas», aunque
+> lleve el marco de un navegador, se lee a efecto. **Si no hay dispositivo, va
+> de frente.**
+
+Afecta también a et/l07 (la isometría) y a et/l08 (el escalonado en el aire):
+los dos se pueden hacer **sin giro**, con escala y profundidad, y así se
+quedan. En esta ficha `cf-resumen` pasó de dos naipes girados a dos tarjetas
+alineadas a retícula y mejoró.
+
+### Y el techo de ampliación
+
+**Ningún envase ni captura se amplía por encima de 1,0×.** El origen de las
+fotos de producto de Clefast es 1280×1280 (comprobado: el sitio en vivo sirve
+exactamente lo mismo desde R2, no hay versión mayor), lo que deja el recorte
+del bidón de 200 kg en 692×1076. En `cf-mudanza` estaba puesto a 1,41× y se
+veía: *«tiene mala calidad el detergente grande, se ve feo»*. **No se arregla
+componiendo.** El orden para resolverlo es: buscar el original en el sitio del
+cliente → si no existe, usarlo más pequeño → si tampoco cabe, cambiar la idea
+de la pieza. Medir siempre `alto_servido / alto_origen` antes de dar una pieza
+por buena; con `deviceScaleFactor 3` el alto en CSS se multiplica por tres.
+
+---
+
+## Ampliación de la regla: qué puede generar el modelo (2026-10-02)
+
+Alexander, viendo dos piezas: *«no hay mala calidad aquí, pero es un diseño muy
+pobre. ¿Es limitación del modelo o de nuestro prompt?»*
+
+**Ni una ni otra: era nuestra.** Al modelo le habíamos pedido **dos escenarios
+vacíos en toda la ficha**; todo lo demás —disposición, retícula, apoyos,
+tipografía, estructura— lo componíamos nosotros. **Un diseño pobre es nuestra
+maquetación, no una salida pobre del modelo.**
+
+La causa: teníamos escrita la regla como *«la escena se genera VACÍA»*, y eso
+nos encerró en **habitaciones**. La regla de fondo nunca fue esa.
+
+> **El modelo sirve para lo que NO lleva significado: materia, textura, luz y
+> campo abstracto. Lo prohibido es lo que SÍ lo lleva: interfaz, texto, marca y
+> producto del cliente.** Un escenario vacío es un caso particular, no el límite.
+
+**Lo que sí puede generar, y no estábamos usando:**
+
+| | ejemplos |
+|---|---|
+| **Materia y textura** | hormigón, microcemento, acero cepillado, papel, lino, tela, agua, espuma |
+| **Estudios de luz** | caídas, haces, penumbras, charcos de luz, reflejos sobre superficie |
+| **Campos gráficos abstractos** | mucho más ricos que una malla de CSS, y con grano real |
+| **Atrezo genérico sin marca** | una paleta de madera, una estantería industrial, una rejilla de desagüe |
+
+**Lo prohibido no se mueve**: interfaz, capturas, texto, cifras, logotipos y los
+envases del cliente **jamás** se generan. Se componen reales encima.
+
+### La plancha de materia y luz, que es la pieza que faltaba
+
+El recurso más rentable que salió de esto: **un «cove» de estudio generado
+vacío** —un ciclorama sin esquina, de microcemento, con una caída de luz real de
+arriba-izquierda a sombra profunda abajo-derecha— que luego se **tiñe al verde
+de marca callado conservando su estructura de luz**. Con eso:
+
+- `cf-ficha` dejó de ser cinco objetos sobre un degradado y pasó a ser una fila
+  apoyada en un **plano de suelo real**, con sombras dirigidas y un charco de luz;
+- `cf-mudanza` dejó de tener media losa vacía.
+
+**Un degradado de CSS no sabe hacer una caída de luz.** La malla sirve para
+callar un campo; cuando el campo tiene que tener **cuerpo**, se genera.
+
+### Y pensar en gráfico, no solo en fotográfico
+
+La otra mitad del diagnóstico: *«una fila de objetos centrada sobre un campo es
+la composición más neutra que existe»*. Lo que separa a brandvm no es la
+fotografía: **sus piezas que parecen diseñadas son composiciones gráficas** —la
+rejilla 2×2 del logotipo sobre cuatro colores, el patrón tipográfico con cruces
+de registro, las tarjetas de interfaz extraídas y flotadas—.
+
+Lo que se le añadió a `cf-ficha` y que es transferible: **línea de base, guías
+verticales bajo cada objeto, una fila de rótulos alineada y contraste de escala
+real**. Estructura, retícula y jerarquía encima de la materia. Sin eso, una
+plancha buena solo da un bodegón mejor iluminado.

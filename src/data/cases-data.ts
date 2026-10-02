@@ -26,7 +26,6 @@ import podologiemtkData from "./cases/podologiemtk.json";
 import redesvipData from "./cases/redesvip.json";
 import sicloData from "./cases/siclo.json";
 import sporttData from "./cases/sportt.json";
-import storeSaasData from "./cases/store-saas.json";
 import toliveagainData from "./cases/toliveagain.json";
 import transportesrumiData from "./cases/transportesrumi.json";
 import ventanasantiruidoData from "./cases/ventanasantiruido.json";
@@ -112,7 +111,7 @@ function convertCaseFromJSON(caseJson: CaseItemJSON): CaseItem {
   };
 }
 
-// Load all JSON cases and convert them to CaseItem[] (orden: store-saas = 5º, financial-management = 8º)
+// Load all JSON cases and convert them to CaseItem[] (orden: financial-management = 7º)
 const cases: CaseItem[] = [
   convertCaseFromJSON(anjsportsData as CaseItemJSON),
   convertCaseFromJSON(maintechData as CaseItemJSON),
@@ -120,7 +119,6 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(fenalsaData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
   convertCaseFromJSON(ambientalpeData as CaseItemJSON),
-  convertCaseFromJSON(storeSaasData as CaseItemJSON),
   convertCaseFromJSON(innersoulbrightData as CaseItemJSON),
   convertCaseFromJSON(clefastData as CaseItemJSON),
   convertCaseFromJSON(financialManagementData as CaseItemJSON),

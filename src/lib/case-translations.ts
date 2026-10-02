@@ -5,6 +5,7 @@ import casesEs from "@/locales/es/cases.json";
 import casesPt from "@/locales/pt/cases.json";
 import { useMemo } from "react";
 import type { CaseItem } from "~/data/cases-data";
+import alyerData from "~/data/cases/alyer.json";
 import ambientalpeData from "~/data/cases/ambientalpe.json";
 import anjsportsData from "~/data/cases/anjsports.json";
 import antiruidopvcData from "~/data/cases/antiruidopvc.json";
@@ -41,7 +42,6 @@ import redesvipData from "~/data/cases/redesvip.json";
 import rematchData from "~/data/cases/rematch.json";
 import sicloData from "~/data/cases/siclo.json";
 import sporttData from "~/data/cases/sportt.json";
-import storeSaasData from "~/data/cases/store-saas.json";
 import toliveagainData from "~/data/cases/toliveagain.json";
 import transportesrumiData from "~/data/cases/transportesrumi.json";
 import vendiqData from "~/data/cases/vendiq.json";
@@ -66,6 +66,7 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   vendiq: vendiqData as Record<string, unknown>,
   anjsports: anjsportsData as Record<string, unknown>,
   aurore: auroreData as Record<string, unknown>,
+  alyer: alyerData as Record<string, unknown>,
   ambientalpe: ambientalpeData as Record<string, unknown>,
   maintech: maintechData as Record<string, unknown>,
   vitalchain: vitalchainData as Record<string, unknown>,
@@ -102,27 +103,28 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   ghiperu: ghiperuData as Record<string, unknown>,
   siclo: sicloData as Record<string, unknown>,
   "web-scraping-ai": webScrapingAiData as Record<string, unknown>,
-  "store-saas": storeSaasData as Record<string, unknown>,
   "financial-management": financialManagementData as Record<string, unknown>,
   "feedback-management": feedbackManagementData as Record<string, unknown>,
 };
 
-/** Orden de casos en la lista (ambientalpe = 5º, store-saas = 6º, financial-management = 9º) */
+/** Orden de casos en la lista (ambientalpe = 5º, financial-management = 8º) */
 const CASE_ORDER: string[] = [
   // Productos propios (también son los highlights del home)
   "rematch",
   "lumiolearn",
   "bookit",
   "vendiq",
-  // Clientes: Aurore primero, por pedido de Alexander
+  // Clientes: Aurore primero, por pedido de Alexander; Alyer detrás, el único
+  // caso de identidad pura (marca, manual, merch y brochure, sin pantallas).
   "aurore",
+  "alyer",
   "anjsports",
   "maintech",
   "vitalchain",
   "fenalsa",
   "feniz",
+  "toliveagain",
   "ambientalpe",
-  "store-saas",
   "innersoulbright",
   "clefast",
   "financial-management",
@@ -132,18 +134,17 @@ const CASE_ORDER: string[] = [
   "lujan",
   "ventanasantiruido",
   "antiruidopvc",
-  "moviflex",
+  "cesaracosta",
   "transportesrumi",
   "villacer",
   "capptura",
   "daesurmotors",
   "blendet",
   "firstautomation",
-  "toliveagain",
   "volveravivir",
   "podologiemtk",
   "enrafmedica",
-  "cesaracosta",
+  "moviflex",
   "huarmis",
   "jarumi",
   "favorygracia",

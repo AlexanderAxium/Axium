@@ -63,7 +63,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "Construimos la plataforma con la que un consultorio, un salón o un estudio recibe reservas en su propia web y las ve llegar a la agenda de su equipo.",
     context:
-      "Bookit es un producto propio de Axium para negocios que trabajan con cita. Cada negocio publica su web con su marca; sus clientes eligen servicio, profesional y horario, y la cita queda lista en la agenda, sin comisiones por reserva.",
+      "Producto propio de Axium para negocios que trabajan con cita. Cada negocio publica su web con su marca; sus clientes eligen servicio, profesional y horario, y la cita queda en la agenda.",
     highlightsTitle: ["Lo que", "construimos"],
     highlights: [
       {
@@ -72,7 +72,7 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Reservas online",
-        text: "servicio, profesional, sede y horario libre; nunca dos citas a la misma hora, y el cliente reprograma o cancela dentro del plazo.",
+        text: "servicio, profesional, sede y horario libre; nunca dos citas a la misma hora, y el cliente reprograma dentro del plazo.",
       },
       {
         lead: "Agenda del equipo",
@@ -96,15 +96,15 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Detalles y API",
-        text: "libro de reclamaciones virtual, seis monedas, asistente de IA para el equipo y una API pública en Business Pro.",
+        text: "libro de reclamaciones virtual, seis monedas, asistente de IA y API pública en Business Pro.",
       },
     ],
     challengeTitle: "Reto",
     challenge:
-      "Un consultorio o un salón suele recibir sus citas por WhatsApp y llamadas, anotarlas en un cuaderno y cobrar aparte. Los directorios de reservas traen clientes, pero cobran comisión por cada cita y ponen su marca delante de la del negocio.",
+      "Un consultorio o un salón recibe sus citas por WhatsApp, las anota en un cuaderno y cobra aparte. Los directorios de reservas traen clientes, pero cobran comisión por cita y ponen su marca delante de la del negocio.",
     approachTitle: "Enfoque",
     approach:
-      "Diseñamos Bookit para que la reserva nazca en la web del propio negocio: la web, el horario, el pago, el WhatsApp y la agenda son un mismo recorrido. Con la marca nueva, el punto verde del «it» marca lo reservado, y la web pública enseña ese recorrido con la interfaz del producto y las webs reales de sus clientes.",
+      "Diseñamos Bookit para que la reserva nazca en la web del propio negocio: la web, el horario, el pago, el WhatsApp y la agenda son un mismo recorrido. En la marca nueva, el punto verde del «it» marca lo reservado.",
     outcomesTitle: "Resultados",
     outcomes:
       "Bookit está en producción en bookit.com.pe: negocios de salud, belleza y fotografía reciben reservas en su propia web.",
@@ -145,7 +145,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "We built the platform a clinic, a salon or a studio uses to take bookings on its own website and see them land in its team's calendar.",
     context:
-      "Bookit is Axium's own product for appointment-based businesses. Each business publishes its website under its own brand; clients choose the service, professional and time, and the appointment is ready in the calendar, with no commission per booking.",
+      "Axium's own product for appointment-based businesses. Each business publishes its website under its own brand; clients choose the service, professional and time, and the appointment lands in the calendar.",
     highlightsTitle: ["What we", "built"],
     highlights: [
       {
@@ -154,7 +154,7 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Online booking",
-        text: "service, professional, location and free time slot; never two appointments at the same time, and clients reschedule or cancel within the allowed window.",
+        text: "service, professional, location and free time slot; never two appointments at the same time, and clients reschedule within the allowed window.",
       },
       {
         lead: "Team calendar",
@@ -178,15 +178,15 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Details and API",
-        text: "a virtual complaints book, six currencies, an AI assistant for the team and a public API on Business Pro.",
+        text: "a virtual complaints book, six currencies, an AI assistant and a public API on Business Pro.",
       },
     ],
     challengeTitle: "Challenge",
     challenge:
-      "A clinic or a salon usually takes appointments over WhatsApp and phone calls, writes them down in a notebook and collects payment separately. Booking directories bring clients, but they charge a commission on every appointment and put their brand ahead of the business's.",
+      "A clinic or a salon takes appointments over WhatsApp, writes them in a notebook and collects payment separately. Booking directories bring clients, but they charge a commission per appointment and put their brand ahead of the business's.",
     approachTitle: "Approach",
     approach:
-      "We designed Bookit so the booking starts on the business's own website: the website, the time slot, the payment, WhatsApp and the calendar are one single flow. With the new brand, the green dot of the “it” marks what's booked, and the public website shows that flow with the product's interface and its clients' real websites.",
+      "We designed Bookit so the booking starts on the business's own website: the website, the time slot, the payment, WhatsApp and the calendar are one single flow. In the new brand, the green dot of the “it” marks what's booked.",
     outcomesTitle: "Outcomes",
     outcomes:
       "Bookit is in production at bookit.com.pe: health, beauty and photography businesses take bookings on their own websites.",
@@ -227,7 +227,7 @@ const COPY: Record<StoryLang, Copy> = {
     statement:
       "Construímos a plataforma com a qual um consultório, um salão ou um estúdio recebe reservas no seu próprio site e as vê chegar à agenda da sua equipe.",
     context:
-      "O Bookit é um produto próprio da Axium para negócios que trabalham com agendamento. Cada negócio publica seu site com sua marca; os clientes escolhem serviço, profissional e horário, e o agendamento fica pronto na agenda, sem comissão por reserva.",
+      "Produto próprio da Axium para negócios que trabalham com agendamento. Cada negócio publica seu site com sua marca; os clientes escolhem serviço, profissional e horário, e o agendamento fica na agenda.",
     highlightsTitle: ["O que", "construímos"],
     highlights: [
       {
@@ -236,7 +236,7 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Reservas online",
-        text: "serviço, profissional, unidade e horário livre; nunca dois agendamentos no mesmo horário, e o cliente remarca ou cancela dentro do prazo.",
+        text: "serviço, profissional, unidade e horário livre; nunca dois agendamentos no mesmo horário, e o cliente remarca dentro do prazo.",
       },
       {
         lead: "Agenda da equipe",
@@ -260,15 +260,15 @@ const COPY: Record<StoryLang, Copy> = {
       },
       {
         lead: "Detalhes e API",
-        text: "livro de reclamações virtual, seis moedas, assistente de IA para a equipe e uma API pública no Business Pro.",
+        text: "livro de reclamações virtual, seis moedas, assistente de IA e API pública no Business Pro.",
       },
     ],
     challengeTitle: "Desafio",
     challenge:
-      "Um consultório ou um salão costuma receber agendamentos pelo WhatsApp e por telefone, anotá-los num caderno e cobrar à parte. Os diretórios de reservas trazem clientes, mas cobram comissão por agendamento e colocam a sua marca à frente da marca do negócio.",
+      "Um consultório ou um salão recebe agendamentos pelo WhatsApp, anota-os num caderno e cobra à parte. Os diretórios de reservas trazem clientes, mas cobram comissão por agendamento e põem a sua marca à frente da do negócio.",
     approachTitle: "Abordagem",
     approach:
-      "Desenhamos o Bookit para que a reserva nasça no site do próprio negócio: o site, o horário, o pagamento, o WhatsApp e a agenda são um único percurso. Com a nova marca, o ponto verde do «it» marca o que está reservado, e o site público mostra esse percurso com a interface do produto e os sites reais dos seus clientes.",
+      "Desenhamos o Bookit para que a reserva nasça no site do próprio negócio: o site, o horário, o pagamento, o WhatsApp e a agenda são um único percurso. Na marca nova, o ponto verde do «it» marca o que está reservado.",
     outcomesTitle: "Resultados",
     outcomes:
       "O Bookit está em produção em bookit.com.pe: negócios de saúde, beleza e fotografia recebem reservas no seu próprio site.",
@@ -364,6 +364,9 @@ export default function BookitContent() {
   return (
     <>
       <CaseStory
+        // El acento sale de la marca del cliente, no de Axium: verde oscuro · brote · pino.
+        // base va sobre claro y dark sobre la tinta; los dos pasan 4.5:1.
+        accent={{ base: "#017A3A", dark: "#01C85C", deep: "#012B21" }}
         name="Bookit"
         tagline={c.tagline}
         heroImage={`${IMG}/bv-hero-v2.jpg`}
@@ -382,7 +385,7 @@ export default function BookitContent() {
           name: "Vendiq",
           tagline: c.nextTagline,
           href: "/casos-de-exito/vendiq",
-          image: "/images/proyects/vendiq/vendiq-portada-v2.jpg",
+          image: "/images/proyects/vendiq/vendiq-portada-marca.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />
