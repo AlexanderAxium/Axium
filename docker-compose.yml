@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: dev
       POSTGRES_PASSWORD: dev123
-      POSTGRES_DB: miapp_dev
+      POSTGRES_DB: axium
     ports:
       - "5433:5432"
     volumes:

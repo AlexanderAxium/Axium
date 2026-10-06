@@ -1,0 +1,50 @@
+{
+  "title": "Feniz",
+  "industry": "Fintech · Trading de cuentas de fondeo",
+  "image": "/images/proyects/feniz/fz-portada-producto.jpg",
+  "location": "Internacional",
+  "platform": "Plataforma web",
+  "duration": "Sep '25 – Ene '26",
+  "client": "Feniz",
+  "liveUrl": "https://sistemafeniz.com",
+  "technologyStack": [
+    "Next.js",
+    "TypeScript",
+    "tRPC",
+    "Prisma",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "MQL5 · MetaTrader 5"
+  ],
+  "secondaryIndustry": "PropFirms y brokers",
+  "forWhom": "Traders de cuentas de fondeo que operan a la vez con una propfirm y con su propio bróker",
+  "services": [
+    "Producto SaaS a medida",
+    "Autenticación y correo transaccional",
+    "Área del trader y panel de administración",
+    "Integración con MetaTrader 5",
+    "Cobros con Paddle y MercadoPago"
+  ],
+  "description": "El producto entero de una plataforma para traders de cuentas de fondeo: sitio y legales, autenticación, área del trader, panel de administración y un Expert Advisor de MetaTrader 5 generado para cada usuario.",
+  "problem": "Un trader de fondeo opera la cuenta de una propfirm y, en paralelo, la suya en un bróker, y llevaba las dos a mano, sin una sola vista de su rendimiento. Lo difícil no era el panel: MetaTrader 5 no expone una API hacia fuera, así que las operaciones había que ir a buscarlas.",
+  "solution": "Construimos la plataforma completa sobre Next.js, tRPC y Prisma, con roles y permisos granulares y cobro por Paddle y MercadoPago. Y escribimos el puente que faltaba: Feniz genera un Expert Advisor en MQL5 para cada trader, con su webhook y su clave dentro, que corre en MetaTrader 5 y envía sus operaciones cada cinco segundos.",
+  "results": [],
+  "projectDescription": "Feniz es una plataforma para traders de cuentas de fondeo: conecta la cuenta de una propfirm con la de un bróker, registra las operaciones y muestra balance, resultado y aciertos en un solo panel. Llegaron sin producto: se construyó entero, del sitio público al panel de administración.",
+  "skillsAndDeliverables": [
+    "Producto SaaS a medida",
+    "Next.js",
+    "TypeScript",
+    "tRPC",
+    "Prisma",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "better-auth",
+    "AWS SES",
+    "Paddle",
+    "MercadoPago",
+    "MQL5 · MetaTrader 5",
+    "Roles y permisos",
+    "SEO técnico"
+  ],
+  "publishedDate": "Jan 2026"
+}

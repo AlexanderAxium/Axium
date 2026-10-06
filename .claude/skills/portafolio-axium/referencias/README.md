@@ -1,0 +1,24 @@
+# Referencias analizadas
+
+Un archivo `.md` por portafolio, con la plantilla del final de `../REJILLA.md`.
+Las capturas de cada uno viven en `capturas/<slug>/`.
+
+| Referencia | Arquetipo de índice | Tratamiento / recetas | Veredicto de Alexander | Fecha |
+|---|---|---|---|---|
+| [brandvm](brandvm.md) | Grilla con jerarquía (1 ancho + 2 medios), 77 | Composiciones sobre color de marca; R1–R10 | Positivo (imágenes) | 2026-09-01 |
+| [fitdesign](fitdesign.md) | Pestañas por industria → 1 destacado + 3, 16 | Hero del sitio sobre campo de marca; métrica en la tarjeta | Positivo — "buena referencia" (volumen) | 2026-09-01 |
+| [magnetic](magnetic.md) | Masonry 2 col. fotográfico, 46 | Foto del branding aplicado (R15), manual como grilla (R11), laptop oscuro (R8) | Positivo — "creativo, buen estilo" (ficha) | 2026-09-01 |
+| [locomotive](locomotive.md) | Lista/tabla de texto, imagen al hover, 45 | Foto/video a sangre (R16) | **Parcial** — "exagera en animaciones de entrada" | 2026-09-01 |
+| [uncommon](uncommon.md) | Carrusel horizontal pantalla completa, 8 | Renders 3D de dispositivo en escenografía de marca (R8) | Positivo — "creativos" (/studio) | 2026-09-01 |
+| [undersight](undersight.md) | Grilla uniforme 2 col., 12 | Recorte macro del móvil (R18), ventana de navegador (R17) | **Negativo por costo** — 12 medias por ficha | 2026-09-01 |
+| [heartbeat](heartbeat.md) | Lista de filas grandes con media, 15 | Sección enmarcada (R19), retícula 1.61 + 0.79 | Positivo aspiracional — "geniales, apuntar estáticamente" | 2026-09-01 |
+| [fiddle](fiddle.md) | Grilla escalonada de tarjetas-etiqueta cuadradas (1-3-5 / 2-4), 19, toggle grid/list | Índice: renders y key visuals en tarjeta-etiqueta · Ficha: secciones a sangre (R20), móviles sobre glow (R21), hoja de iconos (R22) | Índice: "mucho nivel, aún no llegamos" · Ficha: **"más aterrizable y bonito"** | 2026-09-01 |
+| [adelt](adelt.md) | Grilla uniforme 3 col., portadas sin texto, 24 | **Panel fijo + columna** (ficha); laptop en el pasto (R8 del rubro), mosaico de momentos (R23), móviles sobre degradado (R21); **Gilroy** | **"buenos diseños, buenos mockups, buen estilo, úsalo para los rediseños"** | 2026-09-01 |
+| [isadora](isadora.md) | Masonry 2 col. desfasadas + pestañas con conteo, 24 | Grilla de móviles de frente (R6), dos páginas lado a lado (R7), logo con retícula (R22); ficha texto→imagen en 6 títulos | "buenos diseños" | 2026-09-01 |
+| [pentagram](pentagram.md) | Grilla 3 col. con doble ocasional; **filtro-frase** 2 ejes; 40 por carga | Todo en 3:2 exacto; impresos fotografiados como objeto (R12/R15) | "me gustó bastante su estilo" | 2026-09-01 |
+| [raggededge](raggededge.md) | Filas grandes + **Featured / Everything**, 10 + todo | Video 16:9; **misión + dato** por fila; grotesca expandida | "me gustó bastante su estilo" | 2026-09-01 |
+| [koto](koto.md) | **Hub** Projects / Partnerships → grilla por canal con conteo | Foto y motion de marca; tres cortes de una superfamilia a 9–24px | "presenta bien pero es más creativo que digital" | 2026-09-01 |
+| [brandvm-ordering](brandvm-ordering.md) | Ficha suelta (plataforma de pedidos B2B): hero en tarjeta + statement + 3 imágenes, **5.514 px** | Mosaico inclinado decorativo; par espécimen+paleta; mockup de impreso sobre campo liso. **Un párrafo de 28–80 palabras por sección, plegado a 3 líneas** | "refina, mira la narrativa, las imágenes que generan, intenta mejorar" — **la vara de la poda** | 2026-09-29 |
+| [brandvm-retail](brandvm-retail.md) | Dos fichas de consumo (KILO, Beanie): la misma plantilla **sin el bloque de sistema ni el de UI**, 13.500 px | 12 losas 2:1 de fotografía de producto seguidas; R25 hero de producto, R13 feed, R12 impreso. **Cero métricas, cero pantallas de la tienda** | `no observable` — análisis propio para Aurore | 2026-09-29 |
+| [brandvm-financial](brandvm-financial.md) | Ficha suelta (web institucional, First Horizon): **11.237 px, 9 losas, 73 % del cuerpo es imagen** | **Ranura única 4000×2000**; radio y calles **horneados como transparencia**; **R28 losa partida** (3 de 9) y **R29 componentes extraídos**. 5 de 12 paneles son maquetas de marca | «¿por qué aún no podemos hacer portafolios como esos? ¿qué nos falta?» | 2026-10-01 |
+| [brandvm-industrial](brandvm-industrial.md) | La misma ficha que `brandvm.md` vio en 2026-09-12, **rehecha**: de 11.875 a **16.388 px**, de 8 a **19 imágenes**; **16 losas, 80 % del cuerpo es imagen, 13 seguidas sin texto** | Ranura única; R28 (5 de 16); R29 con marca de agua. **De 21 paneles solo 7 enseñan la web**: 14 son banco corporativo del cliente y marca aplicada | «¿por qué aún no podemos hacer portafolios como esos?» | 2026-10-01 |

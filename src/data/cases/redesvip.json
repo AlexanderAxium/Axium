@@ -1,0 +1,34 @@
+{
+  "title": "Redes VIP",
+  "industry": "Telecomunicaciones",
+  "image": "/images/proyects/redesvip/redesvip-home.jpg",
+  "location": "Ventanilla, Callao — Perú",
+  "platform": "Web",
+  "duration": "Ene '26",
+  "client": "Redes VIP Telecomunicaciones",
+  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS", "Motion"],
+  "secondaryIndustry": "ISP / Fibra Óptica",
+  "forWhom": "Hogares y empresas en Ventanilla-Callao que buscan internet por fibra óptica con velocidad simétrica, precio justo y soporte especializado",
+  "services": [
+    "Web informativa",
+    "Catálogo de planes",
+    "VIP TV y corporativo",
+    "Integración WhatsApp"
+  ],
+  "description": "Web informativa para Redes VIP, proveedor de internet 100% fibra óptica en Ventanilla-Callao: planes (Hogar, Duos VIP, Gamer), VIP TV +80 canales, soluciones corporativas y contacto por WhatsApp.",
+  "problem": "Redes VIP necesitaba una web que transmitiera confianza, mostrara sus planes de internet de forma clara y facilitara el contacto con clientes residenciales y corporativos en Ventanilla-Callao.",
+  "solution": "Desarrollamos la web informativa redesvip.com con diseño moderno y estética tecnológica. Incluye hero con propuesta de valor, planes de internet, servicios VIP TV, soluciones corporativas, testimonios e integración con WhatsApp para contacto directo.",
+  "results": [],
+  "projectDescription": "Desarrollamos la web informativa para Redes VIP, proveedor de internet 100% fibra óptica en Ventanilla-Callao, Perú. La web presenta planes residenciales (Hogar 200 Mbps, Duos VIP 400 Mbps, Gamer 300 Mbps), servicios VIP TV con +80 canales Full HD, soluciones corporativas, testimonios de clientes y contacto por WhatsApp.",
+  "skillsAndDeliverables": [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Motion",
+    "UI/UX Design",
+    "Responsive Design",
+    "Integración WhatsApp"
+  ],
+  "publishedDate": "Ene 2026",
+  "liveUrl": "https://redesvip.com"
+}

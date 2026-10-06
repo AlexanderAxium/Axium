@@ -1,0 +1,26 @@
+{
+  "title": "Volver a Vivir",
+  "industry": "ONG / Prevención del abuso doméstico",
+  "image": "/images/proyects/volveravivir/volveravivir-portada.jpg",
+  "location": "Lima, Perú",
+  "platform": "Web",
+  "duration": "En producción",
+  "client": "Fundación Volver a Vivir",
+  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "liveUrl": "https://volveravivir.pe",
+  "secondaryIndustry": "Fundación sin fines de lucro",
+  "forWhom": "Fundación que tiene que hablarle a dos personas a la vez: la que puede donar y la que está pidiendo ayuda",
+  "services": [
+    "Diseño de producto",
+    "Desarrollo web",
+    "Diseño UX/UI",
+    "Contenido y estructura"
+  ],
+  "description": "Sitio del brazo peruano de To Live Again: la misma fundación contra el abuso doméstico, ahora con casa propia en el Perú.",
+  "problem": "To Live Again ya tenía su sitio en Estados Unidos, pero en el Perú la fundación existía en Instagram y en un WhatsApp. Y es una web difícil de escribir: la misma página tiene que convencer a quien puede donar y, al mismo tiempo, no asustar a quien la está abriendo desde una relación de la que todavía no sabe cómo salir.",
+  "solution": "Construimos volveravivir.pe con dos puertas desde el primer pantallazo: «quiero ayudar» y «necesito ayuda». La portada no empieza pidiendo dinero: empieza enseñando a reconocer las primeras señales —el control, el aislamiento, el miedo— y recién después cuenta quiénes son. La fundación, su fundadora, los encuentros y las formas de donar tienen cada una su página, y el WhatsApp queda a la mano en todas.",
+  "results": [],
+  "projectDescription": "Volver a Vivir es el brazo en el Perú de To Live Again, la ONG 501(c)(3) fundada en 2016 en Miami. Misma misión, mismo equipo, dos países. El sitio recoge lo que la fundación hace en Lima —inspirar a las víctimas a buscar ayuda, prevenir el abuso en la próxima generación y crear conciencia—, la historia de su fundadora y los encuentros que organiza.",
+  "publishedDate": "2026",
+  "slug": "volveravivir"
+}

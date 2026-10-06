@@ -1,0 +1,45 @@
+{
+  "title": "Sportt Perú",
+  "industry": "E-commerce / Deportes",
+  "image": "/images/proyects/sportt/sp-portada.jpg",
+  "location": "Perú",
+  "platform": "Web",
+  "duration": "2026",
+  "client": "Sportt Perú",
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vendiq",
+    "Cloudflare R2"
+  ],
+  "secondaryIndustry": "Tenis de Mesa",
+  "forWhom": "Jugadores, clubes y colegios que eligen madera y jebe por criterio técnico y necesitan que se los peguen",
+  "services": [
+    "Rediseño web",
+    "Tienda virtual",
+    "Catálogo por familias de juego",
+    "Filtros, buscador y orden",
+    "Carrito con recojo en tienda",
+    "Piezas de campaña para redes"
+  ],
+  "description": "Rediseño de la tienda de tenis de mesa: 149 productos en ocho familias de juego, servicio de pegado con vídeo dentro de la propia tienda, y carrito con recojo en mostrador o entrega coordinada.",
+  "problem": "La tienda anterior ordenaba el catálogo como un comercio general y dejaba fuera lo que distingue a Sportt: el criterio técnico con el que un jugador elige su jebe, y el servicio de taller que presta al pegarlo.",
+  "solution": "Rediseño completo sobre Vendiq: portada por bloques, catálogo cortado en ocho familias de juego con filtro por categoría y precio, ficha con variantes, stock, consulta por WhatsApp y medios de pago peruanos, y carrito con recojo en tienda o entrega coordinada.",
+  "results": [],
+  "projectDescription": "Rehicimos sporttperu.com entera. El catálogo —149 productos en trece categorías— se cortó por criterio de juego: maderas, jebes lisos, jebes con cocos, raquetas, zapatillas, pelotitas, estuches y accesorios, con filtro por familia y por rango de precio. La ficha de producto declara variante, stock, consulta por WhatsApp y los medios de pago peruanos. El servicio de pegado gratuito vive en la portada con su vídeo de un minuto, y el carrito ofrece recojo en el mostrador o entrega coordinada.",
+  "skillsAndDeliverables": [
+    "Diseño UX/UI",
+    "Rediseño web",
+    "E-commerce",
+    "Diseño de campaña",
+    "Next.js",
+    "Tailwind CSS",
+    "TypeScript",
+    "Vendiq"
+  ],
+  "publishedDate": "2026",
+  "liveUrl": "https://sporttperu.com",
+  "slug": "sportt"
+}

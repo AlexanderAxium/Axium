@@ -1,0 +1,35 @@
+{
+  "title": "Huarmis",
+  "industry": "Educación / Impacto social",
+  "image": "/images/proyects/huarmis/huarmis-home.jpg",
+  "location": "Santiago de Surco, Lima",
+  "platform": "Web",
+  "duration": "2024",
+  "client": "Huarmis",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "STEM / Proyectos sociales",
+  "forWhom": "Niñas, niños, adolescentes y mujeres de comunidades vulnerables en Perú, empresas y entidades con fines sociales que buscan proyectos STEM",
+  "services": [
+    "Web informativa",
+    "Programas STEM",
+    "Sobre nosotros",
+    "Fundadora y equipo",
+    "Testimonios",
+    "Noticias",
+    "Contacto",
+    "Donaciones"
+  ],
+  "description": "Web informativa para Huarmis: organización peruana que transforma futuros con educación e innovación STEM. Programas (STEM, RESEARCH, PROJECT, ACADEMY, SPACE), sobre nosotros, fundadora Liz Quispe, equipo, testimonios de beneficiarios, noticias y canal de donaciones.",
+  "problem": "Huarmis necesitaba una web que presentara su misión de empoderar a niñas, niños y mujeres de comunidades vulnerables con STEM, mostrara sus programas (STEM, RESEARCH, PROJECT, ACADEMY, SPACE), la fundadora, equipo, testimonios y facilitara contacto y donaciones.",
+  "solution": "Desarrollamos huarmis.org con WordPress: hero con propuesta (transformando futuros con educación e innovación), programas STEM, sobre nosotros (misión, visión), métricas, fundadora Liz Quispe, equipo STEM, testimonios de beneficiarios, noticias y eventos, contacto e integración para donaciones.",
+  "results": [],
+  "projectDescription": "Web informativa para Huarmis, organización peruana que lidera proyectos sociales con enfoque STEM. Empodera a niñas, niños, adolescentes y mujeres de comunidades vulnerables con ciencia, tecnología, ingeniería y matemática. Incluye programas (STEM, RESEARCH, PROJECT, ACADEMY, SPACE), fundadora Liz Quispe, equipo, testimonios, noticias y donaciones.",
+  "skillsAndDeliverables": [
+    "WordPress",
+    "Diseño responsive",
+    "Integración donaciones",
+    "Integración WhatsApp"
+  ],
+  "publishedDate": "2024",
+  "liveUrl": "https://huarmis.org"
+}

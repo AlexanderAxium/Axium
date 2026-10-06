@@ -1,0 +1,34 @@
+{
+  "title": "To Live Again",
+  "industry": "ONG / Prevención del abuso doméstico",
+  "image": "/images/proyects/toliveagain/tla-portada.jpg",
+  "location": "Miami, Florida",
+  "platform": "Web",
+  "duration": "En producción",
+  "client": "To Live Again",
+  "technologyStack": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "sharp",
+    "Cloudflare"
+  ],
+  "liveUrl": "https://toliveagain.org",
+  "secondaryIndustry": "Fundación 501(c)(3)",
+  "forWhom": "Fundación que recauda en Estados Unidos, trabaja en dos países y tiene que leerse igual de bien en español y en inglés",
+  "services": [
+    "Rediseño del sitio",
+    "Desarrollo web",
+    "Diseño UX/UI",
+    "Contenido y estructura",
+    "Versión bilingüe ES/EN"
+  ],
+  "description": "El sitio de la casa matriz en Miami de la fundación contra el abuso doméstico, rehecho de cero: bilingüe, con la donación en primera línea y el certificado 501(c)(3) a la vista.",
+  "problem": "La fundación había crecido —diez años, dos países, talleres, reconocimientos— y su web seguía siendo el folleto de WordPress del principio, en español y con la donación resuelta con un botón de PayPal. Y es una página difícil de escribir: la misma pantalla tiene que convencer a quien puede donar desde Miami y no asustar a quien la abre desde una relación de la que todavía no sabe cómo salir.",
+  "solution": "Rehicimos toliveagain.org entero, en español y en inglés. La portada abre con dos puertas —«quiero ayudar» y «necesito ayuda»—, después nombra la trata de personas con el dato que más incomoda y recién entonces cuenta quiénes son. Donar dejó de ser un botón suelto: tiene página propia con tres caminos, tarjeta, PayPal y Zelle. La fundación, su fundadora, los reconocimientos y los encuentros tienen su espacio, el certificado 501(c)(3) se abre desde el menú y, desde la página de la fundación, se cruza a Volver a Vivir, su anexo peruano.",
+  "results": [],
+  "projectDescription": "To Live Again es una fundación sin fines de lucro creada en Miami en 2016 por una sobreviviente de abuso doméstico. Diez años después trabaja en dos países —Florida y el Perú, donde opera como Volver a Vivir— alrededor de tres verbos: inspirar a las víctimas a buscar ayuda, prevenir el abuso en la próxima generación y crear conciencia.",
+  "publishedDate": "2026",
+  "slug": "toliveagain"
+}

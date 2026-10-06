@@ -22,61 +22,63 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
 import { getInitials } from "@/lib/utils/avatar";
 import {
+  Brain,
   ChevronDown,
-  Cloud,
   Code,
   Grid,
   LayoutDashboard,
   LogOut,
   Menu,
+  Search,
   Settings,
   Shield,
-  Smartphone,
   User,
   Workflow,
   Zap,
 } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-const services = [
+const NAVBAR_SERVICES = [
   {
-    icon: Smartphone,
-    title: "Aplicaciones Móviles",
-    description:
-      "Apps nativas e híbridas para iOS y Android con soporte offline.",
-  },
-  {
-    icon: Cloud,
-    title: "Aplicaciones Web",
-    description:
-      "Plataformas cloud-native con alta disponibilidad y seguridad enterprise.",
+    icon: Search,
+    key: "servicesDiscovery",
+    href: "/servicios/design-branding",
   },
   {
     icon: Code,
-    title: "Software a Medida",
-    description:
-      "Soluciones enterprise-grade adaptadas a tu arquitectura de negocio.",
+    key: "servicesSoftware",
+    href: "/servicios/software-development",
   },
-  {
-    icon: Workflow,
-    title: "Automatización de Procesos",
-    description:
-      "Workflows inteligentes que reducen tareas manuales hasta en un 80%.",
-  },
-];
+  { icon: Brain, key: "servicesAI", href: "/servicios/ai-agentic-systems" },
+] as const;
 
 export default function GlobalNavbar() {
-  const _pathname = usePathname();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [sectionTone, setSectionTone] = useState<"dark" | "light" | null>(null);
+  const [sectionBg, setSectionBg] = useState<string | null>(null);
+  const isBlogRoute = pathname.startsWith("/blog");
+  const isPortfolioRoute = pathname.startsWith("/portafolio");
+  const isLegalRoute = pathname.startsWith("/legal");
+  // Una sección con data-nav-theme bajo la barra manda sobre el automatismo:
+  // "dark" = fondo oscuro (texto blanco), "light" = fondo claro (texto oscuro).
+  const isDark =
+    sectionTone === "light"
+      ? true
+      : sectionTone === "dark"
+        ? false
+        : isBlogRoute || isLegalRoute || isScrolled;
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { user, isAuthenticated, signOut } = useAuthContext();
   const { primaryRole } = useUser();
   const router = useRouter();
-  const { t } = useTranslation("common");
+  const { t, locale, setLocale } = useTranslation("common");
 
   const handleServicesMouseEnter = useCallback(() => {
     if (servicesTimeoutRef.current) {
@@ -97,11 +99,6 @@ export default function GlobalNavbar() {
     setIsMenuOpen(false);
   }, [signOut]);
 
-  const handleSignIn = useCallback(() => {
-    router.push("/signin");
-    setIsMenuOpen(false);
-  }, [router]);
-
   const getDashboardUrl = useCallback(() => {
     switch (primaryRole) {
       case "admin":
@@ -117,39 +114,142 @@ export default function GlobalNavbar() {
   const userInitials = useMemo(() => getInitials(user?.name), [user?.name]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      setIsScrolled(scrollPosition > viewportHeight);
+    const isServicesPage = pathname.startsWith("/servicios");
+    const isBlogPage = pathname.startsWith("/blog");
+    const useHeroObserver = isServicesPage || isPortfolioRoute;
+
+    // Home (y rutas sin #page-hero): efecto al pasar 100vh
+    if (!useHeroObserver && !isBlogPage) {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > window.innerHeight);
+      };
+      handleScroll();
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+
+    // Portafolio (hero 40vh) / Servicios (su propia altura): efecto cuando el hero #page-hero sale del viewport
+    let observer: IntersectionObserver | null = null;
+
+    const setupObserver = () => {
+      const hero = document.getElementById("page-hero");
+      if (!hero) return false;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry) setIsScrolled(!entry.isIntersecting);
+        },
+        {
+          threshold: 0,
+          rootMargin: "0px 0px 0px 0px",
+          root: null,
+        }
+      );
+      observer.observe(hero);
+      return true;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    if (!setupObserver()) {
+      const retryId = window.setInterval(() => {
+        if (setupObserver()) window.clearInterval(retryId);
+      }, 50);
+      const timeoutId = window.setTimeout(
+        () => window.clearInterval(retryId),
+        3000
+      );
+      return () => {
+        window.clearInterval(retryId);
+        window.clearTimeout(timeoutId);
+        observer?.disconnect();
+      };
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (servicesTimeoutRef.current) {
-        clearTimeout(servicesTimeoutRef.current);
-      }
+      observer?.disconnect();
     };
-  }, []);
+  }, [pathname, isPortfolioRoute]);
+
+  // Secciones con tono propio (data-nav-theme="dark" | "light"): mientras
+  // pasan bajo la barra, la barra usa la versión legible sobre ese fondo.
+  // Si hay secciones anidadas, gana la más interna. En las oscuras la barra
+  // toma además el color de la sección: el texto blanco no se pierde cuando
+  // pasa una captura clara por debajo.
+  useEffect(() => {
+    if (!pathname) return;
+    let frame = 0;
+    const backgroundOf = (el: HTMLElement | null) => {
+      for (let node = el; node; node = node.parentElement) {
+        const bg = getComputedStyle(node).backgroundColor;
+        if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") return bg;
+      }
+      return null;
+    };
+    const check = () => {
+      frame = 0;
+      const probe = 32;
+      const sections =
+        document.querySelectorAll<HTMLElement>("[data-nav-theme]");
+      let tone: "dark" | "light" | null = null;
+      let toneSection: HTMLElement | null = null;
+      for (const section of sections) {
+        const { top, bottom } = section.getBoundingClientRect();
+        if (top <= probe && bottom >= probe) {
+          const value = section.dataset.navTheme;
+          if (value === "dark" || value === "light") {
+            tone = value;
+            toneSection = section;
+          }
+        }
+      }
+      setSectionTone(tone);
+      setSectionBg(tone ? backgroundOf(toneSection) : null);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(check);
+    };
+    check();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [pathname]);
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
-          isScrolled
-            ? "backdrop-blur-md bg-card/80 border-b border-border/50 shadow-sm"
+        className={`fixed top-0 left-0 right-0 z-[100] container-section transition-all duration-300 ${
+          isDark
+            ? "backdrop-blur-md bg-card/10 border-b border-black/5"
             : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
+        style={
+          sectionTone && sectionBg
+            ? {
+                backgroundColor: `color-mix(in srgb, ${sectionBg} 85%, transparent)`,
+              }
+            : undefined
+        }
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="content-section">
           <div className="flex justify-between items-center h-14 md:h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
-                <img
-                  src={isScrolled ? "/logo2.png" : "/logo3.png"}
+                <Image
+                  src={isDark ? "/logo2.png" : "/logo3.png"}
                   alt="AXIUM"
-                  className="h-8 w-auto md:h-9 transition-all duration-300"
+                  width={112}
+                  height={36}
+                  className={`h-8 w-auto md:h-9 transition-all duration-300 ${
+                    isPortfolioRoute && !isDark
+                      ? "brightness-0 invert opacity-90 hover:opacity-100"
+                      : ""
+                  }`}
+                  quality={90}
                 />
               </Link>
             </div>
@@ -157,14 +257,14 @@ export default function GlobalNavbar() {
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-6 flex-1 justify-center ml-8">
               <Link
-                href="#casos"
+                href="/portafolio"
                 className={`text-sm font-medium transition-colors ${
-                  isScrolled
+                  isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
                 }`}
               >
-                Casos de Éxito
+                {t("navbar.casosDeExito")}
               </Link>
 
               {/* Services Dropdown */}
@@ -176,88 +276,96 @@ export default function GlobalNavbar() {
                 <button
                   type="button"
                   className={`flex items-center gap-1 text-sm font-medium transition-colors ${
-                    isScrolled
+                    isDark
                       ? "text-foreground hover:text-secondary"
                       : "text-white hover:text-white/80"
                   }`}
                 >
-                  Servicios
+                  {t("navbar.servicios")}
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`}
                   />
                 </button>
 
                 {/* Services Mega Menu */}
-                {isServicesOpen && (
-                  <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
-                    onMouseEnter={handleServicesMouseEnter}
-                    onMouseLeave={handleServicesMouseLeave}
-                  >
-                    <div className="flex items-center gap-2 mb-4">
-                      <Grid className="h-5 w-5 text-secondary" />
-                      <h3 className="font-semibold text-gray-900">Servicios</h3>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      {services.map((service) => (
-                        <Link
-                          key={service.title}
-                          href="#servicios"
-                          className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
-                        >
-                          <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
-                              <service.icon className="w-4 h-4 text-secondary" />
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                      transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
+                      onMouseEnter={handleServicesMouseEnter}
+                      onMouseLeave={handleServicesMouseLeave}
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <Grid className="h-5 w-5 text-secondary" />
+                        <h3 className="font-semibold text-gray-900">
+                          {t("navbar.servicios")}
+                        </h3>
+                      </div>
+                      <div className="grid grid-cols-3 gap-3">
+                        {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
+                          <Link
+                            key={key}
+                            href={href}
+                            className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
+                                <Icon className="w-4 h-4 text-secondary" />
+                              </div>
+                              <div>
+                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-secondary transition-colors">
+                                  {t(`navbar.${key}.title`)}
+                                </h4>
+                                <p className="text-xs text-gray-600 leading-relaxed">
+                                  {t(`navbar.${key}.description`)}
+                                </p>
+                              </div>
                             </div>
-                            <div>
-                              <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-secondary transition-colors">
-                                {service.title}
-                              </h4>
-                              <p className="text-xs text-gray-600 leading-relaxed">
-                                {service.description}
-                              </p>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
               <Link
-                href="#como-trabajamos"
+                href="/#como-trabajamos"
                 className={`text-sm font-medium transition-colors ${
-                  isScrolled
+                  isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
                 }`}
               >
-                Cómo Trabajamos
+                {t("navbar.comoTrabajamos")}
               </Link>
 
               <Link
-                href="#contacto"
+                href="/#contacto"
                 className={`text-sm font-medium transition-colors ${
-                  isScrolled
+                  isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
                 }`}
               >
-                Contacto
+                {t("navbar.contacto")}
               </Link>
             </div>
 
             {/* Desktop Auth Section */}
             <div className="hidden lg:block">
               <div className="ml-4 flex items-center md:ml-6 gap-4">
-                <LanguageSelector isTransparent={!isScrolled} />
+                <LanguageSelector isTransparent={!isDark} />
                 {isAuthenticated ? (
                   <div className="flex items-center space-x-4">
                     {/* User Name */}
                     <span
                       className={`font-medium text-sm transition-colors ${
-                        isScrolled ? "text-foreground" : "text-white"
+                        isDark ? "text-foreground" : "text-white"
                       }`}
                     >
                       {user?.name || t("user")}
@@ -274,7 +382,7 @@ export default function GlobalNavbar() {
                             {user?.image ? (
                               <AvatarImage
                                 src={user.image}
-                                alt={user?.name || "Usuario"}
+                                alt={user?.name || t("user")}
                               />
                             ) : (
                               <AvatarFallback className="bg-primary text-primary-foreground">
@@ -323,19 +431,7 @@ export default function GlobalNavbar() {
                     </DropdownMenu>
                   </div>
                 ) : (
-                  <div className="flex items-center space-x-4">
-                    <button
-                      type="button"
-                      onClick={handleSignIn}
-                      className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm ${
-                        isScrolled
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                          : "bg-white text-gray-900 hover:bg-white/90 border border-white/20"
-                      }`}
-                    >
-                      {t("signIn")}
-                    </button>
-                  </div>
+                  <div aria-hidden />
                 )}
               </div>
             </div>
@@ -347,7 +443,7 @@ export default function GlobalNavbar() {
                   <button
                     type="button"
                     className={`inline-flex items-center justify-center p-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-inset ${
-                      isScrolled
+                      isDark
                         ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-400"
                         : "text-white/90 hover:text-white hover:bg-white/10 focus:ring-white/50"
                     }`}
@@ -361,134 +457,164 @@ export default function GlobalNavbar() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className="w-96 bg-white border-gray-200"
+                  className="w-full max-w-sm bg-white p-0 flex flex-col border-l border-gray-100"
                 >
-                  <SheetHeader className="px-2">
-                    <SheetTitle className="text-white text-lg">
-                      {t("mainMenu")}
-                    </SheetTitle>
+                  <SheetHeader className="sr-only">
+                    <SheetTitle>{t("mainMenu")}</SheetTitle>
                   </SheetHeader>
-                  <div className="mt-6 px-2">
-                    <div className="mb-4 px-2">
-                      <LanguageSelector />
+
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-6 h-16 border-b border-gray-100 flex-shrink-0">
+                    <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                      <Image
+                        src="/logo2.png"
+                        alt="AXIUM"
+                        width={100}
+                        height={32}
+                        className="h-7 w-auto"
+                        quality={90}
+                      />
+                    </Link>
+                  </div>
+
+                  {/* Navigation */}
+                  <div className="flex-1 overflow-y-auto px-4 py-6 flex flex-col gap-1">
+                    <Link
+                      href="/portafolio"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-3.5 rounded-xl text-base font-medium text-gray-800 hover:bg-gray-50 hover:text-secondary transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Shield className="h-4 w-4 text-gray-500" />
+                      </span>
+                      {t("navbar.casosDeExito")}
+                    </Link>
+
+                    {/* Services group */}
+                    <div className="mt-2 mb-1">
+                      <p className="px-3 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
+                        {t("navbar.servicios")}
+                      </p>
+                      {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
+                        <Link
+                          key={key}
+                          href={href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-secondary transition-colors"
+                        >
+                          <span className="w-8 h-8 rounded-lg bg-secondary/8 flex items-center justify-center flex-shrink-0">
+                            <Icon className="h-4 w-4 text-secondary" />
+                          </span>
+                          {t(`navbar.${key}.title`)}
+                        </Link>
+                      ))}
                     </div>
+
+                    <Link
+                      href="/#como-trabajamos"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-3.5 rounded-xl text-base font-medium text-gray-800 hover:bg-gray-50 hover:text-secondary transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Workflow className="h-4 w-4 text-gray-500" />
+                      </span>
+                      {t("navbar.comoTrabajamos")}
+                    </Link>
+
+                    <Link
+                      href="/#contacto"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-3.5 rounded-xl text-base font-medium text-gray-800 hover:bg-gray-50 hover:text-secondary transition-colors"
+                    >
+                      <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                        <Zap className="h-4 w-4 text-gray-500" />
+                      </span>
+                      {t("navbar.contacto")}
+                    </Link>
+                  </div>
+
+                  {/* Footer: language + auth */}
+                  <div className="flex-shrink-0 border-t border-gray-100 px-4 py-5 space-y-4">
+                    {/* Inline language selector */}
+                    <div className="flex items-center gap-2">
+                      {[
+                        { code: "es", flag: "🇪🇸", label: "ES" },
+                        { code: "en", flag: "🇺🇸", label: "EN" },
+                        { code: "pt", flag: "🇵🇹", label: "PT" },
+                      ].map(({ code, flag, label }) => (
+                        <button
+                          key={code}
+                          type="button"
+                          onClick={() => setLocale(code)}
+                          className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                            locale === code
+                              ? "bg-secondary/10 text-secondary"
+                              : "text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                          }`}
+                        >
+                          <span className="text-base leading-none">{flag}</span>
+                          <span>{label}</span>
+                        </button>
+                      ))}
+                    </div>
+
                     {isAuthenticated ? (
-                      <div className="space-y-4">
-                        {/* User Info */}
-                        <div className="flex items-center space-x-3 px-3 py-2">
-                          <Avatar>
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-gray-50 mb-3">
+                          <Avatar className="h-9 w-9">
                             {user?.image ? (
                               <AvatarImage
                                 src={user.image}
                                 alt={user?.name || t("user")}
                               />
                             ) : (
-                              <AvatarFallback className="bg-primary text-primary-foreground">
+                              <AvatarFallback className="bg-primary text-primary-foreground text-sm">
                                 {userInitials}
                               </AvatarFallback>
                             )}
                           </Avatar>
-                          <div className="flex flex-col">
-                            <span className="text-sm font-medium text-white">
+                          <div className="flex flex-col min-w-0">
+                            <span className="text-sm font-semibold text-gray-900 truncate">
                               {user?.name || t("user")}
                             </span>
-                            <span className="text-xs text-gray-300">
+                            <span className="text-xs text-gray-500 truncate">
                               {user?.email || ""}
                             </span>
                           </div>
                         </div>
-
-                        {/* Dashboard Link */}
                         <button
                           type="button"
                           onClick={() => {
                             router.push(getDashboardUrl());
                             setIsMenuOpen(false);
                           }}
-                          className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white hover:bg-accent w-full"
+                          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                         >
-                          <LayoutDashboard className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
-                          <div className="flex-1 text-left">
-                            <div className="font-medium text-white">
-                              {t("dashboard")}
-                            </div>
-                            <div className="text-xs text-gray-400">
-                              {t("mainPanel")}
-                            </div>
-                          </div>
+                          <LayoutDashboard className="h-4 w-4 text-gray-400" />
+                          {t("dashboard")}
                         </button>
-
-                        {/* Settings Link */}
-                        <button
-                          type="button"
-                          onClick={() => {
-                            router.push("/dashboard/settings");
-                            setIsMenuOpen(false);
-                          }}
-                          className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white hover:bg-accent w-full"
-                        >
-                          <Settings className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
-                          <div className="flex-1 text-left">
-                            <div className="font-medium text-white">
-                              {t("settings")}
-                            </div>
-                            <div className="text-xs text-gray-400">
-                              {t("accountSettings")}
-                            </div>
-                          </div>
-                        </button>
-
-                        {/* Profile Link */}
                         <button
                           type="button"
                           onClick={() => {
                             router.push("/dashboard/profile");
                             setIsMenuOpen(false);
                           }}
-                          className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white hover:bg-accent w-full"
+                          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                         >
-                          <User className="mr-3 h-5 w-5 text-gray-400 group-hover:text-white" />
-                          <div className="flex-1 text-left">
-                            <div className="font-medium text-white">
-                              {t("profile")}
-                            </div>
-                            <div className="text-xs text-gray-400">
-                              {t("personalInfo")}
-                            </div>
-                          </div>
+                          <User className="h-4 w-4 text-gray-400" />
+                          {t("profile")}
                         </button>
-
-                        {/* Logout Button */}
-                        <div className="pt-4 border-t border-gray-700">
-                          <button
-                            type="button"
-                            onClick={handleSignOut}
-                            className="group flex items-center px-5 py-4 rounded-xl text-sm font-medium transition-all duration-200 text-red-400 hover:text-red-300 hover:bg-red-900/20 w-full"
-                          >
-                            <LogOut className="mr-3 h-5 w-5" />
-                            <div className="flex-1 text-left">
-                              <div className="font-medium">{t("signOut")}</div>
-                            </div>
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-4">
                         <button
                           type="button"
-                          onClick={handleSignIn}
-                          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-lg font-medium transition-colors"
+                          onClick={handleSignOut}
+                          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-red-500 hover:bg-red-50 transition-colors"
                         >
-                          {t("signIn")}
+                          <LogOut className="h-4 w-4" />
+                          {t("signOut")}
                         </button>
-                        <Link
-                          href="/signup"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="w-full bg-transparent border border-gray-600 text-white hover:bg-gray-700 px-4 py-2 rounded-lg font-medium transition-colors block text-center"
-                        >
-                          {t("signUp")}
-                        </Link>
                       </div>
+                    ) : (
+                      <div aria-hidden />
                     )}
                   </div>
                 </SheetContent>

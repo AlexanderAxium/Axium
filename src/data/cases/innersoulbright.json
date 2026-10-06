@@ -1,0 +1,36 @@
+{
+  "title": "Inner Soul Bright",
+  "industry": "Bienestar Espiritual",
+  "image": "/images/proyects/innersoulbright/innersoulbright-home.png",
+  "location": "Internacional",
+  "platform": "Web",
+  "duration": "Dic '25 – Ene '26",
+  "client": "Inner Soul Bright",
+  "liveUrl": "https://innersoulbright.com",
+  "technologyStack": [
+    "React",
+    "Vite",
+    "React Router",
+    "Tailwind CSS",
+    "Motion",
+    "i18next"
+  ],
+  "secondaryIndustry": "Desarrollo Personal",
+  "forWhom": "Personas que buscan acompañamiento espiritual, limpieza energética y claridad en un momento de cambio",
+  "services": ["Diseño y desarrollo web", "Sitio en cinco idiomas"],
+  "description": "Sitio web de Inner Soul Bright: tres páginas con los cuatro servicios de acompañamiento, el proceso paso a paso y el código ético, publicadas en cinco idiomas y con la entrada de cada sección animada.",
+  "problem": "",
+  "solution": "",
+  "results": [],
+  "projectDescription": "Inner Soul Bright es una consulta de acompañamiento espiritual y sanación energética que atiende en línea y presencial, con un público repartido por varios países. El encargo fue su sitio web.",
+  "skillsAndDeliverables": [
+    "Diseño y desarrollo web",
+    "React",
+    "Vite",
+    "Tailwind CSS",
+    "Motion",
+    "i18next",
+    "Diseño responsive"
+  ],
+  "publishedDate": "Ene 2026"
+}

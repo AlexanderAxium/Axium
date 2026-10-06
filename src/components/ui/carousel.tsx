@@ -230,6 +230,62 @@ function CarouselNext({
   );
 }
 
+/**
+ * Barra de progreso del carrusel, tomada del carrusel de la tienda de Sportt
+ * (que a su vez sale de aurore.com.pe). Mide «cuánto del carrusel has visto»:
+ * arranca en la fracción visible y llega al 100 % al final; con el avance a secas
+ * nacería en cero aunque ya se vean dos tarjetas. Sin nada que desplazar, no se pinta.
+ */
+function CarouselProgress({
+  className,
+  barClassName,
+}: {
+  className?: string;
+  barClassName?: string;
+}) {
+  const { api } = useCarousel();
+  const [medida, setMedida] = React.useState<{
+    porcion: number;
+    avance: number;
+  } | null>(null);
+
+  React.useEffect(() => {
+    if (!api) return;
+    const medir = () => {
+      const total = api.containerNode().scrollWidth;
+      setMedida({
+        porcion:
+          total > 0 ? Math.min(1, api.rootNode().clientWidth / total) : 1,
+        avance: Math.min(1, Math.max(0, api.scrollProgress())),
+      });
+    };
+    medir();
+    api.on("scroll", medir).on("reInit", medir);
+    return () => {
+      api.off("scroll", medir).off("reInit", medir);
+    };
+  }, [api]);
+
+  if (!medida || medida.porcion >= 1) return null;
+  const ancho = (medida.porcion + (1 - medida.porcion) * medida.avance) * 100;
+
+  return (
+    <div
+      aria-hidden="true"
+      data-slot="carousel-progress"
+      className={cn("h-px bg-muted", className)}
+    >
+      <div
+        className={cn(
+          "h-full bg-foreground transition-[width] duration-150 ease-out",
+          barClassName
+        )}
+        style={{ width: `${ancho}%` }}
+      />
+    </div>
+  );
+}
+
 export {
   type CarouselApi,
   Carousel,
@@ -237,4 +293,6 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselProgress,
+  useCarousel,
 };

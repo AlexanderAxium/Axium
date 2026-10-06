@@ -1,0 +1,36 @@
+{
+  "title": "ANJ Sports",
+  "industry": "E-commerce · Tenis de mesa",
+  "image": "/images/proyects/anjsports/anj-portada.jpg",
+  "location": "Perú",
+  "platform": "Web",
+  "duration": "2026",
+  "client": "ANJ Sports",
+  "technologyStack": [
+    "Vendiq",
+    "Next.js",
+    "App Router",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Cloudflare R2"
+  ],
+  "secondaryIndustry": "Tenis de mesa",
+  "forWhom": "Distribuidor deportivo con catálogo multimarca y variantes que necesita una tienda con su propia cara y un motor de comercio de verdad",
+  "services": [
+    "Diseño UX/UI",
+    "Desarrollo web",
+    "Tienda online a medida",
+    "Integración con Vendiq",
+    "Catálogo y variantes",
+    "Checkout y pagos"
+  ],
+  "description": "Tienda a medida de ANJ Sports sobre Vendiq: 251 productos de cinco marcas, variantes por color y grosor, stock en vivo y el cobro dentro de anjsports.com.",
+  "problem": "Una goma de tenis de mesa no es un producto: es una matriz de color por grosor, y cada casilla tiene su propio precio y su propio stock. Con 251 productos, cinco marcas distribuidas, colecciones de ropa por talla y una identidad deportiva que cambia de color según la marca que enseña, una plantilla de tienda obliga a elegir entre el catálogo y la marca.",
+  "solution": "Construimos el storefront a medida en Next.js con App Router —negro, tipografía ancha, el carrusel que cambia de color con la marca— y lo montamos sobre Vendiq, el producto de comercio de Axium. Vendiq guarda el catálogo, las variantes con su SKU, el stock y los pedidos; la tienda expone esa API en su propio dominio, así que el catálogo con filtros, la ficha con sus variantes, el carrito y el checkout de cuatro pasos ocurren sin salir de anjsports.com.",
+  "results": [],
+  "projectDescription": "ANJ Sports distribuye XIOM, Butterfly, VICTAS, SANWEI y Dr. Neubauer en el Perú desde 2010 y patrocina a los jugadores que compiten. Su marca ya existía: el encargo fue la tienda y el motor que la sostiene.",
+  "publishedDate": "2026",
+  "liveUrl": "https://anjsports.com",
+  "slug": "anjsports"
+}

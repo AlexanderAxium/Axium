@@ -12,6 +12,7 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 
@@ -21,6 +22,8 @@ export function Footer() {
   const { data: companyInfo } = trpc.companyInfo.get.useQuery();
   const { locale } = useTranslation("common");
   const { t } = useTranslation("common");
+  // Los títulos de los servicios viven en `landing`, no en `common`.
+  const { t: tl } = useTranslation("landing");
 
   const footerLinks = {
     legal: [
@@ -124,7 +127,7 @@ export function Footer() {
     [baseInfo, nameTranslation, displayNameTranslation, descriptionTranslation]
   );
 
-  const socialLinks = [
+  const _socialLinks = [
     { name: "Facebook", href: info.facebookUrl, icon: Facebook },
     { name: "Twitter", href: info.twitterUrl, icon: Twitter },
     { name: "Instagram", href: info.instagramUrl, icon: Instagram },
@@ -134,149 +137,149 @@ export function Footer() {
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3 mb-4">
-              <img src="/logo.png" alt="AXIUM" className="h-10 w-auto" />
-              <span className="text-2xl font-semibold text-white">AXIUM</span>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-md">
-              Tu socio tecnológico de confianza. Desarrollamos software a medida
-              que transforma procesos manuales en sistemas eficientes y
-              escalables.
-            </p>
+      <div className="container-section py-12">
+        <div className="content-section">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div className="md:col-span-2 space-y-4">
+              <div className="flex items-center gap-3 mb-4">
+                <Image
+                  src="/logo3.png"
+                  alt="AXIUM"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                  quality={90}
+                />
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                {t("footer.description")}
+              </p>
 
-            {/* Contact Info */}
-            <div className="space-y-2 pt-2">
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <Mail className="h-4 w-4 text-blue-500" />
-                <a
-                  href="mailto:contacto@axium.com.pe"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  contacto@axium.com.pe
-                </a>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <Phone className="h-4 w-4 text-blue-500" />
-                <a
-                  href="tel:+51999999999"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  +51 999 999 999
-                </a>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <MapPin className="h-4 w-4 text-blue-500" />
-                <span>Lima, Perú</span>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            {socialLinks.length > 0 && (
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
+              {/* Contact Info */}
+              <div className="space-y-2 pt-2">
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <Mail className="h-4 w-4 text-blue-500" />
                   <a
-                    key={social.name}
-                    href={social.href || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-gray-700 hover:bg-primary/10 border border-transparent hover:border-primary/20 rounded-lg transition-all duration-200"
-                    aria-label={social.name}
+                    href="mailto:contacto@axium.com.pe"
+                    className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
                   >
-                    <social.icon className="h-4 w-4 text-gray-300 hover:text-primary transition-colors" />
+                    contacto@axium.com.pe
                   </a>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-white">Enlaces Rápidos</h4>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#servicios"
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Servicios
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#casos"
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Casos de Éxito
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#como-trabajamos"
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Cómo Trabajamos
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contacto"
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Contacto
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-white">Legal</h4>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <Phone className="h-4 w-4 text-blue-500" />
+                  <a
+                    href="tel:+51991285679"
+                    className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
                   >
-                    {link.name}
+                    +51 991 285 679
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <MapPin className="h-4 w-4 text-blue-500" />
+                  <span>{t("footer.location")}</span>
+                </div>
+              </div>
+
+              {/* Social Media - comentado por ahora, no colocar redes sociales */}
+              {/* {socialLinks.length > 0 && (
+                <div className="flex gap-3">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.href || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-gray-700 hover:bg-primary/10 border border-transparent hover:border-primary/20 rounded-lg transition-all duration-200"
+                      aria-label={social.name}
+                    >
+                      <social.icon className="h-4 w-4 text-gray-300 hover:text-primary transition-colors" />
+                    </a>
+                  ))}
+                </div>
+              )} */}
+            </div>
+
+            {/* Quick Links */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white">
+                {t("navbar.servicios")}
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/servicios/design-branding"
+                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    {tl("home.services.items.discovery.title")}
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+                <li>
+                  <Link
+                    href="/servicios/software-development"
+                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    {tl("home.services.items.software-dev.title")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/servicios/ai-agentic-systems"
+                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    {tl("home.services.items.ai-systems.title")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-10 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()}{" "}
-              <span className="text-white font-medium">AXIUM</span>. Todos los
-              derechos reservados.
-            </p>
-            <div className="flex gap-6 text-sm text-gray-400">
-              <Link
-                href="/legal/terms"
-                className="hover:text-blue-400 transition-colors"
-              >
-                Términos
-              </Link>
-              <Link
-                href="/legal/privacy"
-                className="hover:text-blue-400 transition-colors"
-              >
-                Privacidad
-              </Link>
-              <Link
-                href="/legal/cookies"
-                className="hover:text-blue-400 transition-colors"
-              >
-                Cookies
-              </Link>
+            {/* Legal Links */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-white">{t("legal")}</h4>
+              <ul className="space-y-2">
+                {footerLinks.legal.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 mt-10 pt-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-gray-400">
+                © {new Date().getFullYear()}{" "}
+                <span className="text-white font-medium">AXIUM</span>.{" "}
+                {t("allRightsReserved")}
+              </p>
+              <div className="flex gap-6 text-sm text-gray-400">
+                <Link
+                  href="/legal/terms"
+                  className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
+                >
+                  {t("terms")}
+                </Link>
+                <Link
+                  href="/legal/privacy"
+                  className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
+                >
+                  {t("privacy")}
+                </Link>
+                <Link
+                  href="/legal/cookies"
+                  className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
+                >
+                  {t("cookies")}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

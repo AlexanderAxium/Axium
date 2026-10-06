@@ -1,0 +1,34 @@
+{
+  "title": "Aurore",
+  "industry": "Branding / E-commerce · Perfumería",
+  "image": "/images/proyects/aurore/aurore-portada-yeso.jpg",
+  "location": "Perú",
+  "platform": "Web (tienda) sobre Vendiq",
+  "duration": "En producción",
+  "client": "Aurore",
+  "technologyStack": [
+    "Vendiq",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS"
+  ],
+  "liveUrl": "https://aurore.com.pe",
+  "secondaryIndustry": "Perfumería de autor, de nicho y árabe",
+  "forWhom": "Perfumería de autor que vende en línea y necesita que su catálogo se explore como una carta, no como una lista",
+  "services": [
+    "Identidad de marca",
+    "Sistema tipográfico",
+    "Aplicaciones de marca",
+    "Diseño UX/UI",
+    "Desarrollo web",
+    "Tienda online"
+  ],
+  "description": "Marca y tienda de Aurore, de cero: logotipo, monograma, sistema tipográfico y paleta, sus aplicaciones, y la tienda donde 278 fragancias se recorren por casa, por nota y por ocasión.",
+  "problem": "Aurore no tenía marca, y un catálogo de perfumes no se busca como se busca un electrodoméstico: la gente llega sabiendo una casa, una nota o una ocasión, casi nunca el nombre exacto del producto. Encima el negocio vende dos cosas del mismo perfume, el frasco entero y el decant, y si cada presentación es un producto distinto el catálogo se duplica.",
+  "solution": "Primero la marca: monograma, pareja tipográfica (Sainte Colombe y Avenir) y una paleta de cinco colores, más cuatro colores editoriales que son las cuatro puertas del catálogo. Después las aplicaciones: etiqueta de decant, papelería, bolsa y caja. Y luego la tienda, construida alrededor de cómo se busca un perfume: casas con su conteo, colecciones con su propia cabecera, notas olfativas como puerta de entrada, y las presentaciones de decant dentro del mismo producto. El móvil es el diseño principal, no una adaptación.",
+  "results": [],
+  "projectDescription": "Aurore es una perfumería peruana que reúne casas de diseñador, alta perfumería de nicho y perfumería árabe, y que vende el frasco entero y el decant del mismo perfume. La marca se creó para este encargo —no había logotipo, ni sistema tipográfico, ni paleta— y sobre ella se construyeron las aplicaciones y la tienda.",
+  "publishedDate": "2026",
+  "slug": "aurore"
+}

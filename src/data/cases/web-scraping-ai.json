@@ -1,0 +1,41 @@
+{
+  "title": "AI-Powered Web Scraping Pipeline",
+  "industry": "Data Engineering / IA",
+  "image": "/images/proyects/web-scraping-ai/web-scraping-ai-hero.jpg",
+  "location": "Remoto",
+  "platform": "Backend / Pipeline",
+  "duration": "2025",
+  "client": "Proyecto interno",
+  "technologyStack": [
+    "Python",
+    "Playwright",
+    "BeautifulSoup",
+    "OpenAI",
+    "PostgreSQL"
+  ],
+  "secondaryIndustry": "Automatización y extracción de datos",
+  "forWhom": "Empresas que necesitan extraer, estructurar y almacenar datos de fuentes web de forma automatizada",
+  "services": [
+    "Web scraping",
+    "Procesamiento con LLM",
+    "Extracción estructurada",
+    "Soporte sitemaps",
+    "Almacenamiento PostgreSQL",
+    "Containerización Docker"
+  ],
+  "description": "Pipeline de web scraping potenciado con IA: extrae datos de sitios web, los procesa con un LLM para estructurarlos automáticamente y los persiste en base de datos. Sitemaps, Playwright y PostgreSQL.",
+  "problem": "Se necesitaba automatizar la extracción de datos de múltiples fuentes web, estructurarlos de forma inteligente y persistirlos para análisis posterior, sin procesamiento manual.",
+  "solution": "Desarrollamos un pipeline en Python que combina scraping (BeautifulSoup, httpx, Playwright), descubrimiento vía sitemaps, procesamiento con OpenAI para extraer y estructurar datos, y persistencia en PostgreSQL. Dockerizado para despliegue reproducible.",
+  "results": [],
+  "projectDescription": "Pipeline de web scraping asistido por IA: recorre sitios web usando sitemaps y técnicas de scraping (BeautifulSoup para HTML estático, Playwright para páginas dinámicas), envía el contenido extraído a un LLM para normalizar y estructurar la información, y almacena los resultados en PostgreSQL. Diseñado para ser genérico y reutilizable en diferentes dominios de datos. Incluye utilidades de base de datos, manejo de sitemaps y orquestación del flujo completo. Containerizado con Docker para ejecución en cualquier entorno.",
+  "skillsAndDeliverables": [
+    "Python",
+    "Web scraping",
+    "OpenAI / LLM",
+    "PostgreSQL",
+    "Docker"
+  ],
+  "publishedDate": "2025",
+  "liveUrl": "https://github.com/sadelcarpio/siclo-scraping",
+  "slug": "web-scraping-ai"
+}

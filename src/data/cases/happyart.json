@@ -1,0 +1,55 @@
+{
+  "title": "Happy Art",
+  "industry": "E-commerce / Regalos Personalizados",
+  "image": "/images/proyects/happyart/happyart-home.jpg",
+  "location": "Perú",
+  "platform": "Web",
+  "duration": "2022 – presente",
+  "client": "Happy Art",
+  "technologyStack": ["WordPress", "WooCommerce", "PHP"],
+  "secondaryIndustry": "Regalos Personalizados",
+  "forWhom": "Personas y empresas que buscan regalos personalizados para ocasiones especiales",
+  "services": [
+    "Identidad de Marca",
+    "Logo",
+    "Manual de Marca",
+    "Tienda Virtual",
+    "Catálogo por Categorías",
+    "Delivery",
+    "Personalización",
+    "Mi Cuenta"
+  ],
+  "description": "Identidad de marca, logo, manual de marca y tienda virtual de regalos personalizados en Arequipa: categorías por ocasión, carrito, checkout, delivery, personalización y asesoría por WhatsApp.",
+  "problem": "Happy Art necesitaba una presencia digital para comercializar regalos personalizados, con catálogo organizado por ocasiones, carrito y checkout, y canal de contacto para asesoría.",
+  "solution": "Identidad de marca completa (logo, manual, papelería) y tienda virtual con WooCommerce: catálogo por categorías, mi cuenta con carrito y checkout, blog de consejos, delivery, personalización y asesoría por WhatsApp.",
+  "results": [
+    {
+      "icon": "Users",
+      "metric": "100%",
+      "label": "presencia digital establecida"
+    },
+    {
+      "icon": "TrendingUp",
+      "metric": "24/7",
+      "label": "tienda disponible online"
+    },
+    {
+      "icon": "CheckCircle2",
+      "metric": "B2C",
+      "label": "venta directa a consumidores"
+    }
+  ],
+  "projectDescription": "Desarrollamos la identidad de marca completa de Happy Art — logo, manual de marca, papelería — y la tienda virtual happyart.com.pe. Incluye tienda online con categorías por ocasión, carrito y checkout, mi cuenta, delivery, personalización, blog, asesoría por WhatsApp y libro de reclamaciones.",
+  "skillsAndDeliverables": [
+    "Identidad de Marca",
+    "Logo",
+    "Manual de Marca",
+    "WordPress",
+    "WooCommerce",
+    "E-commerce",
+    "Responsive Design",
+    "Libro de Reclamaciones"
+  ],
+  "publishedDate": "2022",
+  "liveUrl": "https://happyart.com.pe"
+}

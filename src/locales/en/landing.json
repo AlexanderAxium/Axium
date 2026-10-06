@@ -150,5 +150,266 @@
     "titleHighlight": "Management",
     "subtitle": "Hear how professionals scale their operations faster, collaborate seamlessly, and manage with confidence using MyApp's powerful tools"
   },
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "caseDetail": {
+    "backLink": "Back to success cases",
+    "aboutProject": "About the project",
+    "funcionalidadesClave": "Key features",
+    "storeVirtual": "Virtual Store",
+    "viewLive": "View live",
+    "verDetalles": "View details",
+    "verPortafolio": "View portfolio",
+    "casosDeExito": "Success cases",
+    "sectionDescription": "Real projects we have developed for companies across different industries.",
+    "masProyectos": "More projects",
+    "anterior": "Previous",
+    "siguiente": "Next",
+    "theChallenge": "The Challenge",
+    "theSolution": "The Solution",
+    "theResults": "The Results",
+    "measurableImpact": "Measurable Impact",
+    "projectDetails": "Project Details",
+    "industry": "Industry",
+    "platform": "Platform",
+    "duration": "Duration",
+    "client": "Client",
+    "services": "Services",
+    "techStack": "Technology Stack",
+    "projectView": "Project View",
+    "secondaryIndustry": "Secondary Industry",
+    "forWhom": "For whom",
+    "notFound": "Case not found",
+    "notFoundDescription": "The case you are looking for does not exist."
+  },
+  "home": {
+    "hero": {
+      "titlePrefix": "We Build Software that ",
+      "titleHighlight": "Drives Your Business",
+      "titleSuffix": " to the Next Level",
+      "description": "We partner with companies across all industries to create digital products that deliver real results.",
+      "cta": "LET'S TALK ABOUT YOUR PROJECT"
+    },
+    "about": {
+      "eyebrow": "About Us",
+      "title": "We offer digital and consulting solutions to drive the growth of your business",
+      "statNumber": "40+",
+      "statLabel": "Projects",
+      "statSub": "Creative solutions that elevate brands.",
+      "cardEyebrow": "Your digital partner",
+      "cardTitle": "We turn ideas into results"
+    },
+    "services": {
+      "eyebrow": "Our Services",
+      "titlePrefix": "Technology Solutions that ",
+      "titleHighlight": "Transform",
+      "titleSuffix": " Businesses",
+      "sectionSubtitle": "Technology solutions to build better products, scale with confidence, and adopt artificial intelligence.",
+      "viewService": "View service",
+      "items": {
+        "discovery": {
+          "title": "Design & Branding",
+          "description": "We build brands that communicate, products that delight and materials that convert. Visual identity, branding, brochures and product design.",
+          "benefits": [
+            "Visual identity & logo",
+            "Brand guidelines",
+            "Marketing materials",
+            "UI/UX & Product design",
+            "Web design & landing pages",
+            "Motion & presentations"
+          ],
+          "whatsappMessage": "Hi, I am interested in the Design & Branding service. Can we schedule a call?"
+        },
+        "software-dev": {
+          "title": "Software development",
+          "description": "We build high-performance, scalable, and secure software using a modern, industry-standard tech stack. We specialize in full-stack JavaScript development with TypeScript, including Next.js and React.js for web frontend, React Native for mobile frontend, and Node.js on the backend.",
+          "benefits": [
+            "Web development",
+            "Mobile development",
+            "TypeScript",
+            "React.js & React Native",
+            "Next.js",
+            "Node.js"
+          ],
+          "whatsappMessage": "Hi, I'm interested in software development services. Can we discuss my project?"
+        },
+        "ai-systems": {
+          "title": "AI & agentic systems",
+          "description": "We develop AI-driven systems that automate workflows, integrate data silos, and enable real-time decision-making. Our expertise in LLMs, RAG, and AI orchestration helps build autonomous systems that deliver measurable business value.",
+          "benefits": [
+            "Problem space definition",
+            "Data readiness assessment",
+            "Use case development",
+            "Orchestration framework",
+            "Prototyping and scaling",
+            "Programming in Python"
+          ],
+          "whatsappMessage": "Hi, I'm interested in AI and agentic systems. Can we talk about what I need?"
+        }
+      },
+      "cta": "Get a free consultation"
+    },
+    "process": {
+      "eyebrow": "A Process that Delivers Results",
+      "titlePrefix": "A process that delivers ",
+      "titleHighlight": "results",
+      "description": "Clear methodology, on-time delivery, and measurable results. We define with rigor, build to high standards, and launch with confidence.",
+      "steps": {
+        "definir": {
+          "title": "Define",
+          "fullTitle": "Define What Matters",
+          "description": "We don't ask what you want to build. We ask what's worth building. From new products to platform migrations, we focus on what truly drives results.",
+          "short": "We define priorities and what's worth building for your business."
+        },
+        "construir": {
+          "title": "Build",
+          "fullTitle": "Build to Scale",
+          "description": "Aesthetics matter, but function matters more. We design, code, and connect systems your team can use with ease. Scalable, fast, and ready to grow with you.",
+          "short": "We design, build, and connect systems ready to scale."
+        },
+        "lanzar": {
+          "title": "Launch",
+          "fullTitle": "Launch with Confidence",
+          "description": "No silent deliveries. We test hard, launch smart, and stay in the loop, ready to fix, improve, or scale as your needs change.",
+          "short": "We test, launch, and provide ongoing support to keep improving."
+        }
+      },
+      "includesLabel": "Includes:",
+      "badges": {
+        "primary": "Strategic Workshop",
+        "secondary": [
+          "Detailed Design",
+          "Scalable Architecture",
+          "Modular System"
+        ]
+      },
+      "cards": [
+        {
+          "title": "Quality Review",
+          "tag": "QA Testing"
+        },
+        {
+          "title": "Safe Launch",
+          "tag": "Deploy"
+        },
+        {
+          "title": "Continuous Support",
+          "tag": "24/7"
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "titlePrefix": "Ready to ",
+      "titleHighlight": "Start",
+      "titleSuffix": "?",
+      "description": "Tell us about your project and we'll get back to you in under 24 hours.",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "you@email.com",
+        "message": "Message",
+        "messagePlaceholder": "Tell us about your project...",
+        "submit": "Send Message",
+        "submitting": "Sending..."
+      },
+      "directContact": "Direct Contact",
+      "whatsappCta": "Prefer WhatsApp?",
+      "whatsappDescription": "Immediate response for quick inquiries.",
+      "openWhatsApp": "Open WhatsApp",
+      "responseTime": "Response in under 24 hours",
+      "whatsappDefaultMessage": "Hi, I'd like to learn more about AXIUM's services."
+    },
+    "inspirational": {
+      "line1": "We are more than a technology provider.",
+      "line2": "We are your strategic technology partner.",
+      "line3": "Committed to your business success."
+    },
+    "contactCta": {
+      "title": "Ready to transform your business?",
+      "step1": "We'll analyze your project and prepare a preliminary estimate.",
+      "step2": "We'll meet virtually or in person to discuss your needs and align next steps.",
+      "ceoSectionTitle": "Prefer direct contact with our CEO?",
+      "ceoPosition": "Founder & CEO",
+      "form": {
+        "namePlaceholder": "Your name",
+        "emailPlaceholder": "Email",
+        "messagePlaceholder": "How can we help you?",
+        "attachFileLabel": "Attach file",
+        "submitLabel": "SEND",
+        "submitting": "Sending..."
+      },
+      "sourceTitle": "How did you find us? (optional)",
+      "sourceGoogle": "Google",
+      "sourceLinkedIn": "LinkedIn",
+      "sourceReferral": "Referral",
+      "sourceSocial": "Social Media",
+      "sourceOther": "Other"
+    }
+  },
+  "portfolio": {
+    "nuestroTrabajo": "Our work",
+    "titulo": "Project",
+    "tituloBold": "Portfolio",
+    "subtitulo": "{count} projects across {industries} different industries.",
+    "filtros": "Filters",
+    "limpiarTodo": "Clear all",
+    "industria": "Industry",
+    "servicios": "Services",
+    "tecnologia": "Technology",
+    "queHacemos": "What we do",
+    "sector": "Sector",
+    "mostrando": "Showing",
+    "todos": "All",
+    "proyectosCount": "{count} projects",
+    "proyectosFiltrado": "{filtered} of {total} projects",
+    "ordenar": "Sort",
+    "vista": "View",
+    "sortDefault": "Default",
+    "sortAZ": "A → Z",
+    "sortZA": "Z → A",
+    "vistaGrid": "Grid view",
+    "vistaLista": "List view",
+    "verProyecto": "VIEW PROJECT • VIEW PROJECT • ",
+    "sinResultados": "No results",
+    "sinResultadosDesc": "No projects match the selected filters.",
+    "verTodos": "View all projects",
+    "pagina": "Page",
+    "paginaDe": "Page {current} of {total}",
+    "anterior": "Previous",
+    "siguiente": "Next"
+  },
+  "highlights": {
+    "overline": "Our own products",
+    "title": "Our work",
+    "intro": "Software we design, build and run ourselves.",
+    "visit": "Visit site",
+    "cursor": "VISIT WEBSITE • VISIT WEBSITE • ",
+    "items": {
+      "vendiq": {
+        "name": "Vendiq",
+        "category": "E-commerce",
+        "summary": "Online store, point of sale and SUNAT invoicing",
+        "description": "Online store, point of sale, inventory and SUNAT invoicing on one shared catalog. Payments through Mercado Pago, Culqi or PayPal, for a fixed monthly price and with no commission per sale."
+      },
+      "rematch": {
+        "name": "Rematch",
+        "category": "Sports",
+        "summary": "Sports court booking",
+        "description": "A marketplace to find and book football, padel, tennis courts and more across Peru. Clubs manage schedules, bookings, occupancy and revenue in real time from a single dashboard, even across multiple venues."
+      },
+      "lumiolearn": {
+        "name": "LumioLearn",
+        "category": "Education",
+        "summary": "Branded online academies",
+        "description": "A platform to create and sell courses under your own brand and domain, commission-free. It includes an AI tutor trained on each academy's content, assessments, certificates and analytics. Built for independent teachers, academies with teams and companies that train their people."
+      },
+      "bookit": {
+        "name": "Bookit",
+        "category": "Appointments",
+        "summary": "Scheduling for clinics and salons",
+        "description": "Website, online booking, calendar and payments for clinics, salons and studios. Each business takes bookings on its own branded website: clients choose the professional and time, can pay at booking, and the appointment lands in the team's calendar, with no commission per booking."
+      }
+    }
+  }
 }

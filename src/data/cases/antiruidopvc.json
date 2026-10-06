@@ -1,0 +1,33 @@
+{
+  "title": "Decibeles",
+  "industry": "Construcción / Aislamiento",
+  "image": "/images/proyects/antiruidopvc/antiruidopvc-home.jpg",
+  "location": "Lima y todo el Perú",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "Decibeles",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Ventanas y Puertas de PVC Antirruido",
+  "forWhom": "Familias y proyectos en Lima y Perú que buscan espacios de calma con soluciones antiruido de alta calidad",
+  "services": [
+    "Web informativa",
+    "Ventanas de PVC",
+    "Puertas de PVC",
+    "Mamparas de PVC",
+    "Blog",
+    "Contacto WhatsApp"
+  ],
+  "description": "Web de Decibeles: ventanas, puertas y mamparas de PVC antirruido en Lima y todo el Perú. Soluciones acústicas de alta calidad para crear espacios de calma, con aislamiento térmico y eficiencia energética.",
+  "problem": "Necesidad de una web institucional que posicione a Decibeles como referencia en soluciones antiruido de PVC, presente ventanas, puertas y mamparas, y facilite el contacto con clientes en Lima y todo Perú.",
+  "solution": "Desarrollamos antiruidopvc.pe con WordPress: hero con propuesta de valor, catálogo de ventanas, puertas y mamparas, beneficios del PVC (aislamiento acústico, ahorro energético, durabilidad), blog y contacto por WhatsApp.",
+  "results": [],
+  "projectDescription": "Web institucional para Decibeles, especialistas en ventanas, puertas y mamparas de PVC antirruido. Combina diseño vanguardista con información sobre tecnología acústica. Incluye secciones de productos, beneficios (reduce hasta 70% contaminación sonora, 30% consumo energético), blog con consejos y contacto.",
+  "skillsAndDeliverables": [
+    "WordPress",
+    "Diseño responsive",
+    "Blog",
+    "Integración WhatsApp"
+  ],
+  "publishedDate": "2025",
+  "liveUrl": "https://antiruidopvc.pe"
+}

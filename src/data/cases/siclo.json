@@ -1,0 +1,28 @@
+{
+  "title": "Instructor Management System",
+  "industry": "SaaS / Educación",
+  "image": "/images/proyects/siclo/siclo-hero.jpg",
+  "location": "Perú",
+  "platform": "Web (SaaS)",
+  "duration": "2025",
+  "client": "Plataforma",
+  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS"],
+  "secondaryIndustry": "Plataforma para instructores",
+  "forWhom": "Estudios, gimnasios y equipos que gestionan instructores, clases, pagos y disciplinas",
+  "services": [
+    "Gestión de instructores",
+    "Registro de clases",
+    "Importación masiva",
+    "Cálculo automático de pagos",
+    "Bonos y penalizaciones",
+    "Configuración flexible"
+  ],
+  "description": "SaaS de gestión para instructores: administración centralizada, registro de clases, importación desde Excel, cálculo de pagos y documentación. Construido con Next.js para rendimiento y escalabilidad.",
+  "problem": "Se necesitaba una plataforma que unificara la gestión de instructores, el registro de clases por disciplina, la importación masiva desde Excel, el cálculo de pagos según ocupación y categoría, y la documentación para equipos.",
+  "solution": "Se desarrolló un SaaS con Next.js que incluye: gestión de instructores (disciplinas, categorías, estado), registro de clases con ocupación y covers, importación masiva con validación, cálculo automático de pagos con bonos y penalizaciones, sistema de puntos configurable y documentación centralizada.",
+  "results": [],
+  "projectDescription": "Instructor Management System es el nombre del sistema: una plataforma SaaS que centraliza la gestión de instructores, el registro de clases por semana y disciplina, la importación masiva desde Excel, el cálculo automático de pagos según ocupación y fórmulas personalizadas, y la documentación para equipos. Incluye bonos, penalizaciones, covers y configuración flexible de períodos y tarifas. Construido con Next.js y TypeScript para una base escalable y mantenible.",
+  "publishedDate": "2025",
+  "liveUrl": "https://siclo.axium.com.pe/docs",
+  "slug": "siclo"
+}

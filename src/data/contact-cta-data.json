@@ -1,0 +1,38 @@
+{
+  "title": "¿Listo para transformar tu negocio?",
+  "steps": [
+    {
+      "number": 1,
+      "text": "Analizaremos tu proyecto y prepararemos una estimación preliminar."
+    },
+    {
+      "number": 2,
+      "text": "Nos reuniremos virtualmente o presencialmente para discutir tus necesidades y alinear los próximos pasos."
+    }
+  ],
+  "ceo": {
+    "name": "Alexander Arancibia",
+    "position": "Fundador & CEO",
+    "image": "/images/contact/ceo-placeholder.svg",
+    "linkedin": "https://www.linkedin.com/in/alexander-arancibia",
+    "email": "alexander@axium.com.pe"
+  },
+  "ceoSectionTitle": "¿Prefieres contacto directo con nuestro CEO?",
+  "form": {
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "¿Cómo podemos ayudarte?",
+    "attachFileLabel": "Adjuntar archivo",
+    "submitLabel": "ENVIAR"
+  },
+  "sourceOptions": {
+    "title": "¿Cómo nos conociste? (opcional)",
+    "options": [
+      { "id": "source-1", "label": "Google", "value": "google" },
+      { "id": "source-2", "label": "LinkedIn", "value": "linkedin" },
+      { "id": "source-3", "label": "Referido", "value": "referral" },
+      { "id": "source-4", "label": "Redes Sociales", "value": "social" },
+      { "id": "source-5", "label": "Otro", "value": "other" }
+    ]
+  }
+}

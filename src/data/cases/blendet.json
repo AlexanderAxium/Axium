@@ -1,0 +1,26 @@
+{
+  "title": "Blendet Beauty Studio",
+  "industry": "Belleza / Estudio con cita",
+  "image": "/images/proyects/blendet/blendet-portada.jpg",
+  "location": "Lima, Perú",
+  "platform": "Web (sitio público + reservas)",
+  "duration": "En producción",
+  "client": "Blendet Beauty Studio",
+  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "liveUrl": "https://blendet.bookit.com.pe",
+  "secondaryIndustry": "Uñas, pestañas, cejas y pedicure",
+  "forWhom": "Estudio de belleza que atiende con cita y quiere que la reserva se cierre en su propia web, no en una conversación de WhatsApp",
+  "services": [
+    "Sitio de marca",
+    "Reservas en línea",
+    "Carta de servicios y precios",
+    "Diseño UX/UI"
+  ],
+  "description": "Sitio de Blendet Beauty Studio, el estudio de uñas, pestañas y cejas de San Miguel: su carta con precios, su galería de trabajo real y la cita que se cierra sola, sin esperar respuesta.",
+  "problem": "Un estudio que atiende a una clienta por turno vive de la agenda. Cuando la reserva pasa por mensajes, cada cita cuesta dos o tres idas y vueltas —qué servicio, qué día, cuánto sale— y las que llegan de madrugada o en pleno servicio se pierden. Además, quien busca uñas no pregunta por «uñas»: pregunta por rubber, polygel, softgel o esculpidas, y quiere saber el precio antes de escribir.",
+  "solution": "Le dimos a Blendet un sitio con su propia marca —su dorado, su vino, su tipografía— donde todo lo que la clienta necesita está antes del botón: la carta por familia (uñas, pestañas, cejas, pedicure) con la duración y el precio desde de cada técnica, el Instagram donde suben el trabajo del día, una galería de trabajo hecho en el estudio y la dirección con los horarios. Reservar son tres pasos: servicio, fecha y hora, y datos. Por detrás corre Bookit, la plataforma de reservas de Axium, que sostiene la agenda y confirma al instante; de puertas afuera, la clienta solo ve a Blendet.",
+  "results": [],
+  "projectDescription": "Blendet Beauty Studio es un estudio de belleza en San Miguel, Lima, que trabaja con cita y una clienta a la vez: uñas en rubber, polygel, softgel, acrílicas y esculpidas; extensión de pestañas de la clásica al volumen ruso, y lifting; cejas con depilación, henna, laminado y planchado; y pedicure en gel. El sitio ordena esa carta de manera que se entienda de un vistazo, y la convierte en una reserva.",
+  "publishedDate": "2026",
+  "slug": "blendet"
+}

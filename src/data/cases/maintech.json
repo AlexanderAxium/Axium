@@ -1,0 +1,27 @@
+{
+  "title": "MainTech",
+  "industry": "Branding · Formación técnica y consultoría industrial",
+  "image": "/images/proyects/maintech/mt-portada.jpg",
+  "location": "Perú",
+  "platform": "Marca y web",
+  "duration": "Ago '23 – Jun '24",
+  "client": "MainTech",
+  "liveUrl": "https://maintech.com.pe",
+  "technologyStack": ["Next.js", "TypeScript", "Tailwind CSS", "Cloudflare R2"],
+  "secondaryIndustry": "Mantenimiento, confiabilidad y gestión de activos",
+  "forWhom": "Ingenieros y técnicos de mantenimiento en minería e industria, y las empresas que los contratan",
+  "services": [
+    "Identidad de marca",
+    "Sistema tipográfico",
+    "Arquitectura de marca",
+    "Aplicaciones de marca",
+    "Diseño y desarrollo web",
+    "SEO técnico"
+  ],
+  "description": "La marca entera de MainTech y el sitio donde vive: símbolo, sistema tipográfico, paleta, marca aplicada y un Next.js de nueve páginas con catálogo de cursos y verificación de certificados.",
+  "problem": "Una escuela técnica vende confianza antes que contenido: quien paga un programa de confiabilidad quiere saber que el certificado valdrá. Y la misma marca tenía que sostener las dos caras del negocio, la formación y la consultoría, sin que una pareciera sucursal de la otra.",
+  "solution": "Un símbolo hecho de una retícula de bloques en índigo, cian y rosa, que funciona igual a 32 píxeles que a un metro, en lockup con la palabra y el descriptor. Alrededor, Orbitron para titulares y Poppins en cinco pesos, y un sitio en Next.js donde la pantalla de entrada separa MainTech Academy de MainTech Solutions sin partir la marca.",
+  "results": [],
+  "projectDescription": "MainTech forma ingenieros de mantenimiento y confiabilidad desde Arequipa: cursos en vivo y grabados para minería e industria, programas de especialización y certificados verificables, más una línea de consultoría para planta y flota. Llegaron sin marca y sin sitio.",
+  "publishedDate": "Jun 2024"
+}

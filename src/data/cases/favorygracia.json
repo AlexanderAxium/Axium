@@ -1,0 +1,33 @@
+{
+  "title": "Favor & Gracia Church",
+  "industry": "Fe / Comunidad",
+  "image": "/images/proyects/favorygracia/favorygracia-home.jpg",
+  "location": "Lima",
+  "platform": "Web",
+  "duration": "2024",
+  "client": "Favor & Gracia Church",
+  "technologyStack": ["React"],
+  "secondaryIndustry": "Iglesia / Ministerio",
+  "forWhom": "Miembros de la congregación, visitantes y personas que buscan una comunidad cristiana con manifestación del poder y amor sobrenatural",
+  "services": [
+    "Web informativa",
+    "Lo que creemos",
+    "Liderazgo",
+    "Misión y visión",
+    "Servicios en línea",
+    "Dar / Donaciones",
+    "Contacto"
+  ],
+  "description": "Web informativa para Favor & Gracia Church: comunidad cristiana que destaca la manifestación del poder y amor sobrenatural. Lo que creemos, valores, liderazgo (Ricardo y Fabiola Serquén), misión y visión, servicios en línea (6pm y 7pm), Facebook Live, dar, contactanos e involúcrate.",
+  "problem": "Favor & Gracia Church necesitaba una web que presentara su visión, creencias, valores, liderazgo pastoral y facilitara el acceso a servicios en línea (Facebook Live), donaciones, contacto e involucramiento en la comunidad.",
+  "solution": "Desarrollamos favorygraciachurch.org con React: hero de bienvenida, lo que creemos (deidad de Cristo, Biblia, salvación, bautismo, etc.), valores, misión y visión, liderazgo (Ricardo y Fabiola Serquén), servicios en línea (6pm, 7pm), enlaces a dar, contactanos e involúcrate.",
+  "results": [],
+  "projectDescription": "Web informativa para Favor & Gracia Church, comunidad cristiana que destaca la manifestación del poder y amor sobrenatural. Pastores Ricardo y Fabiola Serquén. Incluye lo que creemos, valores, liderazgo, misión y visión (evangelizar, afirmar, discipular, enviar), servicios en línea, dar y contacto.",
+  "skillsAndDeliverables": [
+    "React",
+    "Diseño responsive",
+    "Single Page Application"
+  ],
+  "publishedDate": "2024",
+  "liveUrl": "https://favorygraciachurch.org"
+}

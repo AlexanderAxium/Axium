@@ -1,0 +1,31 @@
+{
+  "title": "Transportes Rumi",
+  "industry": "Logística / Minería",
+  "image": "/images/proyects/transportesrumi/transportesrumi-brochure.jpg",
+  "location": "Lima, Perú",
+  "platform": "Web y Brochure",
+  "duration": "2025",
+  "client": "Transportes Rumi S.A.C.",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Transporte de carga pesada",
+  "forWhom": "Empresas mineras, industriales, de construcción y comercio que buscan transporte de concentrados, cargas sobredimensionadas y mercancías a nivel nacional",
+  "services": [
+    "Brochure digital",
+    "Web informativa",
+    "Equipo y servicios",
+    "Contacto WhatsApp"
+  ],
+  "description": "Brochure digital y web para Transportes Rumi: empresa peruana especializada en transporte de concentrado de minerales, mercancías y cargas sobredimensionadas. Misión, equipo, servicios por sector (minero, industrial, construcción) y contacto.",
+  "problem": "Transportes Rumi necesitaba material de presentación corporativo (brochure) y presencia web para posicionarse ante empresas mineras e industriales, mostrando experiencia, equipo, servicios y protocolos de seguridad.",
+  "solution": "Desarrollamos brochure digital y web transportesrumi.com.pe con misión, equipo, servicios por sector (minero, industrial, construcción, comercio general), testimonios, seguridad y contacto por WhatsApp.",
+  "results": [],
+  "projectDescription": "Brochure digital y web para Transportes Rumi S.A.C., empresa 100% peruana con más de 4 años de experiencia en transporte de concentrado de minerales, mercancías y cargas sobredimensionadas. Ambas piezas presentan equipo, servicios por sector, monitoreo GPS y contacto.",
+  "skillsAndDeliverables": [
+    "Brochure digital",
+    "WordPress",
+    "Diseño responsive",
+    "Integración WhatsApp"
+  ],
+  "publishedDate": "2025",
+  "liveUrl": "https://transportesrumi.com.pe"
+}

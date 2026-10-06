@@ -47,7 +47,7 @@ export function LanguageSelector({
           <span className="sr-only">Seleccionar idioma</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent align="end" className="z-[9999] w-48">
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}

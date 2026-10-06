@@ -1,0 +1,25 @@
+{
+  "title": "GHI Peru",
+  "industry": "Consultoría Hotelera",
+  "image": "/images/proyects/ghiperu/ghiperu-hero.jpg",
+  "location": "Perú",
+  "platform": "Web",
+  "duration": "2022",
+  "client": "GHI Peru",
+  "technologyStack": ["WordPress", "PHP"],
+  "secondaryIndustry": "Asesores hoteleros",
+  "forWhom": "Hoteles independientes y gremios que buscan gestión, planeamiento estratégico y estándares de calidad",
+  "services": [
+    "Consultoría Grupal en Gestión Hotelera",
+    "MicroTraining Hotelero",
+    "Encuentro anual de Gerentes Hoteleros"
+  ],
+  "description": "Web institucional para GHI Peru — asesores hoteleros con experiencia en gestión, planeamiento estratégico, estándares e implementación de sistemas de calidad para hospedajes independientes en todo el Perú.",
+  "problem": "GHI Peru necesitaba una presencia web que comunicara su oferta de consultoría hotelera, los programas (consultoría grupal, MicroTraining, encuentro de gerentes) y el equipo, para captar hoteles independientes y asociaciones.",
+  "solution": "Desarrollamos ghiperu.com: sitio institucional con quiénes somos, hoteles con los que trabajan, programas GHI, sección Nosotros con el equipo (Guillermo Martínez de Pinillos, Pierina Valverde, Viviana Madrid) y contacto.",
+  "results": [],
+  "projectDescription": "GHI Peru es una marca consultora con experiencia en gestión, planeamiento estratégico, definición de estándares e implementación de sistemas para la calidad en todas las áreas operativas de hospedajes independientes. La web presenta su enfoque en resultados (objetivos comerciales, eficiencia operativa, rentabilidad), los hoteles que acompañan en todo el Perú, los programas exclusivos —Consultoría Grupal en Gestión Hotelera, MicroTraining Hotelero, Encuentro anual de Gerentes Hoteleros— y el equipo de expertos, con canal de contacto integrado.",
+  "publishedDate": "2022",
+  "liveUrl": "https://ghiperu.com",
+  "slug": "ghiperu"
+}

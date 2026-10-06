@@ -1,0 +1,26 @@
+{
+  "title": "Hoteles Paraíso",
+  "industry": "Hotelería y Turismo",
+  "image": "/images/proyects/hotelesparaiso/hotelesparaiso-hero.jpg",
+  "location": "Trujillo, Chiclayo y Piura — Norte del Perú",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "Hoteles Paraíso",
+  "technologyStack": ["React", "Next.js", "Tailwind CSS", "Instagram API"],
+  "secondaryIndustry": "Web informativa",
+  "forWhom": "Viajeros y turistas que buscan hospedaje en el norte del Perú",
+  "services": [
+    "Web informativa",
+    "Integración Instagram",
+    "Diseño responsive",
+    "Reservas y contacto"
+  ],
+  "description": "Web informativa para Hoteles Paraíso en el norte del Perú: presencia digital con información de sedes en Trujillo, Chiclayo y Piura, integración con Instagram para mostrar experiencias y contacto directo.",
+  "problem": "Necesidad de una web que presente la oferta de Hoteles Paraíso en el norte del Perú, conecte con viajeros y aproveche el contenido visual de Instagram para inspirar reservas.",
+  "solution": "Desarrollamos hotelesparaiso.axium.com.pe con React: sitio informativo con sedes (Trujillo, Chiclayo, Piura), galería integrada con Instagram, información de habitaciones y servicios, y canales de contacto y reservas.",
+  "results": [],
+  "projectDescription": "Hoteles Paraíso es una cadena de hoteles en el norte del Perú con presencia en Trujillo, Chiclayo y Piura. Desarrollamos una web informativa en React que presenta cada sede, destaca la experiencia del huésped y se integra con Instagram para mostrar en tiempo real el contenido visual de los hoteles, facilitando que los viajeros conozcan las instalaciones y se contacten para reservas.",
+  "publishedDate": "2025",
+  "liveUrl": "https://hotelesparaiso.com.pe",
+  "slug": "hotelesparaiso"
+}

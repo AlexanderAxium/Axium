@@ -1,219 +1,266 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  ArrowRight,
+  Bot,
+  Brain,
+  Code2,
+  Compass,
+  Cpu,
+  Database,
+  Network,
+} from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useTranslation } from "~/hooks/useTranslation";
 
-const services = [
-  {
-    id: "software",
-    label: "Software a Medida",
-    title: "Software a Medida",
-    description:
-      "Desarrollamos soluciones enterprise-grade adaptadas a tu arquitectura de negocio, con integraciones nativas y escalabilidad garantizada.",
-    benefits: [
-      "Arquitectura personalizada",
-      "Escalabilidad horizontal",
-      "APIs integradas",
-    ],
-    image: "/service1.png",
-    whatsappMessage:
-      "Hola, me interesa conocer más sobre Software a Medida. Necesito una solución enterprise adaptada a mi negocio.",
-  },
-  {
-    id: "web",
-    label: "Aplicaciones Web",
-    title: "Aplicaciones Web",
-    description:
-      "Construimos plataformas cloud-native con alta disponibilidad, seguridad de nivel enterprise y rendimiento optimizado para miles de usuarios concurrentes.",
-    benefits: [
-      "99.9% uptime garantizado",
-      "Seguridad multi-capa",
-      "Escalado automático",
-    ],
-    image: "/service2.png",
-    whatsappMessage:
-      "Hola, me interesa conocer más sobre Aplicaciones Web. Busco una plataforma cloud-native con alta disponibilidad.",
-  },
-  {
-    id: "moviles",
-    label: "Aplicaciones Móviles",
-    title: "Aplicaciones Móviles",
-    description:
-      "Desarrollamos apps nativas e híbridas con tecnologías modernas que ofrecen experiencias fluidas en iOS y Android, con soporte offline completo.",
-    benefits: [
-      "Cross-platform optimizado",
-      "UX/UI de clase mundial",
-      "Sincronización offline",
-    ],
-    image: "/service3.png",
-    whatsappMessage:
-      "Hola, me interesa conocer más sobre Aplicaciones Móviles. Necesito una app para iOS y Android.",
-  },
-  {
-    id: "automatizacion",
-    label: "Automatización de Procesos",
-    title: "Automatización de Procesos",
-    description:
-      "Implementamos workflows inteligentes que reducen tareas manuales hasta en un 80%, optimizando recursos y eliminando errores humanos.",
-    benefits: [
-      "Reducción de costos operativos",
-      "Eficiencia aumentada",
-      "Precisión del 99.9%",
-    ],
-    image: "/service4.png",
-    whatsappMessage:
-      "Hola, me interesa conocer más sobre Automatización de Procesos. Me gustaría saber cómo pueden ayudar a optimizar nuestros workflows.",
-  },
-  {
-    id: "analitica-ia",
-    label: "Analítica Predictiva e IA",
-    title: "Analítica Predictiva e IA",
-    description:
-      "Transformamos tus datos en ventajas competitivas mediante modelos de machine learning que anticipan tendencias, optimizan decisiones estratégicas y maximizan el ROI con precisión del 85-95%.",
-    benefits: [
-      "Predicción de tendencias de mercado",
-      "Optimización de decisiones estratégicas",
-      "ROI medible desde el primer trimestre",
-    ],
-    image: "/service5.png",
-    whatsappMessage:
-      "Hola, me interesa conocer más sobre Analítica Predictiva e IA. Necesito convertir mis datos en ventaja competitiva.",
-  },
-  {
-    id: "decisiones-ia",
-    label: "Decisiones Inteligentes",
-    title: "Decisiones Inteligentes",
-    description:
-      "Implementamos sistemas de inteligencia artificial que automatizan decisiones complejas, optimizan operaciones en tiempo real y generan ahorros del 30-50% mediante algoritmos de optimización avanzados.",
-    benefits: [
-      "Automatización de decisiones estratégicas",
-      "Optimización en tiempo real",
-      "Ahorros del 30-50% comprobables",
-    ],
-    image: "/service6.png",
-    whatsappMessage:
-      "Hola, me interesa conocer más sobre Decisiones Inteligentes. Busco optimizar decisiones complejas con IA.",
-  },
+const SERVICE_IDS = ["discovery", "software-dev", "ai-systems"] as const;
+
+const SERVICE_ICONS = {
+  discovery: Compass,
+  "software-dev": Code2,
+  "ai-systems": Brain,
+} as const;
+
+const SERVICE_HREFS: Record<string, string> = {
+  discovery: "/servicios/design-branding",
+  "software-dev": "/servicios/software-development",
+  "ai-systems": "/servicios/ai-agentic-systems",
+};
+
+const CARD_IMAGES: Record<string, string> = {
+  discovery: "/images/services/card-discovery.png",
+  "software-dev": "/images/services/card-software.png",
+};
+
+const CARD_DARK_LABEL: Record<string, string> = {
+  "software-dev": "Desktop · Web · Mobile",
+};
+
+const AI_ORBIT_ICONS = [
+  { Icon: Brain, label: "LLM" },
+  { Icon: Bot, label: "Agent" },
+  { Icon: Database, label: "RAG" },
+  { Icon: Network, label: "Orchestration" },
+  { Icon: Cpu, label: "Inference" },
 ];
 
-export function ServicesSection() {
-  const [activeTab, setActiveTab] = useState(services[0]?.id ?? "software");
+const ORBIT_RADIUS = 200;
+const ORBIT_DURATION = 60;
 
-  const handleWhatsApp = (message: string) => {
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/51991285679?text=${encodedMessage}`, "_blank");
-  };
+const smoothEase = [0.4, 0, 0.2, 1] as const;
+
+export function ServicesSection() {
+  const { t } = useTranslation("landing");
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      id="servicios"
-      className="py-20 md:py-28 md:pb-16 bg-white relative overflow-hidden"
-    >
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="text-secondary font-semibold text-sm uppercase tracking-wide">
-            Nuestros Servicios
-          </span>
-          <h2 className="text-heading-2 text-gray-900 mt-3 mb-4">
-            Soluciones Tecnológicas que{" "}
-            <span className="bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] bg-clip-text text-transparent">
-              Transforman
-            </span>{" "}
-            Negocios
-          </h2>
-        </motion.div>
+    <section id="servicios" className="py-16 md:py-22 bg-gray-100/60">
+      <div className="container-section">
+        <div className="content-section">
+          {/* ── Section header ── */}
+          <div className="mb-12 text-center">
+            <motion.h2
+              className="text-heading-1 text-gray-900 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              {t("home.services.eyebrow")}
+            </motion.h2>
+            <motion.p
+              className="text-gray-500 text-body max-w-xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
+            >
+              {t("home.services.sectionSubtitle")}
+            </motion.p>
+          </div>
 
-        {/* Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="w-full justify-start bg-transparent p-0 h-auto border-b border-gray-200 rounded-none mb-12 overflow-x-auto scrollbar-hide">
-            {services.map((service) => (
-              <TabsTrigger
-                key={service.id}
-                value={service.id}
-                className="relative px-3 sm:px-4 md:px-6 py-4 text-sm sm:text-base font-medium text-gray-700 data-[state=active]:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:shadow-none rounded-none border-0 border-b-2 border-transparent data-[state=active]:border-b-secondary data-[state=active]:border-b-2 whitespace-nowrap flex-shrink-0"
-              >
-                {service.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          {/* ── Cards: cada una con su propia animación (en móvil se ven por separado) ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {SERVICE_IDS.map((id, index) => {
+              const Icon = SERVICE_ICONS[id];
+              return (
+                <motion.div
+                  key={id}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{
+                    duration: 0.55,
+                    delay: 0.05 * index,
+                    ease: smoothEase,
+                  }}
+                  className="bg-white flex flex-col border border-gray-200 rounded-2xl overflow-hidden pb-"
+                >
+                  {/* Top content */}
+                  <div className="p-7 pt-8 flex flex-col gap-5 flex-shrink-0">
+                    <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-gray-600" />
+                    </div>
 
-          {/* Tab Content */}
-          {services.map((service) => (
-            <TabsContent key={service.id} value={service.id} className="mt-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center">
-                {/* Left Column - Text */}
-                <div>
-                  <h3 className="text-heading-2 text-gray-900 mb-6">
-                    {service.title}
-                  </h3>
-                  <p className="text-body text-gray-600 mb-6">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-4 mb-8">
-                    {service.benefits.map((benefit) => (
-                      <li
-                        key={benefit}
-                        className="flex items-start text-body text-gray-700"
-                      >
-                        <svg
-                          className="w-6 h-6 text-secondary mr-3 mt-0.5 flex-shrink-0"
-                          fill="none"
-                          strokeWidth="2"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          role="img"
-                          aria-label="Check icon"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    <h3
+                      className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[25px] leading-[1.2] font-light text-gray-900"
+                      style={{ fontFamily: "var(--font-family-heading)" }}
+                    >
+                      {t(`home.services.items.${id}.title`)}
+                    </h3>
+
+                    <p className="text-sm text-gray-400 leading-relaxed line-clamp-3">
+                      {t(`home.services.items.${id}.description`)}
+                    </p>
+
+                    <Link
+                      href={SERVICE_HREFS[id] ?? "/"}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0072CF] hover:gap-3 transition-all duration-200 w-fit"
+                    >
+                      {t("home.services.viewService")}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+
+                  {/* Image area */}
+                  {id === "ai-systems" ? (
+                    /* ── AI card: orbit widget cut off at ~70% ── */
+                    <div className="flex-1 min-h-[240px] overflow-hidden relative">
+                      {/* Orbit center pushed down so icons visible, top not cut */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[90%] lg:top-[85%]">
+                        {/* Concentric rings — 3 */}
+                        <div
+                          className="absolute rounded-full border border-gray-200"
+                          style={{
+                            width: 400,
+                            height: 400,
+                            left: -200,
+                            top: -200,
+                          }}
+                        />
+                        <div
+                          className="absolute rounded-full border border-gray-200"
+                          style={{
+                            width: 280,
+                            height: 280,
+                            left: -140,
+                            top: -140,
+                          }}
+                        />
+                        <div
+                          className="absolute rounded-full border border-gray-200"
+                          style={{
+                            width: 160,
+                            height: 160,
+                            left: -80,
+                            top: -80,
+                          }}
+                        />
+
+                        {/* Gradient glow — full orbit size, strong center, invisible edge */}
+                        <div
+                          className="absolute rounded-full pointer-events-none z-10"
+                          style={{
+                            width: 320,
+                            height: 320,
+                            left: -160,
+                            top: -160,
+                            background:
+                              "radial-gradient(circle, rgba(0,114,207,0.20) 0%, rgba(0,114,207,0.08) 45%, transparent 75%)",
+                          }}
+                        />
+
+                        {/* Center: dark circle + white logo */}
+                        <div className="absolute w-16 h-16 bg-[#111] rounded-full flex items-center justify-center z-20 overflow-hidden -translate-x-1/2 -translate-y-1/2 left-0 top-0">
+                          <Image
+                            src="/logoblanco.png"
+                            alt="Axium"
+                            fill
+                            className="object-contain p-2.5"
+                            sizes="64px"
                           />
-                        </svg>
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                  <button
-                    type="button"
-                    onClick={() => handleWhatsApp(service.whatsappMessage)}
-                    className="relative inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] text-white font-semibold rounded-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:scale-105 hover:shadow-[#0072CF]/50"
-                  >
-                    <span className="absolute inset-0 bg-gradient-to-r from-[#7ECFC3] to-[#0072CF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10">
-                      Consulta con un asesor
-                    </span>
-                  </button>
-                </div>
+                        </div>
 
-                {/* Right Column - Image */}
-                <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+                        {/* Rotating orbit */}
+                        <motion.div
+                          className="absolute"
+                          style={{
+                            width: ORBIT_RADIUS * 2,
+                            height: ORBIT_RADIUS * 2,
+                            left: -ORBIT_RADIUS,
+                            top: -ORBIT_RADIUS,
+                          }}
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: ORBIT_DURATION,
+                            repeat: Number.POSITIVE_INFINITY,
+                            ease: "linear",
+                          }}
+                        >
+                          {AI_ORBIT_ICONS.map(
+                            ({ Icon: OrbitIcon, label }, i) => {
+                              const angle =
+                                (i / AI_ORBIT_ICONS.length) * 2 * Math.PI;
+                              const x = Math.cos(angle) * ORBIT_RADIUS;
+                              const y = Math.sin(angle) * ORBIT_RADIUS;
+                              return (
+                                <motion.div
+                                  key={label}
+                                  className="absolute w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center shadow-sm"
+                                  style={{
+                                    left: `calc(50% + ${x}px - 16px)`,
+                                    top: `calc(50% + ${y}px - 16px)`,
+                                  }}
+                                  animate={{ rotate: -360 }}
+                                  transition={{
+                                    duration: ORBIT_DURATION,
+                                    repeat: Number.POSITIVE_INFINITY,
+                                    ease: "linear",
+                                  }}
+                                >
+                                  <OrbitIcon className="w-3.5 h-3.5 text-gray-900" />
+                                </motion.div>
+                              );
+                            }
+                          )}
+                        </motion.div>
+                      </div>
+                    </div>
+                  ) : id === "software-dev" ? (
+                    /* ── Software card: dark bg with image ── */
+                    <div className="bg-[#111] mb-4 flex-1 flex flex-col w-[80%] md:max-w-[300px] justify-between items-center mx-auto p-3 rounded-2xl">
+                      <Image
+                        src={CARD_IMAGES[id] ?? ""}
+                        alt={t(`home.services.items.${id}.title`)}
+                        width={380}
+                        height={220}
+                        className="w-full object-contain rounded-md"
+                      />
+                      <p className="text-xs text-white font-medium tracking-widest uppercase pt-6 pb-4 px-3">
+                        {CARD_DARK_LABEL[id]}
+                      </p>
+                    </div>
+                  ) : (
+                    /* ── Default card: image bleeding to bottom ── */
+                    <div className="relative overflow-hidden min-h-[240px] flex-1">
+                      <Image
+                        src={
+                          CARD_IMAGES[id] ??
+                          "/images/services/card-discovery.png"
+                        }
+                        alt={t(`home.services.items.${id}.title`)}
+                        fill
+                        className="object-contain object-bottom"
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

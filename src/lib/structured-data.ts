@@ -20,7 +20,7 @@ export function generateOrganizationSchema() {
         "@type": "ContactPoint",
         contactType: "customer service",
         email: "contacto@axium.com.pe",
-        telephone: "+51999999999",
+        telephone: "+51991285679",
         availableLanguage: ["Spanish", "English"],
       },
     ],
@@ -103,7 +103,7 @@ export function generateLocalBusinessSchema() {
       latitude: "-12.0464",
       longitude: "-77.0428",
     },
-    telephone: "+51999999999",
+    telephone: "+51991285679",
     email: "contacto@axium.com.pe",
     priceRange: "$$",
     openingHoursSpecification: {

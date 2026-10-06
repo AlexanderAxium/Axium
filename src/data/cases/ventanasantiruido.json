@@ -1,0 +1,31 @@
+{
+  "title": "Ventanas Antiruido",
+  "industry": "Construcción / Aislamiento",
+  "image": "/images/proyects/ventanasantiruido/ventanasantiruido-home.jpg",
+  "location": "Lima, Perú",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "Ventanas Antiruido de PVC",
+  "technologyStack": ["WordPress"],
+  "secondaryIndustry": "Ventanas y Puertas de PVC",
+  "forWhom": "Hogares y proyectos en Lima que buscan ventanas antiruido, aislamiento acústico y eficiencia energética",
+  "services": [
+    "Web informativa",
+    "Ventanas antiruido",
+    "Puertas antiruido",
+    "Mamparas antiruido",
+    "Contacto WhatsApp"
+  ],
+  "description": "Web informativa para ventanas antiruido de PVC en Lima: aislamiento acústico, eficiencia energética, durabilidad y seguridad. Catálogo de ventanas, puertas y mamparas antiruido con asesoría y contacto directo.",
+  "problem": "Necesidad de una web que presente ventanas y puertas antiruido de PVC, explique beneficios (aislamiento acústico, térmico, durabilidad) y facilite el contacto con clientes interesados en Lima.",
+  "solution": "Desarrollamos ventanasantiruido.com.pe con WordPress: hero con propuesta de valor, secciones de ventanas, puertas y mamparas antiruido, beneficios del PVC, testimonios, FAQ e integración de contacto por WhatsApp.",
+  "results": [],
+  "projectDescription": "Web informativa para Ventanas Antiruido de PVC, líderes en fabricación e instalación de ventanas antiruido en Lima. Incluye propuesta de valor (aísla, protege, ahorra con PVC), ventajas frente a ventanas tradicionales (durabilidad, aislamiento acústico, resistencia, seguridad), testimonios y contacto por WhatsApp.",
+  "skillsAndDeliverables": [
+    "WordPress",
+    "Diseño responsive",
+    "Integración WhatsApp"
+  ],
+  "publishedDate": "2025",
+  "liveUrl": "https://ventanasantiruido.com.pe"
+}

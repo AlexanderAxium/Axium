@@ -1,0 +1,27 @@
+{
+  "title": "Travel Life",
+  "industry": "Turismo y Viajes",
+  "image": "/images/proyects/lifetoursfl/lifetoursfl-hero.jpg",
+  "location": "Florida, USA",
+  "platform": "Web",
+  "duration": "2025",
+  "client": "Travel Life",
+  "technologyStack": ["Next.js", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+  "secondaryIndustry": "Agencia de viajes digital",
+  "forWhom": "Viajeros que buscan vuelos, promociones y cotizaciones con una experiencia digital ágil y segura",
+  "services": [
+    "Búsqueda y reserva de vuelos",
+    "Promociones y ofertas",
+    "Solicitud de cotización",
+    "Cuenta de usuario y dashboard",
+    "Pasarela de pagos"
+  ],
+  "description": "Plataforma digital para Travel Life: agencia de viajes con búsqueda de vuelos, promociones, cotizaciones, registro de usuarios, dashboard y pagos con Next.js y PostgreSQL.",
+  "problem": "Travel Life necesitaba una plataforma web moderna que centralizara vuelos, promociones y cotizaciones, con área de clientes y pagos integrados, para competir como agencia de viajes digital.",
+  "solution": "Desarrollamos lifetoursfl.com con Next.js y PostgreSQL: catálogo de vuelos, promociones, formulario de cotización, autenticación (login/registro), dashboard de usuario y pasarela de pagos (Visa, Mastercard, Amex, PayPal).",
+  "results": [],
+  "projectDescription": "Travel Life es una agencia de viajes digital con base en Florida. Desarrollamos una plataforma completa en Next.js y PostgreSQL que incluye: búsqueda y presentación de vuelos, sección de promociones, solicitud de cotización, sistema de autenticación (inicio de sesión y registro), dashboard para el usuario una vez autenticado, y integración con pasarela de pagos (Visa, Mastercard, Amex, PayPal). La arquitectura con base de datos PostgreSQL permite gestionar usuarios, cotizaciones y transacciones de forma segura y escalable, con una experiencia responsive y rápida gracias a Next.js.",
+  "publishedDate": "2025",
+  "liveUrl": "https://lifetoursfl.com",
+  "slug": "lifetoursfl"
+}

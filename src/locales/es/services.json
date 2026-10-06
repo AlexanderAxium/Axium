@@ -1,0 +1,639 @@
+{
+  "common": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "consult": "Consultar ahora",
+    "viewWork": "Ver proyectos",
+    "faqHeading": "Todo lo que necesitas saber",
+    "seeCase": "Ver el caso",
+    "allCases": "Ver todo el portafolio",
+    "whatsapp": "Consultar por WhatsApp",
+    "quote": "Cotizar este servicio",
+    "contactForm": "Escribir al equipo",
+    "talkLead": "¿Tu caso se parece a alguno de estos? Cuéntanoslo y te decimos qué haríamos."
+  },
+  "design-branding": {
+    "hero": {
+      "title": "Design & Branding",
+      "short": "Design & Branding",
+      "description": "Construimos marcas que comunican, productos que enamoran y materiales que convierten. Desde la identidad visual hasta el diseño de producto — todo lo que necesitas para destacar en el mercado."
+    },
+    "intro": {
+      "overline": "01 — Qué es Design & Branding",
+      "title": "Tu marca es la primera impresión que no puedes repetir",
+      "p1": "El diseño no es sólo cómo se ve algo: es cómo funciona, cómo se siente y qué comunica sin decir una palabra. Una identidad sólida genera reconocimiento, confianza y diferenciación en mercados saturados.",
+      "p2": "Del logotipo al manual completo, los materiales de marketing y el diseño de producto, cubrimos todo el espectro visual de tu empresa.",
+      "statA": "más reconocimiento de marca con una identidad consistente en todos los canales.",
+      "statB": "de la estrategia al activo final: entregamos desde el concepto hasta los archivos listos para usar.",
+      "caption": "Tres identidades nuestras, apoyadas en el mismo plano de luz"
+    },
+    "work": {
+      "overline": "02 — Trabajo real",
+      "title": "Marcas nuestras que ya están en la calle",
+      "lead": "Ninguna de estas imágenes es una ilustración: son los entregables que recibieron cuatro clientes."
+    },
+    "offer": {
+      "overline": "03 — Servicios incluidos",
+      "title": "Todo lo que necesitas para construir una marca poderosa"
+    },
+    "cards": [
+      {
+        "kicker": "Identidad",
+        "title": "El sistema de marca completo, no sólo el logotipo",
+        "text": "Símbolo, paleta, tipografía y aplicaciones. Un sistema que se sostiene cuando lo usa otra persona, en otro canal, dos años después."
+      },
+      {
+        "kicker": "Materiales",
+        "title": "El manual y todo lo que se imprime o se presenta",
+        "text": "Manual de marca, brochures, presentaciones y piezas para redes. El entregable que se recibe, no la promesa de que existe."
+      },
+      {
+        "kicker": "Producto digital",
+        "title": "Interfaz, web y landing que convierten",
+        "text": "Wireframes, prototipos y diseño de alta fidelidad en Figma, listos para desarrollo. Cada cliente con su propia dirección de arte."
+      }
+    ],
+    "process": {
+      "overline": "04 — Proceso",
+      "title": "De la estrategia a los activos finales en semanas"
+    },
+    "who": {
+      "overline": "05 — Ideal para",
+      "title": "¿Para quién es Design & Branding?",
+      "lead": "Trabajamos con organizaciones que necesitan comunicar su valor de forma clara, coherente y memorable."
+    },
+    "proof": {
+      "overline": "06 — La prueba",
+      "title": "La marca cuando sale del archivo",
+      "text": "Impresa en papel y atornillada a una pared. Es lo único de todo este trabajo que el cliente llega a tocar, y por eso es donde se nota si el sistema estaba bien hecho."
+    },
+    "faqOverline": "— 07   Preguntas frecuentes",
+    "ctaTitle": "¿Listo para construir tu marca?",
+    "ctaSubtitle": "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
+    "workItems": [
+      {
+        "client": "Alyer Transportes",
+        "line": "Identidad, manual de marca y brochure comercial"
+      },
+      {
+        "client": "MainTech",
+        "line": "Identidad, arquitectura de marca y sitio web"
+      },
+      {
+        "client": "Aurore",
+        "line": "Identidad, papelería y tienda online"
+      },
+      {
+        "client": "To Live Again",
+        "line": "Rediseño del sitio y dirección de arte bilingüe"
+      }
+    ],
+    "cardRows": [
+      [
+        {
+          "tag": "Identidad visual",
+          "title": "Logo y sistema de marca",
+          "desc": "Logo versátil, paleta, tipografía y todos los elementos que forman tu marca."
+        },
+        {
+          "tag": "Branding",
+          "title": "Brand guidelines",
+          "desc": "Manual completo para que la identidad sea consistente en cada canal y equipo."
+        }
+      ],
+      [
+        {
+          "tag": "Materiales",
+          "title": "Brochures y marketing",
+          "desc": "Brochures corporativos, flyers, kits para redes y presentaciones ejecutivas."
+        },
+        {
+          "tag": "Motion",
+          "title": "Animaciones y presentaciones",
+          "desc": "Animaciones de marca y pitch decks que hacen que tu historia se cuente sola."
+        }
+      ],
+      [
+        {
+          "tag": "UX/UI",
+          "title": "Diseño de producto digital",
+          "desc": "Wireframes, prototipos y diseños de alta fidelidad en Figma, listos para desarrollo."
+        },
+        {
+          "tag": "Web Design",
+          "title": "Websites y landing pages",
+          "desc": "Diseño editorial que equilibra estética y conversión."
+        }
+      ]
+    ],
+    "steps": [
+      {
+        "title": "Descubrimiento",
+        "bullets": [
+          "Brief creativo",
+          "Análisis de competidores",
+          "Benchmark visual",
+          "Definición de audiencia"
+        ]
+      },
+      {
+        "title": "Estrategia",
+        "bullets": [
+          "Dirección creativa",
+          "Moodboard",
+          "Arquitectura visual",
+          "Concepto de marca"
+        ]
+      },
+      {
+        "title": "Diseño",
+        "bullets": [
+          "Logotipo y variantes",
+          "Sistema de marca",
+          "Materiales digitales",
+          "Revisiones iterativas"
+        ]
+      },
+      {
+        "title": "Entrega",
+        "bullets": [
+          "Archivos editables",
+          "Manual en PDF",
+          "Todos los formatos",
+          "Soporte post-entrega"
+        ]
+      }
+    ],
+    "whoCards": [
+      {
+        "title": "Startups",
+        "description": "Empresas que necesitan construir una marca sólida desde cero para lanzar con confianza."
+      },
+      {
+        "title": "Empresas en rebranding",
+        "description": "Organizaciones que evolucionaron y necesitan que su imagen refleje dónde están hoy."
+      },
+      {
+        "title": "Founders con pitch deck",
+        "description": "Emprendedores que presentan a inversores y necesitan materiales de alto impacto."
+      },
+      {
+        "title": "Equipos de producto",
+        "description": "Equipos tech que necesitan diseño de UI/UX profesional para sus aplicaciones."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "¿Cuánto demora un proyecto de branding?",
+        "a": "Depende del alcance. Una identidad visual completa (logo y manual de marca) toma entre 2 y 4 semanas. Con materiales adicionales puede extenderse a 6 u 8 semanas."
+      },
+      {
+        "q": "¿Qué necesito para empezar?",
+        "a": "Sólo una llamada de descubrimiento. Nos cuentas sobre tu empresa, tu audiencia y tus objetivos, y preparamos el brief creativo. No necesitas traer nada preparado."
+      },
+      {
+        "q": "¿Entregan archivos editables?",
+        "a": "Sí, siempre. Entregamos todo en formatos editables: AI, EPS y SVG para el logo; Figma para el diseño de producto; PDF e InDesign para materiales impresos."
+      },
+      {
+        "q": "¿Hacen rediseños de una marca existente?",
+        "a": "Sí. Analizamos tu marca actual e identificamos qué mantener, qué evolucionar y qué transformar por completo."
+      },
+      {
+        "q": "¿El diseño web está incluido en el branding?",
+        "a": "El diseño de landings y sitios es un servicio adicional que puede complementar el branding. Podemos cotizarlo junto o por separado."
+      },
+      {
+        "q": "¿Cuántas revisiones están incluidas?",
+        "a": "Hasta 3 rondas en cada etapa del proyecto. Si necesitas ajustes fuera de ese alcance, los cotizamos aparte de forma transparente."
+      }
+    ],
+    "whatsappMessage": "Hola, me interesa el servicio de Design & Branding. ¿Podemos agendar una llamada?"
+  },
+  "software-development": {
+    "hero": {
+      "title": "Software Development",
+      "short": "Software Development",
+      "description": "Construimos aplicaciones web, móviles y plataformas a medida que escalan con tu negocio. Arquitectura sólida, código mantenible y entregas que llegan a producción."
+    },
+    "intro": {
+      "overline": "01 — Qué es Software Development",
+      "title": "El software que sostiene tu negocio no se improvisa",
+      "p1": "Una plataforma mal construida se nota tarde: cuando crece el tráfico, cuando entra un equipo nuevo o cuando hay que integrar un sistema más. Nosotros empezamos por la arquitectura.",
+      "p2": "Web, móvil, APIs e infraestructura. Trabajamos en tu repositorio desde el día uno, con el código documentado y el historial completo a tu nombre.",
+      "statA": "del código es tuyo desde el primer commit, con el repositorio y la documentación incluidos.",
+      "statB": "semanas para un MVP funcional en producción, con despliegue automatizado y monitoreo.",
+      "caption": "Tres productos nuestros en producción sobre el mismo stack"
+    },
+    "work": {
+      "overline": "02 — Trabajo real",
+      "title": "Productos nuestros que están en producción hoy",
+      "lead": "Cuatro plataformas con clientes dentro, cobrando, reservando y vendiendo todos los días."
+    },
+    "offer": {
+      "overline": "03 — Servicios incluidos",
+      "title": "Del primer sprint al mantenimiento, sin cambiar de equipo"
+    },
+    "cards": [
+      {
+        "kicker": "Web y comercio",
+        "title": "Aplicaciones web y tiendas que venden de verdad",
+        "text": "De una landing a una plataforma SaaS completa. Next.js y React, rápidas, accesibles y optimizadas para buscadores, con su API detrás."
+      },
+      {
+        "kicker": "Arquitectura",
+        "title": "Stack probado, seguridad desde el sprint 1",
+        "text": "Autenticación, autorización y cifrado integrados desde el principio. Pruebas automatizadas, QA manual y benchmarks antes de cada release."
+      },
+      {
+        "kicker": "Móvil y operación",
+        "title": "El mismo producto en el teléfono, y alguien detrás después",
+        "text": "React Native para iOS y Android desde un solo código. Y monitoreo, corrección de errores y mejoras después del lanzamiento."
+      }
+    ],
+    "process": {
+      "overline": "04 — Proceso",
+      "title": "De la arquitectura al despliegue, en sprints de dos semanas"
+    },
+    "who": {
+      "overline": "05 — Ideal para",
+      "title": "¿Para quién es Software Development?",
+      "lead": "Trabajamos con equipos que necesitan llegar a producción sin hipotecar la calidad del código."
+    },
+    "proof": {
+      "overline": "06 — La prueba",
+      "title": "El software donde se usa de verdad",
+      "text": "El panel de un club abierto junto a la pista al anochecer y un punto de venta cobrando en un mostrador. No hay render que sustituya a eso."
+    },
+    "faqOverline": "— 07   Preguntas frecuentes",
+    "ctaTitle": "¿Listo para construir tu producto?",
+    "ctaSubtitle": "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
+    "workItems": [
+      {
+        "client": "ANJ Sports",
+        "line": "Tienda a medida con catálogo, variantes y checkout propio"
+      },
+      {
+        "client": "Clefast",
+        "line": "E-commerce industrial con envíos por zona y migración de contenido"
+      },
+      {
+        "client": "Academia César Acosta",
+        "line": "Reservas de clases integradas con la plataforma del club"
+      },
+      {
+        "client": "Rematch",
+        "line": "Plataforma de agenda y torneos para clubes de pádel"
+      }
+    ],
+    "cardRows": [
+      [
+        {
+          "tag": "Web",
+          "title": "Aplicaciones web",
+          "desc": "De landing pages a plataformas SaaS. Rápidas, accesibles y optimizadas para SEO."
+        },
+        {
+          "tag": "Backend",
+          "title": "APIs y servicios",
+          "desc": "Backends escalables, APIs REST y GraphQL. Arquitecturas que soportan crecimiento real."
+        }
+      ],
+      [
+        {
+          "tag": "Seguridad",
+          "title": "Seguro desde el inicio",
+          "desc": "Autenticación, autorización y cifrado integrados desde el primer sprint."
+        },
+        {
+          "tag": "Calidad",
+          "title": "Testing y QA",
+          "desc": "Pruebas automatizadas, QA manual y benchmarks de rendimiento antes de cada release."
+        }
+      ],
+      [
+        {
+          "tag": "Móvil",
+          "title": "Apps iOS y Android",
+          "desc": "React Native para las dos plataformas desde un solo código, con rendimiento nativo."
+        },
+        {
+          "tag": "Soporte",
+          "title": "Mantenimiento continuo",
+          "desc": "Monitoreo, corrección de errores y mejoras iterativas después del lanzamiento."
+        }
+      ]
+    ],
+    "steps": [
+      {
+        "title": "Arquitectura",
+        "bullets": [
+          "Selección del stack",
+          "Diseño de arquitectura",
+          "Roadmap técnico",
+          "Definición de APIs"
+        ]
+      },
+      {
+        "title": "Desarrollo ágil",
+        "bullets": [
+          "Sprints de 2 semanas",
+          "Demos quincenales",
+          "Código revisado en PR",
+          "Documentación continua"
+        ]
+      },
+      {
+        "title": "Testing y QA",
+        "bullets": [
+          "Pruebas unitarias e integración",
+          "QA manual",
+          "Benchmarks de rendimiento",
+          "Revisión de seguridad"
+        ]
+      },
+      {
+        "title": "Deploy y monitoreo",
+        "bullets": [
+          "CI/CD automatizado",
+          "Despliegue en la nube",
+          "Monitoreo en tiempo real",
+          "Alertas y registros"
+        ]
+      }
+    ],
+    "whoCards": [
+      {
+        "title": "Startups",
+        "description": "Equipos que necesitan ir a producción rápido con una arquitectura que soporte el crecimiento."
+      },
+      {
+        "title": "Scale-ups",
+        "description": "Empresas que necesitan escalar su producto sin comprometer la calidad del código."
+      },
+      {
+        "title": "Empresas tradicionales",
+        "description": "Organizaciones que quieren digitalizar procesos o modernizar sistemas heredados."
+      },
+      {
+        "title": "Equipos de producto",
+        "description": "Founders y PMs que necesitan un equipo técnico confiable para ejecutar su visión."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "¿Cuánto tarda en desarrollarse un proyecto?",
+        "a": "Depende del alcance. Un MVP funcional puede estar listo en 6 a 10 semanas. Plataformas más complejas requieren entre 3 y 6 meses. Siempre arrancamos con un sprint de arquitectura."
+      },
+      {
+        "q": "¿Pueden integrarse con sistemas existentes?",
+        "a": "Sí, es una de nuestras especialidades. Integramos con ERPs, CRMs, bases de datos heredadas, APIs de terceros y cualquier sistema con una interfaz documentada."
+      },
+      {
+        "q": "¿Qué pasa después del lanzamiento?",
+        "a": "Ofrecemos planes de mantenimiento y soporte continuo: monitoreo, corrección de errores, actualización de dependencias y nuevas funcionalidades en ciclos regulares."
+      },
+      {
+        "q": "¿Trabajan sólo con startups?",
+        "a": "No. Trabajamos con startups, scale-ups y empresas consolidadas que buscan modernizar sus sistemas o lanzar nuevos productos digitales."
+      },
+      {
+        "q": "¿Entregan el código fuente?",
+        "a": "Siempre. El código es 100 % tuyo desde el inicio. Trabajamos en tu repositorio desde el día 1, con historial completo y las decisiones técnicas documentadas."
+      },
+      {
+        "q": "¿Pueden trabajar con el equipo técnico interno?",
+        "a": "Sí, y nos gusta hacerlo. Podemos actuar como equipo extendido, aportando capacidad y experiencia mientras colaboramos con tus desarrolladores."
+      }
+    ],
+    "whatsappMessage": "Hola, me interesa el servicio de desarrollo de software. ¿Podemos hablar sobre mi proyecto?"
+  },
+  "ai-agentic-systems": {
+    "hero": {
+      "title": "AI & Agentic Systems",
+      "short": "AI & Agentic Systems",
+      "description": "Agentes, automatizaciones y sistemas de IA conectados a tus propios datos. Procesos que se ejecutan solos y decisiones que dejan de esperar a que alguien las tome."
+    },
+    "intro": {
+      "overline": "01 — Qué es AI & Agentic Systems",
+      "title": "La IA que sirve es la que ya está conectada a tu operación",
+      "p1": "Un modelo suelto no resuelve nada. Lo que cambia un negocio es un sistema que lee tus documentos, consulta tus bases de datos y actúa dentro de tus herramientas sin que nadie teclee.",
+      "p2": "Lo desplegamos donde tú digas: en tu infraestructura o en nube privada, con métricas de precisión y trazas de cada decisión.",
+      "statA": "semanas para un prototipo funcional sobre tus propios datos, con métricas de precisión desde el inicio.",
+      "statB": "de las decisiones quedan trazadas y auditables: nada de caja negra que nadie pueda explicar.",
+      "caption": "Tres sistemas nuestros que ya deciden solos"
+    },
+    "work": {
+      "overline": "02 — Trabajo real",
+      "title": "Automatizaciones nuestras que ya están corriendo",
+      "lead": "Cuatro sistemas que leen, clasifican y deciden sobre datos reales de clientes reales."
+    },
+    "offer": {
+      "overline": "03 — Servicios incluidos",
+      "title": "De la oportunidad al agente en producción"
+    },
+    "cards": [
+      {
+        "kicker": "Datos",
+        "title": "Documentos y datos que se procesan solos",
+        "text": "Extrae, clasifica y estructura contratos, facturas y reportes. Y deja a tu equipo consultar las bases de datos en lenguaje natural, sin SQL."
+      },
+      {
+        "kicker": "Infraestructura",
+        "title": "Búsqueda sobre tus propios datos, auditable",
+        "text": "Recuperación aumentada (RAG) con índices vectoriales sobre tu documentación. Respuestas precisas, con la fuente a la vista."
+      },
+      {
+        "kicker": "Agentes",
+        "title": "Agentes que atienden, escalan y deciden",
+        "text": "Atención contextual que resuelve y escala lo que no puede. Y flujos completos orquestados: aprobaciones, avisos y decisiones encadenadas."
+      }
+    ],
+    "process": {
+      "overline": "04 — Proceso",
+      "title": "Del caso de uso al agente desplegado y vigilado"
+    },
+    "who": {
+      "overline": "05 — Ideal para",
+      "title": "¿Para quién es AI & Agentic Systems?",
+      "lead": "Trabajamos con organizaciones que acumulan datos y horas en procesos que una máquina haría mejor."
+    },
+    "capabilities": {
+      "overline": "06 — Capacidades técnicas",
+      "title": "Lo que hay debajo, nombrado"
+    },
+    "proof": {
+      "overline": "07 — La prueba",
+      "title": "La automatización donde se paga",
+      "text": "La planta de un cliente industrial y el tablero que resume 207 calificaciones sin que nadie las cuente a mano. Ahí es donde se mide si la IA sirvió."
+    },
+    "faqOverline": "— 08   Preguntas frecuentes",
+    "ctaTitle": "¿Listo para automatizar tu operación?",
+    "ctaSubtitle": "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
+    "workItems": [
+      {
+        "client": "Feniz",
+        "line": "Motor de reglas por propfirm y conexión automática con MetaTrader 5"
+      },
+      {
+        "client": "AmbientalPe",
+        "line": "Catálogo y panel de equipos de monitoreo ambiental"
+      },
+      {
+        "client": "First Automation",
+        "line": "Sitio y contenido para digitalización de operaciones industriales"
+      },
+      {
+        "client": "Gestión de feedback",
+        "line": "Tablero que resume y clasifica cientos de calificaciones"
+      }
+    ],
+    "cardRows": [
+      [
+        {
+          "tag": "Documentos",
+          "title": "Procesamiento de documentos",
+          "desc": "Extrae, clasifica y estructura contratos, facturas y reportes sin intervención manual."
+        },
+        {
+          "tag": "Datos",
+          "title": "Análisis en lenguaje natural",
+          "desc": "Tu equipo consulta bases de datos y tableros hablando, sin escribir una sola línea de SQL."
+        }
+      ],
+      [
+        {
+          "tag": "Búsqueda",
+          "title": "Búsqueda semántica (RAG)",
+          "desc": "Recuperación aumentada sobre tus propios datos: respuestas precisas entre miles de documentos."
+        },
+        {
+          "tag": "Pipelines",
+          "title": "Inteligencia continua",
+          "desc": "Sistemas que monitorean, aprenden y actúan sobre flujos de datos en tiempo real."
+        }
+      ],
+      [
+        {
+          "tag": "Atención",
+          "title": "Agentes de atención al cliente",
+          "desc": "Resuelven consultas, escalan lo que no pueden y aprenden de cada interacción."
+        },
+        {
+          "tag": "Flujos",
+          "title": "Automatización de flujos",
+          "desc": "Orquesta procesos completos: aprobaciones, notificaciones y decisiones encadenadas."
+        }
+      ]
+    ],
+    "steps": [
+      {
+        "title": "Definición",
+        "bullets": [
+          "Mapeo de oportunidades",
+          "Análisis de viabilidad",
+          "Definición de KPIs",
+          "Casos priorizados"
+        ]
+      },
+      {
+        "title": "Arquitectura",
+        "bullets": [
+          "Auditoría de datos",
+          "Diseño de arquitectura",
+          "Selección de modelos",
+          "Infraestructura vectorial"
+        ]
+      },
+      {
+        "title": "Construcción",
+        "bullets": [
+          "Prototipado rápido",
+          "Desarrollo de agentes",
+          "Integración con sistemas",
+          "Evaluación de calidad"
+        ]
+      },
+      {
+        "title": "Despliegue",
+        "bullets": [
+          "Deploy en producción",
+          "Monitoreo de calidad",
+          "Ciclos de feedback",
+          "Optimización continua"
+        ]
+      }
+    ],
+    "whoCards": [
+      {
+        "title": "Empresas con datos sin explotar",
+        "description": "Organizaciones con grandes volúmenes de documentos, correos o registros que no pueden procesar a mano."
+      },
+      {
+        "title": "Equipos con tareas repetitivas",
+        "description": "Equipos que pierden horas en procesos manuales que podrían automatizarse."
+      },
+      {
+        "title": "Startups que buscan diferenciarse",
+        "description": "Empresas que quieren integrar IA en su producto principal para ganar ventaja competitiva."
+      },
+      {
+        "title": "Empresas en transformación",
+        "description": "Organizaciones que buscan modernizar sus operaciones con sistemas inteligentes y autónomos."
+      }
+    ],
+    "capabilityItems": [
+      {
+        "title": "Ingeniería de LLMs",
+        "description": "Prompts, ajuste fino y evaluación de modelos para casos de uso concretos de negocio."
+      },
+      {
+        "title": "Sistemas RAG",
+        "description": "Recuperación aumentada con tus propios datos. Respuestas precisas y auditables."
+      },
+      {
+        "title": "Orquestación multi-agente",
+        "description": "Flujos de agentes autónomos que colaboran para completar tareas complejas."
+      },
+      {
+        "title": "Integración con APIs externas",
+        "description": "Conexión con tus herramientas actuales: CRM, ERP, bases de datos y más."
+      },
+      {
+        "title": "Evaluación y testing de IA",
+        "description": "Marcos de evaluación para medir precisión, consistencia y seguridad del sistema."
+      },
+      {
+        "title": "MLOps y monitoreo",
+        "description": "Infraestructura para operar modelos en producción con observabilidad completa."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "¿Cuánto tarda en implementarse un sistema de IA?",
+        "a": "Un prototipo funcional puede estar listo en 2 a 4 semanas. Un sistema en producción con integraciones completas toma entre 6 y 12 semanas. Arrancamos por el caso de mayor impacto."
+      },
+      {
+        "q": "¿Necesito tener datos propios para empezar?",
+        "a": "No necesariamente. Muchos proyectos usan modelos base sin datos propios para entrenamiento. Si los tienes, los usamos para personalizar y mejorar la precisión del sistema."
+      },
+      {
+        "q": "¿Qué modelos de IA utilizan?",
+        "a": "Trabajamos con el mejor modelo según el caso: los comerciales para razonamiento complejo, modelos abiertos cuando la privacidad manda, y modelos especializados para tareas concretas."
+      },
+      {
+        "q": "¿Cómo garantizan la precisión del sistema?",
+        "a": "Implementamos evaluación desde el inicio: métricas de precisión, cobertura y coherencia. Cada sistema tiene ciclos de feedback y monitoreo que detecta degradaciones."
+      },
+      {
+        "q": "¿Los datos de mi empresa están seguros?",
+        "a": "Sí. Podemos desplegar el sistema por completo en tu infraestructura o en nubes privadas. Nunca compartimos tus datos con terceros, y el contrato lo recoge."
+      },
+      {
+        "q": "¿Pueden integrarse con nuestros sistemas actuales?",
+        "a": "Sí, es nuestra especialidad. Integramos con cualquier sistema que tenga una API: CRMs, ERPs, bases de datos, correo y sistemas propios."
+      }
+    ],
+    "whatsappMessage": "Hola, me interesa el servicio de IA y sistemas agénticos. ¿Podemos hablar sobre lo que necesito?"
+  }
+}

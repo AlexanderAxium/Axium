@@ -1,0 +1,639 @@
+{
+  "common": {
+    "home": "Home",
+    "services": "Services",
+    "consult": "Talk to us",
+    "viewWork": "See our work",
+    "faqHeading": "Everything you need to know",
+    "seeCase": "See the case",
+    "allCases": "See the full portfolio",
+    "whatsapp": "Ask on WhatsApp",
+    "quote": "Get a quote for this",
+    "contactForm": "Write to the team",
+    "talkLead": "Does your case look like one of these? Tell us and we'll say what we'd do."
+  },
+  "design-branding": {
+    "hero": {
+      "title": "Design & Branding",
+      "short": "Design & Branding",
+      "description": "We build brands that communicate, products people love and materials that convert. From visual identity to product design — everything you need to stand out."
+    },
+    "intro": {
+      "overline": "01 — What Design & Branding is",
+      "title": "Your brand is the first impression you can't make twice",
+      "p1": "Design isn't just how something looks: it's how it works, how it feels and what it says without a word. A solid identity earns recognition, trust and distance from the competition.",
+      "p2": "From the logotype to the full brand manual, marketing materials and product design, we cover the entire visual surface of your company.",
+      "statA": "more brand recall with one consistent identity applied across every channel.",
+      "statB": "from strategy to final asset: we deliver the concept and the production-ready files.",
+      "caption": "Three of our identities, resting on the same plane of light"
+    },
+    "work": {
+      "overline": "02 — Real work",
+      "title": "Brands of ours already out in the world",
+      "lead": "None of these images is an illustration: they are the deliverables four clients actually received."
+    },
+    "offer": {
+      "overline": "03 — What's included",
+      "title": "Everything you need to build a brand that holds up"
+    },
+    "cards": [
+      {
+        "kicker": "Identity",
+        "title": "The whole brand system, not just a logo",
+        "text": "Symbol, palette, type and applications. A system that still works when someone else uses it, on another channel, two years later."
+      },
+      {
+        "kicker": "Materials",
+        "title": "The manual and everything that gets printed or presented",
+        "text": "Brand manual, brochures, decks and social pieces. The deliverable you receive, not the promise that it exists."
+      },
+      {
+        "kicker": "Digital product",
+        "title": "Interfaces, sites and landings that convert",
+        "text": "Wireframes, prototypes and high-fidelity design in Figma, ready for development. Each client with its own art direction."
+      }
+    ],
+    "process": {
+      "overline": "04 — Process",
+      "title": "From strategy to final assets in weeks"
+    },
+    "who": {
+      "overline": "05 — Best for",
+      "title": "Who is Design & Branding for?",
+      "lead": "We work with organisations that need to say what they're worth clearly, consistently and memorably."
+    },
+    "proof": {
+      "overline": "06 — The proof",
+      "title": "The brand once it leaves the file",
+      "text": "Printed on paper and bolted to a wall. It's the only part of this work the client ever touches, and that's where you can tell whether the system was built properly."
+    },
+    "faqOverline": "— 07   Frequently asked",
+    "ctaTitle": "Ready to build your brand?",
+    "ctaSubtitle": "Let's talk about your project. No commitment, no pressure.",
+    "workItems": [
+      {
+        "client": "Alyer Transportes",
+        "line": "Identity, brand manual and commercial brochure"
+      },
+      {
+        "client": "MainTech",
+        "line": "Identity, brand architecture and website"
+      },
+      {
+        "client": "Aurore",
+        "line": "Identity, stationery and online store"
+      },
+      {
+        "client": "To Live Again",
+        "line": "Site redesign and bilingual art direction"
+      }
+    ],
+    "cardRows": [
+      [
+        {
+          "tag": "Visual identity",
+          "title": "Logo and brand system",
+          "desc": "A versatile logo, palette, type and every element that makes up your brand."
+        },
+        {
+          "tag": "Branding",
+          "title": "Brand guidelines",
+          "desc": "A full manual so the identity stays consistent across every channel and team."
+        }
+      ],
+      [
+        {
+          "tag": "Materials",
+          "title": "Brochures and marketing",
+          "desc": "Corporate brochures, flyers, social kits and executive decks."
+        },
+        {
+          "tag": "Motion",
+          "title": "Animation and decks",
+          "desc": "Brand animation and pitch decks that make your story tell itself."
+        }
+      ],
+      [
+        {
+          "tag": "UX/UI",
+          "title": "Digital product design",
+          "desc": "Wireframes, prototypes and high-fidelity design in Figma, ready for development."
+        },
+        {
+          "tag": "Web design",
+          "title": "Websites and landing pages",
+          "desc": "Editorial design that balances aesthetics and conversion."
+        }
+      ]
+    ],
+    "steps": [
+      {
+        "title": "Discovery",
+        "bullets": [
+          "Creative brief",
+          "Competitor analysis",
+          "Visual benchmark",
+          "Audience definition"
+        ]
+      },
+      {
+        "title": "Strategy",
+        "bullets": [
+          "Creative direction",
+          "Moodboard",
+          "Visual architecture",
+          "Brand concept"
+        ]
+      },
+      {
+        "title": "Design",
+        "bullets": [
+          "Logotype and variants",
+          "Brand system",
+          "Digital materials",
+          "Iterative reviews"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "bullets": [
+          "Editable files",
+          "Brand manual PDF",
+          "Every format",
+          "Post-delivery support"
+        ]
+      }
+    ],
+    "whoCards": [
+      {
+        "title": "Startups",
+        "description": "Companies that need a solid brand from scratch in order to launch with confidence."
+      },
+      {
+        "title": "Rebranding companies",
+        "description": "Organisations that have moved on and need an image that reflects where they are now."
+      },
+      {
+        "title": "Founders with a deck",
+        "description": "Founders pitching investors who need high-impact materials."
+      },
+      {
+        "title": "Product teams",
+        "description": "Tech teams that need professional UI/UX design for their applications."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How long does a branding project take?",
+        "a": "It depends on scope. A full visual identity (logo plus brand manual) takes 2 to 4 weeks. With extra materials it can run to 6 or 8 weeks."
+      },
+      {
+        "q": "What do I need to get started?",
+        "a": "Just a discovery call. You tell us about your company, your audience and your goals, and we prepare the creative brief. You don't need to bring anything prepared."
+      },
+      {
+        "q": "Do you hand over editable files?",
+        "a": "Always. We deliver everything in editable formats: AI, EPS and SVG for the logo; Figma for product design; PDF and InDesign for print materials."
+      },
+      {
+        "q": "Do you redesign existing brands?",
+        "a": "Yes. We analyse your current brand and identify what to keep, what to evolve and what to change completely."
+      },
+      {
+        "q": "Is web design included in branding?",
+        "a": "Landing page and website design is an additional service that can complement branding. We can quote them together or separately."
+      },
+      {
+        "q": "How many rounds of revisions are included?",
+        "a": "Up to 3 rounds at each stage of the project. If you need changes beyond that scope, we quote them separately and transparently."
+      }
+    ],
+    "whatsappMessage": "Hi, I am interested in the Design & Branding service. Can we schedule a call?"
+  },
+  "software-development": {
+    "hero": {
+      "title": "Software Development",
+      "short": "Software Development",
+      "description": "We build web apps, mobile apps and custom platforms that scale with your business. Solid architecture, maintainable code and releases that actually reach production."
+    },
+    "intro": {
+      "overline": "01 — What Software Development is",
+      "title": "The software your business runs on can't be improvised",
+      "p1": "A badly built platform shows up late: when traffic grows, when a new team joins, or when one more system has to be integrated. We start with the architecture.",
+      "p2": "Web, mobile, APIs and infrastructure. We work in your repository from day one, with documented code and the full history under your name.",
+      "statA": "of the code is yours from the first commit, repository and documentation included.",
+      "statB": "weeks to a working MVP in production, with automated deployment and monitoring.",
+      "caption": "Three of our products in production on the same stack"
+    },
+    "work": {
+      "overline": "02 — Real work",
+      "title": "Products of ours running in production today",
+      "lead": "Four platforms with real customers inside, charging, booking and selling every day."
+    },
+    "offer": {
+      "overline": "03 — What's included",
+      "title": "From the first sprint to maintenance, without changing teams"
+    },
+    "cards": [
+      {
+        "kicker": "Web and commerce",
+        "title": "Web apps and stores that actually sell",
+        "text": "From a landing page to a full SaaS platform. Next.js and React — fast, accessible, search-ready, with the API behind them."
+      },
+      {
+        "kicker": "Architecture",
+        "title": "Proven stack, security from sprint one",
+        "text": "Authentication, authorisation and encryption built in from the start. Automated tests, manual QA and benchmarks before every release."
+      },
+      {
+        "kicker": "Mobile and operations",
+        "title": "The same product in the hand, and someone behind it after launch",
+        "text": "React Native for iOS and Android from a single codebase. Plus monitoring, bug fixing and iterative improvements after release."
+      }
+    ],
+    "process": {
+      "overline": "04 — Process",
+      "title": "From architecture to deployment, in two-week sprints"
+    },
+    "who": {
+      "overline": "05 — Best for",
+      "title": "Who is Software Development for?",
+      "lead": "We work with teams that need to ship without mortgaging the quality of their code."
+    },
+    "proof": {
+      "overline": "06 — The proof",
+      "title": "The software where it's actually used",
+      "text": "A club's dashboard open beside the court at dusk, and a point of sale taking money at a counter. No render replaces that."
+    },
+    "faqOverline": "— 07   Frequently asked",
+    "ctaTitle": "Ready to build your product?",
+    "ctaSubtitle": "Let's talk about your project. No commitment, no pressure.",
+    "workItems": [
+      {
+        "client": "ANJ Sports",
+        "line": "Custom store with catalogue, variants and its own checkout"
+      },
+      {
+        "client": "Clefast",
+        "line": "Industrial e-commerce with zone shipping and content migration"
+      },
+      {
+        "client": "Academia César Acosta",
+        "line": "Class booking wired into the club's platform"
+      },
+      {
+        "client": "Rematch",
+        "line": "Scheduling and tournament platform for padel clubs"
+      }
+    ],
+    "cardRows": [
+      [
+        {
+          "tag": "Web",
+          "title": "Web applications",
+          "desc": "From landing pages to SaaS platforms. Fast, accessible and SEO-ready."
+        },
+        {
+          "tag": "Backend",
+          "title": "APIs and services",
+          "desc": "Scalable backends, REST and GraphQL APIs. Architectures that take real growth."
+        }
+      ],
+      [
+        {
+          "tag": "Security",
+          "title": "Secure from the start",
+          "desc": "Authentication, authorisation and encryption built in from the first sprint."
+        },
+        {
+          "tag": "Quality",
+          "title": "Testing and QA",
+          "desc": "Automated tests, manual QA and performance benchmarks before every release."
+        }
+      ],
+      [
+        {
+          "tag": "Mobile",
+          "title": "iOS and Android apps",
+          "desc": "React Native for both platforms from a single codebase, with native performance."
+        },
+        {
+          "tag": "Support",
+          "title": "Ongoing maintenance",
+          "desc": "Monitoring, bug fixing and iterative improvements after launch."
+        }
+      ]
+    ],
+    "steps": [
+      {
+        "title": "Architecture",
+        "bullets": [
+          "Stack selection",
+          "Architecture design",
+          "Technical roadmap",
+          "API definition"
+        ]
+      },
+      {
+        "title": "Agile development",
+        "bullets": [
+          "Two-week sprints",
+          "Fortnightly demos",
+          "Code reviewed in PRs",
+          "Continuous documentation"
+        ]
+      },
+      {
+        "title": "Testing and QA",
+        "bullets": [
+          "Unit and integration tests",
+          "Manual QA",
+          "Performance benchmarks",
+          "Security review"
+        ]
+      },
+      {
+        "title": "Deploy and monitoring",
+        "bullets": [
+          "Automated CI/CD",
+          "Cloud deployment",
+          "Real-time monitoring",
+          "Alerts and logs"
+        ]
+      }
+    ],
+    "whoCards": [
+      {
+        "title": "Startups",
+        "description": "Teams that need to ship fast on an architecture that can carry growth."
+      },
+      {
+        "title": "Scale-ups",
+        "description": "Companies that need to scale their product without compromising code quality."
+      },
+      {
+        "title": "Established companies",
+        "description": "Organisations digitising processes or modernising legacy systems."
+      },
+      {
+        "title": "Product teams",
+        "description": "Founders and PMs who need a reliable technical team to execute their vision."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How long does a project take to build?",
+        "a": "It depends on scope. A working MVP can be ready in 6 to 10 weeks. More complex platforms take 3 to 6 months. We always start with an architecture sprint."
+      },
+      {
+        "q": "Can you integrate with existing systems?",
+        "a": "Yes, it's one of our specialities. We integrate with ERPs, CRMs, legacy databases, third-party APIs and any system with a documented interface."
+      },
+      {
+        "q": "What happens after launch?",
+        "a": "We offer maintenance and ongoing support: monitoring, bug fixing, dependency updates and new features on a regular cycle."
+      },
+      {
+        "q": "Do you only work with startups?",
+        "a": "No. We work with early-stage startups, growing scale-ups and established companies modernising their systems or launching new digital products."
+      },
+      {
+        "q": "Do we get the source code?",
+        "a": "Always. The code is 100% yours from the start. We work in your repository from day one, with the full history and technical decisions documented."
+      },
+      {
+        "q": "Can you work alongside our in-house team?",
+        "a": "Yes, and we enjoy it. We can act as an extended team, adding capacity and experience while collaborating with your developers."
+      }
+    ],
+    "whatsappMessage": "Hi, I'm interested in software development services. Can we discuss my project?"
+  },
+  "ai-agentic-systems": {
+    "hero": {
+      "title": "AI & Agentic Systems",
+      "short": "AI & Agentic Systems",
+      "description": "Agents, automations and AI systems wired into your own data. Processes that run themselves and decisions that stop waiting for someone to make them."
+    },
+    "intro": {
+      "overline": "01 — What AI & Agentic Systems is",
+      "title": "The AI that pays off is the one already wired into your operation",
+      "p1": "A model on its own solves nothing. What changes a business is a system that reads your documents, queries your databases and acts inside your tools without anyone typing.",
+      "p2": "We deploy it wherever you say: your own infrastructure or a private cloud, with accuracy metrics and a trace behind every decision.",
+      "statA": "weeks to a working prototype on your own data, with accuracy metrics from day one.",
+      "statB": "of decisions are traced and auditable: no black box nobody can explain.",
+      "caption": "Three of our systems already deciding on their own"
+    },
+    "work": {
+      "overline": "02 — Real work",
+      "title": "Automations of ours already running",
+      "lead": "Four systems reading, classifying and deciding on real data belonging to real clients."
+    },
+    "offer": {
+      "overline": "03 — What's included",
+      "title": "From the opportunity to the agent in production"
+    },
+    "cards": [
+      {
+        "kicker": "Data",
+        "title": "Documents and data that process themselves",
+        "text": "Extract, classify and structure contracts, invoices and reports. And let your team query the databases in plain language, no SQL."
+      },
+      {
+        "kicker": "Infrastructure",
+        "title": "Search across your own data, and auditable",
+        "text": "Retrieval-augmented generation with vector indexes over your documentation. Precise answers, with the source in plain sight."
+      },
+      {
+        "kicker": "Agents",
+        "title": "Agents that answer, escalate and decide",
+        "text": "Contextual support that resolves and escalates what it can't. Plus full orchestrated flows: approvals, alerts and chained decisions."
+      }
+    ],
+    "process": {
+      "overline": "04 — Process",
+      "title": "From the use case to the agent deployed and watched"
+    },
+    "who": {
+      "overline": "05 — Best for",
+      "title": "Who is AI & Agentic Systems for?",
+      "lead": "We work with organisations piling up data and hours in processes a machine would handle better."
+    },
+    "capabilities": {
+      "overline": "06 — Technical capabilities",
+      "title": "What's underneath, named"
+    },
+    "proof": {
+      "overline": "07 — The proof",
+      "title": "Automation where it pays off",
+      "text": "An industrial client's plant, and the dashboard that sums up 207 ratings without anyone counting them by hand. That's where you measure whether the AI was worth it."
+    },
+    "faqOverline": "— 08   Frequently asked",
+    "ctaTitle": "Ready to automate your operation?",
+    "ctaSubtitle": "Let's talk about your project. No commitment, no pressure.",
+    "workItems": [
+      {
+        "client": "Feniz",
+        "line": "Rule engine per propfirm and automatic MetaTrader 5 connection"
+      },
+      {
+        "client": "AmbientalPe",
+        "line": "Catalogue and dashboard for environmental monitoring equipment"
+      },
+      {
+        "client": "First Automation",
+        "line": "Site and content for industrial operations digitisation"
+      },
+      {
+        "client": "Feedback management",
+        "line": "A dashboard that summarises and classifies hundreds of ratings"
+      }
+    ],
+    "cardRows": [
+      [
+        {
+          "tag": "Documents",
+          "title": "Document processing",
+          "desc": "Extracts, classifies and structures contracts, invoices and reports with no manual step."
+        },
+        {
+          "tag": "Data",
+          "title": "Plain-language analysis",
+          "desc": "Your team queries databases and dashboards by asking, without writing a line of SQL."
+        }
+      ],
+      [
+        {
+          "tag": "Search",
+          "title": "Semantic search (RAG)",
+          "desc": "Retrieval augmented over your own data: precise answers across thousands of documents."
+        },
+        {
+          "tag": "Pipelines",
+          "title": "Continuous intelligence",
+          "desc": "Systems that monitor, learn and act on real-time data streams."
+        }
+      ],
+      [
+        {
+          "tag": "Support",
+          "title": "Customer support agents",
+          "desc": "They resolve queries, escalate what they can't and learn from every interaction."
+        },
+        {
+          "tag": "Workflows",
+          "title": "Workflow automation",
+          "desc": "Orchestrates whole processes: approvals, notifications and chained decisions."
+        }
+      ]
+    ],
+    "steps": [
+      {
+        "title": "Definition",
+        "bullets": [
+          "Opportunity mapping",
+          "Feasibility analysis",
+          "KPI definition",
+          "Prioritised use cases"
+        ]
+      },
+      {
+        "title": "Architecture",
+        "bullets": [
+          "Data audit",
+          "Architecture design",
+          "Model selection",
+          "Vector infrastructure"
+        ]
+      },
+      {
+        "title": "Build",
+        "bullets": [
+          "Rapid prototyping",
+          "Agent development",
+          "System integration",
+          "Quality evaluation"
+        ]
+      },
+      {
+        "title": "Deployment",
+        "bullets": [
+          "Production deploy",
+          "Quality monitoring",
+          "Feedback loops",
+          "Continuous optimisation"
+        ]
+      }
+    ],
+    "whoCards": [
+      {
+        "title": "Companies sitting on data",
+        "description": "Organisations with large volumes of documents, emails or records they can't process by hand."
+      },
+      {
+        "title": "Teams doing repetitive work",
+        "description": "Teams losing hours to manual processes that could be automated."
+      },
+      {
+        "title": "Startups seeking an edge",
+        "description": "Companies that want AI inside their core product to gain competitive advantage."
+      },
+      {
+        "title": "Companies in transition",
+        "description": "Organisations modernising their operations with intelligent, autonomous systems."
+      }
+    ],
+    "capabilityItems": [
+      {
+        "title": "LLM engineering",
+        "description": "Prompts, fine-tuning and model evaluation for specific business use cases."
+      },
+      {
+        "title": "RAG systems",
+        "description": "Retrieval augmented with your own data. Precise, auditable answers."
+      },
+      {
+        "title": "Multi-agent orchestration",
+        "description": "Flows of autonomous agents collaborating to complete complex tasks."
+      },
+      {
+        "title": "External API integration",
+        "description": "Connection to the tools you already use: CRM, ERP, databases and more."
+      },
+      {
+        "title": "AI evaluation and testing",
+        "description": "Evaluation frameworks to measure the system's accuracy, consistency and safety."
+      },
+      {
+        "title": "MLOps and monitoring",
+        "description": "Infrastructure to run models in production with full observability."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How long does an AI system take to implement?",
+        "a": "A working prototype can be ready in 2 to 4 weeks. A production system with full integrations takes 6 to 12 weeks. We start with the highest-impact use case."
+      },
+      {
+        "q": "Do I need my own data to start?",
+        "a": "Not necessarily. Many projects use base models with no proprietary training data. If you do have data, we use it to tailor the system and improve accuracy."
+      },
+      {
+        "q": "Which AI models do you use?",
+        "a": "Whichever fits the case: commercial models for complex reasoning, open models when privacy comes first, and specialised models for specific tasks."
+      },
+      {
+        "q": "How do you guarantee accuracy?",
+        "a": "We build evaluation in from the start: accuracy, coverage and consistency metrics. Every system has feedback loops and monitoring that catches degradation."
+      },
+      {
+        "q": "Is my company's data safe?",
+        "a": "Yes. We can deploy the system entirely on your infrastructure or in private clouds. We never share your data with third parties, and the contract says so."
+      },
+      {
+        "q": "Can it integrate with our current systems?",
+        "a": "Yes, that's our speciality. We integrate with anything that has an API: CRMs, ERPs, databases, email and in-house systems."
+      }
+    ],
+    "whatsappMessage": "Hi, I'm interested in AI and agentic systems. Can we talk about what I need?"
+  }
+}

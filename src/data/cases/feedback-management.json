@@ -1,0 +1,26 @@
+{
+  "title": "Feedback Management System",
+  "industry": "SaaS / Experiencia de cliente",
+  "image": "/images/proyects/feedback-management/feedback-management-hero.jpg",
+  "secondaryImage": "/images/proyects/feedback-management/feedback-management-desc.jpg",
+  "location": "Perú",
+  "platform": "Web App",
+  "duration": "2025",
+  "client": "Plataforma",
+  "technologyStack": ["React", "NestJS", "TypeScript", "Tailwind CSS"],
+  "secondaryIndustry": "Gestión de feedback y satisfacción",
+  "forWhom": "Empresas y cadenas multi-sucursal que necesitan centralizar sugerencias, calificaciones, analíticas NPS y administración por locales e instructores",
+  "services": [
+    "Sugerencias y priorización",
+    "Calificaciones y NPS",
+    "Personal y multi-sucursal",
+    "Analíticas y dashboards"
+  ],
+  "description": "Plataforma de experiencia de cliente para optimizar la recolección y el análisis de feedback: evaluaciones de servicio, gestión de sugerencias, analíticas de desempeño por instructor y administración multi-sucursal. Incluye métricas NPS, priorización y dashboards interactivos.",
+  "problem": "Se necesitaba un ecosistema unificado que combinara evaluación de servicios, gestión de sugerencias (estado, prioridad, sucursal, área), calificaciones con NPS, analíticas por instructor y sucursal, gestión de personal (managers, supervisores) y categorización por áreas para convertir el feedback en mejoras concretas de calidad y satisfacción.",
+  "solution": "Creé esta plataforma especializada con módulos de sugerencias (filtros por estado, prioridad, sucursal, área; KPIs total, pendientes, resueltas, tasa de resolución); calificaciones (promedio general, NPS, calificación por instructor; desglose por limpieza, audio, atención, comodidades, puntualidad); gestión de personal (roles manager/supervisor, contacto, sucursales, estado); instructores y locales; áreas para categorizar sugerencias; y analíticas con ranking de sucursales e instructores y dashboards interactivos.",
+  "results": [],
+  "projectDescription": "Creé esta plataforma de experiencia de cliente para optimizar la recolección y el análisis de feedback. El propósito central fue desarrollar un ecosistema unificado con evaluaciones de servicio, gestión de sugerencias, analíticas de desempeño por instructor y administración multi-sucursal. Integré métricas avanzadas como NPS, sistemas de priorización y dashboards interactivos que permiten a las empresas transformar el feedback en mejoras concretas de calidad y satisfacción.",
+  "publishedDate": "2025",
+  "slug": "feedback-management"
+}

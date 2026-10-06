@@ -1,0 +1,26 @@
+{
+  "title": "Moviflex",
+  "industry": "Salud / Fisioterapia",
+  "image": "/images/proyects/moviflex/moviflex-portada.jpg",
+  "location": "Lima Norte, Perú",
+  "platform": "Web",
+  "duration": "En producción",
+  "client": "Moviflex · Terapia física y rehabilitación",
+  "technologyStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  "liveUrl": "https://moviflex.com.pe",
+  "secondaryIndustry": "Terapia física y rehabilitación",
+  "forWhom": "Centro de fisioterapia con varias sedes que necesita que el paciente elija local, especialidad y hora sin tener que llamar",
+  "services": [
+    "Diseño de producto",
+    "Desarrollo web",
+    "Diseño UX/UI",
+    "SEO local"
+  ],
+  "description": "Web para Moviflex: tres sedes en Lima Norte, cuatro especialidades y una cita que se agenda desde la propia página.",
+  "problem": "Moviflex atiende en tres locales de Carabayllo y Comas, y no todos hacen lo mismo: la fisioterapia pediátrica solo existe en la sede Santa Isabel, y cada local tiene su dirección, su horario y su teléfono. Con esa información repartida entre Instagram y WhatsApp, el paciente terminaba preguntando lo mismo tres veces antes de poder agendar.",
+  "solution": "Ordenamos el sitio en el orden en que pregunta un paciente: qué me pueden tratar, cómo va a ser la atención, dónde está la sede que me toca. Cada especialidad dice para qué sirve y en qué local se da; cada sede lleva dirección, horario, teléfono, cómo llegar y su propio botón para agendar; y el camino de atención —agendas, evaluación, tratamiento, alta— está escrito paso a paso para que nadie llegue a ciegas a la primera sesión.",
+  "results": [],
+  "projectDescription": "Moviflex es un centro de terapia física y rehabilitación con ocho años y tres sedes en Lima Norte. Trata lesiones y dolor crónico, rehabilitación neurológica, fisioterapia pediátrica y masoterapia, con planes armados después de una evaluación funcional. La web es hoy su puerta de entrada y el sitio donde empieza la cita.",
+  "publishedDate": "2026",
+  "slug": "moviflex"
+}

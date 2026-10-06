@@ -1,4 +1,27 @@
 {
+  "navbar": {
+    "casosDeExito": "Casos de Sucesso",
+    "servicios": "Serviços",
+    "comoTrabajamos": "Como Trabalhamos",
+    "contacto": "Contato",
+    "servicesDiscovery": {
+      "title": "Design e Identidade de Marca",
+      "description": "Identidade visual, branding, materiais de marketing e design de produto que constroem marcas memoráveis."
+    },
+    "servicesSoftware": {
+      "title": "Desenvolvimento de Software",
+      "description": "Desenvolvimento full-stack com TypeScript, Next.js, React Native e Node.js. Escalável desde o primeiro dia."
+    },
+    "servicesAI": {
+      "title": "IA e Sistemas Agénticos",
+      "description": "Sistemas autônomos com LLMs, RAG e orquestração de agentes para automatizar decisões em tempo real."
+    }
+  },
+  "footer": {
+    "quickLinks": "Links Rápidos",
+    "description": "Seu parceiro tecnológico de confiança. Desenvolvemos software sob medida que transforma processos manuais em sistemas eficientes e escaláveis.",
+    "location": "Lima, Peru"
+  },
   "signIn": "Entrar",
   "signUp": "Registrar",
   "dashboard": "Painel",

@@ -1,0 +1,835 @@
+{
+  "rematch": {
+    "title": "Rematch",
+    "industry": "SaaS / Sports",
+    "description": "Our own platform for sports centers: court bookings, academies, leagues and tournaments in one system, with online payments and live results.",
+    "problem": "Sports centers manage bookings over WhatsApp, classes in spreadsheets, leagues in group chats and tournaments on paper: every activity in a different tool and nothing connected.",
+    "solution": "We designed and built a multi-tenant platform where the club runs everything from a single dashboard: a court calendar with bookings and payments, academies with classes, subscriptions and QR attendance, leagues with divisions that move up and down, and tournaments with draws, six formats and real-time results.",
+    "projectDescription": "Rematch is a product created by Axium for sports centers. Bookings, academies, leagues and tournaments share the same court calendar, the same customers and the same payments; on the public side, players book from their phones and follow tournaments on live.rematch.pe.",
+    "secondaryIndustry": "Bookings, academies, leagues and tournaments",
+    "forWhom": "Sports complexes, clubs, academies and league and tournament organizers",
+    "services": [
+      "Product design",
+      "Web development",
+      "Multi-tenant SaaS platform",
+      "Real time",
+      "Recurring payments"
+    ],
+    "results": []
+  },
+  "lumiolearn": {
+    "title": "LumioLearn",
+    "industry": "SaaS / Education",
+    "description": "Our own platform to create and sell courses under your own brand and domain: AI tutor, assessments, verifiable certificates and a website builder, with no commissions.",
+    "problem": "People who teach online usually depend on marketplaces that take a commission on every sale and show their own brand before the creator's, with separate tools to sell, assess, certify and support students.",
+    "solution": "We built a multi-tenant white-label LMS: each academy runs on its subdomain or its own domain with automatic SSL, courses with video chapters, quizzes with a passing score, certificates verifiable by code, an AI tutor that answers with the lesson's context, a website builder and payments with Mercado Pago and PayPal.",
+    "projectDescription": "LumioLearn is a product created by Axium. Each academy is an isolated space with its brand, courses and students, and four portals by role: administration, teacher, student and the editor of its website. The AI tutor learns from each chapter's subtitles and notes, exams are generated with AI and certificates are issued on course completion with a verifiable code. Everything also integrates through a public REST API.",
+    "secondaryIndustry": "White-label online academies",
+    "forWhom": "Independent teachers, academies with teams and companies that train their people",
+    "services": [
+      "Product design",
+      "Web development",
+      "White-label SaaS platform",
+      "AI tutor",
+      "Website builder"
+    ],
+    "results": []
+  },
+  "bookit": {
+    "title": "Bookit",
+    "industry": "SaaS / Appointments",
+    "description": "Our own platform for appointment-based businesses: each business takes bookings on its own website, sees them in its team's calendar and gets paid with no commissions.",
+    "problem": "Clinics and salons take appointments over WhatsApp and phone calls, write them down by hand and collect payment separately; booking directories charge a commission and put their brand ahead of the business's.",
+    "solution": "We designed and built a multi-tenant platform where the business's website, online booking, team calendar, payments and client records work together, and we redesigned Bookit's public website with its new brand.",
+    "projectDescription": "Bookit is a product built by Axium for appointment-based businesses. The booking starts on the business's own branded website: clients choose the service, professional and time, pay at booking from the Business plan, and the appointment lands in the team's calendar.",
+    "secondaryIndustry": "Bookings, calendar, payments and own website",
+    "forWhom": "Clinics, salons, studios and any business that works by appointment",
+    "services": [
+      "Product design",
+      "Public website",
+      "Web development",
+      "Multi-tenant SaaS platform",
+      "Online payments"
+    ],
+    "results": []
+  },
+  "vendiq": {
+    "title": "Vendiq",
+    "industry": "SaaS / E-commerce",
+    "description": "Our own commerce platform: each store sells on its website and in its physical store with the same catalog and the same stock, issues its SUNAT receipts and takes payments with no commission per sale.",
+    "problem": "Small businesses sell with scattered tools: a website for the store, a system for the register, a spreadsheet for stock, a program for receipts and chat for orders; every sale is recorded several times, and the big platforms take a commission on each sale.",
+    "solution": "We designed and built a multi-tenant platform where the online store, the point of sale, inventory and SUNAT invoicing work on one shared catalog, and we redesigned Vendiq's public website with its new brand.",
+    "projectDescription": "Vendiq is a product built by Axium for businesses in Peru. Each store publishes its website under its own brand, takes payments with Mercado Pago, Culqi or PayPal and keeps stock and receipts in the same dashboard, for a fixed monthly price and 0% commission per sale.",
+    "secondaryIndustry": "Online store, point of sale, inventory and SUNAT invoicing",
+    "forWhom": "Peruvian stores, brands and distributors that sell online and in their own store",
+    "services": [
+      "Product design",
+      "Public website",
+      "Web development",
+      "Multi-tenant SaaS platform",
+      "Online payments",
+      "Electronic invoicing"
+    ],
+    "results": []
+  },
+  "maintech": {
+    "title": "MainTech",
+    "industry": "Branding · Technical training and industrial consulting",
+    "description": "MainTech's whole brand and the site it lives in: symbol, type system, palette, applied brand and a nine-page Next.js site with a course catalogue and certificate verification.",
+    "problem": "A technical school sells trust before it sells content: whoever pays for a reliability programme wants to know the certificate will hold. And one brand had to carry both sides of the business, training and consulting, without either looking like a branch of the other.",
+    "solution": "A symbol built from a grid of blocks in indigo, cyan and pink, working just as well at 32 pixels as at one metre, locked up with the wordmark and the descriptor. Around it, Orbitron for headlines and Poppins in five weights, and a Next.js site whose entry screen separates MainTech Academy from MainTech Solutions without splitting the brand.",
+    "projectDescription": "MainTech trains maintenance and reliability engineers out of Arequipa: live and recorded courses for mining and industry, specialisation programmes and verifiable certificates, plus a consulting line for plant and fleet. They arrived with no brand and no site.",
+    "secondaryIndustry": "Maintenance, reliability and asset management",
+    "forWhom": "Maintenance engineers and technicians in mining and industry, and the companies that hire them",
+    "services": [
+      "Brand identity",
+      "Type system",
+      "Brand architecture",
+      "Brand applications",
+      "Web design and build",
+      "Technical SEO"
+    ],
+    "results": [],
+    "client": "MainTech"
+  },
+  "vitalchain": {
+    "title": "VitalChain Academy",
+    "industry": "Wellness and Education",
+    "description": "VitalChain Academy's website: seven public pages, the raffle funnel with a number verifiable on chain, Web3 guides in ten languages, a blog with its own editor and the portal where buyers check their ticket.",
+    "projectDescription": "VitalChain Academy is a wellbeing academy operating from Europe with its eyes on Latin America: training, retreats, Web3 guides and a raffle that funds its medical missions.",
+    "secondaryIndustry": "Conscious Technology",
+    "forWhom": "People seeking personal development and holistic wellbeing",
+    "services": [
+      "Web design and development",
+      "Content architecture",
+      "Content management",
+      "Private area with sign-up",
+      "Technical SEO"
+    ]
+  },
+  "fenalsa": {
+    "title": "Fenalsa",
+    "industry": "Food Services and Cleaning",
+    "description": "Corporate website for Fenalsa: Arequipa-based company specializing in collective catering, professional cleaning, disinfection and catering services. Presents mission, vision, services and contact.",
+    "projectDescription": "Fenalsa is an Arequipa company offering food and cleaning services. We developed their corporate website to present the specialized team, cleaning services (integral, disinfection, maintenance) and kitchen services (gourmet, catering, fine dining at home). The site includes mission, vision, testimonials and contact channels for quotes.",
+    "secondaryIndustry": "Cleaning and kitchen services",
+    "forWhom": "Companies seeking collective catering, professional cleaning, disinfection and catering services",
+    "services": [
+      "Informative website",
+      "Integral cleaning",
+      "Space disinfection",
+      "Gourmet kitchen",
+      "Event catering",
+      "Contact and quotes"
+    ]
+  },
+  "feniz": {
+    "title": "Feniz",
+    "industry": "Fintech · Funded-account trading",
+    "description": "The whole product of a platform for funded-account traders: website and legals, authentication, trader area, admin panel and a MetaTrader 5 Expert Advisor generated for each user.",
+    "problem": "A funded trader runs a propfirm account and, in parallel, their own at a broker, and kept both by hand with no single view of how they were doing. The hard part was not the panel: MetaTrader 5 exposes no outbound API, so the trades had to be fetched.",
+    "solution": "We built the whole platform on Next.js, tRPC and Prisma, with granular roles and permissions and payments through Paddle and MercadoPago. And we wrote the missing bridge: Feniz generates an MQL5 Expert Advisor for each trader, carrying their webhook and key inside, which runs in MetaTrader 5 and posts their trades every five seconds.",
+    "projectDescription": "Feniz is a platform for funded-account traders: it links a propfirm account to a broker one, records the trades and shows balance, result and win rate in a single panel. They arrived with no product: it was built whole, from the public website to the admin panel.",
+    "secondaryIndustry": "Propfirms and brokers",
+    "forWhom": "Funded-account traders running a propfirm account and their own broker account at the same time",
+    "services": [
+      "Custom SaaS product",
+      "Authentication and transactional email",
+      "Trader area and admin panel",
+      "MetaTrader 5 integration",
+      "Payments with Paddle and MercadoPago"
+    ],
+    "results": [],
+    "client": "Feniz"
+  },
+  "innersoulbright": {
+    "title": "Inner Soul Bright",
+    "industry": "Spiritual Wellness",
+    "description": "Inner Soul Bright's website: three pages holding the four accompaniment services, the step-by-step process and the code of ethics, published in five languages, every section animated on entry.",
+    "projectDescription": "Inner Soul Bright is a spiritual accompaniment and energy healing practice that works online and in person, with an audience spread across several countries. The engagement was its website.",
+    "secondaryIndustry": "Personal Development",
+    "forWhom": "People looking for spiritual accompaniment, energy clearing and clarity at a time of change",
+    "services": ["Web design and development", "Site in five languages"]
+  },
+  "clefast": {
+    "title": "Clefast",
+    "industry": "Industrial E-commerce",
+    "description": "An eco-friendly detergent store for industrial laundries, rebuilt in full on Vendiq: 35 products across eleven categories with 205 sizes, a four-step custom checkout and shipping quoted from the buyer's address.",
+    "problem": "The store ran on a bespoke CMS that was no longer maintained, and it had to move without losing catalogue, pages or links. On top of that, shipping was offered without looking at the address: the buyer could pick any of the eight zones in the rate card.",
+    "solution": "The store was rebuilt piece by piece on our commerce platform, on the same domain, with a custom checkout where the shipping rate is quoted from the subtotal, the country, the department and the district; districts that share a name are offered qualified with their province.",
+    "projectDescription": "Clefast makes eco-friendly detergents for laundries, hotels and clinics across Peru. Its store was rebuilt in full on Vendiq, Axium's commerce product, without losing a record: 35 published products, eleven categories, 205 sizes from 100 ml to 200 kg, two blog posts and three PDF catalogues. We built a four-step custom checkout — cart, details, shipping and payment — with chained geography and the card tokenised in the browser, plus a support chat that shares a panel with WhatsApp.",
+    "secondaryIndustry": "Eco-friendly Products",
+    "forWhom": "Industrial laundries, hotels, clinics and companies buying eco-friendly detergent in bulk",
+    "services": [
+      "Online Store",
+      "Custom Checkout",
+      "Shipping by Zone",
+      "Content Migration",
+      "Support Chat",
+      "Technical SEO"
+    ],
+    "results": []
+  },
+  "happyart": {
+    "title": "Happy Art",
+    "industry": "E-commerce / Personalized Gifts",
+    "description": "Brand identity, logo, brand manual and virtual store of personalized gifts in Arequipa: categories by occasion, cart, checkout, delivery, customization and WhatsApp advisory.",
+    "problem": "Happy Art needed a digital presence to market personalized gifts, with catalog organized by occasions, cart and checkout, and contact channel for advisory.",
+    "solution": "Full brand identity (logo, manual, stationery) and virtual store with WooCommerce: catalog by categories, my account with cart and checkout, advice blog, delivery, customization and WhatsApp advisory.",
+    "projectDescription": "We developed Happy Art's full brand identity — logo, brand manual, stationery — and the happyart.com.pe virtual store. Includes online store with categories by occasion, cart and checkout, my account, delivery, customization, blog, WhatsApp advisory and complaints book.",
+    "secondaryIndustry": "Personalized Gifts",
+    "forWhom": "Individuals and companies seeking personalized gifts for special occasions",
+    "services": [
+      "Brand Identity",
+      "Logo",
+      "Brand Manual",
+      "Virtual Store",
+      "Catalog by Categories",
+      "Delivery",
+      "Customization",
+      "My Account"
+    ],
+    "results": [
+      {
+        "metric": "100%",
+        "label": "digital presence established"
+      },
+      {
+        "metric": "24/7",
+        "label": "store available online"
+      },
+      {
+        "metric": "B2C",
+        "label": "direct-to-consumer sales"
+      }
+    ]
+  },
+  "redesvip": {
+    "title": "Redes VIP",
+    "industry": "Telecommunications",
+    "description": "Informative website for Redes VIP, fiber optic internet provider in Ventanilla-Callao: plans (Hogar, Duos VIP, Gamer), VIP TV +80 channels, corporate solutions and WhatsApp contact.",
+    "problem": "Redes VIP needed a website that conveyed trust, clearly showed their internet plans and facilitated contact with residential and corporate customers in Ventanilla-Callao.",
+    "solution": "We developed the informative website with modern design and technological aesthetic. Includes hero with value proposition, internet plans, VIP TV services, corporate solutions, testimonials and WhatsApp integration.",
+    "projectDescription": "We developed the informative website for Redes VIP, a 100% fiber optic internet provider in Ventanilla-Callao, Peru. The site presents residential plans (Hogar, Duos VIP, Gamer), VIP TV services with +80 Full HD channels, corporate solutions, testimonials and WhatsApp contact.",
+    "secondaryIndustry": "ISP / Fiber Optic",
+    "forWhom": "Households and businesses in Ventanilla-Callao seeking fiber optic internet with fair pricing and specialized support",
+    "services": [
+      "Informative website",
+      "Plans catalog",
+      "VIP TV and corporate",
+      "WhatsApp integration"
+    ],
+    "results": []
+  },
+  "sportt": {
+    "title": "Sportt Perú",
+    "industry": "E-commerce / Sports",
+    "description": "Redesign of the table tennis store: 149 products across eight families of play, a gluing service with its video inside the store, and a cart with counter pickup or arranged delivery.",
+    "problem": "The previous store sorted the catalogue like a general shop and left out what makes Sportt different: the technical criteria a player uses to choose a rubber, and the workshop service that glues it on.",
+    "solution": "Full redesign on Vendiq: a block-built home page, a catalogue cut into eight families of play with filters by category and price, a product page with variants, stock, a WhatsApp enquiry and Peruvian payment methods, and a cart with store pickup or arranged delivery.",
+    "projectDescription": "We rebuilt sporttperu.com from scratch. The catalogue — 149 products across thirteen categories — was cut by how the game is played: blades, smooth rubbers, pimpled rubbers, bats, shoes, balls, cases and accessories, filterable by family and by price range. The product page states the variant, the stock, a WhatsApp enquiry and the Peruvian payment methods. The free gluing service lives on the home page with its one-minute video, and the cart offers counter pickup or arranged delivery.",
+    "secondaryIndustry": "Table Tennis",
+    "forWhom": "Players, clubs and schools that choose blade and rubber on technical criteria and need them glued together",
+    "services": [
+      "Web redesign",
+      "Online store",
+      "Catalogue by families of play",
+      "Filters, search and sorting",
+      "Cart with store pickup",
+      "Campaign pieces for social"
+    ],
+    "results": []
+  },
+  "lujan": {
+    "title": "Vitivinícola Luján",
+    "industry": "E-commerce / Beverages",
+    "description": "Peruvian winery virtual store: wines, piscos, creams and macerates. Catalog by categories, CMS integration, payment gateway and advertising.",
+    "problem": "Vitivinícola Luján needed a digital platform to sell their wines, piscos and spirits online, with organized catalog and social presence.",
+    "solution": "E-commerce with catalog by categories, CMS integration, payment gateway, cart and checkout, complaints book and advertising for social media.",
+    "projectDescription": "We developed vitivinicolalujan.com as a virtual store for Vitivinícola Luján, in Santa Cruz de Flores, Cañete. Includes catalog of wines, piscos, creams and macerates; CMS integration, payment gateway; plus advertising for their social media.",
+    "secondaryIndustry": "Wines and Piscos",
+    "forWhom": "Consumers seeking quality Peruvian wines, piscos, creams and macerates",
+    "services": [
+      "Virtual Store",
+      "Catalog by Categories",
+      "CMS Integration",
+      "Payment Gateway",
+      "Advertising",
+      "Complaints Book"
+    ],
+    "results": [
+      {
+        "metric": "100%",
+        "label": "digital presence established"
+      },
+      {
+        "metric": "24/7",
+        "label": "store available online"
+      },
+      {
+        "metric": "B2C",
+        "label": "direct-to-consumer sales"
+      }
+    ]
+  },
+  "ventanasantiruido": {
+    "title": "Ventanas Antiruido",
+    "industry": "Construction / Insulation",
+    "description": "Informative website for noise-reduction PVC windows in Lima: acoustic insulation, energy efficiency, durability and security. Catalog of noise-reduction windows, doors and partitions with advisory and direct contact.",
+    "problem": "Need for a website that presents noise-reduction PVC windows and doors, explains benefits (acoustic and thermal insulation, durability) and facilitates contact with interested customers in Lima.",
+    "solution": "We developed ventanasantiruido.com.pe with WordPress: hero with value proposition, sections on noise-reduction windows, doors and partitions, PVC benefits, testimonials, FAQ and WhatsApp contact integration.",
+    "projectDescription": "Informative website for Ventanas Antiruido de PVC, leaders in manufacture and installation of noise-reduction windows in Lima. Includes value proposition (insulate, protect, save with PVC), advantages over traditional windows, testimonials and WhatsApp contact.",
+    "secondaryIndustry": "PVC Windows and Doors",
+    "forWhom": "Households and projects in Lima seeking noise-reduction windows, acoustic insulation and energy efficiency",
+    "services": [
+      "Informative website",
+      "Noise-reduction windows",
+      "Noise-reduction doors",
+      "Noise-reduction partitions",
+      "WhatsApp contact"
+    ],
+    "results": []
+  },
+  "antiruidopvc": {
+    "title": "Decibeles",
+    "industry": "Construction / Insulation",
+    "description": "Decibeles website: noise-reduction PVC windows, doors and partitions in Lima and all of Peru. High-quality acoustic solutions to create spaces of calm, with thermal insulation and energy efficiency.",
+    "problem": "Need for an institutional website that positions Decibeles as a reference in noise-reduction PVC solutions, presents windows, doors and partitions, and facilitates contact with customers in Lima and all of Peru.",
+    "solution": "We developed antiruidopvc.pe with WordPress: hero with value proposition, catalog of windows, doors and partitions, PVC benefits (acoustic insulation, energy savings, durability), blog and WhatsApp contact.",
+    "projectDescription": "Institutional website for Decibeles, specialists in noise-reduction PVC windows, doors and partitions. Combines cutting-edge design with acoustic technology information. Includes product sections, benefits, blog and contact.",
+    "secondaryIndustry": "Noise-Reduction PVC Windows and Doors",
+    "forWhom": "Families and projects in Lima and Peru seeking spaces of calm with high-quality noise-reduction solutions",
+    "services": [
+      "Informative website",
+      "PVC Windows",
+      "PVC Doors",
+      "PVC Partitions",
+      "Blog",
+      "WhatsApp contact"
+    ],
+    "results": []
+  },
+  "transportesrumi": {
+    "title": "Transportes Rumi",
+    "industry": "Logistics / Mining",
+    "description": "Digital brochure and website for Transportes Rumi: Peruvian company specialized in mineral concentrate, general cargo and oversized load transportation. Mission, team, services by sector and contact.",
+    "problem": "Transportes Rumi needed corporate presentation material (brochure) and web presence to position themselves with mining and industrial companies, showing experience, team, services and safety protocols.",
+    "solution": "We developed digital brochure and transportesrumi.com.pe website with mission, team, services by sector, testimonials, safety and WhatsApp contact.",
+    "projectDescription": "Digital brochure and website for Transportes Rumi S.A.C., a 100% Peruvian company with over 4 years of experience in mineral concentrate, general cargo and oversized load transportation. Both pieces present team, services by sector and contact.",
+    "secondaryIndustry": "Heavy cargo transportation",
+    "forWhom": "Mining, industrial, construction and trade companies seeking concentrate, oversized load and general cargo transportation nationwide",
+    "services": [
+      "Digital brochure",
+      "Informative website",
+      "Team and services",
+      "WhatsApp contact"
+    ],
+    "results": []
+  },
+  "villacer": {
+    "title": "Villacer",
+    "industry": "Construction / Equipment",
+    "description": "Complete branding and website for Villacer: leading company in equipment rental and construction project development in Camaná. Visual identity (logo, uniforms), website with about us, services and equipment fleet.",
+    "problem": "Villacer, established in Camaná since 2017, needed a professional brand identity and web presence to position itself in the construction sector, showing equipment rental, project development and expansion toward mining.",
+    "solution": "We developed a complete branding service (logo, identity, application on uniforms) and the villacer.com.pe website with about us, history, services, fleet, projects and contact for quotes.",
+    "projectDescription": "Complete branding and website for Villacer, established in Camaná in 2017, leader in equipment rental and construction project development. Includes visual identity applied to web and uniforms, website with mission, history, services and quote form.",
+    "secondaryIndustry": "Equipment rental and project development",
+    "forWhom": "Companies and medium-scale construction projects in southern Peru seeking equipment rental and project development",
+    "services": [
+      "Complete branding",
+      "Informative website",
+      "Equipment rental",
+      "Project development",
+      "Contact"
+    ],
+    "results": []
+  },
+  "daesurmotors": {
+    "title": "Daesur Motors",
+    "industry": "Automotive / Workshop",
+    "description": "Informative website for Daesur Motors: repair shop and vehicle parts sales in VMT. Services (engine, brakes, transmission, bodywork, paint, SOAT), testimonials, service process and quote form.",
+    "problem": "Daesur Motors needed a website to present their repair and parts services, show their process and facilitate contact for quotes from Villa María del Triunfo and surrounding areas.",
+    "solution": "We developed daesurmotors.com with WordPress: hero with value proposition, about us, service catalog (maintenance, brakes, engine, transmission, parts, diagnostics, bodywork, paint, SOAT, mechanical assistance), testimonials, Facebook integration and quote form.",
+    "projectDescription": "Informative website for Daesur Motors EIRL, specialists in vehicle repair and parts in VMT. Includes full services, testimonials and quote form.",
+    "secondaryIndustry": "Vehicle repair and parts",
+    "forWhom": "Vehicle owners in southern Lima seeking repair, maintenance, parts and reliable automotive services",
+    "services": [
+      "Informative website",
+      "Service catalog",
+      "Quote form",
+      "Testimonials",
+      "Facebook integration"
+    ],
+    "results": []
+  },
+  "firstautomation": {
+    "title": "First Automation",
+    "industry": "Industrial / Technology",
+    "description": "Informative website for First Automation: certified AVEVA partner that digitizes industrial operations. Control, management, optimization and operational intelligence solutions. HMI/SCADA, IT/OT platform and digital transformation services.",
+    "problem": "First Automation needed a website to present their AVEVA partner offering, solutions, services and testimonials from industrial sector clients.",
+    "solution": "We developed first-automation.com with WordPress: hero with value proposition (digitize operations, Industry 4.0), AVEVA solutions, services (HMI/SCADA, IT/OT, digital transformation), testimonials and news blog.",
+    "projectDescription": "Informative website for First Automation, certified AVEVA partner. SCADA, IIoT and industrial data management solutions for fishing, oil & gas, energy, mining and manufacturing.",
+    "secondaryIndustry": "Industrial digitalization / Industry 4.0",
+    "forWhom": "Industrial companies seeking SCADA, IIoT and digital transformation solutions with AVEVA",
+    "services": [
+      "Informative website",
+      "AVEVA solutions",
+      "HMI/SCADA services",
+      "Testimonials",
+      "News blog"
+    ],
+    "results": []
+  },
+  "toliveagain": {
+    "title": "To Live Again",
+    "industry": "Nonprofit / Domestic abuse prevention",
+    "description": "The site of the Miami headquarters of the foundation against domestic abuse, rebuilt from scratch: bilingual, with donating up front and the 501(c)(3) certificate in plain sight.",
+    "problem": "The foundation had grown — ten years, two countries, workshops, awards — and its website was still the WordPress brochure it started with, in Spanish, with donations settled by a PayPal button. And it is a hard page to write: the same screen has to convince someone who can donate from Miami and, at the same time, not frighten someone opening it from inside a relationship she does not yet know how to leave.",
+    "solution": "We rebuilt toliveagain.org from the ground up, in Spanish and in English. The home page opens with two doors — «I want to help» and «I need help» —, then names human trafficking with the figure that hurts most, and only then says who they are. Donating is no longer a stray button: it has a page of its own with three routes, card, PayPal and Zelle. The foundation, its founder, the awards and the gatherings each get their space, the 501(c)(3) certificate opens from the menu and, from the foundation page, the site crosses over to Volver a Vivir, its Peruvian arm.",
+    "projectDescription": "To Live Again is a nonprofit founded in Miami in 2016 by a survivor of domestic abuse. Ten years on it works in two countries — Florida and Peru, where it operates as Volver a Vivir — around three verbs: inspiring victims to seek help, preventing abuse in the next generation and raising awareness.",
+    "secondaryIndustry": "501(c)(3) foundation",
+    "forWhom": "A foundation that raises funds in the United States, works across two countries and has to read just as well in Spanish and in English",
+    "services": [
+      "Website redesign",
+      "Web development",
+      "UX/UI design",
+      "Content and structure",
+      "Bilingual ES/EN version"
+    ],
+    "results": []
+  },
+  "podologiemtk": {
+    "title": "Podologie MTK",
+    "industry": "Health / Podology",
+    "description": "Informative website for Podologie MTK: podology practice by Andrea Alberts in Schwalbach am Taunus, Germany. Podological treatments, diabetic foot care, ingrown nails, specialized techniques and podology services.",
+    "problem": "The podology practice needed a website to present its services (complex podological treatment, medical foot treatment, nail brace techniques, nail prosthetics), opening hours, location and allow patients to book appointments in Schwalbach am Taunus.",
+    "solution": "We developed podologie-mtk.de with WordPress: hero with value proposition, services, opening hours, contact, FAQs and appointment booking integration.",
+    "projectDescription": "Informative website for Podologie MTK (Andrea Alberts), podology practice in Schwalbach am Taunus, Germany. Specialists in podological treatment, diabetic foot, ingrown nails, nail brace techniques, orthoses, nail prosthetics and sports foot care. Includes services, opening hours, contact and appointment booking.",
+    "secondaryIndustry": "Foot medicine / Podology",
+    "forWhom": "Patients in Main-Taunus-Kreis (Germany) seeking podological treatment, diabetic foot care, ingrown nail treatment and specialized therapies",
+    "services": [
+      "Informative website",
+      "Services",
+      "Opening hours",
+      "Contact",
+      "FAQs",
+      "Appointment booking"
+    ],
+    "results": [],
+    "client": "Andrea Alberts Podology Practice"
+  },
+  "enrafmedica": {
+    "title": "EnrafMedica",
+    "industry": "Health / Medical Equipment",
+    "description": "Informative website for EnrafMedica: Peruvian company since 1998 dedicated to importing and distributing medical equipment and instruments. Catalog by category (urology, intensive care, outpatient, operating room, ultrasound, rescue equipment), about us and WhatsApp contact.",
+    "problem": "EnrafMedica needed a website to present its track record, medical equipment catalog by category and facilitate contact with healthcare professionals, clinics and hospitals in Lima and all of Peru.",
+    "solution": "We developed enrafmedica.com with WordPress: hero with value proposition (excellence in medical equipment since 1998), about us, catalog by category (urology, intensive care, outpatient, operating room, gynecology, ultrasound, hospital furniture, diagnostic equipment, rescue equipment), latest products, contact and WhatsApp integration.",
+    "projectDescription": "Informative website for EnrafMedica, Peruvian company founded in 1998 dedicated to importing and distributing first-class medical equipment and instruments. Includes catalog by category (urology, intensive care, outpatient, operating room, gynecology, ultrasound, hospital furniture, diagnostic and rescue equipment), about us and WhatsApp contact.",
+    "secondaryIndustry": "Import and distribution of medical equipment",
+    "forWhom": "Healthcare professionals, clinics and hospitals in Peru seeking first-class medical equipment",
+    "services": [
+      "Informative website",
+      "Product catalog",
+      "About us",
+      "Contact",
+      "WhatsApp integration"
+    ],
+    "results": []
+  },
+  "huarmis": {
+    "title": "Huarmis",
+    "industry": "Education / Social Impact",
+    "description": "Informative website for Huarmis: Peruvian organization that transforms futures with STEM education and innovation. Programs (STEM, RESEARCH, PROJECT, ACADEMY, SPACE), about us, founder Liz Quispe, team, beneficiary testimonials, news and donations channel.",
+    "problem": "Huarmis needed a website to present its mission of empowering girls, boys and women from vulnerable communities with STEM, show its programs, founder, team, testimonials and facilitate contact and donations.",
+    "solution": "We developed huarmis.org with WordPress: hero with value proposition (transforming futures with education and innovation), STEM programs, about us, metrics, founder Liz Quispe, team, testimonials, news, contact and donations integration.",
+    "projectDescription": "Informative website for Huarmis, Peruvian organization leading social projects with a STEM focus. Empowers girls, boys, adolescents and women from vulnerable communities with science, technology, engineering and mathematics. Includes programs (STEM, RESEARCH, PROJECT, ACADEMY, SPACE), founder Liz Quispe, team, testimonials, news and donations.",
+    "secondaryIndustry": "STEM / Social projects",
+    "forWhom": "Girls, boys, adolescents and women from vulnerable communities in Peru, companies and entities with social purposes seeking STEM projects",
+    "services": [
+      "Informative website",
+      "STEM programs",
+      "About us",
+      "Founder and team",
+      "Testimonials",
+      "News",
+      "Contact",
+      "Donations"
+    ],
+    "results": []
+  },
+  "favorygracia": {
+    "title": "Favor & Gracia Church",
+    "industry": "Faith / Community",
+    "description": "Informative website for Favor & Gracia Church: Christian community highlighting the manifestation of supernatural power and love. What we believe, values, leadership (Ricardo and Fabiola Serquén), mission and vision, online services, giving and contact.",
+    "problem": "Favor & Gracia Church needed a website to present its vision, beliefs, values, pastoral leadership and facilitate access to online services, donations, contact and community involvement.",
+    "solution": "We developed favorygraciachurch.org with React: welcome hero, what we believe, values, mission and vision, leadership (Ricardo and Fabiola Serquén), online services (6pm, 7pm), links to give, contact and get involved.",
+    "projectDescription": "Informative website for Favor & Gracia Church, Christian community highlighting the manifestation of supernatural power and love. Pastors Ricardo and Fabiola Serquén. Includes what we believe, values, leadership, mission and vision, online services, giving and contact.",
+    "secondaryIndustry": "Church / Ministry",
+    "forWhom": "Congregation members, visitors and people seeking a Christian community with manifestation of supernatural power and love",
+    "services": [
+      "Informative website",
+      "What we believe",
+      "Leadership",
+      "Mission and vision",
+      "Online services",
+      "Give / Donations",
+      "Contact"
+    ],
+    "results": []
+  },
+  "hotelesparaiso": {
+    "title": "Hoteles Paraíso",
+    "industry": "Hospitality & Tourism",
+    "description": "Informative website for Hoteles Paraíso in northern Peru: digital presence with information on locations in Trujillo, Chiclayo and Piura, Instagram integration to showcase experiences and direct contact.",
+    "problem": "Need for a website that presents Hoteles Paraíso's offering in northern Peru, connects with travelers and leverages Instagram visual content to inspire bookings.",
+    "solution": "We developed hotelesparaiso.axium.com.pe with React: informative site with locations (Trujillo, Chiclayo, Piura), Instagram-integrated gallery, room and service information, and contact and booking channels.",
+    "projectDescription": "Hoteles Paraíso is a hotel chain in northern Peru with presence in Trujillo, Chiclayo and Piura. We developed an informative React website that presents each location, highlights the guest experience and integrates with Instagram to showcase the hotels' visual content in real time, making it easy for travelers to discover the facilities and get in touch for bookings.",
+    "secondaryIndustry": "Informative website",
+    "forWhom": "Travelers and tourists looking for accommodation in northern Peru",
+    "services": [
+      "Informative website",
+      "Instagram integration",
+      "Responsive design",
+      "Bookings and contact"
+    ],
+    "results": []
+  },
+  "jcpingenieros": {
+    "title": "JCP Ingenieros",
+    "industry": "Engineering & Consulting",
+    "description": "Informative website for JCP Ingenieros: comprehensive solutions for hospital equipment, specialized consulting for high-tech projects in Peru and Latin America.",
+    "problem": "JCP Ingenieros needed a professional web presence to showcase their hospital consulting services, track record and projects to attract healthcare sector clients.",
+    "solution": "We developed jcpingenieros.com on WordPress: informative site with services (technical briefs, construction execution, hospital equipment, pre-investment), track record, blog and contact.",
+    "projectDescription": "JCP Ingenieros is a leading hospital equipment consulting firm since 2013, with presence in Peru and Central America. They have developed over 49 technical briefs for healthcare facilities at all levels and use BIM methodology. We developed their informative WordPress website with service sections —technical briefs, construction execution, hospital equipment and pre-investment—, track record, mission and vision, about us, projects, blog and contact channels to position their offering with ministries, regional hospitals and healthcare sector entities.",
+    "secondaryIndustry": "Hospital equipment",
+    "forWhom": "Healthcare facilities, ministries and entities requiring hospital equipment consulting",
+    "services": [
+      "Technical Briefs",
+      "Construction Execution",
+      "Hospital Equipment",
+      "Pre-investment"
+    ],
+    "results": []
+  },
+  "lifetoursfl": {
+    "title": "Travel Life",
+    "industry": "Travel & Tourism",
+    "description": "Digital platform for Travel Life: travel agency with flight search, promotions, quotes, user registration, dashboard and payments built with Next.js and PostgreSQL.",
+    "problem": "Travel Life needed a modern web platform to centralize flights, promotions and quotes, with a client area and integrated payments, to compete as a digital travel agency.",
+    "solution": "We developed lifetoursfl.com with Next.js and PostgreSQL: flight catalog, promotions, quote form, authentication (login/register), user dashboard and payment gateway (Visa, Mastercard, Amex, PayPal).",
+    "projectDescription": "Travel Life is a digital travel agency based in Florida. We built a full platform with Next.js and PostgreSQL including: flight search and display, promotions section, quote requests, authentication (login and register), user dashboard once logged in, and payment gateway integration (Visa, Mastercard, Amex, PayPal). The PostgreSQL-backed architecture allows secure, scalable management of users, quotes and transactions, with a fast, responsive experience powered by Next.js.",
+    "secondaryIndustry": "Digital travel agency",
+    "forWhom": "Travelers looking for flights, promotions and quotes with an agile, secure digital experience",
+    "services": [
+      "Flight search and booking",
+      "Promotions and offers",
+      "Quote request",
+      "User account and dashboard",
+      "Payment gateway"
+    ],
+    "results": []
+  },
+  "comunicarte": {
+    "title": "Comunicarte Editores",
+    "industry": "Publishing & Culture",
+    "description": "Web ecosystem for Comunicarte Editores: purpose-driven publisher since 2013 — physical and international publishing, editorial and print services, online store, distribution, social programs and three-step editorial process.",
+    "problem": "Comunicarte needed a digital ecosystem that unified their editorial offer (physical and international publishing, editorial and print services), the book store, quote requests, social programs and presence at fairs like FIL Lima 2026, with a clear experience for authors and buyers.",
+    "solution": "We developed comunicarte.artacuri.net.pe with WordPress and WooCommerce: landing per publishing model (Physical, International, Editorial, Print), store with catalog and cart, custom quote form, global distribution and social programs (Las Aventuras de Amadeo, FESTILEC), news, interviews, testimonials and three-step flow (share your vision → roadmap → we publish your legacy).",
+    "projectDescription": "Comunicarte Editores is a purpose-driven publisher since 2013, an ally for independent authors. The project integrates four pillars: Physical Publishing (ISBN, Legal Deposit, INDECOPI, national distribution, FIL Lima presence), International Author (print on demand, eBook, Amazon, bookstores in 10 countries), Editorial Services (360° editing, cover design, layout, legal registration, launches) and Print Services (books, stationery, events). The site includes an online store with categories and cart, quote request with 24-hour response, global distribution and social programs (inclusion and reading promotion), news, interviews and testimonials. The author journey is presented in three steps: share vision, receive roadmap and publish legacy, reinforcing Comunicarte's position as a publisher with cultural impact.",
+    "secondaryIndustry": "Independent publishing and e-commerce",
+    "forWhom": "Independent authors, writers and readers looking to publish, distribute or buy books with a purpose-driven publisher",
+    "services": [
+      "Physical Publishing",
+      "International Author (POD and eBook)",
+      "Editorial Services",
+      "Print Services",
+      "Online store",
+      "Distribution and Social Programs"
+    ],
+    "results": []
+  },
+  "ghiperu": {
+    "title": "GHI Peru",
+    "industry": "Hotel Consulting",
+    "description": "Institutional website for GHI Peru — hotel consultants with experience in management, strategic planning, standards and implementation of quality systems for independent lodgings across Peru.",
+    "problem": "GHI Peru needed a web presence to communicate their hotel consulting offer, programs (group consulting, MicroTraining, managers meeting) and team, to reach independent hotels and associations.",
+    "solution": "We developed ghiperu.com: institutional site with about us, hotels they work with, GHI programs, Our Team (Guillermo Martínez de Pinillos, Pierina Valverde, Viviana Madrid) and contact.",
+    "projectDescription": "GHI Peru is a consulting brand with experience in management, strategic planning, definition of standards and implementation of systems for quality across all operational areas of independent lodgings. The site presents their focus on results (commercial objectives, operational efficiency, profitability), the hotels they support across Peru, exclusive programs —Group Consulting in Hotel Management, MicroTraining Hotelero, Annual Hotel Managers Meeting— and the expert team, with integrated contact channel.",
+    "secondaryIndustry": "Hotel consultants",
+    "forWhom": "Independent hotels and associations seeking management, strategic planning and quality standards",
+    "services": [
+      "Group Consulting in Hotel Management",
+      "MicroTraining Hotelero",
+      "Annual Hotel Managers Meeting"
+    ],
+    "results": []
+  },
+  "anjsports": {
+    "title": "ANJ Sports",
+    "industry": "E-commerce · Table tennis",
+    "description": "A custom storefront for ANJ Sports on Vendiq: 251 products from five brands, variants by colour and thickness, live stock and checkout inside anjsports.com.",
+    "problem": "A table tennis rubber is not one product: it is a matrix of colour by thickness, and every cell has its own price and its own stock. With 251 products, five brands distributed, apparel collections by size and a sports identity that changes colour with the brand on show, an off-the-shelf store template forces you to choose between the catalogue and the brand.",
+    "solution": "We built the custom storefront in Next.js with the App Router —black, wide display type, the carousel that changes colour with the brand— and put it on Vendiq, Axium's commerce product. Vendiq holds the catalogue, the variants with their SKUs, the stock and the orders; the storefront exposes that API on its own domain, so the filtered catalogue, the product page with its variants, the cart and the four-step checkout all happen without leaving anjsports.com.",
+    "projectDescription": "ANJ Sports has distributed XIOM, Butterfly, VICTAS, SANWEI and Dr. Neubauer in Peru since 2010, and sponsors the players who compete. Their brand already existed: the job was the store and the engine behind it.",
+    "secondaryIndustry": "Table tennis",
+    "forWhom": "A sports distributor with a multi-brand, variant-heavy catalogue that needs a store with its own face and a real commerce engine",
+    "services": [
+      "UX/UI design",
+      "Web development",
+      "Custom online store",
+      "Vendiq integration",
+      "Catalogue and variants",
+      "Checkout and payments"
+    ],
+    "results": []
+  },
+  "ambientalpe": {
+    "title": "AmbientalPE",
+    "industry": "Environment / Technology",
+    "description": "Three pieces for a cohesive presence: corporate website, social media strategy and internal management system. AmbientalPE, a leader in environmental and occupational monitoring.",
+    "problem": "AmbientalPE, a leader in environmental and occupational monitoring, wanted to consolidate its digital presence: a web that communicated its services and catalog, a social media strategy that generated engagement, and a system that organized clients, suppliers, equipment and quotes behind the scenes.",
+    "solution": "We built the ecosystem in three layers. First, the web: ambientalpe.com with services (environmental monitoring, occupational monitoring, plans and maps, equipment rental and sales), online catalog and contact. Second, social media: content and designs to communicate and connect. Third, the system: dashboard and modules for clients (credit line), suppliers, equipment (inventory, calibration), quotes and orders. Three services that support each other.",
+    "projectDescription": "AmbientalPE came with a clear vision: they needed three things that worked as one. The web was the starting point —ambientalpe.com—, where their environmental and occupational monitoring services, equipment catalog and contact channel are presented today. From there, we designed the social media strategy: content and visual pieces that reinforce the message and bring the brand closer to its audience. Finally, we developed the management system: an internal panel to manage clients, suppliers, equipment (inventory, calibration, status), quotes and orders. Three services, one story: digital presence, communication and operations aligned.",
+    "secondaryIndustry": "Environmental management and monitoring",
+    "forWhom": "Environmental consulting companies that need to manage clients, suppliers, monitoring equipment, quotes and service orders in one platform",
+    "services": ["Web", "Social media", "Management system"],
+    "results": []
+  },
+  "siclo": {
+    "title": "Instructor Management System",
+    "industry": "SaaS / Education",
+    "description": "Instructor management SaaS: centralized administration, class registration, Excel import, payment calculation and documentation. Built with Next.js for performance and scalability.",
+    "problem": "A platform was needed to unify instructor management, class registration by discipline, bulk import from Excel, payment calculation by occupancy and category, and documentation for teams.",
+    "solution": "A SaaS was built with Next.js including: instructor management (disciplines, categories, status), class registration with occupancy and covers, bulk import with validation, automatic payment calculation with bonuses and penalties, configurable points system and centralized documentation.",
+    "projectDescription": "Instructor Management System is the name of the system: a SaaS platform that centralizes instructor management, weekly class registration by discipline, bulk import from Excel, automatic payment calculation by occupancy and custom formulas, and documentation for teams. It includes bonuses, penalties, covers and flexible configuration of periods and rates. Built with Next.js and TypeScript for a scalable and maintainable base.",
+    "secondaryIndustry": "Platform for instructors",
+    "forWhom": "Studios, gyms and teams that manage instructors, classes, payments and disciplines",
+    "services": [
+      "Instructor management",
+      "Class registration",
+      "Bulk import",
+      "Automatic payment calculation",
+      "Bonuses and penalties",
+      "Flexible configuration"
+    ],
+    "results": []
+  },
+  "web-scraping-ai": {
+    "title": "AI-Powered Web Scraping Pipeline",
+    "industry": "Data Engineering / AI",
+    "description": "AI-powered web scraping pipeline: extracts data from websites, processes it with an LLM to structure it automatically, and persists it to a database. Sitemaps, Playwright and PostgreSQL.",
+    "projectDescription": "AI-assisted web scraping pipeline: crawls websites using sitemaps and scraping techniques (BeautifulSoup for static HTML, Playwright for dynamic pages), sends extracted content to an LLM to normalize and structure the information, and stores results in PostgreSQL. Designed to be generic and reusable across different data domains.",
+    "secondaryIndustry": "Data automation and extraction",
+    "forWhom": "Companies that need to extract, structure and store data from web sources in an automated way",
+    "services": [
+      "Web scraping",
+      "LLM processing",
+      "Structured extraction",
+      "Sitemap support",
+      "PostgreSQL storage",
+      "Docker containerization"
+    ]
+  },
+  "fintrace": {
+    "title": "Fintrace",
+    "industry": "Financial SaaS · Collections and accounting",
+    "description": "An accounting SaaS that starts where the invoicing system ends: it takes the XML the company already issues and handles everything that comes after — the withholding, the instalments, the bank statement and the file the accountant imports without retyping.",
+    "problem": "Between the e-invoicing system and the accountant's software there is nothing. A spreadsheet three people edit, the withholding receipt downloaded from the bank, an unreconciled statement and the month's journal entries sitting in an unanswered email. Every figure copied by hand is a discrepancy someone chases later.",
+    "solution": "We built the whole platform on Next.js, tRPC and Prisma, multi-tenant and with per-resource permissions. It reads the SUNAT UBL 2.1 document and builds the record with its client, its VAT and its withholding; it reads the bank statement in PDF, XLSX and CSV and matches it by operation number; and it hands over the journal entry with its cost centre, ready for Concar.",
+    "projectDescription": "Fintrace is the financial control of a Peruvian company, document by document. It reads the XML already issued, sets the withholding aside the moment the invoice is registered, schedules the collection instalments, matches the bank statement against the documents and hands the accountant the journal entry with its cost centre. It was built whole: the public site, authentication, the multi-tenant panel and the export.",
+    "secondaryIndustry": "Peruvian companies with an external accountant",
+    "forWhom": "Peruvian companies with several sites or cost centres, monthly withholdings and an external accountant waiting for the closing spreadsheet",
+    "services": [
+      "Custom SaaS product",
+      "SUNAT UBL 2.1 document reading",
+      "Withholdings and collection plans",
+      "Reconciliation against the bank statement",
+      "Journal entries and Concar export",
+      "Multi-tenant, roles and permissions"
+    ],
+    "results": []
+  },
+  "feedback-management": {
+    "title": "Feedback Management System",
+    "industry": "SaaS / Customer experience",
+    "description": "Customer experience platform to optimize feedback collection and analysis: service evaluations, suggestion management, instructor performance analytics, and multi-branch administration. Includes NPS metrics, prioritization systems, and interactive dashboards.",
+    "problem": "A unified ecosystem was needed that combined service evaluation, suggestion management (status, priority, branch, area), ratings with NPS, analytics by instructor and branch, personnel management (managers, supervisors), and categorization by areas to turn feedback into concrete quality and satisfaction improvements.",
+    "solution": "I created this specialized platform with modules for suggestions (filters by status, priority, branch, area; KPIs for total, pending, resolved, resolution rate); ratings (general average, NPS, instructor rating; breakdown by cleanliness, audio, attention, amenities, punctuality); personnel management (manager/supervisor roles, contact, branches, status); instructors and locations; areas to categorize suggestions; and analytics with branch and instructor rankings and interactive dashboards.",
+    "projectDescription": "I created this customer experience platform to optimize feedback collection and analysis. The core purpose was to develop a unified ecosystem featuring service evaluations, suggestion management, instructor performance analytics, and multi-branch administration. I integrated advanced metrics like NPS, prioritization systems, and interactive dashboards that enable businesses to transform feedback into concrete quality and satisfaction improvements.",
+    "secondaryIndustry": "Feedback and satisfaction management",
+    "forWhom": "Businesses and multi-branch chains that need to centralize suggestions, ratings, NPS analytics and administration by location and instructor",
+    "services": [
+      "Suggestions and prioritization",
+      "Ratings and NPS",
+      "Personnel and multi-branch",
+      "Analytics and dashboards"
+    ],
+    "results": []
+  },
+  "aurore": {
+    "title": "Aurore",
+    "industry": "Branding / E-commerce · Perfumery",
+    "description": "Aurore's brand and store, from scratch: logo, monogram, type system and palette, its applications, and the store where 278 fragrances are browsed by house, by note and by occasion.",
+    "problem": "Aurore had no brand, and a perfume catalogue is not searched the way an appliance is: people arrive knowing a house, a note or an occasion, almost never the exact product name. On top of that the business sells two things of the same perfume, the full bottle and the decant, and if every size is a separate product the catalogue doubles.",
+    "solution": "First the brand: monogram, type pairing (Sainte Colombe and Avenir) and a palette of five colours, plus four editorial colours that are the four doors into the catalogue. Then the applications: decant label, stationery, bag and box. Then the store, built around how a perfume is really looked for: houses with their counts, collections with their own headers, olfactory notes as a way in, and decant sizes inside the product itself. Mobile is the primary layout, not an adaptation.",
+    "projectDescription": "Aurore is a Peruvian perfumery that brings together designer houses, niche perfumery and Arabic perfumery, and sells both the full bottle and the decant of the same scent. The brand was created for this project — there was no logo, no type system and no palette — and the applications and the store were built on top of it.",
+    "secondaryIndustry": "Niche, designer and Arabic perfumery",
+    "forWhom": "An independent perfumery that needs a brand of its own and a store where its catalogue reads like a menu, not a list",
+    "services": [
+      "Brand identity",
+      "Type system",
+      "Brand applications",
+      "UX/UI design",
+      "Web development",
+      "Online store"
+    ],
+    "results": [],
+    "client": "Aurore"
+  },
+  "alyer": {
+    "title": "Alyer",
+    "industry": "Branding · Freight transport and metal fabrication",
+    "description": "Alyer's entire brand: the symbol, the palette, the type pairing, a 35-page identity manual, the fleet livery, the merchandising and the commercial brochure for its manufacturing line.",
+    "problem": "A heavy-haulage brand is not decided on a screen: it is decided at thirty metres, side on, dirty and moving. And Alyer needed the same brand to sign two different businesses —the fleet that moves the cargo and the workshop that builds the units— without splitting into two logos competing with each other.",
+    "solution": "A symbol built on Alyer's «A», fragmented and pointed to the right, which reads at once as movement and as a machined part. Around it, a short, hard system: black, red and four greys, Quadrat Serial for the logotype and Acumin Variable Wide for everything else. A 35-page manual fixes construction, clear space, minimum size, greyscale, incorrect uses over photography and textual expression. The two lines, Transportes and Producción, share symbol, wordmark and colour: only the descriptor changes.",
+    "projectDescription": "Alyer is a Peruvian industrial group with two lines: Transportes, which hauls mineral concentrate, hazardous and oversize cargo across thirteen cities of the country, and Producción —Industrias Metálicas Alyer—, which builds the hoppers, tankers and semi-trailers that fleet pulls. The brief was brand, not platform: identity, manual, applications on fleet and workwear, merchandising and the commercial brochure for the manufacturing line.",
+    "secondaryIndustry": "Mining freight transport and semi-trailer manufacturing",
+    "forWhom": "An industrial company with two business lines that needs a single brand and a manual able to hold it on steel, on workwear and on paper",
+    "services": [
+      "Brand identity",
+      "Brand manual",
+      "Type system",
+      "Brand applications",
+      "Merchandising",
+      "Editorial design"
+    ],
+    "results": [],
+    "client": "Alyer"
+  },
+  "blendet": {
+    "title": "Blendet Beauty Studio",
+    "industry": "Beauty / Appointment-based studio",
+    "description": "Website for Blendet Beauty Studio, the nail, lash and brow studio in San Miguel, Lima: its price menu, its gallery of real work, and an appointment that closes itself, with no waiting for a reply.",
+    "problem": "A studio that takes one client at a time lives off its calendar. When booking runs on messages, every appointment costs two or three exchanges (which service, which day, how much) and the ones that arrive at midnight or mid-service are simply lost. On top of that, nobody searches for \"nails\": they search for rubber, polygel, softgel or sculpted, and they want the price before they write.",
+    "solution": "We gave Blendet a site with its own brand: its gold, its wine red, its typeface, with everything the client needs sitting before the button. The menu is grouped by family (nails, lashes, brows, pedicure) with the length and starting price of each technique; the Instagram feed where the day's work goes up; a gallery of work done in the studio; and the address with opening hours. Booking is three steps: service, date and time, details. Behind it runs Bookit, Axium's booking platform, holding the calendar and confirming instantly; from the outside, the client only ever sees Blendet.",
+    "projectDescription": "Blendet Beauty Studio is a beauty studio in San Miguel, Lima, working by appointment and one client at a time: nails in rubber, polygel, softgel, acrylic and sculpted; lash extensions from classic to Russian volume, plus lifting; brows with waxing, henna, lamination and straightening; and gel pedicure. The site lays that menu out so it reads at a glance, and turns it into a booking.",
+    "secondaryIndustry": "Nails, lashes, brows and pedicure",
+    "forWhom": "A beauty studio working by appointment that wants the booking to close on its own website, not in a WhatsApp thread",
+    "services": [
+      "Brand website",
+      "Online booking",
+      "Service and price menu",
+      "UX/UI design"
+    ],
+    "results": [],
+    "client": "Blendet Beauty Studio"
+  },
+  "jarumi": {
+    "title": "Beautyroom by Jaru",
+    "industry": "Beauty / Appointment-based studio",
+    "description": "Website for Beautyroom by Jaru, Jarumi Enriquez's studio in Lima: a menu with rates and durations, a page per service, and online booking for a professional who works alone.",
+    "problem": "When the person doing the treatment is the same one answering messages, every enquiry interrupts a service. And the questions are always the same: do you take walk-ins, how long does it take, how much is it, how do I reschedule, what payment do you accept. Without a site that answers them, the calendar fills with conversation and empties of appointments.",
+    "solution": "We built the site around those questions. The menu lists every service with its rate and its real duration, the one that includes prep and aftercare; each service has its own page explaining what it does and how long the result lasts; and an FAQ block answers the appointment-only rule, the 24-hour rescheduling window and the payment methods up front. The lash lifting course she teaches has its own space, because it is a second business inside the same studio. Booking is three steps and confirms on the spot: behind it is Bookit, Axium's booking platform, and what the client sees is only her brand.",
+    "projectDescription": "Beautyroom by Jaru is Jarumi Enriquez's studio in Comas, Lima, which also works at clients' homes: lash lifting, brow lamination and shaping, facial cleansing, social make-up, manicure, acrylic nails and pedicure. She works strictly by appointment, one client per slot, and also trains other professionals with a hands-on lash lifting course.",
+    "secondaryIndustry": "Eyes, nails and facial care",
+    "forWhom": "A professional working alone, one client per slot, who needs the website to act as the front desk",
+    "services": [
+      "Brand website",
+      "Online booking",
+      "Page per service",
+      "UX/UI design"
+    ],
+    "results": [],
+    "client": "Jarumi Enriquez"
+  },
+  "volveravivir": {
+    "title": "Volver a Vivir",
+    "industry": "Nonprofit / Domestic abuse prevention",
+    "description": "The Peruvian arm of To Live Again: the same foundation against domestic abuse, now with a home of its own in Peru.",
+    "problem": "To Live Again already had its site in the United States, but in Peru the foundation lived on Instagram and a WhatsApp number. And it is a hard page to write: the same screen has to convince someone who can donate and, at the same time, not frighten someone opening it from inside a relationship she does not yet know how to leave.",
+    "solution": "We built volveravivir.pe with two doors from the first screen: «I want to help» and «I need help». The home page does not open by asking for money: it opens by teaching how to recognise the first signs — control, isolation, fear — and only then says who they are. The foundation, its founder, the gatherings and the ways to donate each get their own page, and WhatsApp stays within reach on all of them.",
+    "projectDescription": "Volver a Vivir is the Peruvian arm of To Live Again, the 501(c)(3) nonprofit founded in Miami in 2016. Same mission, same team, two countries. The site gathers what the foundation does in Lima — inspiring victims to seek help, preventing abuse in the next generation and raising awareness — the story of its founder and the gatherings it runs.",
+    "secondaryIndustry": "Nonprofit foundation",
+    "forWhom": "A foundation that has to speak to two people at once: the one who can donate and the one asking for help",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Content and structure"
+    ],
+    "results": [],
+    "client": "Fundación Volver a Vivir"
+  },
+  "moviflex": {
+    "title": "Moviflex",
+    "industry": "Health / Physiotherapy",
+    "description": "Website for Moviflex: three clinics in northern Lima, four specialties and an appointment that starts on the page itself.",
+    "problem": "Moviflex works out of three clinics in Carabayllo and Comas, and they do not all do the same thing: paediatric physiotherapy exists only at the Santa Isabel clinic, and each one has its own address, hours and phone number. With that spread across Instagram and WhatsApp, patients ended up asking the same question three times before they could book.",
+    "solution": "We ordered the site the way a patient asks: what can you treat, what will the care be like, where is the clinic for me. Each specialty says what it is for and which clinic offers it; each clinic carries its address, hours, phone, directions and its own booking button; and the care path — booking, assessment, treatment, discharge — is written step by step so nobody walks into a first session blind.",
+    "projectDescription": "Moviflex is a physiotherapy and rehabilitation centre with eight years behind it and three clinics in northern Lima. It treats injuries and chronic pain, neurological rehabilitation, paediatric physiotherapy and massage therapy, with plans built after a functional assessment. The site is now its front door and where the appointment begins.",
+    "secondaryIndustry": "Physiotherapy and rehabilitation",
+    "forWhom": "A multi-site physiotherapy centre that needs patients to pick clinic, specialty and time without calling",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Local SEO"
+    ],
+    "results": [],
+    "client": "Moviflex · Terapia física y rehabilitación"
+  },
+  "qintitec": {
+    "title": "Qintitec",
+    "industry": "Fintech / Technology",
+    "description": "Corporate site for Qinti Tec: a fintech serving both individuals and financial firms, with the site split into those two doors.",
+    "problem": "Qinti Tec sells two things that have nothing in common: financial solutions for a person and technical support for a financial company. Told together, visitors cannot tell which one is theirs — or which number to write to, since the fintech operates in Peru and Ecuador — and the enquiry is lost before it starts.",
+    "solution": "The site splits the two audiences into a block cut down the middle, personal and business, each with its own path and its own contact number. Before that fork it settles what a fintech has to prove quickly: who they are, mission and vision, the values they work by and the team with names and faces. The form and WhatsApp close the page.",
+    "projectDescription": "Qinti Tec is a fintech operating in Peru and Ecuador. It provides technological financial solutions to users and technical support to financial companies, with financial inclusion as its banner. The site is its calling card: who they are, what they solve and where to write depending on what you need.",
+    "secondaryIndustry": "Financial solutions and technical support",
+    "forWhom": "A fintech selling to two very different audiences — the person and the financial firm — that needs to separate them from the home page",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Corporate website"
+    ],
+    "results": [],
+    "client": "Qinti Tec"
+  },
+  "capptura": {
+    "title": "Capptura",
+    "industry": "Photography / Studio",
+    "description": "Capptura on its own domain: the work sorted by type of session and booking in three steps, with the studio's brand throughout.",
+    "problem": "A photography studio sells by talking: the client writes on WhatsApp to ask what the package includes, how long the session lasts and whether there is a date free. Every enquiry costs an afternoon, and the ones that arrive at midnight are answered the next day. And a studio that sells memories cannot live on a borrowed subdomain.",
+    "solution": "Capptura runs on Bookit with its own domain, cappturafotografia.com, and with its palette — espresso, gold and pink — across the whole journey, booking included. The site tells the work by type of session, each with its own gallery: maternity, newborn, family, birthdays, weddings, corporate. And booking is just another page of the same site: service, date and time, your details. Anyone who would rather talk still has WhatsApp one click away.",
+    "projectDescription": "Capptura is Elena Gutiérrez's studio in Lima: more than ten years photographing maternity, newborns, families and portraits. The site brings together the types of session with their galleries, the story of who is behind the camera and a three-step online booking, all under its own domain.",
+    "secondaryIndustry": "Maternity, family and portrait photography",
+    "forWhom": "A photography studio that sells by conversation and wants the session to book itself, on its own domain",
+    "services": [
+      "Product design",
+      "Web development",
+      "UX/UI design",
+      "Online booking"
+    ],
+    "results": [],
+    "client": "Capptura · Studio by Elena Gutiérrez"
+  },
+  "cesaracosta": {
+    "title": "Academia César Acosta",
+    "industry": "Sport / Tennis academy",
+    "description": "A website for Academia César Acosta, a tennis academy in Lima with two venues: the groups, the places left, the timetables and the store come live from the Rematch API, the platform the academy already runs on.",
+    "problem": "Tennis academies introduce themselves with a PDF timetable and a WhatsApp number. A parent who wants to enrol a child cannot tell whether the group for that age is still open, which venue it runs at or at what time, so they write in to ask the basics and the academy answers the same thing twenty times over. And when a group fills up, the page still says “sign up”.",
+    "solution": "We built the site on top of the Rematch v1 API: open groups arrive with the places they actually have left, they filter by venue and by age, and every programme carries its weekly timetable and its priced plans; the store, the private lessons and the enrolments come from there too, with the key living only on the server side. On top of that data we built the web design system — Barlow with a hard contrast of scale, navy as the ink of every heading and as a veil over every photo, a scarce lime reserved for action, corners kept almost square — designed for the phone first, which is where the parent looks. The club's identity already existed and was left untouched.",
+    "projectDescription": "Academia César Acosta teaches tennis at two clubs in Lima, from baby tennis at three years old to adults who want to compete, always in small groups. Its argument is not the slogan: it is the method, the courts and the places left. The site was built around those three things and is now finished, waiting for the academy to publish it.",
+    "secondaryIndustry": "Tennis coaching for children and adults",
+    "forWhom": "A multi-venue sports academy that needs to show, group by group, the places it actually has left",
+    "services": [
+      "Web design",
+      "UX/UI design",
+      "Web development",
+      "API integration"
+    ],
+    "results": [],
+    "client": "Academia César Acosta"
+  }
+}

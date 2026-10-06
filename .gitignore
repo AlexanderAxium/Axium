@@ -44,3 +44,13 @@ yarn-error.log*
 
 # idea files
 .idea
+# Claude Code
+/.claude/settings.local.json
+/.playwright-mcp/
+
+# Material en bruto de la skill del portafolio: cientos de MB de capturas PNG
+# que no le sirven al sitio. Los .md y los scripts de la skill sí se versionan.
+/.claude/skills/portafolio-axium/capturas-saas/
+/.claude/skills/portafolio-axium/capturas-clientes/
+/.claude/skills/portafolio-axium/referencias/capturas/
+/.claude/skills/portafolio-axium/comparaciones/

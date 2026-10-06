@@ -1,8 +1,25 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+
+const MOBILE_MAX_WIDTH = 640;
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`);
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return isMobile;
+}
+import { MagneticCursorArrow } from "~/components/axium/magnetic-cursor-arrow";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
@@ -12,166 +29,326 @@ import {
   CarouselContent,
   CarouselItem,
 } from "~/components/ui/carousel";
-import { cases } from "~/data/cases-data";
+import { useTranslation } from "~/hooks/useTranslation";
+import { useCasesWithLocale } from "~/lib/case-translations";
 
-export function CasesSection() {
+const slugMap: Record<string, string> = {
+  Maintech: "maintech",
+  "VitalChain Academy": "vitalchain",
+  Feniz: "feniz",
+  "Inner Soul Bright": "innersoulbright",
+  Clefast: "clefast",
+  "Happy Art": "happyart",
+  "Redes VIP": "redesvip",
+  "Sportt Peru": "sportt",
+  "Vitivinícola Luján": "lujan",
+  "Ventanas Antiruido": "ventanasantiruido",
+  Decibeles: "antiruidopvc",
+  "Transportes Rumi": "transportesrumi",
+  Villacer: "villacer",
+  "Daesur Motors": "daesurmotors",
+  "First Automation": "firstautomation",
+  "To Live Again": "toliveagain",
+  "Podologie MTK": "podologiemtk",
+  EnrafMedica: "enrafmedica",
+  Huarmis: "huarmis",
+  "Favor & Gracia Church": "favorygracia",
+  "Hoteles Paraíso": "hotelesparaiso",
+  "JCP Ingenieros": "jcpingenieros",
+  "Travel Life": "lifetoursfl",
+  "Comunicarte Editores": "comunicarte",
+  "GHI Peru": "ghiperu",
+  "ANJ Sports": "anjsports",
+  AmbientalPE: "ambientalpe",
+  "Instructor Management System": "siclo",
+  "Feedback Management System": "feedback-management",
+};
+
+export interface CasesSectionProps {
+  /** Slug del proyecto actual para excluirlo (ej: en páginas de caso) */
+  excludeSlug?: string;
+  /** Título de la sección */
+  title?: string;
+  /** "dark" = fondo oscuro (inicio), "light" = fondo claro (páginas de caso) */
+  variant?: "dark" | "light";
+  /** ID para anchor (solo en homepage) */
+  id?: string;
+}
+
+export function CasesSection({
+  excludeSlug,
+  title: titleProp,
+  variant = "dark",
+  id: idProp,
+}: CasesSectionProps) {
+  const id = idProp ?? (variant === "dark" ? "casos" : undefined);
+  const cases = useCasesWithLocale();
+  const { t } = useTranslation("landing");
+  const title =
+    titleProp ??
+    (variant === "dark"
+      ? t("caseDetail.casosDeExito")
+      : t("caseDetail.masProyectos"));
   const [api, setApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const isMobile = useIsMobile();
+
+  const carouselOpts = useMemo(
+    () => ({
+      align: "start" as const,
+      loop: true,
+      skipSnaps: false,
+      dragFree: false,
+    }),
+    []
+  );
+
+  const filtered = excludeSlug
+    ? cases.filter((c) => (c.slug ?? slugMap[c.title]) !== excludeSlug)
+    : cases;
+  const items = filtered;
+  const displayItems = isMobile ? items.slice(0, 12) : items;
 
   useEffect(() => {
-    if (!api) {
-      return;
-    }
-
+    if (!api) return;
     setCanScrollPrev(api.canScrollPrev());
     setCanScrollNext(api.canScrollNext());
-
-    api.on("select", () => {
+    const onSelect = () => {
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
-    });
+    };
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
+
+  const isDark = variant === "dark";
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      id="casos"
-      className="py-20 md:py-28 overflow-hidden relative bg-gray-950"
+    <section
+      id={id}
+      className={`py-16 md:py-28 overflow-hidden relative ${
+        isDark ? "bg-gray-900" : "bg-gray-50"
+      }`}
     >
-      {/* Mesh gradient with subtle blue */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-slate-900" />
-      <div className="absolute inset-0 bg-gradient-to-tl from-slate-900/80 via-transparent to-blue-950/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-900/40 to-blue-900/20" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-950/20 via-transparent to-transparent" />
+      {/* Dark variant: degradado ligeramente más claro */}
+      {isDark && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900/95 to-slate-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-slate-800/30 via-transparent to-gray-800/20" />
+        </>
+      )}
+      {/* Light variant: mesh gradients */}
+      {!isDark && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/80 to-slate-100" />
+          <div className="absolute inset-0 bg-gradient-to-tl from-slate-100/60 via-transparent to-blue-50/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-50/50 to-slate-100/30" />
+        </>
+      )}
 
       <div className="relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16"
-        >
-          {/* Section Header */}
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-              Casos de exito
-            </h2>
-            <div className="flex items-center gap-4">
-              <button
-                type="button"
-                className="px-6 py-2 border border-white text-white hover:bg-white/10 transition-colors rounded-md font-medium whitespace-nowrap"
-              >
-                Ver portafolio
-              </button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="size-8 rounded-full bg-white/10 border-white/20 text-white hover:bg-white/20"
-                disabled={!canScrollPrev}
-                onClick={() => api?.scrollPrev()}
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span className="sr-only">Previous slide</span>
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="size-8 rounded-full bg-white/10 border-white/20 text-white hover:bg-white/20"
-                disabled={!canScrollNext}
-                onClick={() => api?.scrollNext()}
-              >
-                <ArrowRight className="w-4 h-4" />
-                <span className="sr-only">Next slide</span>
-              </Button>
+        <div className="container-section">
+          <div className="content-section">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-16">
+              <div>
+                <h2
+                  className={`text-heading-1 ${isDark ? "text-white" : "text-[#060C20]"}`}
+                >
+                  {title}
+                </h2>
+                <p
+                  className={`mt-2 sm:hidden text-sm leading-relaxed ${
+                    isDark ? "text-gray-400" : "text-gray-500"
+                  }`}
+                >
+                  {t("caseDetail.sectionDescription")}
+                </p>
+              </div>
+              <div className="hidden sm:flex items-center gap-2 sm:gap-4 flex-shrink-0">
+                <Link
+                  href="/portafolio"
+                  className={`text-body px-6 py-2 rounded-md font-medium whitespace-nowrap transition-colors ${
+                    isDark
+                      ? "border border-white/20 text-white hover:bg-white/10"
+                      : "border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
+                  }`}
+                >
+                  {t("caseDetail.verPortafolio")}
+                </Link>
+                <div className="flex items-center gap-1.5">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className={`size-8 rounded-full ${
+                      isDark
+                        ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        : "border-[#060C20]/20 bg-white text-[#060C20] hover:bg-[#060C20]/5"
+                    }`}
+                    disabled={!canScrollPrev}
+                    onClick={() => api?.scrollPrev()}
+                  >
+                    <ArrowLeft className="w-4 h-4" />
+                    <span className="sr-only">{t("caseDetail.anterior")}</span>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className={`size-8 rounded-full ${
+                      isDark
+                        ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                        : "border-[#060C20]/20 bg-white text-[#060C20] hover:bg-[#060C20]/5"
+                    }`}
+                    disabled={!canScrollNext}
+                    onClick={() => api?.scrollNext()}
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    <span className="sr-only">{t("caseDetail.siguiente")}</span>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Carousel Section - Only left padding */}
-        <div className="pl-4 sm:pl-6 lg:pl-16">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-              skipSnaps: false,
-              dragFree: true,
-            }}
-            setApi={setApi}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4 sm:-ml-6">
-              {cases.map((caseItem) => (
-                <CarouselItem
-                  key={caseItem.title}
-                  className="pl-4 sm:pl-6 basis-[85%] sm:basis-[70%] md:basis-[60%] lg:basis-[45%] xl:basis-[35%]"
-                >
-                  <Card className="border border-gray-700/50 hover:border-gray-600 hover:shadow-2xl transition-all duration-300 bg-gray-900/50 backdrop-blur-sm overflow-hidden group h-full">
-                    {/* Image Section - 60% of card */}
-                    <div className="relative h-[320px] overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
-                      <img
-                        src={caseItem.image}
-                        alt={caseItem.title}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                      {/* Industry Badge */}
-                      <Badge
-                        variant="secondary"
-                        className="absolute top-4 left-4 bg-secondary text-white hover:bg-secondary/90 shadow-lg"
+        <div className="container-section">
+          <div className="content-section relative">
+            <div className="relative sm:-mr-6 lg:-mr-8">
+              <Carousel
+                opts={carouselOpts}
+                setApi={setApi}
+                className="w-full overflow-hidden sm:overflow-visible"
+              >
+                <CarouselContent className="sm:pr-6 lg:pr-8 gap-3 sm:gap-6 ml-0">
+                  {displayItems.map((caseItem, idx) => (
+                    <CarouselItem
+                      key={`${caseItem.title}-${idx}`}
+                      className="shrink-0 basis-full sm:basis-[70%] md:basis-[60%] lg:basis-[45%] xl:basis-[35%] pl-0"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-40px" }}
+                        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                       >
-                        {caseItem.industry}
-                      </Badge>
-
-                      {/* Title Overlay */}
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
-                          {caseItem.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Content Section - 40% of card */}
-                    <CardContent className="p-6 flex flex-col gap-4">
-                      {/* Description */}
-                      <p className="text-body-small text-gray-300 line-clamp-2">
-                        {caseItem.description}
-                      </p>
-
-                      {/* Services Tags */}
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        {caseItem.services.slice(0, 2).map((service) => (
-                          <span
-                            key={service}
-                            className="text-xs bg-accent/20 border border-accent/40 text-accent px-3 py-1 rounded-full font-medium"
+                        <MagneticCursorArrow
+                          label={t("portfolio.verProyecto")}
+                          arrowColor="text-[#060C20]"
+                        >
+                          <Link
+                            href={`/casos-de-exito/${caseItem.slug ?? slugMap[caseItem.title] ?? caseItem.title.toLowerCase()}`}
                           >
-                            {service}
-                          </span>
-                        ))}
-                        {caseItem.services.length > 2 && (
-                          <span className="text-xs bg-gray-700/50 border border-gray-600 text-gray-300 px-3 py-1 rounded-full font-medium">
-                            +{caseItem.services.length - 2}
-                          </span>
-                        )}
-                      </div>
+                            <Card
+                              className={`overflow-hidden group h-full cursor-pointer transition-all duration-300 ${
+                                isDark
+                                  ? "border border-gray-700/50 hover:border-gray-600 hover:shadow-2xl bg-gray-900/50 backdrop-blur-sm"
+                                  : "border border-gray-200/80 bg-white hover:border-[#0072CF]/30 hover:shadow-xl"
+                              }`}
+                            >
+                              <div
+                                className={`relative h-[230px] sm:h-[200px] lg:h-[320px] overflow-hidden ${
+                                  isDark
+                                    ? "bg-gradient-to-br from-gray-800 to-gray-900"
+                                    : "bg-gradient-to-br from-gray-100 to-gray-200"
+                                }`}
+                              >
+                                <Image
+                                  src={caseItem.image}
+                                  alt={caseItem.title}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                                  quality={85}
+                                />
+                                <div
+                                  className={`absolute inset-0 bg-gradient-to-t ${
+                                    isDark
+                                      ? "from-black/80 via-black/40 to-transparent"
+                                      : "from-black/50 via-black/20 to-transparent"
+                                  }`}
+                                />
 
-                      {/* View More Indicator */}
-                      <div className="flex items-center gap-2 text-secondary font-semibold text-sm mt-2 group-hover:gap-3 transition-all">
-                        <span>Ver detalles</span>
-                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                                <Badge
+                                  className={`absolute top-4 left-4 shadow-lg hidden sm:inline-flex ${
+                                    isDark
+                                      ? "bg-secondary text-white hover:bg-secondary/90 border-0"
+                                      : "bg-[#0072CF] text-white border-0 hover:bg-[#0072CF]/90"
+                                  }`}
+                                >
+                                  {caseItem.industry}
+                                </Badge>
+
+                                <div className="absolute bottom-4 left-4 right-4">
+                                  <h3 className="text-heading-2 mb-1 drop-shadow-lg text-white">
+                                    {caseItem.title}
+                                  </h3>
+                                </div>
+                              </div>
+
+                              <CardContent className="p-4 sm:p-6 flex flex-col gap-3 sm:gap-4">
+                                <p
+                                  className={`text-body-sm line-clamp-2 ${
+                                    isDark ? "text-gray-300" : "text-gray-600"
+                                  }`}
+                                >
+                                  {caseItem.description}
+                                </p>
+
+                                <div className="flex flex-wrap gap-1 sm:gap-2 mt-auto">
+                                  {caseItem.services
+                                    .slice(0, 2)
+                                    .map((service) => (
+                                      <span
+                                        key={service}
+                                        className={`rounded-full px-2 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium ${
+                                          isDark
+                                            ? "bg-accent/20 border border-accent/40 text-accent"
+                                            : "border border-[#0072CF]/30 bg-[#0072CF]/10 text-[#0072CF]"
+                                        }`}
+                                      >
+                                        {service}
+                                      </span>
+                                    ))}
+                                  {caseItem.services.length > 2 && (
+                                    <span
+                                      className={`rounded-full px-2 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium ${
+                                        isDark
+                                          ? "bg-gray-700/50 border border-gray-600 text-gray-300"
+                                          : "border border-gray-200 bg-gray-100 text-gray-600"
+                                      }`}
+                                    >
+                                      +{caseItem.services.length - 2}
+                                    </span>
+                                  )}
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        </MagneticCursorArrow>
+                      </motion.div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+            </div>
+            {/* Botón Ver portafolio debajo de los cards solo en móvil */}
+            <div className="sm:hidden mt-4 flex justify-center">
+              <Link
+                href="/portafolio"
+                className={`text-sm px-5 py-2.5 rounded-md font-medium transition-colors ${
+                  isDark
+                    ? "border border-white/20 text-white hover:bg-white/10"
+                    : "border border-[#060C20]/20 text-[#060C20] hover:bg-[#060C20]/5"
+                }`}
+              >
+                {t("caseDetail.verPortafolio")}
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
