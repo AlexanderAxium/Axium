@@ -52,7 +52,6 @@ const slugMap: Record<string, string> = {
   "ANJ Sports": "anjsports",
   AmbientalPE: "ambientalpe",
   "Instructor Management System": "siclo",
-  "Financial Management System": "financial-management",
   "Feedback Management System": "feedback-management",
 };
 
@@ -110,7 +109,7 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
       "vendiq",
       "feniz",
       "siclo",
-      "financial-management",
+      "fintrace",
       "feedback-management",
       "ambientalpe",
       "qintitec",
@@ -222,7 +221,7 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
     slugs: [
       "feniz",
       "qintitec",
-      "financial-management",
+      "fintrace",
       "feedback-management",
       "web-scraping-ai",
       "redesvip",
@@ -276,7 +275,7 @@ const TECH_FILTERS: { label: string; slugs: string[] }[] = [
       "hotelesparaiso",
       "lifetoursfl",
       "siclo",
-      "financial-management",
+      "fintrace",
       "moviflex",
       "capptura",
       "blendet",

@@ -594,6 +594,36 @@ def recorta(im, ratio):
     nh = int(w / ratio); return im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
 ```
 
+### Corolario (Fintrace, 2026-10-03): si el plano sangra, la zona segura no existe — se publica en 4:3
+
+La portada de Fintrace se publicó en 3:2 con el panel **sangrando por el costado
+izquierdo**. En la rejilla real —`aspect-[4/3]`, `<img>` de **421×316** a 1440 y
+**358×269** a 390— `object-fit: cover` se comió el 5,5 % de cada lado y el corte no
+cayó en margen: cayó encima del panel. En la tarjeta se leía literalmente **«umen»**
+donde decía «Resumen», y dos cifras partidas, **«9.60»** y **«.60»**.
+
+**Por qué la simulación no lo vio.** Se simuló recortando a 421×316 *una composición
+que ya era 4:3*, no aplicando el `cover` sobre el **archivo 3:2 que se publicó**. Al
+remuestrear un 4:3 a una caja 4:3 no se pierde ni un píxel, así que la simulación
+salía limpia con el defecto ya dentro del archivo. La regla de los dos recortes con
+Pillow sólo vale si se aplica **al fichero publicado**, y aun así no sustituye a mirar:
+lo que vale es **capturar el `<a>` de la ficha en el navegador real** (Playwright, el
+dev server, el `_next/image` de verdad) a 1440 y a 390 y mirarlo.
+⚠️ El optimizador de imágenes de Next cachea 60 s: tras republicar hay que esperar y
+comprobar que `img.naturalWidth/naturalHeight` ya es el aspecto nuevo antes de juzgar.
+
+**Y la decisión de fondo.** Una zona segura lateral del 8 % y un plano que sangra por
+ese mismo costado son incompatibles: el archivo tiene *dos* cantos que cortar (el suyo
+y el que añade el `cover`) y harían falta dos calles limpias de la app a la distancia
+exacta. Cuando se quiere el sangrado, **se publica en el aspecto del consumidor
+principal** (4:3, el de la rejilla: ahí el recorte es cero) y se mide que los cortes
+del otro consumidor —16:10, recorte vertical del 8,3 %— caigan en **banda neutra de la
+captura**, medidas sobre el PNG con un perfil de tinta por filas y por columnas, no a ojo.
+
+Las otras 44 portadas del portafolio siguen a 3:2 y **también pierden el 5,5 % por lado
+en la rejilla**; aguantan porque su composición deja margen ahí. Fintrace es hoy la única
+en 4:3. Si alguna vez se normaliza el parque, se normaliza entero.
+
 ### Mejorar una portada sin cambiarla: se cambia el soporte, no la idea
 
 Alexander, 2026-09-30: *«mejora la portada de aurore, no tan diferente de como está»*. Lo que
@@ -1298,3 +1328,603 @@ manchón, y sobre campo claro nubla media pieza.
 > desplazamiento corto y denso para el contacto; en Python, con la silueta
 > proyectada por una afín. Y el color de la sombra es **el campo oscurecido y
 > teñido**, nunca `#000` plano.
+
+### Un campo no es una pieza: copiar la forma sin el contenido (2026-10-03)
+
+Alexander, sobre las teselas del proceso de las páginas de servicio: *«estas imágenes **no
+tienen sentido**, ¿por qué salieron así?»*. Tenía razón y la causa cabe en una línea:
+
+> **Copié la FORMA de la referencia sin su CONTENIDO.** barrelny pone una tesela por paso del
+> proceso, y las suyas llevan **una figura gráfica** —formas con volumen, un objeto distinto en
+> cada paso—. Las mías eran **cuatro recortes del mismo suelo vacío** con un número encima: campo
+> sin sujeto, y además la misma foto cuatro veces.
+
+**La regla que faltaba escrita, y que vale para las 40 fichas:**
+
+1. **La plancha de materia y luz es el SUELO de una pieza, nunca la pieza.** Sirve de fondo bajo
+   algo real —un producto recortado, una captura, un impreso—. Sola, con un rótulo encima, no
+   enseña nada: es un cuadro vacío bien iluminado.
+2. **Como FONDO DE SECCIÓN sí vale sola** (detrás de texto, a sangre, con su velo). Ahí su papel
+   es dar cuerpo al campo, no contar algo. Es lo que hace brandvm con sus bandas oscuras.
+3. **Antes de copiar una ranura de una referencia, pregúntate qué METEN ellos dentro.** Si la
+   respuesta es «una figura» y yo sólo tengo campo, la ranura no es trasladable.
+4. **Si el bloque no tiene material real que lo pruebe, va sin imagen.** Un paso de proceso es una
+   actividad, no un entregable: no hay nada que fotografiar. viget tampoco ilustra su proceso.
+   Se resuelve con número grande, filete de acento y retícula. **Menos piezas y que se entiendan**
+   (Alexander, misma corrección: *«es preferible menos y que se entiendan»*).
+
+**Y la prueba, barata:** tapa el pie y el texto de al lado. Si la pieza sola no dice de qué va, la
+idea estaba en la frase, no en la imagen. Las 12 teselas se borraron; el reparto vertical bajó de
+60 % a 58 % y la página mejoró.
+
+---
+
+## Décima generación — «dispositivo en escena real» (Rematch, 2026-10-03)
+
+Dos rondas de portadas rechazadas antes de esta. La primera, las publicadas, por
+ser todas **la misma fórmula**: campo de textura + un rectángulo plano de
+interfaz flotando + logo al lado. La segunda, tres direcciones *sin* dispositivo
+(macro de material, tipografía de campaña, símbolo en relieve), con un **«no me
+gusta ni uno»**. Entonces Alexander dijo lo que faltaba:
+
+> «usa mockups así como las referencias. sé creativo. a veces mandar todo a la IA
+> de una sale más, compón por capas.»
+
+Las referencias son las portadas de **brandvm.com/case-studies**, y lo que tienen
+y a lo nuestro le faltaba cabe en una frase: **un dispositivo real, dentro de una
+escena real con su luz y su sombra de contacto**, con el sitio real del cliente en
+la pantalla. No un rectángulo plano sobre un fondo plano.
+
+- **Aequitas** — MacBook abierto sobre un **sofá de pana**, en ángulo, luz suave
+  de ventana. Es el arquetipo cuando el dispositivo se posa en un material.
+- **Readymode** — MacBook sobre **una roca**, escena oscura, con tarjetas de UI
+  saliendo de la pantalla. Es el arquetipo cuando la escena está vacía.
+
+### La escena se elige por el material del cliente, no por el dispositivo
+
+El error de quien monta un mockup es pensar «portátil → escritorio». La
+referencia no hace eso: pone el aparato **en el material del cliente**. Pana
+señorial para un bufete, roca para una marca dura. Para Rematch, el SaaS de
+reservas de pádel, el material es **la madera gastada del banco de pista**, al
+otro lado del cristal, donde el dueño del club saca el portátil entre partido y
+partido. La escena dice *dónde* se usa el producto antes de que se lea una
+palabra. Un escritorio de oficina habría sido el mockup de cualquiera.
+
+**Y la hora decide quién ilumina.** A la hora azul —el sol puesto, los focos de
+la pista calentando— la pantalla es **la fuente de luz más potente del cuadro**.
+Eso es lo que hace creíble la capa 3 y lo que faltaba en las dos rondas
+rechazadas: allí la interfaz no iluminaba nada porque no estaba *dentro* de
+ninguna escena. Si además el sitio del cliente es claro, la pantalla clara sobre
+penumbra da el máximo contraste y **sobrevive al velo `black/50` del carrusel**,
+que es donde una pantalla oscura se enfanga.
+
+### El orden de capas, que es el encargo y no un detalle
+
+De abajo arriba. **Lo único que se genera es la capa 1.**
+
+| # | Capa | De dónde sale |
+|---|---|---|
+| 1 | **Escena** | **Generada**: solo entorno, el dispositivo **como objeto** y la luz, con la **pantalla apagada: negra, lisa, vacía**. El prompt prohíbe explícitamente texto, letras, cifras, interfaz, logotipos y marcas, y especifica cámara (altura, distancia, lente), materia, hora y temperatura de luz |
+| 2 | **La pantalla real** | Captura del sitio con Playwright, llevada al cuadrilátero por **homografía** |
+| 3 | **La luz de la pantalla** | Resplandor con el color medio de la captura, sobre el teclado y la superficie de alrededor |
+| 4 | **El reflejo del entorno** | Sobre el vidrio, al 6–12 %, con el gradiente del propio render |
+| 5 | **Tarjetas de UI flotando** | Opcional, y casi siempre **no** (ver abajo) |
+| 6 | **La marca** | **Archivo real**, estampado sobre un plano medido de la escena. Jamás redibujada |
+| 7 | **Gradación** | Una sola curva o tinte que unifique todas las capas |
+
+**La prueba de que está bien compuesto:** tapa la pantalla y pregunta si la
+escena se sostiene; destápala y pregunta si la pantalla **pertenece** —misma
+temperatura de color, misma nitidez, sombra de contacto creíble—. Si parece
+pegada, **falta la capa 3 o la 4**, que son las dos que todo el mundo se salta.
+
+Medido en Rematch: el reflejo quedó en **1,7 % de media** con pico arriba, y la
+captura se metió un punto más fría que la escena (0,988 en rojo, 1,022 en azul) y
+con los negros levantados 7, porque un LCD real no da ni blanco puro ni negro
+puro.
+
+### Pantalla NEGRA, no verde — y las esquinas se MIDEN
+
+`componer_pantalla.py` trabaja con pantalla verde, y sigue valiendo. Pero en una
+escena con verdes o limas propios —una pista de pádel, una pelota, el filo de una
+pala— la máscara verde se engaña (ya pasó, § «Un objeto verde en la escena engaña
+a la máscara»). Ahí se pide la pantalla **apagada, negro mate uniforme**: el
+bisel iluminado la rodea de brillo y el umbral separa limpio. Medido en Rematch:
+**pantalla 3–5 de luminancia, bisel 26–30**, umbral en 15.
+
+Y las cuatro esquinas **no se miran a ojo**:
+
+1. **Umbralizar** el negro y quedarse con la **componente conexa** que contiene
+   una semilla dentro de la pantalla. Sin esto, el umbral se lleva las teclas
+   oscuras, la valla del fondo y la sombra del banco.
+2. **Ajustar los cuatro bordes por mínimos cuadrados** sobre su tramo recto
+   (descartando el 16 % de cada punta, que es donde está el radio).
+3. **Las esquinas son las intersecciones** de esas cuatro rectas. Así las curvas
+   del bisel no encogen el cuadrilátero — que es justo lo que le pasaba a
+   `esquinas()` tomando los extremos de x±y.
+4. **El residuo máximo de cada ajuste es el control de calidad.** Por debajo de
+   ~8 px el borde es recto y la medida vale. Por encima, el umbral o la semilla
+   están cogiendo algo que no es la pantalla. En Rematch quedó en **2,2 / 7,3 /
+   1,8 / 1,0 px**, y las cuatro esquinas se recortaron a 1:1 para mirarlas.
+
+Y sigue valiendo lo de la quinta generación: **la captura se mapea entera**. El
+hueco de Rematch medía 1,488 de aspecto por escorzo y la pantalla es 16:10;
+recortar la captura a 1,488 le habría comido los costados.
+
+### Un plano en perspectiva es un TRAPECIO: el rectángulo de área mínima no sirve
+
+Para estampar la marca sobre un objeto plano de la escena —una tarjeta en el
+banco, una hoja, la tapa de un dossier— hay que medir sus cuatro esquinas. Dos
+métodos que parecen razonables y **no funcionan**:
+
+- **Ajustar cuatro rectas por filas**, como en la pantalla. Si el objeto está
+  girado en diamante, «el primer píxel de cada fila» recorre **dos aristas
+  distintas** y el ajuste no significa nada.
+- **El rectángulo de área mínima** (rotating calipers). Un plano en perspectiva
+  se proyecta como un **trapecio**, no como un rectángulo: la caja que lo
+  envuelve sobresale por dos lados. En la tarjeta de Rematch se comía 40 px de
+  madera por arriba y por abajo.
+
+**Lo que sí funciona:** casco convexo y **reducirlo a 4 vértices quitando siempre
+el vértice que menos área aporta**. Converge en las cuatro esquinas verdaderas y
+los puntos casi colineales de cada arista caen solos.
+
+Con las cuatro esquinas se arma la homografía del cuadrado unidad y se miden sus
+**escalas locales** (en Rematch, 232 px por unidad en u y 182 en v). Entonces
+—y esto es lo que vale— el alto del logotipo se **calcula** para que no se
+deforme, en vez de probar números: `alto_v = (ancho_u · su / aspecto) / sv`.
+Mezcla en `multiply` al 95 % (R25 `tinta-impresa`), con el desenfoque que tenga
+el objeto. Salió un logotipo de 153 × 26 px sin una sola iteración a ojo.
+
+### El modelo dibuja glifos inventados en las teclas, por mucho que se le prohíba
+
+El prompt prohibía el texto **tres veces**, en tres sitios distintos, y aun así
+los keycaps salieron con letras falsas. Es el mismo defecto que documenta OpenAI
+(«problemas con la colocación y la claridad precisas del texto») y por el que la
+interfaz nunca se genera; lo nuevo es que **también aparece en el atrezo**, donde
+uno no lo busca.
+
+**El remedio correcto no es tapar: es desenfocar el polígono del teclado**, con
+el borde difuminado. Y no es un parche, es lo físicamente cierto: **las teclas
+están más cerca de la cámara que la pantalla**, así que a f/5,6 ese desenfoque
+tenía que estar. Las aristas de las teclas siguen leyéndose; los glifos ya no.
+2,8 px bastaron.
+
+> Regla general: **buscar el texto inventado en el atrezo**, no solo en la
+> pantalla. Teclas, etiquetas de botellas, costuras de ropa, carteles del fondo,
+> dorsales. Si aparece, lo que lo quita es el desenfoque que la física ya pedía.
+
+### A tamaño de tarjeta el texto de la app NO se va a leer. Nunca
+
+Medido en la ficha de Fintrace: para que un texto de **12 px** de la interfaz
+llegue a los **9 px servidos** que hacen falta para leerlo, el recorte de UI no
+podría pasar de unos **207 px de ancho**. Ninguna portada tiene ese margen.
+
+> **Lo que manda en un mockup a tamaño de tarjeta es que se reconozcan los
+> elementos GRANDES**: el titular, el color de marca, la forma de la cabecera, la
+> silueta de la retícula. El texto pequeño es textura, y está bien que lo sea.
+
+Por eso en Rematch la captura se tomó a **1280×800** y no a 1680×1050: el mismo
+sitio, el mismo pliegue, pero el titular «Tu club deportivo, en orden y al día»
+sale un 30 % más grande dentro de la pantalla y **se reconoce a 421 px**. Es la
+misma jugada que el «Air Solutions» de Mostardi Platt. Elegir el ancho de captura
+es una decisión de legibilidad, no de comodidad.
+
+**Y el encuadre se decide con las dos cifras del servidor**, no por gusto: la
+pantalla al **~40 % del ancho** (brandvm anda por el 42) y su banda vertical
+entre el **28 % y el 68 % de la altura**, porque la tarjeta del carrusel a `sm`
+es casi 3:1 y solo conserva el 44 % central. El cuarto inferior, materia vacía
+para el velo y el título; la esquina superior izquierda, libre para la chapa.
+
+### Las tarjetas flotando: se probaron y se tiraron
+
+Se montó la variante Readymode entera —dos recortes **reales** de la UI a dos
+profundidades, con su giro, su desenfoque y su sombra creciente— y **se miró**.
+No funciona, y la razón es concreta: en Readymode las tarjetas salen de la
+pantalla **sobre una roca oscura y vacía**, donde no compiten con nada. Sobre una
+fotografía que ya está llena —pista, red, atardecer, madera— lo que se ve es **un
+rectángulo plano de interfaz flotando sobre un campo**: literalmente la fórmula
+que Alexander había rechazado. La de primer plano se lee como una pegatina,
+porque no hay ninguna pantalla ahí de la que pueda estar saliendo.
+
+> **Readymode es para escenas vacías; Aequitas, para escenas con materia.** No se
+> mezclan. Y por lo mismo **no hay logotipo flotando en una esquina**: ninguna de
+> las dos referencias lo lleva, la tarjeta del portafolio ya imprime el nombre
+> debajo, y el logotipo real ya está en la cabecera del sitio en pantalla. «Logo
+> al lado» era parte de lo rechazado.
+
+### Generar poco y componer mucho
+
+**Una sola llamada** a `gpt-image-2.5-flare`, `quality: high`, **3072×2304**
+(ese techo funciona), y salió a la primera: **635 tokens de entrada, 3 922 de
+salida, 4 557 en total, 26 s**. Todo lo demás —pantalla, luz, reflejo, marca,
+encuadre y grado— es composición: **0 tokens**. Las capturas con Playwright
+tampoco cuestan nada. Es la respuesta operativa a *«a veces mandar todo a la IA
+de una sale más»*.
+
+Resultado medido (§ 12 de `ESTANDAR-FICHA.md`): rango dinámico **255**, nitidez
+local **1 634** (umbral 800), 1,45 % de píxeles bajo 5 de luminancia y 8,65 %
+sobre 250 — negros y blancos reales en el mismo cuadro, que es lo que hacen las
+de brandvm. `escalones.py`: 0 filas, 0 columnas.
+
+### Los tres scripts
+
+Están en `scripts/`, solo con **PIL y numpy** (en esta máquina **no hay OpenCV ni
+scipy**, y `PIL.ImageDraw.floodfill` no llega a pintar sobre una imagen creada
+con `Image.fromarray`: la componente conexa va por reconstrucción morfológica
+sobre una copia submuestreada):
+
+- **`pantalla-esquinas.py`** — las cuatro esquinas de una pantalla apagada, con
+  su máscara de esquinas redondeadas, los residuos del ajuste y la tira de
+  control a 1:1.
+- **`plano-perspectiva.py`** — el cuadrilátero de un objeto plano en
+  perspectiva (casco convexo reducido a 4), su homografía, sus escalas locales y
+  los coeficientes de `Image.PERSPECTIVE`.
+- **`componer-mockup.py`** — las siete capas, con banderas para el teclado, la
+  marca, el recorte y el tamaño de entrega. La orden exacta que produjo la
+  portada de Rematch está en su cabecera, y vuelve a producirla idéntica.
+
+---
+
+## Undécima generación — el marco se CONSTRUYE y el modelo solo pone luz (Fintrace, Feniz y ANJ, 2026-10-05)
+
+**Dieciséis portadas rechazadas en un día**, en cuatro rondas: las cuatro
+publicadas, tres direcciones sin dispositivo, cuatro con mockup, y al final
+*«las portadas están feas, haz otras. ¿qué te impide generar mejor calidad de
+prompts e imágenes?»*.
+
+**Las dieciséis pasaban todas las comprobaciones numéricas** —rango ≥230,
+nitidez ≥800, sin desborde, legibles—. De ahí la lección que ordena todo lo
+demás:
+
+> **Las métricas detectan lo roto, no lo feo.** Sirven para parar una entrega
+> mala; no sirven como prueba de que una entrega es buena. Eso solo lo dice
+> mirar la pieza a 421 px al lado de la referencia.
+
+Comparando lo nuestro con `brandvm.com/case-studies`, el salto estaba en tres
+sitios, y cada uno tiene su remedio.
+
+### 1 · El dispositivo no lo genera nadie: se dibuja en SVG y se mide
+
+Los dispositivos de brandvm son fotografía o render de verdad. Los nuestros los
+inventaba el modelo de difusión y tenían blandura de IA: biseles que no cierran,
+grosores inconsistentes, chaflanes inventados. A 1:1 es masilla.
+
+`scripts/marco-dispositivo.cjs` lo dibuja en SVG y lo rinde con Playwright a
+**PNG RGBA con la pantalla transparente**. Las piezas quedan en `marcos/` y se
+reutilizan en cualquier portada, a cualquier tamaño, sin volver a llamar a ningún
+modelo.
+
+**La propiedad que la difusión nunca acierta y aquí es exacta por construcción:**
+
+```
+R_cuerpo = R_pantalla + bisel + pared + chaflán
+```
+
+Dos rectángulos redondeados **concéntricos** con esa relación de radios distan lo
+mismo en todo su perímetro, **esquinas incluidas** → el anillo del marco tiene
+**ancho constante**. Es la diferencia entre un dispositivo y un dibujo de un
+dispositivo. Medido en la tableta de Fintrace: anillo de **63,54 px constante**
+(bisel 45 + pared 14 + chaflán 4,54), pantalla 1080×1440 en un lienzo de
+1207×1567, radio de pantalla 54 y radio de cuerpo 117,54.
+
+Las proporciones salen de **aparatos reales**, no de gusto. En una tableta
+(iPad Pro 11": cuerpo 178,5 mm, pantalla 160 mm) el bisel mide **4,2 %** del
+ancho de pantalla, la pared lateral **1,3 %**, el chaflán **0,42 %** y la esquina
+de la pantalla **5 %**. El móvil va con 3,0 / 1,6 / 0,55 / 12,5 % y su isla.
+
+Capas del anillo, de fuera a dentro: **chaflán** (hairline con un degradado de
+especular que se enciende dos veces, arriba a la izquierda y abajo a la derecha),
+**pared** (degradado de cilindro), **bisel** (negro con sheen muy flojo) y
+**labio del cristal** (la luz que entra por el canto interior). Cámara y altavoz
+en su fracción del bisel, no a ojo. El hueco se saca con una `<mask>` SVG —el
+cuerpo menos la pantalla—, que es lo que deja el alfa limpio de verdad.
+
+Y **la cámara también se construye**: la tableta de Fintrace va girada **2,2°**
+con el canto derecho escorzado 1,2 %; la de Feniz **−1,7°** al otro lado. El
+cuadrilátero se calcula y **la sombra sale de la silueta ya deformada**. Un
+aparato a escuadra perfecta se lee como plantilla de maqueta; dos grados lo
+convierten en un objeto fotografiado.
+
+Cada carpeta de `marcos/` trae `marco.png`, `vidrio.png` (el reflejo, va **encima**
+de la captura), `mascara.png` y `geom.json` con el rectángulo exacto.
+
+### 2 · El modelo se queda solo con lo que hace bien: campo, luz, grano
+
+Las escenas de brandvm, cuando las hay, son fotografías. Las nuestras eran
+difusión imitando un lugar, y se notaba: rejas, maderas y pilas de papel con esa
+textura resbaladiza. **Las dos mejores portadas de brandvm —Volt y myHSA— no
+tienen una sola fotografía.**
+
+El prompt es una especificación por categorías con un bloque de **prohibiciones
+explícito**: ni objeto, ni superficie, ni horizonte, ni texto, ni logotipo, ni
+forma geométrica, ni destello, ni bokeh. Los tres campos salieron limpios **a la
+primera**.
+
+> **Y el campo tiene que ser el del cliente, no un degradado bonito.** Fintrace
+> es un barrido diagonal azul; ANJ es negro con **dos** luces —cian de XIOM y
+> magenta de Butterfly, que es la lógica de su propia web—; Feniz es **una sola
+> luz que sube desde abajo**, la forja del ave que lleva su nombre. Tres gestos
+> distintos, no tres versiones del mismo degradado.
+
+**Y la micro-textura del modelo se borra.** En las zonas muy oscuras y en las muy
+encendidas, lo que el modelo llama grano se le organiza en nubes y vetas que
+parecen tela arrugada o pared estucada. Se mata con un desenfoque corto (3,4–3,6
+px, y hasta 12–14 px pesado por luminancia en los extremos) y **el grano se vuelve
+a poner limpio al final, igual en todo el cuadro** (σ 4,6–5,2). Ese grano común
+es lo que hace que el aparato y el campo pertenezcan a la misma fotografía.
+
+### 3 · El color se corrige en HSV, nunca multiplicando canales
+
+Las pantallas de brandvm son limpias y de tipografía enorme; las nuestras eran
+paneles densos. Pero el error de color fue peor y merece su propia regla.
+
+El campo de Fintrace salió con la banda media en **(33, 57, 228)**, a un paso del
+`#3040F5` de la marca. Empujarlo «hacia la marca» un 75 % con un cociente de
+canales multiplicaba el **rojo por 1,63** y volvía el campo **lila**. Bajado al
+30 %, el azul volvió a ser el suyo.
+
+El riesgo simétrico es quedarse corto: la Feniz anterior se quedó en **23–39 % de
+saturación** y en la rejilla blanca se desvanecía.
+
+> **Regla: el tono y la saturación se ajustan en HSV, donde son cosas separadas,
+> y se COMPRUEBAN midiendo — sólo sobre campo, nunca sobre la pantalla blanca,
+> que falsea el tono.** `ajustar_hs(a, tono_objetivo, sat_max, fuerza_tono)` en
+> `componer-campo.py`, con `hsv()` y `desde_hsv()` en numpy puro.
+
+Medido en Feniz: marca `#F5BB32` = **42,2° / 79,6 %**; campo generado 44,6 / 83,0
+en la banda alta y 36,3 / 97,0 en los medios (oro, pero tirando a naranja);
+portada final **43,4 / 81,5** y **40,1 / 91,0**. Tono al 55 % hacia los 42° y
+techo de saturación en 0,90.
+
+### 4 · El umbral de los 12 px servidos
+
+A tamaño de tarjeta el texto de la app no se lee nunca (novena y décima
+generación). Lo que manda es que **el elemento mayor se reconozca**, y eso ahora
+se calcula en vez de tantearse:
+
+```
+servido = (alto_del_elemento / alto_del_recorte) × alto_de_pantalla_en_el_cuadro × 421/3072
+```
+
+**Umbral: 12 px.** Si no llega, se recorta más. Y lo que decide es la **razón**
+entre el elemento y el recorte: subir el `deviceScaleFactor` no sirve de nada.
+
+| | elemento | medida | servido |
+|---|---|---|---|
+| Fintrace | caja del titular | 104 px en un recorte de 1560, pantalla de 1440 | **13,2** ✔ |
+| Feniz | caja de «Dashboard» | 139 px en un recorte de 1560, pantalla de 1360 | **16,6** ✔ |
+| Feniz | cifras de KPI | 85 px | 10,2 — se reconocen, no se leen |
+| ANJ | envase ZYRE-03 | 1360 px en el cuadro | **186** ✔ |
+
+**Y el aspecto del recorte tiene que ser EXACTAMENTE el de la pantalla**, o la
+captura se deforma. De ahí que los tres recortes sean 1170×1560 (0,7500) para una
+tableta 4:3. `montar_dispositivo()` lo comprueba y avisa.
+
+Corolario: una pantalla **vertical** rinde mucho más que una horizontal, porque
+el alto de pantalla en el cuadro es el que multiplica. Un portátil en apaisado
+casi nunca pasa el umbral.
+
+### 5 · flare contra sunburst, medido
+
+Mismo prompt, mismo tamaño, misma calidad, los dos modelos, dos veces. Evidencia
+en `public/images/portadas-propuesta/v2/_modelos-flare-vs-sunburst.jpg` y
+descartes en `campos/descartes/`.
+
+> **Gana `gpt-image-2.5-flare` para campos abstractos.**
+
+- **flare** deja un ruido **estocástico e isótropo**: moteado fino y parejo sobre
+  un degradado liso. Es grano.
+- **sunburst** invierte su capacidad extra en **estructura**, y en un campo que
+  por definición no tiene ninguna, se la inventa: filamentos y grumos que se
+  arrastran como moho en el negro, vetas y una banda horizontal en el azul.
+  Parece una pared estucada fotografiada.
+- σ de alta frecuencia en el mismo recorte: **10,60 (sunburst)** contra **7,06
+  (flare)** — pero la energía de más está **correlacionada**, no es ruido blanco.
+  Más textura y peor textura.
+- sunburst además empuja el núcleo caliente al borde y parte el degradado en dos
+  lóbulos: menos gobernable.
+- **Cuestan exactamente lo mismo** (3 922 tokens de salida los cinco) y sunburst
+  tarda un **30 % más** (34–36 s contra 27 s).
+
+sunburst queda para lo que dice su ficha —**edición precisa con máscara**—, donde
+esa obsesión por la estructura juega a favor.
+
+### 6 · La marca encima: el fichero real, y en la versión que toca
+
+`ft-logo.png` es la versión **oscura** de Fintrace: sobre azul marino no leería.
+La clara existe y es suya — está en el **pie de su propia landing**. De ahí sale,
+des-matada contra el navy medido (10, 13, 38) y con el color des-premultiplicado.
+Ni redibujada ni recoloreada.
+
+> **Regla: si la versión clara de un logotipo no está en el fichero, se busca en
+> el sitio del cliente y se des-mata contra su fondo. Recolorear el fichero
+> oscuro no es una opción.**
+
+Y dos condiciones que se miden: **dentro del 83 % central** (el carrusel recorta
+a 16:10 y pone velo `black/50`), y **lejos de la cabecera del sitio que ya sale
+en la pantalla** — si no, el nombre aparece dos veces y se lee como error. En
+Fintrace la marca va abajo a la derecha (banda 81,2–85,9 %, a 1 400 px de la
+cabecera); en Feniz, arriba a la izquierda (13,0–23,1 %, a más de 1 100 px). ANJ
+no lleva marca compuesta: su logotipo es un ráster pequeño con halo que **no se
+amplía**, y ya sale real y nítido en la cabecera del sitio dentro de la pantalla.
+
+### 7 · Lo que pega las capas
+
+No es el recorte. Es, por este orden: **sombra de contacto** (una corta y dura y
+otra larga y abierta, las dos desde la silueta ya deformada), **resplandor de la
+pantalla** sobre el campo —entibiado con el color del entorno, si no abre un
+agujero frío—, **luz de borde** (`luz_de_borde()`: el alfa menos el alfa
+desplazado hacia dentro; lo que delata un montaje es que falte, y lo que lo
+delata más es que sobre), **reflejo del campo sobre el cristal al 5 %**, y el
+**grano final común**.
+
+Un aviso de implementación que costó una iteración entera: **la mezcla `screen`
+se hace toda en 0..1 o toda en 0..255, nunca mezclada.** Un `255 - (255-b)*(1-a)`
+con `b` en 0..1 convierte un filo de luz en un pegote blanco del tamaño del
+objeto. Por eso `suma_luz()` vive en `componer-campo.py` y trabaja siempre en
+0..1.
+
+### Los scripts
+
+- **`marco-dispositivo.cjs`** — el marco en SVG, con el anillo calculado.
+  `node scripts/marco-dispositivo.cjs <preset> <anchoPantalla> <dirSalida> [cuerpo]`.
+  Presets: `tableta-v`, `tableta-h`, `movil-v`, `portatil-h`. Cuerpos: `grafito`,
+  `aluminio`, `negro`.
+- **`componer-campo.py`** — el compositor: `montar_dispositivo`, `deformar`,
+  `sombra`, `resplandor`, `luz_de_borde`, `suma_luz`, `hsv` / `desde_hsv` /
+  `ajustar_hs`, `rematar` y `medir`. Solo PIL y numpy.
+- **`recortar-producto.py`** — recorta un producto fotografiado sobre fondo claro
+  por reconstrucción morfológica **desde el borde** (el fondo es la componente
+  conexa que toca el marco, no «todo lo claro»: así no se agujerea un aro blanco
+  dentro del producto).
+- **`portada-fintrace.py`**, **`portada-feniz.py`**, **`portada-anjsports.py`** —
+  las tres portadas, reproducibles tal cual.
+- `campos/` — los campos generados, sus prompts y los descartes de sunburst.
+  `marcos/` — los marcos rendidos. `marcas/` — las versiones claras des-matadas.
+
+### Coste
+
+**5 llamadas**, `quality: high`, 3072×2304: **2 467 tokens de entrada, 19 610 de
+salida, 22 077 en total**. Todo lo demás —marco, pantalla, recortes, sombras,
+luces de borde, reflejo, marca, grado y grano— es composición: **0 tokens**.
+
+### Lo que esta generación todavía no resuelve
+
+1. **Las piezas flotan sobre nada.** La sombra cae sobre un campo, que es una
+   convención, no una fotografía. Es el resto de montaje más visible.
+2. **Reiluminar un producto fotografiado es una aproximación.** Al envase de ANJ
+   se le aplicó una rampa horizontal; su luz original (suave, desde arriba a la
+   izquierda) sigue asomando en el canto superior.
+3. **El campo es un solo gesto.** Volt tiene varios trazos cruzados con saltos de
+   valor duros; los nuestros son barridos suaves y por eso más blandos. Siguiente
+   prueba: generar dos campos y superponerlos.
+4. **Las fichas de UI flotando** al modo AssetComet/myHSA están sin probar sobre
+   campo abstracto. Sobre escena fotográfica ya se tiraron (décima generación),
+   pero sobre campo son justo lo que hacen las dos referencias buenas.
+
+---
+
+## Duodécima generación — el campo también puede ser SUELO (Sportt Perú, 2026-10-05)
+
+La undécima dejó anotado como pendiente nº 1 que **«las piezas flotan sobre
+nada»**. En Sportt el campo generado ya no es un degradado abstracto: es un
+**ciclorama** —el fondo infinito de papel sobre el que el propio cliente
+fotografía sus ocho fichas de categoría—. El aparato se apoya en él, con sombra
+de contacto y reflejo corto. Prompt en `campos/sportt.prompt.txt`, script en
+`scripts/portada-sportt.py`.
+
+### 1 · Cómo se pide un ciclorama sin que salga una línea de horizonte
+
+El prompt mantiene la estructura de la undécima (categorías + prohibiciones
+explícitas) y cambia dos cosas:
+
+- La sección **WHAT IT IS** describe «una hoja continua de papel sin costura que
+  curva de la pared al suelo; la curva es un degradado largo y continuo: **no hay
+  costura, ni borde, ni línea, ni esquina, ni horizonte** en ninguna parte».
+- Se añade una sección **EMPTINESS** aparte de las prohibiciones: «la cueva está
+  completamente vacía: ni producto, ni atrezo, ni peana, ni mesa, ni tela, **ni
+  la sombra de nada, ni el reflejo de nada**». Sin esa frase el modelo pone la
+  sombra de un objeto que no existe.
+
+**Las dos variantes salieron limpias a la primera** (`flare`, `high`, 3072×2304,
+3 922 tokens de salida cada una, 23–25 s). Ninguna trajo horizonte ni estructura.
+
+### 2 · El reflejo que apoya la pieza — y la cuenta que se falla
+
+```
+dy = 2·pie − alto_lienzo + 1
+```
+
+Al voltear el lienzo entero, un punto en `y` acaba en `H−1−y`; para que el pie
+del aparato caiga sobre sí mismo el desplazamiento es ése, **no `pie − H`**. Con
+la cuenta mal el reflejo se va fuera del cuadro y la pieza sigue flotando sin
+que se note por qué. Y el desvanecido se mide **desde la línea del espejo**, no
+desde el borde del lienzo (300 px, exponente 1,7, opacidad 0,30). Tres sombras,
+no dos: contacto duro (σ 14), media (σ 56) y oclusión abierta (σ 180).
+
+### 3 · Oscurecer un campo MULTIPLICANDO lo enturbia
+
+El error simétrico al de la undécima (§3, el tono en HSV). El campo del modelo
+arrastraba rosa en toda la mitad baja; una rampa multiplicativa para hundir el
+suelo lo llevó a **malva sucio**. La regla es la misma de allí llevada de la
+tonalidad a la luminancia:
+
+> **El suelo y las zonas en sombra se MEZCLAN hacia un color medido —grafito
+> frío, papel frío—, no se multiplican.** `a·(1−k) + objetivo·k`.
+
+### 4 · Cuando la marca del cliente es un ráster de 160 px
+
+El logotipo de Sportt vive en el sitio como PNG de **160×48**: ampliarlo no es
+una opción. Pero el **icono de 512** del mismo sitio (`android-chrome-512x512`)
+lleva el lockup entero a **~430 px**, que es casi el triple. De ahí sale, y se
+des-mata **por sus dos tintas** (magenta `#FD4391` y gris `#CECED1`): para cada
+píxel se prueba la recta blanco→tinta y se toma la que menos error deja; el alfa
+es la proyección sobre esa recta. Después, subida tipo vector: ×5 LANCZOS,
+endurecido suave del alfa (`(a−0,46)·2+0,5`), color rellenado por NEAREST para
+que el borde no tire a blanco, y bajada al tamaño final.
+
+> **Regla: antes de dar por imposible el logotipo de un cliente, mirar sus
+> iconos de PWA.** Suelen ser cinco veces el raster de la cabecera.
+
+### 5 · El par se sirve a 648 px, y eso decide QUÉ cabe
+
+Lo que §4 bis de `ESTANDAR-FICHA` dice en palabras, en cuenta:
+
+```
+servido = (ancho_en_el_lienzo / ancho_css_del_origen) × 648/1280
+```
+
+Una página de 1 920 css metida entera en un par da **0,41 px servidos por píxel
+css**: tipografía de 14 px → 5,8 px. Ilegible. Por eso las cuatro piezas de par
+de Sportt son **recortes de detalle** (el desplegable de categorías a 0,96×, la
+tarjeta del carrito a 0,84×) o **pantallas de móvil** (0,70×). La página entera
+solo cabe en una ancha.
+
+### 6 · Dos tiendas del mismo rubro en la misma rejilla
+
+ANJ Sports (puesto 7) y Sportt (19) venden lo mismo. Lo que las separa no se
+decidió por gusto: se midió abriendo los dos sitios.
+
+| | ANJ Sports | Sportt Perú |
+|---|---|---|
+| orden del catálogo | por **marca** (XIOM, Butterfly) | por **criterio de juego** (jebes lisos / con cocos) |
+| argumento | 34 deportistas patrocinados desde 2010 | **servicio de pegado gratis**, con vídeo de 1:03 |
+| paleta | marino `#00002F` + cian y magenta de sus marcas | blanco, `#0A0A0A` y **su** magenta `#EC4899` |
+| tipografía | Druk Wide + AdihausDIN | Chakra Petch + Satoshi |
+| portada | **oscura**, ventana apaisada, pelota naranja | **clara**, móvil vertical, ciclorama magenta |
+
+**La decisión que lo resuelve es el valor, no el motivo.** ANJ mide 41,7 de
+luminancia media; Sportt, 166,8. Dos tarjetas oscuras del mismo rubro se leen
+gemelas aunque el contenido sea distinto; una clara y una oscura, no.
+
+### 7 · Un vídeo vertical dentro de un reproductor apaisado
+
+El caso más puro de «las métricas detectan lo roto, no lo feo» de toda la
+sesión. El vídeo del taller de Sportt es **vertical (480×848)** y su sitio lo
+sirve en un reproductor **16:9**, así que lo muestra con **dos franjas negras
+enormes** a los lados. Meter esa captura tal cual en la pieza pasaba todas las
+medidas —rango 255, sin desborde, sin franja muerta detectada— y a tamaño
+servido **se leía como un vídeo roto o sin cargar**, no como una decisión. De
+paso dejaba el modal pequeño dentro de mucho campo oscuro vacío.
+
+Lo que **no** se puede hacer es recomponer su diálogo alrededor del fotograma
+vertical: eso es inventar una UI que el cliente no tiene. Lo que sí:
+
+> **Citar el diálogo en vez de reproducirlo.** Se recorta su **cabecera entera y
+> sin tocar** —esquinas redondeadas, título y cruz de cerrar—, que sangra por
+> abajo como el plano grande y reconocible que es, y debajo va **la secuencia
+> del vídeo a su proporción real**. El modal sigue probando que eso vive dentro
+> de su tienda; los fotogramas llenan el cuadro y cuentan el servicio.
+
+Efecto medido de rebote: con el reproductor dentro, `sp-pegado` quedaba a **31
+bits de Hamming** de `sp-familias` —las dos, campo oscuro con rectángulos claros
+en fila, por debajo del umbral de 40 del §5—. Recompuesta, la pareja más cercana
+de la ficha pasa a **55 bits**. Arreglar lo feo arregló también la medida.
+
+### Coste
+
+**2 llamadas** a `gpt-image-2.5-flare`, `quality: high`, 3072×2304: **1 108
+tokens de entrada, 7 844 de salida, 8 952 en total** (dos variantes del mismo
+campo; se publicó la primera). Todo lo demás —marco, pantalla, reflejo, sombras,
+marca, las diez piezas de galería y sus seis versiones móviles— es composición
+con Playwright y PIL: **0 tokens**.

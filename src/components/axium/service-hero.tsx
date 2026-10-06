@@ -5,12 +5,21 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { smoothEase } from "~/components/axium/service-shared";
 import type { ServicePageData } from "~/data/services-data";
+import { useTranslation } from "~/hooks/useTranslation";
 
 interface ServiceHeroProps {
   data: ServicePageData;
+  /** Clave de la página en el namespace `services` (ej. "design-branding"). */
+  slug?: string;
 }
 
-export function ServiceHero({ data }: ServiceHeroProps) {
+export function ServiceHero({ data, slug }: ServiceHeroProps) {
+  const { t } = useTranslation("services");
+  const k = slug ?? data.slug;
+  const tr = (key: string, fallback: string) => {
+    const v = t(key);
+    return v === key ? fallback : v;
+  };
   const handleWhatsApp = () => {
     const encoded = encodeURIComponent(data.whatsappMessage);
     window.open(`https://wa.me/51991285679?text=${encoded}`, "_blank");
@@ -40,13 +49,20 @@ export function ServiceHero({ data }: ServiceHeroProps) {
               transition={{ duration: 0.4, ease: smoothEase }}
               className="mb-4 flex items-center gap-2 text-body-sm text-white/40"
             >
-              <Link href="/" className="transition-colors hover:text-white/70">
-                Inicio
+              <Link
+                href="/"
+                className="inline-flex min-h-[24px] items-center transition-colors hover:text-white/70"
+              >
+                {tr("common.home", "Inicio")}
               </Link>
               <span>/</span>
-              <span className="text-white/60">Servicios</span>
+              <span className="text-white/60">
+                {tr("common.services", "Servicios")}
+              </span>
               <span>/</span>
-              <span className="text-white/80">{data.shortTitle}</span>
+              <span className="text-white/80">
+                {tr(`${k}.hero.short`, data.shortTitle)}
+              </span>
             </motion.nav>
 
             <motion.h1
@@ -55,7 +71,7 @@ export function ServiceHero({ data }: ServiceHeroProps) {
               transition={{ duration: 0.45, delay: 0.08, ease: smoothEase }}
               className="text-display text-white"
             >
-              {data.title}
+              {tr(`${k}.hero.title`, data.title)}
             </motion.h1>
 
             <motion.p
@@ -64,7 +80,7 @@ export function ServiceHero({ data }: ServiceHeroProps) {
               transition={{ duration: 0.45, delay: 0.12, ease: smoothEase }}
               className="mt-3 max-w-xl text-body text-white/70"
             >
-              {data.description}
+              {tr(`${k}.hero.description`, data.description)}
             </motion.p>
 
             <motion.div
@@ -79,13 +95,13 @@ export function ServiceHero({ data }: ServiceHeroProps) {
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#0072CF] to-[#7ECFC3] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#0072CF]/30"
               >
                 <MessageCircle className="h-4 w-4" />
-                Consultar ahora
+                {tr("common.consult", "Consultar ahora")}
               </button>
               <Link
                 href="/portafolio"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/15"
               >
-                Ver proyectos
+                {tr("common.viewWork", "Ver proyectos")}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>

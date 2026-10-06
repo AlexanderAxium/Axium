@@ -439,3 +439,28 @@ proyectos relacionados pequeños y nada más. En ANJ se dejó solo
 - Si `fenalsa` y `web-scraping-ai` entran al portafolio.
 - Cómo mostrar **redes sociales** como entregable (sin referencia).
 - Si la métrica de resultado (S25) es producible con sus clientes.
+
+---
+
+## Una página de SERVICIO no es una ficha de caso (2026-10-03)
+
+Medidas cinco páginas de servicio (`brandvm`, `basicagency`, `viget`, `barrelny`, `ueno`) para
+rehacer las tres de Axium, el estudio completo está en `creator/REFERENCIAS.md`. Tres cosas que
+**contradicen** lo que vale para una ficha y hay que tener delante antes de aplicar el estándar:
+
+- **Palabras por 1.000 px: la banda de una página de servicio es 90–140, no ≤45.** Axium escribía
+  72–78 de cuerpo y aun así se leía como un muro, porque el problema era **cero imágenes**, no el
+  texto. Podar habría empeorado la página.
+- **El techo de tramo sin imagen es ~1.400 px, no 700.** Las referencias aprobadas llegan a
+  1.212–1.416 px (una lista de capacidades, un FAQ). Por debajo de eso no hay nada que arreglar.
+- **El objetivo de reparto se mantiene: ≥45 % del alto en imagen** (banda de las aprobadas 32–57 %;
+  brandvm, la favorita de Alexander, 53 %).
+
+Y el recurso más rentable, que no cuesta un token: **la tira de trabajo real a sangre** (cuatro
+portadas del portafolio, con el nombre del cliente y qué le hicimos) justo después de la
+introducción. Es lo primero que hace barrelny y lo que basicagency repite en cada bloque. Una
+página de servicio que enseña trabajo que existe convence más que cualquier ilustración.
+
+⚠️ **Si el sitio es es/en/pt, el texto no se hornea en la pieza.** La pieza es composición pura y
+reserva su campo; el título y el párrafo van en HTML al lado. Si no, cada tarjeta son tres
+archivos y la traducción se olvida.

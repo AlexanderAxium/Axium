@@ -1,265 +1,153 @@
 "use client";
 
-import {
-  Eye,
-  FileText,
-  Layers,
-  Lightbulb,
-  type LucideIcon,
-  Monitor,
-  Package,
-  Palette,
-  PenTool,
-  Play,
-  Search,
-} from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
+import {
+  ProcessSteps,
+  ProofSlab,
+  ServiceCard,
+  ServiceWorkBand,
+  TalkBand,
+} from "~/components/axium/service-blocks";
 import { ServiceFaqSection } from "~/components/axium/service-faq-section";
 import { ServiceHero } from "~/components/axium/service-hero";
 import { smoothEase } from "~/components/axium/service-shared";
 import { SERVICES, type ServicePageData } from "~/data/services-data";
+import { useTranslation } from "~/hooks/useTranslation";
 
 const raw = SERVICES["design-branding"];
 if (!raw) throw new Error("Missing service data for design-branding");
 const data: ServicePageData = raw;
 const ACCENT = "#0072CF";
+const K = "design-branding";
 
-// ── Section 3: service rows ──────────────────────────────────────────────────
-const SERVICE_ROWS = [
-  {
-    tag: "Identidad Visual",
-    icon: Palette,
-    title: "Logo & sistema de marca",
-    description:
-      "Diseñamos tu identidad desde cero: logo versátil, paleta de colores, tipografía y todos los elementos que forman tu marca.",
-  },
-  {
-    tag: "Branding",
-    icon: Layers,
-    title: "Brand guidelines",
-    description:
-      "Manual de marca completo para que tu identidad sea consistente en cada canal, equipo y punto de contacto con el cliente.",
-  },
-  {
-    tag: "Materiales",
-    icon: FileText,
-    title: "Brochures & marketing",
-    description:
-      "Brochures corporativos, flyers, social media kits, presentaciones y cualquier material impreso o digital que necesites.",
-  },
-  {
-    tag: "UX/UI",
-    icon: Eye,
-    title: "Diseño de producto digital",
-    description:
-      "Wireframes, prototipos y diseños de alta fidelidad en Figma. Interfaces centradas en el usuario, listas para desarrollo.",
-  },
-  {
-    tag: "Web Design",
-    icon: Monitor,
-    title: "Websites y landing pages",
-    description:
-      "Diseño editorial para páginas web y landing pages que equilibran estética y conversión.",
-  },
-  {
-    tag: "Motion",
-    icon: Play,
-    title: "Animaciones & presentaciones",
-    description:
-      "Animaciones de marca, pitch decks y presentaciones ejecutivas que hacen que tu historia se cuente sola.",
-  },
+const IMG = "/images/servicios/";
+const CARD_IMAGES = [
+  `${IMG}db-tarjeta-sistema.jpg`,
+  `${IMG}db-tarjeta-identidad.jpg`,
+  `${IMG}db-tarjeta-digital.jpg`,
 ];
-
-// ── Section 4: process steps ─────────────────────────────────────────────────
-const PROCESS_STEPS: {
-  num: string;
-  title: string;
-  bullets: string[];
-  icon: LucideIcon;
-  color: string;
-}[] = [
+// El orden alterna oscuro/claro: Alyer y MainTech una al lado de la otra se leen
+// como gemelas (las dos son logotipo centrado sobre campo oscuro).
+const WORK = [
+  { slug: "alyer", cover: "/images/proyects/alyer/al-portada.jpg", i: 0 },
   {
-    num: "01",
-    title: "Descubrimiento",
-    bullets: [
-      "Brief creativo",
-      "Análisis de competidores",
-      "Benchmark visual",
-      "Definición de audiencia",
-    ],
-    icon: Search,
-    color: ACCENT,
+    slug: "aurore",
+    cover: "/images/proyects/aurore/aurore-portada-yeso.jpg",
+    i: 2,
   },
+  { slug: "maintech", cover: "/images/proyects/maintech/mt-portada.jpg", i: 1 },
   {
-    num: "02",
-    title: "Estrategia",
-    bullets: [
-      "Dirección creativa",
-      "Moodboard",
-      "Arquitectura visual",
-      "Concepto de marca",
-    ],
-    icon: Lightbulb,
-    color: "#7ECFC3",
-  },
-  {
-    num: "03",
-    title: "Diseño",
-    bullets: [
-      "Logotipo & variantes",
-      "Sistema de marca",
-      "Materiales digitales",
-      "Revisiones iterativas",
-    ],
-    icon: PenTool,
-    color: ACCENT,
-  },
-  {
-    num: "04",
-    title: "Entrega",
-    bullets: [
-      "Archivos editables",
-      "Brand guidelines PDF",
-      "Todos los formatos",
-      "Soporte post-entrega",
-    ],
-    icon: Package,
-    color: "#7ECFC3",
-  },
-];
-
-// ── Section 5: "¿Para quién es?" cards ──────────────────────────────────────
-const FOR_WHO = [
-  {
-    title: "Startups",
-    description:
-      "Empresas que necesitan construir una marca sólida desde cero para lanzar con confianza.",
-  },
-  {
-    title: "Empresas en rebranding",
-    description:
-      "Organizaciones que evolucionaron y necesitan que su imagen refleje dónde están hoy.",
-  },
-  {
-    title: "Founders con pitch deck",
-    description:
-      "Emprendedores que presentan a inversores y necesitan materiales de alto impacto.",
-  },
-  {
-    title: "Equipos de producto",
-    description:
-      "Equipos tech que necesitan diseño de UI/UX profesional para sus aplicaciones.",
-  },
-];
-
-// ── Section 7: FAQ ───────────────────────────────────────────────────────────
-const FAQS = [
-  {
-    q: "¿Cuánto demora un proyecto de branding?",
-    a: "Depende del alcance. Una identidad visual completa (logo + brand guidelines) toma entre 2 y 4 semanas. Proyectos con materiales adicionales pueden extenderse a 6-8 semanas.",
-  },
-  {
-    q: "¿Qué necesito para empezar?",
-    a: "Solo una llamada de descubrimiento. Nos cuentas sobre tu empresa, audiencia y objetivos, y preparamos el brief creativo. No necesitas tener nada preparado de antemano.",
-  },
-  {
-    q: "¿Entregan archivos editables?",
-    a: "Sí, siempre. Entregamos todos los archivos en formatos editables: AI, EPS, SVG para el logo; Figma para el diseño de producto; PDF e InDesign para materiales impresos.",
-  },
-  {
-    q: "¿Hacen rediseños de marca existente?",
-    a: "Absolutamente. Trabajamos tanto con marcas desde cero como con rebrandings. Analizamos tu marca actual e identificamos qué mantener, qué evolucionar y qué transformar completamente.",
-  },
-  {
-    q: "¿El diseño web está incluido en el servicio de branding?",
-    a: "El diseño de landing pages y websites es un servicio adicional que puede complementar el branding. Podemos cotizarlos juntos o por separado según tus necesidades.",
-  },
-  {
-    q: "¿Cuántas revisiones están incluidas?",
-    a: "Incluimos hasta 3 rondas de revisiones en cada etapa del proyecto. Si necesitas ajustes adicionales fuera de ese alcance, los cotizamos por separado de forma transparente.",
+    slug: "toliveagain",
+    cover: "/images/proyects/toliveagain/tla-portada.jpg",
+    i: 3,
   },
 ];
 
 export function BrandDesignPage() {
+  const { t } = useTranslation("services");
+  const idx = [0, 1, 2];
+  const four = [0, 1, 2, 3];
+  const six = [0, 1, 2, 3, 4, 5];
+  const wa = t(`${K}.whatsappMessage`);
+
   return (
     <>
-      {/* ── S1: Hero ──────────────────────────────────────────────────────── */}
-      <ServiceHero data={data} />
+      {/* ── S1: Hero (intacto) ─────────────────────────────────────────────── */}
+      <ServiceHero data={data} slug={K} />
 
-      {/* ── S2: Split stats ───────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* ── S2: Qué es — texto + pieza alta ────────────────────────────────── */}
+      <section className="bg-white py-16 md:py-24">
         <div className="container-section">
           <div className="content-section">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              {/* Left: text */}
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_440px] lg:gap-20">
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-7 h-0.5 bg-secondary rounded-full" />
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="h-0.5 w-7 rounded-full bg-secondary" />
                   <span className="text-overline text-gray-500">
-                    01 — Qué es Design & Branding
+                    {t(`${K}.intro.overline`)}
                   </span>
                 </div>
-                <h2 className="text-heading-1 text-gray-900 mb-6">
-                  Tu marca es la primera impresión que no puedes repetir
+                <h2 className="text-heading-1 mb-6 text-gray-900">
+                  {t(`${K}.intro.title`)}
                 </h2>
-                <p className="text-body text-gray-500 mb-4">
-                  El diseño no es solo cómo se ve algo — es cómo funciona, cómo
-                  se siente y qué comunica sin decir una palabra. Una identidad
-                  visual sólida genera reconocimiento, confianza y
-                  diferenciación en mercados saturados.
+                <p className="text-body mb-4 text-gray-500">
+                  {t(`${K}.intro.p1`)}
                 </p>
-                <p className="text-body text-gray-500 mb-4">
-                  En Axium combinamos estrategia y creatividad para construir
-                  marcas que no solo se ven bien, sino que conectan con las
-                  personas correctas en el momento correcto.
-                </p>
-                <p className="text-body text-gray-500">
-                  Desde el logo hasta el manual de marca completo, los
-                  materiales de marketing y el diseño de producto — cubrimos
-                  todo el espectro visual de tu empresa.
-                </p>
+                <p className="text-body text-gray-500">{t(`${K}.intro.p2`)}</p>
+
+                <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+                    <p className="mb-2 text-5xl font-light leading-none text-gray-900">
+                      3<span className="text-secondary">×</span>
+                    </p>
+                    <p className="text-body-sm text-gray-600">
+                      {t(`${K}.intro.statA`)}
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+                    <p className="mb-2 text-5xl font-light leading-none text-gray-900">
+                      100<span className="text-secondary">%</span>
+                    </p>
+                    <p className="text-body-sm text-gray-600">
+                      {t(`${K}.intro.statB`)}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
 
-              {/* Right: stacked stats */}
-              <motion.div
+              <motion.figure
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: 0.12, ease: smoothEase }}
-                className="flex flex-col gap-6"
+                transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
+                className="m-0"
               >
-                <div className="border border-gray-200 rounded-2xl p-8 bg-gray-50">
-                  <p className="text-6xl sm:text-7xl font-light text-gray-900 leading-none mb-3">
-                    3<span className="text-secondary">×</span>
-                  </p>
-                  <p className="text-body text-gray-700">
-                    más reconocimiento de marca con una identidad visual
-                    consistente aplicada en todos los canales.
-                  </p>
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                  <Image
+                    src={`${IMG}db-tres-marcas.jpg`}
+                    alt={t(`${K}.intro.caption`)}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 440px"
+                    quality={92}
+                    priority
+                    className="object-cover"
+                  />
                 </div>
-                <div className="border border-gray-200 rounded-2xl p-8 bg-gray-50">
-                  <p className="text-6xl sm:text-7xl font-light text-gray-900 leading-none mb-3">
-                    100<span className="text-secondary">%</span>
-                  </p>
-                  <p className="text-body text-gray-700">
-                    de la estrategia al activo visual final — entregamos todo,
-                    desde el concepto hasta los archivos listos para usar.
-                  </p>
-                </div>
-              </motion.div>
+                <figcaption className="text-body-sm mt-3 text-gray-400">
+                  {t(`${K}.intro.caption`)}
+                </figcaption>
+              </motion.figure>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── S3: Service rows ──────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      {/* ── S3: Trabajo real ───────────────────────────────────────────────── */}
+      <ServiceWorkBand
+        overline={t(`${K}.work.overline`)}
+        title={t(`${K}.work.title`)}
+        lead={t(`${K}.work.lead`)}
+        accent={ACCENT}
+        cta={t("common.allCases")}
+        waLabel={t("common.whatsapp")}
+        waMessage={wa}
+        items={WORK.map((w) => ({
+          slug: w.slug,
+          cover: w.cover,
+          client: t(`${K}.workItems.${w.i}.client`),
+          line: t(`${K}.workItems.${w.i}.line`),
+        }))}
+      />
+
+      {/* ── S4: Servicios incluidos ────────────────────────────────────────── */}
+      <section className="bg-gray-50 py-16 md:py-24">
         <div className="container-section">
           <div className="content-section">
             <motion.div
@@ -269,52 +157,45 @@ export function BrandDesignPage() {
               transition={{ duration: 0.45, ease: smoothEase }}
               className="mb-12"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-7 h-0.5 bg-secondary rounded-full" />
+              <div className="mb-4 flex items-center gap-3">
+                <div className="h-0.5 w-7 rounded-full bg-secondary" />
                 <span className="text-overline text-gray-500">
-                  02 — Servicios incluidos
+                  {t(`${K}.offer.overline`)}
                 </span>
               </div>
-              <h2 className="text-heading-1 text-gray-900 max-w-xl">
-                Todo lo que necesitas para construir una marca poderosa
+              <h2 className="text-heading-1 max-w-xl text-gray-900">
+                {t(`${K}.offer.title`)}
               </h2>
             </motion.div>
 
-            <div className="divide-y divide-gray-200 border-y border-gray-200">
-              {SERVICE_ROWS.map(
-                ({ tag, icon: Icon, title, description }, i) => (
-                  <motion.div
-                    key={title}
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{
-                      duration: 0.4,
-                      delay: i * 0.06,
-                      ease: smoothEase,
-                    }}
-                    className="grid grid-cols-1 md:grid-cols-[160px_1fr_2fr] gap-2 md:gap-4 py-5 md:py-6"
-                  >
-                    <span className="inline-flex items-center gap-1.5 text-overline text-secondary self-start">
-                      <Icon className="w-3.5 h-3.5 flex-shrink-0" />
-                      {tag}
-                    </span>
-                    <p className="text-body font-medium text-gray-900 self-start">
-                      {title}
-                    </p>
-                    <p className="text-body-sm text-gray-500 leading-relaxed">
-                      {description}
-                    </p>
-                  </motion.div>
-                )
-              )}
+            <div className="flex flex-col gap-16 md:gap-20">
+              {idx.map((i) => (
+                <ServiceCard
+                  key={CARD_IMAGES[i]}
+                  index={i + 1}
+                  image={CARD_IMAGES[i] ?? ""}
+                  alt={t(`${K}.cards.${i}.title`)}
+                  kicker={t(`${K}.cards.${i}.kicker`)}
+                  title={t(`${K}.cards.${i}.title`)}
+                  text={t(`${K}.cards.${i}.text`)}
+                  accent={ACCENT}
+                  flip={i % 2 === 1}
+                  waLabel={t("common.quote")}
+                  waMessage={wa}
+                  rows={[0, 1].map((j) => ({
+                    tag: t(`${K}.cardRows.${i}.${j}.tag`),
+                    title: t(`${K}.cardRows.${i}.${j}.title`),
+                    desc: t(`${K}.cardRows.${i}.${j}.desc`),
+                  }))}
+                />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── S4: Process — circular icons + dashed connector ───────────────── */}
-      <section className="py-16 md:py-24 bg-white overflow-hidden">
+      {/* ── S5: Proceso ────────────────────────────────────────────────────── */}
+      <section className="overflow-hidden bg-white py-16 md:py-24">
         <div className="container-section">
           <div className="content-section">
             <motion.div
@@ -324,149 +205,127 @@ export function BrandDesignPage() {
               transition={{ duration: 0.45, ease: smoothEase }}
               className="mb-12"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-7 h-0.5 bg-secondary rounded-full" />
+              <div className="mb-4 flex items-center gap-3">
+                <div className="h-0.5 w-7 rounded-full bg-secondary" />
                 <span className="text-overline text-gray-500">
-                  03 — Proceso
+                  {t(`${K}.process.overline`)}
                 </span>
               </div>
-              <h2 className="text-heading-1 text-gray-900 max-w-xl">
-                De la estrategia a los activos finales en semanas
+              <h2 className="text-heading-1 max-w-xl text-gray-900">
+                {t(`${K}.process.title`)}
               </h2>
             </motion.div>
 
-            {/* 4 columns with dashed connector */}
-            <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-              {/* Dashed horizontal connector — desktop only */}
-              <div
-                className="hidden lg:block absolute top-[72px] left-[12.5%] right-[12.5%] border-t-2 border-dashed border-gray-200 z-0"
-                aria-hidden
-              />
-
-              {PROCESS_STEPS.map(
-                ({ num, title, bullets, icon: Icon, color }, i) => (
-                  <motion.div
-                    key={num}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{
-                      duration: 0.45,
-                      delay: i * 0.1,
-                      ease: smoothEase,
-                    }}
-                    className="relative z-10 flex flex-col items-center text-center"
-                  >
-                    {/* Circular icon */}
-                    <div
-                      className="w-36 h-36 rounded-full border-4 border-white shadow-md mb-5 flex items-center justify-center flex-shrink-0"
-                      style={{ background: `${color}14` }}
-                    >
-                      <Icon className="w-10 h-10" style={{ color }} />
-                    </div>
-
-                    {/* Step number */}
-                    <p className="text-4xl sm:text-5xl font-light text-gray-200 leading-none mb-3 select-none">
-                      {num}
-                    </p>
-
-                    {/* Title */}
-                    <h3 className="text-heading-3 text-gray-900 mb-4">
-                      {title}
-                    </h3>
-
-                    {/* Bullets */}
-                    <ul className="space-y-1.5 text-left w-full max-w-[160px]">
-                      {bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-start gap-2 text-body-sm text-gray-500"
-                        >
-                          <span
-                            className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                            style={{ background: color }}
-                          />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )
-              )}
-            </div>
+            <ProcessSteps
+              accent={ACCENT}
+              steps={four.map((i) => ({
+                title: t(`${K}.steps.${i}.title`),
+                bullets: four.map((j) => t(`${K}.steps.${i}.bullets.${j}`)),
+              }))}
+            />
           </div>
         </div>
       </section>
 
-      {/* ── S5: ¿Para quién es? — dark bg + cards ────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#060C20]">
-        <div className="container-section">
+      {/* ── S6: ¿Para quién es? — sobre la plancha honda ───────────────────── */}
+      <section className="relative overflow-hidden bg-[#060C20] py-16 md:py-24">
+        <Image
+          src={`${IMG}db-fondo-oscuro.jpg`}
+          alt=""
+          fill
+          sizes="100vw"
+          quality={86}
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(6,12,32,0.90) 0%, rgba(6,12,32,0.74) 46%, rgba(6,12,32,0.86) 100%)",
+          }}
+          aria-hidden
+        />
+        <div className="container-section relative z-10">
           <div className="content-section">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              {/* Left: headline */}
+            <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-7 h-0.5 bg-accent rounded-full" />
-                  <span className="text-overline text-white/40">
-                    04 — Ideal para
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="h-0.5 w-7 rounded-full bg-accent" />
+                  <span className="text-overline text-white/45">
+                    {t(`${K}.who.overline`)}
                   </span>
                 </div>
-                <h2 className="text-heading-1 text-white mb-6">
-                  ¿Para quién es Design & Branding?
+                <h2 className="text-heading-1 mb-6 text-white">
+                  {t(`${K}.who.title`)}
                 </h2>
-                <p className="text-body text-white/50">
-                  Trabajamos con todo tipo de organizaciones que necesitan
-                  comunicar su valor de forma clara, coherente y memorable.
-                </p>
+                <p className="text-body text-white/55">{t(`${K}.who.lead`)}</p>
               </motion.div>
 
-              {/* Right: 2×2 grid of cards */}
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                className="grid grid-cols-1 gap-4 sm:grid-cols-2"
               >
-                {FOR_WHO.map(({ title, description }, i) => (
-                  <motion.div
-                    key={title}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-30px" }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.1 + i * 0.07,
-                      ease: smoothEase,
-                    }}
-                    className="border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors"
+                {four.map((i) => (
+                  <div
+                    key={t(`${K}.whoCards.${i}.title`)}
+                    className="rounded-xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-white/20"
                   >
-                    <h3 className="text-heading-3 text-white mb-2">{title}</h3>
-                    <p className="text-body-sm text-white/50">{description}</p>
-                  </motion.div>
+                    <h3 className="text-heading-3 mb-2 text-white">
+                      {t(`${K}.whoCards.${i}.title`)}
+                    </h3>
+                    <p className="text-body-sm text-white/55">
+                      {t(`${K}.whoCards.${i}.description`)}
+                    </p>
+                  </div>
                 ))}
               </motion.div>
             </div>
+
+            <TalkBand
+              lead={t("common.talkLead")}
+              waLabel={t("common.whatsapp")}
+              waMessage={wa}
+              contactLabel={t("common.contactForm")}
+            />
           </div>
         </div>
       </section>
 
-      {/* ── S6: FAQ ───────────────────────────────────────────────────────── */}
-      <ServiceFaqSection
-        faqs={FAQS}
-        accentColor={ACCENT}
-        sectionLabel={<>— 05 &nbsp; Preguntas frecuentes</>}
-        ctaTitle="¿Listo para construir tu marca?"
-        ctaSubtitle="Conversemos sobre tu proyecto. Sin compromiso, sin presión."
-        whatsappMessage={data.whatsappMessage}
+      {/* ── S7: La prueba ──────────────────────────────────────────────────── */}
+      <ProofSlab
+        overline={t(`${K}.proof.overline`)}
+        title={t(`${K}.proof.title`)}
+        text={t(`${K}.proof.text`)}
+        image={`${IMG}db-losa-aplicada.jpg`}
+        alt={t(`${K}.proof.title`)}
+        accent={ACCENT}
       />
 
-      {/* ── S7: CTA ───────────────────────────────────────────────────────── */}
+      {/* ── S8: FAQ ────────────────────────────────────────────────────────── */}
+      <ServiceFaqSection
+        faqs={six.map((i) => ({
+          q: t(`${K}.faqs.${i}.q`),
+          a: t(`${K}.faqs.${i}.a`),
+        }))}
+        accentColor={ACCENT}
+        heading={t("common.faqHeading")}
+        sectionLabel={t(`${K}.faqOverline`)}
+        ctaTitle={t(`${K}.ctaTitle`)}
+        ctaSubtitle={t(`${K}.ctaSubtitle`)}
+        bg="bg-gray-50"
+        whatsappMessage={wa}
+        waLabel={t("common.whatsapp")}
+      />
+
+      {/* ── S9: CTA ────────────────────────────────────────────────────────── */}
       <CaseContactCTA />
     </>
   );

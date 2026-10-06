@@ -22,7 +22,7 @@ import favorygraciaData from "~/data/cases/favorygracia.json";
 import feedbackManagementData from "~/data/cases/feedback-management.json";
 import fenalsaData from "~/data/cases/fenalsa.json";
 import fenizData from "~/data/cases/feniz.json";
-import financialManagementData from "~/data/cases/financial-management.json";
+import fintraceData from "~/data/cases/fintrace.json";
 import firstautomationData from "~/data/cases/firstautomation.json";
 import ghiperuData from "~/data/cases/ghiperu.json";
 import happyartData from "~/data/cases/happyart.json";
@@ -72,6 +72,7 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   vitalchain: vitalchainData as Record<string, unknown>,
   fenalsa: fenalsaData as Record<string, unknown>,
   feniz: fenizData as Record<string, unknown>,
+  fintrace: fintraceData as Record<string, unknown>,
   innersoulbright: innersoulbrightData as Record<string, unknown>,
   cesaracosta: cesaracostaData as Record<string, unknown>,
   clefast: clefastData as Record<string, unknown>,
@@ -103,11 +104,10 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   ghiperu: ghiperuData as Record<string, unknown>,
   siclo: sicloData as Record<string, unknown>,
   "web-scraping-ai": webScrapingAiData as Record<string, unknown>,
-  "financial-management": financialManagementData as Record<string, unknown>,
   "feedback-management": feedbackManagementData as Record<string, unknown>,
 };
 
-/** Orden de casos en la lista (ambientalpe = 5º, financial-management = 8º) */
+/** Orden de casos en la lista (fintrace = 13º, justo delante de ambientalpe) */
 const CASE_ORDER: string[] = [
   // Productos propios (también son los highlights del home)
   "rematch",
@@ -124,10 +124,10 @@ const CASE_ORDER: string[] = [
   "fenalsa",
   "feniz",
   "toliveagain",
+  "fintrace",
   "ambientalpe",
   "innersoulbright",
   "clefast",
-  "financial-management",
   "happyart",
   "redesvip",
   "sportt",

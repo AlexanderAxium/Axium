@@ -222,36 +222,23 @@
     "results": []
   },
   "sportt": {
-    "title": "Sportt Peru",
+    "title": "Sportt Perú",
     "industry": "E-commerce / Sports",
-    "description": "Table tennis and ping pong virtual store: catalog with categories, CMS integration, payment gateway, cart, checkout and complaints book.",
-    "problem": "Sportt Peru needed a digital platform to sell table tennis equipment, with catalog organized by categories and customer contact channel.",
-    "solution": "E-commerce with sports product catalog, CMS integration, payment gateway, cart and checkout, digital complaints book integrated.",
-    "projectDescription": "We developed sporttperu.com as a virtual store for Sportt Peru, specializing in table tennis. Includes catalog by categories, CMS integration, payment gateway, cart and checkout, complaints book and contact channel.",
+    "description": "Redesign of the table tennis store: 149 products across eight families of play, a gluing service with its video inside the store, and a cart with counter pickup or arranged delivery.",
+    "problem": "The previous store sorted the catalogue like a general shop and left out what makes Sportt different: the technical criteria a player uses to choose a rubber, and the workshop service that glues it on.",
+    "solution": "Full redesign on Vendiq: a block-built home page, a catalogue cut into eight families of play with filters by category and price, a product page with variants, stock, a WhatsApp enquiry and Peruvian payment methods, and a cart with store pickup or arranged delivery.",
+    "projectDescription": "We rebuilt sporttperu.com from scratch. The catalogue — 149 products across thirteen categories — was cut by how the game is played: blades, smooth rubbers, pimpled rubbers, bats, shoes, balls, cases and accessories, filterable by family and by price range. The product page states the variant, the stock, a WhatsApp enquiry and the Peruvian payment methods. The free gluing service lives on the home page with its one-minute video, and the cart offers counter pickup or arranged delivery.",
     "secondaryIndustry": "Table Tennis",
-    "forWhom": "Table tennis players and enthusiasts seeking equipment, rackets, woods, rubbers and quality accessories",
+    "forWhom": "Players, clubs and schools that choose blade and rubber on technical criteria and need them glued together",
     "services": [
-      "Virtual Store",
-      "Catalog by Categories",
-      "CMS Integration",
-      "Payment Gateway",
-      "Instagram Ads",
-      "Complaints Book"
+      "Web redesign",
+      "Online store",
+      "Catalogue by families of play",
+      "Filters, search and sorting",
+      "Cart with store pickup",
+      "Campaign pieces for social"
     ],
-    "results": [
-      {
-        "metric": "100%",
-        "label": "digital presence established"
-      },
-      {
-        "metric": "24/7",
-        "label": "store available online"
-      },
-      {
-        "metric": "B2C",
-        "label": "direct-to-consumer sales"
-      }
-    ]
+    "results": []
   },
   "lujan": {
     "title": "Vitivinícola Luján",
@@ -643,23 +630,22 @@
       "Docker containerization"
     ]
   },
-
-  "financial-management": {
-    "title": "Financial Management System",
-    "industry": "SaaS / Finance",
-    "description": "Integrated financial management system to digitize accounting processes and regulatory compliance: SUNAT electronic record synchronization, bank account management with automated reconciliation, supplier database and chart of accounts tracking. Includes transaction matching, comprehensive reporting and tax compliance management.",
-    "problem": "A platform was needed to unify document management (vouchers, series, amounts, status), SUNAT validation and synchronization, bank account and reconciliation administration, supplier registry, chart of accounts and journal entries, and reporting and audit for compliance and financial decisions.",
-    "solution": "I designed and built a financial management system with Next.js that integrates: document management (type, series-number, dates, supplier, tax ID, subtotal, tax, total, withholding, pending, status); SUNAT validation and withholdings; bank accounts with reconciliation; movements with Excel/CSV import; accounting and journal entry templates; reports, CONCAR, audit logs and analytics.",
-    "projectDescription": "Financial Management System is a platform I designed and built to digitize accounting processes and regulatory compliance. The solution incorporates SUNAT electronic record synchronization, bank account management with automated reconciliation, supplier database administration, and detailed chart of accounts tracking. It delivers specialized capabilities for financial transaction matching, comprehensive reporting, and tax compliance management, providing businesses with a centralized system that optimizes financial operations and maintains precise accounting standards.",
-    "secondaryIndustry": "Financial and accounting management",
-    "forWhom": "Businesses that need to centralize accounts payable, bank reconciliation, SUNAT compliance and accounting reports in one platform",
+  "fintrace": {
+    "title": "Fintrace",
+    "industry": "Financial SaaS · Collections and accounting",
+    "description": "An accounting SaaS that starts where the invoicing system ends: it takes the XML the company already issues and handles everything that comes after — the withholding, the instalments, the bank statement and the file the accountant imports without retyping.",
+    "problem": "Between the e-invoicing system and the accountant's software there is nothing. A spreadsheet three people edit, the withholding receipt downloaded from the bank, an unreconciled statement and the month's journal entries sitting in an unanswered email. Every figure copied by hand is a discrepancy someone chases later.",
+    "solution": "We built the whole platform on Next.js, tRPC and Prisma, multi-tenant and with per-resource permissions. It reads the SUNAT UBL 2.1 document and builds the record with its client, its VAT and its withholding; it reads the bank statement in PDF, XLSX and CSV and matches it by operation number; and it hands over the journal entry with its cost centre, ready for Concar.",
+    "projectDescription": "Fintrace is the financial control of a Peruvian company, document by document. It reads the XML already issued, sets the withholding aside the moment the invoice is registered, schedules the collection instalments, matches the bank statement against the documents and hands the accountant the journal entry with its cost centre. It was built whole: the public site, authentication, the multi-tenant panel and the export.",
+    "secondaryIndustry": "Peruvian companies with an external accountant",
+    "forWhom": "Peruvian companies with several sites or cost centres, monthly withholdings and an external accountant waiting for the closing spreadsheet",
     "services": [
-      "Document management",
-      "SUNAT validation and tax compliance",
-      "Bank accounts and reconciliation",
-      "Suppliers and database",
-      "Accounting and chart of accounts",
-      "Reports, audit and analytics"
+      "Custom SaaS product",
+      "SUNAT UBL 2.1 document reading",
+      "Withholdings and collection plans",
+      "Reconciliation against the bank statement",
+      "Journal entries and Concar export",
+      "Multi-tenant, roles and permissions"
     ],
     "results": []
   },

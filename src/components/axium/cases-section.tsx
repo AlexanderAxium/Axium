@@ -61,7 +61,6 @@ const slugMap: Record<string, string> = {
   "ANJ Sports": "anjsports",
   AmbientalPE: "ambientalpe",
   "Instructor Management System": "siclo",
-  "Financial Management System": "financial-management",
   "Feedback Management System": "feedback-management",
 };
 

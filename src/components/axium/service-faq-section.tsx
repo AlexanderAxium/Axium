@@ -16,7 +16,9 @@ interface ServiceFaqSectionProps {
   sectionLabel?: ReactNode;
   ctaTitle?: string;
   ctaSubtitle?: string;
+  heading?: string;
   whatsappMessage: string;
+  waLabel?: string;
   bg?: string;
 }
 
@@ -28,7 +30,9 @@ export function ServiceFaqSection({
   sectionLabel = "Preguntas frecuentes",
   ctaTitle = "¿Listo para empezar?",
   ctaSubtitle = "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
+  heading = "Todo lo que necesitas saber",
   whatsappMessage,
+  waLabel,
   bg = "bg-white",
 }: ServiceFaqSectionProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -54,7 +58,7 @@ export function ServiceFaqSection({
                   {sectionLabel}
                 </p>
                 <h2 className="text-3xl sm:text-4xl leading-tight text-gray-900">
-                  Todo lo que necesitas saber
+                  {heading}
                 </h2>
               </div>
 
@@ -64,6 +68,7 @@ export function ServiceFaqSection({
                   title={ctaTitle}
                   subtitle={ctaSubtitle}
                   whatsappMessage={whatsappMessage}
+                  waLabel={waLabel}
                 />
               </div>
             </motion.div>
@@ -118,6 +123,7 @@ export function ServiceFaqSection({
                 title={ctaTitle}
                 subtitle={ctaSubtitle}
                 whatsappMessage={whatsappMessage}
+                waLabel={waLabel}
               />
             </div>
           </div>

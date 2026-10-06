@@ -11,7 +11,7 @@ import favorygraciaData from "./cases/favorygracia.json";
 import feedbackManagementData from "./cases/feedback-management.json";
 import fenalsaData from "./cases/fenalsa.json";
 import fenizData from "./cases/feniz.json";
-import financialManagementData from "./cases/financial-management.json";
+import fintraceData from "./cases/fintrace.json";
 import firstautomationData from "./cases/firstautomation.json";
 import ghiperuData from "./cases/ghiperu.json";
 import happyartData from "./cases/happyart.json";
@@ -111,17 +111,17 @@ function convertCaseFromJSON(caseJson: CaseItemJSON): CaseItem {
   };
 }
 
-// Load all JSON cases and convert them to CaseItem[] (orden: financial-management = 7º)
+// Load all JSON cases and convert them to CaseItem[] (fintrace ocupa el puesto 13)
 const cases: CaseItem[] = [
   convertCaseFromJSON(anjsportsData as CaseItemJSON),
   convertCaseFromJSON(maintechData as CaseItemJSON),
   convertCaseFromJSON(vitalchainData as CaseItemJSON),
   convertCaseFromJSON(fenalsaData as CaseItemJSON),
   convertCaseFromJSON(fenizData as CaseItemJSON),
+  convertCaseFromJSON(fintraceData as CaseItemJSON),
   convertCaseFromJSON(ambientalpeData as CaseItemJSON),
   convertCaseFromJSON(innersoulbrightData as CaseItemJSON),
   convertCaseFromJSON(clefastData as CaseItemJSON),
-  convertCaseFromJSON(financialManagementData as CaseItemJSON),
   convertCaseFromJSON(happyartData as CaseItemJSON),
   convertCaseFromJSON(redesvipData as CaseItemJSON),
   convertCaseFromJSON(sporttData as CaseItemJSON),

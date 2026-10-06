@@ -22,6 +22,8 @@ export function Footer() {
   const { data: companyInfo } = trpc.companyInfo.get.useQuery();
   const { locale } = useTranslation("common");
   const { t } = useTranslation("common");
+  // Los títulos de los servicios viven en `landing`, no en `common`.
+  const { t: tl } = useTranslation("landing");
 
   const footerLinks = {
     legal: [
@@ -210,7 +212,7 @@ export function Footer() {
                     href="/servicios/design-branding"
                     className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    {t("home.services.items.discovery.title")}
+                    {tl("home.services.items.discovery.title")}
                   </Link>
                 </li>
                 <li>
@@ -218,7 +220,7 @@ export function Footer() {
                     href="/servicios/software-development"
                     className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    {t("home.services.items.software-dev.title")}
+                    {tl("home.services.items.software-dev.title")}
                   </Link>
                 </li>
                 <li>
@@ -226,7 +228,7 @@ export function Footer() {
                     href="/servicios/ai-agentic-systems"
                     className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    {t("home.services.items.ai-systems.title")}
+                    {tl("home.services.items.ai-systems.title")}
                   </Link>
                 </li>
               </ul>

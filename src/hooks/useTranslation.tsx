@@ -6,15 +6,18 @@ import blogEn from "@/locales/en/blog.json";
 import commonEn from "@/locales/en/common.json";
 import dashboardEn from "@/locales/en/dashboard.json";
 import landingEn from "@/locales/en/landing.json";
+import servicesEn from "@/locales/en/services.json";
 // Import translations statically - Next.js will handle bundling
 import blogEs from "@/locales/es/blog.json";
 import commonEs from "@/locales/es/common.json";
 import dashboardEs from "@/locales/es/dashboard.json";
 import landingEs from "@/locales/es/landing.json";
+import servicesEs from "@/locales/es/services.json";
 import blogPt from "@/locales/pt/blog.json";
 import commonPt from "@/locales/pt/common.json";
 import dashboardPt from "@/locales/pt/dashboard.json";
 import landingPt from "@/locales/pt/landing.json";
+import servicesPt from "@/locales/pt/services.json";
 
 // Type for translations
 type TranslationRecord = Record<string, unknown>;
@@ -29,18 +32,21 @@ const translationsRegistry: Record<
     common: commonEs as TranslationRecord,
     dashboard: dashboardEs as TranslationRecord,
     landing: landingEs as TranslationRecord,
+    services: servicesEs as TranslationRecord,
   },
   en: {
     blog: blogEn as TranslationRecord,
     common: commonEn as TranslationRecord,
     dashboard: dashboardEn as TranslationRecord,
     landing: landingEn as TranslationRecord,
+    services: servicesEn as TranslationRecord,
   },
   pt: {
     blog: blogPt as TranslationRecord,
     common: commonPt as TranslationRecord,
     dashboard: dashboardPt as TranslationRecord,
     landing: landingPt as TranslationRecord,
+    services: servicesPt as TranslationRecord,
   },
 };
 

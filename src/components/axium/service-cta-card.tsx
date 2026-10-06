@@ -6,12 +6,14 @@ interface ServiceCtaCardProps {
   title?: string;
   subtitle?: string;
   whatsappMessage: string;
+  waLabel?: string;
 }
 
 export function ServiceCtaCard({
   title = "¿Listo para empezar?",
   subtitle = "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
   whatsappMessage,
+  waLabel = "Hablemos por WhatsApp",
 }: ServiceCtaCardProps) {
   const handleWhatsApp = () => {
     const encoded = encodeURIComponent(whatsappMessage);
@@ -30,10 +32,10 @@ export function ServiceCtaCard({
       <button
         type="button"
         onClick={handleWhatsApp}
-        className="inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-medium text-white transition-all hover:bg-gray-800 hover:scale-[1.02] w-fit mt-6 shrink-0"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-gray-900 px-5 text-sm font-medium text-white transition-all hover:bg-gray-800 hover:scale-[1.02] w-fit mt-6 shrink-0"
       >
         <MessageCircle className="h-4 w-4" />
-        Hablemos por WhatsApp
+        {waLabel}
       </button>
     </div>
   );

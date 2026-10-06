@@ -222,36 +222,23 @@
     "results": []
   },
   "sportt": {
-    "title": "Sportt Peru",
+    "title": "Sportt Perú",
     "industry": "E-commerce / Esportes",
-    "description": "Loja virtual de tênis de mesa e pingue-pongue: catálogo com categorias, integração CMS, gateway de pagamento, carrinho, checkout e livro de reclamações.",
-    "problem": "Sportt Peru precisava de uma plataforma digital para comercializar equipamentos de tênis de mesa, com catálogo organizado por categorias e canal de contato com clientes.",
-    "solution": "E-commerce com catálogo de produtos esportivos, integração com CMS, gateway de pagamento, carrinho e checkout, livro de reclamações digital integrado.",
-    "projectDescription": "Desenvolvemos sporttperu.com como loja virtual para Sportt Peru, especializada em tênis de mesa. Inclui catálogo por categorias, integração CMS, gateway de pagamento, carrinho e checkout, livro de reclamações e canal de contato.",
+    "description": "Redesenho da loja de tênis de mesa: 149 produtos em oito famílias de jogo, serviço de colagem com vídeo dentro da própria loja, e carrinho com retirada no balcão ou entrega combinada.",
+    "problem": "A loja anterior organizava o catálogo como um comércio geral e deixava de fora o que distingue a Sportt: o critério técnico com que um jogador escolhe a borracha, e o serviço de oficina que a cola.",
+    "solution": "Redesenho completo sobre Vendiq: capa por blocos, catálogo cortado em oito famílias de jogo com filtro por categoria e preço, página de produto com variantes, estoque, consulta por WhatsApp e meios de pagamento peruanos, e carrinho com retirada na loja ou entrega combinada.",
+    "projectDescription": "Refizemos o sporttperu.com inteiro. O catálogo — 149 produtos em treze categorias — foi cortado pelo critério de jogo: madeiras, borrachas lisas, borrachas com pinos, raquetes, tênis, bolas, capas e acessórios, com filtro por família e por faixa de preço. A página de produto declara a variante, o estoque, a consulta por WhatsApp e os meios de pagamento peruanos. O serviço de colagem grátis vive na capa com o seu vídeo de um minuto, e o carrinho oferece retirada no balcão ou entrega combinada.",
     "secondaryIndustry": "Tênis de Mesa",
-    "forWhom": "Jogadores e aficionados de tênis de mesa que buscam equipamentos, raquetes, madeiras, borrachas e acessórios de qualidade",
+    "forWhom": "Jogadores, clubes e escolas que escolhem madeira e borracha por critério técnico e precisam que sejam coladas",
     "services": [
-      "Loja Virtual",
-      "Catálogo por Categorias",
-      "Integração CMS",
-      "Gateway de Pagamento",
-      "Anúncios Instagram",
-      "Livro de Reclamações"
+      "Redesenho web",
+      "Loja virtual",
+      "Catálogo por famílias de jogo",
+      "Filtros, busca e ordenação",
+      "Carrinho com retirada na loja",
+      "Peças de campanha para redes"
     ],
-    "results": [
-      {
-        "metric": "100%",
-        "label": "presença digital estabelecida"
-      },
-      {
-        "metric": "24/7",
-        "label": "loja disponível online"
-      },
-      {
-        "metric": "B2C",
-        "label": "venda direta ao consumidor"
-      }
-    ]
+    "results": []
   },
   "lujan": {
     "title": "Vitivinícola Luján",
@@ -643,23 +630,22 @@
       "Containerização Docker"
     ]
   },
-
-  "financial-management": {
-    "title": "Financial Management System",
-    "industry": "SaaS / Finanças",
-    "description": "Sistema integrado de gestão financeira para digitalizar processos contábeis e cumprimento regulatório: sincronização com registros eletrônicos SUNAT, contas bancárias com conciliação automática, base de fornecedores e rastreabilidade do plano de contas. Inclui matching de transações, relatórios e gestão de cumprimento tributário.",
-    "problem": "Era necessária uma plataforma que unificasse a gestão de documentos (comprovantes, séries, valores, estados), a validação e sincronização com SUNAT, a administração de contas bancárias e conciliação, o cadastro de fornecedores, o plano de contas e lançamentos, e os relatórios e auditoria para cumprimento e decisões financeiras.",
-    "solution": "Projetei e construí um sistema de gestão financeira com Next.js que integra: gestão de documentos (tipo, série-número, datas, fornecedor, RUC, subtotal, IGV, total, detração, pendente, estado); validação SUNAT e detrações; contas bancárias com conciliação; movimentos com importação Excel/CSV; contabilidade e modelos de lançamentos; relatórios, CONCAR, audit logs e analytics.",
-    "projectDescription": "Financial Management System é uma plataforma que projetei e construí para digitalizar processos contábeis e o cumprimento regulatório. A solução incorpora sincronização com registros eletrônicos SUNAT, gestão de contas bancárias com conciliação automática, administração da base de fornecedores e acompanhamento detalhado do plano de contas. Oferece capacidades específicas para matching de transações financeiras, relatórios integrais e gestão de cumprimento tributário, proporcionando às empresas um sistema centralizado que otimiza as operações financeiras e mantém padrões contábeis precisos.",
-    "secondaryIndustry": "Gestão financeira e contábil",
-    "forWhom": "Empresas que precisam centralizar contas a pagar, conciliação bancária, cumprimento SUNAT e relatórios contábeis em uma única plataforma",
+  "fintrace": {
+    "title": "Fintrace",
+    "industry": "SaaS financeiro · Cobranças e contabilidade",
+    "description": "Um SaaS contábil que começa onde o emissor de notas termina: pega o XML que a empresa já emite e cuida de tudo o que vem depois — a retenção, as parcelas, o extrato do banco e o arquivo que o contador importa sem redigitar.",
+    "problem": "Entre o emissor eletrônico e o software do contador não há nada. Uma planilha que três pessoas editam, o comprovante de retenção baixado do banco, o extrato sem conciliar e os lançamentos do mês num e-mail sem resposta. Cada dado copiado à mão é uma diferença que alguém procura depois.",
+    "solution": "Construímos a plataforma inteira sobre Next.js, tRPC e Prisma, multiempresa e com permissões por recurso. Lê o comprovante UBL 2.1 da SUNAT e monta o documento com seu cliente, seu imposto e sua retenção; lê o extrato do banco em PDF, XLSX e CSV e cruza por número de operação; e entrega o lançamento com seu centro de custo, pronto para o Concar.",
+    "projectDescription": "Fintrace é o controle financeiro de uma empresa peruana, documento por documento. Lê o XML já emitido, separa a retenção desde que a nota é registrada, programa as parcelas de cobrança, cruza o extrato do banco com os documentos e entrega ao contador o lançamento com seu centro de custo. Foi construído inteiro: o site público, a autenticação, o painel multiempresa e a exportação.",
+    "secondaryIndustry": "Empresas peruanas com contador externo",
+    "forWhom": "Empresas peruanas com várias obras ou centros de custo, retenções todos os meses e um contador externo esperando a planilha do fechamento",
     "services": [
-      "Gestão de documentos",
-      "Validação SUNAT e cumprimento tributário",
-      "Contas bancárias e conciliação",
-      "Fornecedores e base de dados",
-      "Contabilidade e plano de contas",
-      "Relatórios, auditoria e analíticas"
+      "Produto SaaS sob medida",
+      "Leitura do comprovante UBL 2.1 da SUNAT",
+      "Retenções e planos de cobrança",
+      "Conciliação com o extrato do banco",
+      "Lançamentos contábeis e exportação para Concar",
+      "Multiempresa, perfis e permissões"
     ],
     "results": []
   },

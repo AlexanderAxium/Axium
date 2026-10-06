@@ -181,7 +181,7 @@ Aclaración suya sobre los 4 JSON tipo SaaS:
 
 | JSON | Qué es | Fase |
 |---|---|---|
-| `financial-management` | **Suyo. Se renombra a Fintrace**: sistema de tesorería y finanzas para empresas pequeñas. Aún no está subido con ese nombre — **anotado para cuando entre** | Fase 2 (productos propios) |
+| ~~`financial-management`~~ → **`fintrace`** | **HECHO el 2026-10-03.** Se borró el caso genérico y entró `fintrace` en su lugar, en el puesto 13 (delante de `ambientalpe`): SaaS contable que lee el XML UBL 2.1 de SUNAT, aparta la detracción, concilia el extracto del banco y entrega el asiento a Concar. Sitio en vivo `fintrace.app-siclo.online`; repo `~/Documents/Fintrace`. El panel se capturó **en local contra una base local sembrada de demostración** — del dominio del inquilino sólo salen las dos vistas públicas | Fase 2 (productos propios) |
 | `store-saas` | "E-commerce & Inventory SaaS" — no lo mencionó; por el rubro es probablemente **Vendiq**. **Confirmar** | Fase 2 (si es Vendiq) |
 | `feedback-management` | **No es suyo** → proyecto de cliente | Fase 1 |
 | `siclo` | Sistema de instructores **para Síclo** (cliente) | Fase 1 |
