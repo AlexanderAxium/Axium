@@ -324,10 +324,14 @@ Alexander: *«también actualiza el portafolio de bookit y lumio según tus nuev
   anotó que Alexander había pedido el inicio y el aviso quedaba «en chico»; con la regla de no
   mostrar inquilinos (memoria, 2026-09-12) ya no vale. Nada del hero de lumiolearn.com, ni en
   chico.
-- **Portadas nuevas**: `lu-portada.mp4` (highlight, 16:10) y `lumiolearn-portada-v8.jpg`
-  (tarjeta, 3:2): la ventana de «Más que cursos» sobre el azul noche, con las esquinas
-  redondeadas (`video-micro.py --radio`). El bucle se rotó para arrancar en la pestaña de
-  comunidad: el póster no lleva la cara grande de la clase en vivo.
+- **Portadas: se quedan las de antes.** Se probaron `lu-portada.mp4` (highlight) y
+  `lumiolearn-portada-v8.jpg` (tarjeta): la ventana de «Más que cursos» sobre el azul noche.
+  Alexander, al verlas publicadas: *«usa la portada anterior de lumio, esa nueva que hiciste no
+  me gusta»*. Vuelven la tableta cenital `lumiolearn-portada-v7` y `highlights/lumiolearn-v12`,
+  con el aviso de InduTech en chico: es su decisión, por encima de la regla de no mostrar
+  inquilinos en las portadas. En la FICHA sigue sin salir nada del hero de lumiolearn.com.
+  Lección: una ventana de UI flotando sobre un color plano no le convence como portada; la
+  escena con objetos (tableta, cuaderno, té) sí.
 - **Vídeos** (`grabar-micro.cjs`): `lu-experiencia` (una pestaña cada 9,0 s, ciclo de 27 s
   cortado justo después de un cambio; contenedor = ventana + pestañas, 1408 px) y
   `lu-operar` (las seis tarjetas de «operar a gran escala», 12 s con fundido largo: el contador
