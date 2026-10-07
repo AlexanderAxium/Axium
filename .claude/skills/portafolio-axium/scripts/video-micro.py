@@ -19,7 +19,7 @@ import shutil
 import subprocess
 import tempfile
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 ap = argparse.ArgumentParser()
 ap.add_argument("dir")
@@ -33,6 +33,7 @@ ap.add_argument("--fps", type=int, default=30)
 ap.add_argument("--lazo", type=int, default=16)
 ap.add_argument("--sostener", type=float, default=0)
 ap.add_argument("--poster-fin", action="store_true", help="póster = el estado final (entradas)")
+ap.add_argument("--radio", type=float, default=0, help="redondea el recorte (px del cuadro): una ventana clara sobre un lienzo de color, sin las esquinas de la página")
 a = ap.parse_args()
 
 W, H = [int(v) for v in a.lienzo.split("x")]
@@ -62,7 +63,14 @@ for i in range(n):
         j += 1
     im = Image.open(os.path.join(a.dir, cuadros[j]["f"])).convert("RGB").crop((x0, y0, x1, y1))
     out = Image.new("RGB", (W, H), fondo)
-    out.paste(im.resize((ancho, alto), Image.LANCZOS), (px, py))
+    pieza = im.resize((ancho, alto), Image.LANCZOS)
+    if a.radio:
+        r = round(a.radio * ancho / (x1 - x0))
+        m = Image.new("L", (ancho * 2, alto * 2), 0)
+        ImageDraw.Draw(m).rounded_rectangle((0, 0, ancho * 2 - 1, alto * 2 - 1), radius=r * 2, fill=255)
+        out.paste(pieza, (px, py), m.resize((ancho, alto), Image.LANCZOS))
+    else:
+        out.paste(pieza, (px, py))
     out.save(os.path.join(tmp, f"f{i:05d}.jpg"), quality=94)
 fs = sorted(os.listdir(tmp))
 uno = Image.open(os.path.join(tmp, fs[0]))

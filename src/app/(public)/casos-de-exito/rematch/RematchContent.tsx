@@ -814,7 +814,7 @@ export default function RematchContent() {
           name: "LumioLearn",
           tagline: c.nextTagline,
           href: "/casos-de-exito/lumiolearn",
-          image: "/images/proyects/lumiolearn/lumiolearn-portada-v7.jpg",
+          image: "/images/proyects/lumiolearn/lumiolearn-portada-v8.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

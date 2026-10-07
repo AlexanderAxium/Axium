@@ -91,3 +91,31 @@ dispositivo y su escena (Rematch celular sobre la pala, LumioLearn tableta en el
   ya compuesta arrastró el cuadrilátero del celular. Neutralizar el verde del lado de
   la laptop antes de componer el segundo.
 - El SVG del logo sin `width/height` se rasteriza cuadrado: dar alto explícito.
+
+## 7. La ficha al molde de producto (2026-10-07)
+
+Alexander: *«también actualiza el portafolio de bookit y lumio según tus nuevos diseños»*. La
+ficha pasa de CaseStory (brandvm) a `CaseProducto`, como Rematch y Vendiq, sobre el pino oscuro
+de los paneles de bookit.com.pe (`#001B14`). Taller: `capturas-saas/bookit/producto-2026-10/`.
+
+- **bookit.com.pe casi no se mueve sola** (la entrada del hero dura un segundo y es JavaScript:
+  `reiniciar` no la repite). Lo que se mueve es lo que hace el usuario, y eso se graba:
+  - `bk-recorrido`: «De tu web a tu agenda» bajando paso a paso (`grabar-scroll.cjs`), con
+    paradas en 0 · 660 · 1540 · 2370 · 3000 px (cada paso se activa en 0 · 350–1000 ·
+    1200–1900 · 2050–2700 · 2850+). Con la página ampliada al doble, la columna fija medía
+    dos pantallas (`100vh`) y se soltaba a mitad: el script fija los `sticky` a una pantalla.
+    Recorte dentro del panel pino (sin la cabecera ni su filete). Es también el highlight
+    del home.
+  - `bk-rubros`: «Bookit habla como tu negocio», el ratón pasando por los seis rubros
+    (`grabar-hover.cjs`), con la ventana a 1440×1040 para que «Creativos» no obligue a
+    desplazar la página.
+- **Funciones**: cuatro tarjetas aisladas con alfa (`aislar-piezas.cjs`): cobros, sedes,
+  horarios y fichas, con el plan en el pie. **Fuera** las dos con foto: bookit.com.pe reusa el
+  fotógrafo y la mesa redonda en los rubros, y en la ficha no se repite a nadie.
+- **Clientes**: Moviflex, Blendet, Jarumi y Capptura en monitor + celular construidos sobre el
+  pino (`capturar-tiendas-vendiq.cjs slug=url…` y `mockups-tiendas-vendiq.py` con `MOCK_*`).
+- Se quedan `bv-hero-v2` (y su recorte `bk-heroe-movil`), `bv-landing`, `bv-tipografia` y
+  `bv-paleta`; borradas las láminas del molde anterior (mosaico, recorrido, móviles, clientes,
+  funciones, planes).
+- «Siguiente»: Vendiq (la cadena Rematch → LumioLearn → Bookit → Vendiq → Rematch).
+

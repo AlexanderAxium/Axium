@@ -3,6 +3,7 @@
 // de prioridad a sus tiendas creadas, añade happyart.com.pe».
 //
 //   PWCORE=… PWEXE=… node capturar-tiendas-vendiq.cjs <dir-salida> [slug…]
+//   … o con otra lista: [slug=url …] (las webs de clientes de Bookit, 2026-10-07)
 //
 // Por tienda salen <slug>-d.png (escritorio, 2400×1350 = la pantalla del monitor construido)
 // y <slug>-m.png (celular, 1170×2382: la pantalla del movil-v-820 MENOS la barra de estado,
@@ -14,7 +15,9 @@ const fs = require("fs");
 const path = require("path");
 
 const OUT = process.argv[2];
-const SOLO = process.argv.slice(3);
+// `slug=url` en vez de un slug: otra lista (las webs de clientes de Bookit, 2026-10-07)
+const EXTRA = process.argv.slice(3).filter((a) => a.includes("="));
+const SOLO = process.argv.slice(3).filter((a) => !a.includes("="));
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -34,6 +37,7 @@ const TIENDAS = [
   ["happy-art", "https://happyart.com.pe"],
 ];
 
+if (EXTRA.length) TIENDAS.splice(0, TIENDAS.length, ...EXTRA.map((a) => a.split(/=(.+)/).slice(0, 2)));
 async function limpiar(p) {
   for (const t of ["Aceptar todas", "Aceptar todo", "Aceptar", "Accept all", "Accept", "Entendido", "De acuerdo", "OK"]) {
     const b = p.getByRole("button", { name: t, exact: true });

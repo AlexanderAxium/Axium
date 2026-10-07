@@ -310,3 +310,31 @@ Alexander: *"sigue raro, capaz es la perspectiva, haz otro mockup"*. `lumiolearn
 cenital de la tableta sobre un tapete índigo con cuaderno cerrado, lápiz, té y eucalipto (Higgsfield
 `escenas/lumio-portada-cenital-b.png`, 3:2 high 2k) + el inicio de lumiolearn.com a 1440×1000 con
 `--bordes`. Repuntada en `lumiolearn.json` y en el «Siguiente» de Rematch; borradas v4, v5 y v6.
+
+## 12. La ficha al molde de producto, y portadas sin el inquilino (2026-10-07)
+
+Alexander: *«también actualiza el portafolio de bookit y lumio según tus nuevos diseños»*.
+`CaseProducto` sobre el azul noche del pie de lumiolearn.com (`#11132A`). Taller:
+`capturas-saas/lumiolearn/producto-2026-10/`.
+
+- ⚠️ **El hero de lumiolearn.com trae al inquilino**: «Prueba gratuita: te quedan 14 días en
+  InduTech Academy» y un curso de mantenimiento industrial. Lo llevaban la portada de la
+  tarjeta (`lumiolearn-portada-v7`, la tableta cenital), el highlight del home
+  (`lumiolearn-v12`) y, en el celular, la escena `bv-landing-v2`. Las tres salen. En § 10 se
+  anotó que Alexander había pedido el inicio y el aviso quedaba «en chico»; con la regla de no
+  mostrar inquilinos (memoria, 2026-09-12) ya no vale. Nada del hero de lumiolearn.com, ni en
+  chico.
+- **Portadas nuevas**: `lu-portada.mp4` (highlight, 16:10) y `lumiolearn-portada-v8.jpg`
+  (tarjeta, 3:2): la ventana de «Más que cursos» sobre el azul noche, con las esquinas
+  redondeadas (`video-micro.py --radio`). El bucle se rotó para arrancar en la pestaña de
+  comunidad: el póster no lleva la cara grande de la clase en vivo.
+- **Vídeos** (`grabar-micro.cjs`): `lu-experiencia` (una pestaña cada 9,0 s, ciclo de 27 s
+  cortado justo después de un cambio; contenedor = ventana + pestañas, 1408 px) y
+  `lu-operar` (las seis tarjetas de «operar a gran escala», 12 s con fundido largo: el contador
+  de cupones sube sin volver).
+- **Por dentro**: la única tira, con las capturas del panel y del portal del alumno en local, en
+  el tenant propio (`bv-clase`, `bv-progreso`, `bv-tarjetas`, `bv-certificado`, `bv-estudio`,
+  `bv-celular-v2`), con el plan donde aplica (tutor con IA desde Business).
+- Borradas: v7, v12, `bv-landing-v2` (+ móvil), `bv-landing-moviles`, `bv-mosaico-v2`,
+  `bv-precios` (con el texto viejo de precios) y `bv-clase-movil`.
+
