@@ -478,9 +478,9 @@ portada nueva de vendiq.pe entrando, la gorra que cae y la venta del #1482), con
 
 ## LumioLearn v13 y Bookit v11 (2026-10-07)
 
-Los cuatro highlights son ya vídeos de la web real de cada producto. LumioLearn: `lu-portada.mp4`
-(«Más que cursos» sobre el azul noche), que sustituye a la tableta cenital `lumiolearn-v12`
-porque su pantalla llevaba el aviso de InduTech Academy, un inquilino. Bookit: `bk-recorrido.mp4`
+Vendiq, Rematch y Bookit son vídeos de la web real. LumioLearn probó `lu-portada.mp4` («Más que
+cursos» sobre el azul noche) y Alexander pidió volver a la tableta cenital `lumiolearn-v12`:
+*«usa la portada anterior de lumio, esa nueva que hiciste no me gusta»*. Bookit: `bk-recorrido.mp4`
 («De tu web a tu agenda»), con `bookit-v10.jpg` de respaldo. Detalle en `CASO-LUMIOLEARN.md`
 § 12 y `CASO-BOOKIT.md` § 7.
 

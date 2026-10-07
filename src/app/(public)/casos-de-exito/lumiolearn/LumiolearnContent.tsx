@@ -25,8 +25,9 @@ import { useTranslation } from "~/hooks/useTranslation";
  *    gran escala».
  *  · ⚠️ El hero de lumiolearn.com NO sale: su ventana trae «Prueba gratuita: te quedan 14 días
  *    en InduTech Academy» y un curso de mantenimiento industrial, de un inquilino. Por eso
- *    tampoco la escena de la laptop ni las portadas viejas (v7 y el highlight v12), que lo
- *    llevaban (CASO-LUMIOLEARN.md § 12).
+ *    tampoco la escena de la laptop que lo llevaba. Las portadas de la tarjeta y del home sí
+ *    siguen siendo la tableta cenital (v7 y v12), con el aviso en chico: se probó una nueva y
+ *    Alexander pidió volver a esa (CASO-LUMIOLEARN.md § 12).
  *  · Panel y portal del alumno: capturas de LumioLearn en local, en su propio tenant
  *    (LumioLearn Academy) con una academia de demostración; nada de academias clientes.
  *  · La foto del hero (la alumna estudiando de noche) es de Higgsfield, solo ambiente: la

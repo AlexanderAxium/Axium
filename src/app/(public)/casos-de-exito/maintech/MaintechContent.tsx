@@ -688,7 +688,7 @@ export default function MaintechContent() {
           name: "LumioLearn",
           tagline: c.nextTagline,
           href: "/casos-de-exito/lumiolearn",
-          image: "/images/proyects/lumiolearn/lumiolearn-portada-v8.jpg",
+          image: "/images/proyects/lumiolearn/lumiolearn-portada-v7.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />
