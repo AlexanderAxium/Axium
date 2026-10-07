@@ -544,3 +544,176 @@ seguridad para volver atrás sin generar nada.
 - `.next/cache/images` borrado, y nombres nuevos, para que el optimizador no sirva la vieja.
 
 **Crédito gastado: 8,25. Saldo: 962,27 → 954,02.**
+
+## 14. La ficha entera al modelo Pixelmatters, y portadas nuevas (2026-10-06)
+
+Alexander: *«intenta hacer uno así https://www.pixelmatters.com/work/amigo para rematch.
+analiza con detalle, afina tu algoritmo para próximos portafolios. actualiza las portadas
+larga y cuadrada y todo el use case»*. Referencia analizada en `referencias/pixelmatters.md`.
+
+**Qué cambió.** La ficha deja `CaseStory` (brandvm, lienzo claro) y pasa a un componente
+nuevo, `src/components/axium/case-producto/case-producto.tsx` — lienzo `#000E17` (la tinta de
+Rematch hundida), título + logotipo, foto a sangre, meta en cinco columnas, texto que alterna
+de lado, piezas, cita + CTA, «El resultado» con cifras y el mismo cierre «Más proyectos»
+(exportado de case-story como `CaseMasProyectos`).
+
+**Las piezas** (taller `capturas-saas/rematch/pixelmatters-2026-10/`, todo reproducible con
+`scripts/taller-rematch-pm.py` y `scripts/videos-rematch-pm.py`):
+
+| Pieza | Qué es | De dónde sale |
+|---|---|---|
+| `rm-heroe` (+`-movil`) | Mano de un jugador sentado en la pista con live.rematch.pe en el celular | Escena g1 (OpenAI) + viewport real de live a 3x |
+| `rm-web.mp4` | rematch.pe recorriéndose en un navegador sobre el campo tinta | 246 capturas por posición de scroll |
+| `rm-recepcion` · `rm-banca` | Portátil en la recepción con el calendario del panel · celular en la banca con los torneos de live | Escenas g2/g3 + captura real, esquinas medidas a mano |
+| `rm-entrenadora` | Entrenadora con la lista de alumnos de la academia flotando | Escena g4 + recorte del panel |
+| `rm-movil.mp4` | rematch.pe en el celular sobre el jugador de noche | 309 capturas de scroll móvil |
+| carrusel `rm-c-*` | Torneo publicado (lima) · asistente de torneos (recepción desenfocada) · plan Profesional (tinta) · tabla de liga (gris) | Componentes reales a 3x y recortes del panel |
+| `rm-moviles` (+`-movil`) | Tres pantallas: competición, cómo quieres jugar, precios | Viewports reales a 3x |
+| `rm-duenio` · `rm-componentes` | Dueño al teléfono con la cobranza · hoja de componentes reales | Escena g7 + KPI del panel · componentes a 3x y trozos de la agenda |
+| `rm-agenda.mp4` | El jugador reserva en el celular y la reserva cae en la agenda del club | Screencast con `zoom: 3` |
+
+**Los datos se midieron otra vez y uno estaba mal.** La ficha anterior decía «6 formatos de
+torneo»: `prisma/schema.prisma` › `TournamentFormat` tiene **8**. Los **5 deportes con
+marcador propio** sí se confirman (`TableTennisScore`, `TennisScore`, `FootballScore`,
+`VolleyballScore`, `BasketballScore`). El repo arranca el **2026-01-19**: año 2026.
+
+**Descartados al elegir pantallas:** el dashboard (sus porcentajes salen sin formato,
+«5966.279069767442 %»), la llave vacía del torneo («Llave no disponible aún»), las capturas
+de torneo en vivo de septiembre (anteriores al rediseño de live), y el directorio de clubes
+de live (inquilinos). El asistente de torneos se recortó para dejar fuera el indicador «N» de
+Next.js en modo desarrollo que asomaba en la esquina de la captura.
+
+**Portadas** — la misma foto, como hace Pixelmatters en su índice:
+
+| Antes | Ahora |
+|---|---|
+| `proyects/rematch/rematch-portada-agenda.jpg` (portátil en el banco) | **`rematch-portada-mano.jpg`** (3072×2048; la tarjeta la recorta a 4:3) |
+| `highlights/rematch-v11.jpg` (pistas vacías de noche) | **`highlights/rematch-v12.jpg`** (16:10 desde y=64) |
+
+Cinco referencias en código: `src/data/cases/rematch.json`, `highlights-section.tsx`,
+`software-development-page.tsx`, y las tarjetas «Siguiente» de **Vendiq** y **César
+Acosta**. Las imágenes viejas sin uso (`bv-*`, las cuatro portadas anteriores y la v11) se
+borraron; siguen en git.
+
+**Verificado:** `tsc` y Biome limpios; 200 en la ficha, `/portafolio`, el home, Vendiq, César
+Acosta y Software a medida; a 1440, 390 y 360 sin desborde, gutter de 16 px en el celular,
+cero imágenes rotas, los tres vídeos cargan; es / en / pt. Medido contra el estándar:
+**66 %** del cuerpo en imagen, **32** palabras por 1.000 px, párrafo máximo de **38**
+palabras.
+
+**Coste:** 7 imágenes OpenAI, 27 428 tokens (23 851 de salida). El resto, 0.
+
+## 15. Lo que se veía mal era de Rematch, y se arregla en Rematch (2026-10-06, misma tarde)
+
+Alexander, revisando la ficha: *«me gusta. pero hay algunas cosas que en el mismo rematch se
+ven mal»* — el asistente de torneos con emojis (🏆 🔄 🎯) en vez de la iconografía de la marca,
+*«su data de prueba tiene foto cortada»* (el torneo de demostración en live) y *«la portada
+está mal diseñada»* (la portada móvil de live: media pantalla negra arriba, el texto sobre la
+cara del jugador y una franja blanca abajo). Y dos sobre la ficha misma: la hoja de
+componentes (*«parece más problema de recortes tuyos que de la web»*) y el celular de Amigo
+como vara (*«mira la elegancia de estos mockups, las sombras, el hiperrealismo»*).
+
+**En Rematch** — rama `fix/iconos-y-detalles-panel` desde `origin/main`, commit `3df64d07`,
+**sin empujar** (`main` despliega solo y Gonzalo trabaja ahí):
+- Plantillas del asistente: `emoji` → `icono` del motor de vidrio (`trofeo`, `jugadores`,
+  `medalla`, `ubicacion`) en el verde de competición.
+- Cartel tipográfico de `live/torneos`: el trofeo de vidrio en vez del de lucide.
+- Portada móvil de live: `100svh`, el título arriba (en la zona negra de la foto), el buscador
+  abajo (`mt-auto`); un `min-w-0` evitó que la fila de chips ensanchara la columna.
+- Siembras de demostración sin `flyerUrl` (usaban las fotos del hero, apaisadas, recortadas a
+  4:3). En **producción** hace falta el mismo cambio en los datos:
+  `scratchpad/rematch-prod-flyers.sql` — **pendiente de OK**, no se ejecutó.
+- Verificado en local (3020, base `rematch_dev`, también corregida): asistente con los íconos,
+  portada sin desborde a 390 y 360 y alta = pantalla, tarjeta con el cartel tipográfico.
+
+🚨 **Hallazgo que decide Alexander:** el hero de live usa **fotos de jugadores profesionales
+reales** (Fan Zhendong en el celular; Calderano, Ma Long, Moregard, Xu Xin y Zhang Jike en
+escritorio) y las siembras las reutilizaban como flyers. El comentario del propio archivo dice
+«nada de jugadores profesionales reales». Es riesgo de derechos de imagen para Rematch y, al
+reproducirlo, para la ficha de Axium. Propuesta: atletas generados con OpenAI, en la serie.
+
+**En la ficha** (nombres nuevos por la caché de `/_next/image`):
+- `rm-heroe-v2` + portadas `rematch-portada-mano-v2.jpg` y `highlights/rematch-v13.jpg`: la
+  portada de live corregida dentro del celular y la luz de la escena sobre el vidrio.
+- `rm-mesa` sustituye a `rm-banca`: escena nueva al modo del celular de Amigo (pared crema,
+  tres cuartos con los botones a la vista, sol bajo, reflejo en el roble) con la página de
+  academias de rematch.pe. La lista de torneos de live vuelve cuando se corrijan los datos de
+  producción.
+- `rm-recepcion-v2`: el portátil con la misma pasada de luz.
+- Carrusel `-v2`: el asistente con los íconos nuevos (desde local), el torneo con el cartel
+  tipográfico (aislado, desde local), el plan Profesional y la liga, recortes aislados.
+- `rm-componentes-v2`: todos los componentes **aislados con alfa** (COMPOSITOR, decimotercera § 8).
+
+**Coste de la vuelta:** 2 imágenes (la escena de la mesa con `n: 2`), 8 354 tokens.
+
+## 16. La interfaz no seguía los márgenes del celular (2026-10-06)
+
+Alexander, sobre el celular en la mesa: *«me gustó el estilo pero […] no está bien mockeado,
+no sigue los márgenes del celular. fíjate qué podríamos hacer para arreglar ese error en
+nuestros prompts»*. Causa: la pantalla negra del prompt se fundía con el bisel negro y el
+borde del cristal no se podía medir (esquinas a ojo, radio de oído, isla doble). Arreglo: las
+tres escenas con pantalla (mesa, mano, portátil) se editaron con `sunburst` y máscara para
+poner la pantalla en **clave magenta**; `componer-escena.py --clave` saca la forma exacta.
+Piezas nuevas: `rm-heroe-v3`, `rm-heroe-movil-v3`, `rm-mesa-v2`, `rm-recepcion-v3` y las
+portadas `rematch-portada-mano-v3.jpg` y `highlights/rematch-v14.jpg` (cinco referencias
+en código actualizadas). **Coste:** 3 ediciones, 15 742 tokens.
+
+## 17. Capítulo de marca, más animación y tres propuestas de portada (2026-10-06)
+
+Alexander: *«recuerda que rematch, lumio, vendiq y bookit son productos propios, se les hizo
+todo, branding, logo, paleta, diseño web… Me gusta mucho que hagas animaciones de la web»*, con
+tres referencias nuevas (Pixelmatters Vodafone, Significa Dia, Paisanos Kavak).
+
+- **Capítulo de marca** en la ficha (entre el reto y el producto, cerrado con «• • •»): naming
+  (Reservo → Rematch, de la guía de marca del repo), **valores** con su definición
+  (Eficiente · Accesible · Activa, de `docs/MARKETING_AND_BRAND_GUIDE.md`), y ocho láminas de
+  `scripts/laminas-marca.py` con datos del repo: logotipo; sistema del logotipo (las versiones
+  apiladas salen del historial de git, commit `95ae3743^`); anatomía del ícono con callouts
+  01–03; tipografía con la escala **medida en vivo** (Cal Sans 80/48/34, Satoshi 20/17); paleta
+  como tokens con el **contraste medido** (el lima da 1,6:1 sobre blanco → lima oscuro
+  `#3F6B00` de 6,3:1); los **29 íconos renderizados desde el código** (`tsx` +
+  `renderToStaticMarkup` sobre `components/iconos`) en claro y en oscuro; anatomía del vidrio en
+  tres capas; y el vocabulario de deportes en Cal Sans sobre lima.
+- **Dos animaciones nuevas** con `scripts/grabar-micro.cjs` + `video-micro.py`: el teléfono de
+  live con el marcador set por set (`rm-jugadores`) y los tres pasos vivos (`rm-pasos`).
+- Cabecera con **servicios y entregables en lista** (Significa Dia).
+- Medido: 68 % del cuerpo en imagen, 29 palabras por 1.000 px, párrafo máximo 42, 5 vídeos.
+- **Portada:** la mano con el celular se rechazó (*«los bordes están feos, la portada no me
+  convence»*): el aparato era generado. Tres propuestas con el aparato construido en
+  `scripts/portada-rematch-propuestas.py` → `public/comparar-portadas-rematch.html`
+  (A cenital sobre el césped, B dos celulares sobre tinta y lima, C la mesa). Pendiente de su
+  elección; recomendada A. Coste de los dos campos: 3 imágenes, 12 977 tokens.
+
+## 18. Portada elegida: A, sobre la cancha (2026-10-06)
+
+Alexander: *«el A está bien»*. Se compuso en sus cuatro formatos —no se recorta de la 4:3: el
+celular girado mide ~1.960 px y un 16:10 de 3072 deja 1.920— con `portada-rematch-propuestas.py
+--formatos`: `rematch-portada-cancha.jpg` (4:3, /portafolio y tarjetas «Siguiente» de Vendiq y
+César Acosta), `highlights/rematch-v15.jpg` (16:10, home), `rm-heroe-cancha` (1,8:1) y
+`rm-heroe-cancha-movil` (1:1). Borradas las v12–v14, la mano y la página de comparación.
+Verificado: 200 en las seis páginas, sin desborde a 360.
+
+## 19. El capítulo de marca, rehecho desde el manual real (2026-10-06)
+
+Alexander, con captura de la anatomía del ícono: *«MANUAL DE MARCA-REMATCH-ALEX usa eso en
+descargas para el manual de marca, no inventes taaanto… ¿qué representan esos 3 puntos? si
+alguien se pone a analizar no entenderá el propósito, a eso me refiero con inventar»*.
+
+- **La fuente:** `~/Downloads/ENTREGA FINAL-REMATCH-ABRIL-2026/` — manual de 20 páginas (PDF y
+  AI), logotipos CMYK/RGB, `PALETA DE COLOR`, tipografías **Loos Condensed** (titulares) y
+  **Halyard Display** (textos), línea gráfica (2 banners, 3 posts) y 6 mockups. Copia del PDF
+  en `~/Downloads/MANUAL DE MARCA-REMATCH-ALEX.pdf`. Texto y miniaturas en
+  `capturas-saas/rematch/pixelmatters-2026-10/marca/manual/`.
+- **Lo que estaba mal:** la anatomía del ícono (01–03) y la del vidrio eran forma de Kavak sin
+  dato detrás; el vocabulario de deportes, inventado; la tipografía decía Cal Sans + Satoshi
+  (las de la web) y la paleta, mis tokens (`#B4DF00`) en vez de los del manual (`#B5DF01`,
+  `#001D30`, `#003968`, `#F2F2F2`, `#7EB504`). Borradas: `rm-marca-{logo,sistema,icono,
+  tipografia,paleta,vidrio,vocabulario}.jpg`.
+- **Lo que queda (todo de la entrega, `scripts/manual-rematch.py`):** naming y valores del brief
+  del repo · fachada (mockup) · versiones de logo y de color (páginas 5 y 6) · tipografías
+  (página 10, sin su ejemplo en lorem ipsum) y la paleta entregada · el glosario (página 15,
+  sin el número de página) con la voz citada del manual · los tres posts · carrusel de
+  aplicaciones (taza, credencial, papelería, calendario, lapiceros) · y los 29 íconos del
+  producto (son del código, no del manual), con un texto sin callouts.
+- Entregables de la cabecera: «Manual de marca, Línea gráfica, 29 íconos…».
+

@@ -1018,3 +1018,25 @@ export function CaseStory({
     </AcentoCtx.Provider>
   );
 }
+
+/**
+ * El mismo cierre oscuro «Más proyectos», suelto, para las fichas que no usan
+ * CaseStory (la primera es la de Rematch al modelo Pixelmatters, 2026-10-06).
+ */
+export function CaseMasProyectos({
+  next,
+  hide = [],
+  labels,
+  accent = ACENTO_AXIUM,
+}: {
+  next: CaseStoryProps["next"];
+  hide?: string[];
+  labels: StoryLabels;
+  accent?: Acento;
+}) {
+  return (
+    <AcentoCtx.Provider value={accent}>
+      <MasProyectos next={next} hide={hide} labels={labels} />
+    </AcentoCtx.Provider>
+  );
+}

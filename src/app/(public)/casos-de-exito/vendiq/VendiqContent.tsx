@@ -2,392 +2,597 @@
 
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
 import {
-  CaseStory,
+  type BloqueProducto,
+  CaseProducto,
+  type CaseProductoProps,
+  type Medio,
+} from "~/components/axium/case-producto/case-producto";
+import {
+  CaseMasProyectos,
   STORY_LABELS,
-  type StoryBlock,
   type StoryLang,
 } from "~/components/axium/case-story/case-story";
 import { useTranslation } from "~/hooks/useTranslation";
 
 /**
- * Ficha de Vendiq con la narrativa de Brand Vision (ver case-story), con la marca
- * nueva de la web pública (la «línea técnica» del 2026-09-14, ya en vendiq.pe). Todo lo que se
- * ve de la web es captura real de vendiq.pe y de las tiendas de sus clientes
- * (Aurore, ANJ Sports, Sportt, Daesur Motors). El panel y la tienda de demostración
- * salen del repo local con el inquilino demo y la base local, como pidió Alexander
- * («vendiq no es solo la landing page»); el panel conserva su paleta anterior. La foto del
- * hero y las escenas de los dispositivos son de Higgsfield (solo ambiente), con las
- * capturas compuestas sobre la pantalla en verde.
- * Lo que depende del plan se dice con el plan (punto de venta, SUNAT, envíos e IA
- * desde Business; varios almacenes, dominio propio, idiomas y API en Business Pro).
- * Happy Art no aparece: la muestra la web de Vendiq, pero su tienda no está hecha con Vendiq.
+ * Ficha de Vendiq al molde de producto (Pixelmatters), 2026-10-06, como la de Rematch.
+ * Alexander: «rematch, lumio, vendiq y bookit son productos propios… vendiq tiene algunos
+ * buenos diseños pero puedes mejorarlo… Me gusta mucho que hagas animaciones de la web».
+ *
+ * ── DE DÓNDE SALE CADA COSA ────────────────────────────────────────────────────────
+ *  · Animaciones: las REALES de vendiq.pe, grabadas con el screencast de Chrome
+ *    (scripts/grabar-micro.cjs): la entrada de la escena de la portada, «Cómo funciona» y el
+ *    asistente con IA. Los módulos, cada tarjeta aislada a 3x (capturar-vendiq-pm.cjs).
+ *  · Desde el 2026-10-07, todo de la portada nueva de vendiq.pe (personas reales y la tienda
+ *    de ejemplo Pulso, running): la escena de la laptop y el celular (`bv-landing-v3`), los
+ *    tres vídeos y los módulos (`-v2`). Alexander, al publicarla: «actualiza el portafolio».
+ *    Taller: `capturas-saas/vendiq/pulso-2026-10/` (CASO-VENDIQ.md § 14).
+ *  · Panel: capturas del repo local con el inquilino demo (CASO-VENDIQ.md § 8); conserva
+ *    la paleta anterior. Tiendas: las de los clientes, en vivo.
+ *  · Marca: corta, porque Vendiq NO tiene manual (Alexander: «no exageres con la sección
+ *    de branding»): logo, tipografía y paleta tal como están en el código.
+ *  · Sin cita: no hay testimonio de un comercio que citar, y no se inventa.
+ *  · Lo que depende del plan se dice con el plan (punto de venta, SUNAT, envíos e IA desde
+ *    Business; varios almacenes en Business Pro).
+ *  · Tiendas: las seis que muestra vendiq.pe, capturadas en vivo y montadas en un monitor y un
+ *    celular construidos (scripts/mockups-tiendas-vendiq.py). Happy Art entra «como las demás»
+ *    por decisión de Alexander (2026-10-06), aunque happyart.com.pe sigue en WordPress.
  */
 
 const IMG = "/images/proyects/vendiq";
 
 type Copy = {
-  tagline: string;
-  meta: [string, string][];
-  statement: string;
-  context: string;
-  highlightsTitle: [string, string];
-  highlights: { lead: string; text: string }[];
-  challengeTitle: string;
-  challenge: string;
-  approachTitle: string;
-  approach: string;
-  outcomesTitle: string;
-  outcomes: string;
-  outcomeBullets: string[];
-  alt: {
-    mosaico: string;
-    tipografia: string;
-    paleta: string;
-    landing: string;
-    modulos: string;
-    moviles: string;
-    clientes: string;
-    funciones: string;
-    planes: string;
-    panel: string;
-    envios: string;
-    celular: string;
+  titulo: string;
+  heroeAlt: string;
+  meta: CaseProductoProps["meta"];
+  contexto: [string, string];
+  reto: [string, string];
+  enfoque: [string, string];
+  marca: [string, string];
+  modulos: string;
+  etiquetaModulos: string;
+  pies: [string, string, string, string, string, string, string];
+  ia: string;
+  panel: [string, string];
+  tiendas: [string, string];
+  piesTiendas: string[];
+  mandos: { anterior: string; siguiente: string };
+  alt: Record<
+    | "flujo"
+    | "duenio"
+    | "como"
+    | "tipografia"
+    | "paleta"
+    | "asistente"
+    | "panel"
+    | "celular"
+    | "envios",
+    string
+  > & {
+    modulos: [string, string, string, string, string, string, string];
+    tiendas: string[];
   };
+  cta: CaseProductoProps["cta"];
+  resultado: CaseProductoProps["resultado"];
   nextTagline: string;
 };
 
 const COPY: Record<StoryLang, Copy> = {
   es: {
-    tagline:
-      "Tienda online, punto de venta, inventario y facturación SUNAT en un solo sistema",
-    meta: [
-      ["Estado", "En producción"],
-      ["Entregables", "Diseño de producto, web pública, plataforma SaaS"],
-      ["Industria", "Comercio minorista y mayorista"],
-      ["Plataforma", "Web (SaaS) multi-tenant"],
+    titulo:
+      "Una plataforma para vender en la web y en el local, con un solo catálogo",
+    heroeAlt:
+      "vendiq.pe en una laptop y en el celular, sobre el mostrador de concreto de una tienda con luz azul",
+    meta: {
+      tipologia: ["Tipología", ["Web app", "Tienda online", "Punto de venta"]],
+      industria: ["Industria", "Comercio · SaaS propio"],
+      anio: ["Año", "2026"],
+      servicios: [
+        "Servicios",
+        [
+          "Logotipo e identidad",
+          "Diseño de producto",
+          "Web pública",
+          "Desarrollo web",
+          "Plataforma SaaS",
+        ],
+      ],
+      entregables: [
+        "Entregables",
+        [
+          "vendiq.pe",
+          "Panel del comercio",
+          "Tiendas de los clientes",
+          "Punto de venta",
+          "Facturación SUNAT",
+          "Editor visual con IA",
+        ],
+      ],
+      vivo: ["En vivo", "vendiq.pe", "https://vendiq.pe"],
+    },
+    contexto: [
+      "Contexto",
+      "Vendiq es un producto propio de Axium para comercios del Perú que venden por internet y en mostrador: tienda online con su marca, punto de venta, inventario y facturación SUNAT sobre un mismo catálogo.",
     ],
-    statement:
-      "Construimos la plataforma con la que un comercio vende en su web y en su local con el mismo catálogo, el mismo stock y sus comprobantes SUNAT.",
-    context:
-      "Producto propio de Axium para comercios que venden por internet y en mostrador. Cada tienda publica su web con su marca, cobra con las pasarelas que ya usan sus clientes y lleva inventario y facturación en el mismo panel.",
-    highlightsTitle: ["Lo que", "construimos"],
-    highlights: [
-      {
-        lead: "Tienda online",
-        text: "catálogo con variantes y colecciones, carrito, checkout y cuenta de cliente, con la marca de cada tienda.",
-      },
-      {
-        lead: "Punto de venta",
-        text: "cobro en el local con lector de códigos o la cámara del celular, sobre el mismo stock; desde Business.",
-      },
-      {
-        lead: "Inventario",
-        text: "stock con kardex y órdenes de compra, y varios almacenes en Business Pro.",
-      },
-      {
-        lead: "Facturación SUNAT",
-        text: "boletas, facturas y notas de crédito desde el pedido, con el certificado de cada comercio; desde Business.",
-      },
-      {
-        lead: "Cobros sin comisión",
-        text: "Mercado Pago, Culqi, PayPal, transferencia y contra entrega; Vendiq no cobra por venta.",
-      },
-      {
-        lead: "Envíos por distrito",
-        text: "zonas con los distritos del Perú y tarifa plana, por peso, por monto o gratis; desde Business.",
-      },
-      {
-        lead: "Editor visual con IA",
-        text: "la web se arma con bloques; desde Business, un asistente con Gemini propone secciones con los productos y los colores de la tienda.",
-      },
-      {
-        lead: "Fidelidad y API",
-        text: "cupones, puntos, gift cards y aviso de carrito abandonado; dominio propio, cinco idiomas y API en Business Pro.",
-      },
+    reto: [
+      "El reto",
+      "Un comercio pequeño vende con herramientas sueltas: una web, una caja, una hoja de cálculo para el stock, otro programa para las boletas y el chat para los pedidos. Cada venta se anota varias veces y el stock nunca coincide.",
     ],
-    challengeTitle: "Reto",
-    challenge:
-      "Un comercio pequeño vende con herramientas sueltas: una web, un sistema de caja, una hoja de cálculo para el stock, otro programa para las boletas y el chat para los pedidos. Cada venta se anota varias veces y el stock nunca coincide.",
-    approachTitle: "Enfoque",
-    approach:
-      "Diseñamos Vendiq alrededor de un solo catálogo: la tienda online, el punto de venta, el inventario y los comprobantes descuentan de los mismos productos. El cliente compra, el stock baja en web y local, y sale la boleta aceptada por SUNAT.",
-    outcomesTitle: "Resultados",
-    outcomes:
-      "Vendiq está en producción en vendiq.pe: una perfumería de nicho, dos tiendas de tenis de mesa, un taller de aceites y una marca de productos de lavandería venden con él.",
-    outcomeBullets: [
-      "Tienda online, punto de venta, inventario y facturación SUNAT sobre un mismo catálogo",
-      "Tres planes con precio fijo al mes y 0 % de comisión por venta",
-      "Cobros con Mercado Pago, Culqi, PayPal, transferencia o contra entrega",
-      "Tiendas en su propio dominio, como aurore.com.pe, anjsports.com y daesurmotors.com",
+    enfoque: [
+      "Vendes una vez",
+      "Da igual por dónde entre la venta, por la tienda online o por la caja: el stock baja en la web y en el local, y sale la boleta aceptada por SUNAT. vendiq.pe lo cuenta con un solo pedido, el #1482.",
     ],
+    marca: [
+      "Una V hecha luz",
+      "El logotipo son dos cintas de luz que forman la V, redibujadas en vector. Alrededor, un sistema sobrio: grafito, una señal cian, el azul solo para la acción, Satoshi para el texto y Geist Mono para los rótulos.",
+    ],
+    modulos:
+      "Siete módulos sobre el mismo catálogo. En vendiq.pe cada uno se cuenta con un trozo de su propia interfaz, dibujado en HTML sobre la rejilla de la marca.",
+    etiquetaModulos: "Los módulos de Vendiq",
+    pies: [
+      "La tienda online con tu marca, en todos los planes",
+      "Punto de venta, desde el plan Business",
+      "Varios almacenes y sedes, en Business Pro",
+      "Boletas y facturas SUNAT, desde Business",
+      "0 % de comisión de Vendiq, en todos los planes",
+      "Zonas de envío por distrito, desde Business",
+      "El asistente con IA del editor, desde Business",
+    ],
+    ia: "Desde el plan Business, el editor visual trae un asistente con Gemini, con la clave del propio comercio: describe su negocio y el asistente propone una sección o la página entera con sus productos y sus colores.",
+    panel: [
+      "Por dentro",
+      "El panel lleva el catálogo, los pedidos con su envío y su pago, y las zonas de envío por distrito. También se usa desde el celular.",
+    ],
+    tiendas: [
+      "Tiendas que ya venden con Vendiq",
+      "Seis comercios de rubros muy distintos, cada uno con su marca, su dominio y su forma de vender: perfumes de nicho, tenis de mesa, aceites de motor, productos de lavandería, flores y regalos.",
+    ],
+    piesTiendas: [
+      "Aurore · Perfumería de nicho · aurore.com.pe",
+      "ANJ Sports · Tenis de mesa · anjsports.com",
+      "Sportt · Tenis de mesa · sporttperu.com",
+      "Daesur Motors · Aceites y taller · daesurmotors.com",
+      "Clefast · Productos de lavandería · clefast.com.pe",
+      "Happy Art · Flores y regalos · happyart.com.pe",
+    ],
+    mandos: { anterior: "Anterior", siguiente: "Siguiente" },
     alt: {
-      mosaico:
-        "Pantallas de vendiq.pe: portada, módulos, funciones, soluciones, precios y el asistente con IA",
+      flujo:
+        "La portada de vendiq.pe, animada: la dueña de una tienda de running con una zapatilla en la mano, la ficha del producto con sus tallas, el stock que baja de 18 a 17 y la venta del pedido #1482",
+      duenio:
+        "El dueño de una tienda empaca un pedido tras un mostrador de concreto, con luz azul",
+      como: "«Cómo funciona» en vendiq.pe, animado: el pedido #1482 pasa por la venta, el stock, la boleta y el envío",
       tipografia: "Tipografía de Vendiq: Satoshi con Geist Mono en los rótulos",
       paleta: "Paleta de Vendiq: grafito, azul de acción y la señal cian",
-      landing:
-        "vendiq.pe en una laptop y en el celular, sobre el mostrador de concreto de una tienda",
-      modulos:
-        "Los módulos de Vendiq con su interfaz dibujada: tienda online, punto de venta, inventario y facturación SUNAT",
-      moviles: "vendiq.pe en el celular: módulos, cómo funciona y precios",
-      clientes:
-        "Tiendas hechas con Vendiq: Aurore, ANJ Sports, Sportt y Daesur Motors",
-      funciones:
-        "Cómo funciona Vendiq: la venta, el stock, la boleta y el envío salen del mismo pedido",
-      planes: "Planes de Vendiq: Starter, Business y Business Pro",
+      asistente:
+        "El asistente con IA del editor, animado: escribe «Vendo zapatillas y ropa de running…», marca sus pasos y arma la vista previa de la tienda",
       panel:
         "El panel de Vendiq: el catálogo de productos y el detalle de un pedido con su envío y su pago",
-      envios:
-        "Envíos en el panel: zonas de Lima y provincias con sus métodos y tarifas",
       celular:
         "El panel de Vendiq en el celular: la lista de pedidos y el detalle de un pedido",
+      envios:
+        "Envíos en el panel: zonas de Lima y provincias con sus métodos y tarifas",
+      tiendas: [
+        "La tienda de Aurore en un monitor y en el celular: perfumería de casas de autor",
+        "La tienda de ANJ Sports en un monitor y en el celular: tenis de mesa, con un jugador de Butterfly",
+        "La tienda de Sportt en un monitor y en el celular: la nueva colección de zapatillas Lezoline",
+        "La tienda de Daesur Motors en un monitor y en el celular: el aceite exacto para tu motor",
+        "La tienda de Clefast en un monitor y en el celular: productos para lavandería",
+        "La tienda de Happy Art en un monitor y en el celular: flores y regalos",
+      ],
+      modulos: [
+        "Tarjeta del módulo Tienda online: la tienda de ejemplo en su subdominio con tres productos y el carrito",
+        "Tarjeta del módulo Punto de venta: la caja 1 de Miraflores con dos productos y el botón Cobrar",
+        "Tarjeta del módulo Inventario por sede: stock en Miraflores, Surco y el almacén, con el kardex",
+        "Tarjeta del módulo Facturación SUNAT: una factura electrónica aceptada por SUNAT",
+        "Tarjeta del módulo Pagos sin comisión: Mercado Pago, Culqi y PayPal conectadas",
+        "Tarjeta del módulo Envíos: zonas de envío por distrito con su tarifa",
+        "Tarjeta del módulo Editor visual con IA: los bloques de la página y la portada con los colores de la marca",
+      ],
+    },
+    cta: {
+      titulo: "¿Tienes un producto en mente?",
+      texto:
+        "Lo diseñamos y lo construimos contigo, de la primera pantalla a producción, como hicimos con Vendiq.",
+      boton: "Hablemos",
+      href: "#contacto",
+    },
+    resultado: {
+      titulo: "El resultado",
+      texto:
+        "Vendiq está en producción en vendiq.pe, con tres planes de precio fijo al mes y sin comisión por venta.",
+      cifras: [
+        {
+          valor: "0%",
+          texto: "de comisión de Vendiq por venta, en todos los planes",
+        },
+        {
+          valor: "6",
+          texto: "tiendas de clientes en producción, de rubros distintos",
+        },
+        {
+          valor: "1",
+          texto:
+            "catálogo para la tienda online, la caja, el stock y las boletas",
+        },
+      ],
     },
     nextTagline:
       "Una sola plataforma para todo lo que pasa en un centro deportivo",
   },
   en: {
-    tagline:
-      "Online store, point of sale, inventory and SUNAT invoicing in one system",
-    meta: [
-      ["Status", "In production"],
-      ["Deliverables", "Product design, public website, SaaS platform"],
-      ["Industry", "Retail and wholesale"],
-      ["Platform", "Multi-tenant web (SaaS)"],
+    titulo: "A platform to sell online and in store, from a single catalog",
+    heroeAlt:
+      "vendiq.pe on a laptop and a phone, on a store's concrete counter under blue light",
+    meta: {
+      tipologia: ["Typology", ["Web app", "Online store", "Point of sale"]],
+      industria: ["Industry", "Retail · In-house SaaS"],
+      anio: ["Year", "2026"],
+      servicios: [
+        "Services",
+        [
+          "Logo and identity",
+          "Product design",
+          "Public website",
+          "Web development",
+          "SaaS platform",
+        ],
+      ],
+      entregables: [
+        "Deliverables",
+        [
+          "vendiq.pe",
+          "Merchant dashboard",
+          "Client stores",
+          "Point of sale",
+          "SUNAT invoicing",
+          "AI visual editor",
+        ],
+      ],
+      vivo: ["Live", "vendiq.pe", "https://vendiq.pe"],
+    },
+    contexto: [
+      "Background",
+      "Vendiq is Axium's own product for Peruvian merchants who sell online and over the counter: an online store with their brand, point of sale, inventory and SUNAT invoicing on one shared catalog.",
     ],
-    statement:
-      "We built the platform a business uses to sell on its website and in its store with the same catalog, the same stock and its SUNAT receipts.",
-    context:
-      "Axium's own product for businesses that sell online and over the counter. Each store publishes its website under its own brand, takes payments through the gateways its customers already use, and keeps inventory and invoicing in the same dashboard.",
-    highlightsTitle: ["What we", "built"],
-    highlights: [
-      {
-        lead: "Online store",
-        text: "a catalog with variants and collections, cart, checkout and customer accounts, with each store's brand.",
-      },
-      {
-        lead: "Point of sale",
-        text: "in-store checkout with a barcode scanner or the phone's camera, on the same stock; from Business.",
-      },
-      {
-        lead: "Inventory",
-        text: "stock with a kardex and purchase orders, plus multiple warehouses on Business Pro.",
-      },
-      {
-        lead: "SUNAT invoicing",
-        text: "receipts, invoices and credit notes from the order, with each business's own certificate; from Business.",
-      },
-      {
-        lead: "No-commission payments",
-        text: "Mercado Pago, Culqi, PayPal, bank transfer and cash on delivery; Vendiq takes nothing per sale.",
-      },
-      {
-        lead: "Shipping by district",
-        text: "zones built from Peru's districts with flat, weight-based, order-based or free rates; from Business.",
-      },
-      {
-        lead: "Visual editor with AI",
-        text: "the website is built with blocks; from Business, an assistant powered by Gemini drafts sections with the store's products and colors.",
-      },
-      {
-        lead: "Loyalty and API",
-        text: "coupons, points, gift cards and abandoned-cart emails; custom domain, five languages and an API on Business Pro.",
-      },
+    reto: [
+      "Challenge",
+      "A small merchant sells with scattered tools: a website, a till, a spreadsheet for stock, another program for receipts and chat for orders. Every sale is entered several times and the stock never matches.",
     ],
-    challengeTitle: "Challenge",
-    challenge:
-      "A small business sells with scattered tools: a website, a register system, a spreadsheet for stock, another program for receipts and chat for orders. Every sale gets recorded several times and the stock never matches.",
-    approachTitle: "Approach",
-    approach:
-      "We designed Vendiq around a single catalog: the online store, the point of sale, inventory and receipts all draw down the same products. The customer buys, stock falls online and in store, and the receipt comes out accepted by SUNAT.",
-    outcomesTitle: "Outcomes",
-    outcomes:
-      "Vendiq is in production at vendiq.pe: a niche perfumery, two table tennis shops, a motor oil workshop and a laundry products brand sell with it.",
-    outcomeBullets: [
-      "Online store, point of sale, inventory and SUNAT invoicing on one shared catalog",
-      "Three plans with a fixed monthly price and 0% commission per sale",
-      "Payments with Mercado Pago, Culqi, PayPal, bank transfer or cash on delivery",
-      "Stores on their own domains, such as aurore.com.pe, anjsports.com and daesurmotors.com",
+    enfoque: [
+      "Sell once",
+      "Whether the sale comes in through the online store or the till, stock falls online and in store, and the receipt comes out accepted by SUNAT. vendiq.pe tells it with a single order, #1482.",
     ],
+    marca: [
+      "A V made of light",
+      "The logo is two ribbons of light that form the V, redrawn as vectors. Around it, a restrained system: graphite, a cyan signal, blue only for action, Satoshi for text and Geist Mono for labels.",
+    ],
+    modulos:
+      "Seven modules on the same catalog. On vendiq.pe each one is told with a piece of its own interface, drawn in HTML on the brand's grid.",
+    etiquetaModulos: "Vendiq modules",
+    pies: [
+      "The online store with your brand, on every plan",
+      "Point of sale, from the Business plan",
+      "Multiple warehouses and locations, on Business Pro",
+      "SUNAT receipts and invoices, from Business",
+      "0% Vendiq commission, on every plan",
+      "Shipping zones by district, from Business",
+      "The editor's AI assistant, from Business",
+    ],
+    ia: "From the Business plan, the visual editor has a Gemini assistant, using the merchant's own key: they describe their business and the assistant proposes a section or the whole page with their products and colours.",
+    panel: [
+      "Inside",
+      "The dashboard runs the catalog, orders with their shipping and payment, and shipping zones by district. It also works from the phone.",
+    ],
+    tiendas: [
+      "Stores already selling with Vendiq",
+      "Six merchants from very different trades, each with its own brand, domain and way of selling: niche perfume, table tennis, motor oil, laundry supplies, flowers and gifts.",
+    ],
+    piesTiendas: [
+      "Aurore · Niche perfumery · aurore.com.pe",
+      "ANJ Sports · Table tennis · anjsports.com",
+      "Sportt · Table tennis · sporttperu.com",
+      "Daesur Motors · Motor oil and workshop · daesurmotors.com",
+      "Clefast · Laundry supplies · clefast.com.pe",
+      "Happy Art · Flowers and gifts · happyart.com.pe",
+    ],
+    mandos: { anterior: "Previous", siguiente: "Next" },
     alt: {
-      mosaico:
-        "vendiq.pe screens: home, modules, features, solutions, pricing and the AI assistant",
+      flujo:
+        "The vendiq.pe homepage, animated: the owner of a running store holding a shoe, the product card with its sizes, stock dropping from 18 to 17 and the sale of order #1482",
+      duenio:
+        "A store owner packs an order behind a concrete counter, under blue light",
+      como: "“How it works” on vendiq.pe, animated: order #1482 goes through the sale, the stock, the receipt and the shipment",
       tipografia: "Vendiq typography: Satoshi with Geist Mono for labels",
       paleta: "Vendiq palette: graphite, action blue and the cyan signal",
-      landing:
-        "vendiq.pe on a laptop and a phone, on a store's concrete counter",
-      modulos:
-        "Vendiq modules with their drawn interface: online store, point of sale, inventory and SUNAT invoicing",
-      moviles: "vendiq.pe on mobile: modules, how it works and pricing",
-      clientes:
-        "Stores built with Vendiq: Aurore, ANJ Sports, Sportt and Daesur Motors",
-      funciones:
-        "How Vendiq works: the sale, the stock, the receipt and the shipment come from the same order",
-      planes: "Vendiq plans: Starter, Business and Business Pro",
+      asistente:
+        "The editor's AI assistant, animated: it types “I sell running shoes and apparel…”, ticks its steps and builds the store preview",
       panel:
         "The Vendiq dashboard: the product catalog and an order's detail with its shipping and payment",
-      envios:
-        "Shipping in the dashboard: Lima and province zones with their methods and rates",
       celular:
         "The Vendiq dashboard on mobile: the order list and an order's detail",
+      envios:
+        "Shipping in the dashboard: Lima and province zones with their methods and rates",
+      tiendas: [
+        "Aurore's store on a monitor and a phone: perfume from independent houses",
+        "ANJ Sports' store on a monitor and a phone: table tennis, with a Butterfly player",
+        "Sportt's store on a monitor and a phone: the new Lezoline shoe collection",
+        "Daesur Motors' store on a monitor and a phone: the right oil for your engine",
+        "Clefast's store on a monitor and a phone: laundry supplies",
+        "Happy Art's store on a monitor and a phone: flowers and gifts",
+      ],
+      modulos: [
+        "Online store module card: the sample store on its subdomain with three products and the cart",
+        "Point of sale module card: till 1 in Miraflores with two products and the Charge button",
+        "Inventory by location module card: stock in Miraflores, Surco and the warehouse, with the stock ledger",
+        "SUNAT invoicing module card: an electronic invoice accepted by SUNAT",
+        "Commission-free payments module card: Mercado Pago, Culqi and PayPal connected",
+        "Shipping module card: shipping zones by district with their rate",
+        "AI visual editor module card: the page blocks and a homepage in the brand's colours",
+      ],
+    },
+    cta: {
+      titulo: "Have a product in mind?",
+      texto:
+        "We design and build it with you, from the first screen to production, just like we did with Vendiq.",
+      boton: "Let's talk",
+      href: "#contacto",
+    },
+    resultado: {
+      titulo: "The result",
+      texto:
+        "Vendiq is in production at vendiq.pe, with three fixed monthly plans and no commission per sale.",
+      cifras: [
+        {
+          valor: "0%",
+          texto: "Vendiq commission per sale, on every plan",
+        },
+        {
+          valor: "6",
+          texto: "client stores in production, across different trades",
+        },
+        {
+          valor: "1",
+          texto:
+            "catalog for the online store, the till, the stock and the receipts",
+        },
+      ],
     },
     nextTagline: "One platform for everything that happens at a sports center",
   },
   pt: {
-    tagline:
-      "Loja online, ponto de venda, estoque e faturamento SUNAT em um só sistema",
-    meta: [
-      ["Status", "Em produção"],
-      ["Entregas", "Design de produto, site público, plataforma SaaS"],
-      ["Setor", "Varejo e atacado"],
-      ["Plataforma", "Web (SaaS) multi-tenant"],
+    titulo: "Uma plataforma para vender na web e na loja, com um só catálogo",
+    heroeAlt:
+      "vendiq.pe em um notebook e no celular, sobre o balcão de concreto de uma loja com luz azul",
+    meta: {
+      tipologia: ["Tipologia", ["Web app", "Loja online", "Ponto de venda"]],
+      industria: ["Setor", "Comércio · SaaS próprio"],
+      anio: ["Ano", "2026"],
+      servicios: [
+        "Serviços",
+        [
+          "Logotipo e identidade",
+          "Design de produto",
+          "Site público",
+          "Desenvolvimento web",
+          "Plataforma SaaS",
+        ],
+      ],
+      entregables: [
+        "Entregáveis",
+        [
+          "vendiq.pe",
+          "Painel do comerciante",
+          "Lojas dos clientes",
+          "Ponto de venda",
+          "Faturamento SUNAT",
+          "Editor visual com IA",
+        ],
+      ],
+      vivo: ["Ao vivo", "vendiq.pe", "https://vendiq.pe"],
+    },
+    contexto: [
+      "Contexto",
+      "O Vendiq é um produto próprio da Axium para comerciantes do Peru que vendem pela internet e no balcão: loja online com a sua marca, ponto de venda, estoque e faturamento SUNAT sobre um mesmo catálogo.",
     ],
-    statement:
-      "Construímos a plataforma com a qual um comércio vende no seu site e na sua loja com o mesmo catálogo, o mesmo estoque e os seus comprovantes SUNAT.",
-    context:
-      "Produto próprio da Axium para comércios que vendem pela internet e no balcão. Cada loja publica seu site com sua marca, cobra com os meios de pagamento que seus clientes já usam e controla estoque e faturamento no mesmo painel.",
-    highlightsTitle: ["O que", "construímos"],
-    highlights: [
-      {
-        lead: "Loja online",
-        text: "catálogo com variações e coleções, carrinho, checkout e conta de cliente, com a marca de cada loja.",
-      },
-      {
-        lead: "Ponto de venda",
-        text: "cobrança na loja com leitor de códigos ou a câmera do celular, sobre o mesmo estoque; a partir do Business.",
-      },
-      {
-        lead: "Estoque",
-        text: "estoque com kardex e ordens de compra, e vários armazéns no Business Pro.",
-      },
-      {
-        lead: "Faturamento SUNAT",
-        text: "boletas, faturas e notas de crédito a partir do pedido, com o certificado de cada comércio; a partir do Business.",
-      },
-      {
-        lead: "Cobranças sem comissão",
-        text: "Mercado Pago, Culqi, PayPal, transferência e pagamento na entrega; o Vendiq não cobra por venda.",
-      },
-      {
-        lead: "Entregas por distrito",
-        text: "zonas com os distritos do Peru e tarifa fixa, por peso, por valor ou grátis; a partir do Business.",
-      },
-      {
-        lead: "Editor visual com IA",
-        text: "o site é montado com blocos; a partir do Business, um assistente com Gemini propõe seções com os produtos e as cores da loja.",
-      },
-      {
-        lead: "Fidelidade e API",
-        text: "cupons, pontos, gift cards e aviso de carrinho abandonado; domínio próprio, cinco idiomas e API no Business Pro.",
-      },
+    reto: [
+      "O desafio",
+      "Um pequeno comércio vende com ferramentas soltas: um site, um caixa, uma planilha para o estoque, outro programa para as notas e o chat para os pedidos. Cada venda é anotada várias vezes e o estoque nunca bate.",
     ],
-    challengeTitle: "Desafio",
-    challenge:
-      "Um comércio pequeno vende com ferramentas soltas: um site, um sistema de caixa, uma planilha para o estoque, outro programa para os comprovantes e o chat para os pedidos. Cada venda é anotada várias vezes e o estoque nunca bate.",
-    approachTitle: "Abordagem",
-    approach:
-      "Desenhamos o Vendiq em torno de um único catálogo: a loja online, o ponto de venda, o estoque e os comprovantes descontam dos mesmos produtos. O cliente compra, o estoque cai na web e na loja, e sai a boleta aceita pela SUNAT.",
-    outcomesTitle: "Resultados",
-    outcomes:
-      "O Vendiq está em produção em vendiq.pe: uma perfumaria de nicho, duas lojas de tênis de mesa, uma oficina de óleos e uma marca de produtos de lavanderia vendem com ele.",
-    outcomeBullets: [
-      "Loja online, ponto de venda, estoque e faturamento SUNAT sobre um mesmo catálogo",
-      "Três planos com preço fixo por mês e 0 % de comissão por venda",
-      "Cobranças com Mercado Pago, Culqi, PayPal, transferência ou pagamento na entrega",
-      "Lojas no seu próprio domínio, como aurore.com.pe, anjsports.com e daesurmotors.com",
+    enfoque: [
+      "Você vende uma vez",
+      "Não importa por onde entra a venda, pela loja online ou pelo caixa: o estoque baixa na web e na loja, e sai a nota aceita pela SUNAT. O vendiq.pe conta isso com um só pedido, o #1482.",
     ],
+    marca: [
+      "Um V feito de luz",
+      "O logotipo são duas fitas de luz que formam o V, redesenhadas em vetor. Ao redor, um sistema sóbrio: grafite, um sinal ciano, o azul só para a ação, Satoshi para o texto e Geist Mono para os rótulos.",
+    ],
+    modulos:
+      "Sete módulos sobre o mesmo catálogo. No vendiq.pe cada um é contado com um pedaço da sua própria interface, desenhado em HTML sobre a grade da marca.",
+    etiquetaModulos: "Os módulos do Vendiq",
+    pies: [
+      "A loja online com a sua marca, em todos os planos",
+      "Ponto de venda, a partir do plano Business",
+      "Vários armazéns e lojas, no Business Pro",
+      "Boletas e faturas SUNAT, a partir do Business",
+      "0% de comissão do Vendiq, em todos os planos",
+      "Zonas de entrega por distrito, a partir do Business",
+      "O assistente com IA do editor, a partir do Business",
+    ],
+    ia: "A partir do plano Business, o editor visual traz um assistente com Gemini, com a chave do próprio comerciante: ele descreve o negócio e o assistente propõe uma seção ou a página inteira com seus produtos e suas cores.",
+    panel: [
+      "Por dentro",
+      "O painel cuida do catálogo, dos pedidos com sua entrega e seu pagamento, e das zonas de entrega por distrito. Também funciona no celular.",
+    ],
+    tiendas: [
+      "Lojas que já vendem com o Vendiq",
+      "Seis comércios de ramos muito diferentes, cada um com sua marca, seu domínio e seu jeito de vender: perfumes de nicho, tênis de mesa, óleos de motor, produtos para lavanderia, flores e presentes.",
+    ],
+    piesTiendas: [
+      "Aurore · Perfumaria de nicho · aurore.com.pe",
+      "ANJ Sports · Tênis de mesa · anjsports.com",
+      "Sportt · Tênis de mesa · sporttperu.com",
+      "Daesur Motors · Óleos e oficina · daesurmotors.com",
+      "Clefast · Produtos para lavanderia · clefast.com.pe",
+      "Happy Art · Flores e presentes · happyart.com.pe",
+    ],
+    mandos: { anterior: "Anterior", siguiente: "Próximo" },
     alt: {
-      mosaico:
-        "Telas de vendiq.pe: início, módulos, recursos, soluções, preços e o assistente com IA",
+      flujo:
+        "A página inicial do vendiq.pe, animada: a dona de uma loja de corrida com um tênis na mão, a ficha do produto com seus tamanhos, o estoque que baixa de 18 para 17 e a venda do pedido #1482",
+      duenio:
+        "O dono de uma loja embala um pedido atrás de um balcão de concreto, com luz azul",
+      como: "«Como funciona» no vendiq.pe, animado: o pedido #1482 passa pela venda, pelo estoque, pela nota e pelo envio",
       tipografia: "Tipografia do Vendiq: Satoshi com Geist Mono nos rótulos",
       paleta: "Paleta do Vendiq: grafite, azul de ação e o sinal ciano",
-      landing:
-        "vendiq.pe em um notebook e no celular, sobre o balcão de concreto de uma loja",
-      modulos:
-        "Os módulos do Vendiq com sua interface desenhada: loja online, ponto de venda, estoque e faturamento SUNAT",
-      moviles: "vendiq.pe no celular: módulos, como funciona e preços",
-      clientes:
-        "Lojas feitas com o Vendiq: Aurore, ANJ Sports, Sportt e Daesur Motors",
-      funciones:
-        "Como o Vendiq funciona: a venda, o estoque, a boleta e o envio saem do mesmo pedido",
-      planes: "Planos do Vendiq: Starter, Business e Business Pro",
+      asistente:
+        "O assistente com IA do editor, animado: escreve «Vendo tênis e roupas de corrida…», marca seus passos e monta a prévia da loja",
       panel:
-        "O painel do Vendiq: o catálogo de produtos e o detalhe de um pedido com seu envio e pagamento",
-      envios:
-        "Entregas no painel: zonas de Lima e das províncias com seus métodos e tarifas",
+        "O painel do Vendiq: o catálogo de produtos e o detalhe de um pedido com sua entrega e seu pagamento",
       celular:
         "O painel do Vendiq no celular: a lista de pedidos e o detalhe de um pedido",
+      envios:
+        "Entregas no painel: zonas de Lima e das províncias com seus métodos e tarifas",
+      tiendas: [
+        "A loja da Aurore em um monitor e no celular: perfumaria de casas autorais",
+        "A loja da ANJ Sports em um monitor e no celular: tênis de mesa, com um jogador da Butterfly",
+        "A loja da Sportt em um monitor e no celular: a nova coleção de tênis Lezoline",
+        "A loja da Daesur Motors em um monitor e no celular: o óleo certo para o seu motor",
+        "A loja da Clefast em um monitor e no celular: produtos para lavanderia",
+        "A loja da Happy Art em um monitor e no celular: flores e presentes",
+      ],
+      modulos: [
+        "Cartão do módulo Loja online: a loja de exemplo no seu subdomínio com três produtos e o carrinho",
+        "Cartão do módulo Ponto de venda: o caixa 1 de Miraflores com dois produtos e o botão Cobrar",
+        "Cartão do módulo Estoque por loja: estoque em Miraflores, Surco e no armazém, com o kardex",
+        "Cartão do módulo Faturamento SUNAT: uma fatura eletrônica aceita pela SUNAT",
+        "Cartão do módulo Pagamentos sem comissão: Mercado Pago, Culqi e PayPal conectados",
+        "Cartão do módulo Entregas: zonas de entrega por distrito com sua tarifa",
+        "Cartão do módulo Editor visual com IA: os blocos da página e a capa com as cores da marca",
+      ],
+    },
+    cta: {
+      titulo: "Tem um produto em mente?",
+      texto:
+        "Nós o desenhamos e o construímos com você, da primeira tela à produção, como fizemos com o Vendiq.",
+      boton: "Vamos conversar",
+      href: "#contacto",
+    },
+    resultado: {
+      titulo: "O resultado",
+      texto:
+        "O Vendiq está em produção em vendiq.pe, com três planos de preço fixo por mês e sem comissão por venda.",
+      cifras: [
+        {
+          valor: "0%",
+          texto: "de comissão do Vendiq por venda, em todos os planos",
+        },
+        {
+          valor: "6",
+          texto: "lojas de clientes em produção, de ramos diferentes",
+        },
+        {
+          valor: "1",
+          texto: "catálogo para a loja online, o caixa, o estoque e as notas",
+        },
+      ],
     },
     nextTagline:
       "Uma só plataforma para tudo o que acontece em um centro esportivo",
   },
 };
 
-function bloques(c: Copy): StoryBlock[] {
+const img = (src: string, alt: string, srcMovil?: string): Medio => ({
+  tipo: "imagen",
+  src: `${IMG}/${src}`,
+  alt,
+  srcMovil: srcMovil ? `${IMG}/${srcMovil}` : undefined,
+});
+const vid = (nombre: string, alt: string): Medio => ({
+  tipo: "video",
+  src: `${IMG}/${nombre}.mp4`,
+  poster: `${IMG}/${nombre}.jpg`,
+  alt,
+});
+
+const TIENDAS = [
+  "aurore",
+  "anj-sports",
+  "sportt",
+  "daesur-motors",
+  // v2: la segunda diapositiva de su portada; la primera es un vídeo (Alexander, 2026-10-06)
+  "clefast-v2",
+  "happy-art",
+] as const;
+const tienda = (c: Copy, i: number) =>
+  img(`vq-tienda-${TIENDAS[i]}.jpg`, c.alt.tiendas[i] ?? TIENDAS[i] ?? "");
+
+function bloques(c: Copy): BloqueProducto[] {
   return [
+    { kind: "texto", lado: "izq", title: c.contexto[0], body: c.contexto[1] },
+    // La idea entera en una animación: la escena de la portada de vendiq.pe entrando, con la
+    // venta del #1482 al final (antes, el flujo dibujado de la portada anterior: `vq-flujo`)
+    { kind: "ancho", medio: vid("vq-escena", c.alt.flujo), ratio: 2240 / 1400 },
+    { kind: "texto", lado: "der", title: c.reto[0], body: c.reto[1] },
     {
-      kind: "wide",
-      image: { src: `${IMG}/bv-mosaico.jpg`, alt: c.alt.mosaico },
+      kind: "ancho",
+      medio: img("bv-hero.jpg", c.alt.duenio),
+      ratio: 2400 / 1357,
     },
-    { kind: "highlights", title: c.highlightsTitle, items: c.highlights },
+    { kind: "texto", lado: "izq", title: c.enfoque[0], body: c.enfoque[1] },
+    { kind: "ancho", medio: vid("vq-como-v2", c.alt.como), ratio: 2240 / 1400 },
+    // ── Las tiendas, con prioridad (Alexander: «dar un poco más de prioridad a sus tiendas
+    // creadas»): dos tríos de mockups, monitor + celular, con nombre · rubro · dominio ──
+    { kind: "texto", lado: "izq", title: c.tiendas[0], body: c.tiendas[1] },
     {
-      kind: "pair",
-      images: [
-        { src: `${IMG}/bv-tipografia.jpg`, alt: c.alt.tipografia },
-        { src: `${IMG}/bv-paleta.jpg`, alt: c.alt.paleta },
+      kind: "trio",
+      medios: [tienda(c, 0), tienda(c, 1), tienda(c, 2)],
+      pies: c.piesTiendas.slice(0, 3),
+    },
+    {
+      kind: "trio",
+      medios: [tienda(c, 3), tienda(c, 4), tienda(c, 5)],
+      pies: c.piesTiendas.slice(3, 6),
+    },
+    // ── La marca, corta: Vendiq no tiene manual ──
+    { kind: "texto", lado: "izq", title: c.marca[0], body: c.marca[1] },
+    {
+      kind: "par",
+      medios: [
+        img("bv-tipografia.jpg", c.alt.tipografia),
+        img("bv-paleta.jpg", c.alt.paleta),
       ],
     },
-    { kind: "text", title: c.challengeTitle, body: c.challenge },
-    { kind: "text", title: c.approachTitle, body: c.approach },
+    // ── El producto: la única tira de la ficha («haz un intermedio») ──
     {
-      kind: "wide",
-      image: {
-        src: `${IMG}/bv-landing-v2.jpg`,
-        alt: c.alt.landing,
-        mobileSrc: `${IMG}/bv-landing-v2-movil.jpg`,
-      },
+      kind: "capitulo",
+      body: c.modulos,
+      etiqueta: c.etiquetaModulos,
+      piezas: c.pies.map((pie, i) => ({
+        medio: img(`vq-modulo-${i + 1}-v2.jpg`, c.alt.modulos[i] ?? pie),
+        // las tarjetas del carrusel de vendiq.pe miden 30 rem de alto desde el 2026-10-06
+        ratio: 336 / 480,
+        pie,
+      })),
+    },
+    { kind: "texto", lado: "der", body: c.ia },
+    {
+      kind: "ancho",
+      medio: vid("vq-asistente-v2", c.alt.asistente),
+      ratio: 2240 / 1500,
+    },
+    { kind: "texto", lado: "izq", title: c.panel[0], body: c.panel[1] },
+    {
+      kind: "ancho",
+      medio: img("bv-panel.jpg", c.alt.panel, "bv-panel-movil.jpg"),
+      ratio: 2,
+      ratioMovil: 4 / 3,
     },
     {
-      kind: "pair",
-      images: [
-        { src: `${IMG}/bv-modulos.jpg`, alt: c.alt.modulos },
-        { src: `${IMG}/bv-moviles.jpg`, alt: c.alt.moviles },
-      ],
-    },
-    {
-      kind: "text",
-      id: "resultado",
-      title: c.outcomesTitle,
-      body: c.outcomes,
-      bullets: c.outcomeBullets,
-    },
-    {
-      kind: "wide",
-      image: {
-        src: `${IMG}/bv-panel.jpg`,
-        alt: c.alt.panel,
-        mobileSrc: `${IMG}/bv-panel-movil.jpg`,
-      },
-    },
-    {
-      kind: "pair",
-      images: [
-        { src: `${IMG}/bv-envios.jpg`, alt: c.alt.envios },
-        { src: `${IMG}/bv-celular.jpg`, alt: c.alt.celular },
-      ],
-    },
-    {
-      kind: "wide",
-      image: {
-        src: `${IMG}/bv-clientes.jpg`,
-        alt: c.alt.clientes,
-        mobileSrc: `${IMG}/bv-clientes-movil.jpg`,
-      },
-    },
-    {
-      kind: "pair",
-      images: [
-        { src: `${IMG}/bv-funciones.jpg`, alt: c.alt.funciones },
-        { src: `${IMG}/bv-planes.jpg`, alt: c.alt.planes },
+      kind: "par",
+      medios: [
+        img("bv-celular.jpg", c.alt.celular),
+        img("bv-envios.jpg", c.alt.envios),
       ],
     },
   ];
@@ -400,30 +605,38 @@ export default function VendiqContent() {
 
   return (
     <>
-      <CaseStory
-        // El acento sale de la marca del cliente, no de Axium: azul de acción · señal · grafito.
-        // base va sobre claro y dark sobre la tinta; los dos pasan 4.5:1.
-        accent={{ base: "#1F5BFF", dark: "#6CCBFF", deep: "#0B0D12" }}
-        name="Vendiq"
-        tagline={c.tagline}
-        heroImage={`${IMG}/bv-hero.jpg`}
-        heroPosition="70% 50%"
+      <CaseProducto
+        // El grafito de la «línea técnica» de vendiq.pe (linea.ts)
+        fondo="#0B0D12"
+        mandos={c.mandos}
+        titulo={c.titulo}
         logo={{
           src: "/images/highlights/logos/vendiq-v2.png",
           width: 694,
           height: 160,
+          alt: "Vendiq",
         }}
-        liveUrl="https://vendiq.pe"
+        heroe={{
+          src: `${IMG}/bv-landing-v3.jpg`,
+          srcMovil: `${IMG}/vq-escena-cuadrada-v2.jpg`,
+          alt: c.heroeAlt,
+        }}
         meta={c.meta}
-        statement={c.statement}
-        context={c.context}
-        blocks={bloques(c)}
+        bloques={bloques(c)}
+        cta={c.cta}
+        resultado={c.resultado}
+      />
+      <CaseMasProyectos
+        // azul de acción · señal · grafito
+        accent={{ base: "#1F5BFF", dark: "#6CCBFF", deep: "#0B0D12" }}
         next={{
           name: "Rematch",
           tagline: c.nextTagline,
           href: "/casos-de-exito/rematch",
-          image: "/images/proyects/rematch/rematch-portada-agenda.jpg",
+          image: "/images/proyects/rematch/rematch-portada-cancha.jpg",
         }}
+        // El caso anónimo «E-commerce & Inventory SaaS» describe el mismo producto
+        hide={["store-saas"]}
         labels={STORY_LABELS[lang]}
       />
       {/* Sección clara para que el navbar se lea sobre la tarjeta oscura del formulario */}

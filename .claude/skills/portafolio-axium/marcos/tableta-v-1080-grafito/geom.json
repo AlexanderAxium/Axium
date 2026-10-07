@@ -1,0 +1,22 @@
+{
+  "preset": "tableta-v",
+  "cuerpo": "grafito",
+  "lienzo": {
+    "w": 1207,
+    "h": 1567
+  },
+  "pantalla": {
+    "x": 64,
+    "y": 64,
+    "w": 1080,
+    "h": 1440,
+    "radio": 54
+  },
+  "anillo": {
+    "total": 63.54,
+    "bisel": 45,
+    "pared": 14,
+    "chaflan": 4.54
+  },
+  "radioCuerpo": 117.54
+}

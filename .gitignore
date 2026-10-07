@@ -54,3 +54,5 @@ yarn-error.log*
 /.claude/skills/portafolio-axium/capturas-clientes/
 /.claude/skills/portafolio-axium/referencias/capturas/
 /.claude/skills/portafolio-axium/comparaciones/
+# Fondos generados a resolución completa (4–18 MB cada uno); sus usos ya están en public/
+/.claude/skills/portafolio-axium/campos/

@@ -195,3 +195,143 @@ visual), el panel **casi tampoco** (0,2 a 5,8, solo detalles en pedidos y envío
 Coincide con los commits de esa semana en `SAAS/Vendiq` (hero con diapositivas de Aurore, catálogo,
 decants, refrigerantes de Daesur). Se recapturaron las cinco tiendas y se rehízo `bv-clientes` (+ `-movil`).
 El resto de la ficha queda igual.
+
+## 10. La ficha al molde de producto (Pixelmatters), como Rematch (2026-10-06)
+
+Alexander: *«rematch, lumio, vendiq y bookit son productos propios… vendiq tiene algunos buenos
+diseños pero puedes mejorarlo… me gusta mucho que hagas animaciones de la web»*, y durante la
+tanda: *«para bookit y vendiq y lumio no tenemos manual de marca así que no exageres con la
+sección de branding»* · *«haz un intermedio [de carruseles]… que respire todo entre sí»*.
+
+- **Molde:** `CaseProducto` sobre el grafito `#0B0D12`. Hero: la escena de la laptop y el
+  celular (`bv-landing-v2`; en el celular, `vq-escena-cuadrada`, recorte 1:1 de la misma).
+  El flujo de la portada NO va de hero: repetiría el vídeo del flujo.
+- **Tres animaciones reales de vendiq.pe** (`grabar-micro.cjs` + `video-micro.py`, taller en
+  `capturas-saas/vendiq/pixelmatters-2026-10/`):
+  - `vq-flujo`: la ENTRADA del flujo de la portada. Ya terminó cuando se aísla el componente →
+    opción nueva `reiniciar` (cancela y vuelve a reproducir todas sus animaciones CSS). El
+    screencast deja de mandar cuadros cuando nada cambia → opción `--sostener 4.2` (alarga el
+    último) y `--poster-fin` (póster = estado final).
+  - `vq-como`: «Cómo funciona», 4 pasos × 5 s; bucle de 20 s exactos (0,3 → 20,3).
+  - `vq-asistente`: el asistente con IA, ciclo de 14 s; bucle tomado desde el estado completo
+    (8 → 22 s) para que el póster sea la vista previa lista. Caja escrita a mano: un hijo
+    invisible ensanchaba la caja medida a 2.669 px.
+- **Módulos:** las 7 tarjetas del carrusel de vendiq.pe, cada una aislada a 3x
+  (`capturar-vendiq-pm.cjs modulos`), en la ÚNICA tira de la ficha, con el plan en el pie
+  (tienda y 0 % en todos; POS, SUNAT, envíos e IA desde Business; varios almacenes en Pro).
+- **Marca, corta:** texto + par tipografía/paleta (`bv-tipografia`, `bv-paleta`, las que
+  Alexander marcó como buenas). Sin anatomías ni callouts.
+- **Sin cita:** no hay testimonio de un comercio; el molde ahora la acepta opcional.
+- **Fuera** (borradas, quedan en git): `bv-mosaico`, `bv-modulos` (la tira las sustituye),
+  `bv-funciones` (lo cuenta el vídeo), `bv-moviles`, `bv-planes`, `bv-landing-v2-movil` y las
+  portadas viejas sin uso (`vendiq-portada-{v2,mostrador,marca-v1-chillon}`).
+- Medido: 0 desborde a 1440/390/360, 0 imágenes rotas, 3 vídeos; «0 %» pasó a «0%» porque en
+  la columna de cifras del celular (88 px) se partía en dos líneas.
+
+## 11. Las tiendas, con prioridad y en mockups (2026-10-06, noche)
+
+Alexander: *«me gusta vendiq pero siento que le falta unos mockdata y tal vez dar un poco más de
+prioridad a sus tiendas creadas, añade happyart.com.pe»*. Aclarado con él: «mockdata» = mockups
+de las tiendas; **Happy Art entra «como las demás»** aunque happyart.com.pe sigue en WordPress
+7.1.3 + Elementor + WooCommerce (medido ese día; vendiq.pe también la muestra como caso).
+
+- **Captura en vivo** (`scripts/capturar-tiendas-vendiq.cjs`): escritorio 1600×900 a 1,5x
+  (= la pantalla de 2400×1350 del monitor) y celular 390×794 a 3x (= la pantalla del
+  movil-v-820 menos la barra de estado). Fuera cookies, popups y flotantes; la cabecera se
+  queda. El WhatsApp de Happy Art vive en un contenedor fijo de tamaño 0: se mide la unión
+  de lo que pinta.
+- **Mockups** (`scripts/mockups-tiendas-vendiq.py`): monitor grafito SIN pie + celular,
+  construidos, sobre el grafito con la rejilla de Vendiq y una luz del color dominante de cada
+  tienda (histograma de tono de su portada). Barra de estado dibujada con el color de la franja
+  de arriba de la tienda; la isla la pone el marco.
+- **En la ficha:** capítulo «Tiendas que ya venden con Vendiq» justo después de «Vendes una
+  vez», con dos tríos y un pie por tienda (nombre · rubro · dominio, los rubros de vendiq.pe).
+  Sustituye a `bv-clientes` (borrada). Resultado: 6 tiendas.
+- Ojo: la portada de Happy Art anuncia el «21 de Marzo, Día de las Flores Amarillas» (promoción
+  vieja de su propia web) y así sale en el mockup.
+- **Clefast, segunda diapositiva** (Alexander: *«en clefast usa caps de la imagen, o sea el segundo
+  slide, no del video»*): su portada abre con un vídeo; la captura salta a «Ir a la diapositiva 2»
+  y pulsa «Pausar» antes de la foto. La luz del mockup se fija en su verde (`LUZ_FIJA`): con esa
+  diapositiva el tono más pintado era la piel de la foto. Nombre nuevo, `vq-tienda-clefast-v2.jpg`.
+
+## 12. Cuatro propuestas para el gráfico derecho del HERO DE VENDIQ.PE (2026-10-06)
+
+> ⚠️ Primero las hice como portadas del portafolio de Axium (4:3 y 16:10) y Alexander aclaró:
+> *«me refería portadas hero section de vendiq en sí, no del portafolio de axium. vendiq está en
+> SAAS para que lo puedas levantar»*. La página de comparación se borró; las propuestas viven en
+> el repo de Vendiq, rama `propuesta/hero-graficos` (worktree `SAAS/Vendiq-hero-propuestas`,
+> commit `2387f369`, SIN push), y se ven con `/?hero=a|b|c|d` en el dev server local (puerto
+> 3601; el 3000 lo usa otro proyecto). Código: `src/components/landing/portada/GraficosHero.tsx`.
+> Lo de abajo (gestos y piezas) sigue valiendo: es el mismo análisis, aplicado al hero.
+
+Alexander: *«la portada de vendiq me gusta su estilo, pero quiero probar otras portadas,
+específicamente el gráfico derecho… unas 4. revisa referencias y también referencias de los
+portafolios de las referencias»*. Se mantiene grafito + rejilla + logo arriba a la izquierda;
+cambia el gráfico. Índices revisados: pixelmatters.com/work (lista con miniaturas de foto),
+significa.co/projects y paisanos.io/projects (`referencias/capturas/indices-2026-10/`).
+
+| | Gesto | De dónde | Piezas reales |
+|---|---|---|---|
+| A | Un solo componente | Paisanos · Pedidos Ya, Brubank | los 4 avisos de «Cómo funciona» (#1482) + conector punteado cian |
+| B | La V hecha luz | Paisanos · MODO; DESIGN.md § 2 de vendiq.pe | `vendiq-v-brillo.svg` + teléfono del flujo + aviso de venta |
+| C | Bento de módulos | Significa · Bion, Vertbase | interfaz dibujada de 6 tarjetas de módulo, en isométrico |
+| D | Las tiendas | Paisanos · Claro Pay; Significa · Passaporte | 6 celulares construidos con las tiendas, en abanico |
+
+Scripts: `piezas-portada-vendiq.cjs` (avisos y pantallas del flujo con alfa: se ocultan los no
+ancestros, los ancestros pierden fondo, `omitBackground`) y `portada-vendiq-propuestas.py` (HTML
+por propuesta que se adapta al formato; sale en 4:3 y 16:10). La comparación temporal en AXIUM-WEB ya se borró.
+Errores de la primera pasada: el conector de A dibujado con `skewX` no pasaba por los puntos
+(se rehízo en SVG por los centros), el aviso de B tapaba el precio, el bento de C y el abanico
+de D se salían por la derecha (se midió el ancho girado: ~108u y ~96u).
+
+## 13. Lo que se publicó en vendiq.pe (2026-10-06)
+
+De las propuestas salió la portada completa con personas reales (E2 refinada, guiada por
+shopify.com/pe) y Alexander la mandó publicar: *«dale otro enfoque, no me gusta lo de
+motocicletas… que se vea mucho más realista, mejora el prompt… elimina esas letras verticales…
+publícalo, trayendo los últimos cambios de vendiq, pero el portafolio aún no lo cambies»*.
+
+- **Publicado:** commit `65c22d45` (y luego el cambio a Pulso) directo en `main` de `AlexanderAxium/Vendiq` (un solo commit sobre
+  `origin/main`; Dokploy de VPS3 despliega solo con el push). Detalle en el `DESIGN.md` de Vendiq,
+  § 16. La rama se rehízo desde `origin/main` porque el `main` LOCAL de `SAAS/Vendiq` tenía 3
+  commits ajenos sin publicar (hover del builder y dos de Clefast) que no debían colarse.
+- **La tienda de ejemplo ya no es Repuestos Lima:** es **Pulso**, running y ropa deportiva (la
+  alpaca de Killa Tejidos duró unas horas: «no lo peruanices, mejor algo relacionado al deporte pero
+  sutilmente»). Cualquier pieza de Vendiq que muestre el pedido #1482 tiene que usarla: zapatillas
+  S/ 349 + envío S/ 10 = S/ 359.
+- **Módulos:** la fila no pasa de los rieles. Salía hasta el borde de la pantalla: «no me convence
+  que se vaya hacia los extremos, capaz otro efecto puede caer mejor», y luego «sigo viendo que
+  ocupa el ancho completo». Luego, encerrada sin asomo: «no es intuitivo que hay scroll horizontal,
+  usa cards más cortos como antes pero que no se salgan fuera del contenedor, un efecto degradado
+  tal vez sirva». Quedó un carrusel de tarjetas angostas con la siguiente asomando dentro de la
+  caja y desvanecida con una máscara, y solo las flechas debajo («borra el slider, solo deja el arrow»). Los productos van como
+  miniaturas dentro de la interfaz. Al recapturar para la ficha, aislar cada tarjeta del DOM.
+- **Imágenes:** `hero-pulso/` (prompts y PNG originales); las tandas de motos (`hero/`) y de alpaca
+  (`hero-alpaca/`) quedaron descartadas. La lección de realismo está en creator `IMAGENES.md`.
+- **El portafolio de Axium se puso al día el 2026-10-07** (§ 14), cuando Alexander dio la señal.
+
+## 14. El portafolio, al día con la portada de Pulso (2026-10-07)
+
+Alexander, con vendiq.pe ya publicado: *«por el momento está bien, pushea y actualiza el
+portafolio»*. Todo lo que mostraba la web anterior (la tienda de motos: guantes, casco, kit de
+cadena) se rehízo desde vendiq.pe EN VIVO; taller en `capturas-saas/vendiq/pulso-2026-10/`.
+
+| Pieza | Antes | Ahora | Cómo |
+|---|---|---|---|
+| Hero de la ficha | `bv-landing-v2` + `vq-escena-cuadrada` | `bv-landing-v3` + `vq-escena-cuadrada-v2` | `capturar-vendiq-pm.cjs portada` (primera pantalla con movimiento reducido: la escena pinta su estado final) → `componer_pantalla.py` sobre `escenas/vendiq-mostrador-dispositivos.png`, la laptop con `--caja 0,0,1250,1520` y el celular con `--bordes --caja 1250,0,2688,1520` y la barra de estado de `pantalla-celular.html`; derrame verde fuera; cuadrada = recorte (150,0,1507,1357) |
+| La idea en una animación | `vq-flujo` (el flujo dibujado) | `vq-escena` (16:10) | `grabar-micro.cjs` con `reiniciar`, zoom 3, `margen: 90` y ventana 2700×2600; caja = unión del anillo exterior y el contenedor; 0,60 → 11,2 s, póster al final (la venta del #1482 a la vista) |
+| «Cómo funciona» | `vq-como` | `vq-como-v2` | `subir: 2`: el texto vive en la capa `absolute inset-0` de las tarjetas, que al fijarla medía todo el alto y dejaba fuera la foto del empaque; bucle 4,65 → 24,73 s (pasos de 5,03 s) |
+| Asistente | `vq-asistente` | `vq-asistente-v2` | caja = la propia (un hijo invisible infla la unión a 2.609 px); 8 → 22 s, con la vista previa completa en las dos puntas |
+| Módulos | `vq-modulo-N` (336×448) | `vq-modulo-N-v2` (336×480) | las tarjetas son los hijos de la primera lista de la sección, sin la máscara del carrusel y sin la cabecera fija, que tapaba el borde de arriba |
+| Portada de la tarjeta (y «siguiente» de Bookit, Aurore y ANJ) | `vendiq-portada-marca` | `vendiq-portada-pulso` (3072×2048) | `portada-marca-vendiq.cjs`: el mismo arreglo con piezas reales a 5x y transparencia (logotipo de la cabecera con el texto en tinta, caja, factura, stock) |
+| Highlight del home | `vendiq-v5` (imagen) | `vq-escena.mp4`, póster de `cover` | como el de Rematch |
+
+- **Se conservan** `bv-hero` (el dueño empacando: otra persona, no la de vendiq.pe), las tiendas de
+  los clientes, la marca y el panel.
+- **La misma persona sale dos veces en la ficha**, chica en la laptop del hero y grande en el vídeo,
+  como pasaba con el flujo de la portada anterior. Si Alexander lo marca, el vídeo de la idea puede
+  pasar a otra animación.
+- Medido: ficha a 1440/390/360 sin desborde ni imágenes rotas y los tres vídeos con
+  `readyState` 4; el home sirve `vq-escena.mp4` y el portafolio `vendiq-portada-pulso.jpg`.
+- Las piezas viejas se borraron (las rastreadas siguen en git; las otras tienen su original en
+  `pixelmatters-2026-10/`).

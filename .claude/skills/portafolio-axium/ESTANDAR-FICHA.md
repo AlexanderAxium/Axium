@@ -106,6 +106,43 @@ sobre qué está apoyada, qué sale de la pantalla, qué manda el color, y esa�
 medir brandvm: la losa partida, los componentes extraídos a tamaño legible, desaturar el
 contexto dejando color sólo dentro de la pantalla, y la marca gigante al 8 % detrás.
 
+### Si la interfaz del cliente se ve mal, el arreglo es en el producto (2026-10-06)
+
+> «hay algunas cosas, que en el mismo rematch, se ven mal»
+
+La ficha enseña UI real, así que **una pantalla fea no se retoca: se arregla en el producto
+y se recaptura**, o se elige otra. Antes de dar por buena una captura, revisarla buscando:
+
+- **Iconos genéricos** (emojis, lucide suelto) donde la marca tiene iconografía propia.
+- **Datos de prueba mal puestos**: imágenes recortadas, textos basura («dvfdbse»), fechas
+  vencidas, porcentajes sin formato («5966.279069767442 %»), montos sin separador.
+- **Personas reales sin licencia**: deportistas, famosos. En Rematch el hero de live usaba
+  fotos de profesionales; reproducirlas en el portafolio extiende el riesgo a Axium.
+- **El indicador «N» de Next en modo desarrollo** y avisos de cookies en las capturas locales.
+
+Si el arreglo toca un repo de producto, va en una rama y **no se empuja ni se escribe en la
+base de producción sin OK**; mientras, la ficha usa una pantalla que ya esté bien.
+
+### La marca sale del manual, o casi no sale (2026-10-06)
+
+> «usa eso en descargas para el manual de marca, no inventes taaanto… para bookit y vendiq y
+> lumio no tenemos manual de marca así que no exageres con la sección de branding… ¿qué
+> representan esos 3 puntos? si alguien se pone a analizar no entenderá el propósito»
+
+- **Primero se busca la entrega del diseñador** (`find ~/Downloads -iname '*manual*'`,
+  carpetas «ENTREGA FINAL…»). Rematch la tiene completa en
+  `~/Downloads/ENTREGA FINAL-REMATCH-ABRIL-2026/`. Con manual, el capítulo son **sus páginas
+  recortadas y sus archivos** (paleta, mockups, posts): `scripts/manual-rematch.py`.
+- **Sin manual (Vendiq, Bookit, LumioLearn): logo, paleta y tipografía tal como están en el
+  código, y nada más.** Un par de láminas, no un capítulo.
+- **Prohibido:** anatomías con callouts numerados, capas «explicadas», vocabularios
+  tipográficos y especificaciones que nadie definió. Un callout entra solo si su rótulo dice
+  qué es, dentro de la imagen, y un documento de la marca lo respalda.
+- **El manual manda sobre la web:** si la web usa otra fuente (rematch.pe usa Cal Sans), la
+  ficha enseña la del manual (Loos Condensed + Halyard Display).
+- Al recortar páginas: solo el panel visual (la columna de texto se queda fuera), márgenes
+  parejos con el mismo color de fondo, sin números de página ni ejemplos en *lorem ipsum*.
+
 ### Cuándo tirar de Higgsfield
 
 Cuando una pieza merece existir pero su única forma disponible sería una captura
@@ -133,6 +170,56 @@ La forma sale de ahí:
 | Solo la web (**VitalChain**, **Fenalsa**) | La ficha **dura lo que duró el encargo**. No se rellena con actos que no existieron |
 
 **Nunca se inventa un acto.** Si no hicimos la identidad, no hay acto de identidad.
+
+### 1 bis · Dos moldes, y cuál toca (2026-10-06)
+
+> «me gusta. intenta hacer uno así https://www.pixelmatters.com/work/amigo para rematch»
+
+| Molde | Componente | Cuándo |
+|---|---|---|
+| **brandvm** — lienzo claro, hero-tarjeta, lo que construimos, reto/enfoque/resultados, galería 2:1 y 1:1 | `case-story/case-story.tsx` | Webs, tiendas, marca, impresos: lo que se cuenta con piezas terminadas |
+| **Pixelmatters** — lienzo OSCURO, título + logotipo, foto a sangre con el producto en la mano, meta en 4 columnas, texto que alterna de lado, vídeos de la UI, carrusel escalonado, cita + CTA, resultado con cifras | `case-producto/case-producto.tsx` | **Producto digital con panel o app**: los SaaS propios y los clientes con plataforma (Feniz, Fintrace, VitalChain) |
+
+**Ritmo del molde Pixelmatters: compacto, pero que respire (2026-10-06).** Tres mensajes
+seguidos de Alexander: *«optimiza el espacio, el storytelling, apóyate de scrolls horizontales
+para que el usuario no esté bajando y bajando… grids de 3, carruseles en móvil»* → la primera
+vuelta puso tiras en casi todo → *«ya estás haciendo demasiados carruseles o scrolls, haz un
+intermedio»* · *«que respire todo entre sí»*. Lo que quedó:
+
+- **Como mucho DOS tiras horizontales por ficha** (`capitulo`: texto en un tercio + tira que
+  sangra a la derecha, mismo alto para todas las piezas y un pie corto en cada una). Van donde
+  hay muchas piezas del mismo tipo: las páginas del manual y las pantallas del producto.
+- **Lo demás, rejilla**: `trio` (tres cuadradas; en el celular una grande arriba y dos debajo,
+  sin carrusel) y `par` (se apila en el celular).
+- **Los vídeos, a todo el ancho**: son lo que más luce y no se meten en tiras.
+- **El aire entre bloques no se recorta** para ganar alto: lo que se gana es agrupando.
+
+**Sin adornos mudos, y todo entra (2026-10-06).** *«veo tres puntos seguidos a veces que no
+sirven para nada»* · *«tampoco veo animaciones de entrada en nada»*. El «•••» de fin de
+capítulo (copiado de Significa Dia) se quitó: el capítulo lo abre su título, con más aire
+antes (`mt-24 md:mt-40`). Y en `CaseProducto` cada pieza entra al verse con `Aparece`
+(opacidad + 28 px, 0,85 s, curva `[0.22, 1, 0.36, 1]`), en orden dentro de pares, tríos,
+tiras, valores y cifras; la cabecera entra al cargar y la foto del héroe se asienta con escala,
+sin fundido (LCP). Verificado con `reducedMotion` en los dos modos: 0 errores de hidratación.
+
+Lo que el molde Pixelmatters exige, y sin lo cual no se usa:
+
+- **Material para 10–14 piezas**, al menos **dos vídeos de la UI real** haciendo algo
+  (recorrer la web, una animación del producto, un flujo). Sin vídeos es un CaseStory
+  a oscuras.
+- **Una foto de vida para el héroe**, que es también la portada (la del índice de
+  Pixelmatters es la misma foto). Se genera la escena con la pantalla apagada y se compone
+  la captura real (COMPOSITOR.md, decimotercera generación).
+- **El color de la marca solo dentro de las piezas.** El lienzo es la tinta del cliente
+  hundida hacia el negro (Rematch: `#000E17`), y la tipografía va en blanco y blanco al
+  75 %. Ni un titular con el acento.
+- **El texto alterna**: mitad izquierda, mitad derecha, tercio derecho. Nunca centrado.
+  Párrafos de 22–45 palabras; dos textos seguidos solo antes de la última pieza.
+- **Las cifras del resultado se miden en el código** (en Rematch: 8 formatos en
+  `TournamentFormat`, 5 modelos de marcador). La ficha vieja decía 6 formatos: **mal
+  copiado del documento, no medido**. Si no hay cifras de verdad, el bloque no va.
+- **La cita es textual** y se toma de donde el cliente ya la publicó, con su nombre y
+  cargo tal como aparecen.
 
 ---
 
@@ -580,7 +667,12 @@ Verificación mínima, y **todo medido, no mirado por encima**:
 
 ---
 
-## 11 · Al generar con Higgsfield
+## 11 · Al generar (Higgsfield hasta el 2026-10-01; desde entonces OpenAI)
+
+> Lo que sigue se aprendió con Higgsfield y **vale igual con OpenAI**, salvo la parte de
+> créditos: con OpenAI no hay saldo consultable (la clave no lee el gasto), así que cada
+> llamada se apunta en `scripts/gastos-openai.jsonl` con `scripts/openai-imagen.py`, y el
+> límite de la cuenta es de **5 imágenes por minuto** (la sexta devuelve 429 y no cobra).
 
 - **Preflight con `get_cost` SIEMPRE, y nunca dar por sabido el precio.** El coste
   varía con los parámetros mucho más de lo que parece: en el historial de un solo

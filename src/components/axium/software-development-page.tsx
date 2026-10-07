@@ -41,7 +41,7 @@ const WORK = [
   },
   {
     slug: "rematch",
-    cover: "/images/proyects/rematch/rematch-portada-agenda.jpg",
+    cover: "/images/proyects/rematch/rematch-portada-cancha.jpg",
     pos: "38% center",
   },
 ];

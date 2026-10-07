@@ -1,0 +1,22 @@
+{
+  "preset": "movil-v",
+  "cuerpo": "negro",
+  "lienzo": {
+    "w": 618,
+    "h": 1271
+  },
+  "pantalla": {
+    "x": 29,
+    "y": 29,
+    "w": 560,
+    "h": 1213,
+    "radio": 70
+  },
+  "anillo": {
+    "total": 29.08,
+    "bisel": 17,
+    "pared": 9,
+    "chaflan": 3.08
+  },
+  "radioCuerpo": 99.08
+}

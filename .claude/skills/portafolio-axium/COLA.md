@@ -4,9 +4,13 @@ Lo que todavía no se ingirió. Alexander va agregando las suyas; las de abajo
 salieron de buscar. Cuando una se analiza, se saca de acá y entra en
 `referencias/`.
 
-**Prioridad ahora** (2026-09-29, noche): **desarrollo web contado como oficio** —
-ver la última sección del archivo. Firmalt y Mubien quedaron aceptados; las cinco
-nuevas están abajo, con sus capturas.
+**Prioridad ahora** (2026-10-06): **empresas parecidas a Axium** (software +
+producto + marca, con IA) y **Latinoamérica**, que por fin tiene candidatas. Ver
+la última sección del archivo.
+
+**Prioridad anterior** (2026-09-29, noche): **desarrollo web contado como oficio**.
+Firmalt y Mubien quedaron aceptados; las cinco de esa tanda están abajo, con sus
+capturas.
 
 **Prioridad anterior** (2026-09-29, con 19 analizadas): el hueco que queda es
 **Latinoamérica** y **e-learning / backend sin UI** como entregables. Lo de
@@ -197,8 +201,54 @@ fichas de alcance distinto cada una, scroll completo).
 | yummygum · merge.rocks · swanky · elegantseagulls · clay.global · cuberto · fabrique.nl · bolden · hardhat · noughtsandones | 404 |
 | lullabot · humanmade · absoluteweb | 403 al fetch |
 | fostr.co · underbelly.is | Sin enlaces de caso rastreables |
-| **Latinoamérica, otra vez** | tektonlabs.com, continuum.la y basement.studio responden 200 pero **ninguno expone un índice de casos rastreable**. El hueco sigue abierto |
+| **Latinoamérica, otra vez** | tektonlabs.com, continuum.la y basement.studio responden 200 pero **ninguno expone un índice de casos rastreable**. El hueco sigue abierto. ⚠ **Corregido el 2026-10-06:** basement ahora tiene índice en `/showcase` (26 casos); ver la última tanda |
 
 **Queda en cola, sin verificar a fondo:** Build in Amsterdam (33 casos,
 `buildinamsterdam.com/cases`), Momkai (25, `momkai.com/work`), Huemor (12),
 Cyber-Duck, Edgar Allan, Refokus, Finsweet, STRV, Monterail, Tonik, Netguru.
+
+---
+
+## Tanda «empresas parecidas a Axium» (2026-10-06)
+
+Pedido de Alexander: *"quiero mejorar mi portafolio, qué portafolios de referencia
+podríamos usar de inspiración, dame los links, de empresas similares"*. Las 18
+referencias analizadas son casi todas de **agencias de marca o web**. Esta tanda busca
+lo que hace Axium: **software a medida, producto, IA y marca en el mismo estudio**,
+y vuelve a buscar **Latinoamérica**.
+
+Todas verificadas con `curl` (índice en 200 y casos contados por enlace). La
+estructura de las fichas se leyó con WebFetch, que **solo ve texto**: lo que diga de
+las imágenes no vale, hay que capturarlas con Playwright al ingerirlas.
+
+**Software y producto (lo más parecido a Axium):**
+
+| Estudio | Índice | Casos | Lo que se vio en una ficha |
+|---|---|---|---|
+| **Paisanos** (Buenos Aires + Madrid) | paisanos.io/projects | 23 | `medicus-website-case-study`: ficha **Empresa → Reto → Proceso → Solución → Resultados (224k usuarios/mes, 6,3 % de conversión) → Stack con logos (Webflow, Next.js, Figma, HubSpot) → Equipo**. Clientes argentinos conocidos (PedidosYa, Coderhouse, Mostaza, MODO). **La más parecida a Axium encontrada hasta hoy** |
+| **Pixelmatters** (Oporto) ✅ **analizada 2026-10-06** → `referencias/pixelmatters.md`, aplicada a Rematch | pixelmatters.com/work | 27 | El slug ya dice el entregable (`abaca-webapp-design-development`, `cbdcity-ecommerce-website-design`). La ficha lista los servicios (estrategia, marca, UX, UI, infraestructura, front, back) y el stack (Vue, Django); ~1 200 palabras en 11 capítulos |
+| **Significa** (Oporto, B Corp) | significa.co/projects | 20 | Tiendas, apps y SaaS mezclados (Coffee King, Dia, CometChat, Rocket.Chat): el mismo abanico que Axium |
+| **Tonik** (Poznań) | tonik.com (el índice `/case-studies` da 404; los casos salen en el home) | 14 | **Clientes de IA** (LangChain, LlamaIndex, Letta). La ficha de LangChain: servicios e industria, marca, cita del cliente; stack Figma/After Effects/Webflow |
+| **STRV** (Praga/EE. UU.) | strv.com/our-work | 13 | `kaiber` (app de video con IA generativa): What we did → Highlights → Key insights → capítulos por función, con cifras (5M creadores, 4,8 en App Store) |
+| **Monterail** (Breslavia) | monterail.com/projects | 15 | Tiene casos de **backend sin UI** (`quick-commerce-service-backend-development`) y de IA (`enterprise-grade-ai-resource-management-platform`): tapa el hueco de backend |
+| **Rootstrap** (origen uruguayo) | rootstrap.com/work | 17 | Sin abrir ficha. MasterClass, Madison Reed |
+| **Qubika** (Montevideo, ex Moove-it) | qubika.com/work/ | 14 | `computer-vision`: un caso temático de IA con tres clientes, cada uno Cliente → Reto → Solución, con GIFs de la app |
+
+**Latinoamérica:**
+
+| Estudio | Índice | Casos | Nota |
+|---|---|---|---|
+| **Paisanos** | ver arriba | | |
+| **Basement Studio** (Buenos Aires) | basement.studio/showcase | 26 | Clientes de IA (Vercel, Cursor, Black Forest Labs, Cal.com) y oficio altísimo, pero la ficha de Cursor tiene **~90 palabras**: el mismo problema por el que se descartó Alright. Sirve como referencia visual, no de narrativa |
+| **DaCodes** (Mérida, MX) | dacodes.com/clients/case-studies | 10 | Software a medida (Rappi, PriceTravel). `curl` da 200; WebFetch, 404: hay que abrirlo con Playwright |
+| **Acid Labs** (Santiago) | acidlabs.com/en/casos-de-exito | 7 | Datos y software de empresa. `cencosud`: Cliente → Reto → Solución → Resultados de negocio (16 000 usuarios, cambios de USD 10 000 que pasan a «un par de clics»). **Modelo para contar un caso sin pantallas**; lo visual es pobre |
+
+**Perú (competencia directa, no inspiración):** Waqa Studios (`waqastudios.com/es/showcase/`,
+14 casos) es lo único con índice: fichas de marca y packaging, sin pantallas ni cifras.
+Staff Digital y MARSO no exponen índice de casos. **Sigue en pie lo de 2026-09-02**:
+ningún estudio peruano tiene un portafolio de nivel de referencia.
+
+**Vistas y no recomendadas:** Fueled (34, clientela tipo Apple), Netguru (51,
+consultora grande), thoughtbot (11), Lazarev (6), Bricx (8). Koombea, Monoku,
+Imaginamos, Platanus, 10Pines, Applaudo, Arionkoder y Magnet no exponen enlaces de caso
+sin JavaScript: quedan sin verificar.

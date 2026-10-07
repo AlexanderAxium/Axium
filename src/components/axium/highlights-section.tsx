@@ -10,6 +10,38 @@ import { useTranslation } from "~/hooks/useTranslation";
 
 const smoothEase = [0.4, 0, 0.2, 1] as const;
 
+/** Portada en vídeo: solo corre en pantalla y respeta «reducir movimiento» (queda el póster). */
+function PortadaVideo({ src, poster }: { src: string; poster: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e?.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      },
+      { threshold: 0.2 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-hidden
+      className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+    />
+  );
+}
+
 // Logos en su versión para fondo oscuro, tal como cada marca los usa.
 // Portadas sin mockups de dispositivos (esos quedan para el carrusel de proyectos)
 // y sin collage: una sola idea por producto, cada una con un tratamiento distinto.
@@ -20,6 +52,9 @@ type Highlight = {
   caseHref: string | null;
   domain: string;
   cover: string;
+  /** Prueba (Alexander, 2026-10-06: «probemos poniendo alguna de tus animaciones de rematch
+   *  como la portada»): un vídeo en bucle en vez de la imagen; `cover` queda de póster. */
+  video?: string;
   logo: { src: string; width: number; height: number };
 };
 
@@ -29,10 +64,12 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     url: "https://vendiq.pe",
     caseHref: "/casos-de-exito/vendiq",
     domain: "vendiq.pe",
-    // «Línea técnica»: su rejilla con el flujo dibujado de una venta.
-    // v5 (2026-09-25): el torcido y el roce entre el inventario y la boleta eran del propio vendiq.pe;
-    // corregidos allá (commits e2c523b9 y a8f887e6) y recapturado
-    cover: "/images/highlights/vendiq-v5.jpg",
+    // v6 (2026-10-07): la portada nueva de vendiq.pe (personas reales y la tienda de ejemplo
+    // Pulso), animada como la de Rematch: la escena entra, la gorra cae y sale la venta del
+    // #1482. Es el vídeo de la ficha (vq-escena, 16:10); `cover` es su póster, el estado final.
+    // Sustituye a vendiq-v5, el flujo dibujado de la portada anterior (CASO-VENDIQ.md § 14).
+    cover: "/images/proyects/vendiq/vq-escena.jpg",
+    video: "/images/proyects/vendiq/vq-escena.mp4",
     logo: {
       src: "/images/highlights/logos/vendiq-v2.png",
       width: 694,
@@ -44,16 +81,16 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     url: "https://rematch.pe",
     caseHref: "/casos-de-exito/rematch",
     domain: "rematch.pe",
-    // La misma portada que en /portafolio (Alexander, 2026-09-25: «me gustan más»),
-    // recortada a 16:10 (desde y=40: la banda de cielo es lo sacrificable).
-    // v11 (2026-09-30): cuatro pistas de pádel acristaladas, de noche, vacías, con el
-    // asfalto mojado devolviendo la luz. Sin dispositivo y sin pelotas: es la única
-    // portada de los cuatro SaaS propios que enseña un LUGAR y no una pantalla, que es
-    // lo que la separa de Bookit, LumioLearn y Vendiq. Sustituye al celular sobre la
-    // pala (v10), que era la cuarta escena oscura con dispositivo de la rejilla y
-    // llevaba dos pelotas —lo que la guía de marca de Rematch pide evitar—.
-    // Ver CASO-REMATCH.md § 13
-    cover: "/images/highlights/rematch-v11.jpg",
+    // v15 (2026-10-06): la portada elegida por Alexander («el A está bien»): el celular
+    // CONSTRUIDO, apoyado en el césped azul de una pista, visto desde arriba, con la sombra
+    // de la reja al atardecer y rematch.pe en claro. Compuesta a 16:10, no recortada de la
+    // 4:3 (el celular girado no cabría). Sustituye a la mano con el celular generado (v12–v14),
+    // cuyo bisel desparejo Alexander rechazó. Ver CASO-REMATCH.md § 17-18
+    cover: "/images/highlights/rematch-v15.jpg",
+    // A prueba: rematch.pe recorriéndose en el celular del jugador, en la banca de la pista.
+    // Es el vídeo de la ficha recompuesto a 16:10 (videos-rematch-pm.py movil-portada): el de
+    // la ficha es 1,39 y, recortado, el celular quedaba cortado abajo.
+    video: "/images/proyects/rematch/rm-movil-portada.mp4",
     logo: {
       src: "/images/highlights/logos/rematch.png",
       width: 939,
@@ -242,14 +279,21 @@ export function HighlightsSection() {
                       {(() => {
                         const cover = (
                           <>
-                            <Image
-                              src={item.cover}
-                              alt={`${name} — ${t(`highlights.items.${item.key}.summary`)}`}
-                              fill
-                              sizes="(min-width: 1024px) 58vw, 100vw"
-                              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                              quality={90}
-                            />
+                            {item.video ? (
+                              <PortadaVideo
+                                src={item.video}
+                                poster={item.video.replace(/\.mp4$/, ".jpg")}
+                              />
+                            ) : (
+                              <Image
+                                src={item.cover}
+                                alt={`${name} — ${t(`highlights.items.${item.key}.summary`)}`}
+                                fill
+                                sizes="(min-width: 1024px) 58vw, 100vw"
+                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                                quality={90}
+                              />
+                            )}
                             <div
                               aria-hidden
                               className={`absolute inset-0 hidden bg-[#060C20] transition-opacity duration-500 lg:block ${

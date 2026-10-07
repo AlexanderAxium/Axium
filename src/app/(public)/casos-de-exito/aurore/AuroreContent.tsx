@@ -670,7 +670,7 @@ export default function AuroreContent() {
           name: "Vendiq",
           tagline: c.nextTagline,
           href: "/casos-de-exito/vendiq",
-          image: "/images/proyects/vendiq/vendiq-portada-marca.jpg",
+          image: "/images/proyects/vendiq/vendiq-portada-pulso.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

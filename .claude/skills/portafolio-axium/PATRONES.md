@@ -179,6 +179,18 @@ nombre 90px), locomotive (fila). Axium tiene todos los campos en el JSON.
 - **S26** Ritmo texto → imagen → texto → imagen — isadora.
 - **S27** Contraste por ancho / por corte — raggededge, koto.
 - **S28** Escenografía del rubro — adelt, uncommon.
+- **S29** **La UI en movimiento**: vídeos cortos en bucle de la interfaz haciendo algo
+  (9 de 14 piezas) — pixelmatters. Se capturan de la web en vivo, no se generan
+  (COMPOSITOR.md, decimotercera generación).
+- **S30** **La portada del índice ES la foto del héroe de la ficha** — pixelmatters
+  (mano con el celular). Une índice y ficha sin producir una pieza más.
+- **S31** **Lienzo oscuro y el color de la marca solo dentro de las piezas** — pixelmatters
+  (el morado de Amigo no toca un titular). Ver T1: el acento sigue siendo del cliente,
+  pero vive en la imagen.
+- **S32** **El texto alterna de lado** en una rejilla de 12 (mitad izquierda, mitad
+  derecha, tercio derecho); nunca centrado — pixelmatters. Hermana de S26 (isadora).
+- **S33** **Carrusel de cuadradas escalonadas** que sangra a la derecha (los impares
+  bajan) — pixelmatters.
 
 ---
 
@@ -228,7 +240,7 @@ nombre 90px), locomotive (fila). Axium tiene todos los campos en el JSON.
 
 ---
 
-## Veredictos de Alexander (los 13)
+## Veredictos de Alexander (los 14)
 
 | Referencia | Veredicto textual | Sobre qué | Qué dice de su criterio |
 |---|---|---|---|
@@ -246,6 +258,7 @@ nombre 90px), locomotive (fila). Axium tiene todos los campos en el JSON.
 | pentagram | "me gustó bastante su estilo" | sistema | También le gusta lo más contenido |
 | raggededge | "me gustó bastante su estilo" | estilo | Misión + dato; expandida |
 | koto | "presenta bien pero es más algo creativo que digital" | presentación | Distingue por rubro |
+| **pixelmatters** (2026-10-06) | **"me gusta. intenta hacer uno así […] para rematch […] afina tu algoritmo para próximos portafolios"** | ficha entera | Primera referencia de **estudio de producto** (diseño + ingeniería) aprobada entera. Para producto digital, este molde pasa por delante de brandvm. Implementado en `src/components/axium/case-producto/` (ESTANDAR-FICHA § 1 bis) |
 
 **Su criterio en una frase:** máxima expresión con producción acotada, en el
 registro comercial — verse como Heartbeat o Adelt gastando como Fit Design,
