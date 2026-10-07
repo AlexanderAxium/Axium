@@ -2125,3 +2125,58 @@ se lee raro. Celular delante, abajo a la derecha, tapando solo la esquina. El ca
 marca del SaaS (aquí la rejilla de Vendiq) con una luz del color dominante de cada tienda: la
 serie se lee como una sola y cada tienda conserva lo suyo. Sirve igual para Bookit y LumioLearn.
 
+## Decimocuarta generación — mockups fotográficos y la mezcla de Paisanos (Aurore, 2026-10-07)
+
+Alexander, tras pasar Paisanos (Brubank, Ualá): *«go. también los mockups que usa no están
+bonitos, puedes mejorarlos»*. Los aparatos planos sobre arena (ventana de navegador dibujada,
+tres celulares de frente) se cambiaron por **escenas fotográficas** con la web real dentro, y
+entraron dos piezas de la mezcla de Paisanos. Taller: `capturas-clientes/aurore/paisanos-2026-10/`
+(prompts en `prompts/`, `_serie.txt` es el bloque común: yeso arena, travertino, lino, una
+ventana, X-T5 + Portra 400, nada de frascos de marca).
+
+| Pieza | Escena | Cómo |
+|---|---|---|
+| Portada (vídeo) | laptop + celular en un mostrador de travertino | `video-escena-dispositivos.py --quads`: los cuadros de `capturar-scroll-cuadros.cjs` deformados cuadro a cuadro a las DOS pantallas, medidas a mano sobre la escena ORIGINAL (ver 2), con la luz de `componer-escena.py` calculada una vez |
+| Fragancia en el celular | una mano con el celular sobre un lavabo de yeso | `componer-escena.py --clave`, captura móvil con barra de estado (1170×2532) |
+| Buscador | una tableta en un sillón de lino | `componer-escena.py --quad --bisel` sobre la ORIGINAL (ver 3) |
+| R28 persona + UI flotante | una mujer perfumándose la muñeca con un decant sin marca | `componer-flotantes.py`: la tarjeta de Xerjoff Naxos y el selector de presentaciones, capturados con alfa, en vidrio esmerilado |
+| La marca en la calle | un paradero con el afiche en magenta (salió de una, sin edición) | el afiche se ARMA DENTRO de aurore.com.pe (sus fuentes Sainte Colombe y Avenir ya cargadas, su monograma, la foto de su banner sin textos) y se compone con la clave |
+
+**Lo que mordió:**
+1. **Editar sin `--tam` reencuadra.** El script editaba a 3072×2048 por defecto; las escenas eran
+   2:1 y 1:1, y la edición salió reencuadrada (diferencia media 30–45 fuera de la máscara, contra
+   4–9 a su tamaño). Tres ediciones tiradas (9 552 tokens). `openai-imagen.py` ahora edita al
+   tamaño de la imagen de entrada si no se le dice otro.
+2. **La edición redibuja el aparato, y puede DEFORMARLO.** La tapa de la laptop volvió de la
+   edición más grande y **de frente**, sobre una base que seguía en tres cuartos. Componer sobre
+   la editada tapó el desajuste con la web, pero no la deformación: Alexander, al verla, *«qué
+   fea laptop, ¿qué pasó? está deformada»*. Regla: **antes de componer sobre la clave, poner la
+   original y la editada lado a lado y mirar el aparato**; si cambió de forma, la clave se tira.
+   Se compone sobre la ORIGINAL con `video-escena-dispositivos.py --quads` (o
+   `componer-escena.py --quad`): los cuatro bordes de cada tapa se miden con el perfil de
+   luminancia por filas y columnas (la tapa negra contra el yeso; abajo, la línea clara de la
+   bisagra), se cruzan las rectas para sacar las esquinas, y `--biseles` pone el marco
+   (laptop `0.016,0.03,0.016,0.085`; celular `0.05,0.016,0.025,0.016`, más a la izquierda porque
+   la franja oscura incluye el canto). `--solo-poster` saca un cuadro para revisar el encaje antes
+   de los 355. Si la edición solo agrandó un poco el aparato SIN cambiarle la forma, sigue valiendo
+   componer sobre ella con la máscara ensanchada 2 px.
+3. **La edición puede enderezar un aparato acostado.** La tableta, en perspectiva sobre el
+   cojín, volvió de la edición como un rectángulo de frente, «de pie» sobre el sillón. Para esa:
+   la original, las esquinas de la tapa medidas sobre una cuadrícula y `--bisel` en fracciones.
+4. **El afiche: foto arriba y franja lisa abajo.** Texto sobre la foto se peleaba con el frasco y
+   una máscara radial dejaba un óvalo y cortaba el tapón.
+
+Coste: 5 escenas (flare) + 6 ediciones (sunburst), 31 244 tokens de salida en total.
+
+**Y los creativos de la web del cliente son trabajo nuestro.** El mismo día, sobre el par del acto
+02 (etiqueta de decant y papelería en mockup): *«reemplaza esas dos imágenes por alguna de
+nuestras portadas web o algún perfume, porque también los creativos de la web los hicimos
+nosotros»*. Las portadas del carrusel de aurore.com.pe (escena + luz + encuadre hechos por Axium,
+frasco de la casa) entran sueltas como piezas: se bajan de R2 a 2880×1440 sin el texto, que en la
+web va en HTML (`aurore/hero/hq/hs-sec-*.webp`), y se recortan a 1440 cuadrado sobre los frascos.
+Se eligen las que no salen ya en otra pieza de la ficha (Babycat y «Casas de autor» estaban en la
+laptop y el celular de la portada) y las que se parecen a la paleta de la marca (Argos = arena,
+Amouage = salvia). El pie dice de quién es cada cosa: «La escena es nuestra; los frascos, de la
+casa». **Antes de fabricar un mockup de marca para una ficha, mirar si la web del cliente ya
+tiene creativos nuestros**: valen más que un objeto inventado.
+

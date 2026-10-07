@@ -78,7 +78,10 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--modelo", default="gpt-image-2.5-flare")
     p.add_argument("--prompt", required=True)
-    p.add_argument("--tam", default="3072x2048")
+    # Sin --tam: 3072×2048 al generar; al EDITAR, el tamaño de la propia imagen. Una edición a
+    # 3072×2048 de una escena 2:1 o 1:1 sale REENCUADRADA (Aurore, 2026-10-07: diferencia media
+    # 30–45 fuera de la máscara, contra 4–9 a su tamaño) y la clave magenta no casa con nada.
+    p.add_argument("--tam", default=None)
     p.add_argument("--n", type=int, default=1)
     p.add_argument("--salida", required=True)
     p.add_argument("--imagen")
@@ -92,6 +95,13 @@ def main():
     if not clave:
         sys.exit("falta OPENAI_API_KEY: set -a; . ~/Documents/AXIUM-TI/credenciales.env; set +a")
     prompt = open(a.prompt).read().strip()
+    if not a.tam:
+        if a.imagen:
+            from PIL import Image as _I
+            w, h = _I.open(a.imagen).size
+            a.tam = f"{w}x{h}"
+        else:
+            a.tam = "3072x2048"
 
     if a.imagen:
         url = "https://api.openai.com/v1/images/edits"

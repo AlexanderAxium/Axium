@@ -5,7 +5,11 @@
 //   PWCORE=… PWEXE=… node grabar-hover.cjs '<json>'
 //   json: { url, salida, viewport:[w,h] (css), zoom (2), seccion (regex del titular),
 //           items (cuerpo de función JS que recibe la sección `s` y devuelve los elementos en
-//           orden), espera (s en cada uno), antes (s), almacen? ({clave: valor}) }
+//           orden), espera (s en cada uno), antes (s), almacen? ({clave: valor}),
+//           accion? ("click" en vez de pasar el ratón: el selector de presentaciones de un
+//           decant en aurore.com.pe, que cambia el precio), arriba? (px css que se baja la
+//           sección después de alinearla arriba, para que entre lo que importa; negativo sube),
+//           ocultar? (regex de clases de elementos FIJOS a quitar: el botón de WhatsApp) }
 //
 // Página ampliada a `zoom` como grabar-scroll.cjs. caja.json = la sección entera (en cuadros);
 // se ajusta a mano si hay que dejar fuera la cabecera de la web.
@@ -41,6 +45,15 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     return lista.length;
   }, { re: C.seccion, cuerpo: C.items });
   if (!n) { console.log("✗ no encontré los elementos"); await b.close(); process.exit(1); }
+  if (C.arriba) await p.evaluate((v) => window.scrollBy(0, v), C.arriba);
+  if (C.ocultar) {
+    await p.evaluate((re) => {
+      const r = new RegExp(re);
+      for (const e of document.querySelectorAll("body *")) {
+        if (getComputedStyle(e).position === "fixed" && r.test(String(e.className))) e.style.display = "none";
+      }
+    }, C.ocultar);
+  }
   await p.mouse.move(5, 5);
   await wait(1200);
   fs.rmSync(C.salida, { recursive: true, force: true });
@@ -55,7 +68,9 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   await wait((C.antes || 1.2) * 1000);
   const marcas = [];
   for (let i = 1; i <= n; i++) {
-    await p.locator(`[data-hover="${i}"]`).hover();
+    const el = p.locator(`[data-hover="${i}"]`);
+    if (C.accion === "click") await el.click();
+    else await el.hover();
     marcas.push(cuadros.length ? cuadros[cuadros.length - 1].t : 0);
     await wait((C.espera || 2) * 1000);
   }

@@ -35,6 +35,7 @@ proponen ideas en `.md`, no se toca código.
 | raggededge | blanco | verde-negro `#181F1F` | menta translúcida `rgba(220,242,235,.6)` en píldoras | 3 | nav; la activa en verde-negro |
 | koto | **casi negro `#141414`** | blanco, gris `#989898`, `#595959` | **ninguno** | 3 | — |
 | pixelmatters (ficha Amigo) | **negro `#000`** | blanco y blanco al 80 % | **ninguno en la página**: el morado del cliente solo dentro de las piezas | 2 | — |
+| paisanos (Brubank, Ualá) | **negro `#000`** | blanco y gris `#878787` | **lima** en «Get in touch»; el color del cliente solo dentro de las piezas y en degradado (Brubank `#4935AB → #462EC2`) | 2 | la acción, fija arriba a la derecha |
 
 **Lo que se repite:** el acento es **uno o ninguno** y aparece en **≤ 2
 lugares**. 4 de 7 no tienen acento propio: el color lo traen las imágenes de
@@ -80,6 +81,7 @@ color.
 | raggededge | **ABC Diatype Expanded Bold** | Grit 400/500 | **por ancho**: grotesca expandida vs. normal | 78 → 40 → 20 → 12 · 30 → 20 → 16 → 14 | wordmark gigante cortado arriba; el dato de negocio en la expandida |
 | koto | gtKotoheim **Condensed** 300 | gtKotoheim 350/400 + **Mono 9–11px** | **por corte** (condensada / normal / mono), todo pequeño | **24** → 16 → 14 → 12 → 9 | la voz sale de la densidad; conteos en mono de 9px |
 | pixelmatters (ficha Amigo) | platform **300** | Geist 400/500 | por peso: display ligero en grande, cuerpo regular | 60 → 35 → 20 → 18 → 16 | peso ligero sobre negro; el texto alterna de lado en 12 columnas |
+| paisanos | **Pprightgrotesk Compact** 90/81 (hero del índice) | Aeonik 400/500 | condensada y apretada contra grotesca de lectura | 90 → 48 → 40 → 20,8 → 16 | el titular del índice condensado; en la ficha todo en Aeonik y la prueba en cifras |
 
 **Lo que se repite:** dos niveles de tamaño muy separados, sin intermedios
 (7/13). **Una itálica, una serif, un peso, un ancho o un corte como acento** —
@@ -132,6 +134,7 @@ para metadata (uncommon).
 | raggededge (índice) | blanco; **wordmark gigante cortado arriba** | "All our partners have what it takes" 78px expandida | píldoras Featured / Everything | nav de píldoras menta | ~600px | la marca como techo de la página |
 | koto (hub) | casi negro | "Our work" **24px** condensada light | dos entradas (Projects / Partnerships) + "Channels" con conteo | — | ~500px | un hub que reparte, no una grilla |
 | pixelmatters (ficha Amigo) | negro y debajo **foto a sangre 1,8:1** | "Designing a brand-new Telecom operator" 60px ligera, 2 líneas | logotipo blanco a la derecha; meta en 4 columnas bajo la foto | ninguna | ~420 + 800 de foto | la mano con el producto real: la foto ES la portada del índice |
+| paisanos (índice) | negro, **render 3D** con «Play reel» | «Tech, Craft & Creative Studio» 90 px condensada | **panel fijo de credenciales** al lado (cifras, Cannes, logotipos) | «Play reel» y «Get in touch» | una pantalla | la prueba vive al lado de la promesa, no debajo |
 
 **Patrones:** hero **tipográfico sin imagen sobre el pliegue** en 9/13 (P9).
 Nuevo: **el hero de la ficha con la metadata del JSON ordenada** (fiddle en
@@ -173,6 +176,7 @@ alrededor del titular (rail, fila, créditos) en 4/7.
 | raggededge | nav en píldoras; "See everything" | menta translúcida / verde-negro | negro / blanco | píldora 64px | 12×16 | Grit 16 | la activa sólida, las demás translúcidas |
 | koto | "Projects" / "Partnerships" como entradas | — | blanco / gris | — | — | gtKotoheim 16 | sin botón: la navegación es el CTA |
 | pixelmatters | "Let's get started →" junto a la cita | transparente con borde blanco 30 % | blanco | píldora | 10×14 | Geist 16 | al lado, la persona que atiende con su foto y "responde en 1–4 h" |
+| paisanos | "Get in touch" | **lima** | negro | píldora | — | Aeonik 500 16 | siempre visible arriba a la derecha; el formulario vive dentro del panel fijo al final de cada ficha |
 
 **Lo que se repite:** **una sola acción primaria por vista**; el color del botón
 **no aparece en ningún otro lado**; flecha en 4/7. **El texto nombra la oferta**
@@ -213,6 +217,7 @@ estudios de autor.
 | raggededge | 48 | propio | **12** (pósters) | "buen estilo" |
 | koto | **109** | propio | 0 en el hub | "presenta bien" |
 | pixelmatters (ficha Amigo) | 0 que escondan contenido | — | **9 de 14 piezas son vídeo** de la UI en bucle (2,7–12,8 s, 90–800 KB) | "me gusta… hazlo así para Rematch" |
+| paisanos (Brubank, Ualá) | entradas y parallax por scroll (**2.326 elementos con transform** en Brubank) | Webflow + Spline, Lottie, Jitter | **1 (Brubank) y 11 (Ualá)**: renders 3D girando, la web recorriéndose, la UI animada | "me encanta… animaciones y videos, elementos flotantes, degradados" |
 
 Magnetic (71) y heartbeat (56) tienen **más** entradas que locomotive (22) y
 Alexander no se quejó. **Hipótesis: el problema no es la cantidad sino que se

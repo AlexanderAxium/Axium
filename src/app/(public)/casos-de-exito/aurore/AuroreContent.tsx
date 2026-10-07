@@ -17,7 +17,7 @@ import { useTranslation } from "~/hooks/useTranslation";
  * depende de lo que hicimos por cada uno». Para Aurore hicimos tres cosas y por eso la ficha
  * tiene tres actos, y abre por la tienda porque es lo principal:
  *   01 · Identidad      logotipo, monograma, sistema tipográfico y paleta
- *   02 · Aplicaciones   etiqueta de decant y papelería
+ *   02 · Dirección de arte  las portadas del carrusel de la web y la campaña de decants
  *   03 · La tienda      aurore.com.pe, sobre Vendiq
  *
  * ── SEGUNDA VUELTA · LA PODA (2026-09-29) ───────────────────────────────────────────
@@ -50,14 +50,22 @@ import { useTranslation } from "~/hooks/useTranslation";
  *   · La interfaz es SIEMPRE captura real de aurore.com.pe (2026-09-29), nunca generada.
  *   · El logotipo es el archivo real que sirve su propia web, partido en monograma y palabra.
  *   · Las escenas son de Higgsfield (nano_banana_pro): solo superficie, luz y materiales.
+ *   · 2026-10-07 (Alexander: «los mockups que usa no están bonitos» y la mezcla de Paisanos):
+ *     los aparatos planos pasan a escenas fotográficas de OpenAI con la web real dentro (la
+ *     portada animada en un mostrador, el celular en una mano, la tableta en un sillón), y entran
+ *     una persona probando un decant con piezas reales flotando encima y un paradero con la
+ *     campaña de decants. Los pies dicen «Foto generada» y «Mockup» donde toca. Recetas:
+ *     portafolio-axium/COMPOSITOR.md, decimocuarta generación.
  *
  * ⚠ HONESTIDAD, dos reglas que no se rompen:
- *   1. Las piezas del acto 02 son MOCKUPS: escena generada con el objeto en blanco + el
- *      logotipo real compuesto encima. La ficha lo dice con esas palabras en el propio acto
- *      y en el pie de cada pieza. No se presentan como fotos de piezas impresas.
- *   2. La fotografía de producto de la tienda es de las casas (Dior, YSL, Parfums de Marly).
- *      Sale solo DENTRO de una captura de la tienda —que es el trabajo real y es honesto—,
- *      nunca como imagen suelta del caso. Ninguna escena generada lleva frascos de marca.
+ *   1. Lo que es mockup lo dice su pie («Mockup: un paradero…»). No se presenta como foto de
+ *      una pieza impresa o instalada.
+ *   2. Las PORTADAS del carrusel de aurore.com.pe las hizo Axium (Alexander, 2026-10-07:
+ *      «los creativos de la web los hicimos nosotros»): la escena, la luz y el encuadre son
+ *      nuestros, el frasco es de la casa, y el pie lo dice así. Pueden ir sueltas, como en el
+ *      acto 02. La foto de producto de las fichas de la tienda (la de cada casa) sigue
+ *      saliendo solo DENTRO de una captura. Ninguna escena GENERADA para esta ficha lleva
+ *      frascos de marca.
  *
  * `results` sigue vacío a propósito: no hay analítica y no se inventan cifras. La prueba es
  * el inventario de lo construido, y cada dato del cierre se lee en una captura de arriba.
@@ -81,7 +89,7 @@ type Copy = {
   highlights: { lead: string; text: string }[];
   challengeTitle: string;
   challenge: string;
-  actos: Record<"identidad" | "aplicaciones" | "tienda", Acto>;
+  actos: Record<"identidad" | "arte" | "tienda", Acto>;
   variantesTitle: string;
   variantes: string;
   outcomesTitle: string;
@@ -96,25 +104,27 @@ type Copy = {
   };
   pies: {
     portada: string;
-    macro: string;
-    papeleria: string;
+    argos: string;
+    amouage: string;
     explorar: string;
     movil: string;
     buscar: string;
     ficha: string;
     fragancia: string;
+    paradero: string;
   };
   alt: {
     portada: string;
     tipografia: string;
     paleta: string;
-    macro: string;
-    papeleria: string;
+    argos: string;
+    amouage: string;
     explorar: string;
     movil: string;
     buscar: string;
     ficha: string;
     fragancia: string;
+    paradero: string;
   };
   nextTagline: string;
 };
@@ -122,15 +132,15 @@ type Copy = {
 const COPY: Record<StoryLang, Copy> = {
   es: {
     tagline:
-      "Marca, aplicaciones y tienda de una perfumería que se recorre por casa, por nota y por ocasión",
+      "Marca, dirección de arte y tienda de una perfumería que se recorre por casa, por nota y por ocasión",
     meta: [
       ["Estado", "En producción"],
-      ["Entregables", "Identidad, aplicaciones de marca, tienda online"],
+      ["Entregables", "Identidad, dirección de arte, tienda online"],
       ["Industria", "Perfumería de nicho, de diseñador y árabe"],
       ["Plataforma", "Web (tienda) sobre Vendiq"],
     ],
     statement:
-      "Hicimos Aurore entera: la marca, sus aplicaciones y la tienda donde se recorren 278 fragancias.",
+      "Hicimos Aurore entera: la marca, las portadas de su web y la tienda donde se recorren 278 fragancias.",
     context:
       "Perfumería peruana de casas de diseñador, nicho y árabe, que vende el frasco entero y el decant del mismo perfume. La marca se creó para este encargo: no había logotipo ni tipografía ni paleta.",
     highlightsTitle: ["Lo que", "hicimos"],
@@ -140,8 +150,8 @@ const COPY: Record<StoryLang, Copy> = {
         text: "logotipo, monograma, dos tipografías y cinco colores, más cuatro colores editoriales, las cuatro puertas al catálogo.",
       },
       {
-        lead: "Aplicaciones",
-        text: "la etiqueta del decant y la papelería, sobre el mismo monograma.",
+        lead: "Dirección de arte",
+        text: "las portadas del carrusel, una escena hecha para cada casa.",
       },
       {
         lead: "278 fragancias",
@@ -169,10 +179,10 @@ const COPY: Record<StoryLang, Copy> = {
         title: ["Una marca", "desde cero"],
         body: "La A capitular con su rasgo caligráfico se dibujó para aguantar los dos extremos del negocio: una etiqueta de dos centímetros y la cabecera de la tienda a todo el ancho.",
       },
-      aplicaciones: {
+      arte: {
         index: "Acto 02",
-        title: ["La marca", "aplicada"],
-        body: "El decant es el negocio: el mismo perfume en un atomizador de pocos mililitros, para probarlo antes de comprar el frasco. El monograma bajó a las dos piezas con las que el cliente se queda, la etiqueta y la papelería. Las imágenes son mockups, no fotografías de piezas impresas: lo probado es el diseño, no la producción.",
+        title: ["La dirección", "de arte"],
+        body: "Cada portada del carrusel es una escena hecha para su casa: Argos entre mármol y agua, Amouage sobre piedra blanca y bruma. El frasco es de la casa; la escena, la luz y el encuadre son nuestros. El paradero es un mockup.",
       },
       tienda: {
         index: "Acto 03",
@@ -208,58 +218,66 @@ const COPY: Record<StoryLang, Copy> = {
       ficha:
         "Las cuatro presentaciones conviven con la concentración, la familia olfativa y el público.",
       fragancia:
-        "«La fragancia» cuenta el perfume en el orden en que se percibe: salida, corazón y fondo.",
+        "El decant existe para esto: probar el perfume en la piel antes de comprar el frasco.",
     },
     pies: {
-      portada: "aurore.com.pe — la portada, en el escritorio y en el celular.",
-      macro:
-        "Mockup: el detalle de la etiqueta, donde la marca mide dos centímetros.",
-      papeleria:
-        "Mockup de papelería: hoja de algodón y tarjeta con el logotipo real.",
+      portada:
+        "aurore.com.pe bajando por la portada, en la laptop y en el celular: colecciones, decants y las cuatro puertas del catálogo.",
+      argos:
+        "Portada de aurore.com.pe para Argos: «mitos que se llevan en la piel». La escena es nuestra; los frascos, de la casa.",
+      amouage:
+        "Portada de aurore.com.pe para Amouage, «la casa de Omán». La escena es nuestra; los frascos, de la casa.",
       explorar:
         "aurore.com.pe/productos — el panel de filtros abierto, con las casas y sus conteos.",
-      movil: "El móvil es el diseño principal.",
+      movil:
+        "El móvil es el diseño principal: «La fragancia» de Xerjoff Naxos, con sus notas de salida, corazón y fondo.",
       buscar:
-        "aurore.com.pe/productos?search=oud — el resultado de buscar una nota.",
+        "aurore.com.pe/productos?search=oud en una tableta — el resultado de buscar una nota.",
       ficha:
-        "aurore.com.pe — la ficha de producto con sus cuatro presentaciones.",
-      fragancia: "La pirámide olfativa dentro de la ficha de producto.",
+        "aurore.com.pe — elegir 1, 2, 5 o 10 ml cambia el precio sin cambiar de página.",
+      fragancia:
+        "Foto generada; encima, la tarjeta de Xerjoff Naxos y su selector de presentaciones, capturados de aurore.com.pe.",
+      paradero:
+        "Mockup: un paradero con la campaña de decants, con la foto, las tipografías y el monograma reales.",
     },
     alt: {
-      portada: "La portada de aurore.com.pe en el escritorio y en el celular",
+      portada:
+        "Una laptop y un celular sobre un mostrador de travertino recorren a la vez la portada de aurore.com.pe, animada",
       tipografia:
         "Espécimen tipográfico de Aurore: Sainte Colombe para los titulares y Avenir para el texto",
       paleta:
         "Paleta de Aurore: tinta, salvia, arena, crema y hueso, más los cuatro colores editoriales del catálogo",
-      macro:
-        "Mockup en macro de un atomizador de decant con la etiqueta de Aurore",
-      papeleria:
-        "Mockup de la papelería de Aurore: hoja de algodón y tarjeta sobre yeso arena",
+      argos:
+        "Tres frascos de Argos, Venus, Baco y Neptuno, sobre mármol con una concha y agua, a la luz de una ventana: portada de aurore.com.pe",
+      amouage:
+        "Dos frascos de Amouage, Existence y Decision, sobre una piedra blanca entre bruma y tela salvia: portada de aurore.com.pe",
       explorar:
         "El panel de filtros de aurore.com.pe con las casas, sus conteos y la exploración por nota olfativa",
       movil:
-        "aurore.com.pe en el celular: la portada, el catálogo y el panel de filtros",
+        "Una mano sostiene el celular con «La fragancia» de aurore.com.pe: las notas de salida, corazón y fondo de Xerjoff Naxos",
       buscar:
-        "Buscar «oud» en aurore.com.pe devuelve trece fragancias de casas distintas",
+        "Una tableta sobre un sillón de lino muestra la búsqueda «oud» en aurore.com.pe: trece fragancias de casas distintas",
       ficha:
-        "La ficha de producto de aurore.com.pe con las presentaciones de 1, 2, 5 y 10 ml",
+        "La ficha de Xerjoff Naxos en aurore.com.pe, animada: de 1 a 10 ml el precio pasa de S/ 25 a S/ 135",
       fragancia:
-        "«La fragancia»: notas de salida, de corazón y de fondo en la ficha de producto",
+        "Una mujer se perfuma la muñeca con un decant; flotan encima la tarjeta de Xerjoff Naxos (S/ 25.00 – S/ 135.00) y el selector de 1 a 10 ml de aurore.com.pe",
+      paradero:
+        "Mockup de un paradero en una avenida arbolada con el afiche de Aurore: «Pruébalo antes de comprar el frasco»",
     },
     nextTagline:
       "Tienda online, punto de venta, inventario y facturación SUNAT en un solo sistema",
   },
   en: {
     tagline:
-      "Brand, applications and store for a perfumery browsed by house, by note and by occasion",
+      "Brand, art direction and store for a perfumery browsed by house, by note and by occasion",
     meta: [
       ["Status", "In production"],
-      ["Deliverables", "Identity, brand applications, online store"],
+      ["Deliverables", "Identity, art direction, online store"],
       ["Industry", "Niche, designer and Arabic perfumery"],
       ["Platform", "Web (store) on Vendiq"],
     ],
     statement:
-      "We made the whole of Aurore: the brand, its applications and the store where 278 fragrances are browsed.",
+      "We made the whole of Aurore: the brand, the covers of its website and the store where 278 fragrances are browsed.",
     context:
       "A Peruvian perfumery of designer, niche and Arabic houses that sells both the full bottle and the decant of the same scent. The brand was created for this project: no logo, no typeface, no palette.",
     highlightsTitle: ["What we", "made"],
@@ -269,8 +287,8 @@ const COPY: Record<StoryLang, Copy> = {
         text: "logo, monogram, two typefaces and five colours, plus four editorial colours, the four doors into the catalogue.",
       },
       {
-        lead: "Applications",
-        text: "the decant label and the stationery, on the same monogram.",
+        lead: "Art direction",
+        text: "the carousel covers, a scene made for each house.",
       },
       {
         lead: "278 fragrances",
@@ -298,10 +316,10 @@ const COPY: Record<StoryLang, Copy> = {
         title: ["A brand", "from scratch"],
         body: "The capital A with its calligraphic flourish was drawn for both ends of the business: a two-centimetre label and a full-width store header.",
       },
-      aplicaciones: {
+      arte: {
         index: "Act 02",
-        title: ["The brand", "applied"],
-        body: "The decant is the business: the same perfume in a few-millilitre atomiser, to wear before buying the bottle. The monogram came down onto the two pieces the customer keeps, the label and the stationery. The images are mockups, not photographs of printed pieces: what is proven is the design, not the production.",
+        title: ["Art", "direction"],
+        body: "Each cover in the carousel is a scene made for its house: Argos among marble and water, Amouage on white stone and mist. The bottle belongs to the house; the scene, the light and the framing are ours. The bus shelter is a mockup.",
       },
       tienda: {
         index: "Act 03",
@@ -337,54 +355,66 @@ const COPY: Record<StoryLang, Copy> = {
       ficha:
         "The four sizes sit alongside the concentration, the olfactory family and who it is for.",
       fragancia:
-        "“The fragrance” tells the perfume in the order it is perceived: top, heart and base.",
+        "This is what the decant is for: trying the perfume on your skin before buying the bottle.",
     },
     pies: {
-      portada: "aurore.com.pe — the home page, on desktop and on a phone.",
-      macro:
-        "Mockup: the label close up, where the brand is two centimetres wide.",
-      papeleria: "Stationery mockup: cotton sheet and card with the real logo.",
+      portada:
+        "aurore.com.pe scrolling down its home page, on a laptop and on a phone: collections, decants and the catalog's four doors.",
+      argos:
+        "aurore.com.pe cover for Argos: “myths you wear on your skin”. The scene is ours; the bottles, the house's.",
+      amouage:
+        "aurore.com.pe cover for Amouage, “the house of Oman”. The scene is ours; the bottles, the house's.",
       explorar:
         "aurore.com.pe/productos — the filter panel open, with the houses and their counts.",
-      movil: "Mobile is the primary layout.",
+      movil:
+        "Mobile is the primary layout: Xerjoff Naxos' “The fragrance”, with its top, heart and base notes.",
       buscar:
-        "aurore.com.pe/productos?search=oud — the result of searching for a note.",
-      ficha: "aurore.com.pe — the product page with its four sizes.",
-      fragancia: "The olfactory pyramid inside the product page.",
+        "aurore.com.pe/productos?search=oud on a tablet — the result of searching for a note.",
+      ficha:
+        "aurore.com.pe — picking 1, 2, 5 or 10 ml changes the price without leaving the page.",
+      fragancia:
+        "Generated photo; on top, the Xerjoff Naxos card and its size selector, captured from aurore.com.pe.",
+      paradero:
+        "Mockup: a bus shelter with the decants campaign, using the real photo, typefaces and monogram.",
     },
     alt: {
-      portada: "The aurore.com.pe home page on desktop and on a phone",
+      portada:
+        "A laptop and a phone on a travertine counter scroll through the aurore.com.pe home page at the same time, animated",
       tipografia:
         "Aurore type specimen: Sainte Colombe for headlines and Avenir for text",
       paleta:
         "Aurore palette: ink, sage, sand, cream and bone, plus the four editorial colours of the catalogue",
-      macro: "Macro mockup of a decant atomiser with the Aurore label",
-      papeleria:
-        "Mockup of Aurore's stationery: cotton sheet and card on sand plaster",
+      argos:
+        "Three Argos bottles, Venus, Bacchus and Neptune, on marble with a shell and water in window light: an aurore.com.pe cover",
+      amouage:
+        "Two Amouage bottles, Existence and Decision, on white stone among mist and sage fabric: an aurore.com.pe cover",
       explorar:
         "The aurore.com.pe filter panel with the houses, their counts and browsing by olfactory note",
       movil:
-        "aurore.com.pe on mobile: the home page, the catalogue and the filter panel",
+        "A hand holds a phone showing “The fragrance” on aurore.com.pe: Xerjoff Naxos' top, heart and base notes",
       buscar:
-        "Searching “oud” on aurore.com.pe returns thirteen fragrances from different houses",
-      ficha: "The aurore.com.pe product page with its 1, 2, 5 and 10 ml sizes",
+        "A tablet on a linen armchair shows the “oud” search on aurore.com.pe: thirteen fragrances from different houses",
+      ficha:
+        "The Xerjoff Naxos product page on aurore.com.pe, animated: from 1 to 10 ml the price goes from S/ 25 to S/ 135",
       fragancia:
-        "“The fragrance”: top, heart and base notes on the product page",
+        "A woman sprays perfume from a decant onto her wrist; floating above, the Xerjoff Naxos card (S/ 25.00 – S/ 135.00) and the 1 to 10 ml selector from aurore.com.pe",
+      paradero:
+        "Mockup of a bus shelter on a tree-lined avenue with the Aurore poster: “Try it before buying the bottle”",
     },
     nextTagline:
       "Online store, point of sale, inventory and SUNAT invoicing in one system",
   },
   pt: {
     tagline:
-      "Marca, aplicações e loja de uma perfumaria percorrida por casa, por nota e por ocasião",
+      "Marca, direção de arte e loja de uma perfumaria percorrida por casa, por nota e por ocasião",
     meta: [
       ["Status", "Em produção"],
-      ["Entregas", "Identidade, aplicações de marca, loja online"],
+      ["Entregas", "Identidade, direção de arte, loja online"],
       ["Setor", "Perfumaria de nicho, de designer e árabe"],
       ["Plataforma", "Web (loja) sobre o Vendiq"],
     ],
     statement:
-      "Fizemos a Aurore inteira: a marca, suas aplicações e a loja onde se percorrem 278 fragrâncias.",
+      "Fizemos a Aurore inteira: a marca, as capas do seu site e a loja onde se percorrem 278 fragrâncias.",
     context:
       "Perfumaria peruana de casas de designer, nicho e árabe, que vende o frasco inteiro e o decant do mesmo perfume. A marca foi criada para este projeto: não havia logotipo nem tipografia nem paleta.",
     highlightsTitle: ["O que", "fizemos"],
@@ -394,8 +424,8 @@ const COPY: Record<StoryLang, Copy> = {
         text: "logotipo, monograma, duas tipografias e cinco cores, mais quatro cores editoriais, as quatro portas do catálogo.",
       },
       {
-        lead: "Aplicações",
-        text: "o rótulo do decant e a papelaria, sobre o mesmo monograma.",
+        lead: "Direção de arte",
+        text: "as capas do carrossel, uma cena feita para cada casa.",
       },
       {
         lead: "278 fragrâncias",
@@ -423,10 +453,10 @@ const COPY: Record<StoryLang, Copy> = {
         title: ["Uma marca", "do zero"],
         body: "O A capitular com seu traço caligráfico foi desenhado para os dois extremos do negócio: um rótulo de dois centímetros e o cabeçalho da loja em toda a largura.",
       },
-      aplicaciones: {
+      arte: {
         index: "Ato 02",
-        title: ["A marca", "aplicada"],
-        body: "O decant é o negócio: o mesmo perfume num atomizador de poucos mililitros, para usar antes de comprar o frasco. O monograma desceu para as duas peças com as quais o cliente fica, o rótulo e a papelaria. As imagens são mockups, não fotografias de peças impressas: o provado é o design, não a produção.",
+        title: ["Direção", "de arte"],
+        body: "Cada capa do carrossel é uma cena feita para a sua casa: Argos entre mármore e água, Amouage sobre pedra branca e névoa. O frasco é da casa; a cena, a luz e o enquadramento são nossos. O ponto de ônibus é um mockup.",
       },
       tienda: {
         index: "Ato 03",
@@ -462,42 +492,51 @@ const COPY: Record<StoryLang, Copy> = {
       ficha:
         "As quatro apresentações convivem com a concentração, a família olfativa e o público.",
       fragancia:
-        "“A fragrância” conta o perfume na ordem em que é percebido: saída, coração e fundo.",
+        "O decant existe para isso: provar o perfume na pele antes de comprar o frasco.",
     },
     pies: {
-      portada: "aurore.com.pe — a capa, no desktop e no celular.",
-      macro: "Mockup: o detalhe do rótulo, onde a marca mede dois centímetros.",
-      papeleria:
-        "Mockup de papelaria: folha de algodão e cartão com o logotipo real.",
+      portada:
+        "aurore.com.pe descendo pela capa, no laptop e no celular: coleções, decants e as quatro portas do catálogo.",
+      argos:
+        "Capa de aurore.com.pe para Argos: “mitos que se levam na pele”. A cena é nossa; os frascos, da casa.",
+      amouage:
+        "Capa de aurore.com.pe para Amouage, “a casa de Omã”. A cena é nossa; os frascos, da casa.",
       explorar:
         "aurore.com.pe/productos — o painel de filtros aberto, com as casas e suas contagens.",
-      movil: "O celular é o layout principal.",
+      movil:
+        "O celular é o layout principal: “A fragrância” do Xerjoff Naxos, com suas notas de saída, coração e fundo.",
       buscar:
-        "aurore.com.pe/productos?search=oud — o resultado de buscar uma nota.",
+        "aurore.com.pe/productos?search=oud em um tablet — o resultado de buscar uma nota.",
       ficha:
-        "aurore.com.pe — a página de produto com suas quatro apresentações.",
-      fragancia: "A pirâmide olfativa dentro da página de produto.",
+        "aurore.com.pe — escolher 1, 2, 5 ou 10 ml muda o preço sem trocar de página.",
+      fragancia:
+        "Foto gerada; por cima, o cartão do Xerjoff Naxos e seu seletor de apresentações, capturados de aurore.com.pe.",
+      paradero:
+        "Mockup: um ponto de ônibus com a campanha de decants, com a foto, as tipografias e o monograma reais.",
     },
     alt: {
-      portada: "A capa de aurore.com.pe no desktop e no celular",
+      portada:
+        "Um laptop e um celular sobre um balcão de travertino percorrem ao mesmo tempo a capa de aurore.com.pe, animada",
       tipografia:
         "Espécime tipográfico da Aurore: Sainte Colombe para os títulos e Avenir para o texto",
       paleta:
         "Paleta da Aurore: tinta, sálvia, areia, creme e osso, mais as quatro cores editoriais do catálogo",
-      macro:
-        "Mockup em macro de um atomizador de decant com o rótulo da Aurore",
-      papeleria:
-        "Mockup da papelaria da Aurore: folha de algodão e cartão sobre gesso areia",
+      argos:
+        "Três frascos de Argos, Vênus, Baco e Netuno, sobre mármore com uma concha e água, à luz de uma janela: capa de aurore.com.pe",
+      amouage:
+        "Dois frascos de Amouage, Existence e Decision, sobre uma pedra branca entre névoa e tecido sálvia: capa de aurore.com.pe",
       explorar:
         "O painel de filtros de aurore.com.pe com as casas, suas contagens e a exploração por nota olfativa",
       movil:
-        "aurore.com.pe no celular: a capa, o catálogo e o painel de filtros",
+        "Uma mão segura o celular com “A fragrância” de aurore.com.pe: as notas de saída, coração e fundo do Xerjoff Naxos",
       buscar:
-        "Buscar “oud” em aurore.com.pe devolve treze fragrâncias de casas diferentes",
+        "Um tablet sobre uma poltrona de linho mostra a busca “oud” em aurore.com.pe: treze fragrâncias de casas diferentes",
       ficha:
-        "A página de produto de aurore.com.pe com as apresentações de 1, 2, 5 e 10 ml",
+        "A página do Xerjoff Naxos em aurore.com.pe, animada: de 1 a 10 ml o preço vai de S/ 25 a S/ 135",
       fragancia:
-        "“A fragrância”: notas de saída, de coração e de fundo na página de produto",
+        "Uma mulher borrifa perfume de um decant no pulso; flutuam por cima o cartão do Xerjoff Naxos (S/ 25.00 – S/ 135.00) e o seletor de 1 a 10 ml de aurore.com.pe",
+      paradero:
+        "Mockup de um ponto de ônibus em uma avenida arborizada com o cartaz da Aurore: “Prove antes de comprar o frasco”",
     },
     nextTagline:
       "Loja online, ponto de venda, estoque e faturamento SUNAT em um só sistema",
@@ -527,6 +566,9 @@ const COPY: Record<StoryLang, Copy> = {
  * párrafo del acto 02. No se generó nada para sustituirlo: la caja y la bolsa ya se
  * cayeron en la poda por escena floja, y una pieza nueva solo para rellenar es lo que
  * sobra en una ficha, no lo que le falta.
+ *
+ * (2026-10-07: el macro y la papelería también se fueron; en su sitio, dos portadas del
+ * carrusel de la web, que sí son trabajo nuestro. Ver el acto 02.)
  */
 function bloques(c: Copy): StoryBlock[] {
   return [
@@ -536,10 +578,18 @@ function bloques(c: Copy): StoryBlock[] {
       kind: "wide",
       lead: c.leads.portada,
       image: {
-        src: `${IMG}/av-portada.jpg`,
+        // Animada (2026-10-07) DENTRO de una escena: la laptop y el celular sobre un mostrador de
+        // travertino bajan a la vez por aurore.com.pe (capturar-scroll-cuadros.cjs +
+        // video-escena-dispositivos.py). Alexander: «los mockups que usa no están bonitos». La
+        // primera versión se compuso sobre la edición en magenta, que había dibujado la tapa de
+        // frente sobre una base en tres cuartos («qué fea laptop, está deformada»): esta va
+        // sobre la escena ORIGINAL con las esquinas de cada tapa medidas a mano (--quads).
+        // En el celular, el póster a resolución completa recortado a 4:3
+        src: `${IMG}/av-portada-mostrador.jpg`,
+        video: `${IMG}/av-portada-mostrador.mp4`,
         alt: c.alt.portada,
         caption: c.pies.portada,
-        mobileSrc: `${IMG}/av-portada-movil.jpg`,
+        mobileSrc: `${IMG}/av-portada-mostrador-movil.jpg`,
       },
     },
     { kind: "highlights", title: c.highlightsTitle, items: c.highlights },
@@ -552,7 +602,12 @@ function bloques(c: Copy): StoryBlock[] {
           alt: c.alt.explorar,
           caption: c.pies.explorar,
         },
-        { src: `${IMG}/av-movil.jpg`, alt: c.alt.movil, caption: c.pies.movil },
+        // La mano con el celular (escena generada + captura real de «La fragancia»)
+        {
+          src: `${IMG}/av-fragancia-celular.jpg`,
+          alt: c.alt.movil,
+          caption: c.pies.movil,
+        },
       ],
     },
     { kind: "text", title: c.challengeTitle, body: c.challenge },
@@ -572,27 +627,43 @@ function bloques(c: Copy): StoryBlock[] {
       ],
     },
 
-    // ── ACTO 02 · APLICACIONES (mockups, y la ficha lo dice) ──
+    // ── ACTO 02 · DIRECCIÓN DE ARTE (las portadas de la web, hechas por Axium) ──
     {
       kind: "act",
-      index: c.actos.aplicaciones.index,
-      title: c.actos.aplicaciones.title,
-      body: c.actos.aplicaciones.body,
+      index: c.actos.arte.index,
+      title: c.actos.arte.title,
+      body: c.actos.arte.body,
     },
+    // Dos portadas del carrusel de aurore.com.pe, a su resolución (2880×1440 recortadas a
+    // 1440 cuadrado sobre los frascos). Sustituyen a la etiqueta del decant y la papelería
+    // (2026-10-07, Alexander: «reemplaza esas dos imágenes por alguna de nuestras portadas
+    // web o algún perfume, porque también los creativos de la web los hicimos nosotros»).
+    // Babycat y «Casas de autor» no: ya salen en la laptop y el celular de la portada.
     {
       kind: "pair",
       images: [
         {
-          src: `${IMG}/av-decant-macro-v2.jpg`,
-          alt: c.alt.macro,
-          caption: c.pies.macro,
+          src: `${IMG}/av-portada-argos.jpg`,
+          alt: c.alt.argos,
+          caption: c.pies.argos,
         },
         {
-          src: `${IMG}/av-papeleria-v2.jpg`,
-          alt: c.alt.papeleria,
-          caption: c.pies.papeleria,
+          src: `${IMG}/av-portada-amouage.jpg`,
+          alt: c.alt.amouage,
+          caption: c.pies.amouage,
         },
       ],
+    },
+    // La marca en la calle (Paisanos, 2026-10-07): un paradero con la campaña de decants. El
+    // afiche se armó dentro de aurore.com.pe con sus fuentes, su monograma y la foto de su banner
+    {
+      kind: "wide",
+      image: {
+        src: `${IMG}/av-paradero.jpg`,
+        alt: c.alt.paradero,
+        caption: c.pies.paradero,
+        mobileSrc: `${IMG}/av-paradero-movil.jpg`,
+      },
     },
 
     // ── ACTO 03 · LA TIENDA (todo captura real, y cada bloque su estado) ──
@@ -606,10 +677,11 @@ function bloques(c: Copy): StoryBlock[] {
       kind: "wide",
       lead: c.leads.buscar,
       image: {
-        src: `${IMG}/av-buscar.jpg`,
+        // En una tableta sobre un sillón de lino (escena generada + captura real a 1180×820)
+        src: `${IMG}/av-buscar-tableta.jpg`,
         alt: c.alt.buscar,
         caption: c.pies.buscar,
-        mobileSrc: `${IMG}/av-buscar-movil.jpg`,
+        mobileSrc: `${IMG}/av-buscar-tableta-movil.jpg`,
       },
     },
     // Capítulo de decisión técnica (Viget): el modelo de datos que sostiene el decant
@@ -618,7 +690,10 @@ function bloques(c: Copy): StoryBlock[] {
       kind: "wide",
       lead: c.leads.ficha,
       image: {
-        src: `${IMG}/av-decant-ficha.jpg`,
+        // Animada (2026-10-07): el selector de presentaciones de Xerjoff Naxos, clic a clic
+        // (grabar-hover.cjs con accion "click"). Un detalle ampliado, sin aparato
+        src: `${IMG}/av-presentaciones.jpg`,
+        video: `${IMG}/av-presentaciones.mp4`,
         alt: c.alt.ficha,
         caption: c.pies.ficha,
         mobileSrc: `${IMG}/av-decant-ficha-movil.jpg`,
@@ -635,10 +710,13 @@ function bloques(c: Copy): StoryBlock[] {
       kind: "wide",
       lead: c.leads.fragancia,
       image: {
-        src: `${IMG}/av-fragancia.jpg`,
+        // Persona real + UI flotante (R28, Paisanos/Brubank): foto generada de alguien probando un
+        // decant sin marca, y encima piezas REALES de aurore.com.pe en vidrio esmerilado
+        // (componer-flotantes.py). La pirámide olfativa pasó al celular de arriba
+        src: `${IMG}/av-probar.jpg`,
         alt: c.alt.fragancia,
         caption: c.pies.fragancia,
-        mobileSrc: `${IMG}/av-fragancia-movil.jpg`,
+        mobileSrc: `${IMG}/av-probar-movil.jpg`,
       },
     },
     { kind: "tags", title: c.stackTitle, items: c.stack },

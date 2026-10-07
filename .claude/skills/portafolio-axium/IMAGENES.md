@@ -163,6 +163,9 @@ por gusto: un proyecto con una sola captura del home no puede usar la R6.
 | **R23** | **Mosaico de momentos** | Campo del color de marca → grilla regular (4×4, 3×3) de celdas 3:4 con **una pieza distinta cada una**: producto, paisaje, móvil, tipografía, retrato, logo. La síntesis del proyecto en una imagen — el equivalente estático de un video de marca | No | adelt (farm-09) — y **Alexander lo llamó "buenos mockups"** |
 | **R24** | **Panel + columna** (layout de ficha, no imagen) | Panel fijo con la metadata a la izquierda; columna de imágenes de ancho fijo con radio a la derecha, alturas libres | — | adelt; parientes: undersight (ancho+radio fijos), fiddle (retícula de metadata) |
 | **R25** | **Hero de producto a plena altura** | Patrón o color de la marca ampliado y desenfocado → **el producto real ocupando todo el alto del cuadro**, centrado, con sombra de estudio → dos frases de la propia marca fantasmeadas a izquierda y derecha | El fondo, opcional | brandvm-retail (Beanie Coffee) — **la portada natural de un frasco de perfume** |
+| **R28** | **Persona real + UI flotante** | Foto de VIDA a sangre (la persona usando el producto: en la cama, en una mesa, en la calle) → una sola tarjeta real del producto encima, en vidrio esmerilado con sombra suave (una notificación, un pedido, una reserva) → el titular de la web sobre la foto | La foto (persona sin marcas, sin cara de nadie real) | paisanos (Brubank «Nueva transferencia», Ualá). Alexander: *«me encanta que combine mockups con personas reales… elementos flotantes»* |
+| **R29** | **El objeto de la marca en 3D** | El objeto físico o simbólico de la marca (tarjeta, frasco, decant, bolso, lector, una cifra) flotando en ángulo, fuera de contexto, sobre el degradado de su color; a menudo en bucle girando | El objeto (fondo transparente) o render | paisanos (tarjetas Visa de Brubank, bolso fucsia y lector POS de Ualá, «16 %» entre nubes; Spline) |
+| **R30** | **El sistema de imagen, a la vista** | Cuando las fotos de una ficha son generadas: la plantilla del prompt con sus huecos + la rejilla de resultados + el criterio en una frase («contrapicado, gran angular, ciudad, una persona en primer plano») | Es la propia tanda | paisanos (Ualá: «Hecho con Gemini Nano Banana Pro»). Convierte la IA en dirección de arte declarada |
 | **R26** | **Carrusel arrastrable del entregable** | Campo de color de marca → las láminas reales del documento de diseño como slides con radio, numeradas `01/03`, con cursor `DRAG` | No | BASIC (Murad) — enseña el documento de trabajo como prueba |
 | **R27** | **Marquesina de capturas crudas sobre oscuro** | Campo oscuro uniforme → 2–3 hileras de capturas **reales, sin marco ni dispositivo**, todas del mismo tamaño y con radio, desplazándose en direcciones opuestas; la de móvil inclinada ~−15°, la de escritorio frontal | No — Playwright + CSS | BAO (Omorovicza, Haeckels) — **18 pantallas al costo de una tarde; la más rentable de la biblioteca** |
 
@@ -580,6 +583,18 @@ salida, y vale cada uno):
 
 Medido: fuera de la máscara la escena cambia **9 de 765** de media (nada visible); el
 compositor usa la escena ORIGINAL y de la editada toma solo la forma del cristal.
+
+⚠️ **Corrección (Aurore, 2026-10-07):** la edición se pide al tamaño de la escena (sin `--tam`, el
+script usaba 3072×2048 y reencuadraba: diferencia 30–45). Y se compone SOBRE LA EDITADA, no
+sobre la original: la edición redibuja un poco el aparato (la tapa de la laptop creció) y la
+forma de la clave no casa con la original. Ver COMPOSITOR.md, decimocuarta generación.
+
+⚠️⚠️ **Y si la edición cambió la FORMA del aparato, ninguna de las dos:** en esa misma laptop la
+tapa volvió de frente sobre una base en tres cuartos y Alexander la vio deformada de un vistazo.
+Antes de usar una clave, **original y editada lado a lado, mirando el aparato**. Si cambió de
+forma, la clave se tira y se compone sobre la original con las esquinas medidas a mano
+(`--quads` / `--quad` + bisel). La clave sirve cuando el aparato vuelve igual o solo un poco
+más grande.
 
 **Y en la composición:** la captura va **sin isla** (la isla es la del aparato de la escena) y
 sin redondear a mano: la máscara de la clave manda. Plantillas `pantalla-*-sin-isla.html`.
