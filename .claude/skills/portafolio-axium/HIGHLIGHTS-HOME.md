@@ -468,3 +468,10 @@ objeto en primer plano con la cancha desenfocada. Es incompleto. **Lo que falla 
 la profundidad de campo corta**, porque el modelo rellena el desenfoque con formas plausibles e
 incoherentes. Con **foco profundo (f/8) y cámara lejana y ortogonal**, una cancha entera en el
 encuadre sale bien. Comprobado a 1:1 en cinco recortes.
+
+## Vendiq v6 (2026-10-07)
+
+El highlight de Vendiq pasa a ser un vídeo, como el de Rematch: `vq-escena.mp4` (la escena de la
+portada nueva de vendiq.pe entrando, la gorra que cae y la venta del #1482), con su póster como
+`cover`. Sustituye a `vendiq-v5.jpg` (el flujo dibujado de la portada anterior), borrada. Detalle en
+`CASO-VENDIQ.md` § 14.

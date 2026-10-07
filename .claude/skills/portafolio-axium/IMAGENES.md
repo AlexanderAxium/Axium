@@ -490,7 +490,7 @@ que el sujeto.*
 
 > `A [left] hand holding a modern smartphone, seen from [above and slightly
 > behind], the screen facing the camera and perfectly rectangular with no
-> perspective distortion. THE PHONE SCREEN IS A FLAT, UNIFORM [#00FF00] RECTANGLE
+> perspective distortion. THE PHONE SCREEN IS A FLAT, UNIFORM [#FF00FF] MAGENTA SHAPE, INSIDE A THIN UNIFORM BLACK BEZEL
 > with nothing on it. Natural skin, visible texture, no retouching. Background:
 > [a café table / a factory floor], [1] metre below, out of focus by distance
 > only. Single [window] light from the [left].` + CIERRE *(adaptado: la pantalla
@@ -540,6 +540,62 @@ Se envían: la captura real + una máscara que la protege entera. Y el prompt
 es el error fácil.
 
 ---
+
+### 🚨 La pantalla se pide en CLAVE MAGENTA, no negra (2026-10-06)
+
+> «me gustó el estilo pero si te das cuenta, no está bien mockeado, no sigue los márgenes del
+> celular. fíjate qué podríamos hacer para arreglar ese error en nuestros prompts»
+
+**El fallo, medido a 1:1.** Las escenas se pedían con la pantalla *«completely switched off:
+pure matte black»*. El modelo la pinta negra, **igual que el bisel**, así que el borde del
+cristal no existe en la imagen: no hay nada que medir. Se adivinó el cuadrilátero a mano, el
+radio se puso de oído y encima se dibujó **nuestra propia isla**. Resultado: la interfaz se
+quedaba corta arriba, se pasaba en las esquinas y el celular tenía dos islas.
+
+**La regla:** la pantalla se pide en un **color clave plano, `#FF00FF` magenta**, dentro de un
+bisel negro fino y parejo. Magenta y no verde: el verde choca con el lima de Rematch, el
+césped, las plantas; el magenta no aparece en casi ninguna escena (si la marca del cliente es
+magenta, como Sportt, se usa cian `#00FFFF`: **la clave es el color más lejano de la escena**).
+Con la clave, `componer-escena.py --clave` saca **la forma exacta del cristal** —radio, esquinas
+y el recorte de la cámara como agujero— y las cuatro esquinas por rectas: residuos medidos de
+**0,6 a 3 px** en las tres escenas de Rematch, contra 58–97 px del negro.
+
+**El flujo que funciona, en dos pasos** (cuesta una edición más por escena, ~3 600 tokens de
+salida, y vale cada uno):
+
+1. **Generar la escena** como siempre (pantalla apagada), con `flare`, y elegirla mirando.
+2. **Editar SOLO la pantalla** con `sunburst` + máscara (alfa 0 sobre la cara del aparato, un
+   3 % más grande que el cristal), con este cierre en el prompt, que describe la imagen ENTERA:
+
+> `Reproduce the provided photograph exactly: [la escena en una frase]. Same camera, same
+> framing, same light, same [phone], same position. Change nothing outside the [phone]
+> screen. THE ONLY CHANGE: the screen glass, inside its thin uniform black bezel, now shows
+> a perfectly flat, uniform, fully saturated magenta #FF00FF, edge to edge, exactly filling
+> the rounded shape of the glass and following its rounded corners precisely. The black
+> pill-shaped camera cutout stays at the top of the screen, solid black. The thin black
+> bezel remains clearly visible all around the magenta glass, with the same width on all
+> sides. The magenta is completely flat: no gradient, no reflection, no glare, no texture,
+> no content, no text, no icons. No magenta light spills onto the bezel, the [hand], the
+> frame or anything else; magenta appears nowhere else in the image.`
+
+Medido: fuera de la máscara la escena cambia **9 de 765** de media (nada visible); el
+compositor usa la escena ORIGINAL y de la editada toma solo la forma del cristal.
+
+**Y en la composición:** la captura va **sin isla** (la isla es la del aparato de la escena) y
+sin redondear a mano: la máscara de la clave manda. Plantillas `pantalla-*-sin-isla.html`.
+
+### Medido en la tanda de Rematch (2026-10-06)
+
+- **Tokens de salida por imagen, `flare`, `high`:** 3072×2048 → 3 184 · 2048×2048 → 3 568 ·
+  2800×2016 → 3 211. La entrada es el texto del prompt (430–610 tokens con el bloque de serie).
+- **Límite de la cuenta: 5 imágenes por minuto.** Lanzar seis en paralelo devuelve 429 en la
+  sexta (no cobra); se repite sola un minuto después.
+- **Personas: sí, y a la primera.** Cinco escenas con gente o manos (mano con el celular,
+  entrenadora, jugador, dueño al teléfono) salieron creíbles sin un solo descarte, con el
+  bloque *SERIES LOOK* común al final de cada prompt. Lo que sigue prohibido es lo de siempre:
+  texto, logotipos en la ropa e interfaz; el teléfono va de espaldas o con la pantalla apagada.
+- `scripts/openai-imagen.py` hace generaciones y ediciones con máscara y apunta cada llamada
+  en `scripts/gastos-openai.jsonl`. Detalle de la tanda: `COMPOSITOR.md`, decimotercera generación.
 
 ## Herramienta anterior: Higgsfield (2026-09-01 → 2026-10-01, superada)
 

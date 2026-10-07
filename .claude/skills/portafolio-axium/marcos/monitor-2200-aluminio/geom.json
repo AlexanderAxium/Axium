@@ -1,0 +1,35 @@
+{
+  "preset": "monitor",
+  "cuerpo": "aluminio",
+  "lienzo": {
+    "w": 2330,
+    "h": 1810
+  },
+  "cuerpoRect": {
+    "x": 0,
+    "y": 0,
+    "w": 2330,
+    "h": 1368
+  },
+  "pantalla": {
+    "x": 65,
+    "y": 65,
+    "w": 2200,
+    "h": 1238,
+    "radio": 35.2
+  },
+  "anillo": {
+    "total": 64.84,
+    "bisel": 48,
+    "pared": 12,
+    "chaflan": 4.84
+  },
+  "cuello": {
+    "alto": 350
+  },
+  "peana": {
+    "ancho": 620,
+    "alto": 92
+  },
+  "radioCuerpo": 100.04
+}

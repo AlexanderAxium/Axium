@@ -1424,6 +1424,13 @@ puro.
 
 ### Pantalla NEGRA, no verde — y las esquinas se MIDEN
 
+> ⚠️ **Superado el 2026-10-06:** la pantalla negra se funde con el bisel negro y el borde del
+> cristal desaparece; el resultado no sigue los márgenes del aparato (Alexander: *«no está bien
+> mockeado, no sigue los márgenes del celular»*). Ahora la pantalla se pide en **clave magenta**
+> con una edición de un paso: `IMAGENES.md` § «La pantalla se pide en CLAVE MAGENTA» y
+> `componer-escena.py --clave`. Lo de abajo queda como historia.
+
+
 `componer_pantalla.py` trabaja con pantalla verde, y sigue valiendo. Pero en una
 escena con verdes o limas propios —una pista de pádel, una pelota, el filo de una
 pala— la máscara verde se engaña (ya pasó, § «Un objeto verde en la escena engaña
@@ -1928,3 +1935,193 @@ tokens de entrada, 7 844 de salida, 8 952 en total** (dos variantes del mismo
 campo; se publicó la primera). Todo lo demás —marco, pantalla, reflejo, sombras,
 marca, las diez piezas de galería y sus seis versiones móviles— es composición
 con Playwright y PIL: **0 tokens**.
+
+---
+
+## Decimotercera generación — la UI EN MOVIMIENTO y la foto de vida (Rematch, modelo Pixelmatters, 2026-10-06)
+
+Alexander pasó `pixelmatters.com/work/amigo` con *«intenta hacer uno así para rematch»*.
+Medida la referencia (`referencias/pixelmatters.md`): **9 de sus 14 piezas son vídeos**
+de la interfaz haciendo algo, y el héroe —que es también la portada del índice— es una
+**mano con el celular**. Ninguna de las dos cosas existía en este taller.
+
+### 1 · Vídeo de una web recorriéndose: una captura por cuadro, no grabar pantalla
+
+`recordVideo` de Playwright codifica en VP8 a poca tasa: la tipografía sale borrosa. Lo
+que da nitidez es **mover el scroll y capturar cada posición** (`capturar-rematch-pm.cjs`,
+tareas `web-scroll`, `live-scroll`, `web-movil-scroll`):
+
+- Ruta por **tramos** `[desde, hasta, cuadros]` con aceleración cúbica (`suave(t)`) y
+  **paradas** (tramos de `z → z`) donde hay algo que leer. A 30 fps, 246–309 cuadros.
+- Escritorio a `deviceScaleFactor` 1,5 (2160×1350), móvil a 2 (780×1588): el vídeo se
+  sirve a ~1100 px, no hace falta más.
+- **La ruta se para antes de lo que no es del cliente**: en live.rematch.pe el borde inferior
+  del viewport nunca pasa de «Dónde jugar» (nombres de clubes inquilinos). Se mide la `y` de
+  esa sección y se resta el alto del viewport.
+- Las pestañas que rotan solas en la web (rematch.pe, «Todo tu club») **siguen rotando**
+  mientras se capturan: el vídeo las enseña cambiar sin hacer nada.
+
+### 2 · Vídeo de una animación del producto: screencast y `zoom` en el elemento
+
+Para algo que anima solo (la agenda del hero de rematch.pe: el jugador elige hora, paga, y
+la reserva cae en la agenda del club; `motion/react` + timers), una captura por cuadro no
+sirve: tarda 150–250 ms y saca 5 cuadros por segundo a saltos. Va con el **screencast de
+Chrome** por CDP (`Page.startScreencast`), que entrega cada cuadro pintado con su marca de
+tiempo.
+
+🚨 **El headless shell entrega el screencast a 1x** aunque el contexto sea 2x y aunque se le
+pase `maxWidth`/`maxHeight`. Y el Chromium completo no navegó en este entorno. Lo que sí
+funciona: **`zoom: 3` solo en el elemento**, `position: fixed` arriba a la izquierda, el resto
+de la página con `visibility: hidden` (salvo sus ancestros y sus hijos) y un viewport más
+grande (2000×1400 a 1x). El texto se pinta al triple **de verdad**, no se reescala, y la
+animación corre igual. Después:
+
+- el recorte es la **unión de los rectángulos** del elemento y sus hijos (el celular
+  sobresalía de la tarjeta), medida al final;
+- el vídeo se arma **re-muestreando a 30 fps por marca de tiempo** (para cada instante, el
+  último cuadro pintado), desde 0,8 s (el primer cuadro sale en blanco).
+
+### 3 · Montaje y codificación (`videos-rematch-pm.py`)
+
+- Cada cuadro se compone con PIL sobre su soporte: **navegador** dibujado (barra
+  `#E9EEF3`, tres puntos, píldora con el dominio, radio 22) sobre el campo tinta con dos
+  círculos enormes un tono más claros —el gesto de los campos de Amigo—; **teléfono plano**
+  (radio 76, sin marco, con la barra de estado de la pantalla a 3x recortada) sobre la foto
+  nocturna oscurecida un 42 %; la **agenda** sobre el mismo gris de la página (`#F4F5F7`).
+- **Bucle sin salto**: los últimos 14–16 cuadros funden hacia el primero con *smoothstep*.
+- `ffmpeg -c:v libx264 -preset slow -crf 24 -pix_fmt yuv420p -movflags +faststart -an`.
+  Medido: web 8,2 s **2,3 MB**; móvil 10,3 s **2,1 MB**; agenda 8,6 s **0,47 MB** (casi todo
+  quieto). Póster = primer cuadro en JPG.
+- En la página, `VideoBucle` (en `case-producto.tsx`): `muted loop playsInline
+  preload="metadata"`, **solo se reproduce en pantalla** (IntersectionObserver) y con
+  `prefers-reduced-motion` se queda el póster.
+
+### 4 · La foto de vida: personas sí, y la serie se une con TEXTO
+
+Hasta ahora las escenas iban vacías. Pixelmatters vende con gente usando el producto, y con
+OpenAI **salieron creíbles a la primera** las cinco escenas con personas o manos (mano con
+el celular sobre la pista, entrenadora, jugador de noche, dueño al teléfono) más el portátil
+y el celular sin gente. Lo que funcionó:
+
+- Un bloque **SERIES LOOK** idéntico al final de cada prompt (`prompts/_serie.txt`): hora,
+  temperatura de la luz, paleta con los hex del cliente, grano, «sin lima ni verde neón en la
+  escena» (el lima es de la UI). Es lo que hace que siete escenas generadas por separado se
+  lean como una sola sesión de fotos.
+- **El espacio vacío se pide en el prompt**: «el 45 % izquierdo es pared lisa iluminada, sin
+  nada» para que la tarjeta de UI flote ahí sin tapar a nadie.
+- **El teléfono de espaldas** cuando la persona no es el soporte de la pantalla: no hay nada
+  que componer y no hay pantalla falsa.
+- Ropa sin logotipos, sin silbato, sin pelotas ni trofeos (guía de marca de Rematch), y
+  **una persona distinta por pieza** (memoria `variar-personas-en-fichas`).
+
+### 5 · Cuando `pantalla-esquinas.py` falla: medir a mano y `componer-escena.py`
+
+Falló en dos escenas de cinco, por dos causas que hay que reconocer:
+
+- **La tapa entera es negra** (sin bisel distinto) y su borde superior **toca un parante
+  oscuro** del fondo: la componente conexa se escapa y el borde superior da residuo de 97 px.
+- **La pantalla no es uniforme**: el sol la aclara por un lado y el umbral corta en diagonal.
+
+Remedio: cuatro recortes 1:1 de 200 px alrededor de cada esquina, ampliados ×2 con una
+cuadrícula cada 20 px, y leer las coordenadas. Después `componer-escena.py --quad …`, que
+acepta el cuadrilátero de la pantalla, o el de la **tapa con `--bisel`** (portátil:
+`0.025,0.035,0.025,0.06` — el mentón es el más ancho) y aplica el radio en el espacio de la
+captura (`--radio 150` para un iPhone a 1170 px de ancho), el reflejo diagonal y un
+desenfoque de 0,5–0,6 px para casar con la nitidez de la escena.
+
+### 6 · La pantalla de un iPhone se arma, no se recorta
+
+1170×2532 (el aspecto real): **barra de estado de 150 px** con la hora y los iconos, del
+color de la cabecera de la página (negra para live.rematch.pe, `#F4F5F6` para rematch.pe), y
+debajo el **viewport real a 390×794 @3x** (el alto que queda bajo la barra). **La isla se
+dibuja en el HTML**: así viaja con la homografía; si se deja la de la escena, la captura la
+tapa. Plantilla en `pixelmatters-2026-10/taller/pantalla-*.html`, render con
+`scripts/render-html.cjs`.
+
+### 7 · La tarjeta flotante sobre una foto
+
+Recorte de la captura del panel a 2x, dentro de una tarjeta blanca con filete de 2 px
+`#E2E8F0`, radio 24–28 y sombra tinta al 30 % desenfocada 46–50 px. **Se recorta poco**
+(tres filas, tres columnas): a 660 px servidos la tarjeta mide ~300 px y el texto de 14 px
+llega a ~10 px. Dos KPI apilados y desplazados (cobranza: «Al día 14» y «Deuda pendiente»)
+se leen mejor que una tabla.
+
+### 8 · Un componente suelto se captura AISLADO, con fondo transparente
+
+La primera hoja de componentes salió con las esquinas sucias —negro detrás del buscador y de
+«Hablar con ventas», gris detrás de la píldora— y Alexander lo vio de inmediato: *«parece más
+problema de recortes tuyos que de la web»*. Una captura de elemento se lleva lo que hay detrás
+de sus esquinas redondeadas.
+
+La tarea `componentes-alfa` de `capturar-rematch-pm.cjs`: **todo lo que no es el elemento, sus
+ancestros ni sus hijos, `visibility: hidden`; los ancestros, fondo y sombra transparentes;
+`html` y `body` transparentes; y `screenshot({ clip, omitBackground: true })`** con el clip en
+la unión de los rectángulos del elemento y sus hijos más 24 px para la sombra. Sale el radio
+real, la sombra propia del elemento y la etiqueta que sobresale («El más elegido»). Ojo con
+marcar el elemento correcto: si se marca un contenedor interior, el fondo blanco del padre
+desaparece (pasó con la tarjeta del torneo: hubo que marcar el `<a>`).
+
+### 9 · La luz de la escena sobre el vidrio — la vara del celular de Amigo
+
+> «mira la elegancia de estos mockups, las sombras, el hiperrealismo, buen mockup»
+
+Puestos lado a lado, lo que separaba nuestro celular del de Amigo eran dos cosas:
+
+- **La escena.** La suya: **pared lisa y cálida desenfocada**, mesa de madera con sol rasante,
+  y el aparato **girado ~25°** con el canto y los botones a la vista. La nuestra: el celular
+  casi de frente contra rejas, palmeras y mar. Se generó otra escena con esas tres condiciones
+  (`prompts/g3b-mesa.txt`) y salió a la primera.
+- **La pantalla tenía luz plana**, como pegada. `componer-escena.py` ahora modela la luz en el
+  plano del vidrio (coordenadas de la pantalla por la homografía inversa, no del encuadre):
+  `--luz-angulo` (de dónde viene el sol), `--caida` 0,14–0,20 (el lado en sombra se apaga),
+  `--veta` (la franja de sol que cruza el vidrio), `--techo` 236–242 y `--tinte` cálido (una
+  pantalla al sol no da blanco puro) y `--filo` 0,3–0,45 (el canto del vidrio del lado
+  iluminado). Las órdenes exactas están en `CASO-REMATCH.md` § 15 y en el historial del taller.
+
+Y una cuestión de esquinas: en esa escena la isla de la cámara desvió el ajuste del borde
+superior (residuo 58 px). Se midieron a mano sobre recortes 1:1 **realzados ×2,2**, que es lo
+que deja ver el gris del cristal contra el negro del bisel.
+
+### Coste
+
+**7 imágenes** con `gpt-image-2.5-flare`, `quality: high` (una de las llamadas con `n: 2`):
+**3 577 tokens de entrada, 23 851 de salida, 27 428 en total**. Tokens de salida por tamaño:
+3072×2048 → **3 184** · 2048×2048 → **3 568** · 2800×2016 → **3 211**. Todo lo demás —las
+cinco composiciones de pantalla, las dos tarjetas flotantes, el carrusel, los tres móviles,
+la hoja de componentes y los tres vídeos— es Playwright, PIL y ffmpeg: **0 tokens**. Registro
+en `scripts/gastos-openai.jsonl`.
+
+### 10 · La pantalla en clave magenta: la interfaz sigue la forma del cristal
+
+Lo que faltaba para el «buen mockup»: que la interfaz tenga **exactamente** la silueta del
+vidrio del aparato de la escena. La escena se edita con la pantalla en `#FF00FF` (receta y
+prompt en `IMAGENES.md`), y `componer-escena.py --clave escena-clave.png` toma de ahí:
+
+- **la máscara**: los píxeles magenta, con el recorte de la cámara como agujero, erosionada
+  1 px (el canto mezcla magenta y negro) y suavizada 0,6 px;
+- **las cuatro esquinas**: rectas por mínimos cuadrados sobre el tramo recto de cada borde
+  (fuera del 18 % de cada punta) con una segunda pasada sin atípicos; sus intersecciones.
+
+Medido en Rematch: residuos **1,0/0,9/3,0/2,6 px** (celular en la mesa), **0,6/0,7/0/0**
+(celular en la mano), **0,8/0,6/0,7/0,6** (portátil), contra los 58–97 px de antes. La
+captura se arma **sin isla** porque la de la escena queda visible a través del agujero.
+
+### Grabar animaciones de ENTRADA (Vendiq, 2026-10-06)
+
+`grabar-micro.cjs` aísla el componente después de recorrer la página, así que una animación de
+entrada ya terminó. Con `"reiniciar": true` se cancelan y se vuelven a reproducir todas las
+animaciones del contenedor (con sus retrasos). El screencast solo manda cuadros cuando algo
+cambia: `video-micro.py --sostener S` alarga el último estado S segundos y `--poster-fin` toma
+el póster del estado final. Receta usada: `vq-flujo` (`--desde 0.86 --sostener 4.2 --lazo 22`).
+Para bucles cíclicos (un carrusel que avanza solo, una demo de 14 s), medir el período con el
+brillo medio de una zona y cortar un período EXACTO desde el estado que sirva de póster.
+
+### Mockups de las tiendas de un SaaS: monitor sin pie + celular, construidos (Vendiq, 2026-10-06)
+
+Para enseñar las webs que hicieron los clientes con el producto: `capturar-tiendas-vendiq.cjs`
+(captura a la medida EXACTA de la pantalla del marco) + `mockups-tiendas-vendiq.py`. El monitor
+va recortado a `cuerpoRect` (sin cuello ni peana): flotando sobre un campo plano, un pie sin mesa
+se lee raro. Celular delante, abajo a la derecha, tapando solo la esquina. El campo es el de la
+marca del SaaS (aquí la rejilla de Vendiq) con una luz del color dominante de cada tienda: la
+serie se lee como una sola y cada tienda conserva lo suyo. Sirve igual para Bookit y LumioLearn.
+
