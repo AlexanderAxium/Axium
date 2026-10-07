@@ -20,7 +20,7 @@ raggededge · koto. Fichas en `referencias/`, capturas e imágenes originales en
 |---|---|
 | ≥ 6 referencias con ficha escrita | ✅ 13 |
 | ≥ 3 arquetipos de índice distintos | ✅ 10 |
-| ≥ 3 tratamientos de imagen distintos | ✅ 24 recetas catalogadas (R1–R24) |
+| ≥ 3 tratamientos de imagen distintos | ✅ 30 recetas catalogadas (R1–R30; R28–R30 de Paisanos, 2026-10-07) |
 | ≥ 2 veredictos negativos o parciales de Alexander | ✅ undersight (costo), locomotive (grado — matizado después), koto (fuera de rubro) |
 | ≥ 5 patrones confirmados y ≥ 2 tensiones | ✅ 16 confirmados · 8 tensiones (3 resueltas por decisión de Alexander) |
 | Se puede nombrar la firma de Axium en una frase que ninguna referencia cumpla | ⬜ **borrador abajo (§ La dirección)** — se valida al proponer |
@@ -152,6 +152,12 @@ nombre 90px), locomotive (fila). Axium tiene todos los campos en el JSON.
 
 ---
 
+### P17 — La UI en movimiento: vídeos cortos en bucle de la web o la app haciendo algo
+pixelmatters (9 de 14 piezas en Amigo), significa (la micro-interacción en macro), paisanos
+(Ualá: 11 vídeos; Brubank y el índice también). Se graban de la web en vivo
+(`grabar-micro.cjs`, `grabar-scroll.cjs`, `grabar-hover.cjs`, `capturar-scroll-cuadros.cjs`),
+no se generan. Vale para los dos moldes: CaseStory acepta `video` desde 2026-10-07 (Aurore).
+
 ## Señales (1–2 referencias) — para robar, no para generalizar
 
 - **S6** Dos acciones: ficha vs. sitio en vivo — brandvm, locomotive. Axium
@@ -179,9 +185,7 @@ nombre 90px), locomotive (fila). Axium tiene todos los campos en el JSON.
 - **S26** Ritmo texto → imagen → texto → imagen — isadora.
 - **S27** Contraste por ancho / por corte — raggededge, koto.
 - **S28** Escenografía del rubro — adelt, uncommon.
-- **S29** **La UI en movimiento**: vídeos cortos en bucle de la interfaz haciendo algo
-  (9 de 14 piezas) — pixelmatters. Se capturan de la web en vivo, no se generan
-  (COMPOSITOR.md, decimotercera generación).
+- ~~S29~~ → **P17** (abajo): la UI en movimiento ya está en tres referencias.
 - **S30** **La portada del índice ES la foto del héroe de la ficha** — pixelmatters
   (mano con el celular). Une índice y ficha sin producir una pieza más.
 - **S31** **Lienzo oscuro y el color de la marca solo dentro de las piezas** — pixelmatters
@@ -191,6 +195,19 @@ nombre 90px), locomotive (fila). Axium tiene todos los campos en el JSON.
   derecha, tercio derecho); nunca centrado — pixelmatters. Hermana de S26 (isadora).
 - **S33** **Carrusel de cuadradas escalonadas** que sangra a la derecha (los impares
   bajan) — pixelmatters.
+- **S34** **Persona real + UI flotando encima** (R28): la foto de vida a sangre y una tarjeta
+  real del producto en vidrio esmerilado sobre ella, con el titular de la web — paisanos
+  (Brubank: «Nueva transferencia»), pixelmatters (la foto de vida, sin la tarjeta encima).
+  Alexander: *«me encanta que combine mockups con personas reales»*.
+- **S35** **El objeto de la marca en 3D, fuera de contexto** (R29): tarjetas, bolso, lector,
+  una cifra hecha volumen, flotando sobre el degradado de la marca — paisanos (Spline).
+- **S36** **La marca en la calle** (valla, paradero) con la pieza clave — paisanos (Brubank),
+  magnetic (valla del tráiler).
+- **S37** **Enseñar el sistema de imagen IA como dirección de arte** (R30): el prompt con sus
+  huecos y la rejilla de resultados con un criterio dicho en una frase — paisanos (Ualá,
+  «Hecho con Gemini Nano Banana Pro»).
+- **S38** **Panel fijo de credenciales** (cifras del cliente, premio, logotipos) junto a la obra
+  — paisanos. Pariente de S23 en el índice, no en la ficha.
 
 ---
 
@@ -258,6 +275,7 @@ nombre 90px), locomotive (fila). Axium tiene todos los campos en el JSON.
 | pentagram | "me gustó bastante su estilo" | sistema | También le gusta lo más contenido |
 | raggededge | "me gustó bastante su estilo" | estilo | Misión + dato; expandida |
 | koto | "presenta bien pero es más algo creativo que digital" | presentación | Distingue por rubro |
+| **paisanos** (Brubank y Ualá, 2026-10-07) | **"me encanta que combine mockups con personas reales, con animaciones y videos, elementos flotantes, degradados" · Ualá "también me gusta mucho"** | mezcla de imagen + movimiento | Quiere la **mezcla** en una misma ficha: persona real, UI flotando, objeto 3D, la marca en la calle, el degradado del cliente, todo moviéndose. Ficha en `referencias/paisanos-brubank-uala.md` |
 | **pixelmatters** (2026-10-06) | **"me gusta. intenta hacer uno así […] para rematch […] afina tu algoritmo para próximos portafolios"** | ficha entera | Primera referencia de **estudio de producto** (diseño + ingeniería) aprobada entera. Para producto digital, este molde pasa por delante de brandvm. Implementado en `src/components/axium/case-producto/` (ESTANDAR-FICHA § 1 bis) |
 
 **Su criterio en una frase:** máxima expresión con producción acotada, en el

@@ -95,6 +95,12 @@ export type StoryImage = {
   mobileSrc?: string;
   /** Línea al pie que nombra la pantalla o la tecnología (Viget). */
   caption?: string;
+  /**
+   * Vídeo en bucle de la web real haciendo algo (2026-10-07, Aurore): `src` queda de póster.
+   * Como en CaseProducto, solo se reproduce en pantalla y con movimiento reducido se queda el
+   * póster. En el celular, si hay `mobileSrc`, se ve esa imagen y no el vídeo.
+   */
+  video?: string;
 };
 
 export type StoryBlock =
@@ -387,6 +393,59 @@ function Plegable({
   );
 }
 
+function VideoBucle({
+  src,
+  poster,
+  alt,
+  className,
+  media,
+}: {
+  src: string;
+  poster: string;
+  alt: string;
+  className: string;
+  /** Solo carga el vídeo si se cumple (p. ej. desde sm, cuando el celular ve otra imagen). */
+  media?: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [activo, setActivo] = useState(!media);
+  useEffect(() => {
+    if (!media) return;
+    const mq = window.matchMedia(media);
+    const ver = () => setActivo(mq.matches);
+    ver();
+    mq.addEventListener("change", ver);
+    return () => mq.removeEventListener("change", ver);
+  }, [media]);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || !activo) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e?.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, [activo]);
+  return (
+    <video
+      ref={ref}
+      className={`absolute inset-0 size-full object-cover ${className}`}
+      src={activo ? src : undefined}
+      poster={poster}
+      aria-label={alt}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+    />
+  );
+}
+
 function Pieza({
   image,
   className,
@@ -400,7 +459,27 @@ function Pieza({
     <div
       className={`relative overflow-hidden rounded-[16px] bg-[#F3F4F6] md:rounded-[18px] ${className}`}
     >
-      {image.mobileSrc ? (
+      {image.video ? (
+        <>
+          {image.mobileSrc ? (
+            <Image
+              src={image.mobileSrc}
+              alt={image.alt}
+              fill
+              quality={92}
+              sizes="100vw"
+              className="object-cover sm:hidden"
+            />
+          ) : null}
+          <VideoBucle
+            src={image.video}
+            poster={image.src}
+            alt={image.alt}
+            className={image.mobileSrc ? "hidden sm:block" : ""}
+            media={image.mobileSrc ? "(min-width: 640px)" : undefined}
+          />
+        </>
+      ) : image.mobileSrc ? (
         <>
           <Image
             src={image.mobileSrc}

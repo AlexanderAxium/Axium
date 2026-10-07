@@ -157,6 +157,11 @@ def main():
     if mascara_clave is not None:
         # La forma del cristal manda: la interfaz no puede salirse del vidrio
         mascara = mascara_clave
+        # Sobre la ESCENA EDITADA (la propia clave): la edición redibuja el aparato un poco
+        # distinto, así que se compone sobre ella, y la máscara se ensancha 2 px para tapar el
+        # filo magenta que deja la erosión (Aurore, 2026-10-07)
+        if os.path.abspath(a.escena) == os.path.abspath(a.clave):
+            mascara = mascara_clave.filter(ImageFilter.MaxFilter(5))
     if a.desenfoque:
         deformada = deformada.filter(ImageFilter.GaussianBlur(a.desenfoque))
 
