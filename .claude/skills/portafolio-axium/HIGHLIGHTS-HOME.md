@@ -475,3 +475,12 @@ El highlight de Vendiq pasa a ser un vídeo, como el de Rematch: `vq-escena.mp4`
 portada nueva de vendiq.pe entrando, la gorra que cae y la venta del #1482), con su póster como
 `cover`. Sustituye a `vendiq-v5.jpg` (el flujo dibujado de la portada anterior), borrada. Detalle en
 `CASO-VENDIQ.md` § 14.
+
+## LumioLearn v13 y Bookit v11 (2026-10-07)
+
+Los cuatro highlights son ya vídeos de la web real de cada producto. LumioLearn: `lu-portada.mp4`
+(«Más que cursos» sobre el azul noche), que sustituye a la tableta cenital `lumiolearn-v12`
+porque su pantalla llevaba el aviso de InduTech Academy, un inquilino. Bookit: `bk-recorrido.mp4`
+(«De tu web a tu agenda»), con `bookit-v10.jpg` de respaldo. Detalle en `CASO-LUMIOLEARN.md`
+§ 12 y `CASO-BOOKIT.md` § 7.
+

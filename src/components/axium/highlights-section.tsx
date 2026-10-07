@@ -102,9 +102,12 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     url: "https://lumiolearn.com",
     caseHref: "/casos-de-exito/lumiolearn",
     domain: "lumiolearn.com",
-    // La misma portada que en /portafolio: la tableta en plano cenital sobre el
-    // escritorio violeta
-    cover: "/images/highlights/lumiolearn-v12.jpg",
+    // v13 (2026-10-07): «Más que cursos» de lumiolearn.com animado sobre su azul noche, como
+    // los de Vendiq y Rematch; arranca en la pestaña de comunidad. Sustituye a la tableta
+    // cenital (v12), cuya pantalla llevaba el aviso de prueba de InduTech Academy, un inquilino
+    // (CASO-LUMIOLEARN.md § 12).
+    cover: "/images/proyects/lumiolearn/lu-portada.jpg",
+    video: "/images/proyects/lumiolearn/lu-portada.mp4",
     logo: {
       src: "/images/highlights/logos/lumiolearn.png",
       width: 757,
@@ -116,8 +119,11 @@ const HIGHLIGHTS: readonly [Highlight, ...Highlight[]] = [
     url: "https://bookit.com.pe",
     caseHref: "/casos-de-exito/bookit",
     domain: "bookit.com.pe",
-    // La misma portada que en /portafolio: la laptop sobre el mármol verde
+    // v11 (2026-10-07): «De tu web a tu agenda» de bookit.com.pe bajando paso a paso, el
+    // vídeo de la ficha, como los de Vendiq y Rematch. `cover` (la laptop sobre el mármol
+    // verde) queda de respaldo; el póster es el del vídeo.
     cover: "/images/highlights/bookit-v10.jpg",
+    video: "/images/proyects/bookit/bk-recorrido.mp4",
     logo: {
       src: "/images/highlights/logos/bookit-v2.png",
       width: 1600,

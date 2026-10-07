@@ -12,6 +12,10 @@ conserva su color. El monitor va sin pie: es una pieza de interfaz, no una foto 
   python3 mockups-tiendas-vendiq.py <dir-capturas> <dir-salida>
 
 Salen <slug>.jpg en 2000×2000 (los tríos de la ficha son cuadrados).
+
+Para otra marca (las webs de clientes de Bookit, 2026-10-07), por entorno:
+  MOCK_TIENDAS=moviflex,blendet  MOCK_FONDO=0,27,20  MOCK_REJILLA=0  MOCK_LUZ2=1,200,92
+(el fondo, sin la rejilla de Vendiq, y la segunda luz en el color de la marca).
 """
 import colorsys
 import json
@@ -33,8 +37,14 @@ os.makedirs(OUT, exist_ok=True)
 TALLER = os.path.join(OUT, "taller")
 os.makedirs(TALLER, exist_ok=True)
 L = 2000
-GRAFITO = (11, 13, 18)
-TIENDAS = ["aurore", "anj-sports", "sportt", "daesur-motors", "clefast", "happy-art"]
+def _rgb(v, defecto):
+    return tuple(int(x) for x in v.split(",")) if v else defecto
+
+
+GRAFITO = _rgb(os.environ.get("MOCK_FONDO"), (11, 13, 18))
+LUZ2 = _rgb(os.environ.get("MOCK_LUZ2"), (31, 91, 255))
+REJILLA = os.environ.get("MOCK_REJILLA", "1") != "0"
+TIENDAS = os.environ.get("MOCK_TIENDAS", "aurore,anj-sports,sportt,daesur-motors,clefast,happy-art").split(",")
 # Cuando el tono más pintado de la portada no es el de la marca: en la segunda diapositiva de
 # Clefast ganaba la piel de la foto (durazno) y su marca es verde.
 LUZ_FIJA = {"clefast": (34, 170, 84)}
@@ -97,11 +107,13 @@ def campo(luz):
     base = np.zeros((L, L, 3), dtype=np.float32) + np.array(GRAFITO, dtype=np.float32)
     yy, xx = np.mgrid[0:L, 0:L].astype(np.float32)
     # luz de la tienda detrás del monitor, y un azul Vendiq más débil abajo a la derecha
-    for (cx, cy, rad, col, op) in [(0.40, 0.36, 0.70, luz, 0.50), (0.88, 0.90, 0.55, (31, 91, 255), 0.20)]:
+    for (cx, cy, rad, col, op) in [(0.40, 0.36, 0.70, luz, 0.50), (0.88, 0.90, 0.55, LUZ2, 0.20)]:
         d = np.sqrt((xx / L - cx) ** 2 + (yy / L - cy) ** 2) / rad
         f = np.clip(1 - d, 0, 1) ** 2.2 * op
         base += f[..., None] * (np.array(col, dtype=np.float32) - base) * 0.9
     im = Image.fromarray(np.clip(base, 0, 255).astype(np.uint8)).convert("RGBA")
+    if not REJILLA:
+        return im
     rej = Image.new("RGBA", (L, L), (0, 0, 0, 0))
     d = ImageDraw.Draw(rej)
     paso = 96  # 64 px css a 1,5x
