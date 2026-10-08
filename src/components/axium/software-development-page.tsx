@@ -7,7 +7,7 @@ import {
   ProcessSteps,
   ProofSlab,
   ServiceCard,
-  ServiceWorkBand,
+  ServiceWorkShowcase,
   TalkBand,
 } from "~/components/axium/service-blocks";
 import { ServiceFaqSection } from "~/components/axium/service-faq-section";
@@ -28,21 +28,30 @@ const CARD_IMAGES = [
   `${IMG}sd-tarjeta-stack.jpg`,
   `${IMG}sd-tarjeta-movil.jpg`,
 ];
+// 2026-10-07, Alexander: «no exageres, la forma horizontal estaba bien» y «enfócate en lo que
+// podemos hacer con ejemplos reales». Cuatro tipos de software, cada uno probado con un caso:
+// el dato de cada ejemplo sale de la ficha (description / projectDescription), no se inventa.
 const WORK = [
   {
-    slug: "anjsports",
-    cover: "/images/proyects/anjsports/anj-portada.jpg",
-    pos: "68% center",
-  },
-  { slug: "clefast", cover: "/images/proyects/clefast/cf-portada-gama-v2.jpg" },
-  {
-    slug: "cesaracosta",
-    cover: "/images/proyects/cesaracosta/cesaracosta-portada.jpg",
-  },
-  {
+    // Plataformas SaaS
     slug: "rematch",
     cover: "/images/proyects/rematch/rematch-portada-cancha.jpg",
-    pos: "38% center",
+  },
+  {
+    // Tiendas online a medida
+    slug: "anjsports",
+    cover: "/images/proyects/anjsports/anj-portada.jpg",
+    pos: "30% center",
+  },
+  {
+    // Sistemas internos y finanzas
+    slug: "fintrace",
+    cover: "/images/proyects/fintrace/ft-portada.jpg",
+  },
+  {
+    // Integraciones con otros sistemas
+    slug: "feniz",
+    cover: "/images/proyects/feniz/fz-portada-landing.jpg",
   },
 ];
 
@@ -52,6 +61,13 @@ export function SoftwareDevelopmentPage() {
   const four = [0, 1, 2, 3];
   const six = [0, 1, 2, 3, 4, 5];
   const wa = t(`${K}.whatsappMessage`);
+  const obras = WORK.map((w, i) => ({
+    ...w,
+    title: t(`${K}.workItems.${i}.title`),
+    text: t(`${K}.workItems.${i}.text`),
+    client: t(`${K}.workItems.${i}.client`),
+    fact: t(`${K}.workItems.${i}.fact`),
+  }));
 
   return (
     <>
@@ -131,7 +147,7 @@ export function SoftwareDevelopmentPage() {
       </section>
 
       {/* ── S3: Trabajo real ───────────────────────────────────────────────── */}
-      <ServiceWorkBand
+      <ServiceWorkShowcase
         overline={t(`${K}.work.overline`)}
         title={t(`${K}.work.title`)}
         lead={t(`${K}.work.lead`)}
@@ -139,11 +155,8 @@ export function SoftwareDevelopmentPage() {
         cta={t("common.allCases")}
         waLabel={t("common.whatsapp")}
         waMessage={wa}
-        items={WORK.map((w, i) => ({
-          ...w,
-          client: t(`${K}.workItems.${i}.client`),
-          line: t(`${K}.workItems.${i}.line`),
-        }))}
+        items={obras}
+        exampleLabel={t(`${K}.work.example`)}
       />
 
       {/* ── S4: Servicios incluidos ────────────────────────────────────────── */}

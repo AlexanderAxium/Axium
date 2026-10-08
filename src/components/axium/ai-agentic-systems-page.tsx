@@ -2,13 +2,14 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
+import { AiCasosDeUso } from "~/components/axium/ai-casos-de-uso";
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
 import {
   ProcessSteps,
   ProofSlab,
   ServiceCard,
-  ServiceWorkBand,
   TalkBand,
+  VideoBucle,
 } from "~/components/axium/service-blocks";
 import { ServiceFaqSection } from "~/components/axium/service-faq-section";
 import { ServiceHero } from "~/components/axium/service-hero";
@@ -22,32 +23,35 @@ const data: ServicePageData = raw;
 const ACCENT = "#7ECFC3";
 const K = "ai-agentic-systems";
 
+/*
+ * 2026-10-07, Alexander: «en vez de poner imágenes y capturas sin sentido, ya que no tengo
+ * muchos proyectos de automatización, algunos sí, analiza cuáles, y si hace falta haz
+ * animaciones». Antes: láminas de Feniz y AmbientalPE como «sistemas que deciden solos», la
+ * web de First Automation, una rejilla de logotipos y un tablero de calificaciones. Ninguno
+ * era IA. Medido en los 33 casos, lo que SÍ es IA o automatización nuestra:
+ *   · Web Scraping AI — pipeline con LLM (gpt-5-nano) de la web a PostgreSQL (repo público)
+ *   · Vendiq          — asistente con Gemini en el editor visual
+ *   · LumioLearn      — Copilot con Gemini sobre la transcripción y las notas del capítulo
+ *   · Fintrace        — del XML de la factura a la detracción, el extracto y el asiento
+ *   · Feniz           — el Expert Advisor que manda cada operación de MT5 cada 5 s
+ * El pipeline se animó en código con los mensajes, el modelo y las tablas de su repositorio
+ * (portafolio-axium/capturas-clientes/servicios-ia/taller/pipeline.html).
+ * Mismo día, segunda vuelta: «no te centres en nuestros proyectos, sino en lo que podemos
+ * hacer». La banda de cuatro proyectos pegados (sin respiro y con las capturas recortadas)
+ * pasó a ser «Lo que podemos construir»: los seis sistemas que ofrecen las empresas de
+ * software, cada uno con su viñeta animada en código (ai-casos-de-uso.tsx), y el proyecto
+ * nuestro solo como nota al pie de la tarjeta donde ya corre.
+ */
 const IMG = "/images/servicios/";
-const CARD_IMAGES = [
-  `${IMG}ai-tarjeta-datos.jpg`,
-  `${IMG}ai-tarjeta-stack.jpg`,
-  `${IMG}ai-tarjeta-agentes.jpg`,
-];
-const WORK = [
+const CARDS: { image: string; video?: string }[] = [
+  // Datos: la factura de proveedor con la detracción ya calculada (Fintrace)
+  { image: `${IMG}ai-tarjeta-fintrace.jpg` },
+  // RAG: el Copilot de LumioLearn, que responde sobre la transcripción del capítulo
+  { image: `${IMG}ai-tarjeta-lumio.jpg` },
+  // Agentes: el asistente con IA de Vendiq armando la tienda a partir de una frase
   {
-    slug: "feniz",
-    cover: "/images/proyects/feniz/fz-portada-cifras-v2.jpg",
-    pos: "58% center",
-  },
-  {
-    slug: "ambientalpe",
-    cover: "/images/proyects/ambientalpe/ambientalpe-hero.png",
-  },
-  {
-    slug: "firstautomation",
-    cover: "/images/proyects/firstautomation/firstautomation-home.jpg",
-  },
-  {
-    // El hero de este caso ya aparece dentro de la losa final: aquí va su otra
-    // vista, el tablero de pantallas, para que ninguna pieza repita sujeto.
-    slug: "feedback-management",
-    cover: "/images/proyects/feedback-management/feedback-management-desc.jpg",
-    pos: "50% 28%",
+    image: "/images/proyects/vendiq/vq-asistente-v2.jpg",
+    video: "/images/proyects/vendiq/vq-asistente-v2.mp4",
   },
 ];
 
@@ -115,15 +119,11 @@ export function AiAgenticSystemsPage() {
                 transition={{ duration: 0.5, delay: 0.1, ease: smoothEase }}
                 className="m-0"
               >
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl">
-                  <Image
-                    src={`${IMG}ai-tres-sistemas.jpg`}
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#0A1020]">
+                  <VideoBucle
+                    src={`${IMG}ai-pipeline-scraping.mp4`}
+                    poster={`${IMG}ai-pipeline-scraping.jpg`}
                     alt={t(`${K}.intro.caption`)}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 440px"
-                    quality={92}
-                    priority
-                    className="object-cover"
                   />
                 </div>
                 <figcaption className="text-body-sm mt-3 text-gray-400">
@@ -135,20 +135,14 @@ export function AiAgenticSystemsPage() {
         </div>
       </section>
 
-      {/* ── S3: Trabajo real ───────────────────────────────────────────────── */}
-      <ServiceWorkBand
-        overline={t(`${K}.work.overline`)}
-        title={t(`${K}.work.title`)}
-        lead={t(`${K}.work.lead`)}
+      {/* ── S3: Lo que podemos construir ─────────────────────────────────── */}
+      <AiCasosDeUso
+        base={K}
+        t={t}
         accent={ACCENT}
         cta={t("common.allCases")}
         waLabel={t("common.whatsapp")}
         waMessage={wa}
-        items={WORK.map((w, i) => ({
-          ...w,
-          client: t(`${K}.workItems.${i}.client`),
-          line: t(`${K}.workItems.${i}.line`),
-        }))}
       />
 
       {/* ── S4: Servicios incluidos ────────────────────────────────────────── */}
@@ -176,9 +170,10 @@ export function AiAgenticSystemsPage() {
             <div className="flex flex-col gap-16 md:gap-20">
               {idx.map((i) => (
                 <ServiceCard
-                  key={CARD_IMAGES[i]}
+                  key={CARDS[i]?.image}
                   index={i + 1}
-                  image={CARD_IMAGES[i] ?? ""}
+                  image={CARDS[i]?.image ?? ""}
+                  video={CARDS[i]?.video}
                   alt={t(`${K}.cards.${i}.title`)}
                   kicker={t(`${K}.cards.${i}.kicker`)}
                   title={t(`${K}.cards.${i}.title`)}
@@ -358,7 +353,9 @@ export function AiAgenticSystemsPage() {
         overline={t(`${K}.proof.overline`)}
         title={t(`${K}.proof.title`)}
         text={t(`${K}.proof.text`)}
-        image={`${IMG}ai-losa-operacion.jpg`}
+        // La automatización que corre sola: MetaTrader 5 le habla a Feniz cada cinco segundos
+        image="/images/proyects/feniz/fz-viaje.jpg"
+        video="/images/proyects/feniz/fz-viaje.mp4"
         alt={t(`${K}.proof.title`)}
         accent={ACCENT}
       />
