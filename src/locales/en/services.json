@@ -226,9 +226,10 @@
       "caption": "Three of our products in production on the same stack"
     },
     "work": {
-      "overline": "02 — Real work",
-      "title": "Products of ours running in production today",
-      "lead": "Four platforms with real customers inside, charging, booking and selling every day."
+      "overline": "02 — What we build",
+      "title": "Custom software, with real examples",
+      "lead": "Four kinds of software we build end to end. Each one already runs in production, for a client or as our own product.",
+      "example": "Example:"
     },
     "offer": {
       "overline": "03 — What's included",
@@ -270,20 +271,28 @@
     "ctaSubtitle": "Let's talk about your project. No commitment, no pressure.",
     "workItems": [
       {
-        "client": "ANJ Sports",
-        "line": "Custom store with catalogue, variants and its own checkout"
-      },
-      {
-        "client": "Clefast",
-        "line": "Industrial e-commerce with zone shipping and content migration"
-      },
-      {
-        "client": "Academia César Acosta",
-        "line": "Class booking wired into the club's platform"
-      },
-      {
+        "title": "SaaS platforms",
+        "text": "Products with accounts, roles, recurring payments and many customers on the same base.",
         "client": "Rematch",
-        "line": "Scheduling and tournament platform for padel clubs"
+        "fact": "bookings, leagues and tournaments with live results"
+      },
+      {
+        "title": "Custom online stores",
+        "text": "Catalog, variants, live stock and a custom checkout, connected to your inventory.",
+        "client": "ANJ Sports",
+        "fact": "251 products from five brands"
+      },
+      {
+        "title": "Internal and finance systems",
+        "text": "The back office that lives in spreadsheets today: documents, collections, reconciliation and accounting.",
+        "client": "Fintrace",
+        "fact": "from the SUNAT XML to the journal entry, no retyping"
+      },
+      {
+        "title": "System integrations",
+        "text": "Your software connected by API to payments, ERPs and third-party platforms.",
+        "client": "Feniz",
+        "fact": "MetaTrader 5, Paddle and Mercado Pago"
       }
     ],
     "cardRows": [
@@ -421,12 +430,13 @@
       "p2": "We deploy it wherever you say: your own infrastructure or a private cloud, with accuracy metrics and a trace behind every decision.",
       "statA": "weeks to a working prototype on your own data, with accuracy metrics from day one.",
       "statB": "of decisions are traced and auditable: no black box nobody can explain.",
-      "caption": "Three of our systems already deciding on their own"
+      "caption": "Web Scraping AI: an LLM turns gym websites into PostgreSQL tables. The messages and the data are the repository's own."
     },
-    "work": {
-      "overline": "02 — Real work",
-      "title": "Automations of ours already running",
-      "lead": "Four systems reading, classifying and deciding on real data belonging to real clients."
+    "build": {
+      "overline": "02 — What we can build",
+      "title": "What AI can already do in your company",
+      "lead": "The systems software companies are asked for most today. Each one connects to your tools and keeps a record of what it does.",
+      "proof": "Running in production at"
     },
     "offer": {
       "overline": "03 — What's included",
@@ -465,29 +475,99 @@
     "proof": {
       "overline": "07 — The proof",
       "title": "Automation where it pays off",
-      "text": "An industrial client's plant, and the dashboard that sums up 207 ratings without anyone counting them by hand. That's where you measure whether the AI was worth it."
+      "text": "MetaTrader 5 talks to Feniz every five seconds and the trader no longer copies a trade by hand. That is where you measure whether an automation paid off."
     },
     "faqOverline": "— 08   Frequently asked",
     "ctaTitle": "Ready to automate your operation?",
     "ctaSubtitle": "Let's talk about your project. No commitment, no pressure.",
-    "workItems": [
+    "buildItems": [
       {
-        "client": "Feniz",
-        "line": "Rule engine per propfirm and automatic MetaTrader 5 connection"
+        "title": "Workflows that run themselves",
+        "text": "When something happens in one system, the others find out: orders, invoices, inventory and alerts, without copying data from one screen to another."
       },
       {
-        "client": "AmbientalPe",
-        "line": "Catalogue and dashboard for environmental monitoring equipment"
+        "title": "WhatsApp support that solves",
+        "text": "An agent that answers, checks your inventory or calendar, closes the order and hands a person whatever it can't solve."
       },
       {
-        "client": "First Automation",
-        "line": "Site and content for industrial operations digitisation"
+        "title": "Documents that read themselves",
+        "text": "Invoices, contracts and forms turned into data: extracted, validated and entered into your system without retyping."
       },
       {
-        "client": "Feedback management",
-        "line": "A dashboard that summarises and classifies hundreds of ratings"
+        "title": "An assistant that knows your company",
+        "text": "It answers from your manuals, policies and contracts, and shows where each answer came from."
+      },
+      {
+        "title": "Leads that qualify themselves",
+        "text": "Every new contact is researched, scored and answered within minutes. Your sales team talks to the ones worth it first."
+      },
+      {
+        "title": "AI inside your product",
+        "text": "Features your users rely on without thinking about the model behind them: generate, summarize, recommend or search."
       }
     ],
+    "demo": {
+      "flujos": {
+        "n1": "New sale in the store",
+        "s1": "Trigger",
+        "n2": "Order created in the ERP",
+        "s2": "ERP API",
+        "n3": "E-invoice issued",
+        "s3": "Electronic invoicing",
+        "n4": "Customer notified on WhatsApp",
+        "s4": "With the invoice attached"
+      },
+      "chat": {
+        "head": "Store assistant",
+        "status": "online",
+        "m1": "Hi, do you have running shoes in size 42?",
+        "tool1": "Checking inventory",
+        "m2": "Yes, we have 3 pairs left in black. Shall I hold one for you?",
+        "m3": "Yes, please",
+        "tool2": "Order #4821 created",
+        "m4": "Done. Here's your payment link."
+      },
+      "docs": {
+        "doc": "Invoice",
+        "title": "Extracted data",
+        "k1": "Tax ID",
+        "v1": "20512345678",
+        "k2": "Supplier",
+        "v2": "Distribuidora Sur S.A.C.",
+        "k3": "Total",
+        "v3": "S/ 4,720.00",
+        "k4": "Due",
+        "v4": "Nov 15, 2026",
+        "ok": "Booked in accounting"
+      },
+      "rag": {
+        "q": "How many vacation days do I have left?",
+        "search": "Searching 1,240 documents",
+        "src1": "Internal policy · p. 12",
+        "src2": "Vacation policy",
+        "src3": "Your attendance record",
+        "a": "You get 30 days a year. You've used 8, so you have 22 left."
+      },
+      "leads": {
+        "name": "María Torres",
+        "role": "Purchasing lead · Constructora Vértice",
+        "origin": "Web form",
+        "e1": "Company verified · 120 employees",
+        "e2": "Requests a quote for 40 units",
+        "score": "Priority",
+        "high": "High",
+        "a1": "Meeting proposed: Thursday 10:00",
+        "a2": "CRM updated"
+      },
+      "producto": {
+        "prompt": "A minimalist sportswear store",
+        "btn": "Generate",
+        "b1": "Hero",
+        "b2": "Products",
+        "b3": "Reviews",
+        "done": "Page ready in 12 s"
+      }
+    },
     "cardRows": [
       [
         {

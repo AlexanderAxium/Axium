@@ -6,6 +6,7 @@ aislar-piezas.cjs) dentro de un vidrio esmerilado: el fondo de debajo se desenfo
 lleva un filo claro de 1 px y una sombra suave. Ninguna pieza se dibuja: todas son capturas.
 
   python3 componer-flotantes.py --foto escena.png --salida pieza.jpg [--lienzo 3200x1600]
+  (o --foto "degradado:#0A0E18,#1B2338,#F5BB32" para el campo de la marca sin foto)
       --pieza "tarjeta.png,x,y,ancho[,relleno[,radio]]" [--pieza …]
 
 x, y y ancho van en fracciones del lienzo (0–1); relleno y radio en px del lienzo. Las piezas
@@ -26,7 +27,23 @@ ap.add_argument("--aclarado", type=float, default=0.42)
 a = ap.parse_args()
 
 W, H = [int(v) for v in a.lienzo.split("x")]
-foto = Image.open(a.foto).convert("RGB")
+
+
+def degradado(spec):
+    """«degradado:#borde,#centro,#brillo»: el campo de la marca en vez de una foto (Feniz,
+    2026-10-07: las tarjetas reales flotando sobre su azul y su oro, como Brubank sobre su morado)."""
+    hx = lambda h: np.array([int(h.lstrip("#")[i : i + 2], 16) for i in (0, 2, 4)], np.float32)
+    borde, centro, brillo = [hx(c) for c in spec.split(",")]
+    yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
+    d = np.sqrt(((xx - W * 0.45) / (W * 0.8)) ** 2 + ((yy - H * 0.4) / (H * 0.95)) ** 2)
+    t = np.clip(d, 0, 1)[..., None] ** 1.2
+    f = centro * (1 - t) + borde * t
+    g = np.exp(-(((xx - W * 0.8) / (W * 0.32)) ** 2 + ((yy - H * 0.9) / (H * 0.38)) ** 2))[..., None]
+    f = f + (brillo - f) * g * 0.40
+    return Image.fromarray(np.clip(f, 0, 255).astype(np.uint8))
+
+
+foto = degradado(a.foto[10:]) if a.foto.startswith("degradado:") else Image.open(a.foto).convert("RGB")
 fw, fh = foto.size
 if fw / fh > W / H:
     nw = round(fh * W / H)

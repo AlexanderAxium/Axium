@@ -220,6 +220,10 @@ Lo que el molde Pixelmatters exige, y sin lo cual no se usa:
   copiado del documento, no medido**. Si no hay cifras de verdad, el bloque no va.
 - **La cita es textual** y se toma de donde el cliente ya la publicó, con su nombre y
   cargo tal como aparecen.
+- **Un vídeo ancho con interfaz lleva su versión móvil** (Feniz, 2026-10-07): a 390 px un
+  plano 2:1 con una ventana y un celular deja la UI en letra de 3 px. En `CaseProducto`, el
+  `Medio` de vídeo acepta `srcMovil` y `posterMovil` (cuadrado, solo el celular con sus
+  piezas) y `ratioMovil: 1`; cada ancho descarga solo su vídeo.
 
 ---
 

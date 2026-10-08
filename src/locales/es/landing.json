@@ -208,7 +208,7 @@
       "items": {
         "discovery": {
           "title": "Design & Branding",
-          "description": "Construimos marcas que comunican, productos que enamoran y materiales que convierten. Identidad visual, branding, brochures y diseño de producto.",
+          "description": "Marcas que comunican y productos que enamoran: identidad visual, brochures, diseño web y diseño de producto.",
           "benefits": [
             "Identidad visual y logo",
             "Brand guidelines",
@@ -221,7 +221,7 @@
         },
         "software-dev": {
           "title": "Desarrollo de software",
-          "description": "Construimos software de alto rendimiento, escalable y seguro usando un stack tecnológico moderno y estándar en la industria. Nos especializamos en desarrollo full-stack con JavaScript y TypeScript, incluyendo Next.js y React.js para el frontend web, React Native para el frontend móvil y Node.js en el backend.",
+          "description": "Plataformas web y móviles a medida con TypeScript, Next.js, React Native y Node.js: rápidas, seguras y listas para crecer.",
           "benefits": [
             "Desarrollo web",
             "Desarrollo móvil",
@@ -234,7 +234,7 @@
         },
         "ai-systems": {
           "title": "Sistemas de IA y agentes",
-          "description": "Desarrollamos sistemas basados en IA que automatizan flujos de trabajo, integran silos de datos y habilitan la toma de decisiones en tiempo real. Nuestra experiencia en LLMs, RAG y orquestación de IA permite construir sistemas autónomos que generan valor de negocio medible.",
+          "description": "Agentes y automatizaciones conectados a tus datos y herramientas, con LLMs y RAG, para que tus procesos corran solos.",
           "benefits": [
             "Definición del espacio del problema",
             "Evaluación de madurez de datos",

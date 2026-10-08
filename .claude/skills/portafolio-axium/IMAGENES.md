@@ -612,6 +612,24 @@ sin redondear a mano: la máscara de la clave manda. Plantillas `pantalla-*-sin-
 - `scripts/openai-imagen.py` hace generaciones y ediciones con máscara y apunta cada llamada
   en `scripts/gastos-openai.jsonl`. Detalle de la tanda: `COMPOSITOR.md`, decimotercera generación.
 
+## Fotos de stock: Unsplash y Pexels, para variar (2026-10-07)
+
+> «a veces es un poco notorio que una persona es hecha por IA, así que intenta en algunos casos,
+> como para variar, usar imágenes de stock como de Unsplash o Pexels»
+
+- **Dónde va cada cosa:** escena generada donde la persona sale de espaldas, de perfil o solo
+  en manos, o donde hay que componer una pantalla (la clave magenta lo pide); foto de stock
+  donde se le ve la CARA. En una ficha, mezclar.
+- **Cómo se busca:** unsplash.com devuelve 401 «Making sure you're not a bot» al Chromium sin
+  pantalla de los scripts; el navegador de Playwright del entorno (MCP) sí entra. Buscar con
+  `?orientation=landscape&license=free` y sacar de cada `figure` el enlace y la imagen de
+  `images.unsplash.com`. La CDN se descarga con `curl` sin problema (`?w=4200&q=92&fm=jpg`).
+- **Antes de usarla:** abrir su página y confirmar «Uso gratuito bajo la Licencia Unsplash» (la
+  búsqueda mezcla Unsplash+, que es de pago), y anotar autor, URL y licencia en
+  `taller/stock/CREDITOS.md`. La licencia permite uso comercial y no obliga a atribuir.
+- **Qué buscar:** el color de la marca ya en la foto (en Feniz, un abrigo azul de noche con la
+  luz del teléfono en la cara) y un lado vacío y oscuro para la UI flotante.
+
 ## Herramienta anterior: Higgsfield (2026-09-01 → 2026-10-01, superada)
 
 Alexander: *"tengo cuenta de Higgsfield, para que puedas tú mismo mandar tus

@@ -4,6 +4,7 @@ import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { smoothEase } from "~/components/axium/service-shared";
 
 /**
@@ -82,6 +83,53 @@ export function ContactButton({
       {label}
       <ArrowUpRight className="h-4 w-4 flex-shrink-0" />
     </a>
+  );
+}
+
+/**
+ * Un vídeo en bucle con su póster: solo corre mientras está en pantalla y, con movimiento
+ * reducido, se queda en el póster. Para piezas que son la interfaz o el sistema HACIENDO
+ * algo (2026-10-07, AI & Agentic Systems: «en vez de poner imágenes y capturas sin sentido…
+ * haz animaciones»).
+ */
+export function VideoBucle({
+  src,
+  poster,
+  alt,
+  className = "",
+}: {
+  src: string;
+  poster: string;
+  alt: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e?.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      },
+      { threshold: 0.2 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <video
+      ref={ref}
+      className={`absolute inset-0 size-full object-cover ${className}`}
+      src={src}
+      poster={poster}
+      aria-label={alt}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+    />
   );
 }
 
@@ -206,10 +254,148 @@ export function ServiceWorkBand({
   );
 }
 
+export interface WorkShowcaseItem {
+  slug: string;
+  cover: string;
+  /** object-position del recorte, cuando el centro corta algo que debe leerse. */
+  pos?: string;
+  /** Lo que podemos construir: «Plataformas SaaS», «Tiendas online a medida»… */
+  title: string;
+  text: string;
+  /** El ejemplo real y un dato suyo sacado de la ficha (nunca inventado). */
+  client: string;
+  fact: string;
+}
+
+/**
+ * Qué construimos, con un ejemplo real por tipo (Software Development, 2026-10-07).
+ * Alexander, en tres vueltas: «mejora esta presentación», «no exageres, la forma horizontal
+ * estaba bien» y «enfócate en lo que podemos hacer con ejemplos reales; busca referencias de
+ * empresas grandes». BairesDev y Netguru ordenan el servicio por LO QUE CONSTRUYEN (web, SaaS,
+ * e-commerce, sistemas internos, integraciones) y prueban cada cosa con cliente + un dato
+ * («OLX: 21 % más conversión»). Aquí: una fila de cuatro tipos, cada uno con la portada de su
+ * ejemplo entera a 4:3, el tipo como título y abajo «Ejemplo: Cliente — dato». En móvil, la fila
+ * se desliza en horizontal en vez de apilarse.
+ */
+export function ServiceWorkShowcase({
+  overline,
+  title,
+  lead,
+  items,
+  accent,
+  exampleLabel,
+  cta,
+  waLabel,
+  waMessage,
+}: {
+  overline: string;
+  title: string;
+  lead: string;
+  items: WorkShowcaseItem[];
+  accent: string;
+  exampleLabel: string;
+  cta: string;
+  waLabel: string;
+  waMessage: string;
+}) {
+  return (
+    <section className="bg-[#0A1020] py-16 md:py-20">
+      <div className="container-section">
+        <div className="content-section">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.45, ease: smoothEase }}
+            className="mb-10 flex flex-col gap-5 md:mb-12 md:flex-row md:items-end md:justify-between"
+          >
+            <div>
+              <div className="mb-4 flex items-center gap-3">
+                <div
+                  className="h-0.5 w-7 rounded-full"
+                  style={{ background: accent }}
+                />
+                <span className="text-overline text-white/45">{overline}</span>
+              </div>
+              <h2 className="text-heading-1 max-w-xl text-white">{title}</h2>
+            </div>
+            <p className="text-body-sm max-w-sm text-white/55">{lead}</p>
+          </motion.div>
+
+          <div className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:scroll-px-6 sm:px-6 md:mx-0 md:grid md:snap-none md:grid-cols-2 md:gap-x-5 md:gap-y-10 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4">
+            {items.map((it, i) => (
+              <motion.div
+                key={it.slug}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.07,
+                  ease: smoothEase,
+                }}
+                className="w-[78%] shrink-0 snap-start sm:w-[46%] md:w-auto"
+              >
+                <Link
+                  href={`/casos-de-exito/${it.slug}`}
+                  className="group flex h-full flex-col"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white/[0.04] ring-1 ring-white/[0.08]">
+                    <Image
+                      src={it.cover}
+                      alt={`${it.title} — ${it.client}`}
+                      fill
+                      sizes="(max-width: 768px) 78vw, (max-width: 1024px) 50vw, 25vw"
+                      quality={88}
+                      style={{ objectPosition: it.pos ?? "center" }}
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <h3 className="text-heading-3 mt-5 text-white">{it.title}</h3>
+                  <p className="text-body-sm mt-2 mb-5 text-white/55">
+                    {it.text}
+                  </p>
+                  <p className="mt-auto flex items-start gap-2 border-t border-white/10 pt-4 text-[13px] leading-snug text-white/45">
+                    <span className="min-h-[2lh] min-w-0 flex-1">
+                      {exampleLabel}{" "}
+                      <span className="font-medium text-white/85 transition-colors group-hover:text-white">
+                        {it.client}
+                      </span>{" "}
+                      — {it.fact}
+                    </span>
+                    <ArrowUpRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-white/50 transition-colors group-hover:text-white" />
+                  </p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-col items-center justify-center gap-3 pt-10 sm:flex-row md:pt-14">
+            <Link
+              href="/portafolio"
+              className="text-body-sm inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 font-medium text-white transition-colors hover:bg-white/10 sm:w-auto"
+            >
+              {cta}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <WhatsAppButton
+              label={waLabel}
+              message={waMessage}
+              tone="oscuro"
+              className="w-full justify-center sm:w-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /** Tarjeta grande: la pieza a un lado, el texto y dos filas de servicio al otro. */
 export function ServiceCard({
   index,
   image,
+  video,
   alt,
   kicker,
   title,
@@ -222,6 +408,8 @@ export function ServiceCard({
 }: {
   index: number;
   image: string;
+  /** Si va, la pieza es este vídeo y `image` es su póster. */
+  video?: string;
   alt: string;
   kicker: string;
   title: string;
@@ -242,14 +430,18 @@ export function ServiceCard({
     >
       <div className={`lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
         <div className="relative aspect-[10/7] w-full overflow-hidden rounded-2xl">
-          <Image
-            src={image}
-            alt={alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            quality={92}
-            className="object-cover"
-          />
+          {video ? (
+            <VideoBucle src={video} poster={image} alt={alt} />
+          ) : (
+            <Image
+              src={image}
+              alt={alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              quality={92}
+              className="object-cover"
+            />
+          )}
         </div>
       </div>
 
@@ -386,6 +578,7 @@ export function ProofSlab({
   title,
   text,
   image,
+  video,
   alt,
   accent,
 }: {
@@ -393,6 +586,8 @@ export function ProofSlab({
   title: string;
   text: string;
   image: string;
+  /** Si va, la losa es este vídeo y `image` es su póster. */
+  video?: string;
   alt: string;
   accent: string;
 }) {
@@ -427,14 +622,18 @@ export function ProofSlab({
             transition={{ duration: 0.5, delay: 0.08, ease: smoothEase }}
             className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl"
           >
-            <Image
-              src={image}
-              alt={alt}
-              fill
-              sizes="(max-width: 1280px) 100vw, 1200px"
-              quality={92}
-              className="object-cover"
-            />
+            {video ? (
+              <VideoBucle src={video} poster={image} alt={alt} />
+            ) : (
+              <Image
+                src={image}
+                alt={alt}
+                fill
+                sizes="(max-width: 1280px) 100vw, 1200px"
+                quality={92}
+                className="object-cover"
+              />
+            )}
           </motion.div>
         </div>
       </div>

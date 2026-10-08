@@ -125,12 +125,14 @@ const CASE_ORDER: string[] = [
   "feniz",
   "toliveagain",
   "fintrace",
-  "ambientalpe",
+  // Sportt y AmbientalPE intercambiados (Alexander, 2026-10-07: «sportt intercambia con
+  // ambientalpe»)
+  "sportt",
   "innersoulbright",
   "clefast",
   "happyart",
   "redesvip",
-  "sportt",
+  "ambientalpe",
   "lujan",
   "ventanasantiruido",
   "antiruidopvc",

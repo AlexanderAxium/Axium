@@ -2180,3 +2180,184 @@ Amouage = salvia). El pie dice de quién es cada cosa: «La escena es nuestra; l
 casa». **Antes de fabricar un mockup de marca para una ficha, mirar si la web del cliente ya
 tiene creativos nuestros**: valen más que un objeto inventado.
 
+
+## Decimoquinta generación — Feniz rehecha con la mezcla de Paisanos (2026-10-07)
+
+Alexander, tras publicar Aurore: *«sigue con feniz, haz un rediseño total como las referencias
+de paisanos»*. Feniz pasa de CaseStory (claro) al molde de producto (oscuro, `#0A0E18`, el azul
+de su panel) y cada capa de Paisanos entra una vez. Taller: `capturas-clientes/feniz/paisanos-2026-10/`.
+La base anonimizada con la que se capturó el área privada (2026-09-30) **ya no existe**: todo
+sale de las 65 capturas de entonces (2x/3x, datos de demostración) y de sistemafeniz.com en vivo.
+
+| Pieza | Cómo |
+|---|---|
+| Héroe: un trader al amanecer con el panel en la laptop | escena `flare` con la pantalla apagada + `componer-escena.py --quad --bisel` sobre la ORIGINAL, esquinas por perfil de luminancia (sin edición en magenta: la de Aurore deformó la tapa) |
+| Sitio + panel bajando a la vez sobre el degradado, con tarjetas flotando | **`video-flotantes.py`** (nuevo): ventana y celular construidos, cada cuadro recorta la captura de PÁGINA COMPLETA con paradas suavizadas; las tarjetas reales se precalculan como capas (sombra + vidrio + filo) y suben y bajan con su fase. `--solo-celular` hace la versión móvil cuadrada |
+| R28: una mujer con el celular y tres tarjetas reales en vidrio | `componer-flotantes.py` sobre la escena `flare` |
+| Conexión y planes flotando sobre la marca | `componer-flotantes.py --foto "degradado:#0A0E18,#1B2338,#F5BB32"` (nuevo: el campo de la marca en vez de una foto) |
+| R29: el isotipo en oro, en volumen | **Three.js en Chromium sin pantalla** (`taller/isotipo-3d.html` + `grabar-isotipo.cjs`): la geometría medida sobre el PNG (dos arcos de radio 3,86 y 4,78, cuatro nodos, tres velas con su mecha), oro con el degradado del logotipo, `RoomEnvironment` para los reflejos, oscilación de ±34° en bucle cerrado de 8 s |
+
+**Lo que aprendí:**
+1. **El objeto de marca en 3D no se le pide a un modelo de imagen si es un logotipo**: cambia el
+   número de velas, cierra la órbita, inventa un nodo. Con la geometría medida y Three.js sale
+   exacto, se puede girar (es un vídeo, no una foto) y no cuesta tokens. Para un objeto que NO es
+   el logotipo (una tarjeta, un frasco genérico), el modelo sigue sirviendo.
+2. **Vidrio sobre fondo oscuro: filo fino, no marco.** Con `relleno 24` y `aclarado 0.30` el
+   vidrio salía gris y pesado sobre la pared azul; con `relleno 8–12` y `aclarado 0.10` queda un
+   filo de luz alrededor de la tarjeta, que es lo que hace Brubank.
+3. **Recortar tarjetas de una captura: medir el BORDE, no la sombra.** Una tarjeta con sombra
+   (el plan «Anual») arrastraba 13 px de gris; se recorta midiendo su borde dorado, y la insignia
+   que sobresale («Más popular») entra en la máscara como una píldora aparte.
+4. **Las tarjetas no se tapan entre sí lo que importa**: el primer par de planes ponía «Anual»
+   delante y escondía «$99» y «$1499». Escalonadas sin solaparse.
+5. **Un plano ancho con UI necesita su vídeo móvil** (ver ESTANDAR-FICHA § 1 bis).
+6. **Los precios rotos de la web en vivo no salen**: la ventana del vídeo frena antes de la
+   sección de planes de sistemafeniz.com («No se pudieron cargar los precios»); los planes se
+   enseñan desde el área del trader.
+
+7. **«No veo ninguna imagen»** (Alexander, sobre las láminas de reglas y símbolos, en local).
+   El servidor de desarrollo se había TRABADO convirtiendo esas dos láminas a WebP en 1920 px:
+   cada petición de ese tamaño esperaba para siempre, sin error ni respuesta (en producción las
+   mismas responden en 1 s). Solo pasa en pantallas retina, que piden 1920; yo verificaba a 1×
+   y en inglés. Y mi comprobación contaba imágenes ROTAS (`complete && naturalWidth == 0`), no
+   las que nunca terminan: hay que contar **las visibles que no han cargado** tras recorrer la
+   página, a 2× y en español. Para descartar el archivo: `curl -H 'Accept: image/webp'` contra
+   `/_next/image?…&w=1920` (sin esa cabecera Next devuelve el JPEG y todo parece bien). Arreglo:
+   reiniciar `next dev`.
+
+Coste: 2 escenas `flare` (3072×2048 y 3584×1792), 5 610 tokens de salida. El resto, sin IA.
+
+**Portada del índice** (Alexander: *«la portada cuadrada de feniz no me gusta»*, la laptop y el
+celular planos sobre oro): ahora es la escena del héroe recortada a 4:3 con el perfil del trader,
+la laptop y la ventana, como en el modelo Pixelmatters. Y en la pantalla, la LANDING, no el panel
+(Alexander, sobre la primera versión con el dashboard: *«mejora esa portada, usa la landing de
+feniz, no el dashboard»*): la portada es la cara pública del producto; el panel se queda en el
+héroe de la ficha, donde se cuenta cómo se usa. `fz-portada-landing.jpg`, recortada justo antes
+del perfil para que la pantalla gane tamaño sin cortar la cara.
+
+**Segunda vuelta, el mismo día** (tres correcciones de Alexander sobre la ficha ya rehecha):
+- *«[el diagrama de arquitectura] innecesario, cámbialo por algo más genial»* → **el viaje de una
+  operación, animado** (`taller/flujo/flujo.html`): a la izquierda el JSON que arma el EA
+  (campos y mensajes del registro COPIADOS de `mt5-ea-template.ts`: «Respuesta del servidor
+  (trade_closed): HTTP 200», «✓ Operación exportada exitosamente»), un anillo de 5 s, el pulso
+  dorado del POST, el 200 de vuelta y la fila REAL entrando en «Últimos movimientos» (la tarjeta
+  de la captura cortada en cabecera + filas + pie, y las filas apiladas con CSS). En móvil, la
+  tabla del celular (captura a 3x), que ya trae la letra a tamaño de teléfono.
+- *«también feas esas imágenes [las láminas de reglas y símbolos], busca un mejor diseño
+  inspirado en las referencias»* → `taller/laminas/laminas.html`: las tres propfirms en
+  tarjetas en abanico sobre el azul y el oro, y el mismo EURUSD como dos tarjetas que se
+  encuentran (oro FTMO, plata Tickmill) con «EURUSD» gigante en filete detrás. Las mismas
+  cifras de la base. Letra pensada para leerse a 358 px: un solo cuadrado sirve en el celular.
+  Flotan 6 px en un bucle de 6 s.
+- *«a veces es un poco notorio que una persona es hecha por IA… usar imágenes de stock como de
+  Unsplash o Pexels»* → la mujer del celular es ahora una foto de Unsplash (ver IMAGENES.md,
+  «Fotos de stock»), con las mismas tarjetas reales flotando.
+
+**`scripts/grabar-cuadros-html.cjs`** (nuevo): graba cualquier página que exponga
+`window.cuadro(t)` y `window.listo`, cuadro a cuadro y sin depender del reloj (`--solo 0,3.2`
+para revisar instantes sueltos, `--query`, `--dpr`). Para piezas de motion design con UI real
+recortada es más rápido y más fino que componer en Python: tipografías web, CSS, sombras.
+
+## Decimosexta generación — ANJ Sports con Rematch de referencia (2026-10-07)
+
+Alexander: *«dale el mismo estilo a ANJ»* y, enseguida, *«bueno no tan igual, como rematch sería
+mejor referencia, es tu mejor trabajo hasta ahora»*. La ficha pasa a CaseProducto (negro de
+anjsports.com, `#08080B`) con el ritmo de Rematch: héroe de vida, la web moviéndose, trío de vida,
+el producto por partes en vídeo, una tira, cita textual. Taller:
+`capturas-clientes/anjsports/rematch-2026-10/`.
+
+| Pieza | Cómo |
+|---|---|
+| Héroe: el celular sobre la mesa de tenis de mesa | escena `flare` con la pantalla apagada + `componer-escena.py --quad` (el filo plateado de la cara del teléfono marca las esquinas; arriba de la pantalla, el extremo lejano) |
+| El carrusel cambiando de marca, en ventana y celular | **`grabar-pantalla.cjs`** (nuevo, tiempo real) + **`video-pantalla-dispositivos.py`** (nuevo): un ciclo entero cortado en la misma fase (21,15 s; el del celular, 20,4 s, se estira), y el brillo del fondo toma el color de la marca en pantalla, medido en cada cuadro |
+| Trío | la tienda (escena + catálogo), el jugador (STOCK de Unsplash + la tarjeta real), la mano en el club (escena + ficha) |
+| Variantes | `grabar-hover.cjs` con `accion: click` en las cuatro opciones de Omega VII Asia: el stock cambia en cada una |
+| Tira | tarjetas aisladas con `aislar-piezas.cjs` («Últimas 1 unidad», «16 unidades disponibles», «Sin stock») y el panel de filtros |
+| Deportistas | `grabar-pantalla.cjs` con `clic`: el carrusel no avanza solo, se pulsa la flecha cada 2,6 s |
+
+**Lo que mordió:**
+1. **El zoom rompe los héroes de `100vh`.** Ampliada la página para grabar a 2x, el héroe medía
+   dos pantallas y solo se veía el logotipo. Grabado a 1x se ve bien (dentro de una ventana de
+   ~1500 px no hace falta más). `fijarVh` lo corrige en escritorio, pero en el CELULAR no sirve:
+   con zoom, las media queries ven 1170 px y la web se maqueta como escritorio.
+2. **Una tarjeta aislada no trae fondo.** El nombre y el precio van en letra oscura sobre el
+   blanco de la página; aislada con alfa, sobre una foto o sobre negro, no se lee. Se le pone
+   detrás el blanco de la propia página (redondeado), no un color inventado.
+3. **Las fotos de stock de jugadores traen marcas de la competencia** (mesas y vallas de Donic,
+   Stiga, Xushaofa). Se elige la que no las enseña.
+4. **No repetir fotograma:** el héroe de XIOM ya estaba en el celular de la mesa y en el vídeo;
+   el trío de celulares lleva la colección de ropa en su lugar.
+5. **Los vídeos anchos con interfaz llevan versión móvil** (`--solo-celular`, 4:5): el del
+   carrusel y el de las variantes; el de deportistas se lee entero.
+
+Coste: 3 escenas `flare`, 9 936 tokens de salida.
+
+**Portadas de Clefast y Sportt (2026-10-07).** Alexander: *«mejora la portada de clefast y
+sportt»*. Las dos eran piezas planas (la gama de bidones sobre verde; un celular sobre un
+degradado). Ahora, como la de Feniz, una escena de vida con la TIENDA real dentro: Clefast, una
+tablet en la mesa de doblado de una lavandería industrial limpia con `/productos` en pantalla
+(la gente de las lavanderías industriales de stock salía en talleres abarrotados, que no es el
+cliente de Clefast); Sportt, una laptop en un banco de pegado de gomas (su servicio propio) con
+la portada de sporttperu.com. Escenas `flare` 2048×1536 con la pantalla apagada y `--quad`
+medido por perfil de luminancia; recorte 4:3 sin reescalar hacia arriba. El chat flotante de
+clefast.com.pe se oculta antes de capturar (elementos `fixed` por debajo de la cabecera).
+
+**Sportt, segunda vuelta:** *«sportt es muy ruidoso y feo, hazlo más sutil»*. El banco de pegado
+con lámpara, frasco, rodillo, esponja, tijeras, paletas colgadas y una tira magenta era
+demasiado. Ahora: un bodegón mínimo, la laptop y UNA paleta sobre una superficie mate gris, luz
+de ventana con un tinte rosado apenas, mucho aire (`sp-portada-sobria.jpg`). Regla para
+portadas: **un objeto que diga el rubro, no la colección entera**.
+
+## AI & Agentic Systems sin relleno (servicios, 2026-10-07)
+
+La página usaba láminas de Feniz y AmbientalPE como «sistemas que deciden solos», la web de First
+Automation, una rejilla de logotipos (Docker, Kubernetes) y un tablero de calificaciones: ninguno
+era IA. Medido en los 33 casos, lo que sí es IA o automatización nuestra: Web Scraping AI (LLM),
+Vendiq (asistente con Gemini), LumioLearn (Copilot con Gemini), Fintrace (del XML a la
+detracción y la conciliación) y Feniz (el EA cada 5 s). Cada pieza sale de uno de esos cinco, sin
+repetir imagen; donde no había pieza (el pipeline, que no tiene UI) se animó en código con lo que
+dice su repositorio. `ServiceCard` y `ProofSlab` aceptan `video` (y `VideoBucle` es exportable).
+Referencias: `referencias/ia-agentes-n8n-relevance-lindy.md`.
+
+**Segunda vuelta, mismo día.** Alexander, viendo la banda de cuatro proyectos pegados a sangre:
+*«no hay respiro, algunas imágenes están entrecortadas… pon primero a Feniz»*, y enseguida
+*«no te centres en nuestros proyectos, sino en lo que podemos hacer; analiza qué hacen usualmente
+las empresas de software para esos servicios»*. La banda pasó a ser **«Lo que podemos
+construir»** (`src/components/axium/ai-casos-de-uso.tsx`): los seis sistemas que repite el
+sector, cada uno en una tarjeta con aire (rejilla 1/2/3 columnas, `gap-5`, texto DEBAJO de la
+viñeta, no encima) y una **viñeta animada en código**:
+- **Escala en em:** el contenedor lleva `container-type: inline-size` y la viñeta
+  `font-size: 2.5cqw`, así que mide 40 em de ancho en cualquier pantalla y nunca se recorta. Todo
+  adentro va en em. A 328 px (360 de pantalla) la letra más chica da ~8 px y el texto principal
+  ~10–11 px.
+- **Reloj:** `useBucle(total)` avanza en pasos de 0,1 s solo mientras la tarjeta se ve (IO al 35 %)
+  y arranca de cero al entrar; con movimiento reducido, o antes de hidratar, se queda en el cuadro
+  completo. Cada elemento aparece con `t >= x`; el lienzo se funde al final del bucle para que el
+  reinicio no se vea.
+- **`Abre`** (grid-rows 0fr→1fr): lo nuevo abre su alto y lo de arriba se corre con suavidad, como
+  en un chat. Para que la parte de abajo no quede vacía, el último grupo va con `mt-auto`.
+- Los proyectos nuestros son **nota al pie** («En producción en Feniz ↗»), Feniz primero como pidió.
+- Verificación: `scratchpad/axium/casos-ia-tarjetas.cjs` captura cada tarjeta centrada a los
+  3, 5,5 y 7,5 s, y `casos-ia-trunc.cjs` mide `.truncate` desbordados en es/en/pt a 360, 768 y
+  1280 (el pt de «Gerente de compras…» se cortaba: se acortó).
+- **Tercera vuelta: «mucha animación en paralelo, dale más sutileza».** Seis bucles a la vez eran
+  ruido. Ahora un director en `AiCasosDeUso` arma **una viñeta a la vez y una sola vez**: las que
+  están a la vista (60 % de la viñeta) y no se armaron, en orden, con 1,6 s de respiro entre una y
+  otra; las demás esperan quietas en su cuadro completo. Pasar el ratón por una la repite. Sin
+  ruedas que giran (un aro quieto pasa a check), transiciones de 700 ms y el guion al 85 % de
+  velocidad. Medido con `scratchpad/axium/casos-ia-paralelo.cjs` (compara el DOM de cada viñeta
+  cada 250 ms durante 35 s): **máximo 1 a la vez** en 1512 y en 390.
+
+**Software Development, misma tarde, tres vueltas.** (1) *«mejora esta presentación… aquí sí
+podemos mencionar más nuestros trabajos»* → hice ocho proyectos en dos destacados + rejilla.
+(2) *«no exageres con el portafolio, la forma horizontal estaba bien»* y (3) *«enfócate en lo que
+podemos hacer con ejemplos reales, busca referencias de empresas grandes»*. BairesDev y Netguru
+ordenan el servicio por **lo que construyen** (web, SaaS, e-commerce, sistemas internos,
+integraciones) y prueban cada cosa con **cliente + un dato** («OLX: 21 % más conversión»).
+Quedó `ServiceWorkShowcase`: UNA fila de cuatro tipos — Plataformas SaaS (Rematch), Tiendas online
+a medida (ANJ Sports, «251 productos de cinco marcas»), Sistemas internos y finanzas (Fintrace),
+Integraciones entre sistemas (Feniz: MetaTrader 5, Paddle y Mercado Pago). Portada entera a 4:3,
+el TIPO como título, una línea de qué es, y al pie «Ejemplo: Cliente — dato» (el dato sale de la
+ficha). Alto como la tira vieja (~870 px a 1512). En móvil la fila se desliza en horizontal
+(snap) en vez de apilarse; 2 columnas en tableta. Design & Branding sigue con `ServiceWorkBand`.
+

@@ -208,7 +208,7 @@
       "items": {
         "discovery": {
           "title": "Design & Branding",
-          "description": "We build brands that communicate, products that delight and materials that convert. Visual identity, branding, brochures and product design.",
+          "description": "Brands that communicate and products people love: visual identity, brochures, web design and product design.",
           "benefits": [
             "Visual identity & logo",
             "Brand guidelines",
@@ -221,7 +221,7 @@
         },
         "software-dev": {
           "title": "Software development",
-          "description": "We build high-performance, scalable, and secure software using a modern, industry-standard tech stack. We specialize in full-stack JavaScript development with TypeScript, including Next.js and React.js for web frontend, React Native for mobile frontend, and Node.js on the backend.",
+          "description": "Custom web and mobile platforms built with TypeScript, Next.js, React Native and Node.js: fast, secure and ready to grow.",
           "benefits": [
             "Web development",
             "Mobile development",
@@ -234,7 +234,7 @@
         },
         "ai-systems": {
           "title": "AI & agentic systems",
-          "description": "We develop AI-driven systems that automate workflows, integrate data silos, and enable real-time decision-making. Our expertise in LLMs, RAG, and AI orchestration helps build autonomous systems that deliver measurable business value.",
+          "description": "Agents and automations connected to your data and tools, powered by LLMs and RAG, so your processes run on their own.",
           "benefits": [
             "Problem space definition",
             "Data readiness assessment",

@@ -13,6 +13,7 @@ import {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 import {
   Carousel,
@@ -58,7 +59,15 @@ const HEADING = { fontFamily: "var(--font-family-heading)" } as const;
 
 export type Medio =
   | { tipo: "imagen"; src: string; alt: string; srcMovil?: string }
-  | { tipo: "video"; src: string; poster: string; alt: string };
+  | {
+      tipo: "video";
+      src: string;
+      poster: string;
+      alt: string;
+      /** Otro vídeo por debajo de md: un plano ancho con UI a 2:1 no se lee a 390 px (Feniz). */
+      srcMovil?: string;
+      posterMovil?: string;
+    };
 
 export type BloqueProducto =
   | {
@@ -125,11 +134,29 @@ function VideoBucle({
   src,
   poster,
   alt,
-}: { src: string; poster: string; alt: string }) {
+  media,
+  className = "",
+}: {
+  src: string;
+  poster: string;
+  alt: string;
+  /** Solo se carga si casa esta consulta: el vídeo del otro ancho no se descarga. */
+  media?: string;
+  className?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [activo, setActivo] = useState(!media);
+  useEffect(() => {
+    if (!media) return;
+    const mq = window.matchMedia(media);
+    const cambia = () => setActivo(mq.matches);
+    cambia();
+    mq.addEventListener("change", cambia);
+    return () => mq.removeEventListener("change", cambia);
+  }, [media]);
   useEffect(() => {
     const v = ref.current;
-    if (!v) return;
+    if (!v || !activo) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const io = new IntersectionObserver(
       ([e]) => {
@@ -140,12 +167,12 @@ function VideoBucle({
     );
     io.observe(v);
     return () => io.disconnect();
-  }, []);
+  }, [activo]);
   return (
     <video
       ref={ref}
-      className="absolute inset-0 size-full object-cover"
-      src={src}
+      className={`absolute inset-0 size-full object-cover ${className}`}
+      src={activo ? src : undefined}
       poster={poster}
       aria-label={alt}
       muted
@@ -173,7 +200,24 @@ function Pieza({
       className={`relative overflow-hidden rounded-2xl bg-white/[0.04] ${className}`}
       style={style}
     >
-      {medio.tipo === "video" ? (
+      {medio.tipo === "video" && medio.srcMovil ? (
+        <>
+          <VideoBucle
+            src={medio.srcMovil}
+            poster={medio.posterMovil ?? medio.poster}
+            alt={medio.alt}
+            media="(max-width: 767px)"
+            className="md:hidden"
+          />
+          <VideoBucle
+            src={medio.src}
+            poster={medio.poster}
+            alt={medio.alt}
+            media="(min-width: 768px)"
+            className="hidden md:block"
+          />
+        </>
+      ) : medio.tipo === "video" ? (
         <VideoBucle src={medio.src} poster={medio.poster} alt={medio.alt} />
       ) : medio.srcMovil ? (
         <>
