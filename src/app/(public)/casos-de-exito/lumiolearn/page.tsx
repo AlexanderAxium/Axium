@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/lumiolearn.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import LumiolearnContent from "./LumiolearnContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/lumiolearn",
-  imagen: data.image,
-});
+export const metadata = metaCaso("lumiolearn", data);
 
 export default function LumiolearnPage() {
-  return <LumiolearnContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("lumiolearn", data)} />
+      <LumiolearnContent />
+    </>
+  );
 }

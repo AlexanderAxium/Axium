@@ -12,6 +12,7 @@
  */
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { type RefObject, useEffect, useRef, useState } from "react";
 import { AboutSection } from "~/components/axium/about-section";
 import {
@@ -147,13 +148,41 @@ function CuerpoHero({
   if (refOcultar) refOcultar.current = reel.ocultar;
   return (
     <section
-      className={`relative isolate flex ${altoContenido ? "min-h-[100svh]" : "h-[100svh]"} w-full touch-pan-y select-none flex-col overflow-hidden`}
+      // en el celular mide justo una pantalla (svh: con las barras del navegador a la vista), y lo
+      // que sobra lo toma la imagen del objeto; en escritorio crece con su contenido
+      className={`relative isolate flex h-[100svh] w-full touch-pan-y select-none flex-col overflow-hidden ${altoContenido ? "lg:h-auto lg:min-h-[100svh]" : ""}`}
       style={{ background: FONDO_NOCHE }}
     >
-      <div ref={lienzo} aria-hidden="true" className="absolute inset-0 -z-10" />
+      <div
+        ref={lienzo}
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 hidden lg:block"
+      />
+      {/* en el celular, una imagen fija del objeto en vez de la escena (2026-10-23, Alexander: «la
+          animación del hero en móvil, mejor obvíala»): toma el alto que dejan el titular y los
+          botones, así el hero nunca pasa de una pantalla */}
+      <div
+        aria-hidden="true"
+        className="relative mx-auto mt-16 min-h-[88px] w-full max-w-[440px] flex-1 lg:hidden"
+      >
+        <Image
+          src="/images/inicio/hero-movil.jpg"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 1023px) 100vw, 1px"
+          className="object-contain"
+          style={{
+            maskImage:
+              "radial-gradient(closest-side, #000 70%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(closest-side, #000 70%, transparent 100%)",
+          }}
+        />
+      </div>
       <div
         ref={refPausa}
-        className="absolute right-4 top-[calc(60px+min(42svh,380px))] z-10 lg:bottom-10 lg:right-10 lg:top-auto"
+        className="absolute bottom-10 right-10 z-10 hidden lg:block"
       >
         <div className="entra-css" style={retraso(0.5)}>
           <span className="flex items-center gap-3">
@@ -164,10 +193,10 @@ function CuerpoHero({
           </span>
         </div>
       </div>
-      <div className="container-section flex w-full flex-1 flex-col justify-end">
+      <div className="container-section flex w-full flex-col justify-end lg:flex-1">
         <div
           ref={refTexto}
-          className="content-section pb-12 pt-[calc(42svh+124px)] lg:pt-[50svh]"
+          className="content-section pt-3 pb-8 lg:pt-[50svh] lg:pb-12"
         >
           <div className="mx-auto max-w-[760px] lg:text-center">
             <h1
@@ -179,19 +208,19 @@ function CuerpoHero({
             </h1>
             <p
               style={retraso(0.16)}
-              className="entra-css mt-6 max-w-[46ch] text-[16px] leading-[1.65] text-white/70 md:text-[17px] lg:mx-auto"
+              className="entra-css mt-4 max-w-[46ch] text-[16px] leading-[1.6] text-white/70 max-lg:[@media(max-height:700px)]:line-clamp-3 md:text-[17px] lg:mx-auto lg:mt-6 lg:leading-[1.65]"
             >
               {t("home.hero.description")}
             </p>
             <div
               style={retraso(0.24)}
-              className="entra-css mt-8 lg:flex lg:justify-center"
+              className="entra-css mt-6 lg:mt-8 lg:flex lg:justify-center"
             >
               <Botones />
             </div>
             <dl
               style={retraso(0.3)}
-              className="entra-css mt-9 flex flex-wrap gap-x-8 gap-y-3 text-[13px] text-white/55 lg:justify-center"
+              className="entra-css mt-6 flex flex-wrap gap-x-8 gap-y-3 text-[13px] text-white/55 max-lg:[@media(max-height:700px)]:hidden lg:mt-9 lg:justify-center"
             >
               {[
                 ["45", t("home.hero.statProjects")],
@@ -282,6 +311,16 @@ export function HeroProfundidad() {
     escenario,
     () => window.innerHeight,
     (p) => {
+      // en el celular no hay transición: el hero queda quieto y «Nosotros» va debajo
+      if (window.innerWidth < 1024) {
+        if (tarjeta.current) {
+          tarjeta.current.style.transform = "";
+          tarjeta.current.style.clipPath = "";
+        }
+        if (velo.current) velo.current.style.opacity = "0";
+        apagarTexto(texto.current, pausa.current, 0);
+        return;
+      }
       const e = suave(p);
       if (tarjeta.current) {
         tarjeta.current.style.transform = `perspective(1400px) translate3d(0, ${(-e * 5).toFixed(2)}vh, 0) rotateX(${(e * 9).toFixed(2)}deg) scale(${(1 - e * 0.14).toFixed(4)})`;
@@ -305,7 +344,7 @@ export function HeroProfundidad() {
     <div ref={escenario} className="relative bg-[#03081c]">
       <div
         ref={fijo}
-        className="sticky z-0 min-h-[100svh] overflow-hidden"
+        className="relative z-0 min-h-[100svh] overflow-hidden lg:sticky"
         style={{ top: -sobra }}
         data-nav-theme="dark"
         data-nav-bg="none"

@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/lifetoursfl.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import LifetoursflContent from "./LifetoursflContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/lifetoursfl",
-  imagen: data.image,
-});
+export const metadata = metaCaso("lifetoursfl", data);
 
 export default function LifetoursflPage() {
-  return <LifetoursflContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("lifetoursfl", data)} />
+      <LifetoursflContent />
+    </>
+  );
 }

@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/sportt.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import SporttContent from "./SporttContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/sportt",
-  imagen: data.image,
-});
+export const metadata = metaCaso("sportt", data);
 
 export default function SporttPage() {
-  return <SporttContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("sportt", data)} />
+      <SporttContent />
+    </>
+  );
 }

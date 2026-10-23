@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/ambientalpe.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import AmbientalpeContent from "./AmbientalpeContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/ambientalpe",
-  imagen: data.image,
-});
+export const metadata = metaCaso("ambientalpe", data);
 
 export default function AmbientalpePage() {
-  return <AmbientalpeContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("ambientalpe", data)} />
+      <AmbientalpeContent />
+    </>
+  );
 }

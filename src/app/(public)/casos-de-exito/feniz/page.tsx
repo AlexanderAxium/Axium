@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/feniz.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import FenizContent from "./FenizContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/feniz",
-  imagen: data.image,
-});
+export const metadata = metaCaso("feniz", data);
 
 export default function FenizPage() {
-  return <FenizContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("feniz", data)} />
+      <FenizContent />
+    </>
+  );
 }

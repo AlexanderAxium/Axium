@@ -153,6 +153,37 @@ export function metaPagina({
   };
 }
 
+/**
+ * Los metadatos de un caso del portafolio: el nombre con su rubro («Alyer: transporte de carga
+ * minera y fabricación»), que es lo que alguien busca, en vez del «Alyer: caso de éxito» que
+ * llevaban los 45 (2026-10-23). Si no cabe en 60 caracteres con la marca, queda el de antes.
+ */
+export function metaCaso(
+  slug: string,
+  data: {
+    title: string;
+    description: string;
+    image: string;
+    secondaryIndustry?: string;
+  }
+) {
+  const tema = data.secondaryIndustry?.trim() ?? "";
+  // en minúscula las palabras que solo llevan la inicial en mayúscula («Productos Ecológicos» →
+  // «productos ecológicos»); siglas y nombres como «PVC», «STEM» o «PropFirms» quedan igual
+  const temaEnFrase = tema.replace(
+    /[A-ZÁÉÍÓÚÑ][a-záéíóúñü]+(?!\p{L})/gu,
+    (w, k: number) => (/\p{L}/u.test(tema.charAt(k - 1)) ? w : w.toLowerCase())
+  );
+  const conTema = `${data.title}: ${temaEnFrase}`;
+  return metaPagina({
+    titulo:
+      tema && conTema.length <= 52 ? conTema : `${data.title}: caso de éxito`,
+    descripcion: resumen(data.description),
+    ruta: `/casos-de-exito/${slug}`,
+    imagen: data.image,
+  });
+}
+
 /** Compatibilidad con las páginas que ya la usaban (paneles y acceso). */
 export function generateMetadata({
   title,

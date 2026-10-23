@@ -28,6 +28,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (sinLenis) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // 4. **En pantallas táctiles no hace nada** (el scroll con el dedo es el nativo) y su bucle de
+    //    requestAnimationFrame corría igual en cada cuadro, por eso ahí no se monta (2026-10-23)
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const lenis = new Lenis({
       duration: 1.2,

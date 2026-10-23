@@ -137,7 +137,10 @@ export function Footer() {
   ].filter((link) => link.href);
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
+    <footer
+      data-nav-theme="dark"
+      className="bg-gray-900 border-t border-gray-800"
+    >
       <div className="container-section py-12">
         <div className="content-section">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">

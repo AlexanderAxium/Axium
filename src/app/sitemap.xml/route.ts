@@ -1,8 +1,7 @@
-import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { join } from "node:path";
 import { NextResponse } from "next/server";
 import { BLOG_SLUGS, fechaIso } from "~/data/blog-data";
 import { PAGINAS_SERVICIO } from "~/data/servicios-paginas";
+import { casosPublicados } from "~/lib/casos-servidor";
 import { SITIO } from "~/lib/seo";
 import blog from "~/locales/es/blog.json";
 
@@ -12,27 +11,16 @@ import blog from "~/locales/es/blog.json";
  * portafolio, el blog y sus artículos. Ahora va cada página pública real, con la fecha que se
  * conoce de cada una (la del artículo o la del caso) y, si no, la de la última revisión del sitio.
  *
- * Los casos salen de las carpetas de rutas (no de cases-data, que lista 32 y solo 14 con slug), y
- * como es estático eso se lee una vez, al compilar: un caso nuevo entra solo en el próximo build.
+ * Los casos salen de `casosPublicados` (las carpetas de rutas), leídos una vez al compilar.
  */
 export const dynamic = "force-static";
 
 const REVISION = "2026-10-23";
-const CASOS = join(process.cwd(), "src/app/(public)/casos-de-exito");
-
 function casos() {
-  return readdirSync(CASOS, { withFileTypes: true })
-    .filter(
-      (d) => d.isDirectory() && existsSync(join(CASOS, d.name, "page.tsx"))
-    )
-    .map((d) => {
-      const json = join(process.cwd(), "src/data/cases", `${d.name}.json`);
-      const datos = existsSync(json)
-        ? (JSON.parse(readFileSync(json, "utf8")) as { publishedDate?: string })
-        : {};
-      return { slug: d.name, fecha: fechaCaso(datos.publishedDate) };
-    })
-    .sort((a, b) => a.slug.localeCompare(b.slug));
+  return casosPublicados().map((c) => ({
+    slug: c.slug,
+    fecha: fechaCaso(c.publicado),
+  }));
 }
 
 function fechaCaso(f?: string) {

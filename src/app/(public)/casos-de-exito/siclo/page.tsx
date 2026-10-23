@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/siclo.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import SicloContent from "./SicloContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/siclo",
-  imagen: data.image,
-});
+export const metadata = metaCaso("siclo", data);
 
 export default function SicloPage() {
-  return <SicloContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("siclo", data)} />
+      <SicloContent />
+    </>
+  );
 }

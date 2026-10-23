@@ -1,15 +1,13 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import type { CSSProperties } from "react";
 import { PortadaBlog } from "~/components/axium/portada-blog";
 import { BLOG_SLUGS } from "~/data/blog-data";
 import { useTranslation } from "~/hooks/useTranslation";
-
-const smoothEase = [0.4, 0, 0.2, 1] as const;
 
 function getPostBodyParagraphs(body: string): string[] {
   return body.split("\n\n").filter(Boolean);
@@ -29,11 +27,7 @@ export default function BlogPostContent() {
   if (!slug || !isValidSlug) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center"
-        >
+        <div className="entra-css text-center">
           <p className="text-body-lg text-gray-600 mb-4">
             {t("meta.backToBlog")}
           </p>
@@ -44,7 +38,7 @@ export default function BlogPostContent() {
             <ArrowLeft className="h-4 w-4" />
             {t("meta.backToBlog")}
           </Link>
-        </motion.div>
+        </div>
       </div>
     );
   }
@@ -53,18 +47,13 @@ export default function BlogPostContent() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Banner: mismo ancho que el resto (container-section + content-section), fondo abs3.png */}
-      <motion.header
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: smoothEase }}
-        className="pt-24 sm:pt-20 md:pt-24 pb-8 md:pb-12"
-      >
+      {/* Banner: mismo ancho que el resto (container-section + content-section), fondo abs3.jpg */}
+      <header className="entra-css pt-24 sm:pt-20 md:pt-24 pb-8 md:pb-12">
         <div className="container-section">
           <div className="content-section">
             <div className="relative min-h-[280px] sm:min-h-[320px] md:min-h-[360px] rounded-2xl overflow-hidden">
               <Image
-                src="/abs3.png"
+                src="/abs3.jpg"
                 alt=""
                 fill
                 className="object-cover object-top"
@@ -95,17 +84,15 @@ export default function BlogPostContent() {
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <div className="container-section py-10 md:py-14">
         <div className="content-section">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-14">
             {/* Contenido principal */}
-            <motion.article
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15, ease: smoothEase }}
-              className="flex-1 min-w-0"
+            <article
+              className="entra-css flex-1 min-w-0"
+              style={{ "--entra-retraso": "0.15s" } as CSSProperties}
             >
               <div className="mb-8 overflow-hidden rounded-2xl">
                 <PortadaBlog slug={slug} />
@@ -118,15 +105,13 @@ export default function BlogPostContent() {
                   {paragraph}
                 </p>
               ))}
-            </motion.article>
+            </article>
 
             {/* Sidebar: lista de posts con miniaturas, sticky; oculto en mobile */}
             <aside className="hidden lg:block lg:w-[280px] xl:w-[300px] shrink-0">
-              <motion.div
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.25, ease: smoothEase }}
-                className="lg:sticky lg:top-24"
+              <div
+                className="entra-css lg:sticky lg:top-24"
+                style={{ "--entra-retraso": "0.25s" } as CSSProperties}
               >
                 <h2 className="text-base font-normal text-[#060C20] mb-4">
                   {t("meta.allPosts")}
@@ -155,7 +140,7 @@ export default function BlogPostContent() {
                     );
                   })}
                 </nav>
-              </motion.div>
+              </div>
             </aside>
           </div>
         </div>

@@ -30,7 +30,7 @@ export function AboutSection() {
     <section id="nosotros" className="py-20 md:py-28 overflow-hidden bg-white">
       <div className="container-section">
         <div className="content-section">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] xl:grid-cols-2 gap-12 xl:gap-20">
             {/* ── LEFT COLUMN ── */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
@@ -60,7 +60,7 @@ export function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.6, delay: 0.1, ease: smoothEase }}
-                  className="text-heading-1 text-gray-900 leading-tight max-w-[520px]"
+                  className="titulo-seccion max-w-[640px] text-gray-900"
                 >
                   {t("home.about.title")}
                 </motion.h2>
@@ -98,13 +98,14 @@ export function AboutSection() {
 
             {/* ── RIGHT COLUMN ── */}
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
-              {/* ① ORBIT WIDGET — hidden on mobile */}
+              {/* ① ORBIT WIDGET — sólo desde xl: entre 1024 y 1279 el titular toma más columna y la
+                  tarjeta necesita todo el ancho que queda (Alexander, 2026-10-23) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: 0.3, ease: smoothEase }}
-                className="hidden lg:flex flex-shrink-0 w-full lg:w-[230px] h-[200px] lg:h-[230px] bg-[#f2f3f5] rounded-2xl items-center justify-center relative"
+                className="hidden xl:flex flex-shrink-0 w-full lg:w-[230px] h-[200px] lg:h-[230px] bg-[#f2f3f5] rounded-2xl items-center justify-center relative"
               >
                 <div className="absolute w-[158px] h-[158px] lg:w-[182px] lg:h-[182px] rounded-full border border-gray-200 pointer-events-none" />
                 <div className="absolute w-[86px] h-[86px] lg:w-[99px] lg:h-[99px] rounded-full border border-gray-200 pointer-events-none" />

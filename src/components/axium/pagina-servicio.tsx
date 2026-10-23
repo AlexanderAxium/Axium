@@ -3,13 +3,13 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   type CSSProperties,
   Fragment,
   useEffect,
+  useId,
   useRef,
   useState,
 } from "react";
@@ -81,8 +81,8 @@ function Grano({ opacidad = 0.07 }: { opacidad?: number }) {
   );
 }
 
-const h2Cls =
-  "text-[36px] leading-[1.05] tracking-[-0.03em] text-[#060C20] md:text-[48px]";
+// la misma escala que los títulos del inicio (.titulo-seccion en globals.css)
+const h2Cls = "titulo-seccion text-[#060C20]";
 
 const sinMovimiento = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -494,7 +494,7 @@ function Capas({
                 {tambien}
               </p>
             </div>
-            <div className="relative mt-10 lg:mt-20 lg:grid lg:grid-cols-[300px_minmax(0,1fr)]">
+            <div className="relative mt-8 md:mt-10 lg:mt-20 lg:grid lg:grid-cols-[300px_minmax(0,1fr)]">
               <svg
                 width={ancho}
                 height={medida.alto || 1}
@@ -570,7 +570,7 @@ function Capas({
                     key={c.nombre}
                     onMouseEnter={() => setFoco(i)}
                     onMouseLeave={() => setFoco(null)}
-                    className="grid gap-3 border-t border-white/80 py-5 md:grid-cols-[150px_minmax(0,1fr)] md:items-center md:gap-6 lg:pl-6"
+                    className="grid gap-2.5 border-t border-white/80 py-4 md:grid-cols-[150px_minmax(0,1fr)] md:items-center md:gap-6 md:py-5 lg:pl-6"
                   >
                     <p
                       className="text-[15px] font-medium transition-colors duration-300"
@@ -578,7 +578,7 @@ function Capas({
                     >
                       {c.nombre}
                     </p>
-                    <ul className="flex flex-wrap gap-2">
+                    <ul className="flex flex-wrap gap-1.5 md:gap-2">
                       {c.items.map((it) => {
                         const marca = it.slug
                           ? LOGOS_STACK[it.slug]
@@ -586,7 +586,7 @@ function Capas({
                         return (
                           <li
                             key={it.nombre}
-                            className={`inline-flex h-9 items-center gap-2 rounded-full bg-white/75 text-[14px] text-[#060C20] ring-1 ring-[#060C20]/[0.06] ${
+                            className={`inline-flex h-8 items-center gap-2 rounded-full bg-white/75 text-[13.5px] text-[#060C20] md:h-9 md:text-[14px] ring-1 ring-[#060C20]/[0.06] ${
                               marca ? "pr-3.5 pl-1.5" : "px-3.5"
                             }`}
                           >
@@ -657,7 +657,7 @@ function Flujo({
           {i > 0 && (
             <div
               aria-hidden="true"
-              className="relative mx-auto h-10 w-px shrink-0 bg-white/20 lg:mx-0 lg:h-px lg:w-12 lg:self-center"
+              className="relative mx-auto h-6 w-px shrink-0 bg-white/20 sm:h-10 lg:mx-0 lg:h-px lg:w-12 lg:self-center"
             >
               <span
                 className="flujo-punto absolute top-0 left-1/2 size-1.5 -translate-x-1/2 rounded-full lg:top-1/2 lg:left-0 lg:-translate-y-1/2"
@@ -670,7 +670,7 @@ function Flujo({
               />
             </div>
           )}
-          <div className="min-w-0 flex-1 rounded-lg bg-white/[0.05] p-5 ring-1 ring-white/10 md:p-6">
+          <div className="min-w-0 flex-1 rounded-[14px] bg-white/[0.05] p-4 ring-1 ring-white/10 sm:p-5 md:p-6">
             <p className="text-[17px] leading-[1.25] font-medium text-white">
               {c.titulo}
             </p>
@@ -715,6 +715,65 @@ function Flujo({
 }
 
 /**
+ * El reto y lo que hicimos: dos tarjetas de vidrio lado a lado en escritorio; en el celular, una
+ * sola con un selector de dos pestañas encima (el acordeón numerado de elsewhen.com, 2026-10-23),
+ * para que la sección no sean dos bloques de texto seguidos.
+ */
+function RetoHecho({
+  partes,
+}: { partes: { titulo: string; texto: string }[] }) {
+  const [activa, setActiva] = useState(0);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  return (
+    <div className="mt-8 lg:mt-28 lg:max-w-[760px]">
+      <div
+        role="tablist"
+        className="grid grid-cols-2 gap-1 rounded-full bg-white/[0.07] p-1 ring-1 ring-white/12 lg:hidden"
+      >
+        {partes.map((p, i) => (
+          <button
+            key={p.titulo}
+            type="button"
+            role="tab"
+            id={`${uid}-t${i}`}
+            aria-selected={activa === i}
+            aria-controls={`${uid}-p${i}`}
+            onClick={() => setActiva(i)}
+            className={`h-10 rounded-full text-[14px] font-medium transition-colors duration-300 ${
+              activa === i
+                ? "bg-white text-[#060C20]"
+                : "text-white/75 hover:text-white"
+            }`}
+          >
+            {p.titulo}
+          </button>
+        ))}
+      </div>
+      <div className="mt-3 grid gap-4 lg:mt-0 lg:grid-cols-2">
+        {partes.map((p, i) => (
+          <div
+            key={p.titulo}
+            id={`${uid}-p${i}`}
+            role="tabpanel"
+            aria-labelledby={`${uid}-t${i}`}
+            className={`rounded-[18px] bg-white/[0.07] p-5 ring-1 ring-white/12 backdrop-blur-md md:p-7 lg:block ${
+              activa === i ? "" : "hidden"
+            }`}
+          >
+            <h3 className="text-[15px] font-medium text-white max-lg:sr-only">
+              {p.titulo}
+            </h3>
+            <p className="text-[15.5px] leading-[1.65] text-white/80 lg:mt-3">
+              {p.texto}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
  * Cómo trabajamos, sobre un plano isométrico: cada paso queda enmarcado por un rombo de la misma
  * geometría que los gráficos del hero, y una línea azul avanza de izquierda a derecha una sola vez
  * encendiendo el nodo de cada paso al pasar (BrandVM lo hace con círculos; esto es lo nuestro).
@@ -733,16 +792,16 @@ function Proceso({
   const [ref, visto] = useVisto<HTMLOListElement>();
   const N = pasos.length;
   return (
+    // en claro desde el 2026-10-23 (la refinada con elsewhen.com de referencia): una sola sección
+    // oscura además del hero, el proyecto en detalle; antes se alternaban cinco
     <section
-      data-nav-theme="dark"
-      className="relative overflow-hidden text-white"
-      style={{ backgroundColor: NOCHE }}
+      data-nav-theme="light"
+      className="relative overflow-hidden bg-[#F6F7FA] text-[#060C20]"
     >
-      <Grano opacidad={0.06} />
       <div className="container-section relative">
         <div className="content-section py-20 md:py-28">
           <h2
-            className="mx-auto max-w-[20ch] text-center text-[36px] leading-[1.05] tracking-[-0.03em] md:text-[48px]"
+            className="titulo-seccion max-w-[20ch] md:mx-auto md:text-center"
             style={titular}
           >
             {titulo}
@@ -755,7 +814,7 @@ function Proceso({
             {/* la línea: base tenue y la que avanza (vertical en el celular) */}
             <span
               aria-hidden="true"
-              className="absolute top-2 bottom-2 left-[6px] w-px bg-white/12 md:top-[87px] md:right-0 md:bottom-auto md:left-0 md:h-px md:w-auto"
+              className="absolute top-2 bottom-2 left-[6px] w-px bg-[#060C20]/12 md:top-[87px] md:right-0 md:bottom-auto md:left-0 md:h-px md:w-auto"
             />
             <span
               aria-hidden="true"
@@ -777,13 +836,13 @@ function Proceso({
                   <polygon
                     points="100,1 199,58 100,115 1,58"
                     fill="none"
-                    stroke="rgba(255,255,255,.09)"
+                    stroke="rgba(6,12,32,.12)"
                     strokeWidth="0.6"
                     vectorEffect="non-scaling-stroke"
                   />
                 </svg>
                 <div className="relative md:flex md:h-[60px] md:flex-col md:justify-end">
-                  <p className="text-[13px] text-white/50">{i + 1}</p>
+                  <p className="text-[13px] text-[#060C20]/65">{i + 1}</p>
                   <h3 className="mt-1 text-[20px] leading-[1.25] font-medium">
                     {p.titulo}
                   </h3>
@@ -801,12 +860,12 @@ function Proceso({
                     <polygon points="12,0.5 23.5,7 12,13.5 0.5,7" />
                   </svg>
                 </span>
-                <p className="relative mt-3 text-[15.5px] leading-[1.6] text-white/70 md:mt-6 md:max-w-[30ch]">
+                <p className="relative mt-3 text-[15.5px] leading-[1.6] text-[#060C20]/70 md:mt-6 md:max-w-[30ch]">
                   {p.texto}
                 </p>
                 {p.entrega && (
-                  <p className="relative mt-4 text-[14px] leading-[1.5] text-white md:max-w-[30ch]">
-                    <span className="text-white/55">{tellevas}</span>{" "}
+                  <p className="relative mt-4 text-[14px] leading-[1.5] text-[#060C20] md:max-w-[30ch]">
+                    <span className="text-[#060C20]/65">{tellevas}</span>{" "}
                     {p.entrega}
                   </p>
                 )}
@@ -815,12 +874,12 @@ function Proceso({
           </ol>
           <style>{`
             .proc-avance { transform-origin: top; transform: scaleY(0); }
-            .proc-nodo polygon { fill: rgba(255,255,255,.18); transition: fill .5s ease, filter .5s ease; }
+            .proc-nodo polygon { fill: rgba(6,12,32,.16); transition: fill .5s ease, filter .5s ease; }
             @media (min-width: 768px) { .proc-avance { transform-origin: left; transform: scaleX(0); } }
             .proc[data-visto="true"] .proc-avance { animation: proc-y 2.4s cubic-bezier(.65,0,.35,1) .2s forwards; }
             @media (min-width: 768px) { .proc[data-visto="true"] .proc-avance { animation-name: proc-x; } }
             .proc[data-visto="true"] .proc-nodo polygon {
-              fill: ${AZUL_LOGO}; filter: drop-shadow(0 0 6px rgba(0,146,209,.9));
+              fill: ${AZUL_LOGO}; filter: drop-shadow(0 0 6px rgba(0,146,209,.55));
               transition-delay: calc(.2s + 2.4s * (var(--i) + .5) / var(--n));
             }
             @keyframes proc-x { to { transform: scaleX(1); } }
@@ -967,7 +1026,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                 </Link>
               </div>
             </div>
-            <div className="mx-auto aspect-[185/202] w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[400px]">
+            <div className="mx-auto aspect-[185/202] w-full max-w-[200px] sm:max-w-[300px] lg:max-w-[400px]">
               <Grafico id={id} toque={toque} />
             </div>
           </div>
@@ -1027,34 +1086,22 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                     {t(`${C}.detalle`)} · {detalle.cliente}
                   </p>
                   <h2
-                    className="mt-3 max-w-[18ch] text-[32px] leading-[1.06] tracking-[-0.03em] md:text-[44px]"
+                    className="titulo-seccion mt-3 max-w-[18ch]"
                     style={titular}
                   >
                     {t(`${KD}.titulo`)}
                   </h2>
-                  <div className="mt-8 grid gap-4 lg:mt-28 lg:max-w-[760px] lg:grid-cols-2">
-                    {(["reto", "hicimos"] as const).map((k) => (
-                      <div
-                        key={k}
-                        className="rounded-[18px] bg-white/[0.07] p-6 ring-1 ring-white/12 backdrop-blur-md md:p-7"
-                      >
-                        <h3 className="text-[15px] font-medium text-white">
-                          {t(`${C}.${k}`)}
-                        </h3>
-                        <p className="mt-3 text-[15.5px] leading-[1.65] text-white/80">
-                          {t(`${KD}.${k}`)}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                  <RetoHecho
+                    partes={(["reto", "hicimos"] as const).map((k) => ({
+                      titulo: t(`${C}.${k}`),
+                      texto: t(`${KD}.${k}`),
+                    }))}
+                  />
                 </div>
               </div>
             ) : (
               <>
-                <h2
-                  className="max-w-[22ch] text-[34px] leading-[1.06] tracking-[-0.03em] md:text-[46px]"
-                  style={titular}
-                >
+                <h2 className="titulo-seccion max-w-[22ch]" style={titular}>
                   {t(`${KD}.titulo`)}
                 </h2>
                 <p className="mt-5 max-w-[60ch] text-[16px] leading-[1.7] text-white/70 md:text-[17px]">
@@ -1096,14 +1143,14 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
 
             {conProyecto && (
               <div className="mt-10 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="mr-1 text-[14px] text-white/55">
+                <div className="-mx-4 flex snap-x scroll-px-4 items-center gap-2 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
+                  <span className="mr-1 shrink-0 snap-start text-[14px] text-white/60">
                     {t(`${C}.incluyo`)}
                   </span>
                   {textos(`${KD}.incluyo`).map((s) => (
                     <span
                       key={s}
-                      className={`${chip} border-white/20 text-white/85`}
+                      className={`${chip} shrink-0 snap-start border-white/20 text-white/85`}
                     >
                       {s}
                     </span>
@@ -1145,7 +1192,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
 
       {/* 6 · Más trabajo: la portada enseña su vídeo al pasar el ratón (la de «Nuestro trabajo») */}
       {casos.length > 0 && (
-        <section className="bg-[#F6F7FA]">
+        <section className="bg-white">
           <div className="container-section">
             <div className="content-section py-20 md:py-28">
               <h2 className={h2Cls} style={titular}>
@@ -1158,9 +1205,9 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                   return (
                     <article
                       key={caso.slug}
-                      className="grid overflow-hidden rounded-lg bg-white ring-1 ring-[#060C20]/[0.06] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]"
+                      className="grid overflow-hidden rounded-[20px] bg-[#F6F7FA] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]"
                     >
-                      <div className="flex flex-col p-7 md:p-10">
+                      <div className="flex flex-col p-6 md:p-10">
                         <p className="text-[15px] font-medium text-[#060C20]">
                           {caso.cliente}
                         </p>
@@ -1185,7 +1232,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                             ))}
                           </ul>
                         )}
-                        <div className="mt-7 flex flex-wrap gap-2">
+                        <div className="mt-7 hidden flex-wrap gap-2 sm:flex">
                           {textos(`${kc}.incluyo`).map((s) => (
                             <span
                               key={s}
@@ -1197,7 +1244,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                         </div>
                         <Link
                           href={`/casos-de-exito/${caso.slug}`}
-                          className="mt-9 inline-flex h-11 w-fit items-center rounded-full bg-[#060C20] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[#0B1838] lg:mt-auto"
+                          className="mt-7 inline-flex h-11 w-fit items-center rounded-full bg-[#060C20] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[#0B1838] sm:mt-9 lg:mt-auto"
                         >
                           {t(`${C}.verCaso`)}
                         </Link>
@@ -1213,6 +1260,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                         etiqueta={t(`${C}.verCaso`)}
                         circulo={tl("portfolio.verProyecto")}
                         className="aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[400px]"
+                        marco="order-first lg:order-none"
                         sizes="(min-width: 1024px) 50vw, 100vw"
                       />
                     </article>
@@ -1225,23 +1273,23 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
       )}
 
       {/* 7 · El puente al servicio relacionado */}
-      <section data-nav-theme="dark" style={{ backgroundColor: AZUL }}>
+      <section data-nav-theme="light" className="bg-[#F6F7FA]">
         <div className="container-section">
-          <div className="content-section grid items-center gap-10 py-16 text-white md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+          <div className="content-section grid items-center gap-10 py-20 md:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
             <div>
               <h2
-                className="max-w-[20ch] text-[32px] leading-[1.08] tracking-[-0.03em] md:text-[42px]"
+                className="titulo-seccion max-w-[20ch] text-[#060C20]"
                 style={titular}
               >
                 {t(`${K}.puente.titulo`)}
               </h2>
-              <p className="mt-4 max-w-[46ch] text-[16px] leading-[1.6] text-white md:text-[17px]">
+              <p className="mt-5 max-w-[46ch] text-[16px] leading-[1.6] text-[#060C20]/70 md:text-[17px]">
                 {t(`${K}.puente.texto`)}
               </p>
             </div>
             <Link
               href={rutaServicio(relacionado)}
-              className="group flex items-center gap-6 rounded-lg p-5 transition-transform duration-500 hover:-translate-y-0.5 md:p-6"
+              className="group flex items-center gap-6 rounded-[20px] p-5 text-white transition-transform duration-500 hover:-translate-y-0.5 md:p-6"
               style={{ backgroundColor: NOCHE }}
             >
               <span className="block aspect-[185/202] w-[96px] shrink-0 md:w-[116px]">

@@ -6,10 +6,15 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useCasesWithLocale } from "@/lib/case-translations";
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  type CSSProperties,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 /**
  * Múltiplo de las tres anchuras de rejilla (3 · 2 · 1), para que ninguna página
@@ -354,10 +359,13 @@ function PortfolioCard({
   const { t } = useTranslation("landing");
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: Math.min(index * 0.03, 0.24) }}
+    <div
+      className="entra-css"
+      style={
+        {
+          "--entra-retraso": `${Math.min(index * 0.03, 0.24)}s`,
+        } as CSSProperties
+      }
     >
       <MagneticCursorArrow label={t("portfolio.verProyecto")}>
         <Link href={`/casos-de-exito/${slug}`} className="group block">
@@ -386,7 +394,7 @@ function PortfolioCard({
           </h2>
         </Link>
       </MagneticCursorArrow>
-    </motion.div>
+    </div>
   );
 }
 
@@ -552,40 +560,40 @@ export function PortfolioPageContent() {
     <main className="min-h-screen bg-gray-50">
       <section
         id="page-hero"
-        className="relative min-h-[40vh] flex flex-col justify-end pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('/abs12.png')" }}
+        className="relative min-h-[40vh] flex flex-col justify-end pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden"
       >
+        {/* con next/image y priority: como fondo CSS era un PNG de 2,9 MB que el navegador
+            descubría tarde, y la página tardaba 21 s en pintarse en un 4G lento (2026-10-23) */}
+        <Image
+          src="/abs12.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 container-section">
           <div className="content-section">
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="text-overline text-white/80 mb-3 tracking-widest uppercase"
-            >
+            <p className="entra-css text-overline text-white/80 mb-3 tracking-widest uppercase">
               {t("portfolio.nuestroTrabajo")}
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.08 }}
-              className="text-display text-white mb-3 max-w-2xl"
+            </p>
+            <h1
+              className="entra-css text-display text-white mb-3 max-w-2xl"
+              style={{ "--entra-retraso": "0.08s" } as CSSProperties}
             >
               {t("portfolio.titulo")}{" "}
               <span className="text-white">{t("portfolio.tituloBold")}</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-body text-white/70 max-w-xl"
+            </h1>
+            <p
+              className="entra-css text-body text-white/70 max-w-xl"
+              style={{ "--entra-retraso": "0.15s" } as CSSProperties}
             >
               {t("portfolio.subtitulo", {
                 count: String(cases.length),
                 industries: String(INDUSTRY_FILTERS.length),
               })}
-            </motion.p>
+            </p>
           </div>
         </div>
       </section>

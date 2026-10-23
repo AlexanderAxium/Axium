@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/jarumi.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import JarumiContent from "./JarumiContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/jarumi",
-  imagen: data.image,
-});
+export const metadata = metaCaso("jarumi", data);
 
 export default function JarumiPage() {
-  return <JarumiContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("jarumi", data)} />
+      <JarumiContent />
+    </>
+  );
 }

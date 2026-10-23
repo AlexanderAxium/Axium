@@ -30,15 +30,18 @@ export function MagneticCursorArrow({
   const x = useSpring(rawX, springCfg);
   const y = useSpring(rawY, springCfg);
 
-  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    if (!cardRef.current) return;
+  // Solo con ratón (2026-10-23, Alexander: «en nuestro trabajo cuando aprieto no me lleva a ningún
+  // lugar»). Con eventos de ratón, el toque en iOS dispara mouseenter, el círculo aparece y Safari
+  // toma ese primer toque como «hover»: hacía falta un segundo toque para entrar al enlace
+  function onMouseMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse" || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     rawX.set(e.clientX - rect.left - ARROW_SIZE / 2);
     rawY.set(e.clientY - rect.top - ARROW_SIZE / 2);
   }
 
-  function onMouseEnter(e: React.MouseEvent<HTMLDivElement>) {
-    if (!cardRef.current) return;
+  function onMouseEnter(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse" || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const nx = e.clientX - rect.left - ARROW_SIZE / 2;
     const ny = e.clientY - rect.top - ARROW_SIZE / 2;
@@ -53,9 +56,9 @@ export function MagneticCursorArrow({
     <div
       ref={cardRef}
       className={`relative ${className}`}
-      onMouseMove={onMouseMove}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={() => setHovered(false)}
+      onPointerMove={onMouseMove}
+      onPointerEnter={onMouseEnter}
+      onPointerLeave={() => setHovered(false)}
     >
       {children}
 

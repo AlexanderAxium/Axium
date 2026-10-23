@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/web-scraping-ai.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import WebScrapingAiContent from "./WebScrapingAiContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/web-scraping-ai",
-  imagen: data.image,
-});
+export const metadata = metaCaso("web-scraping-ai", data);
 
 export default function WebScrapingAiPage() {
-  return <WebScrapingAiContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("web-scraping-ai", data)} />
+      <WebScrapingAiContent />
+    </>
+  );
 }

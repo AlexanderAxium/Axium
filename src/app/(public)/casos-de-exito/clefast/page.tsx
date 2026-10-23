@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/clefast.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import ClefastContent from "./ClefastContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/clefast",
-  imagen: data.image,
-});
+export const metadata = metaCaso("clefast", data);
 
 export default function ClefastPage() {
-  return <ClefastContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("clefast", data)} />
+      <ClefastContent />
+    </>
+  );
 }

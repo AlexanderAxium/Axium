@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/firstautomation.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import FirstautomationContent from "./FirstautomationContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/firstautomation",
-  imagen: data.image,
-});
+export const metadata = metaCaso("firstautomation", data);
 
 export default function FirstautomationPage() {
-  return <FirstautomationContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("firstautomation", data)} />
+      <FirstautomationContent />
+    </>
+  );
 }

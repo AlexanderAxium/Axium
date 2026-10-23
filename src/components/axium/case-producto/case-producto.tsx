@@ -3,7 +3,7 @@
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import {
   type CSSProperties,
@@ -15,6 +15,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { portadaOptimizada, useCerca } from "~/components/axium/video-portada";
 import {
   Carousel,
   CarouselContent,
@@ -146,6 +147,7 @@ function VideoBucle({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [activo, setActivo] = useState(!media);
+  const cerca = useCerca(ref);
   useEffect(() => {
     if (!media) return;
     const mq = window.matchMedia(media);
@@ -156,7 +158,7 @@ function VideoBucle({
   }, [media]);
   useEffect(() => {
     const v = ref.current;
-    if (!v || !activo) return;
+    if (!v || !activo || !cerca) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const io = new IntersectionObserver(
       ([e]) => {
@@ -167,13 +169,13 @@ function VideoBucle({
     );
     io.observe(v);
     return () => io.disconnect();
-  }, [activo]);
+  }, [activo, cerca]);
   return (
     <video
       ref={ref}
       className={`absolute inset-0 size-full object-cover ${className}`}
-      src={activo ? src : undefined}
-      poster={poster}
+      src={activo && cerca ? src : undefined}
+      poster={cerca ? portadaOptimizada(poster) : undefined}
       aria-label={alt}
       muted
       loop
@@ -648,6 +650,36 @@ function espacio(prev: BloqueProducto | undefined, b: BloqueProducto) {
   return "mt-20 md:mt-32";
 }
 
+/**
+ * La foto de la cabecera, una para el celular y otra desde sm, en un <picture>: con dos <Image
+ * priority> el navegador bajaba las dos aunque una estuviera oculta (925 KB en Rematch, 2026-10-23).
+ */
+function HeroFoto({ src, srcMovil, alt }: CaseProductoProps["heroe"]) {
+  // calidad 80 y no 90: en AVIF no se distingue y la de Rematch bajó de 433 a 351 KB
+  const comun = {
+    alt,
+    fill: true,
+    priority: true,
+    quality: 80,
+    sizes: "100vw",
+  };
+  const {
+    props: { srcSet: escritorio },
+  } = getImageProps({ ...comun, src });
+  const {
+    props: { srcSet: movil, ...resto },
+  } = getImageProps({ ...comun, src: srcMovil });
+  return (
+    <picture>
+      <source media="(min-width: 640px)" srcSet={escritorio} sizes="100vw" />
+      <source srcSet={movil} sizes="100vw" />
+      {/* getImageProps no trae fetchPriority: sin él, la foto esperaba detrás del JavaScript */}
+      {/* biome-ignore lint/a11y/useAltText: el alt viene en `resto` */}
+      <img {...resto} fetchPriority="high" className="object-cover" />
+    </picture>
+  );
+}
+
 export function CaseProducto(p: CaseProductoProps) {
   const metaCelda = "flex flex-col gap-2";
   const etiqueta = "text-[17px] font-medium text-white md:text-[19px]";
@@ -690,24 +722,7 @@ export function CaseProducto(p: CaseProductoProps) {
           <div className="relative mt-12 aspect-square w-full overflow-hidden sm:aspect-[16/10] md:mt-20 lg:aspect-[1.8/1]">
             {/* La foto se asienta sin fundido: la opacidad retrasaría el LCP */}
             <Asentar>
-              <Image
-                src={p.heroe.srcMovil}
-                alt={p.heroe.alt}
-                fill
-                priority
-                quality={90}
-                sizes="100vw"
-                className="object-cover sm:hidden"
-              />
-              <Image
-                src={p.heroe.src}
-                alt={p.heroe.alt}
-                fill
-                priority
-                quality={90}
-                sizes="100vw"
-                className="hidden object-cover sm:block"
-              />
+              <HeroFoto {...p.heroe} />
             </Asentar>
           </div>
           <div className="container-section">

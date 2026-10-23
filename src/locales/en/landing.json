@@ -183,10 +183,6 @@
           "a": "It depends on the scope. A visual identity takes 2 to 4 weeks, a first working product 6 to 10 weeks and a full platform 3 to 6 months. We work in stages, so you see progress from the first weeks."
         },
         {
-          "q": "Do the code and designs belong to me?",
-          "a": "Yes. We work in your repository from day one, with the full history and the technical decisions documented, and designs are delivered editable and in your name."
-        },
-        {
           "q": "Can you issue SUNAT electronic receipts and invoices?",
           "a": "Yes. We integrate electronic invoicing with your online store, your system or your ERP: every sale issues the receipt or invoice and sends it to SUNAT, without copying data by hand."
         },
@@ -201,10 +197,6 @@
         {
           "q": "Do you work with companies outside Lima?",
           "a": "Yes. We are a team in Lima and work remotely with companies across Peru and in other countries, with meetings over video call."
-        },
-        {
-          "q": "Which technologies do you use?",
-          "a": "Current technologies proven in production: Next.js and React for websites and dashboards, React Native for iOS and Android apps, Node.js and PostgreSQL on the server, and the AI model that best fits each case."
         },
         {
           "q": "How do we start?",
