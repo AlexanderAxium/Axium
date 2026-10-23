@@ -40,6 +40,8 @@ import { useTranslation } from "~/hooks/useTranslation";
 const IMG = "/images/proyects/bookit";
 
 type Copy = {
+  /** El explicativo de 45 s de sus redes (SAAS/videos), con voz: suena sólo si se toca. */
+  video: { texto: string; alt: string; reproducir: string };
   titulo: string;
   heroeAlt: string;
   meta: CaseProductoProps["meta"];
@@ -68,6 +70,12 @@ type Copy = {
 
 const COPY: Record<StoryLang, Copy> = {
   es: {
+    video: {
+      texto:
+        "Bookit en 45 segundos, el video que hicimos para sus redes: una clienta del estudio demo Malva reserva sola desde el celular, ese horario deja de ofrecerse, la cita entra a la agenda con su recordatorio programado y el cobro pasa a la caja del mes.",
+      alt: "Video de 45 segundos de Bookit: una reserva desde el celular, el horario que se cierra para las demás, la agenda con su recordatorio y la caja del mes",
+      reproducir: "Ver el video (45 s)",
+    },
     titulo:
       "Una plataforma para que cada negocio reciba reservas en su propia web",
     heroeAlt:
@@ -193,6 +201,12 @@ const COPY: Record<StoryLang, Copy> = {
       "Tienda online, punto de venta, inventario y facturación SUNAT en un solo sistema",
   },
   en: {
+    video: {
+      texto:
+        "Bookit in 45 seconds, the video we made for its social channels (in Spanish): a client of the demo studio Malva books on her own from her phone, that slot stops being offered, the appointment lands in the calendar with its reminder scheduled, and the payment goes into the month's cash book.",
+      alt: "45-second Bookit video: a booking from a phone, the slot that closes for everyone else, the calendar with its reminder and the month's cash book",
+      reproducir: "Watch the video (45 s)",
+    },
     titulo: "A platform for every business to take bookings on its own website",
     heroeAlt:
       "At a clinic's front desk, a professional checks a booking on their phone",
@@ -314,6 +328,12 @@ const COPY: Record<StoryLang, Copy> = {
       "Online store, point of sale, inventory and SUNAT invoicing in one system",
   },
   pt: {
+    video: {
+      texto:
+        "O Bookit em 45 segundos, o vídeo que fizemos para as suas redes (em espanhol): uma cliente do estúdio de exemplo Malva agenda sozinha pelo celular, esse horário deixa de ser oferecido, o atendimento entra na agenda com o lembrete programado e o pagamento vai para o caixa do mês.",
+      alt: "Vídeo de 45 segundos do Bookit: um agendamento pelo celular, o horário que se fecha para as demais, a agenda com o lembrete e o caixa do mês",
+      reproducir: "Ver o vídeo (45 s)",
+    },
     titulo:
       "Uma plataforma para que cada negócio receba reservas no seu próprio site",
     heroeAlt:
@@ -480,6 +500,21 @@ function bloques(c: Copy): BloqueProducto[] {
       },
       ratio: 2,
       ratioMovil: 4 / 3,
+    },
+    // El explicativo de 45 s de sus redes, con voz y subtítulos: suena sólo si se toca (2026-10-23)
+    {
+      kind: "cuadrada-texto",
+      medio: {
+        tipo: "video",
+        src: `${IMG}/bk-video-45s.mp4`,
+        poster: `${IMG}/bk-video-45s.jpg`,
+        alt: c.video.alt,
+        conSonido: {
+          reproducir: c.video.reproducir,
+          subtitulos: `${IMG}/bk-video-45s.vtt`,
+        },
+      },
+      body: c.video.texto,
     },
     { kind: "texto", lado: "izq", title: c.enfoque[0], body: c.enfoque[1] },
     // ── Las funciones: la única tira de la ficha ──

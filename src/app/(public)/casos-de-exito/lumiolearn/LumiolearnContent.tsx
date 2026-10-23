@@ -39,6 +39,8 @@ import { useTranslation } from "~/hooks/useTranslation";
 const IMG = "/images/proyects/lumiolearn";
 
 type Copy = {
+  /** El explicativo de 45 s de sus redes (SAAS/videos), con voz: suena sólo si se toca. */
+  video: { texto: string; alt: string; reproducir: string };
   titulo: string;
   heroeAlt: string;
   meta: CaseProductoProps["meta"];
@@ -64,6 +66,12 @@ type Copy = {
 
 const COPY: Record<StoryLang, Copy> = {
   es: {
+    video: {
+      texto:
+        "LumioLearn en 45 segundos, el video que hicimos para sus redes: la academia demo Norte publica su curso, una alumna paga y entra, avanza desde el celular hasta el 100 % y descarga su certificado, y la academia lo ve en su panel.",
+      alt: "Video de 45 segundos de LumioLearn: el curso publicado, la alumna que paga y entra, su avance hasta el 100 %, su certificado y el panel de la academia",
+      reproducir: "Ver el video (45 s)",
+    },
     titulo:
       "Una plataforma para que cada academia enseñe y venda con su propia marca",
     heroeAlt:
@@ -170,6 +178,12 @@ const COPY: Record<StoryLang, Copy> = {
     nextTagline: "Reservas, agenda y cobros en la web de cada negocio",
   },
   en: {
+    video: {
+      texto:
+        "LumioLearn in 45 seconds, the video we made for its social channels (in Spanish): the demo academy Norte publishes its course, a student pays and gets in, progresses from her phone to 100 % and downloads her certificate, and the academy sees it all on its dashboard.",
+      alt: "45-second LumioLearn video: the published course, the student who pays and gets in, her progress to 100 %, her certificate and the academy's dashboard",
+      reproducir: "Watch the video (45 s)",
+    },
     titulo:
       "A platform for every academy to teach and sell under its own brand",
     heroeAlt:
@@ -276,6 +290,12 @@ const COPY: Record<StoryLang, Copy> = {
       "Bookings, calendar and payments on each business's own website",
   },
   pt: {
+    video: {
+      texto:
+        "O LumioLearn em 45 segundos, o vídeo que fizemos para as suas redes (em espanhol): a academia de exemplo Norte publica o seu curso, uma aluna paga e entra, avança pelo celular até 100 % e baixa o seu certificado, e a academia acompanha tudo no painel.",
+      alt: "Vídeo de 45 segundos do LumioLearn: o curso publicado, a aluna que paga e entra, o seu avanço até 100 %, o certificado e o painel da academia",
+      reproducir: "Ver o vídeo (45 s)",
+    },
     titulo:
       "Uma plataforma para que cada academia ensine e venda com sua própria marca",
     heroeAlt:
@@ -425,6 +445,21 @@ function bloques(c: Copy): BloqueProducto[] {
       },
       ratio: 2,
       ratioMovil: 4 / 3,
+    },
+    // El explicativo de 45 s de sus redes, con voz y subtítulos: suena sólo si se toca (2026-10-23)
+    {
+      kind: "cuadrada-texto",
+      medio: {
+        tipo: "video",
+        src: `${IMG}/lu-video-45s.mp4`,
+        poster: `${IMG}/lu-video-45s.jpg`,
+        alt: c.video.alt,
+        conSonido: {
+          reproducir: c.video.reproducir,
+          subtitulos: `${IMG}/lu-video-45s.vtt`,
+        },
+      },
+      body: c.video.texto,
     },
     { kind: "texto", lado: "izq", title: c.enfoque[0], body: c.enfoque[1] },
     // ── Por dentro: la única tira de la ficha ──

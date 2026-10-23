@@ -54,6 +54,8 @@ type PieClave =
   | "liga";
 
 type Copy = {
+  /** El explicativo de 45 s de sus redes (SAAS/videos), con voz: suena sólo si se toca. */
+  video: { texto: string; alt: string; reproducir: string };
   titulo: string;
   heroeAlt: string;
   meta: CaseProductoProps["meta"];
@@ -116,6 +118,12 @@ const CITA = {
 
 const COPY: Record<StoryLang, Copy> = {
   es: {
+    video: {
+      texto:
+        "Rematch en 45 segundos, el video que hicimos para sus redes: en el club demo Brisa Pádel, una jugadora reserva la Cancha 2 desde el celular, esa hora sale tachada para los demás, el club verifica el pago y los 80 soles entran a la caja del día.",
+      alt: "Video de 45 segundos de Rematch: una reserva de cancha desde el celular, la hora que se tacha para los demás, el pago verificado y la caja del día",
+      reproducir: "Ver el video (45 s)",
+    },
     titulo: "Una plataforma para clubes deportivos, construida desde cero",
     heroeAlt:
       "Un celular con rematch.pe apoyado en el césped azul de una pista de pádel, con la sombra de la reja al atardecer",
@@ -296,6 +304,12 @@ const COPY: Record<StoryLang, Copy> = {
     nextTagline: "La plataforma de cursos para academias e instituciones",
   },
   en: {
+    video: {
+      texto:
+        "Rematch in 45 seconds, the video we made for its social channels (in Spanish): at the demo club Brisa Pádel, a player books Court 2 from her phone, that hour shows as taken for everyone else, the club verifies the payment and the 80 soles land in the day's cash book.",
+      alt: "45-second Rematch video: a court booking from a phone, the hour marked as taken for everyone else, the verified payment and the day's cash book",
+      reproducir: "Watch the video (45 s)",
+    },
     titulo: "A platform for sports clubs, built from the ground up",
     heroeAlt:
       "A phone showing rematch.pe resting on the blue turf of a padel court, with the fence shadow at sunset",
@@ -477,6 +491,12 @@ const COPY: Record<StoryLang, Copy> = {
     nextTagline: "The course platform for academies and institutions",
   },
   pt: {
+    video: {
+      texto:
+        "O Rematch em 45 segundos, o vídeo que fizemos para as suas redes (em espanhol): no clube de exemplo Brisa Pádel, uma jogadora reserva a Quadra 2 pelo celular, esse horário aparece riscado para os demais, o clube confirma o pagamento e os 80 soles entram no caixa do dia.",
+      alt: "Vídeo de 45 segundos do Rematch: uma reserva de quadra pelo celular, o horário riscado para os demais, o pagamento confirmado e o caixa do dia",
+      reproducir: "Ver o vídeo (45 s)",
+    },
     titulo: "Uma plataforma para clubes esportivos, construída do zero",
     heroeAlt:
       "Um celular com o rematch.pe apoiado na grama azul de uma quadra de padel, com a sombra da grade ao entardecer",
@@ -695,6 +715,21 @@ function bloques(c: Copy): BloqueProducto[] {
         img("rm-mesa-v2.jpg", c.alt.banca),
         img("rm-entrenadora.jpg", c.alt.entrenadora),
       ],
+    },
+    // El explicativo de 45 s de sus redes, con voz y subtítulos: suena sólo si se toca (2026-10-23)
+    {
+      kind: "cuadrada-texto",
+      medio: {
+        tipo: "video",
+        src: `${IMG}/rm-video-45s.mp4`,
+        poster: `${IMG}/rm-video-45s.jpg`,
+        alt: c.video.alt,
+        conSonido: {
+          reproducir: c.video.reproducir,
+          subtitulos: `${IMG}/rm-video-45s.vtt`,
+        },
+      },
+      body: c.video.texto,
     },
     // ── La marca: del brief del repo y del MANUAL DE MARCA entregado (nada dibujado aquí) ──
     { kind: "texto", lado: "izq", title: c.marca[0], body: c.marca[1] },

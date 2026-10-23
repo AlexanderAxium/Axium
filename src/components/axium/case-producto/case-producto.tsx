@@ -68,6 +68,14 @@ export type Medio =
       /** Otro vídeo por debajo de md: un plano ancho con UI a 2:1 no se lee a 390 px (Feniz). */
       srcMovil?: string;
       posterMovil?: string;
+      /** Vídeo con voz (los explicativos de 45 s de cada producto, 2026-10-23): no se reproduce
+       *  solo ni en bucle; muestra la portada con un botón y suena al tocarlo. El texto es el
+       *  nombre accesible del botón, en el idioma de la ficha. */
+      conSonido?: {
+        reproducir: string;
+        /** WebVTT en español con lo mismo que los subtítulos quemados (lectores de pantalla). */
+        subtitulos: string;
+      };
     };
 
 export type BloqueProducto =
@@ -185,6 +193,77 @@ function VideoBucle({
   );
 }
 
+/**
+ * Un vídeo con voz: la portada y un botón; el archivo no se pide hasta que se toca (preload
+ * "none" y sin src), y entonces suena con los controles del navegador. Nada en bucle ni
+ * automático: es lo que hace que no sea invasivo.
+ */
+function VideoConSonido({
+  src,
+  poster,
+  alt,
+  reproducir,
+  subtitulos,
+}: {
+  src: string;
+  poster: string;
+  alt: string;
+  reproducir: string;
+  subtitulos: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [activo, setActivo] = useState(false);
+  useEffect(() => {
+    if (activo) ref.current?.play().catch(() => {});
+  }, [activo]);
+  if (activo)
+    return (
+      <video
+        ref={ref}
+        className="absolute inset-0 size-full bg-black object-cover"
+        src={src}
+        poster={portadaOptimizada(poster)}
+        aria-label={alt}
+        controls
+        playsInline
+        preload="auto"
+      >
+        {/* Sin `default`: los subtítulos ya van en la imagen; la pista es para quien no la ve. */}
+        <track kind="captions" srcLang="es" label="Español" src={subtitulos} />
+      </video>
+    );
+  return (
+    <button
+      type="button"
+      onClick={() => setActivo(true)}
+      className="group absolute inset-0 size-full cursor-pointer"
+    >
+      <Image
+        src={poster}
+        alt={alt}
+        fill
+        quality={90}
+        sizes="(min-width: 1536px) 700px, (min-width: 768px) 46vw, 100vw"
+        className="object-cover"
+      />
+      {/* Abajo a la izquierda: la portada lleva el logo y el titular en el centro. El texto
+          visible es el nombre del botón (lo que diga, se puede decir por voz). */}
+      <span className="absolute bottom-4 left-4 flex min-h-11 items-center gap-2.5 rounded-full bg-white/95 py-2 pr-5 pl-2 text-[15px] font-medium text-neutral-900 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.6)] transition-transform duration-300 ease-out group-hover:scale-[1.04] group-focus-visible:scale-[1.04] motion-reduce:transition-none md:bottom-6 md:left-6 md:text-[16px]">
+        <span className="flex size-8 items-center justify-center rounded-full bg-neutral-900">
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            className="ml-0.5 size-4 fill-white"
+          >
+            <path d="M8 5.5v13a1 1 0 0 0 1.52.85l10.4-6.5a1 1 0 0 0 0-1.7L9.52 4.65A1 1 0 0 0 8 5.5Z" />
+          </svg>
+        </span>
+        {reproducir}
+      </span>
+    </button>
+  );
+}
+
 /** Una pieza dentro de su caja con el radio común (16 px, el de Amigo). */
 function Pieza({
   medio,
@@ -202,7 +281,15 @@ function Pieza({
       className={`relative overflow-hidden rounded-2xl bg-white/[0.04] ${className}`}
       style={style}
     >
-      {medio.tipo === "video" && medio.srcMovil ? (
+      {medio.tipo === "video" && medio.conSonido ? (
+        <VideoConSonido
+          src={medio.src}
+          poster={medio.poster}
+          alt={medio.alt}
+          reproducir={medio.conSonido.reproducir}
+          subtitulos={medio.conSonido.subtitulos}
+        />
+      ) : medio.tipo === "video" && medio.srcMovil ? (
         <>
           <VideoBucle
             src={medio.srcMovil}

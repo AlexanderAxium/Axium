@@ -46,6 +46,8 @@ import { useTranslation } from "~/hooks/useTranslation";
 const IMG = "/images/proyects/vendiq";
 
 type Copy = {
+  /** El explicativo de 45 s de sus redes (SAAS/videos), con voz: suena sólo si se toca. */
+  video: { texto: string; alt: string; reproducir: string };
   titulo: string;
   heroeAlt: string;
   meta: CaseProductoProps["meta"];
@@ -83,6 +85,12 @@ type Copy = {
 
 const COPY: Record<StoryLang, Copy> = {
   es: {
+    video: {
+      texto:
+        "Vendiq en 45 segundos, el video que hicimos para sus redes: la tienda demo Pulso vende unas zapatillas por la web y otras en la caja, y el stock, la boleta y el envío se resuelven solos.",
+      alt: "Video de 45 segundos de Vendiq: la venta web y la de caja descuentan el mismo stock, la boleta sale sola y el envío se cobra por distrito",
+      reproducir: "Ver el video (45 s)",
+    },
     titulo:
       "Una plataforma para vender en la web y en el local, con un solo catálogo",
     heroeAlt:
@@ -226,6 +234,12 @@ const COPY: Record<StoryLang, Copy> = {
       "Una sola plataforma para todo lo que pasa en un centro deportivo",
   },
   en: {
+    video: {
+      texto:
+        "Vendiq in 45 seconds, the video we made for its social channels (in Spanish): the demo store Pulso sells a pair of sneakers online and another at the counter, and stock, receipts and shipping take care of themselves.",
+      alt: "45-second Vendiq video: the online sale and the counter sale draw on the same stock, the receipt is issued on its own and shipping is charged by district",
+      reproducir: "Watch the video (45 s)",
+    },
     titulo: "A platform to sell online and in store, from a single catalog",
     heroeAlt:
       "The Vendiq dashboard, “Today's summary” with S/ 12,480 in sales, over the sky of the vendiq.pe homepage",
@@ -367,6 +381,12 @@ const COPY: Record<StoryLang, Copy> = {
     nextTagline: "One platform for everything that happens at a sports center",
   },
   pt: {
+    video: {
+      texto:
+        "O Vendiq em 45 segundos, o vídeo que fizemos para as suas redes (em espanhol): a loja de exemplo Pulso vende um par de tênis pela web e outro no caixa, e o estoque, a nota e a entrega se resolvem sozinhos.",
+      alt: "Vídeo de 45 segundos do Vendiq: a venda online e a do caixa baixam o mesmo estoque, a nota sai sozinha e a entrega é cobrada por distrito",
+      reproducir: "Ver o vídeo (45 s)",
+    },
     titulo: "Uma plataforma para vender na web e na loja, com um só catálogo",
     heroeAlt:
       "O painel do Vendiq, «Resumo de hoje» com S/ 12.480 em vendas, sobre o céu da página inicial do vendiq.pe",
@@ -549,6 +569,21 @@ function bloques(c: Copy): BloqueProducto[] {
       kind: "ancho",
       medio: img("bv-reto.jpg", c.alt.reto),
       ratio: 2400 / 1357,
+    },
+    // El explicativo de 45 s de sus redes, con voz y subtítulos: suena sólo si se toca (2026-10-23)
+    {
+      kind: "cuadrada-texto",
+      medio: {
+        tipo: "video",
+        src: `${IMG}/vq-video-45s.mp4`,
+        poster: `${IMG}/vq-video-45s.jpg`,
+        alt: c.video.alt,
+        conSonido: {
+          reproducir: c.video.reproducir,
+          subtitulos: `${IMG}/vq-video-45s.vtt`,
+        },
+      },
+      body: c.video.texto,
     },
     { kind: "texto", lado: "izq", title: c.enfoque[0], body: c.enfoque[1] },
     // «Vendes una vez»: las cuatro pestañas de la lámina noche, 20 s en bucle
