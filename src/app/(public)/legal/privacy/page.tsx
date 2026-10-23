@@ -1,3 +1,4 @@
+import { EMPRESA } from "@/data/empresa";
 import { metaPagina } from "@/lib/seo";
 
 export const metadata = metaPagina({
@@ -29,11 +30,12 @@ export default function PrivacyPage() {
               1. Responsable del tratamiento
             </h2>
             <p className="text-body text-gray-500">
-              Axium S.A.C. es el responsable del tratamiento de los datos
-              personales que usted nos proporciona a través de este sitio web o
-              mediante cualquier canal de comunicación. Operamos conforme a la
-              Ley N.° 29733, Ley de Protección de Datos Personales del Perú, y
-              su reglamento.
+              {EMPRESA.razonSocial}, con RUC {EMPRESA.ruc} y domicilio fiscal en{" "}
+              {EMPRESA.domicilio}, es el responsable del tratamiento de los
+              datos personales que usted nos proporciona a través de este sitio
+              web o mediante cualquier canal de comunicación. Operamos conforme
+              a la Ley N.° 29733, Ley de Protección de Datos Personales del
+              Perú, y su reglamento.
             </p>
           </section>
 
@@ -217,7 +219,7 @@ export default function PrivacyPage() {
                   +51 991 285 679
                 </a>
               </p>
-              <p>Dirección: Lima, Perú</p>
+              <p>Domicilio fiscal: {EMPRESA.domicilio}</p>
             </div>
           </section>
         </div>

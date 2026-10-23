@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { EMPRESA } from "@/data/empresa";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -64,8 +65,9 @@ export default function ComplaintsPage() {
           </h1>
           <p className="text-body text-gray-500 max-w-xl">
             De acuerdo con el Código de Protección y Defensa del Consumidor (Ley
-            N.° 29571), Axium S.A.C. pone a su disposición este Libro de
-            Reclamaciones virtual para registrar quejas y reclamos.
+            N.° 29571), {EMPRESA.razonSocial} (RUC {EMPRESA.ruc}) pone a su
+            disposición este Libro de Reclamaciones virtual para registrar
+            quejas y reclamos.
           </p>
         </div>
 
@@ -362,9 +364,9 @@ export default function ComplaintsPage() {
               </div>
               <div>
                 <p className="text-label font-semibold text-gray-700 mb-1">
-                  Dirección
+                  Domicilio fiscal
                 </p>
-                <p className="text-body text-gray-500">Lima, Perú</p>
+                <p className="text-body text-gray-500">{EMPRESA.domicilio}</p>
               </div>
               <div>
                 <p className="text-label font-semibold text-gray-700 mb-1">

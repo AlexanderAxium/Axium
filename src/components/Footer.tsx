@@ -1,6 +1,7 @@
 "use client";
 
 import { SERVICIOS } from "@/components/axium/servicios-seis";
+import { EMPRESA } from "@/data/empresa";
 import { useTranslation } from "@/hooks/useTranslation";
 import { trpc } from "@/utils/trpc";
 import {
@@ -247,9 +248,14 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 mt-10 pt-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-gray-400">
+              {/* razón social, RUC y domicilio fiscal: obligatorios en la web (2026-10-23) */}
+              <p className="text-center text-sm text-gray-400 md:text-left">
                 © {new Date().getFullYear()}{" "}
-                <span className="text-white font-medium">AXIUM</span>.{" "}
+                <span className="text-white font-medium">
+                  {EMPRESA.razonSocial}
+                </span>{" "}
+                · <span className="whitespace-nowrap">RUC {EMPRESA.ruc}</span> ·{" "}
+                <span className="whitespace-nowrap">{EMPRESA.domicilio}.</span>{" "}
                 {t("allRightsReserved")}
               </p>
               <div className="flex gap-6 text-sm text-gray-400">
