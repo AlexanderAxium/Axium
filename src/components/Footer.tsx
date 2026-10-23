@@ -1,5 +1,6 @@
 "use client";
 
+import { SERVICIOS } from "@/components/axium/servicios-seis";
 import { useTranslation } from "@/hooks/useTranslation";
 import { trpc } from "@/utils/trpc";
 import {
@@ -203,40 +204,28 @@ export function Footer() {
 
             {/* Quick Links */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-white">
+              <h2 className="text-base font-semibold text-white">
                 {t("navbar.servicios")}
-              </h4>
+              </h2>
               <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/servicios/design-branding"
-                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    {tl("home.services.items.discovery.title")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/servicios/software-development"
-                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    {tl("home.services.items.software-dev.title")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/servicios/ai-agentic-systems"
-                    className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    {tl("home.services.items.ai-systems.title")}
-                  </Link>
-                </li>
+                {SERVICIOS.map((sv) => (
+                  <li key={sv.id}>
+                    <Link
+                      href={sv.href}
+                      className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                    >
+                      {tl(`home.serviciosSeis.items.${sv.id}.titulo`)}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Legal Links */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-white">{t("legal")}</h4>
+              <h2 className="text-base font-semibold text-white">
+                {t("legal")}
+              </h2>
               <ul className="space-y-2">
                 {footerLinks.legal.map((link) => (
                   <li key={link.name}>

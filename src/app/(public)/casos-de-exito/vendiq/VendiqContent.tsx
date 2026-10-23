@@ -19,24 +19,28 @@ import { useTranslation } from "~/hooks/useTranslation";
  * Alexander: «rematch, lumio, vendiq y bookit son productos propios… vendiq tiene algunos
  * buenos diseños pero puedes mejorarlo… Me gusta mucho que hagas animaciones de la web».
  *
- * ── DE DÓNDE SALE CADA COSA ────────────────────────────────────────────────────────
+ * ── DE DÓNDE SALE CADA COSA (rehecha el 2026-10-21, con la portada clara «cielo») ─────────
+ *  Alexander: «vendiq sufrió una actualización, rehaz todo su use case en axium, sus portadas,
+ *  imágenes, etc.». Taller: `capturas-saas/vendiq/cielo-2026-10/` (CASO-VENDIQ.md § 15).
+ *  · Héroe, tarjeta y destacado: la MISMA imagen clave, el panel del hero de vendiq.pe sobre su
+ *    cielo (scripts/clave-vendiq-cielo.py, las dos piezas reales; sin titular).
  *  · Animaciones: las REALES de vendiq.pe, grabadas con el screencast de Chrome
- *    (scripts/grabar-micro.cjs): la entrada de la escena de la portada, «Cómo funciona» y el
- *    asistente con IA. Los módulos, cada tarjeta aislada a 3x (capturar-vendiq-pm.cjs).
- *  · Desde el 2026-10-07, todo de la portada nueva de vendiq.pe (personas reales y la tienda
- *    de ejemplo Pulso, running): la escena de la laptop y el celular (`bv-landing-v3`), los
- *    tres vídeos y los módulos (`-v2`). Alexander, al publicarla: «actualiza el portafolio».
- *    Taller: `capturas-saas/vendiq/pulso-2026-10/` (CASO-VENDIQ.md § 14).
- *  · Panel: capturas del repo local con el inquilino demo (CASO-VENDIQ.md § 8); conserva
- *    la paleta anterior. Tiendas: las de los clientes, en vivo.
+ *    (scripts/grabar-micro.cjs, con `fondoPagina` para la lámina noche): «Vendes una vez» (las
+ *    cuatro pestañas, bucle de 20 s) y el asistente con IA (14 s). Los módulos, cada tarjeta
+ *    aislada a 3x sobre su papel (capturar-vendiq-cielo.cjs).
+ *  · «El reto»: foto de stock real (Unsplash, Rifki Kurniawan; crédito en el taller), para no
+ *    repetir personas generadas. El abanico de tiendas de vendiq.pe NO entra: repetiría las
+ *    mismas tiendas (y al jugador de ANJ) de los mockups.
+ *  · Tiendas: las seis, recapturadas en vivo y montadas sobre el papel de la portada clara
+ *    (mockups-tiendas-vendiq.py con MOCK_FONDO/VINETA/LUZ_OP/SOMBRA). Happy Art entra «como las
+ *    demás» por decisión de Alexander (2026-10-06), aunque happyart.com.pe sigue en WordPress.
+ *  · Panel: capturas del repo local con el inquilino demo (CASO-VENDIQ.md § 8); el panel no
+ *    cambió con la web.
  *  · Marca: corta, porque Vendiq NO tiene manual (Alexander: «no exageres con la sección
- *    de branding»): logo, tipografía y paleta tal como están en el código.
+ *    de branding»): logo, tipografía y paleta tal como están en el código (claro.ts, fuentes.ts).
  *  · Sin cita: no hay testimonio de un comercio que citar, y no se inventa.
  *  · Lo que depende del plan se dice con el plan (punto de venta, SUNAT, envíos e IA desde
  *    Business; varios almacenes en Business Pro).
- *  · Tiendas: las seis que muestra vendiq.pe, capturadas en vivo y montadas en un monitor y un
- *    celular construidos (scripts/mockups-tiendas-vendiq.py). Happy Art entra «como las demás»
- *    por decisión de Alexander (2026-10-06), aunque happyart.com.pe sigue en WordPress.
  */
 
 const IMG = "/images/proyects/vendiq";
@@ -58,8 +62,8 @@ type Copy = {
   piesTiendas: string[];
   mandos: { anterior: string; siguiente: string };
   alt: Record<
-    | "flujo"
-    | "duenio"
+    | "incluido"
+    | "reto"
     | "como"
     | "tipografia"
     | "paleta"
@@ -82,7 +86,7 @@ const COPY: Record<StoryLang, Copy> = {
     titulo:
       "Una plataforma para vender en la web y en el local, con un solo catálogo",
     heroeAlt:
-      "vendiq.pe en una laptop y en el celular, sobre el mostrador de concreto de una tienda con luz azul",
+      "El panel de Vendiq, «Resumen de hoy» con S/ 12.480 en ventas, sobre el cielo de la portada de vendiq.pe",
     meta: {
       tipologia: ["Tipología", ["Web app", "Tienda online", "Punto de venta"]],
       industria: ["Industria", "Comercio · SaaS propio"],
@@ -123,11 +127,11 @@ const COPY: Record<StoryLang, Copy> = {
       "Da igual por dónde entre la venta, por la tienda online o por la caja: el stock baja en la web y en el local, y sale la boleta aceptada por SUNAT. vendiq.pe lo cuenta con un solo pedido, el #1482.",
     ],
     marca: [
-      "Una V hecha luz",
-      "El logotipo son dos cintas de luz que forman la V, redibujadas en vector. Alrededor, un sistema sobrio: grafito, una señal cian, el azul solo para la acción, Satoshi para el texto y Geist Mono para los rótulos.",
+      "Claro, con pausas de noche",
+      "El logotipo es la V de dos cintas de luz. Desde octubre de 2026 la web es clara: láminas blancas y de papel con pausas oscuras, un solo azul como acento, Literata en los titulares con un tramo en itálica, Satoshi para el texto y Geist Mono para los datos.",
     ],
     modulos:
-      "Siete módulos sobre el mismo catálogo. En vendiq.pe cada uno se cuenta con un trozo de su propia interfaz, dibujado en HTML sobre la rejilla de la marca.",
+      "Siete módulos sobre el mismo catálogo. En vendiq.pe cada tarjeta trae su propio escenario: un trozo de su interfaz dibujado en HTML, con la tienda de ejemplo Pulso.",
     etiquetaModulos: "Los módulos de Vendiq",
     pies: [
       "La tienda online con tu marca, en todos los planes",
@@ -157,13 +161,14 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     mandos: { anterior: "Anterior", siguiente: "Siguiente" },
     alt: {
-      flujo:
-        "La portada de vendiq.pe, animada: la dueña de una tienda de running con una zapatilla en la mano, la ficha del producto con sus tallas, el stock que baja de 18 a 17 y la venta del pedido #1482",
-      duenio:
-        "El dueño de una tienda empaca un pedido tras un mostrador de concreto, con luz azul",
-      como: "«Cómo funciona» en vendiq.pe, animado: el pedido #1482 pasa por la venta, el stock, la boleta y el envío",
-      tipografia: "Tipografía de Vendiq: Satoshi con Geist Mono en los rótulos",
-      paleta: "Paleta de Vendiq: grafito, azul de acción y la señal cian",
+      incluido:
+        "«Lo que ya viene incluido» en vendiq.pe: 0 % de comisión, 1893 distritos para las zonas de envío, 14 días de prueba y 5 idiomas, junto al mapa del Perú hecho de puntos",
+      reto: "Una emprendedora revisa un pedido con el celular, entre la laptop y una pila de cajas por despachar",
+      como: "«Vendes una vez» en vendiq.pe, animado: el pedido #1482 de Pulso pasa por la venta, el stock, la boleta y la etiqueta de envío",
+      tipografia:
+        "Tipografía de Vendiq: Literata en los titulares, Satoshi para el texto y Geist Mono para los datos",
+      paleta:
+        "Paleta de Vendiq: lienzo, papel, hielo, el azul de acento, noche y tinta",
       asistente:
         "El asistente con IA del editor, animado: escribe «Vendo zapatillas y ropa de running…», marca sus pasos y arma la vista previa de la tienda",
       panel:
@@ -174,19 +179,19 @@ const COPY: Record<StoryLang, Copy> = {
         "Envíos en el panel: zonas de Lima y provincias con sus métodos y tarifas",
       tiendas: [
         "La tienda de Aurore en un monitor y en el celular: perfumería de casas de autor",
-        "La tienda de ANJ Sports en un monitor y en el celular: tenis de mesa, con un jugador de Butterfly",
+        "La tienda de ANJ Sports en un monitor y en el celular: tenis de mesa, con un jugador de XIOM",
         "La tienda de Sportt en un monitor y en el celular: la nueva colección de zapatillas Lezoline",
         "La tienda de Daesur Motors en un monitor y en el celular: el aceite exacto para tu motor",
-        "La tienda de Clefast en un monitor y en el celular: productos para lavandería",
-        "La tienda de Happy Art en un monitor y en el celular: flores y regalos",
+        "La tienda de Clefast en un monitor y en el celular: soluciones de limpieza industrial",
+        "La tienda de Happy Art en un monitor y en el celular: flores y regalos por el Día de las Flores Amarillas",
       ],
       modulos: [
         "Tarjeta del módulo Tienda online: la tienda de ejemplo en su subdominio con tres productos y el carrito",
         "Tarjeta del módulo Punto de venta: la caja 1 de Miraflores con dos productos y el botón Cobrar",
         "Tarjeta del módulo Inventario por sede: stock en Miraflores, Surco y el almacén, con el kardex",
         "Tarjeta del módulo Facturación SUNAT: una factura electrónica aceptada por SUNAT",
-        "Tarjeta del módulo Pagos sin comisión: Mercado Pago, Culqi y PayPal conectadas",
-        "Tarjeta del módulo Envíos: zonas de envío por distrito con su tarifa",
+        "Tarjeta del módulo Pagos sin comisión: 0 % de comisión, con Mercado Pago, Culqi y PayPal conectadas",
+        "Tarjeta del módulo Envíos: zonas de envío entre los 1893 distritos del Perú, con su tarifa",
         "Tarjeta del módulo Editor visual con IA: los bloques de la página y la portada con los colores de la marca",
       ],
     },
@@ -223,7 +228,7 @@ const COPY: Record<StoryLang, Copy> = {
   en: {
     titulo: "A platform to sell online and in store, from a single catalog",
     heroeAlt:
-      "vendiq.pe on a laptop and a phone, on a store's concrete counter under blue light",
+      "The Vendiq dashboard, “Today's summary” with S/ 12,480 in sales, over the sky of the vendiq.pe homepage",
     meta: {
       tipologia: ["Typology", ["Web app", "Online store", "Point of sale"]],
       industria: ["Industry", "Retail · In-house SaaS"],
@@ -264,11 +269,11 @@ const COPY: Record<StoryLang, Copy> = {
       "Whether the sale comes in through the online store or the till, stock falls online and in store, and the receipt comes out accepted by SUNAT. vendiq.pe tells it with a single order, #1482.",
     ],
     marca: [
-      "A V made of light",
-      "The logo is two ribbons of light that form the V, redrawn as vectors. Around it, a restrained system: graphite, a cyan signal, blue only for action, Satoshi for text and Geist Mono for labels.",
+      "Light, with pauses of night",
+      "The logo is the V made of two ribbons of light. Since October 2026 the website is light: white and paper panels with dark pauses, a single blue as the accent, Literata for headlines with one stretch in italics, Satoshi for text and Geist Mono for data.",
     ],
     modulos:
-      "Seven modules on the same catalog. On vendiq.pe each one is told with a piece of its own interface, drawn in HTML on the brand's grid.",
+      "Seven modules on the same catalog. On vendiq.pe each card brings its own scene: a piece of its interface drawn in HTML, with Pulso, the sample store.",
     etiquetaModulos: "Vendiq modules",
     pies: [
       "The online store with your brand, on every plan",
@@ -298,13 +303,14 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     mandos: { anterior: "Previous", siguiente: "Next" },
     alt: {
-      flujo:
-        "The vendiq.pe homepage, animated: the owner of a running store holding a shoe, the product card with its sizes, stock dropping from 18 to 17 and the sale of order #1482",
-      duenio:
-        "A store owner packs an order behind a concrete counter, under blue light",
-      como: "“How it works” on vendiq.pe, animated: order #1482 goes through the sale, the stock, the receipt and the shipment",
-      tipografia: "Vendiq typography: Satoshi with Geist Mono for labels",
-      paleta: "Vendiq palette: graphite, action blue and the cyan signal",
+      incluido:
+        "“What's already included” on vendiq.pe: 0% commission, 1,893 districts for shipping zones, a 14-day trial and 5 languages, next to a map of Peru made of dots",
+      reto: "A young entrepreneur checks an order on her phone, between her laptop and a stack of boxes to ship",
+      como: "“Sell once” on vendiq.pe, animated: Pulso's order #1482 goes through the sale, the stock, the receipt and the shipping label",
+      tipografia:
+        "Vendiq typography: Literata for headlines, Satoshi for text and Geist Mono for data",
+      paleta:
+        "Vendiq palette: canvas, paper, ice, the accent blue, night and ink",
       asistente:
         "The editor's AI assistant, animated: it types “I sell running shoes and apparel…”, ticks its steps and builds the store preview",
       panel:
@@ -315,19 +321,19 @@ const COPY: Record<StoryLang, Copy> = {
         "Shipping in the dashboard: Lima and province zones with their methods and rates",
       tiendas: [
         "Aurore's store on a monitor and a phone: perfume from independent houses",
-        "ANJ Sports' store on a monitor and a phone: table tennis, with a Butterfly player",
+        "ANJ Sports' store on a monitor and a phone: table tennis, with a XIOM player",
         "Sportt's store on a monitor and a phone: the new Lezoline shoe collection",
         "Daesur Motors' store on a monitor and a phone: the right oil for your engine",
-        "Clefast's store on a monitor and a phone: laundry supplies",
-        "Happy Art's store on a monitor and a phone: flowers and gifts",
+        "Clefast's store on a monitor and a phone: industrial cleaning solutions",
+        "Happy Art's store on a monitor and a phone: flowers and gifts for Yellow Flowers Day",
       ],
       modulos: [
         "Online store module card: the sample store on its subdomain with three products and the cart",
         "Point of sale module card: till 1 in Miraflores with two products and the Charge button",
         "Inventory by location module card: stock in Miraflores, Surco and the warehouse, with the stock ledger",
         "SUNAT invoicing module card: an electronic invoice accepted by SUNAT",
-        "Commission-free payments module card: Mercado Pago, Culqi and PayPal connected",
-        "Shipping module card: shipping zones by district with their rate",
+        "Commission-free payments module card: 0% commission, with Mercado Pago, Culqi and PayPal connected",
+        "Shipping module card: shipping zones across Peru's 1,893 districts, with their rate",
         "AI visual editor module card: the page blocks and a homepage in the brand's colours",
       ],
     },
@@ -363,7 +369,7 @@ const COPY: Record<StoryLang, Copy> = {
   pt: {
     titulo: "Uma plataforma para vender na web e na loja, com um só catálogo",
     heroeAlt:
-      "vendiq.pe em um notebook e no celular, sobre o balcão de concreto de uma loja com luz azul",
+      "O painel do Vendiq, «Resumo de hoje» com S/ 12.480 em vendas, sobre o céu da página inicial do vendiq.pe",
     meta: {
       tipologia: ["Tipologia", ["Web app", "Loja online", "Ponto de venda"]],
       industria: ["Setor", "Comércio · SaaS próprio"],
@@ -404,11 +410,11 @@ const COPY: Record<StoryLang, Copy> = {
       "Não importa por onde entra a venda, pela loja online ou pelo caixa: o estoque baixa na web e na loja, e sai a nota aceita pela SUNAT. O vendiq.pe conta isso com um só pedido, o #1482.",
     ],
     marca: [
-      "Um V feito de luz",
-      "O logotipo são duas fitas de luz que formam o V, redesenhadas em vetor. Ao redor, um sistema sóbrio: grafite, um sinal ciano, o azul só para a ação, Satoshi para o texto e Geist Mono para os rótulos.",
+      "Claro, com pausas de noite",
+      "O logotipo é o V de duas fitas de luz. Desde outubro de 2026 o site é claro: lâminas brancas e de papel com pausas escuras, um só azul como acento, Literata nos títulos com um trecho em itálico, Satoshi para o texto e Geist Mono para os dados.",
     ],
     modulos:
-      "Sete módulos sobre o mesmo catálogo. No vendiq.pe cada um é contado com um pedaço da sua própria interface, desenhado em HTML sobre a grade da marca.",
+      "Sete módulos sobre o mesmo catálogo. No vendiq.pe cada cartão traz o seu próprio cenário: um pedaço da sua interface desenhado em HTML, com a loja de exemplo Pulso.",
     etiquetaModulos: "Os módulos do Vendiq",
     pies: [
       "A loja online com a sua marca, em todos os planos",
@@ -438,13 +444,14 @@ const COPY: Record<StoryLang, Copy> = {
     ],
     mandos: { anterior: "Anterior", siguiente: "Próximo" },
     alt: {
-      flujo:
-        "A página inicial do vendiq.pe, animada: a dona de uma loja de corrida com um tênis na mão, a ficha do produto com seus tamanhos, o estoque que baixa de 18 para 17 e a venda do pedido #1482",
-      duenio:
-        "O dono de uma loja embala um pedido atrás de um balcão de concreto, com luz azul",
-      como: "«Como funciona» no vendiq.pe, animado: o pedido #1482 passa pela venda, pelo estoque, pela nota e pelo envio",
-      tipografia: "Tipografia do Vendiq: Satoshi com Geist Mono nos rótulos",
-      paleta: "Paleta do Vendiq: grafite, azul de ação e o sinal ciano",
+      incluido:
+        "«O que já vem incluído» no vendiq.pe: 0% de comissão, 1.893 distritos para as zonas de entrega, 14 dias de teste e 5 idiomas, ao lado do mapa do Peru feito de pontos",
+      reto: "Uma empreendedora confere um pedido no celular, entre o notebook e uma pilha de caixas para enviar",
+      como: "«Você vende uma vez» no vendiq.pe, animado: o pedido #1482 da Pulso passa pela venda, pelo estoque, pela nota e pela etiqueta de envio",
+      tipografia:
+        "Tipografia do Vendiq: Literata nos títulos, Satoshi para o texto e Geist Mono para os dados",
+      paleta:
+        "Paleta do Vendiq: tela, papel, gelo, o azul de acento, noite e tinta",
       asistente:
         "O assistente com IA do editor, animado: escreve «Vendo tênis e roupas de corrida…», marca seus passos e monta a prévia da loja",
       panel:
@@ -455,19 +462,19 @@ const COPY: Record<StoryLang, Copy> = {
         "Entregas no painel: zonas de Lima e das províncias com seus métodos e tarifas",
       tiendas: [
         "A loja da Aurore em um monitor e no celular: perfumaria de casas autorais",
-        "A loja da ANJ Sports em um monitor e no celular: tênis de mesa, com um jogador da Butterfly",
+        "A loja da ANJ Sports em um monitor e no celular: tênis de mesa, com um jogador da XIOM",
         "A loja da Sportt em um monitor e no celular: a nova coleção de tênis Lezoline",
         "A loja da Daesur Motors em um monitor e no celular: o óleo certo para o seu motor",
-        "A loja da Clefast em um monitor e no celular: produtos para lavanderia",
-        "A loja da Happy Art em um monitor e no celular: flores e presentes",
+        "A loja da Clefast em um monitor e no celular: soluções de limpeza industrial",
+        "A loja da Happy Art em um monitor e no celular: flores e presentes para o Dia das Flores Amarelas",
       ],
       modulos: [
         "Cartão do módulo Loja online: a loja de exemplo no seu subdomínio com três produtos e o carrinho",
         "Cartão do módulo Ponto de venda: o caixa 1 de Miraflores com dois produtos e o botão Cobrar",
         "Cartão do módulo Estoque por loja: estoque em Miraflores, Surco e no armazém, com o kardex",
         "Cartão do módulo Faturamento SUNAT: uma fatura eletrônica aceita pela SUNAT",
-        "Cartão do módulo Pagamentos sem comissão: Mercado Pago, Culqi e PayPal conectados",
-        "Cartão do módulo Entregas: zonas de entrega por distrito com sua tarifa",
+        "Cartão do módulo Pagamentos sem comissão: 0% de comissão, com Mercado Pago, Culqi e PayPal conectados",
+        "Cartão do módulo Entregas: zonas de entrega entre os 1.893 distritos do Peru, com sua tarifa",
         "Cartão do módulo Editor visual com IA: os blocos da página e a capa com as cores da marca",
       ],
     },
@@ -520,27 +527,32 @@ const TIENDAS = [
   "anj-sports",
   "sportt",
   "daesur-motors",
-  // v2: la segunda diapositiva de su portada; la primera es un vídeo (Alexander, 2026-10-06)
-  "clefast-v2",
+  // la segunda diapositiva de su portada; la primera es un vídeo (Alexander, 2026-10-06)
+  "clefast",
   "happy-art",
 ] as const;
 const tienda = (c: Copy, i: number) =>
-  img(`vq-tienda-${TIENDAS[i]}.jpg`, c.alt.tiendas[i] ?? TIENDAS[i] ?? "");
+  img(`vq-tienda-${TIENDAS[i]}-v3.jpg`, c.alt.tiendas[i] ?? TIENDAS[i] ?? "");
 
 function bloques(c: Copy): BloqueProducto[] {
   return [
     { kind: "texto", lado: "izq", title: c.contexto[0], body: c.contexto[1] },
-    // La idea entera en una animación: la escena de la portada de vendiq.pe entrando, con la
-    // venta del #1482 al final (antes, el flujo dibujado de la portada anterior: `vq-flujo`)
-    { kind: "ancho", medio: vid("vq-escena", c.alt.flujo), ratio: 2240 / 1400 },
-    { kind: "texto", lado: "der", title: c.reto[0], body: c.reto[1] },
+    // Lo que trae, en la lámina clara de vendiq.pe: cifras y el mapa del Perú
     {
       kind: "ancho",
-      medio: img("bv-hero.jpg", c.alt.duenio),
+      medio: img("bv-incluido.jpg", c.alt.incluido),
+      ratio: 2400 / 1472,
+    },
+    { kind: "texto", lado: "der", title: c.reto[0], body: c.reto[1] },
+    // stock real para no repetir caras generadas (Alexander: «usa imágenes de stock para variar»)
+    {
+      kind: "ancho",
+      medio: img("bv-reto.jpg", c.alt.reto),
       ratio: 2400 / 1357,
     },
     { kind: "texto", lado: "izq", title: c.enfoque[0], body: c.enfoque[1] },
-    { kind: "ancho", medio: vid("vq-como-v2", c.alt.como), ratio: 2240 / 1400 },
+    // «Vendes una vez»: las cuatro pestañas de la lámina noche, 20 s en bucle
+    { kind: "ancho", medio: vid("vq-como-v3", c.alt.como), ratio: 2240 / 1400 },
     // ── Las tiendas, con prioridad (Alexander: «dar un poco más de prioridad a sus tiendas
     // creadas»): dos tríos de mockups, monitor + celular, con nombre · rubro · dominio ──
     { kind: "texto", lado: "izq", title: c.tiendas[0], body: c.tiendas[1] },
@@ -559,8 +571,8 @@ function bloques(c: Copy): BloqueProducto[] {
     {
       kind: "par",
       medios: [
-        img("bv-tipografia.jpg", c.alt.tipografia),
-        img("bv-paleta.jpg", c.alt.paleta),
+        img("bv-tipografia-v3.jpg", c.alt.tipografia),
+        img("bv-paleta-v3.jpg", c.alt.paleta),
       ],
     },
     // ── El producto: la única tira de la ficha («haz un intermedio») ──
@@ -569,16 +581,16 @@ function bloques(c: Copy): BloqueProducto[] {
       body: c.modulos,
       etiqueta: c.etiquetaModulos,
       piezas: c.pies.map((pie, i) => ({
-        medio: img(`vq-modulo-${i + 1}-v2.jpg`, c.alt.modulos[i] ?? pie),
-        // las tarjetas del carrusel de vendiq.pe miden 30 rem de alto desde el 2026-10-06
-        ratio: 336 / 480,
+        medio: img(`vq-modulo-${i + 1}-v3.jpg`, c.alt.modulos[i] ?? pie),
+        // escenario y texto de cada tarjeta de vendiq.pe, sobre su papel (2026-10-21)
+        ratio: 960 / 1257,
         pie,
       })),
     },
     { kind: "texto", lado: "der", body: c.ia },
     {
       kind: "ancho",
-      medio: vid("vq-asistente-v2", c.alt.asistente),
+      medio: vid("vq-asistente-v3", c.alt.asistente),
       ratio: 2240 / 1500,
     },
     { kind: "texto", lado: "izq", title: c.panel[0], body: c.panel[1] },
@@ -606,7 +618,7 @@ export default function VendiqContent() {
   return (
     <>
       <CaseProducto
-        // El grafito de la «línea técnica» de vendiq.pe (linea.ts)
+        // La lámina «noche» de la portada clara de vendiq.pe (claro.ts): el mismo grafito
         fondo="#0B0D12"
         mandos={c.mandos}
         titulo={c.titulo}
@@ -617,8 +629,8 @@ export default function VendiqContent() {
           alt: "Vendiq",
         }}
         heroe={{
-          src: `${IMG}/bv-landing-v3.jpg`,
-          srcMovil: `${IMG}/vq-escena-cuadrada-v2.jpg`,
+          src: `${IMG}/vq-cielo-heroe.jpg`,
+          srcMovil: `${IMG}/vq-cielo-cuadrada.jpg`,
           alt: c.heroeAlt,
         }}
         meta={c.meta}
@@ -627,13 +639,13 @@ export default function VendiqContent() {
         resultado={c.resultado}
       />
       <CaseMasProyectos
-        // azul de acción · señal · grafito
-        accent={{ base: "#1F5BFF", dark: "#6CCBFF", deep: "#0B0D12" }}
+        // el azul de acento · su versión sobre oscuro · noche (claro.ts)
+        accent={{ base: "#1F5BFF", dark: "#8FB4FF", deep: "#0B0D12" }}
         next={{
           name: "Rematch",
           tagline: c.nextTagline,
           href: "/casos-de-exito/rematch",
-          image: "/images/proyects/rematch/rematch-portada-cancha.jpg",
+          image: "/images/proyects/rematch/rematch-portada-noche-v2.jpg",
         }}
         // El caso anónimo «E-commerce & Inventory SaaS» describe el mismo producto
         hide={["store-saas"]}

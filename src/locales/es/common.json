@@ -15,6 +15,60 @@
     "servicesAI": {
       "title": "IA y Sistemas Agénticos",
       "description": "Sistemas autónomos con LLMs, RAG y orquestación de agentes para automatizar decisiones en tiempo real."
+    },
+    "mega": {
+      "servicios": {
+        "titulo": "Diseño, software e IA, de la idea a producción.",
+        "texto": "Un mismo equipo en Lima para la marca, el sistema y la inteligencia artificial de tu empresa.",
+        "cta": "Hablemos de tu proyecto",
+        "secundario": "Cómo trabajamos",
+        "etiqueta": "Lo que hacemos",
+        "items": {
+          "diseno": {
+            "titulo": "Diseño de producto y marca",
+            "resumen": "Identidad, interfaces y sistemas de diseño."
+          },
+          "web": {
+            "titulo": "Webs, tiendas y apps",
+            "resumen": "Webs, e-commerce y apps para iOS y Android."
+          },
+          "software": {
+            "titulo": "Software a medida",
+            "resumen": "Sistemas internos, ERP, CRM e integraciones."
+          },
+          "ia": {
+            "titulo": "IA y datos",
+            "resumen": "Agentes, automatizaciones, tableros y reportes."
+          },
+          "iot": {
+            "titulo": "IoT y dispositivos",
+            "resumen": "Sensores, monitoreo y alertas en tiempo real."
+          },
+          "cloud": {
+            "titulo": "Cloud, seguridad y soporte",
+            "resumen": "Alojamiento, despliegues, respaldos y monitoreo."
+          }
+        }
+      },
+      "blog": {
+        "etiqueta": "Del blog",
+        "todos": "Todos los artículos"
+      },
+      "casos": {
+        "titulo": "Productos que diseñamos, construimos y operamos.",
+        "texto": "Cuatro productos propios en producción y proyectos para empresas de distintos rubros.",
+        "todos": "Ver todos los proyectos",
+        "propios": "Productos propios",
+        "clientes": "Casos de clientes",
+        "lista": {
+          "anjsports": "Tienda online de tenis de mesa",
+          "aurore": "Marca y tienda de perfumería",
+          "alyer": "Marca para transporte y fabricación metálica",
+          "feniz": "Plataforma para traders de fondeo",
+          "maintech": "Marca de formación técnica",
+          "clefast": "E-commerce industrial"
+        }
+      }
     }
   },
   "footer": {
@@ -92,5 +146,9 @@
   "yourPassword": "Tu contraseña",
   "cancel": "Cancelar",
   "anonymous": "Anónimo",
-  "notAvailable": "No disponible"
+  "notAvailable": "No disponible",
+  "whatsappFlotante": {
+    "etiqueta": "Escríbenos por WhatsApp",
+    "mensaje": "Hola, vengo de axium.com.pe y quiero conversar sobre un proyecto."
+  }
 }

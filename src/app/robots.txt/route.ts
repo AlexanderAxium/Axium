@@ -1,18 +1,25 @@
 import { NextResponse } from "next/server";
+import { SITIO } from "~/lib/seo";
 
-export async function GET() {
-  const siteUrl = process.env.SITE_URL || "https://example.com";
-  const robotsTxt = `User-agent: *
+// El robots.txt (2026-10-23): en producción apuntaba el mapa a https://example.com/sitemap.xml
+// porque leía SITE_URL sin el mismo valor por defecto que el resto del sitio. El acceso, el
+// panel, la API y el laboratorio no van a Google
+export function GET() {
+  const robots = `User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /dashboard/
+Disallow: /signin
+Disallow: /signup
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /confirm-email
+Disallow: /laboratorio
 
-Sitemap: ${siteUrl}/sitemap.xml`;
-
-  return new NextResponse(robotsTxt, {
-    headers: {
-      "Content-Type": "text/plain",
-    },
+Sitemap: ${SITIO}/sitemap.xml
+`;
+  return new NextResponse(robots, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
 }

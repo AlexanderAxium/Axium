@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { AlertCircle, ArrowLeft, CheckCircle, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -20,7 +20,7 @@ type ResetPasswordFormValues = {
   confirmPassword: string;
 };
 
-export default function ResetPasswordPage() {
+function ResetPasswordPageContenido() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -285,5 +285,15 @@ export default function ResetPasswordPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// useSearchParams necesita un Suspense para que la página se pueda prerenderizar (antes no hacía
+// falta porque RoleBasedRedirect nunca dejaba renderizar el contenido en el servidor)
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={null}>
+      <ResetPasswordPageContenido />
+    </Suspense>
   );
 }

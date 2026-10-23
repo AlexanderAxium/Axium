@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
-export default function ConfirmEmailPage() {
+function ConfirmEmailPageContenido() {
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -152,5 +152,15 @@ export default function ConfirmEmailPage() {
         )}
       </div>
     </div>
+  );
+}
+
+// useSearchParams necesita un Suspense para que la página se pueda prerenderizar (antes no hacía
+// falta porque RoleBasedRedirect nunca dejaba renderizar el contenido en el servidor)
+export default function ConfirmEmailPage() {
+  return (
+    <Suspense fallback={null}>
+      <ConfirmEmailPageContenido />
+    </Suspense>
   );
 }

@@ -335,3 +335,43 @@ cadena) se rehízo desde vendiq.pe EN VIVO; taller en `capturas-saas/vendiq/puls
   `readyState` 4; el home sirve `vq-escena.mp4` y el portafolio `vendiq-portada-pulso.jpg`.
 - Las piezas viejas se borraron (las rastreadas siguen en git; las otras tienen su original en
   `pixelmatters-2026-10/`).
+
+## 15. Rehecha con la portada clara «cielo» (2026-10-21)
+
+Alexander: *«vendiq sufrió una actualización, rehaz todo su use case en axium, sus portadas,
+imágenes, etc.»*. Entre el 17 y el 20 de octubre vendiq.pe pasó a la **portada clara** (en `main`
+de `AlexanderAxium/Vendiq`; DESIGN.md de Vendiq, «Cielo, el hero elegido…»): lienzo blanco con
+láminas apiladas papel `#F4F6F9` / hielo `#E7EEFC` y pausas noche `#0B0D12` / tinta `#0A1022`, el
+azul `#1F5BFF` como único acento, **Literata** en los titulares (un tramo en itálica, `Acento.tsx`),
+Satoshi para el texto y Geist Mono para los datos; el hero es el **cielo con el panel** dibujado
+(`panelHero.tsx`). La tienda de ejemplo sigue siendo Pulso y el pedido #1482. Taller:
+`capturas-saas/vendiq/cielo-2026-10/` (recorrido, piezas, micro-*, marca, tiendas, mockups, clave,
+stock con `CREDITOS.md`).
+
+| Pieza | Ahora | Cómo |
+|---|---|---|
+| Héroe (y en el celular) | `vq-cielo-heroe` 2400×1350 + `vq-cielo-cuadrada` | `clave-vendiq-cielo.py`: la foto del cielo de su hero (`cielo-escritorio.webp` de origin/main) + la ventana del panel aislada a 3x con alfa (`capturar-vendiq-cielo.cjs panel`), sin titular |
+| Tarjeta de /portafolio y «siguiente» (ANJ, Aurore, Bookit, laboratorio) | `vendiq-portada-cielo` 3072×2048 | la misma imagen clave en 4:3 |
+| Destacado del home | `vq-cielo.mp4` (bucle de 8 s) | el cielo deriva y el panel flota apenas (seno de período 8 s: un solo objeto, despacio) |
+| Contexto | `bv-incluido` | la lámina «Lo que ya viene incluido» (0 %, 1893 distritos, 14 días, 5 idiomas y el mapa) |
+| El reto | `bv-reto` | **stock real** de Unsplash (Rifki Kurniawan, licencia Unsplash): la emprendedora con el celular, la laptop y las cajas. Sustituye a `bv-hero` (el dueño con luz azul, del estilo anterior) |
+| Vendes una vez | `vq-como-v3` (20,1 s) | `grabar-micro.cjs` con **`fondoPagina: "#0B0D12"`** y `subir: 1`; las cuatro pestañas pasan cada 5,03 s y el bucle va de un inicio de pestaña al mismo (detectado por la barra azul en la fila 22) |
+| Asistente con IA | `vq-asistente-v3` (14,2 s) | igual, desde el estado completo (6,0 → 20,2 s) |
+| Módulos | `vq-modulo-N-v3` (960×1257) | `capturar-vendiq-cielo.cjs modulos`: cada `li` con escenario + texto, sobre su papel |
+| Tiendas | `vq-tienda-<slug>-v3` | recapturadas en vivo y montadas sobre papel: `MOCK_FONDO=244,246,249 MOCK_REJILLA=0 MOCK_VINETA=0 MOCK_LUZ_OP=0.22 MOCK_SOMBRA=0.7` |
+| Marca | `bv-tipografia-v3`, `bv-paleta-v3` | HTML con las fuentes reales (Literata del repo, Satoshi de Fontshare, Geist Mono de Google) y los seis tonos de `claro.ts` |
+| Panel | sin cambios | el panel no cambió con la web |
+
+- **Lienzo de la ficha:** sigue `#0B0D12`, que ahora es la lámina «noche» de la portada clara; las
+  piezas claras (cielo, papel) dan el ritmo claro/oscuro de vendiq.pe. El molde de producto es solo
+  oscuro: pasarlo a claro tocaría las seis fichas.
+- **El abanico de tiendas de vendiq.pe NO entra** (`vq-tiendas.mp4` queda en el taller): repetía
+  las mismas seis tiendas de los mockups, y al jugador de ANJ («máximo una aparición por persona»).
+- **Errores que mordieron:** el aviso de cookies aparece con retraso (hay que esperar al botón);
+  las tarjetas del final del carrusel salían en blanco fuera del cuadro, y al fijarlas quedaban
+  bajo el cierre porque las **láminas apiladas llevan `transform`** (un `fixed` dentro queda atado a
+  la lámina): se ocultó todo lo demás y se quitó el `transform` de los antecesores. Los mockups
+  sobre claro salían grises por la viñeta del 10 % y la luz al 50 % (en oscuro no se notan).
+- Medido: ficha a 1440/390/360 sin desborde ni imágenes rotas, `vq-como-v3` y `vq-asistente-v3`
+  con `readyState` 4, el home reproduce `vq-cielo.mp4` y /portafolio sirve `vendiq-portada-cielo`.
+- Borradas las 25 piezas sustituidas (todas siguen en git).

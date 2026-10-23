@@ -133,14 +133,16 @@ const CASE_ORDER: string[] = [
   "happyart",
   "redesvip",
   "ambientalpe",
-  "lujan",
+  // Daesur y Luján intercambiados (Alexander, 2026-10-21: «daesur sufrió un refactoring, ponlo
+  // en la página principal, cámbialo por vitivinícola»): Daesur sube a la página 1
+  "daesurmotors",
   "ventanasantiruido",
   "antiruidopvc",
   "cesaracosta",
   "transportesrumi",
   "villacer",
   "capptura",
-  "daesurmotors",
+  "lujan",
   "blendet",
   "firstautomation",
   "volveravivir",

@@ -6,37 +6,6 @@
     "ctaPrimary": "Começar Agora",
     "ctaSecondary": "Ver Recursos"
   },
-  "bento": {
-    "title": "Tudo que você precisa para construir sua {platform}",
-    "platform": "plataforma",
-    "subtitle": "Ferramentas poderosas e fáceis de usar para criar experiências excepcionais",
-    "cards": {
-      "ai": {
-        "title": "Revisão de Código com IA",
-        "description": "Melhore a qualidade do seu código com revisões automáticas alimentadas por IA."
-      },
-      "realtime": {
-        "title": "Visualizações em Tempo Real",
-        "description": "Veja suas mudanças enquanto codifica com atualizações instantâneas."
-      },
-      "integrations": {
-        "title": "Integrações de Um Clique",
-        "description": "Conecte suas ferramentas favoritas sem esforço."
-      },
-      "connectivity": {
-        "title": "Conectividade MCP",
-        "description": "Integração perfeita com o Protocolo de Contexto do Modelo."
-      },
-      "automation": {
-        "title": "Agentes de Codificação Paralela",
-        "description": "Automatize tarefas repetitivas e acelere seu fluxo de trabalho."
-      },
-      "deployment": {
-        "title": "Implantação Fácil",
-        "description": "Implante sua aplicação com um clique em qualquer plataforma."
-      }
-    }
-  },
   "cta": {
     "title": "Pronto para transformar",
     "titleHighlight": "sua plataforma?",
@@ -49,108 +18,6 @@
       "support247": "Suporte 24/7"
     }
   },
-  "faq": {
-    "title": "Perguntas",
-    "titleHighlight": "Frequentes",
-    "subtitle": "Tudo o que você precisa saber sobre nossa plataforma",
-    "items": [
-      {
-        "q": "Como funciona o gerenciamento de usuários?",
-        "a": "Nosso sistema permite criar, gerenciar e organizar usuários com diferentes funções e permissões de forma simples e eficiente."
-      },
-      {
-        "q": "Quais integrações estão disponíveis?",
-        "a": "Suportamos mais de 50 integrações populares, incluindo APIs de terceiros, serviços de autenticação e ferramentas de análise."
-      },
-      {
-        "q": "Qual é o desempenho da plataforma?",
-        "a": "Nossa plataforma oferece desempenho otimizado com tempos de resposta inferiores a 100ms em planos Básicos e inferiores a 50ms em planos superiores."
-      },
-      {
-        "q": "Posso gerenciar permissões da equipe?",
-        "a": "Sim, nosso sistema RBAC (Controle de Acesso Baseado em Funções) permite configurar permissões granulares para membros da equipe."
-      },
-      {
-        "q": "Há teste gratuito?",
-        "a": "Sim, todos os planos incluem 14 dias de teste gratuito sem cartão de crédito. Você pode cancelar a qualquer momento."
-      },
-      {
-        "q": "Quais opções de suporte estão disponíveis?",
-        "a": "Oferecemos suporte por email no Básico, suporte prioritário no Profissional e suporte dedicado 24/7 em planos Empresariais."
-      }
-    ]
-  },
-  "pricing": {
-    "title": "Planos para Cada",
-    "titleHighlight": "Tipo de Usuário",
-    "subtitle": "Escolha o plano que se adapte às suas necessidades, desde usuários individuais até organizações profissionais e grandes equipes.",
-    "annual": "Anual",
-    "monthly": "Mensal",
-    "discount": "-20%",
-    "billedAnnually": "Cobrado anualmente",
-    "perMonth": "/mês",
-    "mostPopular": "⭐ Mais Popular",
-    "plans": {
-      "basic": {
-        "name": "Básico",
-        "description": "Perfeito para usuários individuais",
-        "monthlyPrice": "$29",
-        "annualPrice": "$19",
-        "buttonText": "Começar",
-        "features": [
-          "Até 100 usuários",
-          "2 integrações básicas",
-          "Dashboard padrão",
-          "Suporte por email",
-          "Armazenamento 1GB",
-          "API básica"
-        ]
-      },
-      "professional": {
-        "name": "Profissional",
-        "description": "Ideal para equipes pequenas",
-        "monthlyPrice": "$99",
-        "annualPrice": "$79",
-        "buttonText": "Juntar-se Agora",
-        "features": [
-          "Até 1.000 usuários",
-          "10 integrações",
-          "Dashboard avançado",
-          "Suporte prioritário",
-          "Armazenamento 10GB",
-          "Sistema RBAC básico",
-          "Análise avançada",
-          "API completa"
-        ]
-      },
-      "enterprise": {
-        "name": "Empresarial",
-        "description": "Para grandes organizações",
-        "monthlyPrice": "$299",
-        "annualPrice": "$239",
-        "buttonText": "Contatar Vendas",
-        "features": [
-          "Usuários ilimitados",
-          "Integrações ilimitadas",
-          "Dashboard personalizado",
-          "Suporte 24/7",
-          "Armazenamento ilimitado",
-          "RBAC completo",
-          "API personalizada",
-          "White-label disponível",
-          "SLA garantido"
-        ]
-      }
-    },
-    "includes": "Inclui:",
-    "includesMore": "Tudo acima +"
-  },
-  "testimonials": {
-    "title": "Gestão",
-    "titleHighlight": "sem esforço",
-    "subtitle": "Ouça como profissionais escalam suas operações mais rápido, colaboram perfeitamente e gerenciam com confiança usando as poderosas ferramentas do MyApp"
-  },
-  "loading": "Carregando...",
   "caseDetail": {
     "backLink": "Voltar aos casos de sucesso",
     "aboutProject": "Sobre o projeto",
@@ -183,147 +50,24 @@
   },
   "home": {
     "hero": {
-      "titlePrefix": "Criamos Software que ",
-      "titleHighlight": "Impulsiona seu Negócio",
-      "titleSuffix": " ao Próximo Nível",
-      "description": "Nos associamos com empresas de todos os setores para criar produtos digitais que geram resultados reais.",
-      "cta": "VAMOS FALAR DO SEU PROJETO"
+      "titleLine1": "Sites, software e IA",
+      "titleLine2": "para a sua empresa.",
+      "description": "Somos um estúdio de Lima, no Peru. Criamos e desenvolvemos sites, lojas online, sistemas sob medida e soluções com inteligência artificial: uma só equipe, da ideia à produção.",
+      "cta": "Vamos falar do seu projeto",
+      "ctaSecondary": "Ver casos",
+      "statProjects": "projetos entregues",
+      "statProducts": "produtos próprios em produção",
+      "pause": "Pausar a animação",
+      "play": "Reproduzir a animação",
+      "dragHint": "Arraste para girá-lo"
     },
     "about": {
       "eyebrow": "Sobre Nós",
       "title": "Oferecemos soluções digitais e consultoria para impulsionar o crescimento do seu negócio",
-      "statNumber": "40+",
-      "statLabel": "Projetos",
-      "statSub": "Soluções criativas que elevam marcas.",
       "cardEyebrow": "Seu parceiro digital",
-      "cardTitle": "Transformamos ideias em resultados"
-    },
-    "services": {
-      "eyebrow": "Nossos Serviços",
-      "titlePrefix": "Soluções Tecnológicas que ",
-      "titleHighlight": "Transformam",
-      "titleSuffix": " Negócios",
-      "sectionSubtitle": "Soluções tecnológicas para construir produtos melhores, escalar com confiança e adotar a inteligência artificial.",
-      "viewService": "Ver serviço",
-      "items": {
-        "discovery": {
-          "title": "Design & Branding",
-          "description": "Marcas que comunicam e produtos que encantam: identidade visual, brochures, web design e design de produto.",
-          "benefits": [
-            "Identidade visual e logo",
-            "Brand guidelines",
-            "Materiais de marketing",
-            "UI/UX & Design de produto",
-            "Design web e landing pages",
-            "Motion & apresentações"
-          ],
-          "whatsappMessage": "Olá, tenho interesse no serviço de Design & Branding. Podemos agendar uma chamada?"
-        },
-        "software-dev": {
-          "title": "Desenvolvimento de software",
-          "description": "Plataformas web e mobile sob medida com TypeScript, Next.js, React Native e Node.js: rápidas, seguras e prontas para crescer.",
-          "benefits": [
-            "Desenvolvimento web",
-            "Desenvolvimento mobile",
-            "TypeScript",
-            "React.js & React Native",
-            "Next.js",
-            "Node.js"
-          ],
-          "whatsappMessage": "Olá, tenho interesse no serviço de desenvolvimento de software. Podemos conversar sobre meu projeto?"
-        },
-        "ai-systems": {
-          "title": "Sistemas de IA e agentes",
-          "description": "Agentes e automações conectados aos seus dados e ferramentas, com LLMs e RAG, para que seus processos rodem sozinhos.",
-          "benefits": [
-            "Definição do espaço do problema",
-            "Avaliação da maturidade dos dados",
-            "Desenvolvimento de casos de uso",
-            "Framework de orquestação",
-            "Prototipagem e escalamento",
-            "Programação em Python"
-          ],
-          "whatsappMessage": "Olá, tenho interesse em sistemas de IA e agentes. Podemos conversar sobre o que preciso?"
-        }
-      },
-      "cta": "Consultar agora"
-    },
-    "process": {
-      "eyebrow": "Processo que Entrega Resultados",
-      "titlePrefix": "Um processo que entrega ",
-      "titleHighlight": "resultados",
-      "description": "Metodologia clara, entregas no prazo e resultados mensuráveis. Definimos com critério, construímos com padrões altos e lançamos com confiança para que seu produto digital atinja os objetivos de negócio.",
-      "steps": {
-        "definir": {
-          "title": "Definir",
-          "fullTitle": "Definir o que Importa",
-          "description": "Não perguntamos o que você quer construir. Perguntamos o que vale a pena construir. De novos produtos a migrações de plataforma, focamos no que realmente impulsiona resultados.",
-          "short": "Definimos prioridades e o que vale a pena construir para o seu negócio."
-        },
-        "construir": {
-          "title": "Construir",
-          "fullTitle": "Construir para Escalar",
-          "description": "A estética importa, mas a função importa mais. Projetamos, codificamos e conectamos sistemas que sua equipe pode usar com facilidade. Escalável, rápido e pronto para crescer com você.",
-          "short": "Projetamos, desenvolvemos e conectamos sistemas prontos para escalar."
-        },
-        "lanzar": {
-          "title": "Lançar",
-          "fullTitle": "Lançar com Confiança",
-          "description": "Sem entregas silenciosas. Testamos com rigor, lançamos com inteligência e permanecemos no ciclo, prontos para corrigir, melhorar ou escalar conforme suas necessidades mudam.",
-          "short": "Testamos, lançamos e damos suporte contínuo para seguir melhorando."
-        }
-      },
-      "includesLabel": "Inclui:",
-      "badges": {
-        "primary": "Workshop Estratégico",
-        "secondary": [
-          "Design Detalhado",
-          "Arquitetura Escalável",
-          "Sistema Modular"
-        ]
-      },
-      "cards": [
-        {
-          "title": "Revisão de Qualidade",
-          "tag": "QA Testing"
-        },
-        {
-          "title": "Lançamento Seguro",
-          "tag": "Deploy"
-        },
-        {
-          "title": "Suporte Contínuo",
-          "tag": "24/7"
-        }
-      ]
-    },
-    "contact": {
-      "eyebrow": "Contato",
-      "titlePrefix": "Pronto para ",
-      "titleHighlight": "Começar",
-      "titleSuffix": "?",
-      "description": "Conte-nos sobre seu projeto e responderemos em menos de 24 horas.",
-      "form": {
-        "name": "Nome",
-        "namePlaceholder": "Seu nome",
-        "email": "Email",
-        "emailPlaceholder": "seu@email.com",
-        "message": "Mensagem",
-        "messagePlaceholder": "Conte-nos sobre seu projeto...",
-        "submit": "Enviar Mensagem",
-        "submitting": "Enviando..."
-      },
-      "directContact": "Contato Direto",
-      "whatsappCta": "Prefere WhatsApp?",
-      "whatsappDescription": "Resposta imediata para consultas rápidas.",
-      "openWhatsApp": "Abrir WhatsApp",
-      "responseTime": "Resposta em menos de 24 horas",
-      "whatsappDefaultMessage": "Olá, gostaria de saber mais sobre os serviços da AXIUM."
-    },
-    "inspirational": {
-      "line1": "Somos mais do que um provedor de tecnologia.",
-      "line2": "Somos seu parceiro tecnológico estratégico.",
-      "line3": "Comprometidos com o sucesso do seu negócio."
+      "cardTitle": "Transformamos ideias em resultados",
+      "cta": "Vamos falar do seu projeto",
+      "ctaSecundario": "Como trabalhamos"
     },
     "contactCta": {
       "title": "Pronto para transformar seu negócio?",
@@ -345,6 +89,128 @@
       "sourceReferral": "Indicação",
       "sourceSocial": "Redes Sociais",
       "sourceOther": "Outro"
+    },
+    "serviciosSeis": {
+      "titulo": "Design, software e IA, da ideia à produção.",
+      "bajada": "Tudo o que se costuma pedir a uma empresa de software, feito por uma mesma equipe em Lima.",
+      "verServicio": "Ver o serviço",
+      "items": {
+        "diseno": {
+          "titulo": "Design de produto e marca",
+          "texto": "Identidade, interfaces e design systems: logotipo, manual de marca, UX/UI de sites e apps, e peças para redes sociais e apresentações."
+        },
+        "web": {
+          "titulo": "Sites, lojas online e apps",
+          "texto": "Sites institucionais, e-commerce e apps para iOS e Android com um mesmo código: rápidos, fáceis de administrar, com pagamentos online, SEO técnico e analytics desde o primeiro dia."
+        },
+        "software": {
+          "titulo": "Software sob medida e integrações",
+          "texto": "Sistemas internos, painéis, ERP e CRM sob medida para a sua operação. Conectamos o que você já usa por APIs e faturamento eletrônico SUNAT, e modernizamos sistemas antigos sem parar o negócio."
+        },
+        "ia": {
+          "titulo": "Inteligência artificial e dados",
+          "texto": "Agentes, assistentes com os dados da sua empresa (RAG) e automações por WhatsApp ou e-mail, além de painéis e relatórios para decidir com números."
+        },
+        "iot": {
+          "titulo": "IoT e dispositivos conectados",
+          "texto": "Sensores, equipamentos e máquinas conectados aos seus sistemas: monitoramento em tempo real, alertas e painéis para a sua fábrica, frota ou armazém, com a nuvem e as integrações que fazem tudo funcionar."
+        },
+        "cloud": {
+          "titulo": "Cloud, segurança e suporte",
+          "texto": "Hospedagem, deploys automáticos, backups e monitoramento. Cuidamos da segurança e damos suporte e manutenção depois do lançamento."
+        }
+      }
+    },
+    "procesoFases": {
+      "titulo": "Quatro fases, da ideia ao software em produção",
+      "fase": "Fase",
+      "pasos": [
+        {
+          "titulo": "Entender",
+          "texto": "Descobrimos o que vale a pena construir.",
+          "puntos": [
+            "Workshop com a sua equipe",
+            "O fluxo de hoje, mapeado",
+            "Prioridades e escopo acordados"
+          ]
+        },
+        {
+          "titulo": "Desenhar",
+          "texto": "Você vê e testa antes de programarmos.",
+          "puntos": [
+            "Fluxos e telas",
+            "Protótipo navegável",
+            "A sua marca, aplicada"
+          ]
+        },
+        {
+          "titulo": "Construir",
+          "texto": "Sobre os seus dados, conectado aos seus sistemas.",
+          "puntos": [
+            "Entregas por etapas",
+            "Testes automatizados",
+            "Integrações com o que você já usa"
+          ]
+        },
+        {
+          "titulo": "Lançar e crescer",
+          "texto": "No seu domínio, e seguimos com você.",
+          "puntos": [
+            "Colocação em produção",
+            "Monitoramento e backups",
+            "O próximo passo, priorizado"
+          ]
+        }
+      ],
+      "cta": {
+        "titulo": "Vamos começar entendendo o seu negócio.",
+        "texto": "Conte o que você quer resolver e dizemos por onde começar.",
+        "reunion": "Agende uma reunião",
+        "whatsapp": "Fale com a gente no WhatsApp"
+      }
+    },
+    "faq": {
+      "titulo": "Perguntas frequentes",
+      "intro": "O que costumam nos perguntar antes de começar um projeto.",
+      "otra": "Outra pergunta? Escreva para nós",
+      "items": [
+        {
+          "q": "Quanto custa desenvolver um site, um app ou um sistema?",
+          "a": "Depende do escopo: um site institucional não custa o mesmo que uma loja online ou um sistema sob medida. Depois da primeira reunião enviamos uma proposta com o escopo, os prazos e o custo de cada etapa, sem custos escondidos."
+        },
+        {
+          "q": "Quanto tempo leva um projeto?",
+          "a": "Depende do escopo. Uma identidade visual leva de 2 a 4 semanas, um primeiro produto funcional de 6 a 10 semanas e uma plataforma completa de 3 a 6 meses. Trabalhamos por etapas, então você vê avanços desde as primeiras semanas."
+        },
+        {
+          "q": "O código e os designs ficam no meu nome?",
+          "a": "Sim. Trabalhamos no seu repositório desde o primeiro dia, com o histórico completo e as decisões técnicas documentadas, e os designs são entregues editáveis e no seu nome."
+        },
+        {
+          "q": "Vocês emitem boletos e notas fiscais eletrônicas na SUNAT?",
+          "a": "Sim. Integramos a faturação eletrônica peruana com a sua loja online, o seu sistema ou o seu ERP: a cada venda se emite o comprovante e ele é enviado à SUNAT, sem copiar dados à mão."
+        },
+        {
+          "q": "Vocês podem melhorar um site ou sistema que eu já tenho?",
+          "a": "Sim. Primeiro revisamos o código e a infraestrutura e dizemos com clareza o que pode ficar e o que convém mudar. Modernizamos por partes, sem parar a sua operação."
+        },
+        {
+          "q": "O que acontece depois do lançamento?",
+          "a": "Seguimos com você com planos mensais de manutenção e suporte: monitoramento, backups, correção de erros, atualizações e novas funções."
+        },
+        {
+          "q": "Vocês trabalham com empresas fora de Lima?",
+          "a": "Sim. Somos uma equipe em Lima e trabalhamos de forma remota com empresas de todo o Peru e de outros países, com reuniões por videochamada."
+        },
+        {
+          "q": "Com quais tecnologias vocês trabalham?",
+          "a": "Com tecnologias atuais e comprovadas em produção: Next.js e React para sites e painéis, React Native para apps de iOS e Android, Node.js e PostgreSQL no servidor, e o modelo de IA que melhor servir a cada caso."
+        },
+        {
+          "q": "Como começamos?",
+          "a": "Agende uma reunião ou escreva para nós no WhatsApp. Na primeira conversa entendemos o seu negócio e o que você quer resolver, e dizemos por onde convém começar."
+        }
+      ]
     }
   },
   "portfolio": {
@@ -384,6 +250,7 @@
     "title": "Nosso trabalho",
     "intro": "Software que projetamos, desenvolvemos e operamos nós mesmos.",
     "visit": "Visitar site",
+    "verCaso": "Ver o caso",
     "cursor": "VISITAR SITE • VISITAR SITE • ",
     "items": {
       "vendiq": {

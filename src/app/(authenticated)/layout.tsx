@@ -3,9 +3,10 @@ import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateSEOMetadata({
+  ruta: "/dashboard",
+  indexar: false,
   title: "Platform",
   description: "Plataforma moderna de gestión administrativa.",
-  keywords: ["platform", "gestión", "dashboard", "administración"],
 });
 
 export default function AuthenticatedLayout({

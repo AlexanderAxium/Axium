@@ -1,6 +1,8 @@
 "use client";
 
 import { useAuthContext } from "@/AuthContext";
+import { MegaCasos, MegaServicios } from "@/components/axium/mega-menu";
+import { Grafico, SERVICIOS } from "@/components/axium/servicios-seis";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -22,14 +24,10 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useUser } from "@/hooks/useUser";
 import { getInitials } from "@/lib/utils/avatar";
 import {
-  Brain,
   ChevronDown,
-  Code,
-  Grid,
   LayoutDashboard,
   LogOut,
   Menu,
-  Search,
   Settings,
   Shield,
   User,
@@ -42,20 +40,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-const NAVBAR_SERVICES = [
-  {
-    icon: Search,
-    key: "servicesDiscovery",
-    href: "/servicios/design-branding",
-  },
-  {
-    icon: Code,
-    key: "servicesSoftware",
-    href: "/servicios/software-development",
-  },
-  { icon: Brain, key: "servicesAI", href: "/servicios/ai-agentic-systems" },
-] as const;
-
 export default function GlobalNavbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,32 +51,52 @@ export default function GlobalNavbar() {
   const isLegalRoute = pathname.startsWith("/legal");
   // Una sección con data-nav-theme bajo la barra manda sobre el automatismo:
   // "dark" = fondo oscuro (texto blanco), "light" = fondo claro (texto oscuro).
-  const isDark =
+  const isDarkBase =
     sectionTone === "light"
       ? true
       : sectionTone === "dark"
         ? false
         : isBlogRoute || isLegalRoute || isScrolled;
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // El mega menú (2026-10-21): un panel a lo ancho por cada entrada que lo tiene
+  const [mega, setMega] = useState<"servicios" | "casos" | null>(null);
+  const megaTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isDark = isDarkBase || mega !== null;
   const { user, isAuthenticated, signOut } = useAuthContext();
   const { primaryRole } = useUser();
   const router = useRouter();
   const { t, locale, setLocale } = useTranslation("common");
 
-  const handleServicesMouseEnter = useCallback(() => {
-    if (servicesTimeoutRef.current) {
-      clearTimeout(servicesTimeoutRef.current);
-      servicesTimeoutRef.current = null;
+  const abrirMega = useCallback((cual: "servicios" | "casos") => {
+    if (megaTimeoutRef.current) {
+      clearTimeout(megaTimeoutRef.current);
+      megaTimeoutRef.current = null;
     }
-    setIsServicesOpen(true);
+    setMega(cual);
   }, []);
 
-  const handleServicesMouseLeave = useCallback(() => {
-    servicesTimeoutRef.current = setTimeout(() => {
-      setIsServicesOpen(false);
-    }, 200);
+  // Con una pausa corta, para poder cruzar del enlace al panel sin que se cierre
+  const cerrarMega = useCallback(() => {
+    megaTimeoutRef.current = setTimeout(() => setMega(null), 180);
   }, []);
+
+  const cerrarMegaYa = useCallback(() => {
+    if (megaTimeoutRef.current) clearTimeout(megaTimeoutRef.current);
+    setMega(null);
+  }, []);
+
+  // Esc lo cierra, y cambiar de página también
+  useEffect(() => {
+    if (!mega) return;
+    const tecla = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMega(null);
+    };
+    window.addEventListener("keydown", tecla);
+    return () => window.removeEventListener("keydown", tecla);
+  }, [mega]);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: se cierra al cambiar de ruta
+  useEffect(() => {
+    setMega(null);
+  }, [pathname]);
 
   const handleSignOut = useCallback(async () => {
     await signOut();
@@ -203,7 +207,13 @@ export default function GlobalNavbar() {
         }
       }
       setSectionTone(tone);
-      setSectionBg(tone ? backgroundOf(toneSection) : null);
+      // data-nav-bg="none": la barra toma el tono de la sección pero se queda transparente
+      // (un hero con degradado arriba, que una franja de color cortaría)
+      setSectionBg(
+        tone && toneSection?.dataset.navBg !== "none"
+          ? backgroundOf(toneSection)
+          : null
+      );
     };
     const schedule = () => {
       if (!frame) frame = window.requestAnimationFrame(check);
@@ -222,12 +232,14 @@ export default function GlobalNavbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] container-section transition-all duration-300 ${
-          isDark
-            ? "backdrop-blur-md bg-card/10 border-b border-black/5"
-            : "bg-transparent border-b border-transparent backdrop-blur-md"
+          mega
+            ? "bg-white border-b border-gray-200"
+            : isDark
+              ? "backdrop-blur-md bg-card/10 border-b border-black/5"
+              : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
         style={
-          sectionTone && sectionBg
+          sectionTone && sectionBg && !mega
             ? {
                 backgroundColor: `color-mix(in srgb, ${sectionBg} 85%, transparent)`,
               }
@@ -244,6 +256,8 @@ export default function GlobalNavbar() {
                   alt="AXIUM"
                   width={112}
                   height={36}
+                  // el logo es lo primero que se pinta arriba (era el LCP medido, a 2 s): sin esperar
+                  priority
                   className={`h-8 w-auto md:h-9 transition-all duration-300 ${
                     isPortfolioRoute && !isDark
                       ? "brightness-0 invert opacity-90 hover:opacity-100"
@@ -256,86 +270,65 @@ export default function GlobalNavbar() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center gap-6 flex-1 justify-center ml-8">
-              <Link
-                href="/portafolio"
-                className={`text-sm font-medium transition-colors ${
-                  isDark
-                    ? "text-foreground hover:text-secondary"
-                    : "text-white hover:text-white/80"
-                }`}
-              >
-                {t("navbar.casosDeExito")}
-              </Link>
-
-              {/* Services Dropdown */}
               <div
-                className="relative"
-                onMouseEnter={handleServicesMouseEnter}
-                onMouseLeave={handleServicesMouseLeave}
+                className="relative flex h-14 items-center md:h-16"
+                onMouseEnter={() => abrirMega("casos")}
+                onMouseLeave={cerrarMega}
               >
-                <button
-                  type="button"
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors ${
+                <Link
+                  href="/portafolio"
+                  aria-expanded={mega === "casos"}
+                  aria-controls="mega-menu"
+                  onFocus={() => abrirMega("casos")}
+                  className={`py-3 text-sm font-medium transition-colors ${
                     isDark
                       ? "text-foreground hover:text-secondary"
                       : "text-white hover:text-white/80"
-                  }`}
+                  } ${mega === "casos" ? "text-secondary!" : ""}`}
+                >
+                  {t("navbar.casosDeExito")}
+                </Link>
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-0 bottom-0 h-0.5 bg-secondary transition-opacity duration-200 ${mega === "casos" ? "opacity-100" : "opacity-0"}`}
+                />
+              </div>
+
+              {/* Servicios: abre el mega menú */}
+              <div
+                className="relative flex h-14 items-center md:h-16"
+                onMouseEnter={() => abrirMega("servicios")}
+                onMouseLeave={cerrarMega}
+              >
+                <button
+                  type="button"
+                  aria-expanded={mega === "servicios"}
+                  aria-controls="mega-menu"
+                  onClick={() =>
+                    mega === "servicios"
+                      ? cerrarMegaYa()
+                      : abrirMega("servicios")
+                  }
+                  className={`flex items-center gap-1 py-3 text-sm font-medium transition-colors ${
+                    isDark
+                      ? "text-foreground hover:text-secondary"
+                      : "text-white hover:text-white/80"
+                  } ${mega === "servicios" ? "text-secondary!" : ""}`}
                 >
                   {t("navbar.servicios")}
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`}
+                    className={`h-4 w-4 transition-transform duration-200 ${mega === "servicios" ? "rotate-180" : ""}`}
                   />
                 </button>
-
-                {/* Services Mega Menu */}
-                <AnimatePresence>
-                  {isServicesOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -8, scale: 0.97 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -8, scale: 0.97 }}
-                      transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-[60]"
-                      onMouseEnter={handleServicesMouseEnter}
-                      onMouseLeave={handleServicesMouseLeave}
-                    >
-                      <div className="flex items-center gap-2 mb-4">
-                        <Grid className="h-5 w-5 text-secondary" />
-                        <h3 className="font-semibold text-gray-900">
-                          {t("navbar.servicios")}
-                        </h3>
-                      </div>
-                      <div className="grid grid-cols-3 gap-3">
-                        {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
-                          <Link
-                            key={key}
-                            href={href}
-                            className="block group hover:bg-gray-50 p-3 rounded-lg transition-colors"
-                          >
-                            <div className="flex items-start gap-3">
-                              <div className="w-8 h-8 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
-                                <Icon className="w-4 h-4 text-secondary" />
-                              </div>
-                              <div>
-                                <h4 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-secondary transition-colors">
-                                  {t(`navbar.${key}.title`)}
-                                </h4>
-                                <p className="text-xs text-gray-600 leading-relaxed">
-                                  {t(`navbar.${key}.description`)}
-                                </p>
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-0 bottom-0 h-0.5 bg-secondary transition-opacity duration-200 ${mega === "servicios" ? "opacity-100" : "opacity-0"}`}
+                />
               </div>
 
               <Link
                 href="/#como-trabajamos"
-                className={`text-sm font-medium transition-colors ${
+                className={`py-3 text-sm font-medium transition-colors ${
                   isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
@@ -346,7 +339,7 @@ export default function GlobalNavbar() {
 
               <Link
                 href="/#contacto"
-                className={`text-sm font-medium transition-colors ${
+                className={`py-3 text-sm font-medium transition-colors ${
                   isDark
                     ? "text-foreground hover:text-secondary"
                     : "text-white hover:text-white/80"
@@ -495,17 +488,17 @@ export default function GlobalNavbar() {
                       <p className="px-3 text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
                         {t("navbar.servicios")}
                       </p>
-                      {NAVBAR_SERVICES.map(({ icon: Icon, key, href }) => (
+                      {SERVICIOS.map((sv) => (
                         <Link
-                          key={key}
-                          href={href}
+                          key={sv.id}
+                          href={sv.href}
                           onClick={() => setIsMenuOpen(false)}
-                          className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-secondary transition-colors"
+                          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-secondary transition-colors"
                         >
-                          <span className="w-8 h-8 rounded-lg bg-secondary/8 flex items-center justify-center flex-shrink-0">
-                            <Icon className="h-4 w-4 text-secondary" />
+                          <span className="grid h-10 w-9 shrink-0 place-items-center rounded-md bg-[#EEF2F7] p-1 ring-1 ring-[#060C20]/[0.05]">
+                            <Grafico id={sv.id} quieto claro icono />
                           </span>
-                          {t(`navbar.${key}.title`)}
+                          {t(`navbar.mega.servicios.items.${sv.id}.titulo`)}
                         </Link>
                       ))}
                     </div>
@@ -622,7 +615,65 @@ export default function GlobalNavbar() {
             </div>
           </div>
         </div>
+        {/* El mega menú: a lo ancho, pegado a la barra (solo escritorio) */}
+        <AnimatePresence>
+          {mega && (
+            <motion.div
+              key="mega"
+              id="mega-menu"
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-x-0 top-full hidden border-b border-gray-200 bg-white shadow-[0_28px_48px_-28px_rgba(6,12,32,.35)] lg:block"
+              onMouseEnter={() => abrirMega(mega)}
+              onMouseLeave={cerrarMega}
+            >
+              <div className="container-section">
+                <div className="content-section">
+                  {/* Los dos paneles en la misma celda: el menú mide lo que el más alto, así casos
+                      y servicios coinciden en todos los anchos y no salta al pasar de uno a otro
+                      (Alexander, 2026-10-22: «reduce su alto para que coincida con servicios») */}
+                  <div className="grid">
+                    {(["servicios", "casos"] as const).map((k) => (
+                      <div
+                        key={k}
+                        aria-hidden={mega !== k}
+                        inert={mega !== k}
+                        className={`flex [grid-area:1/1] transition-opacity duration-200 ${
+                          mega === k
+                            ? "opacity-100"
+                            : "pointer-events-none invisible opacity-0"
+                        }`}
+                      >
+                        {k === "servicios" ? (
+                          <MegaServicios alElegir={cerrarMegaYa} />
+                        ) : (
+                          <MegaCasos alElegir={cerrarMegaYa} />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
+
+      <AnimatePresence>
+        {mega && (
+          <motion.div
+            aria-hidden="true"
+            className="fixed inset-0 z-[90] hidden bg-[#060C20]/20 lg:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={cerrarMegaYa}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

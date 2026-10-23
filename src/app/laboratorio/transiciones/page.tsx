@@ -1,0 +1,14 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Transiciones } from "~/components/laboratorio/ejemplos";
+
+// Ejemplo del laboratorio 3D (2026-10-15). Solo existe en desarrollo.
+export const metadata: Metadata = {
+  title: "Transiciones · Laboratorio 3D · Axium",
+  robots: { index: false, follow: false },
+};
+
+export default function Pagina() {
+  if (process.env.NODE_ENV === "production") notFound();
+  return <Transiciones />;
+}

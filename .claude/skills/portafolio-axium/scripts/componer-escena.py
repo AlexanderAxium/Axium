@@ -70,6 +70,47 @@ def medir_clave(ruta):
     k = np.asarray(Image.open(ruta).convert("RGB")).astype(np.int32)
     r, g, b = k[..., 0], k[..., 1], k[..., 2]
     m = (r > 150) & (b > 150) & (g < 0.6 * np.minimum(r, b)) & ((r + b) // 2 - g > 90)
+
+    # Un celular echado en diagonal (Enraf, 2026-10-21: ~25°) rompe el ajuste por filas y
+    # columnas, que da por hecho bordes casi rectos. Se busca el giro que deja la caja del
+    # cristal más pequeña, se endereza la máscara, se ajusta ahí y se devuelven las esquinas.
+    ang = angulo_cristal(m)
+    if abs(ang) > 2:
+        ys, xs = np.nonzero(m)
+        c = (float(xs.mean()), float(ys.mean()))
+        recta_m = np.asarray(
+            Image.fromarray((m * 255).astype(np.uint8)).rotate(ang, center=c, resample=Image.BILINEAR)
+        ) > 127
+        quad, res = esquinas_por_rectas(recta_m)
+        co, si = np.cos(np.deg2rad(ang)), np.sin(np.deg2rad(ang))
+        # rotate(ang) lleva p a c + [[cos, sin], [-sin, cos]]·(p − c); se deshace con la traspuesta
+        quad = [(c[0] + co * (x - c[0]) - si * (y - c[1]), c[1] + si * (x - c[0]) + co * (y - c[1]))
+                for x, y in quad]
+        print("clave: cristal girado %.1f°, enderezado para medirlo" % ang)
+    else:
+        quad, res = esquinas_por_rectas(m)
+    print("clave: residuo por borde (izq/der/arr/aba) %.1f %.1f %.1f %.1f px" % res)
+    print("clave: esquinas", [(round(float(x), 1), round(float(y), 1)) for x, y in quad])
+    masc = Image.fromarray((m * 255).astype(np.uint8))
+    masc = masc.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.6))
+    return masc, quad
+
+
+def angulo_cristal(m):
+    """El giro (grados, entre −45 y 45) que deja la caja del cristal más pequeña."""
+    ys, xs = np.nonzero(m[::4, ::4])
+    xs, ys = xs - xs.mean(), ys - ys.mean()
+
+    def area(a):
+        co, si = np.cos(np.deg2rad(a)), np.sin(np.deg2rad(a))
+        u, v = co * xs + si * ys, -si * xs + co * ys
+        return np.ptp(u) * np.ptp(v)
+
+    mejor = min(np.arange(-45, 45.5, 1.0), key=area)
+    return float(min(np.arange(mejor - 1, mejor + 1.05, 0.1), key=area))
+
+
+def esquinas_por_rectas(m):
     ys, xs = np.nonzero(m)
     y0, y1, x0, x1 = ys.min(), ys.max(), xs.min(), xs.max()
     h, w = y1 - y0, x1 - x0
@@ -99,11 +140,7 @@ def medir_clave(ruta):
         return (ax * y + bx, y)
 
     quad = [cruce(ai, bi, aa, ba), cruce(ad, bd, aa, ba), cruce(ad, bd, ab, bb), cruce(ai, bi, ab, bb)]
-    print("clave: residuo por borde (izq/der/arr/aba) %.1f %.1f %.1f %.1f px" % (ri, rd, ra, rb))
-    print("clave: esquinas", [(round(x, 1), round(y, 1)) for x, y in quad])
-    masc = Image.fromarray((m * 255).astype(np.uint8))
-    masc = masc.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(0.6))
-    return masc, quad
+    return quad, (ri, rd, ra, rb)
 
 def main():
     ap = argparse.ArgumentParser()

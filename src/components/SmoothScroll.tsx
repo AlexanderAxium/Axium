@@ -21,8 +21,12 @@ import { useEffect, useRef } from "react";
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
   const pathname = usePathname();
+  // 3. **El laboratorio 3D suaviza el scroll él mismo** (en el mismo cuadro que dibuja). Con Lenis
+  //    encima eran dos suavizados en cadena y dos bucles de animación: se sentía «de goma».
+  const sinLenis = pathname?.startsWith("/laboratorio") ?? false;
 
   useEffect(() => {
+    if (sinLenis) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
@@ -44,7 +48,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       lenis.destroy();
       lenisRef.current = null;
     };
-  }, []);
+  }, [sinLenis]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: pathname es el disparador, no se lee dentro
   useEffect(() => {

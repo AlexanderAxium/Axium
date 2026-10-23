@@ -15,6 +15,60 @@
     "servicesAI": {
       "title": "IA e Sistemas Agénticos",
       "description": "Sistemas autônomos com LLMs, RAG e orquestração de agentes para automatizar decisões em tempo real."
+    },
+    "mega": {
+      "servicios": {
+        "titulo": "Design, software e IA, da ideia à produção.",
+        "texto": "Uma mesma equipe em Lima para a marca, os sistemas e a inteligência artificial da sua empresa.",
+        "cta": "Vamos falar do seu projeto",
+        "secundario": "Como trabalhamos",
+        "etiqueta": "O que fazemos",
+        "items": {
+          "diseno": {
+            "titulo": "Design de produto e marca",
+            "resumen": "Identidade, interfaces e design systems."
+          },
+          "web": {
+            "titulo": "Sites, lojas e apps",
+            "resumen": "Sites, e-commerce e apps para iOS e Android."
+          },
+          "software": {
+            "titulo": "Software sob medida",
+            "resumen": "Sistemas internos, ERP, CRM e integrações."
+          },
+          "ia": {
+            "titulo": "IA e dados",
+            "resumen": "Agentes, automações, painéis e relatórios."
+          },
+          "iot": {
+            "titulo": "IoT e dispositivos",
+            "resumen": "Sensores, monitoramento e alertas em tempo real."
+          },
+          "cloud": {
+            "titulo": "Cloud, segurança e suporte",
+            "resumen": "Hospedagem, deploys, backups e monitoramento."
+          }
+        }
+      },
+      "blog": {
+        "etiqueta": "Do blog",
+        "todos": "Todos os artigos"
+      },
+      "casos": {
+        "titulo": "Produtos que desenhamos, construímos e operamos.",
+        "texto": "Quatro produtos próprios em produção e projetos para empresas de vários setores.",
+        "todos": "Ver todos os projetos",
+        "propios": "Produtos próprios",
+        "clientes": "Casos de clientes",
+        "lista": {
+          "anjsports": "Loja online de tênis de mesa",
+          "aurore": "Marca e loja de perfumaria",
+          "alyer": "Marca para transporte e fabricação metálica",
+          "feniz": "Plataforma para traders de contas financiadas",
+          "maintech": "Marca de formação técnica",
+          "clefast": "E-commerce industrial"
+        }
+      }
     }
   },
   "footer": {
@@ -92,5 +146,9 @@
   "yourPassword": "Sua senha",
   "cancel": "Cancelar",
   "anonymous": "Anônimo",
-  "notAvailable": "Não disponível"
+  "notAvailable": "Não disponível",
+  "whatsappFlotante": {
+    "etiqueta": "Fale conosco no WhatsApp",
+    "mensaje": "Olá, vim do axium.com.pe e quero conversar sobre um projeto."
+  }
 }

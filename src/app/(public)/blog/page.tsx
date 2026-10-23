@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { PortadaBlog } from "~/components/axium/portada-blog";
 import { BLOG_IMAGES, BLOG_SLUGS } from "~/data/blog-data";
 import { useTranslation } from "~/hooks/useTranslation";
 
@@ -70,14 +71,8 @@ export default function BlogIndexPage() {
                       href={`/blog/${slug}`}
                       className="group flex flex-col sm:flex-row gap-4 sm:gap-6 rounded-2xl border border-gray-200 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all duration-300"
                     >
-                      <div className="relative w-full sm:w-56 h-40 sm:h-36 shrink-0 bg-gray-100">
-                        <Image
-                          src={BLOG_IMAGES[slug]}
-                          alt=""
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, 224px"
-                        />
+                      <div className="w-full shrink-0 overflow-hidden sm:w-56">
+                        <PortadaBlog slug={slug} />
                       </div>
                       <div className="p-4 sm:p-0 sm:py-4 sm:pr-4 flex flex-col justify-center min-w-0">
                         <time className="text-body-sm text-gray-500 mb-1">

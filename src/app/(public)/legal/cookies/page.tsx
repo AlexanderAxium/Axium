@@ -1,3 +1,12 @@
+import { metaPagina } from "@/lib/seo";
+
+export const metadata = metaPagina({
+  titulo: "Política de cookies",
+  descripcion:
+    "Qué cookies usa el sitio de Axium, para qué sirven y cómo puedes desactivarlas desde tu navegador.",
+  ruta: "/legal/cookies",
+});
+
 export default function CookiesPage() {
   return (
     <div className="container-section py-12 md:py-16">

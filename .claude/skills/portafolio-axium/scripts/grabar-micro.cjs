@@ -7,6 +7,9 @@
 //           segundos, viewport:[w,h], ocultar? (regex de texto a ocultar dentro), cookies?,
 //           margen? (px css hasta el borde, 20 por defecto: más si algo del componente se sale
 //           por arriba o a la izquierda, como los anillos del hero de vendiq.pe),
+//           css? (estilos extra sobre el componente aislado, que lleva [data-micro]),
+//           fondoPagina? (color: la página y las láminas antecesoras se pintan de ese color, para
+//           componentes de una lámina oscura con textos claros),
 //           subir? (niveles a subir desde lo encontrado: si el texto vive en una capa
 //           `absolute inset-0`, se queda con ella, que al fijarla mide todo el alto y deja
 //           fuera la foto de al lado; «Cómo funciona» de vendiq.pe pide 2) }
@@ -34,7 +37,7 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   // Recorrer la página para que todo esté montado (las ilustraciones suelen entrar al verse)
   const H = await p.evaluate(() => document.documentElement.scrollHeight);
   for (let y = 0; y < H; y += 500) { await p.evaluate((v) => window.scrollTo(0, v), y); await wait(100); }
-  const ok = await p.evaluate(({ texto, min, max, zoom, ocultar, margen, subir }) => {
+  const ok = await p.evaluate(({ texto, min, max, zoom, ocultar, margen, subir, fondoPagina }) => {
     const re = new RegExp(texto);
     let c = [...document.querySelectorAll("div,section,article,figure,ol,ul")]
       .filter((e) => { const r = e.getBoundingClientRect(); return r.width >= min && r.width <= max && re.test(e.innerText || ""); })
@@ -48,12 +51,21 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
       e.style.visibility = "hidden";
     }
     if (ocultar) for (const e of c.querySelectorAll("*")) if (new RegExp(ocultar).test(e.innerText || "") && e.children.length === 0) e.style.visibility = "hidden";
-    for (let a = c.parentElement; a && a !== document.body; a = a.parentElement) { a.style.transform = "none"; a.style.filter = "none"; }
+    for (let a = c.parentElement; a && a !== document.body; a = a.parentElement) {
+      a.style.transform = "none"; a.style.filter = "none";
+      // `fondoPagina`: el componente vive en una lámina oscura y sus textos son claros. Las
+      // láminas quedan transparentes y la página entera toma ese color (vendiq.pe, 2026-10-21)
+      if (fondoPagina) { a.style.background = "transparent"; a.style.boxShadow = "none"; }
+    }
+    if (fondoPagina) { document.documentElement.style.background = fondoPagina; document.body.style.background = fondoPagina; }
     c.setAttribute("data-micro", "1");
     c.style.cssText += `;position:fixed;left:${margen}px;top:${margen}px;width:${w}px;zoom:${zoom};z-index:2147483647;margin:0`;
     return true;
-  }, { texto: C.texto, min: C.min || 200, max: C.max || 1400, zoom: C.zoom || 2, ocultar: C.ocultar || null, margen: C.margen || 20, subir: C.subir || 0 });
+  }, { texto: C.texto, min: C.min || 200, max: C.max || 1400, zoom: C.zoom || 2, ocultar: C.ocultar || null, margen: C.margen || 20, subir: C.subir || 0, fondoPagina: C.fondoPagina || null });
   if (!ok) { console.log("✗ no se encontró el contenedor"); await b.close(); process.exit(1); }
+  // `css`: retoques del componente ya aislado (marcado con [data-micro]), p. ej. quitar el
+  // titular de la sección para no repetir el de la ficha (abanico de vendiq.pe, 2026-10-21)
+  if (C.css) await p.addStyleTag({ content: C.css });
   await wait(400);
   fs.rmSync(C.salida, { recursive: true, force: true });
   fs.mkdirSync(C.salida, { recursive: true });

@@ -1,49 +1,26 @@
-import {
-  generateLocalBusinessSchema,
-  generateOrganizationSchema,
-  generateServiceSchema,
-  generateSoftwareApplicationSchema,
-  generateWebSiteSchema,
-} from "@/lib/structured-data";
+import { esquemaOrganizacion, esquemaSitio } from "@/lib/structured-data";
 
-export function StructuredData() {
+/**
+ * Bloques JSON-LD (se renderizan en el servidor, sin JavaScript en el cliente). Uno por objeto:
+ * un arreglo en un solo <script> hace fallar a los lectores que esperan datos["@context"].
+ */
+export function JsonLd({ datos }: { datos: object | object[] }) {
+  const lista = Array.isArray(datos) ? datos : [datos];
   return (
     <>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateOrganizationSchema()),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateWebSiteSchema()),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateSoftwareApplicationSchema()),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateLocalBusinessSchema()),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateServiceSchema()),
-        }}
-      />
+      {lista.map((d) => (
+        <script
+          key={`${(d as { "@type"?: string })["@type"]}-${JSON.stringify(d).length}`}
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: los datos estructurados van así
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(d) }}
+        />
+      ))}
     </>
   );
+}
+
+/** Lo que va en todas las páginas: quién es Axium y cuál es el sitio. */
+export function StructuredData() {
+  return <JsonLd datos={[esquemaOrganizacion(), esquemaSitio()]} />;
 }

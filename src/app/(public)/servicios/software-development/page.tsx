@@ -1,13 +1,27 @@
-import { SoftwareDevelopmentPage } from "~/components/axium/software-development-page";
-import { SERVICES } from "~/data/services-data";
+import { JsonLd } from "~/components/StructuredData";
+import { PaginaServicio } from "~/components/axium/pagina-servicio";
+import { PAGINAS_SERVICIO } from "~/data/servicios-paginas";
+import { metaPagina } from "~/lib/seo";
+import { esquemaServicio } from "~/lib/structured-data";
 
-const data = SERVICES["software-development"]!;
+const { meta, slug } = PAGINAS_SERVICIO.software;
 
-export const metadata = {
-  title: data.metaTitle,
-  description: data.metaDescription,
-};
+// el canonical propio (sin él heredaba el del inicio y Google la tomaba por un duplicado) y su
+// pieza para redes
+export const metadata = metaPagina({
+  titulo: meta.titulo,
+  descripcion: meta.descripcion,
+  ruta: `/servicios/${slug}`,
+  imagen: "/og/og-servicio-software.jpg",
+});
 
+// el molde de las páginas de servicio (2026-10-22); la página anterior (?v=anterior) se borró el
+// 2026-10-23
 export default function Page() {
-  return <SoftwareDevelopmentPage />;
+  return (
+    <>
+      <JsonLd datos={esquemaServicio("software")} />
+      <PaginaServicio id="software" />
+    </>
+  );
 }

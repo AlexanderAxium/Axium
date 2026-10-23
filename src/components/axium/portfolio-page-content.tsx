@@ -658,7 +658,7 @@ export function PortfolioPageContent() {
                     >
                       {label}
                       <span
-                        className={`text-[11px] tabular-nums ${on ? "text-white/60" : "text-gray-300"}`}
+                        className={`text-[11px] tabular-nums ${on ? "text-white/60" : "text-gray-500"}`}
                       >
                         {slugs.length}
                       </span>

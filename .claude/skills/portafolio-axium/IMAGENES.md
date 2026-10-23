@@ -168,6 +168,7 @@ por gusto: un proyecto con una sola captura del home no puede usar la R6.
 | **R30** | **El sistema de imagen, a la vista** | Cuando las fotos de una ficha son generadas: la plantilla del prompt con sus huecos + la rejilla de resultados + el criterio en una frase («contrapicado, gran angular, ciudad, una persona en primer plano») | Es la propia tanda | paisanos (Ualá: «Hecho con Gemini Nano Banana Pro»). Convierte la IA en dirección de arte declarada |
 | **R26** | **Carrusel arrastrable del entregable** | Campo de color de marca → las láminas reales del documento de diseño como slides con radio, numeradas `01/03`, con cursor `DRAG` | No | BASIC (Murad) — enseña el documento de trabajo como prueba |
 | **R27** | **Marquesina de capturas crudas sobre oscuro** | Campo oscuro uniforme → 2–3 hileras de capturas **reales, sin marco ni dispositivo**, todas del mismo tamaño y con radio, desplazándose en direcciones opuestas; la de móvil inclinada ~−15°, la de escritorio frontal | No — Playwright + CSS | BAO (Omorovicza, Haeckels) — **18 pantallas al costo de una tarde; la más rentable de la biblioteca** |
+| **R31** | **Primer plano sobre material** (la portada que pidió Alexander el 2026-10-21) | Escena generada: UN material del mundo del cliente (chapa de taller, paño quirúrgico, piedra, arena, seda), sin atrezo → el aparato en perspectiva con la pantalla en clave magenta → la captura REAL compuesta → **recorte**: portátil cortado por el borde con la UI al 60–85 % del cuadro; celular echado entero y grande (~85 % del alto). La UI grande y real es lo constante; **la composición rota** entre portadas (Alexander, ANJ: «que no todo esté en la misma posición o estilo»): laptop sobre material, celulares construidos sobre campo abstracto, celular cenital… | Sí, la escena (flare + edición sunburst) | `referencias/portadas-2026-10-21.md`: MoneyLion, PartnerUp, Bizee, Fourth Moment, Oura, Constellation… Pruebas: Daesur, Enraf |
 
 > **Corrección de doctrina (2026-09-29, tanda de e-commerce).** «Ninguna
 > captura cruda» es una regla **del índice**, no de la ficha. Dentro del caso,
@@ -459,6 +460,44 @@ entera: **6.729 tokens de imagen** (tres variantes a 2.243 cada una, 2400×1600,
 calidad `high`).
 
 ---
+
+### Y la cámara tiene que ir NIVELADA, con los bordes verticales verticales (Rematch, 2026-10-21)
+
+Alexander, sobre la portada de Rematch: *«por qué se ve así la laptop, como descuadrada… capaz
+es el prompt»*. Era el prompt. Pedía **cámara a 25 cm del suelo, lente de 35 mm y la tapa
+llenando el 80 % del cuadro, «recedes in clear perspective»**: una perspectiva extrema que el
+modelo no resuelve y que falsea **torciendo la tapa**. Medido con las esquinas de la clave: los
+dos bordes laterales caían con la parte de arriba hacia la IZQUIERDA (7° y 12°), con los postes
+del fondo rectos. Una tapa vista desde la izquierda solo puede inclinarse hacia donde se aleja,
+o sea que eso no existe, y la UI compuesta hereda la torcedura. Daesur tenía lo mismo, más suave
+(5° y 7°).
+
+**El bloque que lo arregla** (va en todo prompt con un portátil o un monitor):
+
+> `CAMERA AND GEOMETRY: 85mm lens from about 1.5 metres away. The camera is perfectly level, at
+> the height of the middle of the screen: no tilt, no roll, no Dutch angle. Three-quarter view:
+> the laptop is turned about 30 degrees [...]. The lid is opened to about 100 degrees, almost
+> upright. Correct two-point perspective: the left and right edges of the screen are perfectly
+> vertical in the image, parallel to the vertical [posts / walls] behind; only the top and bottom
+> edges converge gently. The screen is a true flat rectangle: no warping, no skew, no lean. The
+> laptop fills about 60 percent of the frame width.`
+
+Resultado: 1,8° y 1,9° en la escena, y 2,0° y 2,9° tras la edición en magenta.
+
+**Mejor aún: la tapa a EXACTAMENTE 90°** (ANJ, mismo día). Con «about 100 degrees» las dos
+variantes de ANJ salieron a 2,7°/4,7° y 4,2°/5,0°: el modelo inclina la tapa hacia atrás y la
+tuerce al revés. Con *«The lid is opened to exactly 90 degrees: the screen stands perfectly
+upright, at a right angle to the keyboard and to the floor»* y el giro a 25°: **0,4°/0,3° y
+0,9°/0,8°**, y 0,5°/0,3° tras la clave. Con la cámara nivelada, una tapa vertical no tiene
+cómo salir torcida.
+
+**Y la proporción de la pantalla.** El modelo no siempre dibuja 16:10: la laptop de ANJ salió
+cercana a 3:2 (ancho aparente ÷ alto medio ≈ 1,30 con 25° de giro → ≈ 1,44 real). Mapear una
+captura 16:10 ahí aprieta la tipografía; se capturó a 1200×800 (3:2). **El primer plano
+no se le pide al modelo: se saca recortando**, con la escena ampliada ×1,5 ANTES de componer para
+que la UI quede nítida. **Control obligatorio**: con las esquinas de la clave, medir la inclinación
+de los bordes laterales; por encima de ~3°, o si se inclinan hacia el lado cercano, la escena se
+tira.
 
 ### Las cinco plantillas, para webs y SaaS
 

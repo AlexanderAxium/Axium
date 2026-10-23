@@ -434,3 +434,24 @@ tramo es estructural de `CaseStory` (`tags` + «Más proyectos»), igual en las 
 - El **paso 3 del checkout** («Envío y Pago», con Culqi y las transferencias a la
   vista) daría una novena pieza fuerte, pero exige rellenar el formulario de una
   tienda real; se dejó fuera.
+
+## Portada «primer plano sobre material» (2026-10-21)
+
+Alexander, tras aprobar la de Rematch: *«quedó mejor, sigue con anj»*. Laptop negra en primer plano
+sobre el piso rojo de competencia de un salón de tenis de mesa (vallas marino y la mesa azul con la
+red, desenfocadas), con la portada real de anjsports.com en su estado XIOM. Capturada a 1200×800
+porque la pantalla generada es casi 3:2. Archivo `proyects/anjsports/anj-portada-sala.jpg` en
+`anjsports.json` y `software-development-page.tsx`; el héroe de la ficha (`anj-heroe-mesa`) y el
+laboratorio siguen como estaban. Taller en `capturas-clientes/anjsports/portada-2026-10/`. Detalle y
+mediciones en `referencias/portadas-2026-10-21.md`.
+
+**Rehecha el mismo día.** Alexander: *«para ese caso prefiero un fondo ligeramente abstracto y que no
+todo esté en la misma posición o estilo, varía sin perder el profesionalismo ni calidad»*. Ahora: dos
+celulares construidos, inclinados y cortados por abajo, sobre `campos/anjsports-flare.jpg` (luz cian a
+la izquierda, magenta a la derecha); el de la izquierda con la portada móvil en estado XIOM y el de la
+derecha en estado Butterfly. `scripts/portada-anjsports-campo.py` → `proyects/anjsports/anj-portada-campo.jpg`.
+La del piso rojo (`anj-portada-sala.jpg`) se borró.
+
+**Y el campo, más fino.** *«decente, pero los gradientes son muy básicos y muy fosforescentes, hazlo más
+sutil y fino texturizado»*. Campo nuevo `campos/anjsports-sutil-1.png` (velos de teal y ciruela apagados,
+L máx 51/255, textura de papel mate) → `portada-anjsports-campo.py --sutil` → `anj-portada-campo-v2.jpg`.

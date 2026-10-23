@@ -1,15 +1,30 @@
-export function generateOrganizationSchema() {
-  const siteUrl = process.env.SITE_URL || "https://axium.com.pe";
+import { PAGINAS_SERVICIO } from "~/data/servicios-paginas";
+import { SITIO } from "~/lib/seo";
+
+/**
+ * Datos estructurados (schema.org), rehechos el 2026-10-23. Se quitó lo que no era cierto o no
+ * existía: un SearchAction hacia /search (no hay buscador), un SoftwareApplication (Axium no es
+ * una app) con una oferta sin precio que Search Console marca como error, y una geolocalización,
+ * un horario y un año de fundación que no salen de ninguna parte. Solo va lo que dice la web:
+ * Lima, el correo, el teléfono y los seis servicios con su página. Cuando existan la dirección y
+ * las redes (LinkedIn, Instagram…), se suman en `address` y `sameAs`.
+ */
+
+const ID_ORG = `${SITIO}/#organizacion`;
+
+export function esquemaOrganizacion() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AXIUM",
-    legalName: "AXIUM",
+    "@id": ID_ORG,
+    name: "Axium",
+    url: SITIO,
+    logo: `${SITIO}/icon-512.png`,
+    image: `${SITIO}/og/og-inicio.jpg`,
     description:
-      "AXIUM desarrolla software personalizado para empresas en crecimiento y grandes organizaciones. Soluciones enterprise-grade, aplicaciones web y móviles, automatización de procesos e IA.",
-    url: siteUrl,
-    logo: `${siteUrl}/logo.png`,
-    foundingDate: "2020",
+      "Empresa de desarrollo de software en Lima: software a medida, páginas web, tiendas online, apps, inteligencia artificial e IoT para empresas en Perú.",
+    email: "contacto@axium.com.pe",
+    telephone: "+51991285679",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lima",
@@ -18,173 +33,95 @@ export function generateOrganizationSchema() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        contactType: "customer service",
+        contactType: "sales",
         email: "contacto@axium.com.pe",
         telephone: "+51991285679",
-        availableLanguage: ["Spanish", "English"],
+        areaServed: "PE",
+        availableLanguage: ["Spanish", "English", "Portuguese"],
       },
-    ],
-    sameAs: [
-      // Agregar URLs de redes sociales cuando estén disponibles
-      // "https://twitter.com/axium",
-      // "https://linkedin.com/company/axium",
-      // "https://facebook.com/axium"
     ],
   };
 }
 
-export function generateWebSiteSchema() {
-  const siteUrl = process.env.SITE_URL || "https://axium.com.pe";
+export function esquemaSitio() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "AXIUM",
-    description:
-      "AXIUM desarrolla software personalizado para empresas en crecimiento y grandes organizaciones. Soluciones enterprise-grade, aplicaciones web y móviles, automatización de procesos e IA.",
-    url: siteUrl,
-    publisher: {
-      "@type": "Organization",
-      name: "AXIUM",
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/logo.png`,
-      },
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteUrl}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    "@id": `${SITIO}/#sitio`,
+    name: "Axium",
+    url: SITIO,
+    inLanguage: "es-PE",
+    publisher: { "@id": ID_ORG },
   };
 }
 
-export function generateSoftwareApplicationSchema() {
-  const siteUrl = process.env.SITE_URL || "https://axium.com.pe";
+/** La empresa como servicio profesional en Lima, con su catálogo: va en el inicio. */
+export function esquemaNegocio() {
   return {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "AXIUM Software Development Services",
-    description:
-      "Servicios de desarrollo de software personalizado para empresas. Aplicaciones web, móviles, automatización de procesos e inteligencia artificial.",
-    url: siteUrl,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web Browser, iOS, Android",
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "PEN",
-      availability: "https://schema.org/InStock",
-    },
-  };
-}
-
-// Schema para LocalBusiness (AXIUM como empresa local en Perú)
-export function generateLocalBusinessSchema() {
-  const siteUrl = process.env.SITE_URL || "https://axium.com.pe";
-  return {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${siteUrl}#business`,
-    name: "AXIUM",
-    description:
-      "Desarrollo de software personalizado, aplicaciones web y móviles, automatización de procesos e inteligencia artificial para empresas en Perú.",
-    url: siteUrl,
-    logo: `${siteUrl}/logo.png`,
-    image: `${siteUrl}/logo.png`,
+    "@type": "ProfessionalService",
+    "@id": `${SITIO}/#negocio`,
+    name: "Axium",
+    url: SITIO,
+    image: `${SITIO}/og/og-inicio.jpg`,
+    logo: `${SITIO}/icon-512.png`,
+    email: "contacto@axium.com.pe",
+    telephone: "+51991285679",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lima",
       addressCountry: "PE",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "-12.0464",
-      longitude: "-77.0428",
-    },
-    telephone: "+51991285679",
-    email: "contacto@axium.com.pe",
-    priceRange: "$$",
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Perú",
+    areaServed: { "@type": "Country", name: "Perú" },
+    parentOrganization: { "@id": ID_ORG },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Servicios de Axium",
+      itemListElement: Object.values(PAGINAS_SERVICIO).map((p) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: p.meta.titulo.replace(/\s*\|\s*Axium$/i, ""),
+          description: p.meta.descripcion,
+          url: `${SITIO}/servicios/${p.slug}`,
+        },
+      })),
     },
   };
 }
 
-// Schema para servicios de AXIUM
-export function generateServiceSchema() {
-  const siteUrl = process.env.SITE_URL || "https://axium.com.pe";
+/** Un servicio, para su página. */
+export function esquemaServicio(id: keyof typeof PAGINAS_SERVICIO) {
+  const p = PAGINAS_SERVICIO[id];
+  const nombre = p.meta.titulo.replace(/\s*\|\s*Axium$/i, "");
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: nombre,
+      description: p.meta.descripcion,
+      url: `${SITIO}/servicios/${p.slug}`,
+      provider: { "@id": ID_ORG },
+      areaServed: { "@type": "Country", name: "Perú" },
+    },
+    migas([
+      ["Inicio", "/"],
+      ["Servicios", "/#servicios"],
+      [nombre, `/servicios/${p.slug}`],
+    ]),
+  ];
+}
+
+/** Las migas de pan de una página: [nombre, ruta] desde el inicio. */
+export function migas(pasos: [string, string][]) {
   return {
     "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "Software Development",
-    provider: {
-      "@type": "Organization",
-      name: "AXIUM",
-      url: siteUrl,
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Perú",
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Servicios de Desarrollo de Software",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Software a Medida",
-            description:
-              "Desarrollo de soluciones enterprise-grade adaptadas a tu arquitectura de negocio, con integraciones nativas y escalabilidad garantizada.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Aplicaciones Web",
-            description:
-              "Desarrollo de aplicaciones web modernas, responsivas y escalables con las mejores tecnologías del mercado.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Aplicaciones Móviles",
-            description:
-              "Desarrollo de aplicaciones móviles nativas e híbridas para iOS y Android.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Automatización de Procesos",
-            description:
-              "Automatización de procesos empresariales para mejorar la eficiencia y reducir costos operativos.",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Analítica Predictiva e IA",
-            description:
-              "Implementación de soluciones de inteligencia artificial y analítica predictiva para toma de decisiones inteligente.",
-          },
-        },
-      ],
-    },
+    "@type": "BreadcrumbList",
+    itemListElement: pasos.map(([name, ruta], i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name,
+      item: `${SITIO}${ruta === "/" ? "" : ruta}`,
+    })),
   };
 }

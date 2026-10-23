@@ -717,3 +717,18 @@ alguien se pone a analizar no entenderá el propósito, a eso me refiero con inv
   producto (son del código, no del manual), con un texto sin callouts.
 - Entregables de la cabecera: «Manual de marca, Línea gráfica, 29 íconos…».
 
+
+## 20. Portada «primer plano sobre material», como Daesur (2026-10-21)
+
+Alexander, tras aprobar la dirección de las portadas nuevas (`referencias/portadas-2026-10-21.md`):
+*«claro buena idea como daesur. a ver intenta para rematch»*. Laptop plateada en primer plano
+sobre el césped azul de una cancha de pádel de noche, focos arriba, jaula de vidrio a la derecha;
+en pantalla la portada real de rematch.pe (el panel se probó y a 421 px no se lee). Archivo
+`proyects/rematch/rematch-portada-noche.jpg` (2400×1800, 307 KB) en `rematch.json`, las tarjetas
+«Siguiente» de Vendiq y César Acosta y `software-development-page.tsx`. **No se tocaron** el héroe
+de la ficha (`rm-heroe-cancha`), el destacado del home (`highlights/rematch-v15.jpg`) ni el
+laboratorio, que siguen con la cancha de día. Pendiente de su veredicto.
+**Corrección el mismo día:** *«por qué se ve así la laptop, como descuadrada»*. La escena tenía la tapa
+torcida (bordes laterales a 7° y 12° con los postes rectos) por el prompt de cámara baja con
+35 mm. Rehecha con cámara nivelada y 85 mm → `rematch-portada-noche-v2.jpg` (352 KB) en las
+mismas cuatro referencias; la v1 se borró. Ver `IMAGENES.md` § «la cámara tiene que ir NIVELADA».
