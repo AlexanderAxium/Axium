@@ -1,3 +1,4 @@
+import { EMPRESA } from "@/data/empresa";
 import { metaPagina } from "@/lib/seo";
 
 export const metadata = metaPagina({
@@ -36,7 +37,8 @@ export default function TermsPage() {
             </p>
             <p className="text-body text-gray-500">
               Estos términos se aplican a todos los clientes, visitantes y
-              personas que accedan o interactúen con Axium S.A.C., empresa
+              personas que accedan o interactúen con {EMPRESA.razonSocial} (RUC{" "}
+              {EMPRESA.ruc}, domicilio fiscal en {EMPRESA.domicilio}), empresa
               constituida bajo las leyes de la República del Perú.
             </p>
           </section>

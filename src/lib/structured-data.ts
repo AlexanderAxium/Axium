@@ -1,13 +1,15 @@
+import { EMPRESA } from "~/data/empresa";
 import { PAGINAS_SERVICIO } from "~/data/servicios-paginas";
 import { SITIO } from "~/lib/seo";
 
 /**
  * Datos estructurados (schema.org), rehechos el 2026-10-23. Se quitó lo que no era cierto o no
  * existía: un SearchAction hacia /search (no hay buscador), un SoftwareApplication (Axium no es
- * una app) con una oferta sin precio que Search Console marca como error, y una geolocalización,
- * un horario y un año de fundación que no salen de ninguna parte. Solo va lo que dice la web:
- * Lima, el correo, el teléfono y los seis servicios con su página. Cuando existan la dirección y
- * las redes (LinkedIn, Instagram…), se suman en `address` y `sameAs`.
+ * una app) con una oferta sin precio que Search Console marca como error, y una geolocalización
+ * y un horario que no salen de ninguna parte. Solo va lo que dice la web: el correo, el teléfono,
+ * los seis servicios con su página y, desde el mismo día, la razón social, el RUC, el inicio de
+ * actividades y el domicilio fiscal de SUNAT (`EMPRESA`). Cuando existan las redes (LinkedIn,
+ * Instagram…), se suman en `sameAs`.
  */
 
 const ID_ORG = `${SITIO}/#organizacion`;
@@ -18,6 +20,9 @@ export function esquemaOrganizacion() {
     "@type": "Organization",
     "@id": ID_ORG,
     name: "Axium",
+    legalName: EMPRESA.razonSocial,
+    taxID: EMPRESA.ruc,
+    foundingDate: EMPRESA.inicio,
     url: SITIO,
     logo: `${SITIO}/icon-512.png`,
     image: `${SITIO}/og/og-inicio.jpg`,
@@ -27,7 +32,8 @@ export function esquemaOrganizacion() {
     telephone: "+51991285679",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lima",
+      addressLocality: "Callao",
+      addressRegion: "Callao",
       addressCountry: "PE",
     },
     contactPoint: [
@@ -69,7 +75,8 @@ export function esquemaNegocio() {
     telephone: "+51991285679",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lima",
+      addressLocality: "Callao",
+      addressRegion: "Callao",
       addressCountry: "PE",
     },
     areaServed: { "@type": "Country", name: "Perú" },
