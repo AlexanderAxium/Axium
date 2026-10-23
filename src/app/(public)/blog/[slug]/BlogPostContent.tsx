@@ -5,7 +5,8 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { BLOG_SLUGS, getBlogImage } from "~/data/blog-data";
+import { PortadaBlog } from "~/components/axium/portada-blog";
+import { BLOG_SLUGS } from "~/data/blog-data";
 import { useTranslation } from "~/hooks/useTranslation";
 
 const smoothEase = [0.4, 0, 0.2, 1] as const;
@@ -24,7 +25,6 @@ export default function BlogPostContent() {
   const excerpt = isValidSlug ? t(`posts.${slug}.excerpt`) : "";
   const date = isValidSlug ? t(`posts.${slug}.date`) : "";
   const body = isValidSlug ? t(`posts.${slug}.body`) : "";
-  const image = getBlogImage(slug);
 
   if (!slug || !isValidSlug) {
     return (
@@ -39,7 +39,7 @@ export default function BlogPostContent() {
           </p>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-secondary font-medium hover:underline"
+            className="inline-flex min-h-11 items-center gap-2 font-medium text-secondary hover:underline"
           >
             <ArrowLeft className="h-4 w-4" />
             {t("meta.backToBlog")}
@@ -74,7 +74,7 @@ export default function BlogPostContent() {
               <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 lg:p-10">
                 <Link
                   href="/blog"
-                  className="inline-flex items-center gap-2 text-body-sm text-[#060C20]/80 hover:text-[#060C20] mb-4 transition-colors"
+                  className="mb-2 inline-flex min-h-11 items-center gap-2 self-start text-body-sm text-[#060C20]/80 transition-colors hover:text-[#060C20]"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
                   {t("meta.backToBlog")}
@@ -107,15 +107,8 @@ export default function BlogPostContent() {
               transition={{ duration: 0.5, delay: 0.15, ease: smoothEase }}
               className="flex-1 min-w-0"
             >
-              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden mb-8 bg-gray-100">
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 1024px) 100vw, 70vw"
-                />
+              <div className="mb-8 overflow-hidden rounded-2xl">
+                <PortadaBlog slug={slug} />
               </div>
               {paragraphs.map((paragraph, i) => (
                 <p
@@ -142,7 +135,6 @@ export default function BlogPostContent() {
                   {BLOG_SLUGS.map((s) => {
                     const isActive = s === slug;
                     const postTitle = t(`posts.${s}.title`);
-                    const postImage = getBlogImage(s);
                     return (
                       <Link
                         key={s}
@@ -153,14 +145,8 @@ export default function BlogPostContent() {
                             : "text-gray-600 hover:bg-gray-100 hover:text-[#060C20]"
                         }`}
                       >
-                        <div className="relative w-14 h-10 shrink-0 rounded-md overflow-hidden bg-gray-200">
-                          <Image
-                            src={postImage}
-                            alt=""
-                            fill
-                            className="object-cover"
-                            sizes="56px"
-                          />
+                        <div className="w-14 shrink-0 overflow-hidden rounded-md">
+                          <PortadaBlog slug={s} />
                         </div>
                         <span className="text-body-sm font-normal line-clamp-2 flex-1 min-w-0">
                           {postTitle}

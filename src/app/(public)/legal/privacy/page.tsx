@@ -1,3 +1,12 @@
+import { metaPagina } from "@/lib/seo";
+
+export const metadata = metaPagina({
+  titulo: "Política de privacidad",
+  descripcion:
+    "Cómo Axium trata los datos personales que recibe por su web, según la Ley N.° 29733 de Protección de Datos Personales del Perú.",
+  ruta: "/legal/privacy",
+});
+
 export default function PrivacyPage() {
   return (
     <div className="container-section py-12 md:py-16">

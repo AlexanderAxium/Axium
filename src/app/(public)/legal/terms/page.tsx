@@ -1,3 +1,12 @@
+import { metaPagina } from "@/lib/seo";
+
+export const metadata = metaPagina({
+  titulo: "Términos y condiciones",
+  descripcion:
+    "Las condiciones de uso del sitio web de Axium y de los servicios de desarrollo de software, diseño e IA que ofrecemos.",
+  ruta: "/legal/terms",
+});
+
 export default function TermsPage() {
   return (
     <div className="container-section py-12 md:py-16">

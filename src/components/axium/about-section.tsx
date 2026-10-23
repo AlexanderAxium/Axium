@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslation } from "~/hooks/useTranslation";
 
 const ORBIT_ICONS = [
@@ -47,7 +48,7 @@ export function AboutSection() {
                 className="hidden lg:flex items-center gap-3"
               >
                 <div className="w-7 h-0.5 bg-secondary rounded-full" />
-                <span className="text-xs font-semibold text-gray-500 uppercase tracking-[0.2em]">
+                <span className="text-sm font-medium text-gray-500">
                   {t("home.about.eyebrow")}
                 </span>
               </motion.div>
@@ -75,12 +76,22 @@ export function AboutSection() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, delay: 0.3, ease: smoothEase }}
                 >
-                  <p className="text-heading-2 leading-tight text-gray-400">
-                    {t("home.about.statNumber")} {t("home.about.statLabel")}
-                  </p>
-                  <p className="text-sm text-gray-400 mt-1">
-                    {t("home.about.statSub")}
-                  </p>
+                  {/* botones en vez del «40+ Proyectos» (Alexander, 2026-10-22): el número grande
+                      con etiqueta chica era relleno y contradecía los 45 del hero */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Link
+                      href="#contacto"
+                      className="inline-flex h-12 items-center rounded-full bg-[#060C20] px-6 text-[15px] font-medium text-white transition-colors hover:bg-[#0B1838]"
+                    >
+                      {t("home.about.cta")}
+                    </Link>
+                    <Link
+                      href="#como-trabajamos"
+                      className="inline-flex h-12 items-center rounded-full border border-[#060C20]/20 px-6 text-[15px] font-medium text-[#060C20] transition-colors hover:bg-[#060C20]/[0.04]"
+                    >
+                      {t("home.about.ctaSecundario")}
+                    </Link>
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
@@ -160,11 +171,10 @@ export function AboutSection() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 35vw"
                   quality={90}
-                  priority
                 />
 
                 <div className="absolute bottom-0 left-0 right-0 px-5 py-5">
-                  <p className="text-[10px] font-semibold text-black/50 uppercase tracking-[0.22em] mb-2">
+                  <p className="text-xs font-medium text-black/55 mb-2">
                     {t("home.about.cardEyebrow")}
                   </p>
                   <div className="flex items-end justify-between gap-3">

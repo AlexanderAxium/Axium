@@ -510,6 +510,28 @@ un macro, son una dispersión. Si son velas, **el paso entre ellas es constante*
 (en la pieza rechazada iba de 146 a 1340 px) y **las esquinas son vivas** (tenían
 radio del 17 % del ancho, que es una tarjeta de UI).
 
+### Las portadas de «ventana sobre fondo» son UNA plantilla (2026-10-21)
+
+Alexander, con Vendiq y Aurore juntas en la rejilla: *«ambos están buenos, pero que la captura esté
+en diferente posición y tamaño no me convence, aparte vendiq no muestra su logo, intenta
+estandarizar»*. Plantilla: `capturas-saas/portadas-ventana/ventana-estandar.html` + `render.cjs`.
+
+- **Fijo en todas:** lienzo 4:3 (1200×900 CSS → 2400×1800); ventana de 840 de ancho, a 48 del borde
+  derecho, arriba en 234, barra de 30 con puntos de 8, pantalla en **2,2:1**; misma sombra
+  abajo-derecha; **el logo real** centrado en la columna izquierda (x 156) con su BASE en la base de
+  la ventana, en multiply.
+- **Por caso:** el fondo, el color de la sombra y el tono de la barra.
+- **La pantalla se captura a la proporción**, no se recorta: viewport 1440×655 para una web; un
+  componente que no se reacomoda (el panel de vendiq.pe, 2,44) se rellena un 5 % arriba y abajo
+  repitiendo una fila vacía de su propio fondo (`pantalla-vendiq-2.2.py`).
+- Un carrusel se captura con `reducedMotion: "reduce"`: la primera toma de aurore.com.pe salió a
+  mitad de transición, con el titular del slide siguiente encima.
+- **Casos en la plantilla:** Vendiq (cielo de su web) y Aurore (yeso con la rama). Feniz se probó
+  (pared de cal marino con luz dorada) y Alexander la rechazó: *«no me gustó la de feniz, cámbiala»*;
+  una web clara y casi vacía dentro de la ventana es un rectángulo blanco a 421 px. La plantilla
+  sirve cuando la captura tiene una imagen fuerte (los perfumes de Aurore, el panel de Vendiq). El fondo de cada uno es un
+  MATERIAL con luz, no un degradado: la luz va arriba y el logo cae en la zona que lo deja leer.
+
 ---
 
 ## 8 · Los datos se miden, no se copian

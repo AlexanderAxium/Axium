@@ -2308,6 +2308,10 @@ demasiado. Ahora: un bodegón mínimo, la laptop y UNA paleta sobre una superfic
 de ventana con un tinte rosado apenas, mucho aire (`sp-portada-sobria.jpg`). Regla para
 portadas: **un objeto que diga el rubro, no la colección entera**.
 
+**Tercera vuelta (2026-10-21, «mejora lo de sportt»):** cenital y en claro, el celular construido
+con la portada móvil y una sola pelota (`sp-portada-cenital.jpg`, `scripts/portada-sportt-cenital.py`;
+detalle en `referencias/portadas-2026-10-21.md`).
+
 ## AI & Agentic Systems sin relleno (servicios, 2026-10-07)
 
 La página usaba láminas de Feniz y AmbientalPE como «sistemas que deciden solos», la web de First
@@ -2361,3 +2365,25 @@ el TIPO como título, una línea de qué es, y al pie «Ejemplo: Cliente — dat
 ficha). Alto como la tira vieja (~870 px a 1512). En móvil la fila se desliza en horizontal
 (snap) en vez de apilarse; 2 columnas en tableta. Design & Branding sigue con `ServiceWorkBand`.
 
+
+## Estampar la marca real sobre un objeto (servicios, 2026-10-22)
+
+Alexander, sobre el casco de MainTech: *«mejora, que parezca real»*. El logo puesto con un
+`rotateY` de CSS se leía como calcomanía. Ahora la marca se **estampa** con
+`scripts/estampar-marca.py`, sin que la IA dibuje una sola letra.
+
+**Lo curvo** (`casco`):
+- el lockup a todo color se envuelve en un cilindro vertical;
+- el radio sale de la silueta medida fila por fila, y los lados suben un poco, porque la cámara está arriba;
+- la tinta toma el sombreado del casco y los reflejos del plástico pasan por encima;
+- sale en `mt-casco-banco-v2.jpg`.
+
+**Lo plano** (`aurore`):
+- la escena cenital de papelería la generó OpenAI en blanco (`taller-servicios/2026-10/diseno-identidad-1.png`);
+- el logo con su A va en la tapa, la palabra en la tarjeta de delante y el monograma en la de atrás, que la de delante tapa donde corresponde;
+- la tinta negra de Aurore toma la luz del papel, con las sombras de las hojas encima y la huella de la prensa en el canto;
+- sale en `public/images/servicios/diseno-identidad.jpg`.
+
+**Las esquinas** de cada superficie se miden con una rejilla de 100 px sobre la escena a tamaño real. Las de las tarjetas se leen a ojo, porque el color del papel y el de la piedra se parecen demasiado para segmentarlos.
+
+**Veredicto (mismo día):** *«en piezas mejor usa el merch de alyer, ya no crees tú»*. Ninguna de las dos estampadas quedó en la web: en «Piezas y aplicaciones» va el chaleco real de Alyer y en «Identidad visual» la portada real de Aurore. Estampar queda para cuando el cliente no tiene ninguna pieza real.

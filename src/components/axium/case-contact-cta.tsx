@@ -116,7 +116,7 @@ export function CaseContactCTA() {
                 <div>
                   <motion.h2
                     variants={itemVariants}
-                    className="text-heading-1 mb-4"
+                    className="text-heading-1 mb-4 leading-[1.1]"
                     style={{
                       background:
                         "linear-gradient(180deg, #FFFFFF 0%, #B8D4E8 100%)",

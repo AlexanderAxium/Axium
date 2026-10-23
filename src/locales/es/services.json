@@ -1,719 +1,1357 @@
 {
-  "common": {
-    "home": "Inicio",
-    "services": "Servicios",
-    "consult": "Consultar ahora",
-    "viewWork": "Ver proyectos",
-    "faqHeading": "Todo lo que necesitas saber",
-    "seeCase": "Ver el caso",
-    "allCases": "Ver todo el portafolio",
-    "whatsapp": "Consultar por WhatsApp",
-    "quote": "Cotizar este servicio",
-    "contactForm": "Escribir al equipo",
-    "talkLead": "¿Tu caso se parece a alguno de estos? Cuéntanoslo y te decimos qué haríamos."
+  "paginas": {
+    "diseno": {
+      "nombre": "Diseño de producto y marca",
+      "titulo": "Diseñamos marcas y productos digitales.",
+      "bajada": "Identidad visual, diseño de webs y apps, y sistemas de diseño que tu equipo puede seguir usando. Del logotipo al último botón, con el mismo criterio.",
+      "hacemos": [
+        {
+          "titulo": "Identidad visual",
+          "texto": "Logotipo, símbolo, paleta y tipografía, pensados para funcionar igual en una pantalla, un uniforme o un camión.",
+          "ejemplo": {
+            "texto": "En Aurore: logotipo, monograma, tipografía y paleta, desde cero.",
+            "slug": "aurore"
+          }
+        },
+        {
+          "titulo": "Manual de marca",
+          "texto": "Las reglas de uso por escrito: proporciones, colores, versiones y ejemplos, para que la marca no se deforme con el tiempo.",
+          "ejemplo": {
+            "texto": "En Alyer: un manual de 35 láminas.",
+            "slug": "alyer"
+          }
+        },
+        {
+          "titulo": "Diseño de webs y apps",
+          "texto": "Estructura, flujos y pantallas pensados para que el usuario encuentre lo que busca y termine lo que vino a hacer.",
+          "ejemplo": {
+            "texto": "En Rematch: la web pública y el panel de los clubes.",
+            "slug": "rematch"
+          }
+        },
+        {
+          "titulo": "Sistemas de diseño",
+          "texto": "Componentes, estilos y reglas en Figma y en código, para que cada pantalla nueva salga coherente y más rápido.",
+          "ejemplo": {
+            "texto": "En Vendiq: la tipografía, la paleta y los componentes de su web nueva.",
+            "slug": "vendiq"
+          }
+        },
+        {
+          "titulo": "Prototipos y pruebas",
+          "texto": "Prototipos navegables para probar la idea con usuarios reales antes de programar una sola línea."
+        },
+        {
+          "titulo": "Piezas y aplicaciones",
+          "texto": "Presentaciones, piezas para redes, papelería, brochures y señalética con la misma identidad.",
+          "ejemplo": {
+            "texto": "En Alyer: chalecos, brochures y la flota con la misma marca.",
+            "slug": "alyer"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Descubrir",
+          "texto": "Entendemos tu negocio, tu público y tu competencia, y definimos qué tiene que comunicar la marca.",
+          "entrega": "el brief creativo"
+        },
+        {
+          "titulo": "Proponer",
+          "texto": "Presentamos direcciones visuales distintas y elegimos una contigo, con argumentos y no solo con gustos.",
+          "entrega": "direcciones visuales para elegir"
+        },
+        {
+          "titulo": "Diseñar",
+          "texto": "Desarrollamos la identidad o las pantallas completas, con las rondas de revisión acordadas desde el inicio.",
+          "entrega": "la identidad completa, revisada contigo"
+        },
+        {
+          "titulo": "Entregar",
+          "texto": "Te damos los archivos fuente y el manual o el sistema de diseño, y acompañamos la implementación.",
+          "entrega": "los archivos editables y el manual"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "Marca y sitio web",
+          "titulo": "La marca de una empresa de formación técnica y el sitio donde vive",
+          "metricas": [
+            {
+              "valor": "9",
+              "texto": "páginas, con catálogo de cursos y verificación de certificados"
+            }
+          ],
+          "incluyo": [
+            "Identidad de marca",
+            "Sistema tipográfico",
+            "Arquitectura de marca",
+            "Aplicaciones de marca"
+          ]
+        },
+        {
+          "categoria": "Marca y tienda",
+          "titulo": "La marca de una perfumería, creada desde cero, y su tienda online",
+          "metricas": [
+            {
+              "valor": "278",
+              "texto": "fragancias por casa, por nota y por ocasión"
+            }
+          ],
+          "incluyo": [
+            "Identidad de marca",
+            "Sistema tipográfico",
+            "Aplicaciones de marca",
+            "Diseño UX/UI"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "Tu marca, en una web que vende.",
+        "texto": "Cuando la identidad está lista, la llevamos a tu web, tu tienda o tu app con el mismo equipo."
+      },
+      "faqs": [
+        {
+          "q": "¿Cuánto demora un proyecto de branding?",
+          "a": "Depende del alcance. Una identidad visual completa (logo y manual de marca) toma entre 2 y 4 semanas. Con materiales adicionales puede extenderse a 6 u 8 semanas."
+        },
+        {
+          "q": "¿Qué necesito para empezar?",
+          "a": "Sólo una llamada de descubrimiento. Nos cuentas sobre tu empresa, tu audiencia y tus objetivos, y preparamos el brief creativo. No necesitas traer nada preparado."
+        },
+        {
+          "q": "¿Entregan archivos editables?",
+          "a": "Sí, siempre. Entregamos todo en formatos editables: AI, EPS y SVG para el logo; Figma para el diseño de producto; PDF e InDesign para materiales impresos."
+        },
+        {
+          "q": "¿Hacen rediseños de una marca existente?",
+          "a": "Sí. Analizamos tu marca actual e identificamos qué mantener, qué evolucionar y qué transformar por completo."
+        },
+        {
+          "q": "¿Cuántas revisiones están incluidas?",
+          "a": "Hasta 3 rondas en cada etapa del proyecto. Si necesitas ajustes fuera de ese alcance, los cotizamos aparte de forma transparente."
+        }
+      ],
+      "detalle": {
+        "titulo": "Alyer: una marca que se lee a treinta metros, en movimiento.",
+        "reto": "Una marca de transporte pesado se lee a treinta metros, de perfil y en movimiento. Y tenía que firmar dos negocios —la flota y el taller que fabrica las unidades— sin partirse en dos logotipos.",
+        "hicimos": "Un símbolo construido sobre la «A» de Alyer, que se lee como movimiento y como pieza mecánica, en un sistema corto: negro, rojo, cuatro grises y dos tipografías. Las dos líneas comparten símbolo y color, solo cambia el descriptor, y un manual de 35 láminas lo fija todo.",
+        "incluyo": [
+          "Identidad de marca",
+          "Manual de marca",
+          "Sistema tipográfico",
+          "Aplicaciones de marca",
+          "Merchandising",
+          "Diseño editorial"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Herramientas",
+            "items": [
+              {
+                "slug": "figma",
+                "nombre": "Figma"
+              },
+              {
+                "nombre": "Adobe Illustrator"
+              },
+              {
+                "nombre": "Adobe InDesign"
+              }
+            ]
+          },
+          {
+            "nombre": "Marca",
+            "items": [
+              {
+                "nombre": "Logotipo editable (AI y SVG)"
+              },
+              {
+                "nombre": "Manual de marca en PDF"
+              },
+              {
+                "nombre": "Archivos para imprenta"
+              }
+            ]
+          },
+          {
+            "nombre": "Producto",
+            "items": [
+              {
+                "nombre": "Archivos de Figma con componentes"
+              },
+              {
+                "nombre": "Prototipo navegable"
+              },
+              {
+                "nombre": "Tokens de color, tipo y espaciado"
+              }
+            ]
+          }
+        ],
+        "tambien": "Todo se entrega editable y a tu nombre."
+      },
+      "secciones": {
+        "hacemos": "Qué diseñamos",
+        "proceso": "Cómo diseñamos una marca",
+        "stack": "Lo que te entregamos",
+        "mas": "Más marcas y sitios"
+      }
+    },
+    "web": {
+      "nombre": "Webs, tiendas online y apps",
+      "titulo": "Webs, tiendas y apps hechas para vender.",
+      "bajada": "Sitios corporativos, landing pages, e-commerce y apps para iOS y Android con un mismo código. Rápidos, con pagos en línea y medibles desde el primer día.",
+      "hacemos": [
+        {
+          "titulo": "Webs corporativas",
+          "texto": "Sitios rápidos y fáciles de editar que explican qué haces y convierten visitas en contactos.",
+          "ejemplo": {
+            "texto": "En To Live Again: sitio bilingüe con la donación en primera línea.",
+            "slug": "toliveagain"
+          }
+        },
+        {
+          "titulo": "Landing pages",
+          "texto": "Páginas enfocadas en una campaña o un producto, con formularios conectados a tu CRM o a WhatsApp.",
+          "ejemplo": {
+            "texto": "En Bookit: la landing que lleva a la prueba gratis de 14 días.",
+            "slug": "bookit"
+          }
+        },
+        {
+          "titulo": "Tiendas online",
+          "texto": "Catálogo con variantes, stock en vivo, checkout propio, cobros con Mercado Pago, Culqi o PayPal y comprobantes SUNAT.",
+          "ejemplo": {
+            "texto": "En ANJ Sports: 251 productos con stock en vivo.",
+            "slug": "anjsports"
+          }
+        },
+        {
+          "titulo": "Apps para iOS y Android",
+          "texto": "Una sola base de código para las dos tiendas de apps, conectada a tu sistema y publicada por nosotros."
+        },
+        {
+          "titulo": "SEO técnico y velocidad",
+          "texto": "Estructura, datos para Google, la imagen que aparece al compartir el enlace y páginas que cargan rápido en el celular.",
+          "ejemplo": {
+            "texto": "En Clefast: SEO técnico en la tienda rehecha.",
+            "slug": "clefast"
+          }
+        },
+        {
+          "titulo": "Analítica y conversión",
+          "texto": "Medición de visitas, embudos y ventas, y mejoras continuas según lo que hacen tus usuarios."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Planificar",
+          "texto": "Definimos el mapa del sitio, el catálogo y las integraciones que necesita: pagos, envíos y CRM.",
+          "entrega": "el mapa del sitio y sus integraciones"
+        },
+        {
+          "titulo": "Diseñar",
+          "texto": "Diseñamos las pantallas clave para escritorio y celular, y las validamos contigo antes de programar.",
+          "entrega": "las pantallas clave aprobadas"
+        },
+        {
+          "titulo": "Construir",
+          "texto": "Desarrollamos en entregas cortas que puedes revisar en un entorno de prueba.",
+          "entrega": "un entorno de prueba para revisar"
+        },
+        {
+          "titulo": "Publicar",
+          "texto": "Lanzamos con dominio, SSL, analítica y SEO listos, y te enseñamos a administrar todo.",
+          "entrega": "la web en línea y el acceso a su panel"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "E-commerce industrial",
+          "titulo": "La tienda de detergentes ecológicos para lavanderías industriales, rehecha entera",
+          "metricas": [
+            {
+              "valor": "35",
+              "texto": "productos en once categorías"
+            },
+            {
+              "valor": "205",
+              "texto": "presentaciones, con envío cotizado por dirección"
+            }
+          ],
+          "incluyo": [
+            "Tienda virtual",
+            "Checkout propio",
+            "Envíos por zona",
+            "Migración de contenido"
+          ]
+        },
+        {
+          "categoria": "Marca y tienda",
+          "titulo": "Una tienda de perfumes donde se busca por casa, por nota y por ocasión",
+          "metricas": [
+            {
+              "valor": "278",
+              "texto": "fragancias en el catálogo"
+            }
+          ],
+          "incluyo": [
+            "Identidad de marca",
+            "Sistema tipográfico",
+            "Aplicaciones de marca",
+            "Diseño UX/UI"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "¿Tu web necesita algo que ninguna plantilla hace?",
+        "texto": "Para paneles, reservas, integraciones o la lógica propia de tu negocio, lo construimos a medida."
+      },
+      "faqs": [
+        {
+          "q": "¿Puedo editar la web yo mismo?",
+          "a": "Sí. Te dejamos un panel para cambiar textos, imágenes, productos y precios sin tocar código, y te enseñamos a usarlo."
+        },
+        {
+          "q": "¿Qué pagos y envíos se pueden integrar?",
+          "a": "Mercado Pago, Culqi y PayPal para cobrar, y envíos con tarifa por zona o cotizados por la dirección del comprador. Si usas otro proveedor, lo integramos."
+        },
+        {
+          "q": "¿La tienda emite boletas y facturas?",
+          "a": "Sí. Con cada venta se emite la boleta o la factura electrónica y se envía a SUNAT, sin copiar pedidos a otro sistema."
+        },
+        {
+          "q": "¿Hacen apps para iOS y Android a la vez?",
+          "a": "Sí, con una sola base de código para las dos plataformas, conectada al mismo sistema que tu web. También nos encargamos de publicarlas en las tiendas."
+        },
+        {
+          "q": "¿El dominio y el alojamiento están incluidos?",
+          "a": "Podemos encargarnos de los dos o trabajar con los que ya tienes. Lo dejamos claro en la propuesta, sin costos escondidos."
+        }
+      ],
+      "detalle": {
+        "titulo": "ANJ Sports: el catálogo de cinco marcas, en su propia tienda.",
+        "flujo": [
+          {
+            "titulo": "Vendiq",
+            "items": [
+              "Catálogo de 251 productos",
+              "Variantes con su SKU",
+              "Stock y pedidos"
+            ]
+          },
+          {
+            "titulo": "API",
+            "items": ["La tienda lee el catálogo y el stock en vivo"]
+          },
+          {
+            "titulo": "anjsports.com",
+            "items": [
+              "Catálogo con filtros",
+              "Ficha con sus variantes",
+              "Carrito y checkout de cuatro pasos"
+            ]
+          }
+        ],
+        "reto": "Una goma de tenis de mesa es una matriz de color por grosor, y cada casilla tiene su precio y su stock. Con 251 productos y cinco marcas, una plantilla obligaba a elegir entre el catálogo y la marca.",
+        "hicimos": "Una tienda a medida en Next.js, con la identidad de ANJ, montada sobre Vendiq, que guarda el catálogo, las variantes, el stock y los pedidos. Filtros, fichas con variantes, carrito y checkout ocurren sin salir de anjsports.com.",
+        "incluyo": [
+          "Diseño UX/UI",
+          "Desarrollo web",
+          "Tienda online a medida",
+          "Integración con Vendiq",
+          "Catálogo y variantes",
+          "Checkout y pagos"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Sitio y tienda",
+            "items": [
+              {
+                "slug": "nextdotjs",
+                "nombre": "Next.js"
+              },
+              {
+                "slug": "react",
+                "nombre": "React"
+              },
+              {
+                "slug": "tailwindcss",
+                "nombre": "Tailwind CSS"
+              },
+              {
+                "slug": "vendiq",
+                "nombre": "Vendiq"
+              }
+            ]
+          },
+          {
+            "nombre": "Apps",
+            "items": [
+              {
+                "slug": "react",
+                "nombre": "React Native"
+              },
+              {
+                "slug": "apple",
+                "nombre": "App Store"
+              },
+              {
+                "slug": "googleplay",
+                "nombre": "Google Play"
+              }
+            ]
+          },
+          {
+            "nombre": "Pagos",
+            "items": [
+              {
+                "slug": "mercadopago",
+                "nombre": "Mercado Pago"
+              },
+              {
+                "slug": "paypal",
+                "nombre": "PayPal"
+              },
+              {
+                "nombre": "Culqi"
+              }
+            ]
+          },
+          {
+            "nombre": "Medición",
+            "items": [
+              {
+                "slug": "googleanalytics",
+                "nombre": "Google Analytics"
+              },
+              {
+                "slug": "googlesearchconsole",
+                "nombre": "Search Console"
+              },
+              {
+                "slug": "googletagmanager",
+                "nombre": "Tag Manager"
+              }
+            ]
+          }
+        ],
+        "tambien": "Cada sitio sale con sitemap, metadatos y datos estructurados, y lo medimos en Search Console."
+      },
+      "secciones": {
+        "hacemos": "Qué construimos",
+        "proceso": "Cómo hacemos una web",
+        "stack": "Con qué la construimos",
+        "mas": "Más tiendas"
+      }
+    },
+    "software": {
+      "nombre": "Software a medida e integraciones",
+      "titulo": "Sistemas a medida para dejar el Excel.",
+      "bajada": "Sistemas internos, paneles, ERP y CRM hechos alrededor de cómo trabajas. Conectamos lo que ya usas, y el código es tuyo desde el primer día.",
+      "hacemos": [
+        {
+          "titulo": "Sistemas internos y paneles",
+          "texto": "El back-office que hoy vive en hojas de cálculo: pedidos, cobranzas, inventario y reportes en un solo lugar.",
+          "ejemplo": {
+            "texto": "En Siclo: el registro de clases y el cálculo de pagos de los instructores.",
+            "slug": "siclo"
+          }
+        },
+        {
+          "titulo": "ERP y CRM a medida",
+          "texto": "Ventas, clientes y operaciones modelados como trabaja tu empresa, no al revés."
+        },
+        {
+          "titulo": "Integraciones y APIs",
+          "texto": "Tu sistema conectado a pagos, ERPs, bancos y plataformas de terceros, para que los datos no se copien a mano.",
+          "ejemplo": {
+            "texto": "En Feniz: MetaTrader 5 conectado a la plataforma.",
+            "slug": "feniz"
+          }
+        },
+        {
+          "titulo": "Facturación electrónica SUNAT",
+          "texto": "Comprobantes que se emiten desde tu sistema y que se leen y concilian sin volver a digitarlos.",
+          "ejemplo": {
+            "texto": "En Fintrace: el comprobante UBL 2.1 leído tal como se emite.",
+            "slug": "fintrace"
+          }
+        },
+        {
+          "titulo": "Plataformas SaaS",
+          "texto": "Productos con cuentas, roles, pagos recurrentes y muchos clientes sobre la misma base.",
+          "ejemplo": {
+            "texto": "En Rematch: reservas, ligas y torneos para clubes con varias sedes.",
+            "slug": "rematch"
+          }
+        },
+        {
+          "titulo": "Modernización de sistemas",
+          "texto": "Migramos sistemas antiguos a una arquitectura actual por etapas, sin detener la operación."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Arquitectura",
+          "texto": "Elegimos el stack, diseñamos la arquitectura y armamos el plan de entregas.",
+          "entrega": "la arquitectura y el plan de entregas"
+        },
+        {
+          "titulo": "Desarrollo por sprints",
+          "texto": "Cada dos semanas entregamos algo que puedes probar, en tu repositorio desde el primer día.",
+          "entrega": "una versión para probar cada dos semanas"
+        },
+        {
+          "titulo": "Pruebas",
+          "texto": "Pruebas automatizadas y revisión manual antes de cada versión.",
+          "entrega": "las pruebas automáticas en tu repositorio"
+        },
+        {
+          "titulo": "Despliegue y soporte",
+          "texto": "Publicación automatizada, monitoreo y mejoras después del lanzamiento.",
+          "entrega": "el sistema en producción, con monitoreo"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "Plataforma SaaS",
+          "titulo": "Reservas, academias, ligas y torneos en un solo sistema para centros deportivos",
+          "metricas": [],
+          "incluyo": [
+            "Diseño de producto",
+            "Desarrollo web",
+            "Plataforma SaaS multi-tenant",
+            "Tiempo real"
+          ]
+        },
+        {
+          "categoria": "Plataforma e integración",
+          "titulo": "La plataforma para traders de cuentas de fondeo, conectada a MetaTrader 5",
+          "metricas": [
+            {
+              "valor": "5 s",
+              "texto": "entre cada envío de operaciones"
+            }
+          ],
+          "incluyo": [
+            "Producto SaaS a medida",
+            "Autenticación y correo transaccional",
+            "Área del trader y panel de administración",
+            "Integración con MetaTrader 5"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "Y después del lanzamiento, sigue en buenas manos.",
+        "texto": "Alojamiento, despliegues, respaldos y monitoreo para que tu sistema siga funcionando."
+      },
+      "faqs": [
+        {
+          "q": "¿Cuánto tarda en desarrollarse un proyecto?",
+          "a": "Depende del alcance. Un MVP funcional puede estar listo en 6 a 10 semanas. Plataformas más complejas requieren entre 3 y 6 meses. Siempre arrancamos con un sprint de arquitectura."
+        },
+        {
+          "q": "¿Pueden integrarse con sistemas existentes?",
+          "a": "Sí, es una de nuestras especialidades. Integramos con ERPs, CRMs, bases de datos heredadas, APIs de terceros y cualquier sistema con una interfaz documentada."
+        },
+        {
+          "q": "¿Qué pasa después del lanzamiento?",
+          "a": "Ofrecemos planes de mantenimiento y soporte continuo: monitoreo, corrección de errores, actualización de dependencias y nuevas funcionalidades en ciclos regulares."
+        },
+        {
+          "q": "¿Entregan el código fuente?",
+          "a": "Siempre. El código es 100 % tuyo desde el inicio. Trabajamos en tu repositorio desde el día 1, con historial completo y las decisiones técnicas documentadas."
+        },
+        {
+          "q": "¿Pueden trabajar con el equipo técnico interno?",
+          "a": "Sí, y nos gusta hacerlo. Podemos actuar como equipo extendido, aportando capacidad y experiencia mientras colaboramos con tus desarrolladores."
+        }
+      ],
+      "detalle": {
+        "titulo": "Fintrace: del XML de SUNAT al asiento contable, sin volver a digitar.",
+        "flujo": [
+          {
+            "titulo": "Lo que entra",
+            "items": [
+              "Comprobante UBL 2.1 de SUNAT",
+              "Extracto del banco en PDF, XLSX o CSV"
+            ]
+          },
+          {
+            "titulo": "Fintrace",
+            "items": [
+              "Documento con su cliente, IGV y detracción",
+              "Cruce por número de operación"
+            ]
+          },
+          {
+            "titulo": "Lo que sale",
+            "items": [
+              "Asiento con su centro de costo",
+              "Archivo listo para Concar"
+            ]
+          }
+        ],
+        "reto": "Entre el facturador electrónico y el software del contador había un Excel que editaban tres personas. Cada dato copiado a mano era una diferencia que alguien buscaba después.",
+        "hicimos": "Una plataforma multiempresa en Next.js, tRPC y Prisma que lee el comprobante UBL 2.1 de SUNAT y cruza el extracto del banco por número de operación. Entrega el asiento con su centro de costo, listo para Concar.",
+        "incluyo": [
+          "Producto SaaS a medida",
+          "Lectura del comprobante UBL 2.1 de SUNAT",
+          "Detracciones y planes de cobranza",
+          "Conciliación contra el extracto del banco",
+          "Asientos contables y exportación a Concar",
+          "Multiempresa, roles y permisos"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Interfaz",
+            "items": [
+              {
+                "slug": "nextdotjs",
+                "nombre": "Next.js"
+              },
+              {
+                "slug": "react",
+                "nombre": "React"
+              },
+              {
+                "slug": "typescript",
+                "nombre": "TypeScript"
+              },
+              {
+                "slug": "tailwindcss",
+                "nombre": "Tailwind CSS"
+              }
+            ]
+          },
+          {
+            "nombre": "Servidor y APIs",
+            "items": [
+              {
+                "slug": "nodedotjs",
+                "nombre": "Node.js"
+              },
+              {
+                "slug": "nestjs",
+                "nombre": "NestJS"
+              },
+              {
+                "slug": "trpc",
+                "nombre": "tRPC"
+              },
+              {
+                "nombre": "REST y webhooks"
+              }
+            ]
+          },
+          {
+            "nombre": "Datos",
+            "items": [
+              {
+                "slug": "postgresql",
+                "nombre": "PostgreSQL"
+              },
+              {
+                "slug": "prisma",
+                "nombre": "Prisma"
+              },
+              {
+                "slug": "redis",
+                "nombre": "Redis"
+              }
+            ]
+          },
+          {
+            "nombre": "Integraciones",
+            "items": [
+              {
+                "nombre": "SUNAT (UBL 2.1)"
+              },
+              {
+                "nombre": "Concar"
+              },
+              {
+                "nombre": "MetaTrader 5"
+              }
+            ]
+          },
+          {
+            "nombre": "Entrega",
+            "items": [
+              {
+                "slug": "github",
+                "nombre": "GitHub"
+              },
+              {
+                "slug": "docker",
+                "nombre": "Docker"
+              }
+            ]
+          }
+        ],
+        "tambien": "El código vive en tu repositorio desde el primer día."
+      },
+      "secciones": {
+        "hacemos": "Qué desarrollamos",
+        "proceso": "Cómo desarrollamos",
+        "stack": "Nuestro stack",
+        "mas": "Más plataformas"
+      }
+    },
+    "ia": {
+      "nombre": "Inteligencia artificial y datos",
+      "titulo": "IA conectada a los datos de tu empresa.",
+      "bajada": "Agentes, asistentes y automatizaciones conectados a tus sistemas, con registro de cada respuesta, límites claros y una persona que revisa.",
+      "hacemos": [
+        {
+          "titulo": "Agentes y automatizaciones",
+          "texto": "Flujos que leen, deciden y actúan entre tus sistemas: correos, pedidos, tickets y reportes.",
+          "ejemplo": {
+            "texto": "En Feniz: las operaciones llegan solas cada cinco segundos.",
+            "slug": "feniz"
+          }
+        },
+        {
+          "titulo": "Asistentes con tus datos",
+          "texto": "Respuestas basadas en tus documentos, catálogos y sistemas (RAG), con la fuente a la vista.",
+          "ejemplo": {
+            "texto": "En LumioLearn: un tutor que responde con el contexto de la clase.",
+            "slug": "lumiolearn"
+          }
+        },
+        {
+          "titulo": "Atención por WhatsApp",
+          "texto": "Respuestas a las consultas frecuentes a toda hora, y derivación a una persona cuando hace falta."
+        },
+        {
+          "titulo": "Lectura de documentos",
+          "texto": "Facturas, contratos y formularios leídos y cargados a tu sistema sin digitarlos."
+        },
+        {
+          "titulo": "Tableros y reportes",
+          "texto": "Tus datos ordenados en indicadores claros, para decidir con números."
+        },
+        {
+          "titulo": "IA dentro de tu producto",
+          "texto": "Funciones de IA integradas en tu app o plataforma: búsqueda, recomendaciones o un tutor.",
+          "ejemplo": {
+            "texto": "En Vendiq: un asistente que arma la página de la tienda a partir de una frase.",
+            "slug": "vendiq"
+          }
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Definir",
+          "texto": "Elegimos el proceso de mayor impacto y fijamos cómo vamos a medir el resultado.",
+          "entrega": "el proceso elegido y cómo se va a medir"
+        },
+        {
+          "titulo": "Conectar",
+          "texto": "Conectamos el modelo a tus datos y sistemas, con permisos sobre lo que puede leer y lo que no.",
+          "entrega": "el acceso a tus datos, con sus permisos"
+        },
+        {
+          "titulo": "Construir y evaluar",
+          "texto": "Construimos el agente y lo probamos con casos reales antes de abrirlo a los usuarios.",
+          "entrega": "los resultados de las pruebas con casos reales"
+        },
+        {
+          "titulo": "Operar",
+          "texto": "Lo ponemos en producción con registro, límites y monitoreo, y lo mejoramos con lo que medimos.",
+          "entrega": "el registro de cada respuesta y sus números"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "Integración y automatización",
+          "titulo": "Las operaciones de MetaTrader 5 llegan solas al sistema del trader",
+          "metricas": [
+            {
+              "valor": "5 s",
+              "texto": "entre cada envío de operaciones"
+            }
+          ],
+          "incluyo": [
+            "Integración con MetaTrader 5",
+            "Expert Advisor en MQL5 por trader",
+            "Webhook y clave por trader"
+          ]
+        },
+        {
+          "categoria": "IA en el producto",
+          "titulo": "Un asistente que arma la página de una tienda a partir de una frase",
+          "metricas": [],
+          "incluyo": [
+            "Asistente con IA",
+            "Portada con tus colores",
+            "Productos de tu catálogo",
+            "Vista en celular"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "¿Tus datos vienen de máquinas o sensores?",
+        "texto": "Con IoT conectamos equipos y dispositivos para que la IA trabaje con datos en tiempo real."
+      },
+      "faqs": [
+        {
+          "q": "¿Cuánto tarda en implementarse un sistema de IA?",
+          "a": "Un prototipo funcional puede estar listo en 2 a 4 semanas. Un sistema en producción con integraciones completas toma entre 6 y 12 semanas. Arrancamos por el caso de mayor impacto."
+        },
+        {
+          "q": "¿Necesito tener datos propios para empezar?",
+          "a": "No necesariamente. Muchos proyectos usan modelos base sin datos propios para entrenamiento. Si los tienes, los usamos para personalizar y mejorar la precisión del sistema."
+        },
+        {
+          "q": "¿Qué modelos de IA utilizan?",
+          "a": "Trabajamos con el mejor modelo según el caso: los comerciales para razonamiento complejo, modelos abiertos cuando la privacidad manda, y modelos especializados para tareas concretas."
+        },
+        {
+          "q": "¿Los datos de mi empresa están seguros?",
+          "a": "Sí. Podemos desplegar el sistema por completo en tu infraestructura o en nubes privadas. Nunca compartimos tus datos con terceros, y el contrato lo recoge."
+        },
+        {
+          "q": "¿Pueden integrarse con nuestros sistemas actuales?",
+          "a": "Sí, es nuestra especialidad. Integramos con cualquier sistema que tenga una API: CRMs, ERPs, bases de datos, correo y sistemas propios."
+        }
+      ],
+      "detalle": {
+        "titulo": "LumioLearn: un tutor con IA dentro de cada curso.",
+        "flujo": [
+          {
+            "titulo": "La clase",
+            "items": ["Capítulos en video", "El contexto de la lección"]
+          },
+          {
+            "titulo": "Tutor con IA",
+            "items": ["Responde con el contexto de la clase"]
+          },
+          {
+            "titulo": "El alumno",
+            "items": [
+              "Pregunta sin salir del curso",
+              "Quizzes con nota mínima",
+              "Certificado verificable por código"
+            ]
+          }
+        ],
+        "reto": "Quien enseña en línea suele depender de marketplaces que cobran comisión y ponen su marca delante, con una herramienta distinta para vender, evaluar y certificar.",
+        "hicimos": "Un LMS marca blanca donde cada academia tiene su dominio, sus cursos, sus certificados y sus cobros. Dentro de cada clase, un tutor con IA responde con el contexto de esa clase.",
+        "incluyo": [
+          "Diseño de producto",
+          "Desarrollo web",
+          "Plataforma SaaS marca blanca",
+          "Tutor con IA",
+          "Constructor de sitios"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Modelos",
+            "items": [
+              {
+                "slug": "anthropic",
+                "nombre": "Anthropic"
+              },
+              {
+                "nombre": "OpenAI"
+              },
+              {
+                "slug": "googlegemini",
+                "nombre": "Google Gemini"
+              },
+              {
+                "slug": "huggingface",
+                "nombre": "Modelos abiertos"
+              }
+            ]
+          },
+          {
+            "nombre": "Fuentes",
+            "items": [
+              {
+                "nombre": "Tus documentos"
+              },
+              {
+                "nombre": "Tus bases de datos"
+              },
+              {
+                "nombre": "Las APIs de tus sistemas"
+              }
+            ]
+          },
+          {
+            "nombre": "Canales",
+            "items": [
+              {
+                "slug": "whatsapp",
+                "nombre": "WhatsApp"
+              },
+              {
+                "nombre": "Tu web o tu app"
+              },
+              {
+                "nombre": "Correo"
+              }
+            ]
+          },
+          {
+            "nombre": "Control",
+            "items": [
+              {
+                "nombre": "Permisos por fuente"
+              },
+              {
+                "nombre": "Registro de cada respuesta"
+              },
+              {
+                "nombre": "Límites de uso"
+              },
+              {
+                "nombre": "Revisión humana"
+              }
+            ]
+          }
+        ],
+        "tambien": "Elegimos el modelo por tarea, según calidad, velocidad y costo, y lo cambiamos si aparece uno mejor."
+      },
+      "secciones": {
+        "hacemos": "Qué automatizamos",
+        "proceso": "Cómo llevamos la IA a producción",
+        "stack": "Modelos y canales",
+        "mas": "Más IA en producción"
+      }
+    },
+    "iot": {
+      "nombre": "IoT y dispositivos conectados",
+      "titulo": "Tus equipos, conectados a tu sistema.",
+      "bajada": "Monitoreo en tiempo real, alertas y tableros para tu planta, flota o almacén, con la plataforma, la nube y las integraciones que lo hacen funcionar.",
+      "hacemos": [
+        {
+          "titulo": "Monitoreo en tiempo real",
+          "texto": "Temperatura, vibración, consumo o estado de cada equipo, con su historial completo, en el panel y en el celular."
+        },
+        {
+          "titulo": "Alertas y automatizaciones",
+          "texto": "Reglas por umbral, por tendencia o por equipo sin señal, con aviso escalonado y registro de quién atendió cada alerta."
+        },
+        {
+          "titulo": "Integración de dispositivos",
+          "texto": "PLC, medidores y sensores industriales por Modbus u OPC UA, con un gateway en planta que guarda los datos si se cae la red."
+        },
+        {
+          "titulo": "Plataforma y tableros",
+          "texto": "Datos por MQTT cifrado, guardados en una base de series de tiempo, con permisos por planta y una API para tus otros sistemas."
+        },
+        {
+          "titulo": "Rastreo de flotas y activos",
+          "texto": "GPS por red celular para vehículos, y etiquetas BLE o LoRaWAN para herramientas y contenedores dentro de la planta."
+        },
+        {
+          "titulo": "Mantenimiento predictivo",
+          "texto": "Con el historial de vibración, temperatura y horas de uso, el desgaste se ve antes de que el equipo se detenga."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Diagnosticar",
+          "texto": "Vemos qué quieres medir, en qué equipos y qué decisión vas a tomar con ese dato.",
+          "entrega": "qué medir y en qué equipos"
+        },
+        {
+          "titulo": "Piloto",
+          "texto": "Conectamos unos pocos equipos y validamos que el dato llegue bien y sirva.",
+          "entrega": "los primeros equipos enviando datos"
+        },
+        {
+          "titulo": "Escalar",
+          "texto": "Sumamos el resto de los equipos, las alertas y los tableros, e integramos con tus sistemas.",
+          "entrega": "todos los equipos, con alertas y tableros"
+        },
+        {
+          "titulo": "Operar",
+          "texto": "Monitoreamos los dispositivos, la plataforma y la nube, y la mejoramos con el uso.",
+          "entrega": "reportes del estado de equipos y plataforma"
+        }
+      ],
+      "casos": [],
+      "puente": {
+        "titulo": "Con los datos de tus equipos, la IA hace el resto.",
+        "texto": "Con el historial de cada equipo construimos predicciones, alertas inteligentes y reportes automáticos."
+      },
+      "faqs": [
+        {
+          "q": "¿Trabajan con los equipos que ya tengo?",
+          "a": "Sí, si entregan datos por algún medio: Modbus, OPC UA, una salida digital o una API. Si no, proponemos el sensor que corresponde."
+        },
+        {
+          "q": "¿Necesito internet en la planta?",
+          "a": "No necesariamente. El gateway guarda los datos y los envía cuando vuelve la señal, y donde no llega el Wi-Fi usamos red celular o LoRaWAN."
+        },
+        {
+          "q": "¿Dónde se guardan los datos?",
+          "a": "En la nube que prefieras o en tus propios servidores. Los datos son tuyos y se pueden exportar cuando quieras."
+        },
+        {
+          "q": "¿Por dónde conviene empezar?",
+          "a": "Por un piloto pequeño: pocos equipos y una sola métrica que importe. Si el dato sirve, escalamos."
+        },
+        {
+          "q": "¿Se integra con mi ERP u otros sistemas?",
+          "a": "Sí. Los datos de los equipos pueden llegar a tu ERP, tu CRM o tus reportes por API."
+        },
+        {
+          "q": "¿Es seguro conectar la planta a internet?",
+          "a": "Cada equipo se identifica con su propio certificado, todo viaja cifrado y la red de la planta no queda expuesta: el gateway solo sale hacia la plataforma."
+        }
+      ],
+      "detalle": {
+        "titulo": "Cómo se arma un sistema IoT",
+        "texto": "Cuatro capas, y cada una con su plan para cuando algo falla: la red, un equipo o la nube.",
+        "flujo": [
+          {
+            "titulo": "En planta",
+            "items": [
+              "Sensores industriales y PLC",
+              "Medidores de energía",
+              "GPS y etiquetas BLE"
+            ]
+          },
+          {
+            "titulo": "Gateway",
+            "items": [
+              "Modbus y OPC UA",
+              "Guarda los datos sin red",
+              "Actualización remota"
+            ]
+          },
+          {
+            "titulo": "Transporte",
+            "items": [
+              "MQTT sobre TLS",
+              "Un certificado por equipo",
+              "Ethernet, LTE-M o LoRaWAN"
+            ]
+          },
+          {
+            "titulo": "Plataforma",
+            "items": [
+              "Base de series de tiempo",
+              "Reglas y alertas",
+              "Tableros, app y API"
+            ]
+          }
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Campo",
+            "items": [
+              {
+                "nombre": "Modbus RTU/TCP"
+              },
+              {
+                "nombre": "OPC UA"
+              },
+              {
+                "slug": "bluetooth",
+                "nombre": "Bluetooth LE"
+              }
+            ]
+          },
+          {
+            "nombre": "Conectividad",
+            "items": [
+              {
+                "slug": "mqtt",
+                "nombre": "MQTT"
+              },
+              {
+                "nombre": "LoRaWAN"
+              },
+              {
+                "nombre": "LTE-M y NB-IoT"
+              }
+            ]
+          },
+          {
+            "nombre": "Plataforma",
+            "items": [
+              {
+                "slug": "eclipsemosquitto",
+                "nombre": "Mosquitto"
+              },
+              {
+                "slug": "nodered",
+                "nombre": "Node-RED"
+              },
+              {
+                "slug": "influxdb",
+                "nombre": "InfluxDB"
+              },
+              {
+                "slug": "timescale",
+                "nombre": "TimescaleDB"
+              }
+            ]
+          },
+          {
+            "nombre": "Tableros",
+            "items": [
+              {
+                "slug": "grafana",
+                "nombre": "Grafana"
+              },
+              {
+                "slug": "nextdotjs",
+                "nombre": "Paneles a medida"
+              }
+            ]
+          },
+          {
+            "nombre": "Seguridad",
+            "items": [
+              {
+                "nombre": "TLS y certificados X.509"
+              },
+              {
+                "nombre": "Actualizaciones OTA"
+              }
+            ]
+          }
+        ],
+        "tambien": "Elegimos protocolo y red según tus equipos, la distancia y la señal que hay en la planta."
+      },
+      "secciones": {
+        "hacemos": "Qué conectamos",
+        "proceso": "Cómo empieza un proyecto IoT",
+        "stack": "Protocolos y plataforma",
+        "mas": ""
+      }
+    },
+    "cloud": {
+      "nombre": "Cloud, seguridad y soporte",
+      "titulo": "Tu web en línea, segura y atendida.",
+      "bajada": "Alojamiento, despliegues automáticos, respaldos y monitoreo. Cuidamos la seguridad y damos soporte después del lanzamiento.",
+      "hacemos": [
+        {
+          "titulo": "Alojamiento y nube",
+          "texto": "Servidores dimensionados según tu tráfico, con cada sistema aislado en su contenedor y espacio para crecer."
+        },
+        {
+          "titulo": "Despliegues automáticos",
+          "texto": "Cada cambio se revisa y se publica solo, sin cortar el servicio y con vuelta atrás en un paso.",
+          "ejemplo": {
+            "texto": "Así publicamos Vendiq, Rematch, LumioLearn y Bookit."
+          }
+        },
+        {
+          "titulo": "Respaldos y recuperación",
+          "texto": "Copias automáticas de la base de datos fuera del servidor, y restauraciones de prueba para saber que funcionan."
+        },
+        {
+          "titulo": "Monitoreo y alertas",
+          "texto": "Disponibilidad, certificados y procesos vigilados, con aviso antes de que lo note un cliente."
+        },
+        {
+          "titulo": "Seguridad",
+          "texto": "HTTPS, cabeceras, firewall de aplicaciones y filtrado de bots, accesos con llave y el correo con SPF, DKIM y DMARC."
+        },
+        {
+          "titulo": "Soporte y mantenimiento",
+          "texto": "Corrección de errores, actualizaciones y mejoras en ciclos regulares, con un equipo que conoce tu sistema."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Revisar",
+          "texto": "Auditamos lo que tienes: servidores, dominio, correo, seguridad y respaldos.",
+          "entrega": "un informe de lo que hay y sus riesgos"
+        },
+        {
+          "titulo": "Migrar",
+          "texto": "Movemos tu web o tu sistema sin cortar el servicio y verificamos que todo siga igual.",
+          "entrega": "tu sistema en el servidor nuevo, sin cortes"
+        },
+        {
+          "titulo": "Automatizar",
+          "texto": "Configuramos los despliegues, los respaldos, el monitoreo y las alertas.",
+          "entrega": "despliegues, respaldos y alertas funcionando"
+        },
+        {
+          "titulo": "Acompañar",
+          "texto": "Soporte y mantenimiento continuos, con reportes de lo que se hizo.",
+          "entrega": "un reporte mensual de lo que se hizo"
+        }
+      ],
+      "casos": [],
+      "puente": {
+        "titulo": "¿Tu sistema necesita crecer?",
+        "texto": "Si hace falta una función nueva o una integración, el mismo equipo la construye."
+      },
+      "faqs": [
+        {
+          "q": "¿Pueden migrar mi web sin que se caiga?",
+          "a": "Sí. Copiamos todo, verificamos que funcione igual en el servidor nuevo y recién ahí cambiamos el dominio, cuidando también el correo."
+        },
+        {
+          "q": "¿Qué pasa si se cae mi web?",
+          "a": "El monitoreo nos avisa al momento y actuamos según lo acordado en tu plan de soporte."
+        },
+        {
+          "q": "¿Cada cuánto se hacen respaldos?",
+          "a": "Lo definimos según cuánto cambia tu información; lo habitual es a diario, y probamos que se puedan restaurar."
+        },
+        {
+          "q": "¿Dan soporte a sistemas que no hicieron ustedes?",
+          "a": "Sí. Primero revisamos el código y la infraestructura, y te decimos con claridad qué se puede mantener y qué conviene cambiar."
+        },
+        {
+          "q": "¿Cómo se cobra el soporte?",
+          "a": "Con planes mensuales de mantenimiento y soporte, según el tamaño del sistema y el tiempo de respuesta que necesites."
+        }
+      ],
+      "detalle": {
+        "titulo": "El camino de cada cambio, del código a producción",
+        "texto": "El camino que recorre cada cambio en Vendiq, Rematch, LumioLearn y Bookit es el mismo que armamos para tu sistema.",
+        "flujo": [
+          {
+            "titulo": "Código",
+            "items": ["Repositorio en GitHub", "Cada cambio, revisado"]
+          },
+          {
+            "titulo": "Despliegue",
+            "items": [
+              "Publicación automática con cada cambio",
+              "Contenedores Docker detrás de Traefik"
+            ]
+          },
+          {
+            "titulo": "En línea",
+            "items": [
+              "DNS, CDN y WAF en Cloudflare",
+              "Certificado SSL automático"
+            ]
+          },
+          {
+            "titulo": "Operación",
+            "items": [
+              "Disponibilidad y certificados vigilados",
+              "Respaldos fuera del servidor, con restauración probada"
+            ]
+          }
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Servidores",
+            "items": [
+              {
+                "slug": "hetzner",
+                "nombre": "Hetzner"
+              },
+              {
+                "slug": "linux",
+                "nombre": "Linux"
+              },
+              {
+                "slug": "docker",
+                "nombre": "Docker"
+              },
+              {
+                "slug": "traefikproxy",
+                "nombre": "Traefik"
+              }
+            ]
+          },
+          {
+            "nombre": "Red y seguridad",
+            "items": [
+              {
+                "slug": "cloudflare",
+                "nombre": "Cloudflare"
+              },
+              {
+                "slug": "letsencrypt",
+                "nombre": "Let's Encrypt"
+              },
+              {
+                "nombre": "WAF y filtrado de bots"
+              }
+            ]
+          },
+          {
+            "nombre": "Datos",
+            "items": [
+              {
+                "slug": "postgresql",
+                "nombre": "PostgreSQL"
+              },
+              {
+                "slug": "redis",
+                "nombre": "Redis"
+              },
+              {
+                "nombre": "Respaldos fuera del servidor"
+              }
+            ]
+          },
+          {
+            "nombre": "Entrega",
+            "items": [
+              {
+                "slug": "github",
+                "nombre": "GitHub"
+              },
+              {
+                "nombre": "Despliegue con cada cambio"
+              }
+            ]
+          },
+          {
+            "nombre": "Correo",
+            "items": [
+              {
+                "nombre": "SPF, DKIM y DMARC"
+              }
+            ]
+          }
+        ],
+        "tambien": "Si ya tienes servidores o una nube, trabajamos sobre lo que tienes."
+      },
+      "secciones": {
+        "hacemos": "Qué cuidamos",
+        "proceso": "Cómo tomamos tu sistema",
+        "stack": "Infraestructura",
+        "mas": ""
+      }
+    }
   },
-  "design-branding": {
-    "hero": {
-      "title": "Design & Branding",
-      "short": "Design & Branding",
-      "description": "Construimos marcas que comunican, productos que enamoran y materiales que convierten. Desde la identidad visual hasta el diseño de producto — todo lo que necesitas para destacar en el mercado."
-    },
-    "intro": {
-      "overline": "01 — Qué es Design & Branding",
-      "title": "Tu marca es la primera impresión que no puedes repetir",
-      "p1": "El diseño no es sólo cómo se ve algo: es cómo funciona, cómo se siente y qué comunica sin decir una palabra. Una identidad sólida genera reconocimiento, confianza y diferenciación en mercados saturados.",
-      "p2": "Del logotipo al manual completo, los materiales de marketing y el diseño de producto, cubrimos todo el espectro visual de tu empresa.",
-      "statA": "más reconocimiento de marca con una identidad consistente en todos los canales.",
-      "statB": "de la estrategia al activo final: entregamos desde el concepto hasta los archivos listos para usar.",
-      "caption": "Tres identidades nuestras, apoyadas en el mismo plano de luz"
-    },
-    "work": {
-      "overline": "02 — Trabajo real",
-      "title": "Marcas nuestras que ya están en la calle",
-      "lead": "Ninguna de estas imágenes es una ilustración: son los entregables que recibieron cuatro clientes."
-    },
-    "offer": {
-      "overline": "03 — Servicios incluidos",
-      "title": "Todo lo que necesitas para construir una marca poderosa"
-    },
-    "cards": [
-      {
-        "kicker": "Identidad",
-        "title": "El sistema de marca completo, no sólo el logotipo",
-        "text": "Símbolo, paleta, tipografía y aplicaciones. Un sistema que se sostiene cuando lo usa otra persona, en otro canal, dos años después."
-      },
-      {
-        "kicker": "Materiales",
-        "title": "El manual y todo lo que se imprime o se presenta",
-        "text": "Manual de marca, brochures, presentaciones y piezas para redes. El entregable que se recibe, no la promesa de que existe."
-      },
-      {
-        "kicker": "Producto digital",
-        "title": "Interfaz, web y landing que convierten",
-        "text": "Wireframes, prototipos y diseño de alta fidelidad en Figma, listos para desarrollo. Cada cliente con su propia dirección de arte."
-      }
-    ],
-    "process": {
-      "overline": "04 — Proceso",
-      "title": "De la estrategia a los activos finales en semanas"
-    },
-    "who": {
-      "overline": "05 — Ideal para",
-      "title": "¿Para quién es Design & Branding?",
-      "lead": "Trabajamos con organizaciones que necesitan comunicar su valor de forma clara, coherente y memorable."
-    },
-    "proof": {
-      "overline": "06 — La prueba",
-      "title": "La marca cuando sale del archivo",
-      "text": "Impresa en papel y atornillada a una pared. Es lo único de todo este trabajo que el cliente llega a tocar, y por eso es donde se nota si el sistema estaba bien hecho."
-    },
-    "faqOverline": "— 07   Preguntas frecuentes",
-    "ctaTitle": "¿Listo para construir tu marca?",
-    "ctaSubtitle": "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
-    "workItems": [
-      {
-        "client": "Alyer Transportes",
-        "line": "Identidad, manual de marca y brochure comercial"
-      },
-      {
-        "client": "MainTech",
-        "line": "Identidad, arquitectura de marca y sitio web"
-      },
-      {
-        "client": "Aurore",
-        "line": "Identidad, papelería y tienda online"
-      },
-      {
-        "client": "To Live Again",
-        "line": "Rediseño del sitio y dirección de arte bilingüe"
-      }
-    ],
-    "cardRows": [
-      [
-        {
-          "tag": "Identidad visual",
-          "title": "Logo y sistema de marca",
-          "desc": "Logo versátil, paleta, tipografía y todos los elementos que forman tu marca."
-        },
-        {
-          "tag": "Branding",
-          "title": "Brand guidelines",
-          "desc": "Manual completo para que la identidad sea consistente en cada canal y equipo."
-        }
-      ],
-      [
-        {
-          "tag": "Materiales",
-          "title": "Brochures y marketing",
-          "desc": "Brochures corporativos, flyers, kits para redes y presentaciones ejecutivas."
-        },
-        {
-          "tag": "Motion",
-          "title": "Animaciones y presentaciones",
-          "desc": "Animaciones de marca y pitch decks que hacen que tu historia se cuente sola."
-        }
-      ],
-      [
-        {
-          "tag": "UX/UI",
-          "title": "Diseño de producto digital",
-          "desc": "Wireframes, prototipos y diseños de alta fidelidad en Figma, listos para desarrollo."
-        },
-        {
-          "tag": "Web Design",
-          "title": "Websites y landing pages",
-          "desc": "Diseño editorial que equilibra estética y conversión."
-        }
-      ]
-    ],
-    "steps": [
-      {
-        "title": "Descubrimiento",
-        "bullets": [
-          "Brief creativo",
-          "Análisis de competidores",
-          "Benchmark visual",
-          "Definición de audiencia"
-        ]
-      },
-      {
-        "title": "Estrategia",
-        "bullets": [
-          "Dirección creativa",
-          "Moodboard",
-          "Arquitectura visual",
-          "Concepto de marca"
-        ]
-      },
-      {
-        "title": "Diseño",
-        "bullets": [
-          "Logotipo y variantes",
-          "Sistema de marca",
-          "Materiales digitales",
-          "Revisiones iterativas"
-        ]
-      },
-      {
-        "title": "Entrega",
-        "bullets": [
-          "Archivos editables",
-          "Manual en PDF",
-          "Todos los formatos",
-          "Soporte post-entrega"
-        ]
-      }
-    ],
-    "whoCards": [
-      {
-        "title": "Startups",
-        "description": "Empresas que necesitan construir una marca sólida desde cero para lanzar con confianza."
-      },
-      {
-        "title": "Empresas en rebranding",
-        "description": "Organizaciones que evolucionaron y necesitan que su imagen refleje dónde están hoy."
-      },
-      {
-        "title": "Founders con pitch deck",
-        "description": "Emprendedores que presentan a inversores y necesitan materiales de alto impacto."
-      },
-      {
-        "title": "Equipos de producto",
-        "description": "Equipos tech que necesitan diseño de UI/UX profesional para sus aplicaciones."
-      }
-    ],
-    "faqs": [
-      {
-        "q": "¿Cuánto demora un proyecto de branding?",
-        "a": "Depende del alcance. Una identidad visual completa (logo y manual de marca) toma entre 2 y 4 semanas. Con materiales adicionales puede extenderse a 6 u 8 semanas."
-      },
-      {
-        "q": "¿Qué necesito para empezar?",
-        "a": "Sólo una llamada de descubrimiento. Nos cuentas sobre tu empresa, tu audiencia y tus objetivos, y preparamos el brief creativo. No necesitas traer nada preparado."
-      },
-      {
-        "q": "¿Entregan archivos editables?",
-        "a": "Sí, siempre. Entregamos todo en formatos editables: AI, EPS y SVG para el logo; Figma para el diseño de producto; PDF e InDesign para materiales impresos."
-      },
-      {
-        "q": "¿Hacen rediseños de una marca existente?",
-        "a": "Sí. Analizamos tu marca actual e identificamos qué mantener, qué evolucionar y qué transformar por completo."
-      },
-      {
-        "q": "¿El diseño web está incluido en el branding?",
-        "a": "El diseño de landings y sitios es un servicio adicional que puede complementar el branding. Podemos cotizarlo junto o por separado."
-      },
-      {
-        "q": "¿Cuántas revisiones están incluidas?",
-        "a": "Hasta 3 rondas en cada etapa del proyecto. Si necesitas ajustes fuera de ese alcance, los cotizamos aparte de forma transparente."
-      }
-    ],
-    "whatsappMessage": "Hola, me interesa el servicio de Design & Branding. ¿Podemos agendar una llamada?"
-  },
-  "software-development": {
-    "hero": {
-      "title": "Software Development",
-      "short": "Software Development",
-      "description": "Construimos aplicaciones web, móviles y plataformas a medida que escalan con tu negocio. Arquitectura sólida, código mantenible y entregas que llegan a producción."
-    },
-    "intro": {
-      "overline": "01 — Qué es Software Development",
-      "title": "El software que sostiene tu negocio no se improvisa",
-      "p1": "Una plataforma mal construida se nota tarde: cuando crece el tráfico, cuando entra un equipo nuevo o cuando hay que integrar un sistema más. Nosotros empezamos por la arquitectura.",
-      "p2": "Web, móvil, APIs e infraestructura. Trabajamos en tu repositorio desde el día uno, con el código documentado y el historial completo a tu nombre.",
-      "statA": "del código es tuyo desde el primer commit, con el repositorio y la documentación incluidos.",
-      "statB": "semanas para un MVP funcional en producción, con despliegue automatizado y monitoreo.",
-      "caption": "Tres productos nuestros en producción sobre el mismo stack"
-    },
-    "work": {
-      "overline": "02 — Qué construimos",
-      "title": "Software a medida, con ejemplos reales",
-      "lead": "Cuatro tipos de software que hacemos de punta a punta. Cada uno ya corre en producción, para un cliente o como producto propio.",
-      "example": "Ejemplo:"
-    },
-    "offer": {
-      "overline": "03 — Servicios incluidos",
-      "title": "Del primer sprint al mantenimiento, sin cambiar de equipo"
-    },
-    "cards": [
-      {
-        "kicker": "Web y comercio",
-        "title": "Aplicaciones web y tiendas que venden de verdad",
-        "text": "De una landing a una plataforma SaaS completa. Next.js y React, rápidas, accesibles y optimizadas para buscadores, con su API detrás."
-      },
-      {
-        "kicker": "Arquitectura",
-        "title": "Stack probado, seguridad desde el sprint 1",
-        "text": "Autenticación, autorización y cifrado integrados desde el principio. Pruebas automatizadas, QA manual y benchmarks antes de cada release."
-      },
-      {
-        "kicker": "Móvil y operación",
-        "title": "El mismo producto en el teléfono, y alguien detrás después",
-        "text": "React Native para iOS y Android desde un solo código. Y monitoreo, corrección de errores y mejoras después del lanzamiento."
-      }
-    ],
-    "process": {
-      "overline": "04 — Proceso",
-      "title": "De la arquitectura al despliegue, en sprints de dos semanas"
-    },
-    "who": {
-      "overline": "05 — Ideal para",
-      "title": "¿Para quién es Software Development?",
-      "lead": "Trabajamos con equipos que necesitan llegar a producción sin hipotecar la calidad del código."
-    },
-    "proof": {
-      "overline": "06 — La prueba",
-      "title": "El software donde se usa de verdad",
-      "text": "El panel de un club abierto junto a la pista al anochecer y un punto de venta cobrando en un mostrador. No hay render que sustituya a eso."
-    },
-    "faqOverline": "— 07   Preguntas frecuentes",
-    "ctaTitle": "¿Listo para construir tu producto?",
-    "ctaSubtitle": "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
-    "workItems": [
-      {
-        "title": "Plataformas SaaS",
-        "text": "Productos con cuentas, roles, pagos recurrentes y muchos clientes sobre la misma base.",
-        "client": "Rematch",
-        "fact": "reservas, ligas y torneos con resultados en vivo"
-      },
-      {
-        "title": "Tiendas online a medida",
-        "text": "Catálogo, variantes, stock en vivo y checkout propio, conectados a tu inventario.",
-        "client": "ANJ Sports",
-        "fact": "251 productos de cinco marcas"
-      },
-      {
-        "title": "Sistemas internos y finanzas",
-        "text": "El back-office que hoy vive en Excel: documentos, cobranzas, conciliación y contabilidad.",
-        "client": "Fintrace",
-        "fact": "del XML de SUNAT al asiento, sin retipear"
-      },
-      {
-        "title": "Integraciones entre sistemas",
-        "text": "Tu software conectado por API a pagos, ERPs y plataformas de terceros.",
-        "client": "Feniz",
-        "fact": "MetaTrader 5, Paddle y Mercado Pago"
-      }
-    ],
-    "cardRows": [
-      [
-        {
-          "tag": "Web",
-          "title": "Aplicaciones web",
-          "desc": "De landing pages a plataformas SaaS. Rápidas, accesibles y optimizadas para SEO."
-        },
-        {
-          "tag": "Backend",
-          "title": "APIs y servicios",
-          "desc": "Backends escalables, APIs REST y GraphQL. Arquitecturas que soportan crecimiento real."
-        }
-      ],
-      [
-        {
-          "tag": "Seguridad",
-          "title": "Seguro desde el inicio",
-          "desc": "Autenticación, autorización y cifrado integrados desde el primer sprint."
-        },
-        {
-          "tag": "Calidad",
-          "title": "Testing y QA",
-          "desc": "Pruebas automatizadas, QA manual y benchmarks de rendimiento antes de cada release."
-        }
-      ],
-      [
-        {
-          "tag": "Móvil",
-          "title": "Apps iOS y Android",
-          "desc": "React Native para las dos plataformas desde un solo código, con rendimiento nativo."
-        },
-        {
-          "tag": "Soporte",
-          "title": "Mantenimiento continuo",
-          "desc": "Monitoreo, corrección de errores y mejoras iterativas después del lanzamiento."
-        }
-      ]
-    ],
-    "steps": [
-      {
-        "title": "Arquitectura",
-        "bullets": [
-          "Selección del stack",
-          "Diseño de arquitectura",
-          "Roadmap técnico",
-          "Definición de APIs"
-        ]
-      },
-      {
-        "title": "Desarrollo ágil",
-        "bullets": [
-          "Sprints de 2 semanas",
-          "Demos quincenales",
-          "Código revisado en PR",
-          "Documentación continua"
-        ]
-      },
-      {
-        "title": "Testing y QA",
-        "bullets": [
-          "Pruebas unitarias e integración",
-          "QA manual",
-          "Benchmarks de rendimiento",
-          "Revisión de seguridad"
-        ]
-      },
-      {
-        "title": "Deploy y monitoreo",
-        "bullets": [
-          "CI/CD automatizado",
-          "Despliegue en la nube",
-          "Monitoreo en tiempo real",
-          "Alertas y registros"
-        ]
-      }
-    ],
-    "whoCards": [
-      {
-        "title": "Startups",
-        "description": "Equipos que necesitan ir a producción rápido con una arquitectura que soporte el crecimiento."
-      },
-      {
-        "title": "Scale-ups",
-        "description": "Empresas que necesitan escalar su producto sin comprometer la calidad del código."
-      },
-      {
-        "title": "Empresas tradicionales",
-        "description": "Organizaciones que quieren digitalizar procesos o modernizar sistemas heredados."
-      },
-      {
-        "title": "Equipos de producto",
-        "description": "Founders y PMs que necesitan un equipo técnico confiable para ejecutar su visión."
-      }
-    ],
-    "faqs": [
-      {
-        "q": "¿Cuánto tarda en desarrollarse un proyecto?",
-        "a": "Depende del alcance. Un MVP funcional puede estar listo en 6 a 10 semanas. Plataformas más complejas requieren entre 3 y 6 meses. Siempre arrancamos con un sprint de arquitectura."
-      },
-      {
-        "q": "¿Pueden integrarse con sistemas existentes?",
-        "a": "Sí, es una de nuestras especialidades. Integramos con ERPs, CRMs, bases de datos heredadas, APIs de terceros y cualquier sistema con una interfaz documentada."
-      },
-      {
-        "q": "¿Qué pasa después del lanzamiento?",
-        "a": "Ofrecemos planes de mantenimiento y soporte continuo: monitoreo, corrección de errores, actualización de dependencias y nuevas funcionalidades en ciclos regulares."
-      },
-      {
-        "q": "¿Trabajan sólo con startups?",
-        "a": "No. Trabajamos con startups, scale-ups y empresas consolidadas que buscan modernizar sus sistemas o lanzar nuevos productos digitales."
-      },
-      {
-        "q": "¿Entregan el código fuente?",
-        "a": "Siempre. El código es 100 % tuyo desde el inicio. Trabajamos en tu repositorio desde el día 1, con historial completo y las decisiones técnicas documentadas."
-      },
-      {
-        "q": "¿Pueden trabajar con el equipo técnico interno?",
-        "a": "Sí, y nos gusta hacerlo. Podemos actuar como equipo extendido, aportando capacidad y experiencia mientras colaboramos con tus desarrolladores."
-      }
-    ],
-    "whatsappMessage": "Hola, me interesa el servicio de desarrollo de software. ¿Podemos hablar sobre mi proyecto?"
-  },
-  "ai-agentic-systems": {
-    "hero": {
-      "title": "AI & Agentic Systems",
-      "short": "AI & Agentic Systems",
-      "description": "Agentes, automatizaciones y sistemas de IA conectados a tus propios datos. Procesos que se ejecutan solos y decisiones que dejan de esperar a que alguien las tome."
-    },
-    "intro": {
-      "overline": "01 — Qué es AI & Agentic Systems",
-      "title": "La IA que sirve es la que ya está conectada a tu operación",
-      "p1": "Un modelo suelto no resuelve nada. Lo que cambia un negocio es un sistema que lee tus documentos, consulta tus bases de datos y actúa dentro de tus herramientas sin que nadie teclee.",
-      "p2": "Lo desplegamos donde tú digas: en tu infraestructura o en nube privada, con métricas de precisión y trazas de cada decisión.",
-      "statA": "semanas para un prototipo funcional sobre tus propios datos, con métricas de precisión desde el inicio.",
-      "statB": "de las decisiones quedan trazadas y auditables: nada de caja negra que nadie pueda explicar.",
-      "caption": "Web Scraping AI: un LLM convierte las webs de gimnasios en tablas de PostgreSQL. Los mensajes y los datos son los del propio repositorio."
-    },
-    "build": {
-      "overline": "02 — Lo que podemos construir",
-      "title": "Lo que la IA ya puede hacer en tu empresa",
-      "lead": "Los sistemas que más se le piden hoy a una empresa de software. Cada uno se conecta a tus herramientas y deja registro de lo que hace.",
-      "proof": "En producción en"
-    },
-    "offer": {
-      "overline": "03 — Servicios incluidos",
-      "title": "De la oportunidad al agente en producción"
-    },
-    "cards": [
-      {
-        "kicker": "Datos",
-        "title": "Documentos y datos que se procesan solos",
-        "text": "Extrae, clasifica y estructura contratos, facturas y reportes. Y deja a tu equipo consultar las bases de datos en lenguaje natural, sin SQL."
-      },
-      {
-        "kicker": "Infraestructura",
-        "title": "Búsqueda sobre tus propios datos, auditable",
-        "text": "Recuperación aumentada (RAG) con índices vectoriales sobre tu documentación. Respuestas precisas, con la fuente a la vista."
-      },
-      {
-        "kicker": "Agentes",
-        "title": "Agentes que atienden, escalan y deciden",
-        "text": "Atención contextual que resuelve y escala lo que no puede. Y flujos completos orquestados: aprobaciones, avisos y decisiones encadenadas."
-      }
-    ],
-    "process": {
-      "overline": "04 — Proceso",
-      "title": "Del caso de uso al agente desplegado y vigilado"
-    },
-    "who": {
-      "overline": "05 — Ideal para",
-      "title": "¿Para quién es AI & Agentic Systems?",
-      "lead": "Trabajamos con organizaciones que acumulan datos y horas en procesos que una máquina haría mejor."
-    },
-    "capabilities": {
-      "overline": "06 — Capacidades técnicas",
-      "title": "Lo que hay debajo, nombrado"
-    },
-    "proof": {
-      "overline": "07 — La prueba",
-      "title": "La automatización donde se paga",
-      "text": "MetaTrader 5 le habla a Feniz cada cinco segundos y el trader ya no copia una operación a mano. Ahí es donde se mide si una automatización sirvió."
-    },
-    "faqOverline": "— 08   Preguntas frecuentes",
-    "ctaTitle": "¿Listo para automatizar tu operación?",
-    "ctaSubtitle": "Conversemos sobre tu proyecto. Sin compromiso, sin presión.",
-    "buildItems": [
-      {
-        "title": "Flujos que se ejecutan solos",
-        "text": "Cuando algo pasa en un sistema, los demás se enteran: pedidos, comprobantes, inventario y avisos, sin copiar datos de una pantalla a otra."
-      },
-      {
-        "title": "Atención por WhatsApp que resuelve",
-        "text": "Un agente que responde, consulta tu inventario o tu agenda, cierra el pedido y le pasa a una persona lo que no puede resolver."
-      },
-      {
-        "title": "Documentos que se leen solos",
-        "text": "Facturas, contratos y formularios convertidos en datos: se extraen, se validan y entran a tu sistema sin volver a teclearlos."
-      },
-      {
-        "title": "Un asistente que conoce tu empresa",
-        "text": "Responde con tus manuales, políticas y contratos, y enseña de dónde sacó cada respuesta."
-      },
-      {
-        "title": "Prospectos que se califican solos",
-        "text": "Cada contacto nuevo se investiga, se puntúa y recibe respuesta en minutos. Tu equipo comercial atiende primero a los que valen la pena."
-      },
-      {
-        "title": "IA dentro de tu producto",
-        "text": "Funciones que tus usuarios usan sin pensar en el modelo que hay detrás: generar, resumir, recomendar o buscar."
-      }
-    ],
-    "demo": {
-      "flujos": {
-        "n1": "Nueva venta en la tienda",
-        "s1": "Disparador",
-        "n2": "Pedido creado en el ERP",
-        "s2": "API del ERP",
-        "n3": "Comprobante electrónico emitido",
-        "s3": "Facturación electrónica",
-        "n4": "Cliente avisado por WhatsApp",
-        "s4": "Con el comprobante adjunto"
-      },
-      "chat": {
-        "head": "Asistente de la tienda",
-        "status": "en línea",
-        "m1": "Hola, ¿tienen zapatillas de running en talla 42?",
-        "tool1": "Consultando inventario",
-        "m2": "Sí, nos quedan 3 pares en negro. ¿Te separo uno?",
-        "m3": "Sí, por favor",
-        "tool2": "Pedido #4821 creado",
-        "m4": "Listo. Te envío el enlace de pago."
-      },
-      "docs": {
-        "doc": "Factura",
-        "title": "Datos extraídos",
-        "k1": "RUC",
-        "v1": "20512345678",
-        "k2": "Proveedor",
-        "v2": "Distribuidora Sur S.A.C.",
-        "k3": "Total",
-        "v3": "S/ 4 720.00",
-        "k4": "Vence",
-        "v4": "15/11/2026",
-        "ok": "Registrada en contabilidad"
-      },
-      "rag": {
-        "q": "¿Cuántos días de vacaciones me quedan?",
-        "search": "Buscando en 1 240 documentos",
-        "src1": "Reglamento interno · p. 12",
-        "src2": "Política de vacaciones",
-        "src3": "Tu registro de asistencia",
-        "a": "Te corresponden 30 días al año. Ya usaste 8, así que te quedan 22."
-      },
-      "leads": {
-        "name": "María Torres",
-        "role": "Jefa de compras · Constructora Vértice",
-        "origin": "Formulario web",
-        "e1": "Empresa verificada · 120 empleados",
-        "e2": "Pide cotización de 40 equipos",
-        "score": "Prioridad",
-        "high": "Alta",
-        "a1": "Reunión propuesta: jueves 10:00",
-        "a2": "CRM actualizado"
-      },
-      "producto": {
-        "prompt": "Una tienda de ropa deportiva, minimalista",
-        "btn": "Generar",
-        "b1": "Portada",
-        "b2": "Productos",
-        "b3": "Opiniones",
-        "done": "Página lista en 12 s"
-      }
-    },
-    "cardRows": [
-      [
-        {
-          "tag": "Documentos",
-          "title": "Procesamiento de documentos",
-          "desc": "Extrae, clasifica y estructura contratos, facturas y reportes sin intervención manual."
-        },
-        {
-          "tag": "Datos",
-          "title": "Análisis en lenguaje natural",
-          "desc": "Tu equipo consulta bases de datos y tableros hablando, sin escribir una sola línea de SQL."
-        }
-      ],
-      [
-        {
-          "tag": "Búsqueda",
-          "title": "Búsqueda semántica (RAG)",
-          "desc": "Recuperación aumentada sobre tus propios datos: respuestas precisas entre miles de documentos."
-        },
-        {
-          "tag": "Pipelines",
-          "title": "Inteligencia continua",
-          "desc": "Sistemas que monitorean, aprenden y actúan sobre flujos de datos en tiempo real."
-        }
-      ],
-      [
-        {
-          "tag": "Atención",
-          "title": "Agentes de atención al cliente",
-          "desc": "Resuelven consultas, escalan lo que no pueden y aprenden de cada interacción."
-        },
-        {
-          "tag": "Flujos",
-          "title": "Automatización de flujos",
-          "desc": "Orquesta procesos completos: aprobaciones, notificaciones y decisiones encadenadas."
-        }
-      ]
-    ],
-    "steps": [
-      {
-        "title": "Definición",
-        "bullets": [
-          "Mapeo de oportunidades",
-          "Análisis de viabilidad",
-          "Definición de KPIs",
-          "Casos priorizados"
-        ]
-      },
-      {
-        "title": "Arquitectura",
-        "bullets": [
-          "Auditoría de datos",
-          "Diseño de arquitectura",
-          "Selección de modelos",
-          "Infraestructura vectorial"
-        ]
-      },
-      {
-        "title": "Construcción",
-        "bullets": [
-          "Prototipado rápido",
-          "Desarrollo de agentes",
-          "Integración con sistemas",
-          "Evaluación de calidad"
-        ]
-      },
-      {
-        "title": "Despliegue",
-        "bullets": [
-          "Deploy en producción",
-          "Monitoreo de calidad",
-          "Ciclos de feedback",
-          "Optimización continua"
-        ]
-      }
-    ],
-    "whoCards": [
-      {
-        "title": "Empresas con datos sin explotar",
-        "description": "Organizaciones con grandes volúmenes de documentos, correos o registros que no pueden procesar a mano."
-      },
-      {
-        "title": "Equipos con tareas repetitivas",
-        "description": "Equipos que pierden horas en procesos manuales que podrían automatizarse."
-      },
-      {
-        "title": "Startups que buscan diferenciarse",
-        "description": "Empresas que quieren integrar IA en su producto principal para ganar ventaja competitiva."
-      },
-      {
-        "title": "Empresas en transformación",
-        "description": "Organizaciones que buscan modernizar sus operaciones con sistemas inteligentes y autónomos."
-      }
-    ],
-    "capabilityItems": [
-      {
-        "title": "Ingeniería de LLMs",
-        "description": "Prompts, ajuste fino y evaluación de modelos para casos de uso concretos de negocio."
-      },
-      {
-        "title": "Sistemas RAG",
-        "description": "Recuperación aumentada con tus propios datos. Respuestas precisas y auditables."
-      },
-      {
-        "title": "Orquestación multi-agente",
-        "description": "Flujos de agentes autónomos que colaboran para completar tareas complejas."
-      },
-      {
-        "title": "Integración con APIs externas",
-        "description": "Conexión con tus herramientas actuales: CRM, ERP, bases de datos y más."
-      },
-      {
-        "title": "Evaluación y testing de IA",
-        "description": "Marcos de evaluación para medir precisión, consistencia y seguridad del sistema."
-      },
-      {
-        "title": "MLOps y monitoreo",
-        "description": "Infraestructura para operar modelos en producción con observabilidad completa."
-      }
-    ],
-    "faqs": [
-      {
-        "q": "¿Cuánto tarda en implementarse un sistema de IA?",
-        "a": "Un prototipo funcional puede estar listo en 2 a 4 semanas. Un sistema en producción con integraciones completas toma entre 6 y 12 semanas. Arrancamos por el caso de mayor impacto."
-      },
-      {
-        "q": "¿Necesito tener datos propios para empezar?",
-        "a": "No necesariamente. Muchos proyectos usan modelos base sin datos propios para entrenamiento. Si los tienes, los usamos para personalizar y mejorar la precisión del sistema."
-      },
-      {
-        "q": "¿Qué modelos de IA utilizan?",
-        "a": "Trabajamos con el mejor modelo según el caso: los comerciales para razonamiento complejo, modelos abiertos cuando la privacidad manda, y modelos especializados para tareas concretas."
-      },
-      {
-        "q": "¿Cómo garantizan la precisión del sistema?",
-        "a": "Implementamos evaluación desde el inicio: métricas de precisión, cobertura y coherencia. Cada sistema tiene ciclos de feedback y monitoreo que detecta degradaciones."
-      },
-      {
-        "q": "¿Los datos de mi empresa están seguros?",
-        "a": "Sí. Podemos desplegar el sistema por completo en tu infraestructura o en nubes privadas. Nunca compartimos tus datos con terceros, y el contrato lo recoge."
-      },
-      {
-        "q": "¿Pueden integrarse con nuestros sistemas actuales?",
-        "a": "Sí, es nuestra especialidad. Integramos con cualquier sistema que tenga una API: CRMs, ERPs, bases de datos, correo y sistemas propios."
-      }
-    ],
-    "whatsappMessage": "Hola, me interesa el servicio de IA y sistemas agénticos. ¿Podemos hablar sobre lo que necesito?"
+  "paginasComun": {
+    "inicio": "Inicio",
+    "servicios": "Servicios",
+    "cta": "Hablemos de tu proyecto",
+    "verCasos": "Ver casos",
+    "verCaso": "Ver el caso",
+    "faq": "Preguntas frecuentes",
+    "verServicio": "Ver el servicio",
+    "detalle": "Un proyecto en detalle",
+    "reto": "El reto",
+    "hicimos": "Lo que hicimos",
+    "incluyo": "Incluyó",
+    "verProyectos": "Ver proyectos",
+    "tellevas": "Te llevas:"
   }
 }

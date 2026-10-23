@@ -503,7 +503,7 @@ export default function CesaracostaContent() {
           name: "Rematch",
           tagline: c.nextTagline,
           href: "/casos-de-exito/rematch",
-          image: "/images/proyects/rematch/rematch-portada-cancha.jpg",
+          image: "/images/proyects/rematch/rematch-portada-noche-v2.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

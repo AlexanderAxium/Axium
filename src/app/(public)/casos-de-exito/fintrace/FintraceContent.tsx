@@ -682,7 +682,7 @@ export default function FintraceContent() {
           name: "Feniz",
           tagline: c.nextTagline,
           href: "/casos-de-exito/feniz",
-          image: "/images/proyects/feniz/fz-portada-cifras-v2.jpg",
+          image: "/images/proyects/feniz/fz-portada-monitor.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

@@ -16,6 +16,8 @@ Salen <slug>.jpg en 2000×2000 (los tríos de la ficha son cuadrados).
 Para otra marca (las webs de clientes de Bookit, 2026-10-07), por entorno:
   MOCK_TIENDAS=moviflex,blendet  MOCK_FONDO=0,27,20  MOCK_REJILLA=0  MOCK_LUZ2=1,200,92
 (el fondo, sin la rejilla de Vendiq, y la segunda luz en el color de la marca).
+Sobre claro (Vendiq «cielo», 2026-10-21):
+  MOCK_FONDO=244,246,249  MOCK_REJILLA=0  MOCK_VINETA=0  MOCK_LUZ_OP=0.22  MOCK_SOMBRA=0.7
 """
 import colorsys
 import json
@@ -43,6 +45,11 @@ def _rgb(v, defecto):
 
 GRAFITO = _rgb(os.environ.get("MOCK_FONDO"), (11, 13, 18))
 LUZ2 = _rgb(os.environ.get("MOCK_LUZ2"), (31, 91, 255))
+# Sobre un fondo CLARO (el papel de la portada «cielo» de Vendiq, 2026-10-21) la viñeta y una luz
+# al 50 % ensucian: se bajan por entorno. MOCK_SOMBRA escala la opacidad de las sombras.
+VINETA = float(os.environ.get("MOCK_VINETA", "0.10"))
+LUZ_OP = float(os.environ.get("MOCK_LUZ_OP", "0.50"))
+SOMBRA = float(os.environ.get("MOCK_SOMBRA", "1"))
 REJILLA = os.environ.get("MOCK_REJILLA", "1") != "0"
 TIENDAS = os.environ.get("MOCK_TIENDAS", "aurore,anj-sports,sportt,daesur-motors,clefast,happy-art").split(",")
 # Cuando el tono más pintado de la portada no es el de la marca: en la segunda diapositiva de
@@ -107,7 +114,7 @@ def campo(luz):
     base = np.zeros((L, L, 3), dtype=np.float32) + np.array(GRAFITO, dtype=np.float32)
     yy, xx = np.mgrid[0:L, 0:L].astype(np.float32)
     # luz de la tienda detrás del monitor, y un azul Vendiq más débil abajo a la derecha
-    for (cx, cy, rad, col, op) in [(0.40, 0.36, 0.70, luz, 0.50), (0.88, 0.90, 0.55, LUZ2, 0.20)]:
+    for (cx, cy, rad, col, op) in [(0.40, 0.36, 0.70, luz, LUZ_OP), (0.88, 0.90, 0.55, LUZ2, LUZ_OP * 0.4)]:
         d = np.sqrt((xx / L - cx) ** 2 + (yy / L - cy) ** 2) / rad
         f = np.clip(1 - d, 0, 1) ** 2.2 * op
         base += f[..., None] * (np.array(col, dtype=np.float32) - base) * 0.9
@@ -140,7 +147,7 @@ def poner(lienzo, disp, x, y, ancho, sombras):
     capa.paste(d, (x, y), d)
     sil = capa.split()[3]
     for desenf, op, desp in sombras:
-        lienzo = Image.alpha_composite(lienzo, cc.sombra(sil, desenf, op, desp, lienzo.size, color=(0, 3, 8)))
+        lienzo = Image.alpha_composite(lienzo, cc.sombra(sil, desenf, op * SOMBRA, desp, lienzo.size, color=(0, 3, 8)))
     return Image.alpha_composite(lienzo, capa)
 
 
@@ -156,7 +163,7 @@ for slug in TIENDAS:
     # el conjunto (monitor + celular, y 230–1771) centrado en el alto del cuadro
     lienzo = poner(lienzo, monitor, 80, 230, 1620, [(18, 0.55, (0, 14)), (90, 0.55, (0, 60))])
     lienzo = poner(lienzo, movil, 1372, 660, 540, [(16, 0.6, (-6, 16)), (80, 0.6, (-30, 70))])
-    out = cc.rematar(np.asarray(lienzo.convert("RGB"), dtype=np.float32), sigma_grano=3.0, vineta=0.10, semilla=17)
+    out = cc.rematar(np.asarray(lienzo.convert("RGB"), dtype=np.float32), sigma_grano=3.0, vineta=VINETA, semilla=17)
     ruta = os.path.join(OUT, f"{slug}.jpg")
     Image.fromarray(out.astype(np.uint8)).save(ruta, quality=90, optimize=True, progressive=True, subsampling=0)
     print(f"✓ {slug}.jpg  luz {luz}  {os.path.getsize(ruta) // 1024} KB")

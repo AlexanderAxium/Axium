@@ -15,6 +15,60 @@
     "servicesAI": {
       "title": "AI & Agentic Systems",
       "description": "Autonomous systems with LLMs, RAG and agent orchestration to automate real-time decisions."
+    },
+    "mega": {
+      "servicios": {
+        "titulo": "Design, software and AI, from idea to production.",
+        "texto": "One team in Lima for your company's brand, systems and artificial intelligence.",
+        "cta": "Let's talk about your project",
+        "secundario": "How we work",
+        "etiqueta": "What we do",
+        "items": {
+          "diseno": {
+            "titulo": "Product design and branding",
+            "resumen": "Identity, interfaces and design systems."
+          },
+          "web": {
+            "titulo": "Websites, stores and apps",
+            "resumen": "Websites, e-commerce and iOS and Android apps."
+          },
+          "software": {
+            "titulo": "Custom software",
+            "resumen": "Internal systems, ERPs, CRMs and integrations."
+          },
+          "ia": {
+            "titulo": "AI and data",
+            "resumen": "Agents, automations, dashboards and reports."
+          },
+          "iot": {
+            "titulo": "IoT and devices",
+            "resumen": "Sensors, monitoring and real-time alerts."
+          },
+          "cloud": {
+            "titulo": "Cloud, security and support",
+            "resumen": "Hosting, deployments, backups and monitoring."
+          }
+        }
+      },
+      "blog": {
+        "etiqueta": "From the blog",
+        "todos": "All articles"
+      },
+      "casos": {
+        "titulo": "Products we design, build and run.",
+        "texto": "Four products of our own in production, and projects for companies across industries.",
+        "todos": "See all projects",
+        "propios": "Our products",
+        "clientes": "Client cases",
+        "lista": {
+          "anjsports": "Table tennis online store",
+          "aurore": "Perfume brand and store",
+          "alyer": "Brand for transport and metal fabrication",
+          "feniz": "Platform for funded traders",
+          "maintech": "Technical training brand",
+          "clefast": "Industrial e-commerce"
+        }
+      }
     }
   },
   "footer": {
@@ -92,5 +146,9 @@
   "yourPassword": "Your password",
   "cancel": "Cancel",
   "anonymous": "Anonymous",
-  "notAvailable": "Not available"
+  "notAvailable": "Not available",
+  "whatsappFlotante": {
+    "etiqueta": "Message us on WhatsApp",
+    "mensaje": "Hi, I’m coming from axium.com.pe and would like to talk about a project."
+  }
 }
