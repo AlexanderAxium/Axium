@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/qintitec.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import QintitecContent from "./QintitecContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/qintitec",
-  imagen: data.image,
-});
+export const metadata = metaCaso("qintitec", data);
 
 export default function QintitecPage() {
-  return <QintitecContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("qintitec", data)} />
+      <QintitecContent />
+    </>
+  );
 }

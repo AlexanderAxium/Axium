@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { JsonLd } from "~/components/StructuredData";
 import {
   BLOG_PORTADAS,
   BLOG_SLUGS,
@@ -6,6 +7,7 @@ import {
   fechaIso,
 } from "~/data/blog-data";
 import { SITIO, metaPagina, resumen } from "~/lib/seo";
+import { migas } from "~/lib/structured-data";
 import blog from "~/locales/es/blog.json";
 import BlogPostContent from "./BlogPostContent";
 
@@ -75,10 +77,15 @@ export default async function BlogPostPage({
   return (
     <>
       {esquema && (
-        <script
-          type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: los datos estructurados van así
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(esquema) }}
+        <JsonLd
+          datos={[
+            esquema,
+            migas([
+              ["Inicio", "/"],
+              ["Blog", "/blog"],
+              [post.title, `/blog/${slug}`],
+            ]),
+          ]}
         />
       )}
       <BlogPostContent />

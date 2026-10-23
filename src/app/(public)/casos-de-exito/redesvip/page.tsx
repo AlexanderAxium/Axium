@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/redesvip.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import RedesVipContent from "./RedesVipContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/redesvip",
-  imagen: data.image,
-});
+export const metadata = metaCaso("redesvip", data);
 
 export default function RedesVipPage() {
-  return <RedesVipContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("redesvip", data)} />
+      <RedesVipContent />
+    </>
+  );
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useTranslation } from "~/hooks/useTranslation";
 
 /**
@@ -9,6 +11,9 @@ import { useTranslation } from "~/hooks/useTranslation";
  * el círculo verde abajo a la derecha, entrada suave, crece un poco con el ratón. Lo único que
  * cambia es el pulso de fondo: allá se repite sin parar; acá late UNA vez al aparecer (memoria
  * «animación sutil»: nada en bucle). El número es el de siempre de la web (contacto, servicios).
+ *
+ * En el inicio aparece recién al bajar (2026-10-23): en un celular chico tapaba el segundo botón
+ * del hero («Ver casos»), y el hero ya tiene su llamado. En las demás páginas, desde el principio.
  */
 const NUMERO = "51991285679";
 
@@ -16,16 +21,30 @@ export function WhatsappFlotante() {
   const { t } = useTranslation("common");
   const quieto = useReducedMotion();
   const href = `https://wa.me/${NUMERO}?text=${encodeURIComponent(t("whatsappFlotante.mensaje"))}`;
+  const ruta = usePathname();
+  const [visible, setVisible] = useState(ruta !== "/");
+  useEffect(() => {
+    if (ruta !== "/") {
+      setVisible(true);
+      return;
+    }
+    const mirar = () => setVisible(window.scrollY > window.innerHeight * 0.6);
+    mirar();
+    window.addEventListener("scroll", mirar, { passive: true });
+    return () => window.removeEventListener("scroll", mirar);
+  }, [ruta]);
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t("whatsappFlotante.etiqueta")}
-      className="fixed right-4 bottom-4 z-[80] flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.45)] transition-colors duration-300 hover:bg-[#1EBE5B] md:right-6 md:bottom-6"
+      // escondido (arriba del todo en el inicio): fuera del foco y de los lectores de pantalla
+      inert={!visible}
+      className={`fixed right-4 bottom-4 z-[80] flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.45)] transition-colors duration-300 hover:bg-[#1EBE5B] md:right-6 md:bottom-6 ${visible ? "" : "pointer-events-none"}`}
       initial={quieto ? false : { opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 1 }}
+      animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      transition={{ duration: 0.4, delay: visible && ruta !== "/" ? 1 : 0 }}
       whileHover={quieto ? undefined : { scale: 1.06 }}
       whileTap={{ scale: 0.94 }}
     >

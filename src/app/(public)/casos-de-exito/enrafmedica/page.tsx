@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/enrafmedica.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import EnrafmedicaContent from "./EnrafmedicaContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/enrafmedica",
-  imagen: data.image,
-});
+export const metadata = metaCaso("enrafmedica", data);
 
 export default function EnrafmedicaPage() {
-  return <EnrafmedicaContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("enrafmedica", data)} />
+      <EnrafmedicaContent />
+    </>
+  );
 }

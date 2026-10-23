@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/alyer.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import AlyerContent from "./AlyerContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/alyer",
-  imagen: data.image,
-});
+export const metadata = metaCaso("alyer", data);
 
 export default function AlyerPage() {
-  return <AlyerContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("alyer", data)} />
+      <AlyerContent />
+    </>
+  );
 }

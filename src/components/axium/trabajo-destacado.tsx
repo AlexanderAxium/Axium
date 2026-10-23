@@ -87,6 +87,7 @@ export function Portada({
   etiqueta,
   circulo,
   className = "aspect-[16/10]",
+  marco = "",
   sizes = "(min-width: 1024px) 56vw, 100vw",
 }: {
   p: Pick<Proyecto, "href" | "cover" | "encuadre"> & { video?: string };
@@ -94,6 +95,8 @@ export function Portada({
   etiqueta: string;
   circulo: string;
   className?: string;
+  /** clases del envoltorio del cursor, que es el que queda como hijo de la rejilla (p. ej. `order-first`) */
+  marco?: string;
   sizes?: string;
 }) {
   const caja = useRef<HTMLAnchorElement>(null);
@@ -154,13 +157,15 @@ export function Portada({
       label={circulo}
       arrowColor="text-white"
       labelColor="rgba(255,255,255,0.75)"
+      className={marco}
     >
       <Link
         ref={caja}
         href={p.href}
         aria-label={`${etiqueta}: ${nombre}`}
-        onMouseEnter={entrar}
-        onMouseLeave={salir}
+        // con ratón nada más: en el celular el toque va directo al enlace
+        onPointerEnter={(e) => e.pointerType === "mouse" && entrar()}
+        onPointerLeave={(e) => e.pointerType === "mouse" && salir()}
         className={`group relative block overflow-hidden bg-white/5 after:pointer-events-none after:absolute after:inset-0 after:border after:border-white/10 ${className}`}
       >
         {/* La imagen y el vídeo se acercan juntos, despacio, al entrar el ratón */}
@@ -210,7 +215,7 @@ export function TrabajoDestacado() {
         <div className="content-section pt-20 pb-16 md:pt-28 lg:pb-24">
           <div className="aparecer flex flex-col gap-5 pb-8 md:flex-row md:items-end md:justify-between lg:pb-10">
             <h2
-              className="text-[clamp(44px,11vw,56px)] leading-[0.95] tracking-[-0.035em] text-white/85 lg:text-[84px]"
+              className="titulo-seccion text-white/85"
               style={{ fontFamily: "var(--font-family-heading)" }}
             >
               {t("highlights.title")}
@@ -236,8 +241,13 @@ export function TrabajoDestacado() {
                       circulo={t("portfolio.verProyecto")}
                     />
                   </div>
-                  <div
-                    className="aparecer mt-5 flex flex-col justify-between gap-6 lg:col-span-5 lg:mt-0"
+                  {/* el texto también lleva al caso: en el celular se toca el nombre, no solo la
+                      portada (el enlace accesible es el de la portada; este no suma una parada) */}
+                  <Link
+                    href={p.href}
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    className="aparecer group/texto mt-5 flex flex-col justify-between gap-6 lg:col-span-5 lg:mt-0"
                     style={
                       { "--aparecer-retraso": "0.1s" } as React.CSSProperties
                     }
@@ -258,7 +268,7 @@ export function TrabajoDestacado() {
                       <br />
                       <span className="text-white/50">{p.domain}</span>
                     </p>
-                  </div>
+                  </Link>
                 </article>
               );
             })}

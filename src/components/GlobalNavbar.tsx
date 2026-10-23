@@ -235,7 +235,9 @@ export default function GlobalNavbar() {
           mega
             ? "bg-white border-b border-gray-200"
             : isDark
-              ? "backdrop-blur-md bg-card/10 border-b border-black/5"
+              ? // sobre fondo claro, casi opaca: con 10 % de blanco, una foto oscura de abajo dejaba
+                // las letras oscuras sobre oscuro (las portadas del blog, 2026-10-23)
+                "backdrop-blur-md bg-white/90 border-b border-black/5"
               : "bg-transparent border-b border-transparent backdrop-blur-md"
         }`}
         style={

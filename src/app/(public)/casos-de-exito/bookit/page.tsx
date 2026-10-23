@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/bookit.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import BookitContent from "./BookitContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/bookit",
-  imagen: data.image,
-});
+export const metadata = metaCaso("bookit", data);
 
 export default function BookitPage() {
-  return <BookitContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("bookit", data)} />
+      <BookitContent />
+    </>
+  );
 }

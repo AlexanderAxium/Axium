@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/blendet.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import BlendetContent from "./BlendetContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/blendet",
-  imagen: data.image,
-});
+export const metadata = metaCaso("blendet", data);
 
 export default function BlendetPage() {
-  return <BlendetContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("blendet", data)} />
+      <BlendetContent />
+    </>
+  );
 }

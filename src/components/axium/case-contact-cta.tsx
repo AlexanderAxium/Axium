@@ -44,6 +44,10 @@ interface FormData {
   source: string;
 }
 
+// El fondo abstracto del escritorio: «aurora», elegida entre tres propuestas el 2026-10-23
+// (Alexander: «me gustó el de aurora»); antes era abs1.jpg. En el celular va el degradado.
+const FONDO = "/images/contacto/fondo-aurora.jpg";
+
 export function CaseContactCTA() {
   const { t } = useTranslation("landing");
   const [formData, setFormData] = useState<FormData>({
@@ -76,7 +80,11 @@ export function CaseContactCTA() {
   };
 
   return (
-    <section id="contacto" className="w-full py-10 md:py-14 lg:py-20 bg-white">
+    <section
+      id="contacto"
+      data-nav-theme="light"
+      className="w-full py-10 md:py-14 lg:py-20 bg-white"
+    >
       <div className="container-section">
         <div className="content-section">
           <motion.div
@@ -99,7 +107,7 @@ export function CaseContactCTA() {
             {/* Background desktop: imagen + overlay */}
             <div
               className="absolute inset-0 z-[1] rounded-2xl hidden sm:block bg-cover bg-center"
-              style={{ backgroundImage: "url('/abs1.jpg')" }}
+              style={{ backgroundImage: `url('${FONDO}')` }}
               aria-hidden
             />
             <div
@@ -116,7 +124,7 @@ export function CaseContactCTA() {
                 <div>
                   <motion.h2
                     variants={itemVariants}
-                    className="text-heading-1 mb-4 leading-[1.1]"
+                    className="titulo-seccion mb-4"
                     style={{
                       background:
                         "linear-gradient(180deg, #FFFFFF 0%, #B8D4E8 100%)",

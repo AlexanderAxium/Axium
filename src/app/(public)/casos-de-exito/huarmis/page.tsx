@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/huarmis.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import HuarmisContent from "./HuarmisContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/huarmis",
-  imagen: data.image,
-});
+export const metadata = metaCaso("huarmis", data);
 
 export default function HuarmisPage() {
-  return <HuarmisContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("huarmis", data)} />
+      <HuarmisContent />
+    </>
+  );
 }

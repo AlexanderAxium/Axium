@@ -44,7 +44,7 @@ export function Preguntas({
     })),
   };
   return (
-    <section id={id} className="bg-white">
+    <section id={id} data-nav-theme="light" className="bg-white">
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: los datos estructurados van así
@@ -52,11 +52,10 @@ export function Preguntas({
       />
       <div className="container-section">
         <div className="content-section grid gap-10 py-20 md:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
-          <div className="aparecer">
-            <h2
-              className="text-[36px] leading-[1.05] tracking-[-0.03em] text-[#060C20] md:text-[48px]"
-              style={titular}
-            >
+          {/* el título y el botón acompañan la lista al bajar (2026-10-23, Alexander: «la columna
+              izquierda hazla sticky»); self-start para que no se estire al alto de la lista */}
+          <div className="aparecer lg:sticky lg:top-28 lg:self-start">
+            <h2 className="titulo-seccion text-[#060C20]" style={titular}>
               {titulo}
             </h2>
             {intro && (

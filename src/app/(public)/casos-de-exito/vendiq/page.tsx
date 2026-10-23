@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/vendiq.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import VendiqContent from "./VendiqContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/vendiq",
-  imagen: data.image,
-});
+export const metadata = metaCaso("vendiq", data);
 
 export default function VendiqPage() {
-  return <VendiqContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("vendiq", data)} />
+      <VendiqContent />
+    </>
+  );
 }

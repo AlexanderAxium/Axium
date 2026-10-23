@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/ghiperu.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import GhiperuContent from "./GhiperuContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/ghiperu",
-  imagen: data.image,
-});
+export const metadata = metaCaso("ghiperu", data);
 
 export default function GhiperuPage() {
-  return <GhiperuContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("ghiperu", data)} />
+      <GhiperuContent />
+    </>
+  );
 }

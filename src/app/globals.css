@@ -392,3 +392,35 @@ html.con-aparecer .aparecer:not([data-visto]) {
     transform: none;
   }
 }
+
+/* Nada se arrastra de costado (2026-10-23, Alexander: «la versión móvil está pésima, hay
+   desbordamiento»). iOS deja mover la página hacia el lado si algo pasa del ancho aunque el body
+   lo oculte; `clip` lo corta sin crear un contenedor de scroll, así los `sticky` siguen andando */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* El título de sección, uno solo para todo el sitio (2026-10-23, Alexander: «los títulos, tanto en
+   móvil como en desktop, no están estandarizados: unos son más grandes que otros y se ve raro»).
+   Antes cada sección tenía el suyo: de 26 a 44 px en el celular y de 38 a 84 en escritorio. Un par de
+   píxeles menos el mismo día (Alexander: «se ve demasiado grande»): 34/44/56 → 32/42/52 */
+@layer components {
+  .titulo-seccion {
+    font-family: var(--font-family-heading);
+    font-size: 32px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  @media (min-width: 768px) {
+    .titulo-seccion {
+      font-size: 42px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .titulo-seccion {
+      font-size: 52px;
+    }
+  }
+}

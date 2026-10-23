@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/antiruidopvc.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import AntiruidopvcContent from "./AntiruidopvcContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/antiruidopvc",
-  imagen: data.image,
-});
+export const metadata = metaCaso("antiruidopvc", data);
 
 export default function AntiruidopvcPage() {
-  return <AntiruidopvcContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("antiruidopvc", data)} />
+      <AntiruidopvcContent />
+    </>
+  );
 }

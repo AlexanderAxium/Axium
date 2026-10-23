@@ -183,10 +183,6 @@
           "a": "Depende del alcance. Una identidad visual toma entre 2 y 4 semanas, un primer producto funcional entre 6 y 10 semanas y una plataforma completa entre 3 y 6 meses. Trabajamos por etapas, así que ves avances desde las primeras semanas."
         },
         {
-          "q": "¿El código y los diseños quedan a mi nombre?",
-          "a": "Sí. Trabajamos en tu repositorio desde el primer día, con el historial completo y las decisiones técnicas documentadas, y los diseños se entregan editables y a tu nombre."
-        },
-        {
           "q": "¿Pueden emitir boletas y facturas electrónicas a SUNAT?",
           "a": "Sí. Integramos la facturación electrónica con tu tienda online, tu sistema o tu ERP: con cada venta se emite la boleta o la factura y se envía a SUNAT, sin copiar datos a mano."
         },
@@ -201,10 +197,6 @@
         {
           "q": "¿Trabajan con empresas fuera de Lima?",
           "a": "Sí. Somos un equipo en Lima y trabajamos de forma remota con empresas de todo el Perú y de otros países, con reuniones por videollamada."
-        },
-        {
-          "q": "¿Con qué tecnologías trabajan?",
-          "a": "Con tecnologías actuales y probadas en producción: Next.js y React para webs y paneles, React Native para apps de iOS y Android, Node.js y PostgreSQL en el servidor, y el modelo de IA que mejor sirva a cada caso."
         },
         {
           "q": "¿Cómo empezamos?",

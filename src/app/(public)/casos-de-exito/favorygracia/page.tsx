@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/favorygracia.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import FavorygraciaContent from "./FavorygraciaContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/favorygracia",
-  imagen: data.image,
-});
+export const metadata = metaCaso("favorygracia", data);
 
 export default function FavorygraciaPage() {
-  return <FavorygraciaContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("favorygracia", data)} />
+      <FavorygraciaContent />
+    </>
+  );
 }

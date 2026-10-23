@@ -689,7 +689,9 @@ export function useToques(
 export function ServiciosSeis() {
   const { t } = useTranslation("landing");
   const K = "home.serviciosSeis";
-  const { toques, tarjetas } = useToques(SERVICIOS.length);
+  // arrancan con un quinto de la tarjeta a la vista: con el 35 %, en el celular (tarjetas altas) se
+  // alcanzaba a ver la caja vacía (2026-10-23)
+  const { toques, tarjetas } = useToques(SERVICIOS.length, { umbral: 0.2 });
 
   return (
     <section
@@ -701,7 +703,7 @@ export function ServiciosSeis() {
         <div className="content-section pt-20 pb-20 md:pt-28 lg:pb-32">
           <div className="aparecer max-w-[1040px]">
             <h2
-              className="text-[clamp(36px,9vw,48px)] leading-[1.02] tracking-[-0.03em] lg:text-[64px]"
+              className="titulo-seccion"
               style={{ fontFamily: "var(--font-family-heading)" }}
             >
               {t(`${K}.titulo`)}

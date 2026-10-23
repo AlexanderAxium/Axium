@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/cesaracosta.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import CesaracostaContent from "./CesaracostaContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/cesaracosta",
-  imagen: data.image,
-});
+export const metadata = metaCaso("cesaracosta", data);
 
 export default function CesaracostaPage() {
-  return <CesaracostaContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("cesaracosta", data)} />
+      <CesaracostaContent />
+    </>
+  );
 }

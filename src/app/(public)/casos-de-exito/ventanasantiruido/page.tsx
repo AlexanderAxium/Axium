@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/ventanasantiruido.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import VentanasantiruidoContent from "./VentanasantiruidoContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/ventanasantiruido",
-  imagen: data.image,
-});
+export const metadata = metaCaso("ventanasantiruido", data);
 
 export default function VentanasantiruidoPage() {
-  return <VentanasantiruidoContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("ventanasantiruido", data)} />
+      <VentanasantiruidoContent />
+    </>
+  );
 }

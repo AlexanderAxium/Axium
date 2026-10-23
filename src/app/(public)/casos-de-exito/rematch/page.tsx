@@ -1,14 +1,16 @@
+import { JsonLd } from "~/components/StructuredData";
 import data from "~/data/cases/rematch.json";
-import { metaPagina, resumen } from "~/lib/seo";
+import { metaCaso } from "~/lib/seo";
+import { esquemaCaso } from "~/lib/structured-data";
 import RematchContent from "./RematchContent";
 
-export const metadata = metaPagina({
-  titulo: `${data.title}: caso de éxito`,
-  descripcion: resumen(data.description),
-  ruta: "/casos-de-exito/rematch",
-  imagen: data.image,
-});
+export const metadata = metaCaso("rematch", data);
 
 export default function RematchPage() {
-  return <RematchContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaCaso("rematch", data)} />
+      <RematchContent />
+    </>
+  );
 }

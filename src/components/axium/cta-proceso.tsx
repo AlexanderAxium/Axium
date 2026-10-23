@@ -84,7 +84,7 @@ export function CtaProceso() {
           <div className="aparecer md:max-w-[46%]">
             <h2
               id="cta-taller"
-              className="max-w-[16ch] text-[32px] leading-[1.04] tracking-[-0.03em] sm:text-[38px] md:text-[clamp(34px,3.4vw,50px)]"
+              className="titulo-seccion max-w-[16ch]"
               style={{ fontFamily: "var(--font-family-heading)" }}
             >
               {t(`${K}.titulo`)}

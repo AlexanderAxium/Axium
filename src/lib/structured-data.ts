@@ -112,6 +112,97 @@ export function esquemaServicio(id: keyof typeof PAGINAS_SERVICIO) {
   ];
 }
 
+/** Un caso del portafolio: el trabajo hecho por Axium, con su rubro y lo que incluyó. */
+export function esquemaCaso(
+  slug: string,
+  data: {
+    title: string;
+    description: string;
+    image: string;
+    industry?: string;
+    services?: string[];
+  }
+) {
+  const url = `${SITIO}/casos-de-exito/${slug}`;
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "@id": `${url}#caso`,
+      name: data.title,
+      headline: `${data.title}: caso de éxito de Axium`,
+      description: data.description,
+      image: `${SITIO}${data.image}`,
+      url,
+      inLanguage: "es-PE",
+      creator: { "@id": ID_ORG },
+      ...(data.industry ? { genre: data.industry } : {}),
+      ...(data.services?.length ? { keywords: data.services.join(", ") } : {}),
+    },
+    migas([
+      ["Inicio", "/"],
+      ["Portafolio", "/portafolio"],
+      [data.title, `/casos-de-exito/${slug}`],
+    ]),
+  ];
+}
+
+/** El portafolio como colección: la lista de los casos, cada uno con su página. */
+export function esquemaPortafolio(casos: { slug: string; titulo: string }[]) {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": `${SITIO}/portafolio#coleccion`,
+      name: "Portafolio de Axium",
+      url: `${SITIO}/portafolio`,
+      inLanguage: "es-PE",
+      isPartOf: { "@id": `${SITIO}/#sitio` },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: casos.length,
+        itemListElement: casos.map((c, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: c.titulo,
+          url: `${SITIO}/casos-de-exito/${c.slug}`,
+        })),
+      },
+    },
+    migas([
+      ["Inicio", "/"],
+      ["Portafolio", "/portafolio"],
+    ]),
+  ];
+}
+
+/** El blog, con sus artículos. */
+export function esquemaBlog(
+  posts: { slug: string; titulo: string; fecha?: string }[]
+) {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": `${SITIO}/blog#blog`,
+      name: "Blog de Axium",
+      url: `${SITIO}/blog`,
+      inLanguage: "es-PE",
+      publisher: { "@id": ID_ORG },
+      blogPost: posts.map((p) => ({
+        "@type": "BlogPosting",
+        headline: p.titulo,
+        url: `${SITIO}/blog/${p.slug}`,
+        ...(p.fecha ? { datePublished: p.fecha } : {}),
+      })),
+    },
+    migas([
+      ["Inicio", "/"],
+      ["Blog", "/blog"],
+    ]),
+  ];
+}
+
 /** Las migas de pan de una página: [nombre, ruta] desde el inicio. */
 export function migas(pasos: [string, string][]) {
   return {

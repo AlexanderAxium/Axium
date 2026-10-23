@@ -1,5 +1,8 @@
+import { JsonLd } from "@/components/StructuredData";
 import { PortfolioPageContent } from "@/components/axium/portfolio-page-content";
+import { casosPublicados } from "@/lib/casos-servidor";
 import { metaPagina } from "@/lib/seo";
+import { esquemaPortafolio } from "@/lib/structured-data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = metaPagina({
@@ -11,5 +14,10 @@ export const metadata: Metadata = metaPagina({
 });
 
 export default function PortafolioPage() {
-  return <PortfolioPageContent />;
+  return (
+    <>
+      <JsonLd datos={esquemaPortafolio(casosPublicados())} />
+      <PortfolioPageContent />
+    </>
+  );
 }

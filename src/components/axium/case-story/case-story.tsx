@@ -24,6 +24,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { portadaOptimizada, useCerca } from "~/components/axium/video-portada";
 import {
   Carousel,
   CarouselContent,
@@ -409,6 +410,7 @@ function VideoBucle({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [activo, setActivo] = useState(!media);
+  const cerca = useCerca(ref);
   useEffect(() => {
     if (!media) return;
     const mq = window.matchMedia(media);
@@ -419,7 +421,7 @@ function VideoBucle({
   }, [media]);
   useEffect(() => {
     const v = ref.current;
-    if (!v || !activo) return;
+    if (!v || !activo || !cerca) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const io = new IntersectionObserver(
       ([e]) => {
@@ -430,13 +432,13 @@ function VideoBucle({
     );
     io.observe(v);
     return () => io.disconnect();
-  }, [activo]);
+  }, [activo, cerca]);
   return (
     <video
       ref={ref}
       className={`absolute inset-0 size-full object-cover ${className}`}
-      src={activo ? src : undefined}
-      poster={poster}
+      src={activo && cerca ? src : undefined}
+      poster={cerca ? portadaOptimizada(poster) : undefined}
       aria-label={alt}
       muted
       loop

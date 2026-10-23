@@ -100,6 +100,9 @@ function useReel(
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // en el celular no hay escena (2026-10-23, Alexander: «la animación del hero en móvil, mejor
+    // obvíala»): una imagen fija del objeto ocupa su lugar y three.js ni se descarga
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
       setPausado(true);
     let vivo = true;

@@ -78,7 +78,11 @@ export function BlogSection() {
   );
 
   return (
-    <section id="blog" className="overflow-hidden bg-white py-20 md:py-28">
+    <section
+      id="blog"
+      data-nav-theme="light"
+      className="overflow-hidden bg-white py-20 md:py-28"
+    >
       <div className="container-section">
         <div className="content-section">
           <Carousel
@@ -92,7 +96,7 @@ export function BlogSection() {
           >
             <div className="aparecer mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
               <div>
-                <h2 className="text-display text-[#060C20]">
+                <h2 className="titulo-seccion text-[#060C20]">
                   {t("meta.title")}
                 </h2>
                 <p className="text-body mt-3 max-w-xl text-gray-500">
