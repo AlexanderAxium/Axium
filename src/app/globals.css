@@ -364,6 +364,13 @@ html.lenis body {
 /* La escena 3D del hero en el celular (2026-10-24): ahí el lienzo es una franja y no cubre todo el
    hero, y como la escena pinta su propio fondo se veía el borde del rectángulo. Se funden los cuatro
    bordes con el fondo de la sección; en escritorio el lienzo cubre todo y no lleva máscara. */
+/* El grano del fondo del hero en el celular, alrededor de la franja: el mismo ruido fino y la misma
+   intensidad (5 %, mezcla normal) con que la escena pinta su fondo, así la franja no se nota */
+.grano-hero {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+}
+
 @media (max-width: 1023px) {
   .lienzo-franja {
     -webkit-mask-image:

@@ -239,9 +239,13 @@ function CarouselNext({
 function CarouselProgress({
   className,
   barClassName,
+  deslizante = false,
 }: {
   className?: string;
   barClassName?: string;
+  /** un cursor del tamaño de lo que se ve que recorre el riel, en vez de una barra que se llena
+   *  (al final quedaba un bloque lleno que no se leía como avance) */
+  deslizante?: boolean;
 }) {
   const { api } = useCarousel();
   const [medida, setMedida] = React.useState<{
@@ -267,7 +271,10 @@ function CarouselProgress({
   }, [api]);
 
   if (!medida || medida.porcion >= 1) return null;
-  const ancho = (medida.porcion + (1 - medida.porcion) * medida.avance) * 100;
+  const ancho = deslizante
+    ? medida.porcion * 100
+    : (medida.porcion + (1 - medida.porcion) * medida.avance) * 100;
+  const izquierda = deslizante ? (1 - medida.porcion) * medida.avance * 100 : 0;
 
   return (
     <div
@@ -277,10 +284,10 @@ function CarouselProgress({
     >
       <div
         className={cn(
-          "h-full bg-foreground transition-[width] duration-150 ease-out",
+          "h-full bg-foreground transition-[width,margin] duration-150 ease-out",
           barClassName
         )}
-        style={{ width: `${ancho}%` }}
+        style={{ width: `${ancho}%`, marginLeft: `${izquierda}%` }}
       />
     </div>
   );

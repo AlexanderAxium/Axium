@@ -16,7 +16,6 @@ import Image from "next/image";
 import { type RefObject, useEffect, useRef, useState } from "react";
 import { AboutSection } from "~/components/axium/about-section";
 import {
-  BotonPausa,
   Botones,
   FONDO_NOCHE,
   NOCHE,
@@ -153,6 +152,10 @@ function CuerpoHero({
       className={`relative isolate flex h-[100svh] w-full touch-pan-y select-none flex-col overflow-hidden ${altoContenido ? "lg:h-auto lg:min-h-[100svh]" : ""}`}
       style={{ background: FONDO_NOCHE }}
     >
+      <span
+        aria-hidden="true"
+        className="grano-hero pointer-events-none absolute inset-0 -z-[5] lg:hidden"
+      />
       {/* La escena: en escritorio cubre todo el hero, detrás del texto; en el celular es la franja
           que dejan el titular y los botones, así el hero nunca pasa de una pantalla. En el celular
           también gira desde el 2026-10-24 (antes ahí solo iba la imagen fija); lo que sigue
@@ -179,23 +182,15 @@ function CuerpoHero({
           aria-hidden="true"
           className="lienzo-franja absolute inset-0"
         />
-        {/* en el celular la pausa va en la esquina de la franja, cuando ya hay algo que pausar */}
-        {reel.listo && (
-          <div className="absolute right-0 bottom-0 lg:hidden">
-            <BotonPausa pausado={reel.pausado} alternar={reel.alternar} />
-          </div>
-        )}
       </div>
       <div
         ref={refPausa}
         className="absolute bottom-10 right-10 z-10 hidden lg:block"
       >
+        {/* sin botón de pausa (2026-10-24, «que siempre gire»): queda el aviso de que se arrastra */}
         <div className="entra-css" style={retraso(0.5)}>
-          <span className="flex items-center gap-3">
-            <span className="hidden text-[12px] text-white/45 lg:inline">
-              {t("home.hero.dragHint")}
-            </span>
-            <BotonPausa pausado={reel.pausado} alternar={reel.alternar} />
+          <span className="text-[12px] text-white/45">
+            {t("home.hero.dragHint")}
           </span>
         </div>
       </div>
@@ -323,6 +318,10 @@ export function HeroProfundidad() {
           tarjeta.current.style.transform = "";
           tarjeta.current.style.clipPath = "";
         }
+        if (hoja.current) {
+          hoja.current.style.borderTopLeftRadius = "";
+          hoja.current.style.borderTopRightRadius = "";
+        }
         if (velo.current) velo.current.style.opacity = "0";
         apagarTexto(texto.current, pausa.current, 0);
         return;
@@ -375,8 +374,10 @@ export function HeroProfundidad() {
       </div>
       <div
         ref={hoja}
-        className="relative z-10 overflow-hidden bg-white shadow-[0_-40px_80px_-20px_rgba(1,4,16,0.55)]"
-        style={{ borderTopLeftRadius: 44, borderTopRightRadius: 44 }}
+        // las esquinas y la sombra de la hoja que sube, solo en escritorio: en el celular no hay
+        // transición y «Nosotros» va recto debajo del hero (2026-10-24, «que no tenga bordeado en
+        // móvil»). El radio lo anima el scroll con estilos en línea, que en el celular se borran
+        className="relative z-10 overflow-hidden bg-white lg:rounded-t-[44px] lg:shadow-[0_-40px_80px_-20px_rgba(1,4,16,0.55)]"
         data-nav-theme="light"
       >
         <AboutSection />

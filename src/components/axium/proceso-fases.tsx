@@ -284,7 +284,8 @@ export function ProcesoFases() {
                     className="basis-[84%] cursor-grab touch-pan-y select-none pl-3 active:cursor-grabbing sm:basis-[58%] md:basis-[44%] lg:row-span-5 lg:grid lg:cursor-auto lg:select-auto lg:grid-rows-subgrid lg:pl-0"
                   >
                     <div className="flex h-full flex-col bg-[#F3F5F9] p-6 sm:p-8 lg:row-span-5 lg:grid lg:grid-rows-subgrid lg:gap-y-0">
-                      <div className="aspect-square w-[96px] sm:w-[112px]">
+                      {/* un poco más grandes desde el 2026-10-24 («has ligeramente más grande los íconos») */}
+                      <div className="aspect-square w-[112px] sm:w-[128px]">
                         <Grafico
                           id={f.id}
                           escena={f.escena}
@@ -326,12 +327,21 @@ export function ProcesoFases() {
                     </div>
                   </CarouselItem>
                 ))}
+                {/* el aire del final: el carrusel sangra hasta el canto y la última tarjeta quedaba
+                    pegada al borde de la pantalla; con esto termina a un margen, como la primera */}
+                <div
+                  aria-hidden="true"
+                  className="w-4 shrink-0 sm:w-6 lg:hidden"
+                />
               </CarouselContent>
             </div>
-            {/* cuánto se ha visto, como la barra del carrusel del blog */}
+            {/* dónde se está: un riel del ancho del contenido (de margen a margen) con un cursor del
+                tamaño de lo que se ve, que lo recorre (2026-10-24: la barra que se llenaba, de
+                160 px, «no cuadraba bien») */}
             <CarouselProgress
-              className="mt-6 h-0.5 w-full max-w-[160px] overflow-hidden rounded-full bg-[#060C20]/12 lg:hidden"
-              barClassName="rounded-full bg-[#060C20]"
+              deslizante
+              className="mt-8 h-0.5 w-full overflow-hidden rounded-full bg-[#060C20]/10 lg:hidden"
+              barClassName="rounded-full bg-[#060C20]/70"
             />
           </Carousel>
         </div>

@@ -112,9 +112,13 @@ function dibujarFondoSutil(
   w: number,
   h: number,
   e: Encuadre,
-  pal: PaletaFondo
+  pal: PaletaFondo,
+  /** píxeles por punto del lienzo: el fondo se dibuja a esa resolución */
+  densidad = 1
 ) {
-  const k = Math.min(1, 2048 / w);
+  // a la resolución real del lienzo (2026-10-24): se dibujaba al tamaño CSS y se estiraba, y en el
+  // celular (390 px estirados al triple) el degradado y el grano se veían borrosos, «de mala calidad»
+  const k = Math.min(densidad, 2048 / w);
   lienzo.width = Math.round(w * k);
   lienzo.height = Math.round(h * k);
   const g = lienzo.getContext("2d");
@@ -163,6 +167,7 @@ function dibujarFondoSutil(
   // grano: textura fina, apenas perceptible, que además quita las bandas del degradado
   const patron = g.createPattern(lienzoGrano(), "repeat");
   if (patron) {
+    g.setTransform(1, 0, 0, 1, 0, 0); // un grano por téxel, sin estirar
     g.globalAlpha = pal.grano ?? 0.05; // con «overlay» sobre un fondo tan oscuro no se notaba (desvío 1/255)
     g.fillStyle = patron;
     g.fillRect(0, 0, w, h);
@@ -543,7 +548,14 @@ export const escenaReel =
         fondoU.uCentro.value.set(e.cx, 1 - e.cy);
         fondoU.uAspecto.value = w / h;
         pantalla.position.set(base.x, base.y, -1.1);
-        dibujarFondoSutil(lienzoFondo, w, h, e, o.paleta);
+        dibujarFondoSutil(
+          lienzoFondo,
+          w,
+          h,
+          e,
+          o.paleta,
+          renderer.getPixelRatio()
+        );
         texFondo.needsUpdate = true;
       },
     };

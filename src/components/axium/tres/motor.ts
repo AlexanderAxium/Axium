@@ -11,7 +11,7 @@
 //   entrada, la inclinación con el puntero o un resaltado). Quieta, no gasta GPU.
 // - Los shaders se compilan antes de arrancar el reloj (compileAsync) para que el primer segundo
 //   de la animación no salte, y el lienzo aparece con un fundido cuando ya hay un cuadro.
-// - Píxeles por punto con techo (2 en escritorio, 1,5 en pantallas táctiles), y 60 cuadros por
+// - Píxeles por punto con techo (2), y 60 cuadros por
 //   segundo como mucho, también en pantallas de 120 Hz. Si la máquina no llega, la escena continua
 //   baja sola la resolución y después el ritmo (calidad adaptable).
 // - Al desmontar se libera todo y se suelta el contexto (en desarrollo, StrictMode monta dos veces).
@@ -81,9 +81,10 @@ export function montar(
   }
   const tactil = window.matchMedia("(pointer: coarse)").matches;
   const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio || 1, tactil ? 1.5 : 2)
-  );
+  // 2 también en pantallas táctiles desde el 2026-10-24: en el celular la escena del hero es una
+  // franja chica y a 1,5 se veía blanda en pantallas de 3×; si el teléfono no llega, la calidad
+  // adaptable baja sola
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   // Neutral (Khronos PBR Neutral) respeta los colores de marca; ACES los lava y les corre el tono.
   renderer.toneMapping = THREE.NeutralToneMapping;

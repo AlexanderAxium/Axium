@@ -11,7 +11,6 @@
  * hero (.claude/skills/portafolio-axium/capturas-clientes/axium-hero/2026-10/descartadas-2026-10-15/).
  */
 
-import { Pause, Play } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { type RefObject, useEffect, useRef, useState } from "react";
@@ -125,7 +124,6 @@ function useReel(
   // las opciones se leen al montar (el encuadre cambia de identidad en cada render)
   const opciones = useRef({ encuadre, ...extra });
   opciones.current = { encuadre, ...extra };
-  const [pausado, setPausado] = useState(false);
   // la escena ya dibujó su primer cuadro: la imagen fija del celular se puede ir
   const [listo, setListo] = useState(false);
   useEffect(() => {
@@ -136,8 +134,9 @@ function useReel(
     // funcionar»). El 2026-10-23 se había quitado entera con «la animación del hero en móvil,
     // mejor obvíala»: se refería a la transición. Mientras three.js no llega, se ve la imagen fija
     // del objeto, y sin WebGL se queda esa.
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-      setPausado(true);
+    // Sin botón de pausa desde el 2026-10-24 (Alexander: «en el hero elimina el botón de pausar,
+    // que siempre gire»). Quien pidió menos movimiento la sigue viendo quieta: eso lo resuelve el
+    // motor con prefers-reduced-motion
     let vivo = true;
     const cancelar = cuandoLibre(el, () =>
       import("~/components/axium/tres/escenas").then((m) => {
@@ -163,41 +162,12 @@ function useReel(
       control.current = null;
     };
   }, [ref, paleta]);
-  const alternar = () => {
-    const nuevo = !pausado;
-    setPausado(nuevo);
-    control.current?.pausar(nuevo);
-  };
   // tapada por la sección siguiente (transiciones t1–t3): el motor no dibuja nada, aunque siga
   // «en pantalla» para el IntersectionObserver (pausar no basta: con el puntero vuelve a dibujar)
   const ocultar = (o: boolean) => control.current?.ocultar(o);
   // el progreso de una transición con el scroll (t1–t3) entra a la escena por accion()
   const accion = (v: number) => control.current?.accion(v);
-  return { pausado, listo, alternar, accion, ocultar };
-}
-
-function BotonPausa({
-  pausado,
-  alternar,
-}: {
-  pausado: boolean;
-  alternar: () => void;
-}) {
-  const { t } = useTranslation("landing");
-  return (
-    <button
-      type="button"
-      onClick={alternar}
-      aria-label={t(pausado ? "home.hero.play" : "home.hero.pause")}
-      className="grid h-10 w-10 place-items-center rounded-full border border-white/25 bg-white/5 text-white backdrop-blur-sm transition-colors hover:border-white/60"
-    >
-      {pausado ? (
-        <Play className="h-3.5 w-3.5" />
-      ) : (
-        <Pause className="h-3.5 w-3.5" />
-      )}
-    </button>
-  );
+  return { listo, accion, ocultar };
 }
 
 // ── 34f · Tres piezas, un solo equipo ────────────────────────────────────────
@@ -222,12 +192,11 @@ const FONDO_NOCHE = `linear-gradient(135deg, ${NOCHE.base[0]} 0%, ${NOCHE.base[1
 function encuadrePortada(w: number, h: number) {
   if (w >= 1024 && w / h > 1.05)
     return { cx: 0.5, cy: 0.29, alto: Math.min(h * 0.33, w * 0.22) };
-  return { cx: 0.5, cy: 0.5, alto: Math.min(h * 0.82, w * 0.62) };
+  return { cx: 0.5, cy: 0.5, alto: Math.min(h * 0.7, w * 0.52) };
 }
 
 // lo que usa la portada del inicio (hero-transiciones.tsx)
 export {
-  BotonPausa,
   Botones,
   FONDO_NOCHE,
   NOCHE,
