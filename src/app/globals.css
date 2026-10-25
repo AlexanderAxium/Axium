@@ -361,6 +361,22 @@ html.lenis body {
     transform: translate3d(0, 24px, 0);
   }
 }
+/* La escena 3D del hero en el celular (2026-10-24): ahí el lienzo es una franja y no cubre todo el
+   hero, y como la escena pinta su propio fondo se veía el borde del rectángulo. Se funden los cuatro
+   bordes con el fondo de la sección; en escritorio el lienzo cubre todo y no lleva máscara. */
+@media (max-width: 1023px) {
+  .lienzo-franja {
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent),
+      linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent),
+      linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-composite: intersect;
+  }
+}
+
 .entra-css {
   animation: entra-css 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
   animation-delay: var(--entra-retraso, 0s);

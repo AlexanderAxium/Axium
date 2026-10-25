@@ -11,7 +11,9 @@
 //   entrada, la inclinación con el puntero o un resaltado). Quieta, no gasta GPU.
 // - Los shaders se compilan antes de arrancar el reloj (compileAsync) para que el primer segundo
 //   de la animación no salte, y el lienzo aparece con un fundido cuando ya hay un cuadro.
-// - Píxeles por punto con techo (2 en escritorio, 1,5 en pantallas táctiles).
+// - Píxeles por punto con techo (2 en escritorio, 1,5 en pantallas táctiles), y 60 cuadros por
+//   segundo como mucho, también en pantallas de 120 Hz. Si la máquina no llega, la escena continua
+//   baja sola la resolución y después el ritmo (calidad adaptable).
 // - Al desmontar se libera todo y se suelta el contexto (en desarrollo, StrictMode monta dos veces).
 import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
@@ -114,11 +116,30 @@ export function montar(
   let arrancado = false; // ya compiló y empezó la entrada
   let previo = -1;
   let raf = 0;
+  let ultimo = -1; // el último cuadro dibujado
   let vivo = true;
   let pausada = quieto;
   let visible = true;
   let oculta = false;
   const puntero = { x: 0, y: 0, ax: 0, ay: 0 }; // destino y valor amortiguado
+
+  // Calidad adaptable (2026-10-24): si con la escena girando la máquina no sostiene unos 45
+  // cuadros por segundo, se baja la resolución un escalón (2 → 1,5 → 1,25 → 1 píxel por punto) y,
+  // al final, el ritmo a 30 cuadros. Una máquina que llega no nota nada; una floja deja de trabarse.
+  const escalones = [1.5, 1.25, 1].filter((r) => r < renderer.getPixelRatio());
+  let tope = 15; // ms mínimos entre cuadros: 60 por segundo
+  const muestras: number[] = [];
+  const medirRitmo = (dt: number) => {
+    if (tope > 15 || reloj < 2) return; // la entrada y la compilación no cuentan
+    muestras.push(Math.min(dt, 100));
+    if (muestras.length < 45) return; // ~0,75 s a 60 por segundo; más en una máquina lenta
+    const mediana = [...muestras].sort((x, y) => x - y)[22] ?? 0;
+    muestras.length = 0;
+    if (mediana <= 22) return;
+    const r = escalones.shift();
+    if (r) renderer.setPixelRatio(r);
+    else tope = 30;
+  };
 
   const t = () =>
     quieto || !arrancado
@@ -144,6 +165,15 @@ export function montar(
       previo = -1;
       return;
     }
+    // como mucho 60 cuadros por segundo (2026-10-24): en pantallas de 120 Hz (los MacBook Pro y
+    // muchos celulares) requestAnimationFrame llega el doble de veces y la escena se dibujaba
+    // 120 veces por segundo, el doble de trabajo para un giro lento que no se nota más fluido
+    if (ultimo >= 0 && ahora - ultimo < tope) {
+      despertar();
+      return;
+    }
+    if (ultimo >= 0 && corriendo() && e.continua) medirRitmo(ahora - ultimo);
+    ultimo = ahora;
     if (corriendo() && previo >= 0)
       reloj += Math.min(0.1, (ahora - previo) / 1000);
     previo = corriendo() ? ahora : -1;

@@ -73,29 +73,27 @@ export function MagneticCursorArrow({
           scale: { type: "spring", stiffness: 500, damping: 28 },
         }}
       >
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: "rgba(255,255,255,0.14)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-          }}
-        />
-        <motion.svg
+        {/* El vidrio solo existe con el ratón encima: un backdrop-filter se recalcula en cada
+            cuadro sobre lo que tiene detrás (una portada con su vídeo), y había uno escondido por
+            cada tarjeta de la página (2026-10-24) */}
+        {hovered && (
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: "rgba(255,255,255,0.14)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+            }}
+          />
+        )}
+        {/* El texto gira con CSS (en el compositor) y no con motion: con motion era un rotate
+            escrito desde JavaScript en cada cuadro mientras el ratón estuviera sobre la tarjeta, y
+            la página entera se repintaba sin parar (2026-10-24) */}
+        <svg
           viewBox="0 0 88 88"
-          className="absolute inset-0 w-full h-full"
+          className={`absolute inset-0 w-full h-full ${hovered ? "animate-[spin_9s_linear_infinite] motion-reduce:animate-none" : ""}`}
           role="img"
           aria-label="Circular view project indicator"
-          animate={hovered ? { rotate: 360 } : { rotate: 0 }}
-          transition={
-            hovered
-              ? {
-                  duration: 9,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "linear",
-                }
-              : { duration: 0.3 }
-          }
         >
           <defs>
             <path
@@ -116,7 +114,7 @@ export function MagneticCursorArrow({
               {label}
             </textPath>
           </text>
-        </motion.svg>
+        </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <ArrowUpRight className={`w-7 h-7 ${arrowColor}`} strokeWidth={2} />
         </div>

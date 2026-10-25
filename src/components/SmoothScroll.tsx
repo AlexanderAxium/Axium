@@ -39,14 +39,30 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     });
     lenisRef.current = lenis;
 
-    // Se guarda SIEMPRE el último id: antes solo se guardaba el primero, así que
-    // al desmontar se cancelaba un fotograma ya consumido y el bucle seguía vivo.
-    let id = requestAnimationFrame(function raf(time: number) {
+    // 5. **El bucle corre solo mientras hay un desplazamiento suave** (2026-10-24). Antes pedía un
+    //    cuadro en cada vsync para siempre, aunque la página estuviera quieta: junto con otros dos
+    //    bucles, el navegador repintaba la página entera 120 veces por segundo y el inicio «se
+    //    trababa». Ahora la rueda lo despierta y se duerme cuando Lenis termina de llegar.
+    //    Al despertar se le da la hora actual ANTES de que Lenis atienda la rueda (por eso el
+    //    listener va en captura): su reloj solo avanza en `raf`, y con el intervalo dormido entero
+    //    de golpe la animación saltaba al final.
+    let id = 0;
+    const cuadro = (time: number) => {
       lenis.raf(time);
-      id = requestAnimationFrame(raf);
+      id = lenis.isScrolling === "smooth" ? requestAnimationFrame(cuadro) : 0;
+    };
+    const despertar = () => {
+      if (id) return;
+      lenis.raf(performance.now());
+      id = requestAnimationFrame(cuadro);
+    };
+    window.addEventListener("wheel", despertar, {
+      capture: true,
+      passive: true,
     });
 
     return () => {
+      window.removeEventListener("wheel", despertar, { capture: true });
       cancelAnimationFrame(id);
       lenis.destroy();
       lenisRef.current = null;

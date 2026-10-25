@@ -2,7 +2,6 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -26,7 +25,11 @@ import {
 } from "~/data/servicios-paginas";
 import { useTranslation } from "~/hooks/useTranslation";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+// Sin ScrollTrigger (2026-10-24): al registrarse deja un requestAnimationFrame vacío corriendo
+// para siempre, y como Next precarga estas páginas al ver sus enlaces, ese bucle quedaba vivo
+// también en el inicio. Lo que hacía (saber si una sección está en pantalla) lo hace un
+// IntersectionObserver.
+gsap.registerPlugin(useGSAP);
 
 /**
  * El molde de las páginas de servicio (2026-10-22), al modo de cheesecakelabs.com/services/*:
@@ -161,21 +164,22 @@ function QueHacemos({
     else r.pause();
   };
 
-  // Cuándo corre el reloj: con la sección en pantalla
-  useGSAP(
-    () => {
-      ScrollTrigger.create({
-        trigger: raiz.current,
-        start: "top 70%",
-        end: "bottom 30%",
-        onToggle: (st) => {
-          enPantalla.current = st.isActive;
-          ajustarReloj();
-        },
-      });
-    },
-    { scope: raiz }
-  );
+  // Cuándo corre el reloj: con la sección en la franja central de la pantalla (entre el 30 y el
+  // 70 % del alto, lo que antes era «top 70%» a «bottom 30%» de ScrollTrigger)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: ajustarReloj solo lee refs
+  useEffect(() => {
+    const el = raiz.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        enPantalla.current = !!e?.isIntersecting;
+        ajustarReloj();
+      },
+      { rootMargin: "-30% 0px -30% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   // Cada cambio de pestaña: el fundido de la pieza, su vídeo y el reloj de la barra
   useGSAP(
@@ -455,19 +459,26 @@ function Capas({
       if (!listas) return;
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // la de abajo primero, como una pila que se arma
-        gsap.from(".capa-placa", {
+        // la de abajo primero, como una pila que se arma; quieta y escondida hasta que el panel
+        // asoma al 72 % de la pantalla (lo que era «top 72%», once)
+        const caida = gsap.from(".capa-placa", {
           y: -34,
           autoAlpha: 0,
           duration: 0.8,
           ease: "power3.out",
           stagger: 0.12,
-          scrollTrigger: {
-            trigger: raiz.current,
-            start: "top 72%",
-            once: true,
-          },
+          paused: true,
         });
+        const io = new IntersectionObserver(
+          ([e]) => {
+            if (!e?.isIntersecting) return;
+            caida.play();
+            io.disconnect();
+          },
+          { rootMargin: "0px 0px -28% 0px" }
+        );
+        if (raiz.current) io.observe(raiz.current);
+        return () => io.disconnect();
       });
     },
     { scope: raiz, dependencies: [listas] }

@@ -63,18 +63,47 @@ function Botones() {
 const REEL = "/images/hero-propuestas/p33-reel-960.mp4";
 const REEL_MOVIL = "/images/hero-propuestas/p33-reel-640.mp4";
 
-/** Corre `fn` cuando la página ya cargó y el navegador está libre: three.js y el vídeo no compiten
- *  con la primera pintura ni con la hidratación. Devuelve con qué cancelarlo. */
-function cuandoLibre(fn: () => void) {
+/** Corre `fn` cuando la página ya cargó, el navegador está libre, el hero se ve y la persona lleva
+ *  un momento sin hacer scroll: arrancar three.js ocupa el hilo principal un buen rato (compilar,
+ *  el entorno, el primer cuadro con el vídeo), y si caía mientras alguien bajaba por la página, el
+ *  inicio «se trababa» justo al entrar (2026-10-24). Devuelve con qué cancelarlo. */
+function cuandoLibre(el: HTMLElement, fn: () => void) {
   let id = 0;
+  let espera = 0;
+  let visto = true;
+  let ultimoScroll = 0;
+  const alScroll = () => {
+    ultimoScroll = performance.now();
+  };
+  const io = new IntersectionObserver(([e]) => {
+    visto = !!e?.isIntersecting;
+  });
+  const soltar = () => {
+    io.disconnect();
+    window.removeEventListener("scroll", alScroll);
+    window.removeEventListener("wheel", alScroll);
+    window.clearTimeout(espera);
+  };
+  const intentar = () => {
+    if (!visto || performance.now() - ultimoScroll < 700) {
+      espera = window.setTimeout(intentar, 400);
+      return;
+    }
+    soltar();
+    fn();
+  };
   const pedir = () => {
     id = window.requestIdleCallback
-      ? window.requestIdleCallback(fn, { timeout: 1200 })
-      : window.setTimeout(fn, 200);
+      ? window.requestIdleCallback(intentar, { timeout: 1200 })
+      : window.setTimeout(intentar, 200);
   };
+  io.observe(el);
+  window.addEventListener("scroll", alScroll, { passive: true });
+  window.addEventListener("wheel", alScroll, { passive: true });
   if (document.readyState === "complete") pedir();
   else window.addEventListener("load", pedir, { once: true });
   return () => {
+    soltar();
     window.removeEventListener("load", pedir);
     if (window.cancelIdleCallback) window.cancelIdleCallback(id);
     window.clearTimeout(id);
@@ -97,16 +126,20 @@ function useReel(
   const opciones = useRef({ encuadre, ...extra });
   opciones.current = { encuadre, ...extra };
   const [pausado, setPausado] = useState(false);
+  // la escena ya dibujó su primer cuadro: la imagen fija del celular se puede ir
+  const [listo, setListo] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // en el celular no hay escena (2026-10-23, Alexander: «la animación del hero en móvil, mejor
-    // obvíala»): una imagen fija del objeto ocupa su lugar y three.js ni se descarga
-    if (window.matchMedia("(max-width: 1023px)").matches) return;
+    // En el celular también gira (2026-10-24, Alexander: «en móvil la escena 3D no funciona,
+    // corrige eso, que gire, solo que la animación de transición entre secciones déjala sin
+    // funcionar»). El 2026-10-23 se había quitado entera con «la animación del hero en móvil,
+    // mejor obvíala»: se refería a la transición. Mientras three.js no llega, se ve la imagen fija
+    // del objeto, y sin WebGL se queda esa.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
       setPausado(true);
     let vivo = true;
-    const cancelar = cuandoLibre(() =>
+    const cancelar = cuandoLibre(el, () =>
       import("~/components/axium/tres/escenas").then((m) => {
         if (!vivo) return;
         control.current = m.montar(
@@ -115,7 +148,8 @@ function useReel(
             video: window.innerWidth < 768 ? REEL_MOVIL : REEL,
             paleta,
             ...opciones.current,
-          })
+          }),
+          () => vivo && setListo(true)
         );
         // el texto entra con un desplazamiento y las fuentes cambian el maquetado: reencuadrar
         document.fonts?.ready.then(() => control.current?.medir());
@@ -139,7 +173,7 @@ function useReel(
   const ocultar = (o: boolean) => control.current?.ocultar(o);
   // el progreso de una transición con el scroll (t1–t3) entra a la escena por accion()
   const accion = (v: number) => control.current?.accion(v);
-  return { pausado, alternar, accion, ocultar };
+  return { pausado, listo, alternar, accion, ocultar };
 }
 
 function BotonPausa({
@@ -183,17 +217,12 @@ const NOCHE: PaletaFondo = {
 };
 const FONDO_NOCHE = `linear-gradient(135deg, ${NOCHE.base[0]} 0%, ${NOCHE.base[1]} 60%, ${NOCHE.base[2]} 100%)`;
 
-// en escritorio, centrado arriba; en móvil, en la franja de arriba (la pausa va justo debajo:
-// top-[calc(60px+min(42svh,380px))], la misma cuenta que acá)
+// en escritorio, centrado arriba; en el celular el lienzo es la franja del objeto (entre el menú y
+// el titular, la que antes ocupaba la imagen fija) y el objeto va centrado en ella
 function encuadrePortada(w: number, h: number) {
   if (w >= 1024 && w / h > 1.05)
     return { cx: 0.5, cy: 0.29, alto: Math.min(h * 0.33, w * 0.22) };
-  const banda = Math.min(window.innerHeight * 0.42, 380);
-  return {
-    cx: 0.5,
-    cy: (60 + banda / 2) / h,
-    alto: Math.min(banda * 0.8, w * 0.62),
-  };
+  return { cx: 0.5, cy: 0.5, alto: Math.min(h * 0.82, w * 0.62) };
 }
 
 // lo que usa la portada del inicio (hero-transiciones.tsx)

@@ -153,25 +153,20 @@ function CuerpoHero({
       className={`relative isolate flex h-[100svh] w-full touch-pan-y select-none flex-col overflow-hidden ${altoContenido ? "lg:h-auto lg:min-h-[100svh]" : ""}`}
       style={{ background: FONDO_NOCHE }}
     >
-      <div
-        ref={lienzo}
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 hidden lg:block"
-      />
-      {/* en el celular, una imagen fija del objeto en vez de la escena (2026-10-23, Alexander: «la
-          animación del hero en móvil, mejor obvíala»): toma el alto que dejan el titular y los
-          botones, así el hero nunca pasa de una pantalla */}
-      <div
-        aria-hidden="true"
-        className="relative mx-auto mt-16 min-h-[88px] w-full max-w-[440px] flex-1 lg:hidden"
-      >
+      {/* La escena: en escritorio cubre todo el hero, detrás del texto; en el celular es la franja
+          que dejan el titular y los botones, así el hero nunca pasa de una pantalla. En el celular
+          también gira desde el 2026-10-24 (antes ahí solo iba la imagen fija); lo que sigue
+          apagado ahí es la transición entre secciones */}
+      <div className="relative mx-auto mt-16 min-h-[88px] w-full max-w-[440px] flex-1 lg:absolute lg:inset-0 lg:-z-10 lg:mt-0 lg:max-w-none">
+        {/* la imagen fija del objeto mientras three.js llega (y para siempre sin WebGL); se va
+            cuando la escena dibujó su primer cuadro */}
         <Image
           src="/images/inicio/hero-movil.jpg"
           alt=""
           fill
           priority
           sizes="(max-width: 1023px) 100vw, 1px"
-          className="object-contain"
+          className={`object-contain transition-opacity duration-500 lg:hidden ${reel.listo ? "opacity-0" : ""}`}
           style={{
             maskImage:
               "radial-gradient(closest-side, #000 70%, transparent 100%)",
@@ -179,6 +174,17 @@ function CuerpoHero({
               "radial-gradient(closest-side, #000 70%, transparent 100%)",
           }}
         />
+        <div
+          ref={lienzo}
+          aria-hidden="true"
+          className="lienzo-franja absolute inset-0"
+        />
+        {/* en el celular la pausa va en la esquina de la franja, cuando ya hay algo que pausar */}
+        {reel.listo && (
+          <div className="absolute right-0 bottom-0 lg:hidden">
+            <BotonPausa pausado={reel.pausado} alternar={reel.alternar} />
+          </div>
+        )}
       </div>
       <div
         ref={refPausa}

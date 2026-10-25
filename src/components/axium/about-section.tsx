@@ -10,6 +10,7 @@ import {
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { useTranslation } from "~/hooks/useTranslation";
 
 const ORBIT_ICONS = [
@@ -120,40 +121,38 @@ export function AboutSection() {
                   />
                 </div>
 
-                <motion.div
-                  className="absolute"
-                  style={{ width: 182, height: 182 }}
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: ORBIT_DURATION,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  }}
+                {/* La órbita gira con CSS y no con motion (2026-10-24): con motion era un `rotate`
+                    escrito desde JavaScript en cada cuadro, para siempre y aunque la sección
+                    estuviera fuera de pantalla, y la página entera se repintaba sin parar. Una
+                    animación CSS de transform corre en el compositor, sin tocar el hilo principal */}
+                <div
+                  className="absolute animate-[spin_var(--orbita)_linear_infinite] motion-reduce:animate-none"
+                  style={
+                    {
+                      width: 182,
+                      height: 182,
+                      "--orbita": `${ORBIT_DURATION}s`,
+                    } as CSSProperties
+                  }
                 >
                   {ORBIT_ICONS.map(({ Icon, label }, i) => {
                     const angle = (i / ORBIT_ICONS.length) * 2 * Math.PI;
                     const x = Math.cos(angle) * ORBIT_RADIUS;
                     const y = Math.sin(angle) * ORBIT_RADIUS;
                     return (
-                      <motion.div
+                      <div
                         key={label}
-                        className="absolute w-7 h-7 bg-primary rounded-full flex items-center justify-center shadow"
+                        className="absolute w-7 h-7 bg-primary rounded-full flex items-center justify-center shadow animate-[spin_var(--orbita)_linear_infinite_reverse] motion-reduce:animate-none"
                         style={{
                           left: `calc(50% + ${x}px - 14px)`,
                           top: `calc(50% + ${y}px - 14px)`,
                         }}
-                        animate={{ rotate: -360 }}
-                        transition={{
-                          duration: ORBIT_DURATION,
-                          repeat: Number.POSITIVE_INFINITY,
-                          ease: "linear",
-                        }}
                       >
                         <Icon className="w-3 h-3 text-white" />
-                      </motion.div>
+                      </div>
                     );
                   })}
-                </motion.div>
+                </div>
               </motion.div>
 
               {/* ② IMAGE CARD */}
