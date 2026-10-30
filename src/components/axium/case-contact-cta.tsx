@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Paperclip, Send } from "lucide-react";
+import { Mail, Paperclip, Send, X } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -44,32 +44,107 @@ interface FormData {
   source: string;
 }
 
+const FORMULARIO_VACIO: FormData = {
+  name: "",
+  email: "",
+  message: "",
+  file: null,
+  source: "",
+};
+
+// Los mismos límites que valida /api/contacto: se adelantan acá para avisar antes de enviar
+const MAX_ARCHIVO = 5 * 1024 * 1024;
+const EXTENSIONES = ["pdf", "doc", "docx", "png", "jpg", "jpeg"];
+
+type Estado =
+  | { tipo: "inicial" }
+  | { tipo: "enviando" }
+  | { tipo: "enviado" }
+  | { tipo: "error"; mensaje: string };
+
+/** El código de error de /api/contacto → la clave del mensaje. */
+const MENSAJE_DE_ERROR: Record<string, string> = {
+  datos_invalidos: "home.contactCta.form.errorInvalid",
+  archivo_grande: "home.contactCta.form.errorFileSize",
+  archivo_tipo: "home.contactCta.form.errorFileType",
+  demasiados_envios: "home.contactCta.form.errorRateLimit",
+};
+
 // El fondo abstracto del escritorio: «aurora», elegida entre tres propuestas el 2026-10-23
 // (Alexander: «me gustó el de aurora»); antes era abs1.jpg. En el celular va el degradado.
 const FONDO = "/images/contacto/fondo-aurora.jpg";
 
 export function CaseContactCTA() {
   const { t } = useTranslation("landing");
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-    file: null,
-    source: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<FormData>(FORMULARIO_VACIO);
+  const [estado, setEstado] = useState<Estado>({ tipo: "inicial" });
+  const isSubmitting = estado.tipo === "enviando";
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
+  const mensajeDeError = (codigo?: string) =>
+    t(MENSAJE_DE_ERROR[codigo ?? ""] ?? "home.contactCta.form.errorGeneric", {
+      email: contactData.ceo.email,
+    });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    console.log("Form submitted:", formData);
-    setTimeout(() => setIsSubmitting(false), 1000);
+    if (isSubmitting) return;
+    setEstado({ tipo: "enviando" });
+
+    const cuerpo = new FormData();
+    cuerpo.set("name", formData.name);
+    cuerpo.set("email", formData.email);
+    cuerpo.set("message", formData.message);
+    if (formData.source) cuerpo.set("source", formData.source);
+    if (formData.file) cuerpo.set("file", formData.file);
+    cuerpo.set("pagina", window.location.pathname);
+    cuerpo.set("website", honeypotRef.current?.value ?? "");
+
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        body: cuerpo,
+      });
+      const json = (await res.json().catch(() => null)) as {
+        ok?: boolean;
+        error?: string;
+      } | null;
+      if (res.ok && json?.ok) {
+        setEstado({ tipo: "enviado" });
+        setFormData(FORMULARIO_VACIO);
+        if (fileInputRef.current) fileInputRef.current.value = "";
+        return;
+      }
+      setEstado({ tipo: "error", mensaje: mensajeDeError(json?.error) });
+    } catch {
+      setEstado({ tipo: "error", mensaje: mensajeDeError() });
+    }
+  };
+
+  const quitarArchivo = () => {
+    setFormData((prev) => ({ ...prev, file: null }));
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
-    setFormData({ ...formData, file });
+    if (file) {
+      const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
+      const problema = !EXTENSIONES.includes(extension)
+        ? "archivo_tipo"
+        : file.size > MAX_ARCHIVO
+          ? "archivo_grande"
+          : null;
+      if (problema) {
+        e.target.value = "";
+        setFormData((prev) => ({ ...prev, file: null }));
+        setEstado({ tipo: "error", mensaje: mensajeDeError(problema) });
+        return;
+      }
+    }
+    setFormData((prev) => ({ ...prev, file }));
+    if (estado.tipo === "error") setEstado({ tipo: "inicial" });
   };
 
   const handleSourceSelect = (value: string) => {
@@ -213,6 +288,24 @@ export function CaseContactCTA() {
                 className="flex flex-col gap-3.5 lg:flex-1"
                 encType="multipart/form-data"
               >
+                {/* Honeypot: fuera de la vista y del tabulador. Una persona no lo ve ni lo llena;
+                    un bot que completa todo, sí, y /api/contacto lo descarta */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden"
+                >
+                  <label>
+                    Sitio web
+                    <input
+                      ref={honeypotRef}
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      defaultValue=""
+                    />
+                  </label>
+                </div>
                 <motion.div
                   variants={itemVariants}
                   className="flex flex-col sm:flex-row gap-3.5"
@@ -265,28 +358,43 @@ export function CaseContactCTA() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="relative group w-fit hidden sm:block"
+                  className="relative group hidden sm:flex flex-wrap items-center gap-x-3 gap-y-1.5"
                 >
                   <input
                     ref={fileInputRef}
                     type="file"
                     onChange={handleFileChange}
                     className="hidden"
-                    accept=".pdf,.doc,.docx,.txt,.rtf,.png,.jpg,.jpeg"
+                    accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
                     name="file"
                   />
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="text-body-sm flex h-10 items-center gap-2 rounded-lg bg-secondary px-4 font-medium text-white transition-all duration-300 hover:bg-accent hover:text-primary"
+                    className="text-body-sm flex h-10 max-w-full items-center gap-2 rounded-lg bg-secondary px-4 font-medium text-white transition-all duration-300 hover:bg-accent hover:text-primary"
                   >
-                    <span>
+                    <span className="truncate">
                       {formData.file
                         ? formData.file.name
                         : t("home.contactCta.form.attachFileLabel")}
                     </span>
-                    <Paperclip className="h-3.5 w-3.5" />
+                    <Paperclip className="h-3.5 w-3.5 shrink-0" />
                   </button>
+                  {formData.file ? (
+                    <button
+                      type="button"
+                      onClick={quitarArchivo}
+                      aria-label={t("home.contactCta.form.removeFile")}
+                      title={t("home.contactCta.form.removeFile")}
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-white/5 text-white transition-colors duration-300 hover:bg-white/15"
+                    >
+                      <X className="h-3.5 w-3.5" />
+                    </button>
+                  ) : (
+                    <span className="text-body-sm text-white/50">
+                      {t("home.contactCta.form.fileHint")}
+                    </span>
+                  )}
                 </motion.div>
 
                 <motion.div
@@ -330,6 +438,20 @@ export function CaseContactCTA() {
                       </>
                     )}
                   </button>
+                  {/* El resultado real del envío: siempre montado para que el lector de pantalla
+                      anuncie el cambio */}
+                  <div aria-live="polite" aria-atomic="true">
+                    {estado.tipo === "enviado" && (
+                      <p className="text-body-sm mt-3 text-accent">
+                        {t("home.contactCta.form.success")}
+                      </p>
+                    )}
+                    {estado.tipo === "error" && (
+                      <p className="text-body-sm mt-3 text-red-300">
+                        {estado.mensaje}
+                      </p>
+                    )}
+                  </div>
                 </motion.div>
               </form>
 

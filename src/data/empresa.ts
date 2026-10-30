@@ -10,3 +10,9 @@ export const EMPRESA = {
   /** inicio de actividades en SUNAT */
   inicio: "2025-12-01",
 } as const;
+
+/**
+ * El buzón del Libro de Reclamaciones: el que publica la página y el que recibe cada hoja que se
+ * envía desde ella (también es el responder-a de la copia que recibe el consumidor).
+ */
+export const CORREO_RECLAMOS = "reclamos@axium.com.pe";

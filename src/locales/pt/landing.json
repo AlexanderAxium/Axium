@@ -81,7 +81,15 @@
         "messagePlaceholder": "Como podemos ajudá-lo?",
         "attachFileLabel": "Anexar arquivo",
         "submitLabel": "ENVIAR",
-        "submitting": "Enviando..."
+        "submitting": "Enviando...",
+        "success": "Obrigado, recebemos sua mensagem. Responderemos no seu e-mail em breve.",
+        "errorGeneric": "Não conseguimos enviar sua mensagem. Tente novamente em alguns minutos ou escreva para {email}.",
+        "errorInvalid": "Revise seu nome, seu e-mail e sua mensagem e tente novamente.",
+        "errorRateLimit": "Você enviou várias mensagens seguidas. Aguarde alguns minutos e tente novamente.",
+        "errorFileSize": "O arquivo tem mais de 5 MB. Anexe um menor ou envie por e-mail.",
+        "errorFileType": "Aceitamos apenas arquivos PDF, Word (DOC ou DOCX), PNG ou JPG.",
+        "fileHint": "PDF, Word, PNG ou JPG, até 5 MB",
+        "removeFile": "Remover arquivo"
       },
       "sourceTitle": "Como nos conheceu? (opcional)",
       "sourceGoogle": "Google",

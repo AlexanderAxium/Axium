@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 import nodemailer from "nodemailer";
+import type Mail from "nodemailer/lib/mailer";
 
 const transporter = nodemailer.createTransport({
   host: process.env.NODEMAILER_SMTP,
@@ -10,7 +11,56 @@ const transporter = nodemailer.createTransport({
     user: process.env.NODEMAILER_USER,
     pass: process.env.NODEMAILER_PASSWORD,
   },
+  // Sin esto, un SMTP caído deja colgado el envío del formulario hasta 2 minutos (los valores
+  // por defecto de nodemailer) y el visitante cree que la web se trabó
+  connectionTimeout: 10_000,
+  greetingTimeout: 10_000,
+  socketTimeout: 30_000,
 });
+
+/** Las variables sin las que no sale ningún correo. Solo los nombres: nunca se imprime el valor. */
+const MAILER_ENV_REQUERIDAS = [
+  "NODEMAILER_SMTP",
+  "NODEMAILER_USER",
+  "NODEMAILER_PASSWORD",
+] as const;
+
+/** Las que faltan en este proceso; vacío = el mailer está configurado. */
+export const mailerEnvFaltantes = (): string[] =>
+  MAILER_ENV_REQUERIDAS.filter((nombre) => !process.env[nombre]?.trim());
+
+/**
+ * El remitente. NODEMAILER_FROM es opcional: hace falta cuando el usuario SMTP no es una
+ * dirección (el relay SMTP de SendGrid usa «apikey»); si no está, sale desde NODEMAILER_USER.
+ */
+const remitente = () =>
+  process.env.NODEMAILER_FROM || process.env.NODEMAILER_USER;
+
+export class MailerNoConfiguradoError extends Error {
+  constructor(public readonly faltan: string[]) {
+    super(`Mailer sin configurar: faltan ${faltan.join(", ")}`);
+    this.name = "MailerNoConfiguradoError";
+  }
+}
+
+export interface CorreoOpciones {
+  to: Mail.Options["to"];
+  subject: string;
+  html: string;
+  text: string;
+  replyTo?: Mail.Options["replyTo"];
+  attachments?: Mail.Attachment[];
+}
+
+/**
+ * Envío con responder-a y adjuntos, para los formularios públicos. Falla de forma explícita
+ * (MailerNoConfiguradoError) si faltan variables, en vez de intentar un SMTP en localhost.
+ */
+export const enviarCorreo = async (opciones: CorreoOpciones) => {
+  const faltan = mailerEnvFaltantes();
+  if (faltan.length > 0) throw new MailerNoConfiguradoError(faltan);
+  return await transporter.sendMail({ from: remitente(), ...opciones });
+};
 
 export const sendMail = async (
   to: string,
@@ -19,7 +69,7 @@ export const sendMail = async (
 ) => {
   const isHtml = /<([A-Za-z][A-Za-z0-9]*)\b[^>]*>(.*?)<\/\1>/.test(content);
   return await transporter.sendMail({
-    from: process.env.NODEMAILER_USER,
+    from: remitente(),
     to,
     subject,
     ...(isHtml ? { html: content } : { text: content }),

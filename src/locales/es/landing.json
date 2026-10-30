@@ -81,7 +81,15 @@
         "messagePlaceholder": "¿Cómo podemos ayudarte?",
         "attachFileLabel": "Adjuntar archivo",
         "submitLabel": "ENVIAR",
-        "submitting": "Enviando..."
+        "submitting": "Enviando...",
+        "success": "Gracias, recibimos tu mensaje. Te responderemos a tu correo muy pronto.",
+        "errorGeneric": "No pudimos enviar tu mensaje. Inténtalo de nuevo en unos minutos o escríbenos a {email}.",
+        "errorInvalid": "Revisa tu nombre, tu correo y tu mensaje, e inténtalo de nuevo.",
+        "errorRateLimit": "Enviaste varios mensajes seguidos. Espera unos minutos e inténtalo de nuevo.",
+        "errorFileSize": "El archivo pesa más de 5 MB. Adjunta uno más liviano o envíalo por correo.",
+        "errorFileType": "Solo aceptamos archivos PDF, Word (DOC o DOCX), PNG o JPG.",
+        "fileHint": "PDF, Word, PNG o JPG, hasta 5 MB",
+        "removeFile": "Quitar archivo"
       },
       "sourceTitle": "¿Cómo nos conociste? (opcional)",
       "sourceGoogle": "Google",

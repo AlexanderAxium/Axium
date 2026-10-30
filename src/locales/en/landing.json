@@ -81,7 +81,15 @@
         "messagePlaceholder": "How can we help you?",
         "attachFileLabel": "Attach file",
         "submitLabel": "SEND",
-        "submitting": "Sending..."
+        "submitting": "Sending...",
+        "success": "Thanks, we got your message. We will reply to your email soon.",
+        "errorGeneric": "We could not send your message. Please try again in a few minutes or email us at {email}.",
+        "errorInvalid": "Please check your name, email and message, and try again.",
+        "errorRateLimit": "You sent several messages in a row. Please wait a few minutes and try again.",
+        "errorFileSize": "The file is larger than 5 MB. Attach a smaller one or send it by email.",
+        "errorFileType": "We only accept PDF, Word (DOC or DOCX), PNG or JPG files.",
+        "fileHint": "PDF, Word, PNG or JPG, up to 5 MB",
+        "removeFile": "Remove file"
       },
       "sourceTitle": "How did you find us? (optional)",
       "sourceGoogle": "Google",
