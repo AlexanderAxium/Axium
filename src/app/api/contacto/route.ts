@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import contactData from "~/data/contact-cta-data.json";
 import {
   type CodigoErrorFormulario,
   ahoraEnLima,
@@ -16,15 +15,20 @@ import { MailerNoConfiguradoError, enviarCorreo } from "~/lib/mailer";
 /**
  * El formulario de contacto del inicio, de las fichas de casos y de las páginas de servicio
  * (CaseContactCTA). Antes no mandaba nada: hacía un console.log en el navegador y se perdía el
- * mensaje. Ahora llega como correo al buzón que muestra esa misma sección, con responder-a al
- * visitante y el adjunto si lo hay.
+ * mensaje. Ahora llega como correo a la bandeja de contacto, con responder-a al visitante y el
+ * adjunto si lo hay.
  */
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/** El correo que la sección de contacto publica («contacto directo con nuestro CEO»). */
-const DESTINO = contactData.ceo.email;
+/**
+ * Bandeja que recibe los leads: la que publican el pie y los datos estructurados, y que existe en
+ * BanaHosting S1. La del CEO que muestra la sección de contacto (`ceo.email` en
+ * contact-cta-data.json) NO existe como buzón ni reenvío (medido 2026-10-30: el dominio rechaza con
+ * «No Such User Here»), así que mandar ahí rebotaría.
+ */
+const DESTINO = "contacto@axium.com.pe";
 
 const MAX_ARCHIVO = 5 * 1024 * 1024;
 /** El archivo más los campos de texto y los separadores del multipart. */
