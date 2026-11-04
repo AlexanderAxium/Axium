@@ -74,6 +74,10 @@ export type OpcionesReel = {
   acercamiento?: number;
   /** «frente»: intensidad de la luz del hueco (1 = blanco pleno de t4) */
   luzMax?: number;
+  /** El lienzo es solo una caja alrededor del objeto (2026-11-03): el fondo lo pinta el CSS de la
+   *  sección y en la escena solo existe para que el vidrio lo refracte. Devuelve dónde está la caja
+   *  dentro de la sección (px de maquetado, sin transformaciones) para dibujar ese tramo del fondo */
+  marco?: () => { x: number; y: number; W: number; H: number } | null;
 };
 
 /** grano fino (una vez): evita las bandas de los degradados oscuros */
@@ -114,16 +118,22 @@ function dibujarFondoSutil(
   e: Encuadre,
   pal: PaletaFondo,
   /** píxeles por punto del lienzo: el fondo se dibuja a esa resolución */
-  densidad = 1
+  densidad = 1,
+  /** el lienzo es un tramo (x, y) de un fondo de W×H: se dibuja ese tramo */
+  tramo?: { x: number; y: number }
 ) {
   // a la resolución real del lienzo (2026-10-24): se dibujaba al tamaño CSS y se estiraba, y en el
   // celular (390 px estirados al triple) el degradado y el grano se veían borrosos, «de mala calidad»
-  const k = Math.min(densidad, 2048 / w);
-  lienzo.width = Math.round(w * k);
-  lienzo.height = Math.round(h * k);
+  // con un tramo, w y h son los del fondo entero y el lienzo ya viene medido por quien llama
+  const k = tramo ? densidad : Math.min(densidad, 2048 / w);
+  if (!tramo) {
+    lienzo.width = Math.round(w * k);
+    lienzo.height = Math.round(h * k);
+  }
   const g = lienzo.getContext("2d");
   if (!g) return;
   g.scale(k, k);
+  if (tramo) g.translate(-tramo.x, -tramo.y);
   const ox = e.cx * w;
   const oy = e.cy * h;
   const a = e.alto;
@@ -164,8 +174,9 @@ function dibujarFondoSutil(
     pal.manchas[1]
   );
   mancha(w * 0.92, h * 0.08, a * 0.9, a * 0.7, 0, pal.manchas[2]);
-  // grano: textura fina, apenas perceptible, que además quita las bandas del degradado
-  const patron = g.createPattern(lienzoGrano(), "repeat");
+  // grano: textura fina, apenas perceptible, que además quita las bandas del degradado (con la caja,
+  // el grano de la pantalla lo pone el CSS y aquí solo se refracta: no hace falta)
+  const patron = tramo ? null : g.createPattern(lienzoGrano(), "repeat");
   if (patron) {
     g.setTransform(1, 0, 0, 1, 0, 0); // un grano por téxel, sin estirar
     g.globalAlpha = pal.grano ?? 0.05; // con «overlay» sobre un fondo tan oscuro no se notaba (desvío 1/255)
@@ -186,7 +197,15 @@ export const escenaReel =
   }: Contexto): Escena => {
     // t1 («hueco»): al entrar por el triángulo el vidrio llega a cubrir la pantalla entera, y la
     // transmisión repinta toda la escena cada cuadro: a 0,6 de resolución pesa un tercio
-    if (o.transicion === "hueco") renderer.transmissionResolutionScale = 0.6;
+    // 2026-11-03: la pasada de transmisión se dibuja a la mitad de la resolución del lienzo. three la
+    // fuerza con antialiasing ×4 y le saca la cadena de mipmaps dos veces por cuadro (el vidrio es de
+    // dos caras): a tamaño completo era casi la mitad del tiempo de GPU (10 → 5,7 ms en 1920×1080).
+    // A píxeles CSS (la mitad en una pantalla 2×): lo que se ve a través del vidrio no pierde nitidez
+    // frente a una pantalla 1×; por debajo de eso el reel dentro del vidrio se veía borroso
+    renderer.transmissionResolutionScale =
+      o.transicion === "hueco"
+        ? 0.6
+        : Math.min(1, Math.max(0.5, 1 / renderer.getPixelRatio()));
     const escena = new THREE.Scene();
     escena.environment = entorno();
     escena.environmentIntensity = 1.1;
@@ -223,7 +242,33 @@ export const escenaReel =
       quad.frustumCulled = false;
       quad.renderOrder = -10;
       escena.add(quad);
-    } else escena.background = texFondo;
+    }
+    let tras: THREE.Mesh | null = null;
+    if (o.transicion !== "apertura" && o.marco) {
+      // el fondo solo en la pasada de transmisión (como el plano del vídeo): en pantalla el lienzo
+      // queda transparente alrededor del vidrio y se ve el fondo CSS de la sección
+      tras = new THREE.Mesh(
+        new THREE.PlaneGeometry(2, 2),
+        new THREE.ShaderMaterial({
+          vertexShader:
+            "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.9999, 1.0); }",
+          fragmentShader:
+            "uniform sampler2D tFondo; varying vec2 vUv; void main(){ gl_FragColor = vec4(texture2D(tFondo, vUv).rgb, 1.0); \n#include <colorspace_fragment>\n }",
+          uniforms: { tFondo: { value: texFondo } },
+          depthWrite: false,
+          depthTest: false,
+        })
+      );
+      const plano = tras;
+      plano.frustumCulled = false;
+      plano.renderOrder = -10;
+      plano.onBeforeRender = (r) => {
+        (plano.material as THREE.ShaderMaterial).colorWrite =
+          r.getRenderTarget() !== null;
+      };
+      escena.add(plano);
+    }
+    if (o.transicion !== "apertura") escena.background = texFondo;
 
     // el reel
     const video = document.createElement("video");
@@ -526,17 +571,26 @@ export const escenaReel =
         return sigue;
       },
       medir: (w, h) => {
-        camara.aspect = w / h;
+        // Con caja (escritorio), la cámara sigue viendo la sección entera (W×H) y solo se dibuja el
+        // tramo de la caja (setViewOffset): misma perspectiva que cuando el lienzo era el hero entero,
+        // así el objeto, el reel que se ve dentro y lo que refracta quedan idénticos. Centrar el
+        // objeto en la caja lo mostraba de frente y el reel caía en otro sitio del vidrio
+        const m = o.marco?.() ?? null;
+        const W = m ? m.W : w;
+        const H = m ? m.H : h;
+        camara.aspect = W / H;
+        if (m) camara.setViewOffset(W, H, m.x, m.y, w, h);
+        else camara.clearViewOffset();
         camara.updateProjectionMatrix();
-        const e = o.encuadre(w, h);
+        const e = o.encuadre(W, H);
         const vh =
           2 *
           camara.position.z *
           Math.tan(THREE.MathUtils.degToRad(camara.fov / 2));
-        const porPx = vh / h;
+        const porPx = vh / H;
         base = {
-          x: (e.cx - 0.5) * w * porPx,
-          y: (0.5 - e.cy) * h * porPx,
+          x: (e.cx - 0.5) * W * porPx,
+          y: (0.5 - e.cy) * H * porPx,
           escala: (e.alto * porPx * (tactil ? 0.95 : 1)) / ALTO_ISO,
         };
         // la pantalla del vídeo, detrás del objeto y algo más grande que él
@@ -546,16 +600,31 @@ export const escenaReel =
         anchoPx = w;
         altoPx = h;
         fondoU.uCentro.value.set(e.cx, 1 - e.cy);
-        fondoU.uAspecto.value = w / h;
+        fondoU.uAspecto.value = W / H;
         pantalla.position.set(base.x, base.y, -1.1);
-        dibujarFondoSutil(
-          lienzoFondo,
-          w,
-          h,
-          e,
-          o.paleta,
-          renderer.getPixelRatio()
-        );
+        // con caja el fondo solo se refracta; sin ella (el celular), es el fondo de la escena
+        if (tras) {
+          tras.visible = !!m;
+          escena.background = m ? null : texFondo;
+        }
+        if (m) {
+          // el tramo del fondo de la sección que queda detrás de la caja
+          const k = Math.min(renderer.getPixelRatio(), 1.5);
+          lienzoFondo.width = Math.round(w * k);
+          lienzoFondo.height = Math.round(h * k);
+          dibujarFondoSutil(lienzoFondo, W, H, e, o.paleta, k, {
+            x: m.x,
+            y: m.y,
+          });
+        } else
+          dibujarFondoSutil(
+            lienzoFondo,
+            w,
+            h,
+            e,
+            o.paleta,
+            renderer.getPixelRatio()
+          );
         texFondo.needsUpdate = true;
       },
     };

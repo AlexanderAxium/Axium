@@ -56,10 +56,7 @@
       "cta": "Vamos falar do seu projeto",
       "ctaSecondary": "Ver casos",
       "statProjects": "projetos entregues",
-      "statProducts": "produtos próprios em produção",
-      "pause": "Pausar a animação",
-      "play": "Reproduzir a animação",
-      "dragHint": "Arraste para girá-lo"
+      "statProducts": "produtos próprios em produção"
     },
     "about": {
       "eyebrow": "Sobre Nós",

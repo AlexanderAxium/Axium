@@ -46,6 +46,7 @@ export default function GlobalNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [sectionTone, setSectionTone] = useState<"dark" | "light" | null>(null);
   const [sectionBg, setSectionBg] = useState<string | null>(null);
+  const [sinVelo, setSinVelo] = useState(false);
   const isBlogRoute = pathname.startsWith("/blog");
   const isPortfolioRoute = pathname.startsWith("/portafolio");
   const isLegalRoute = pathname.startsWith("/legal");
@@ -207,6 +208,9 @@ export default function GlobalNavbar() {
         }
       }
       setSectionTone(tone);
+      // y sin el desenfoque: sobre una foto o un lienzo que se mueve, el backdrop-filter se
+      // recalcula en cada cuadro y se ve como una franja esmerilada (2026-11-03)
+      setSinVelo(!!tone && toneSection?.dataset.navBg === "none");
       // data-nav-bg="none": la barra toma el tono de la sección pero se queda transparente
       // (un hero con degradado arriba, que una franja de color cortaría)
       setSectionBg(
@@ -238,7 +242,7 @@ export default function GlobalNavbar() {
               ? // sobre fondo claro, casi opaca: con 10 % de blanco, una foto oscura de abajo dejaba
                 // las letras oscuras sobre oscuro (las portadas del blog, 2026-10-23)
                 "backdrop-blur-md bg-white/90 border-b border-black/5"
-              : "bg-transparent border-b border-transparent backdrop-blur-md"
+              : `bg-transparent border-b border-transparent ${sinVelo ? "" : "backdrop-blur-md"}`
         }`}
         style={
           sectionTone && sectionBg && !mega

@@ -111,7 +111,13 @@ function cuandoLibre(el: HTMLElement, fn: () => void) {
 
 type ExtraReel = Pick<
   OpcionesReel,
-  "giro" | "interaccion" | "transicion" | "alHueco" | "acercamiento" | "luzMax"
+  | "giro"
+  | "interaccion"
+  | "transicion"
+  | "alHueco"
+  | "acercamiento"
+  | "luzMax"
+  | "marco"
 >;
 
 function useReel(
@@ -187,12 +193,36 @@ const NOCHE: PaletaFondo = {
 };
 const FONDO_NOCHE = `linear-gradient(135deg, ${NOCHE.base[0]} 0%, ${NOCHE.base[1]} 60%, ${NOCHE.base[2]} 100%)`;
 
-// en escritorio, centrado arriba; en el celular el lienzo es la franja del objeto (entre el menú y
-// el titular, la que antes ocupaba la imagen fija) y el objeto va centrado en ella
+// En escritorio, centrado arriba (w y h son los de la sección entera: con la caja, la cámara la sigue
+// viendo entera, ver escenas.ts). El alto del objeto sale de la pantalla y no de la sección, igual que
+// la caja de .hero-caja en globals.css, que tiene que contenerlo. En el celular el lienzo es la franja
+// del objeto (entre el menú y el titular) y el objeto va centrado en ella
 function encuadrePortada(w: number, h: number) {
-  if (w >= 1024 && w / h > 1.05)
-    return { cx: 0.5, cy: 0.29, alto: Math.min(h * 0.33, w * 0.22) };
+  if (window.innerWidth >= 1024)
+    return {
+      cx: 0.5,
+      cy: 0.29,
+      alto: Math.min(window.innerHeight * 0.33, w * 0.22),
+    };
   return { cx: 0.5, cy: 0.5, alto: Math.min(h * 0.7, w * 0.52) };
+}
+
+// Desde el 2026-11-03 el lienzo de escritorio es solo una caja alrededor del objeto (2,1 × 1,6 veces su
+// alto). Antes cubría todo el hero para dibujar un objeto que ocupa el 6 % de la pantalla: en un
+// monitor de 2560 px eran 21 ms de GPU por cuadro y se perdía 1 de cada 12 cuadros.
+/** dónde está la caja del lienzo dentro de la sección, para dibujar el tramo de fondo que refracta el
+ *  vidrio (medidas de maquetado: la transición inclina la tarjeta, pero eso no cambia este tramo) */
+function marcoCaja(lienzo: HTMLElement | null) {
+  if (window.innerWidth < 1024) return null;
+  const caja = lienzo?.parentElement;
+  const seccion = caja?.closest("section");
+  if (!caja || !seccion) return null;
+  return {
+    x: caja.offsetLeft,
+    y: caja.offsetTop,
+    W: seccion.offsetWidth,
+    H: seccion.offsetHeight,
+  };
 }
 
 // lo que usa la portada del inicio (hero-transiciones.tsx)
@@ -203,5 +233,6 @@ export {
   display,
   encuadrePortada,
   entra,
+  marcoCaja,
   useReel,
 };

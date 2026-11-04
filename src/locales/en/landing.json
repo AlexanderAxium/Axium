@@ -56,10 +56,7 @@
       "cta": "Let's talk about your project",
       "ctaSecondary": "See our work",
       "statProjects": "projects delivered",
-      "statProducts": "in-house products in production",
-      "pause": "Pause the animation",
-      "play": "Play the animation",
-      "dragHint": "Drag to rotate it"
+      "statProducts": "in-house products in production"
     },
     "about": {
       "eyebrow": "About Us",

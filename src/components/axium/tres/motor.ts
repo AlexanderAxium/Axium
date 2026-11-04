@@ -81,10 +81,12 @@ export function montar(
   }
   const tactil = window.matchMedia("(pointer: coarse)").matches;
   const quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // 2 también en pantallas táctiles desde el 2026-10-24: en el celular la escena del hero es una
-  // franja chica y a 1,5 se veía blanda en pantallas de 3×; si el teléfono no llega, la calidad
-  // adaptable baja sola
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  // 2 en escritorio; 1,5 en pantallas táctiles (2026-11-03: medido con el temporizador de la GPU, la
+  // franja del celular costaba 3,3 ms por cuadro en un M4 Pro, que en un teléfono son 15–30 ms).
+  // Si la máquina no llega, la calidad adaptable baja sola
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio || 1, tactil ? 1.5 : 2)
+  );
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   // Neutral (Khronos PBR Neutral) respeta los colores de marca; ACES los lava y les corre el tono.
   renderer.toneMapping = THREE.NeutralToneMapping;
@@ -124,22 +126,30 @@ export function montar(
   let oculta = false;
   const puntero = { x: 0, y: 0, ax: 0, ay: 0 }; // destino y valor amortiguado
 
-  // Calidad adaptable (2026-10-24): si con la escena girando la máquina no sostiene unos 45
-  // cuadros por segundo, se baja la resolución un escalón (2 → 1,5 → 1,25 → 1 píxel por punto) y,
-  // al final, el ritmo a 30 cuadros. Una máquina que llega no nota nada; una floja deja de trabarse.
+  // Calidad adaptable (2026-10-24): si con la escena girando la máquina no sostiene el ritmo, se
+  // baja la resolución un escalón (2 → 1,5 → 1,25 → 1 píxel por punto) y, al final, el ritmo a 30
+  // cuadros. Una máquina que llega no nota nada; una floja deja de trabarse.
+  // 2026-11-03: se mide por CUADROS PERDIDOS y no por la mediana. Con la GPU al límite, la escena
+  // perdía 1 de cada 12 cuadros (33 ms): la mediana seguía en 16,7 y nunca bajaba nada, y ese tirón
+  // periódico era justo el «se traba». Ahora basta con que más del 8 % pase de 25 ms (o 45 ms a 30).
   const escalones = [1.5, 1.25, 1].filter((r) => r < renderer.getPixelRatio());
-  let tope = 15; // ms mínimos entre cuadros: 60 por segundo
+  // ms mínimos entre cuadros: 60 por segundo; 30 en pantallas táctiles, donde un giro de una vuelta
+  // cada 30 s no se ve distinto y la GPU de un teléfono queda libre para el scroll
+  let tope = tactil ? 31 : 15;
   const muestras: number[] = [];
   const medirRitmo = (dt: number) => {
-    if (tope > 15 || reloj < 2) return; // la entrada y la compilación no cuentan
-    muestras.push(Math.min(dt, 100));
-    if (muestras.length < 45) return; // ~0,75 s a 60 por segundo; más en una máquina lenta
-    const mediana = [...muestras].sort((x, y) => x - y)[22] ?? 0;
+    if (reloj < 2) return; // la entrada y la compilación no cuentan
+    if (!escalones.length && tope > 15) return; // ya está en lo mínimo
+    muestras.push(dt);
+    if (muestras.length < 60) return;
+    const limite = tope > 15 ? 45 : 25;
+    const perdidos =
+      muestras.filter((x) => x > limite).length / muestras.length;
     muestras.length = 0;
-    if (mediana <= 22) return;
+    if (perdidos <= 0.08) return;
     const r = escalones.shift();
     if (r) renderer.setPixelRatio(r);
-    else tope = 30;
+    else tope = 31;
   };
 
   const t = () =>
@@ -173,7 +183,8 @@ export function montar(
       despertar();
       return;
     }
-    if (ultimo >= 0 && corriendo() && e.continua) medirRitmo(ahora - ultimo);
+    if (ultimo >= 0 && previo >= 0 && corriendo() && e.continua)
+      medirRitmo(ahora - ultimo);
     ultimo = ahora;
     if (corriendo() && previo >= 0)
       reloj += Math.min(0.1, (ahora - previo) / 1000);
