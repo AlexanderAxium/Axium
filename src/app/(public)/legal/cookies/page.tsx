@@ -209,10 +209,10 @@ export default function CookiesPage() {
               <p>
                 Email:{" "}
                 <a
-                  href="mailto:privacidad@axium.com.pe"
+                  href="mailto:contacto@axium.com.pe"
                   className="text-secondary hover:underline"
                 >
-                  privacidad@axium.com.pe
+                  contacto@axium.com.pe
                 </a>
               </p>
               <p>

@@ -198,10 +198,10 @@ export default function TermsPage() {
               <p>
                 Email:{" "}
                 <a
-                  href="mailto:legal@axium.com.pe"
+                  href="mailto:contacto@axium.com.pe"
                   className="text-secondary hover:underline"
                 >
-                  legal@axium.com.pe
+                  contacto@axium.com.pe
                 </a>
               </p>
               <p>

@@ -42,21 +42,30 @@ export function WhatsappFlotante() {
       // escondido (arriba del todo en el inicio): fuera del foco y de los lectores de pantalla
       inert={!visible}
       className={`fixed right-4 bottom-4 z-[80] flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.45)] transition-colors duration-300 hover:bg-[#1EBE5B] md:right-6 md:bottom-6 ${visible ? "" : "pointer-events-none"}`}
-      initial={quieto ? false : { opacity: 0, y: 24 }}
+      // El estado inicial y el pulso se pintan igual en el servidor y en el navegador:
+      // useReducedMotion() da null en el servidor, y decidir el árbol con él rompía la
+      // hidratación (React #418) a quien tiene «reducir movimiento». Ahí solo se quita la duración.
+      initial={{ opacity: 0, y: 24 }}
       animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={{ duration: 0.4, delay: visible && ruta !== "/" ? 1 : 0 }}
+      transition={
+        quieto
+          ? { duration: 0 }
+          : { duration: 0.4, delay: visible && ruta !== "/" ? 1 : 0 }
+      }
       whileHover={quieto ? undefined : { scale: 1.06 }}
       whileTap={{ scale: 0.94 }}
     >
-      {!quieto && (
-        <motion.span
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-full bg-[#25D366]"
-          initial={{ scale: 1, opacity: 0.4 }}
-          animate={{ scale: 1.7, opacity: 0 }}
-          transition={{ duration: 1.4, delay: 1.6, ease: "easeOut" }}
-        />
-      )}
+      <motion.span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-full bg-[#25D366]"
+        initial={{ scale: 1, opacity: 0.4 }}
+        animate={{ scale: 1.7, opacity: 0 }}
+        transition={
+          quieto
+            ? { duration: 0 }
+            : { duration: 1.4, delay: 1.6, ease: "easeOut" }
+        }
+      />
       <svg
         viewBox="0 0 24 24"
         fill="currentColor"

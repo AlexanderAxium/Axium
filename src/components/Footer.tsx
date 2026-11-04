@@ -3,26 +3,13 @@
 import { SERVICIOS } from "@/components/axium/servicios-seis";
 import { EMPRESA } from "@/data/empresa";
 import { useTranslation } from "@/hooks/useTranslation";
-import { trpc } from "@/utils/trpc";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Twitter,
-  Youtube,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo } from "react";
 
 // Footer links will be translated via useTranslation hook
 
 export function Footer() {
-  const { data: companyInfo } = trpc.companyInfo.get.useQuery();
-  const { locale } = useTranslation("common");
   const { t } = useTranslation("common");
   // Los títulos de los servicios viven en `landing`, no en `common`.
   const { t: tl } = useTranslation("landing");
@@ -52,90 +39,6 @@ export function Footer() {
       { name: t("api") || "API", href: "/api-docs" },
     ],
   };
-
-  // Get translations for company name, displayName, and description
-  const { data: nameTranslation } = trpc.translation.get.useQuery(
-    {
-      entityType: "tenant",
-      entityId: companyInfo?.id || "",
-      localeCode: locale,
-      fieldName: "name",
-    },
-    { enabled: !!companyInfo?.id && locale !== "es" }
-  );
-
-  const { data: displayNameTranslation } = trpc.translation.get.useQuery(
-    {
-      entityType: "tenant",
-      entityId: companyInfo?.id || "",
-      localeCode: locale,
-      fieldName: "displayName",
-    },
-    { enabled: !!companyInfo?.id && locale !== "es" }
-  );
-
-  const { data: descriptionTranslation } = trpc.translation.get.useQuery(
-    {
-      entityType: "tenant",
-      entityId: companyInfo?.id || "",
-      localeCode: locale,
-      fieldName: "description",
-    },
-    { enabled: !!companyInfo?.id && locale !== "es" }
-  );
-
-  // Default values if no company info is available
-  const defaultInfo = {
-    name: "MyApp",
-    displayName: "My Application Platform",
-    description:
-      "La plataforma líder para gestión de usuarios y autenticación.",
-    email: null,
-    phone: null,
-    address: null,
-    city: null,
-    country: null,
-    website: null,
-    facebookUrl: null,
-    twitterUrl: null,
-    instagramUrl: null,
-    linkedinUrl: null,
-    youtubeUrl: null,
-    foundedYear: null,
-    logoUrl: null,
-    faviconUrl: null,
-    metaTitle: "MyApp - Modern Platform",
-    metaDescription: "Plataforma moderna y escalable",
-    metaKeywords: "gestión, usuarios, plataforma, moderno, escalable",
-    termsUrl: "/legal/terms",
-    privacyUrl: "/legal/privacy",
-    cookiesUrl: "/legal/cookies",
-    complaintsUrl: "/legal/complaints",
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-
-  const baseInfo = companyInfo || defaultInfo;
-
-  // Use translations if available, otherwise use base values
-  const info = useMemo(
-    () => ({
-      ...baseInfo,
-      name: nameTranslation || baseInfo.name,
-      displayName: displayNameTranslation || baseInfo.displayName,
-      description: descriptionTranslation || baseInfo.description,
-    }),
-    [baseInfo, nameTranslation, displayNameTranslation, descriptionTranslation]
-  );
-
-  const _socialLinks = [
-    { name: "Facebook", href: info.facebookUrl, icon: Facebook },
-    { name: "Twitter", href: info.twitterUrl, icon: Twitter },
-    { name: "Instagram", href: info.instagramUrl, icon: Instagram },
-    { name: "LinkedIn", href: info.linkedinUrl, icon: Linkedin },
-    { name: "YouTube", href: info.youtubeUrl, icon: Youtube },
-  ].filter((link) => link.href);
 
   return (
     <footer

@@ -144,10 +144,10 @@ export default function PrivacyPage() {
             <p className="text-body text-gray-500">
               Para ejercer cualquiera de estos derechos, escríbanos a{" "}
               <a
-                href="mailto:privacidad@axium.com.pe"
+                href="mailto:contacto@axium.com.pe"
                 className="text-secondary hover:underline"
               >
-                privacidad@axium.com.pe
+                contacto@axium.com.pe
               </a>
               .
             </p>
@@ -204,10 +204,10 @@ export default function PrivacyPage() {
               <p>
                 Email:{" "}
                 <a
-                  href="mailto:privacidad@axium.com.pe"
+                  href="mailto:contacto@axium.com.pe"
                   className="text-secondary hover:underline"
                 >
-                  privacidad@axium.com.pe
+                  contacto@axium.com.pe
                 </a>
               </p>
               <p>
