@@ -17,7 +17,7 @@ ENTRA
   --tam        WxH, p. ej. 3072x2048
   --n          variantes (1 por defecto)
   --salida     ruta base: salida.png → salida-1.png, salida-2.png… si n > 1
-  --imagen / --mascara   solo para edits
+  --imagen / --mascara   solo para edits; --imagen se puede repetir (van como image[])
   --motivo     una línea: para qué es (va al registro)
   --calidad    high (por defecto) · medium · low
   --fondo      auto (por defecto) · transparent · opaque — transparent para recortes de
@@ -84,7 +84,7 @@ def main():
     p.add_argument("--tam", default=None)
     p.add_argument("--n", type=int, default=1)
     p.add_argument("--salida", required=True)
-    p.add_argument("--imagen")
+    p.add_argument("--imagen", action="append", help="repetible: varias referencias van como image[]")
     p.add_argument("--mascara")
     p.add_argument("--motivo", default="")
     p.add_argument("--calidad", default="high")
@@ -98,7 +98,7 @@ def main():
     if not a.tam:
         if a.imagen:
             from PIL import Image as _I
-            w, h = _I.open(a.imagen).size
+            w, h = _I.open(a.imagen[0]).size
             a.tam = f"{w}x{h}"
         else:
             a.tam = "3072x2048"
@@ -113,7 +113,10 @@ def main():
             "quality": a.calidad,
             "output_format": "png",
         }
-        archivos = [("image", a.imagen)]
+        # Una sola imagen va como `image` (como siempre); varias, como `image[]`
+        # — así el modelo COMPONE una escena con todas (frascos reales recortados).
+        campo = "image" if len(a.imagen) == 1 else "image[]"
+        archivos = [(campo, ruta) for ruta in a.imagen]
         if a.mascara:
             archivos.append(("mask", a.mascara))
         cuerpo, tipo = multipart(campos, archivos)
