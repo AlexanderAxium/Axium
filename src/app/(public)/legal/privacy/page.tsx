@@ -19,7 +19,7 @@ export default function PrivacyPage() {
             Política de Privacidad
           </h1>
           <p className="text-body-sm text-gray-500">
-            Última actualización: 1 de marzo de 2025
+            Última actualización: 5 de noviembre de 2026
           </p>
         </div>
 
@@ -54,10 +54,11 @@ export default function PrivacyPage() {
               <li>Adjuntos que usted decida incluir voluntariamente</li>
             </ul>
             <p className="text-body text-gray-500">
-              Adicionalmente, nuestro sitio puede recopilar de forma automática
-              datos de navegación (dirección IP, tipo de navegador, páginas
-              visitadas) a través de herramientas de analítica, con el único
-              propósito de mejorar la experiencia del usuario.
+              Si usted acepta las cookies de analítica en el aviso del sitio,
+              Google Analytics registra datos de navegación (páginas visitadas,
+              tipo de navegador y dispositivo, origen del tráfico) con el único
+              propósito de mejorar el sitio. Google Analytics no almacena su
+              dirección IP. Si no acepta, no se recopila nada de esto.
             </p>
           </section>
 
@@ -169,9 +170,9 @@ export default function PrivacyPage() {
           <section className="py-8">
             <h2 className="text-heading-3 text-gray-900 mb-3">8. Cookies</h2>
             <p className="text-body text-gray-500">
-              Nuestro sitio web utiliza cookies propias y de terceros para
-              mejorar la experiencia de navegación y analizar el tráfico. Puede
-              consultar nuestra{" "}
+              Nuestro sitio web utiliza cookies propias necesarias y, solo si
+              usted las acepta, cookies de analítica de Google. Puede consultar
+              nuestra{" "}
               <a
                 href="/legal/cookies"
                 className="text-secondary hover:underline"
@@ -182,9 +183,112 @@ export default function PrivacyPage() {
             </p>
           </section>
 
+          <section className="py-8" id="axium-seo">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              9. Axium SEO y los datos de su cuenta de Google
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Axium SEO (
+              <a
+                href="https://seo.axium.com.pe"
+                className="text-secondary hover:underline"
+              >
+                seo.axium.com.pe
+              </a>
+              ) es el analizador SEO de Axium. Si inicia sesión con Google o
+              conecta Search Console o Google Analytics, recibimos de las APIs
+              de Google solo lo que usted aprueba en la pantalla de
+              consentimiento de Google:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside mb-3">
+              <li>
+                <span className="font-medium text-gray-700">
+                  Inicio de sesión:
+                </span>{" "}
+                su nombre, su correo y su foto de perfil, para crear y abrir su
+                cuenta.
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">
+                  Search Console (solo lectura):
+                </span>{" "}
+                las búsquedas, los clics, las impresiones y la posición promedio
+                de los sitios que usted tiene verificados. Guardamos un resumen
+                mensual por cada sitio que agrega al panel, para mostrarle su
+                evolución.
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">
+                  Google Analytics (solo lectura):
+                </span>{" "}
+                la lista de sus propiedades y los informes (usuarios, sesiones,
+                páginas más vistas, canales, dispositivos y ciudades) de la
+                propiedad que usted conecta a un sitio. Los informes se
+                consultan en el momento y no se guardan.
+              </li>
+            </ul>
+            <p className="text-body text-gray-500 mb-3">
+              Usamos esos datos solo para mostrarle los informes dentro de Axium
+              SEO, a usted y a las personas que usted invite a su espacio de
+              trabajo. No los vendemos, no los usamos para publicidad y no los
+              usamos para entrenar modelos de inteligencia artificial. Si usted
+              pide el plan de mejoras con IA, enviamos el resumen de búsquedas
+              de Search Console de ese sitio al proveedor de IA configurado
+              (Anthropic u OpenAI) solo para generar ese plan; esos proveedores
+              no usan los datos que reciben por su API para entrenar sus
+              modelos.
+            </p>
+            <p className="text-body text-gray-500 mb-3">
+              Los permisos que nos da (los tokens de acceso de Google) se
+              guardan en nuestra base de datos, en un servidor sin acceso
+              público, para poder actualizar sus datos de Search Console en
+              segundo plano. Puede desconectar Analytics desde el panel de cada
+              sitio y retirar el acceso de Axium SEO a su cuenta cuando quiera
+              desde{" "}
+              <a
+                href="https://myaccount.google.com/permissions"
+                target="_blank"
+                rel="noreferrer"
+                className="text-secondary hover:underline"
+              >
+                los permisos de su cuenta de Google
+              </a>
+              . Si borra un sitio, borramos también sus datos de Search Console;
+              para borrar su cuenta y todos sus datos, escríbanos a{" "}
+              <a
+                href="mailto:contacto@axium.com.pe"
+                className="text-secondary hover:underline"
+              >
+                contacto@axium.com.pe
+              </a>
+              .
+            </p>
+            <p className="text-body text-gray-500">
+              El uso que hace Axium SEO de la información recibida de las APIs
+              de Google, y su transferencia a cualquier otra aplicación, se
+              ajusta a la{" "}
+              <a
+                href="https://developers.google.com/terms/api-services-user-data-policy"
+                target="_blank"
+                rel="noreferrer"
+                className="text-secondary hover:underline"
+              >
+                Política de Datos del Usuario de los Servicios de las APIs de
+                Google
+              </a>
+              , incluidos los requisitos de Uso Limitado.{" "}
+              <span lang="en">
+                (Axium SEO&apos;s use and transfer to any other app of
+                information received from Google APIs will adhere to the Google
+                API Services User Data Policy, including the Limited Use
+                requirements.)
+              </span>
+            </p>
+          </section>
+
           <section className="py-8">
             <h2 className="text-heading-3 text-gray-900 mb-3">
-              9. Cambios a esta política
+              10. Cambios a esta política
             </h2>
             <p className="text-body text-gray-500">
               Podemos actualizar esta Política de Privacidad cuando sea
@@ -195,7 +299,7 @@ export default function PrivacyPage() {
           </section>
 
           <section className="py-8">
-            <h2 className="text-heading-3 text-gray-900 mb-3">10. Contacto</h2>
+            <h2 className="text-heading-3 text-gray-900 mb-3">11. Contacto</h2>
             <p className="text-body text-gray-500 mb-4">
               Para cualquier consulta relacionada con el tratamiento de sus
               datos personales:
