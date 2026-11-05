@@ -124,7 +124,7 @@ export default function ComplaintsPage() {
       <div className="content-section max-w-3xl">
         {/* Header */}
         <div className="mb-12">
-          <span className="text-overline text-gray-400">Legal</span>
+          <span className="text-overline text-gray-500">Legal</span>
           <h1 className="text-heading-1 text-gray-900 mt-3 mb-2">
             Libro de Reclamaciones
           </h1>

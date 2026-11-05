@@ -41,7 +41,9 @@ export function WhatsappFlotante() {
       aria-label={t("whatsappFlotante.etiqueta")}
       // escondido (arriba del todo en el inicio): fuera del foco y de los lectores de pantalla
       inert={!visible}
-      className={`fixed right-4 bottom-4 z-[80] flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.45)] transition-colors duration-300 hover:bg-[#1EBE5B] md:right-6 md:bottom-6 ${visible ? "" : "pointer-events-none"}`}
+      // `--aviso-cookies`: el alto del aviso de cookies mientras está abierto (2026-11-04), para no
+      // quedar debajo de esa barra. Sin aviso vale 0 y el botón queda donde siempre
+      className={`fixed right-4 bottom-[calc(1rem+var(--aviso-cookies,0px))] md:bottom-[calc(1.5rem+var(--aviso-cookies,0px))] z-[80] flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.45)] transition-colors duration-300 hover:bg-[#1EBE5B] md:right-6 ${visible ? "" : "pointer-events-none"}`}
       // El estado inicial y el pulso se pintan igual en el servidor y en el navegador:
       // useReducedMotion() da null en el servidor, y decidir el árbol con él rompía la
       // hidratación (React #418) a quien tiene «reducir movimiento». Ahí solo se quita la duración.

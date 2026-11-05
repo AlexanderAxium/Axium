@@ -150,5 +150,16 @@
   "whatsappFlotante": {
     "etiqueta": "Fale conosco no WhatsApp",
     "mensaje": "Olá, vim do axium.com.pe e quero conversar sobre um projeto."
+  },
+  "avisoCookies": {
+    "etiqueta": "Aviso de cookies",
+    "texto": "Usamos cookies necessários e, só se você aceitar, de análise para saber quais páginas são úteis.",
+    "textoCorto": "Usamos cookies.",
+    "politica": "Política de cookies",
+    "politicaCorta": "Saiba mais",
+    "rechazar": "Só necessários",
+    "rechazarCorto": "Recusar",
+    "aceptar": "Aceitar",
+    "configurar": "Configurar cookies"
   }
 }

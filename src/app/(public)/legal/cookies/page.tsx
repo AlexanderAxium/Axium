@@ -1,9 +1,10 @@
+import { BotonPreferenciasCookies } from "@/components/axium/consentimiento-cookies";
 import { metaPagina } from "@/lib/seo";
 
 export const metadata = metaPagina({
   titulo: "Política de cookies",
   descripcion:
-    "Qué cookies usa el sitio de Axium, para qué sirven y cómo puedes desactivarlas desde tu navegador.",
+    "Qué cookies usa el sitio de Axium, para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu elección.",
   ruta: "/legal/cookies",
 });
 
@@ -13,12 +14,12 @@ export default function CookiesPage() {
       <div className="content-section max-w-3xl">
         {/* Header */}
         <div className="mb-12">
-          <span className="text-overline text-gray-400">Legal</span>
+          <span className="text-overline text-gray-500">Legal</span>
           <h1 className="text-heading-1 text-gray-900 mt-3 mb-2">
             Política de Cookies
           </h1>
-          <p className="text-body-sm text-gray-400">
-            Última actualización: 1 de marzo de 2025
+          <p className="text-body-sm text-gray-500">
+            Última actualización: 4 de noviembre de 2026
           </p>
         </div>
 
@@ -42,44 +43,57 @@ export default function CookiesPage() {
               2. Cookies que utilizamos
             </h2>
             <p className="text-body text-gray-500 mb-5">
-              En el sitio web de Axium utilizamos los siguientes tipos de
-              cookies:
+              Al entrar por primera vez le mostramos un aviso. Hasta que elija,
+              el sitio solo usa lo necesario: no carga ningún servicio de
+              terceros ni escribe cookies de analítica.
             </p>
 
             <div className="space-y-5">
               <div>
                 <h3 className="text-body font-semibold text-gray-800 mb-1">
-                  Cookies esenciales
+                  Cookies necesarias
                 </h3>
                 <p className="text-body-sm text-gray-500">
-                  Necesarias para el funcionamiento básico del sitio. Incluyen
-                  la gestión de sesión y preferencias de idioma. No pueden
-                  desactivarse sin afectar la funcionalidad del sitio.
+                  <span className="font-medium text-gray-700">
+                    axium_consent
+                  </span>{" "}
+                  guarda su elección en el aviso de cookies durante 12 meses,
+                  para no volver a preguntarle en cada visita. Si inicia sesión
+                  en el panel interno de Axium, se usa además una cookie de
+                  sesión para mantenerla abierta. No pueden desactivarse sin
+                  afectar esas funciones.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-body font-semibold text-gray-800 mb-1">
-                  Cookies de analítica
+                  Cookies de analítica (solo si las acepta)
                 </h3>
                 <p className="text-body-sm text-gray-500">
-                  Utilizamos Google Analytics para entender cómo los visitantes
-                  interactúan con el sitio (páginas visitadas, tiempo de
-                  permanencia, origen del tráfico). La información se agrega y
-                  es anónima — no se vincula a ningún usuario individual. Puede
-                  optar por excluirse instalando el complemento de
-                  inhabilitación de Google Analytics para navegadores.
+                  Si pulsa «Aceptar», cargamos Google Analytics para entender
+                  cómo se usa el sitio: páginas visitadas, tiempo de permanencia
+                  y origen del tráfico. Escribe las cookies{" "}
+                  <span className="font-medium text-gray-700">_ga</span> y{" "}
+                  <span className="font-medium text-gray-700">
+                    _ga_NZ0K01BVLF
+                  </span>{" "}
+                  (2 años), que guardan un identificador aleatorio para
+                  distinguir visitas: no contienen su nombre ni su correo, y
+                  Google Analytics no almacena su dirección IP. Conservamos
+                  estos datos 14 meses y tenemos desactivadas las funciones de
+                  publicidad y personalización de anuncios. Si pulsa «Solo
+                  necesarias», no se carga nada de esto.
                 </p>
               </div>
 
               <div>
                 <h3 className="text-body font-semibold text-gray-800 mb-1">
-                  Cookies de preferencias
+                  Preferencias guardadas en su navegador
                 </h3>
                 <p className="text-body-sm text-gray-500">
-                  Guardan sus elecciones dentro del sitio, como el idioma
-                  seleccionado, para que no tenga que configurarlo en cada
-                  visita.
+                  El idioma y el tema (claro u oscuro) que elija se guardan en
+                  el almacenamiento local de su navegador, no en cookies, y no
+                  se envían a ningún servidor.
                 </p>
               </div>
             </div>
@@ -90,8 +104,8 @@ export default function CookiesPage() {
               3. Cookies de terceros
             </h2>
             <p className="text-body text-gray-500 mb-4">
-              Algunos servicios integrados en nuestro sitio pueden establecer
-              sus propias cookies:
+              El único servicio de terceros que puede establecer cookies en este
+              sitio es Google Analytics, y solo si usted lo acepta:
             </p>
             <div className="space-y-3">
               <div className="flex gap-3">
@@ -99,7 +113,7 @@ export default function CookiesPage() {
                   Google Analytics
                 </span>
                 <span className="text-body-sm text-gray-500">
-                  Analítica de uso anónima. Consulte la{" "}
+                  Medición de uso, prestada por Google LLC. Consulte la{" "}
                   <a
                     href="https://policies.google.com/privacy"
                     target="_blank"
@@ -113,11 +127,11 @@ export default function CookiesPage() {
               </div>
               <div className="flex gap-3">
                 <span className="text-body-sm font-medium text-gray-700 min-w-[120px]">
-                  Vercel
+                  Alojamiento
                 </span>
                 <span className="text-body-sm text-gray-500">
-                  Plataforma de alojamiento web. Puede establecer cookies
-                  técnicas para el enrutamiento y rendimiento del sitio.
+                  El sitio funciona en servidores administrados por Axium. El
+                  alojamiento no establece cookies.
                 </span>
               </div>
             </div>
@@ -127,10 +141,16 @@ export default function CookiesPage() {
             <h2 className="text-heading-3 text-gray-900 mb-3">
               4. Gestión de cookies
             </h2>
+            <p className="text-body text-gray-500 mb-4">
+              Puede cambiar su elección cuando quiera. Si retira el permiso,
+              borramos las cookies de Google Analytics de este sitio y la
+              medición se detiene de inmediato.
+            </p>
+            <BotonPreferenciasCookies className="mb-6 inline-flex min-h-11 cursor-pointer items-center rounded-lg bg-primary px-5 font-semibold text-primary-foreground text-sm transition-opacity hover:opacity-90" />
             <p className="text-body text-gray-500 mb-3">
-              Puede controlar y eliminar las cookies desde la configuración de
-              su navegador. A continuación encontrará instrucciones para los
-              navegadores más comunes:
+              También puede controlar y eliminar las cookies desde la
+              configuración de su navegador. Instrucciones para los navegadores
+              más comunes:
             </p>
             <ul className="space-y-2 text-body-sm text-gray-500 list-disc list-inside">
               <li>
@@ -138,7 +158,7 @@ export default function CookiesPage() {
                   href="https://support.google.com/chrome/answer/95647"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-secondary hover:underline"
+                  className="inline-block py-1 text-secondary hover:underline"
                 >
                   Google Chrome
                 </a>
@@ -148,7 +168,7 @@ export default function CookiesPage() {
                   href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-secondary hover:underline"
+                  className="inline-block py-1 text-secondary hover:underline"
                 >
                   Mozilla Firefox
                 </a>
@@ -158,7 +178,7 @@ export default function CookiesPage() {
                   href="https://support.apple.com/es-es/guide/safari/sfri11471/mac"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-secondary hover:underline"
+                  className="inline-block py-1 text-secondary hover:underline"
                 >
                   Safari
                 </a>
@@ -168,7 +188,7 @@ export default function CookiesPage() {
                   href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-secondary hover:underline"
+                  className="inline-block py-1 text-secondary hover:underline"
                 >
                   Microsoft Edge
                 </a>
@@ -181,10 +201,10 @@ export default function CookiesPage() {
               5. Consecuencias de deshabilitar cookies
             </h2>
             <p className="text-body text-gray-500">
-              Deshabilitar las cookies esenciales puede afectar el correcto
-              funcionamiento del sitio, como la selección de idioma. Las cookies
-              de analítica son opcionales; desactivarlas no afecta su
-              experiencia de navegación.
+              Rechazar las cookies de analítica no cambia nada de su navegación:
+              el sitio funciona igual. Si borra la cookie{" "}
+              <span className="font-medium text-gray-700">axium_consent</span>,
+              volveremos a preguntarle en su próxima visita.
             </p>
           </section>
 

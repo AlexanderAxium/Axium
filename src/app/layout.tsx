@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { AuthProvider } from "@/AuthContext";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { StructuredData } from "@/components/StructuredData";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ConsentimientoCookies } from "@/components/axium/consentimiento-cookies";
 import { Toaster } from "@/components/ui/toaster";
 import { TRPCProvider } from "@/hooks/useTRPC";
 import { GA_TRACKING_ID } from "@/lib/analytics";
@@ -40,7 +40,6 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body>
-        {GA_TRACKING_ID && <GoogleAnalytics gaTrackingId={GA_TRACKING_ID} />}
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -58,6 +57,9 @@ export default function RootLayout({
                 {children}
               </SmoothScroll>
               <Toaster />
+              {/* Google Analytics SOLO con consentimiento: el aviso de cookies decide si se carga
+                  (2026-11-04). Antes se montaba aquí sin condición y medía a todos al entrar */}
+              <ConsentimientoCookies gaId={GA_TRACKING_ID} />
             </TRPCProvider>
           </AuthProvider>
         </ThemeProvider>

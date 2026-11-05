@@ -1,5 +1,6 @@
 "use client";
 
+import { BotonPreferenciasCookies } from "@/components/axium/consentimiento-cookies";
 import { SERVICIOS } from "@/components/axium/servicios-seis";
 import { EMPRESA } from "@/data/empresa";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -161,7 +162,7 @@ export function Footer() {
                 <span className="whitespace-nowrap">{EMPRESA.domicilio}.</span>{" "}
                 {t("allRightsReserved")}
               </p>
-              <div className="flex gap-6 text-sm text-gray-400">
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-400">
                 <Link
                   href="/legal/terms"
                   className="inline-flex min-h-6 items-center hover:text-blue-400 transition-colors"
@@ -180,6 +181,8 @@ export function Footer() {
                 >
                   {t("cookies")}
                 </Link>
+                {/* reabre el aviso para cambiar la elección (2026-11-04) */}
+                <BotonPreferenciasCookies className="inline-flex min-h-6 cursor-pointer items-center hover:text-blue-400 transition-colors" />
               </div>
             </div>
           </div>
