@@ -232,11 +232,14 @@ export default function PrivacyPage() {
               SEO, a usted y a las personas que usted invite a su espacio de
               trabajo. No los vendemos, no los usamos para publicidad y no los
               usamos para entrenar modelos de inteligencia artificial. Si usted
-              pide el plan de mejoras con IA, enviamos el resumen de búsquedas
-              de Search Console de ese sitio al proveedor de IA configurado
-              (Anthropic u OpenAI) solo para generar ese plan; esos proveedores
-              no usan los datos que reciben por su API para entrenar sus
-              modelos.
+              pide el plan de mejoras o la estrategia con IA, enviamos el
+              resumen de búsquedas de Search Console de ese sitio al proveedor
+              de IA configurado (Anthropic, OpenAI o Google Gemini con
+              facturación) solo para generarlos; esos proveedores no usan los
+              datos que reciben por su API para entrenar sus modelos. Cuando el
+              proveedor es la capa gratuita de Google Gemini, no le enviamos
+              ningún dato de su cuenta de Google: solo la auditoría del sitio,
+              que se hace sobre sus páginas públicas.
             </p>
             <p className="text-body text-gray-500 mb-3">
               Los permisos que nos da (los tokens de acceso de Google) se
