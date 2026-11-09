@@ -64,18 +64,14 @@ export function useTranslation(namespace = "common") {
   // Estado reactivo para el locale
   const [locale, setLocaleState] = useState<string>("es");
 
-  // Inicializar locale desde localStorage o navegador
+  // El idioma es el que la persona eligió en el selector; si no eligió, español. NO se toma del
+  // navegador: Google revisa la página con un navegador en inglés y la indexaba en inglés
+  // (Axium SEO, «idioma-cambia-al-renderizar», 2026-11-09; Jira SEO-85).
   useEffect(() => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("locale");
       if (stored && ["es", "en", "pt"].includes(stored)) {
         setLocaleState(stored);
-      } else {
-        const browserLang = navigator.language.split("-")[0];
-        if (browserLang && ["es", "en", "pt"].includes(browserLang)) {
-          setLocaleState(browserLang);
-          localStorage.setItem("locale", browserLang);
-        }
       }
 
       // Escuchar cambios de locale desde otros componentes
