@@ -23,6 +23,5 @@
   "results": [],
   "projectDescription": "Instructor Management System es el nombre del sistema: una plataforma SaaS que centraliza la gestión de instructores, el registro de clases por semana y disciplina, la importación masiva desde Excel, el cálculo automático de pagos según ocupación y fórmulas personalizadas, y la documentación para equipos. Incluye bonos, penalizaciones, covers y configuración flexible de períodos y tarifas. Construido con Next.js y TypeScript para una base escalable y mantenible.",
   "publishedDate": "2025",
-  "liveUrl": "https://siclo.axium.com.pe/docs",
   "slug": "siclo"
 }

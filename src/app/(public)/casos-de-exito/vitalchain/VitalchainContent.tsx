@@ -568,7 +568,10 @@ export default function VitalchainContent() {
         heroImage={`${IMG}/vc-hero-v3.jpg`}
         heroPosition="50% 58%"
         logo={{ src: `${IMG}/vc-logo.png`, width: 984, height: 256 }}
-        liveUrl="https://vitalchainacademy.com"
+        /*
+         * Sin liveUrl desde el 2026-11-13 (SEO-74): https://vitalchainacademy.com corta la
+         * conexión en el saludo TLS (curl 35, también desde fuera). Vuelve cuando responda 200.
+         */
         meta={c.meta}
         statement={c.statement}
         context={c.context}
