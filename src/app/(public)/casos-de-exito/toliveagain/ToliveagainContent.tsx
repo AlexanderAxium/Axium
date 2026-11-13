@@ -497,6 +497,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Una mujer de espaldas suelta una mariposa amarilla frente a una pared rosada",
+  en: "A woman seen from behind releases a yellow butterfly against a pink wall",
+  pt: "Uma mulher de costas solta uma borboleta amarela diante de uma parede rosa",
+};
+
 export default function ToliveagainContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -520,6 +527,7 @@ export default function ToliveagainContent() {
         name="To Live Again"
         tagline={c.tagline}
         heroImage={`${IMG}/tla-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="64% 42%"
         logo={{ src: `${IMG}/tla-logo.png`, width: 609, height: 251 }}
         liveUrl="https://toliveagain.org"

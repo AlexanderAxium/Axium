@@ -671,6 +671,7 @@ export default function FintraceContent() {
         name="Fintrace"
         tagline={c.tagline}
         heroImage={`${IMG}/ft-hero.jpg`}
+        /* sin heroAlt: ft-hero.jpg es una textura azul, un fondo sin nada que describir (SEO-75) */
         heroPosition="52% 58%"
         logo={{ src: `${IMG}/ft-logo.png`, width: 1440, height: 1056 }}
         liveUrl="https://fintrace.app-siclo.online"

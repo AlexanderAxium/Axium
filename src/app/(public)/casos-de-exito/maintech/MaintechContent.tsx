@@ -658,6 +658,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Un taller industrial con una llanta de camión minero en su soporte y equipos de medición sobre la mesa",
+  en: "An industrial workshop with a mining truck tyre on its stand and measuring equipment on the bench",
+  pt: "Uma oficina industrial com um pneu de caminhão de mineração no suporte e equipamentos de medição na bancada",
+};
+
 export default function MaintechContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -677,6 +684,7 @@ export default function MaintechContent() {
         name="MainTech"
         tagline={c.tagline}
         heroImage={`${IMG}/mt-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="62% 52%"
         logo={{ src: `${IMG}/mt-logo.png`, width: 1584, height: 324 }}
         liveUrl="https://maintech.com.pe"

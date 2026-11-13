@@ -546,6 +546,13 @@ function bloques(c: Copy, lang: StoryLang): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Los envases de los productos de limpieza Clefast sobre una piedra, entre plantas",
+  en: "Clefast cleaning product containers on a stone, among plants",
+  pt: "As embalagens dos produtos de limpeza Clefast sobre uma pedra, entre plantas",
+};
+
 export default function ClefastContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -563,6 +570,7 @@ export default function ClefastContent() {
         name="Clefast"
         tagline={c.tagline}
         heroImage={`${IMG}/cf-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="58% 56%"
         logo={{ src: `${IMG}/cf-logo.png`, width: 648, height: 762 }}
         liveUrl="https://clefast.com.pe"

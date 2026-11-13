@@ -547,6 +547,13 @@ function bloques(c: Copy, lang: StoryLang): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "La web de VitalChain Academy en escritorio y en el móvil, con el titular «Bienestar integral con transparencia digital»",
+  en: "The VitalChain Academy website on desktop and mobile, with the headline «Bienestar integral con transparencia digital»",
+  pt: "O site da VitalChain Academy no computador e no celular, com o título «Bienestar integral con transparencia digital»",
+};
+
 export default function VitalchainContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -566,6 +573,7 @@ export default function VitalchainContent() {
         name="VitalChain"
         tagline={c.tagline}
         heroImage={`${IMG}/vc-hero-v3.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="50% 58%"
         logo={{ src: `${IMG}/vc-logo.png`, width: 984, height: 256 }}
         /*

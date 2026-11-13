@@ -24,6 +24,7 @@ import {
   rutaServicio,
 } from "~/data/servicios-paginas";
 import { useTranslation } from "~/hooks/useTranslation";
+import { altEn } from "~/lib/alt";
 
 // Sin ScrollTrigger (2026-10-24): al registrarse deja un requestAnimationFrame vacío corriendo
 // para siempre, y como Next precarga estas páginas al ver sus enlaces, ese bucle quedaba vivo
@@ -260,11 +261,23 @@ function QueHacemos({
     { scope: raiz, dependencies: [activo] }
   );
 
+  /**
+   * El alt de la pieza: la cosa que ilustra y, si la pieza es del proyecto de su ejemplo, el
+   * ejemplo («Webs corporativas. En To Live Again: …»). SEO-75: con alt="" eran adorno.
+   */
+  const altDe = (m: MedioServicio, i: number) => {
+    const it = items[i];
+    if (!it) return "";
+    const delEjemplo =
+      it.ejemplo?.slug && m.src.includes(`/proyects/${it.ejemplo.slug}/`);
+    return delEjemplo ? `${it.titulo}. ${it.ejemplo?.texto}` : it.titulo;
+  };
+
   const pieza = (m: MedioServicio, i: number, conVideo: boolean) => (
     <>
       <Image
         src={ruta(m.src)}
-        alt=""
+        alt={altDe(m, i)}
         fill
         sizes={conVideo ? "(min-width: 1024px) 55vw, 1px" : "100vw"}
         className="object-cover"
@@ -1068,7 +1081,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                 <div className="relative aspect-[16/10] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[64%]">
                   <Image
                     src={detalle.foto.src}
-                    alt=""
+                    alt={t(`${KD}.titulo`)}
                     fill
                     sizes="(min-width: 1024px) 60vw, 100vw"
                     className="object-cover"
@@ -1135,7 +1148,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                     >
                       <Image
                         src={img.src}
-                        alt=""
+                        alt={altEn(img.alt, locale)}
                         fill
                         sizes={
                           img.ancho === 2
@@ -1268,6 +1281,7 @@ export function PaginaServicio({ id }: { id: IdServicio }) {
                           encuadre: caso.encuadre,
                         }}
                         nombre={caso.cliente}
+                        alt={`${caso.cliente}: ${t(`${kc}.titulo`)}`}
                         etiqueta={t(`${C}.verCaso`)}
                         circulo={tl("portfolio.verProyecto")}
                         className="aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[400px]"

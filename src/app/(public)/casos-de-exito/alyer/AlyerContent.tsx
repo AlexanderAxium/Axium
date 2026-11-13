@@ -643,6 +643,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Camiones de carga estacionados en fila al anochecer, al pie de los cerros",
+  en: "Cargo trucks parked in a row at dusk, at the foot of the hills",
+  pt: "Caminhões de carga estacionados em fila ao anoitecer, ao pé dos morros",
+};
+
 export default function AlyerContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -659,6 +666,7 @@ export default function AlyerContent() {
         name="Alyer"
         tagline={c.tagline}
         heroImage={`${IMG}/al-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="74% 62%"
         logo={{ src: `${IMG}/al-logo.png`, width: 693, height: 157 }}
         meta={c.meta}

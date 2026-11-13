@@ -472,6 +472,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Personal de limpieza trabajando en una oficina con escritorios y plantas",
+  en: "Cleaning staff at work in an office with desks and plants",
+  pt: "Equipe de limpeza trabalhando em um escritório com mesas e plantas",
+};
+
 export default function FenalsaContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -490,6 +497,7 @@ export default function FenalsaContent() {
         name="Fenalsa"
         tagline={c.tagline}
         heroImage={`${IMG}/fe-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="62% 50%"
         logo={{ src: `${IMG}/fe-logo.png`, width: 1018, height: 461 }}
         liveUrl="https://www.fenalsa.com"

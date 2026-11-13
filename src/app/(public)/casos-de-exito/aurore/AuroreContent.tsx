@@ -723,6 +723,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Una repisa de piedra con una tela de lino y pétalos secos, a la luz de la tarde",
+  en: "A stone shelf with a linen cloth and dried petals in the afternoon light",
+  pt: "Uma prateleira de pedra com um tecido de linho e pétalas secas, à luz da tarde",
+};
+
 export default function AuroreContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -737,6 +744,7 @@ export default function AuroreContent() {
         name="Aurore"
         tagline={c.tagline}
         heroImage={`${IMG}/av-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="58% 62%"
         logo={{ src: `${IMG}/av-logo.png`, width: 1200, height: 857 }}
         liveUrl="https://aurore.com.pe"

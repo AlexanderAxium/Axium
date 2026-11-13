@@ -219,6 +219,11 @@ export type CaseStoryProps = {
   name: string;
   tagline: string;
   heroImage: string;
+  /**
+   * Lo que muestra la foto del hero, para su alt. Se omite solo si la foto es un fondo sin nada
+   * que contar (una textura); entonces queda alt="" (SEO-75).
+   */
+  heroAlt?: string;
   /** object-position de la foto del hero; en móvil la tarjeta es vertical y recorta mucho. */
   heroPosition?: string;
   logo: { src: string; width: number; height: number };
@@ -491,10 +496,12 @@ function Pieza({
             sizes="100vw"
             className="object-cover sm:hidden"
           />
+          {/* La misma pieza en escritorio, con el mismo alt: solo una de las dos se muestra (la
+              otra va con display:none, que el lector de pantalla tampoco lee), y con alt="" Google
+              la tomaba por adorno (SEO-75) */}
           <Image
             src={image.src}
-            alt=""
-            aria-hidden
+            alt={image.alt}
             fill
             quality={92}
             sizes={sizes}
@@ -773,6 +780,7 @@ export function CaseStory({
   name,
   tagline,
   heroImage,
+  heroAlt,
   heroPosition,
   logo,
   liveUrl,
@@ -813,7 +821,7 @@ export function CaseStory({
         >
           <Image
             src={heroImage}
-            alt=""
+            alt={heroAlt ?? ""}
             fill
             priority
             quality={92}

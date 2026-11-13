@@ -84,6 +84,7 @@ const conRaton = () =>
 export function Portada({
   p,
   nombre,
+  alt,
   etiqueta,
   circulo,
   className = "aspect-[16/10]",
@@ -92,6 +93,8 @@ export function Portada({
 }: {
   p: Pick<Proyecto, "href" | "cover" | "encuadre"> & { video?: string };
   nombre: string;
+  /** qué proyecto enseña la portada (SEO-75: con alt="" Google la tomaba por adorno) */
+  alt: string;
   etiqueta: string;
   circulo: string;
   className?: string;
@@ -172,7 +175,7 @@ export function Portada({
         <div className="absolute inset-0 transition-transform duration-[1100ms] ease-[cubic-bezier(.22,1,.36,1)] motion-safe:group-hover:scale-[1.03]">
           <Image
             src={p.cover}
-            alt=""
+            alt={alt}
             fill
             sizes={sizes}
             quality={90}
@@ -237,6 +240,7 @@ export function TrabajoDestacado() {
                     <Portada
                       p={p}
                       nombre={nombre}
+                      alt={`${nombre}: ${t(`highlights.items.${p.key}.summary`)}`}
                       etiqueta={t("highlights.verCaso")}
                       circulo={t("portfolio.verProyecto")}
                     />

@@ -25,6 +25,7 @@ import {
 } from "~/components/axium/hero-3d";
 import type { OpcionesReel } from "~/components/axium/tres/escenas";
 import { useTranslation } from "~/hooks/useTranslation";
+import { type AltPorIdioma, altEn } from "~/lib/alt";
 
 const suave = (x: number) => {
   const t = Math.min(1, Math.max(0, x));
@@ -108,6 +109,13 @@ const retraso = (d: number) =>
   ({ "--entra-retraso": `${d}s` }) as React.CSSProperties;
 
 /** el cuerpo del hero real (34f): la escena, el titular, los botones y las cifras */
+/** La imagen fija del objeto: las tres piezas del isotipo en vidrio con capturas dentro (SEO-75) */
+const ALT_HERO: AltPorIdioma = {
+  es: "El isotipo de Axium en vidrio, con capturas de proyectos en sus caras",
+  en: "The Axium symbol in glass, with project screenshots on its faces",
+  pt: "O símbolo da Axium em vidro, com capturas de projetos nas suas faces",
+};
+
 function CuerpoHero({
   transicion,
   alHueco,
@@ -126,7 +134,7 @@ function CuerpoHero({
   /** pausa la escena mientras la sección siguiente la tapa del todo */
   refOcultar?: { current: ((o: boolean) => void) | null };
 }) {
-  const { t } = useTranslation("landing");
+  const { t, locale } = useTranslation("landing");
   const lienzo = useRef<HTMLDivElement>(null);
   const reel = useReel(lienzo, NOCHE, encuadrePortada, {
     giro: "vuelta",
@@ -163,7 +171,7 @@ function CuerpoHero({
             cuando la escena dibujó su primer cuadro */}
         <Image
           src="/images/inicio/hero-movil.jpg"
-          alt=""
+          alt={altEn(ALT_HERO, locale)}
           fill
           priority
           sizes="(max-width: 1023px) 100vw, 1px"

@@ -662,6 +662,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Una persona vestida de blanco camina por un sendero en la selva, entre la luz y la neblina",
+  en: "A person dressed in white walks along a jungle path, through light and mist",
+  pt: "Uma pessoa vestida de branco caminha por uma trilha na selva, entre a luz e a névoa",
+};
+
 export default function InnerSoulBrightContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -681,6 +688,7 @@ export default function InnerSoulBrightContent() {
         name="Inner Soul Bright"
         tagline={c.tagline}
         heroImage={`${IMG}/isb-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="50% 52%"
         logo={{ src: `${IMG}/isb-logo.png`, width: 1600, height: 390 }}
         liveUrl="https://innersoulbright.com"

@@ -588,6 +588,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Unas manos pegan la goma a una paleta de tenis de mesa con un rodillo",
+  en: "Hands rolling a rubber onto a table tennis blade",
+  pt: "Mãos colando a borracha em uma raquete de tênis de mesa com um rolo",
+};
+
 export default function SporttContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -608,6 +615,7 @@ export default function SporttContent() {
         name="Sportt Perú"
         tagline={c.tagline}
         heroImage={`${IMG}/sp-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="38% 52%"
         logo={{ src: `${IMG}/sp-logo.png`, width: 780, height: 181 }}
         liveUrl="https://sporttperu.com"

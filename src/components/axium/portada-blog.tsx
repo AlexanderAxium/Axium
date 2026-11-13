@@ -5,6 +5,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { ISOTIPO } from "~/components/axium/tres/isotipo";
 import type { BlogSlug } from "~/data/blog-data";
 import { useTranslation } from "~/hooks/useTranslation";
+import { type AltPorIdioma, altEn } from "~/lib/alt";
 
 /**
  * Las portadas del blog (2026-10-21). Alexander pasó la grilla de noticias de Code and Theory y,
@@ -33,11 +34,14 @@ export const TONO_PORTADA: Record<BlogSlug, "claro" | "oscuro"> = {
 function Caja({
   fondo,
   foto,
+  alt = "",
   filtro,
   children,
 }: {
   fondo: string;
   foto?: string;
+  /** lo que muestra la foto; sin foto (la caja vacía) no hay nada que describir */
+  alt?: string;
   filtro?: string;
   children: ReactNode;
 }) {
@@ -49,7 +53,7 @@ function Caja({
       {foto && (
         <Image
           src={foto}
-          alt=""
+          alt={alt}
           fill
           sizes="(min-width: 1024px) 33vw, 84vw"
           className={`object-cover ${filtro ?? ""}`}
@@ -112,9 +116,9 @@ export function PiezaIsotipo({
 // ── Las tres primeras: solo la foto, sin texto (Alexander: «no necesitas que la imagen tenga
 //    texto explicativo, se debe entender por sí sola») ────────────────────────────────────────
 /** Agentes en producción: la sala de operaciones de noche, alguien que pasa; el sistema trabaja. */
-function Operaciones() {
+function Operaciones({ alt }: { alt: string }) {
   return (
-    <Caja fondo="#060A16" foto="/blog/portada-operaciones.jpg">
+    <Caja fondo="#060A16" foto="/blog/portada-operaciones.jpg" alt={alt}>
       {null}
     </Caja>
   );
@@ -124,10 +128,10 @@ function Operaciones() {
  * Facturación: la venta en movimiento, con una estela de piezas del isotipo que sale de la bolsa
  * (lo que en las referencias de Code and Theory son los bloques rojos) y el titular.
  */
-function Venta() {
+function Venta({ alt }: { alt: string }) {
   const { t } = useTranslation("blog");
   return (
-    <Caja fondo="#071022" foto="/blog/portada-venta.jpg">
+    <Caja fondo="#071022" foto="/blog/portada-venta.jpg" alt={alt}>
       <svg
         viewBox="0 0 100 75"
         className="absolute inset-0 size-full"
@@ -159,42 +163,76 @@ function Venta() {
 //    (Alexander: «no debe tener mucho texto, y del tema que trate el artículo debe ser la imagen»)
 /** Antes de publicar: alguien revisa la web (la de Vendiq, real, montada en el monitor) y marca
  *  la última casilla de la lista. */
-function Revision() {
+function Revision({ alt }: { alt: string }) {
   return (
-    <Caja fondo="#0A1020" foto="/blog/portada-revision.jpg">
+    <Caja fondo="#0A1020" foto="/blog/portada-revision.jpg" alt={alt}>
       {null}
     </Caja>
   );
 }
 
 /** Transformación digital: la dueña lleva el inventario de su almacén en una tablet. */
-function Inventario() {
+function Inventario({ alt }: { alt: string }) {
   return (
-    <Caja fondo="#1A2232" foto="/blog/portada-inventario.jpg">
+    <Caja fondo="#1A2232" foto="/blog/portada-inventario.jpg" alt={alt}>
       {null}
     </Caja>
   );
 }
 
 /** Metodologías ágiles: el equipo frente al tablero, moviendo una tarjeta de columna. */
-function Tablero() {
+function Tablero({ alt }: { alt: string }) {
   return (
-    <Caja fondo="#1E2633" foto="/blog/portada-tablero.jpg">
+    <Caja fondo="#1E2633" foto="/blog/portada-tablero.jpg" alt={alt}>
       {null}
     </Caja>
   );
 }
 
 // ── IA en el negocio: la dueña le pide su tienda al asistente (el de Vendiq, real, en la laptop)
-function Asistente() {
+function Asistente({ alt }: { alt: string }) {
   return (
-    <Caja fondo="#0B1222" foto="/blog/portada-asistente.jpg">
+    <Caja fondo="#0B1222" foto="/blog/portada-asistente.jpg" alt={alt}>
       {null}
     </Caja>
   );
 }
 
-const PORTADAS: Record<BlogSlug, () => ReactNode> = {
+/** Lo que muestra la foto de cada portada (SEO-75: con alt="" Google la tomaba por adorno) */
+const ALT_PORTADAS: Record<BlogSlug, AltPorIdioma> = {
+  "agentes-de-ia-en-produccion": {
+    es: "Una sala de operaciones a oscuras, con los monitores encendidos y alguien que pasa",
+    en: "A dark operations room with the monitors on and someone walking past",
+    pt: "Uma sala de operações às escuras, com os monitores ligados e alguém passando",
+  },
+  "facturacion-electronica-tienda-online": {
+    es: "Una vendedora entrega una bolsa de compra a una clienta en el mostrador",
+    en: "A shop assistant hands a shopping bag to a customer at the counter",
+    pt: "Uma vendedora entrega uma sacola de compras a uma cliente no balcão",
+  },
+  "antes-de-publicar-tu-web": {
+    es: "Alguien revisa una web en el monitor y marca la última casilla de una lista en papel",
+    en: "Someone reviews a website on a monitor and ticks the last box on a paper checklist",
+    pt: "Alguém revisa um site no monitor e marca a última caixa de uma lista em papel",
+  },
+  "transformacion-digital": {
+    es: "Una mujer lleva el inventario de su almacén en una tablet, entre estantes con cajas",
+    en: "A woman keeps her warehouse inventory on a tablet, among shelves of boxes",
+    pt: "Uma mulher controla o estoque do seu armazém em um tablet, entre prateleiras com caixas",
+  },
+  "metodologias-agiles": {
+    es: "Un equipo frente a un tablero de notas adhesivas; una persona mueve una tarjeta de columna",
+    en: "A team in front of a sticky-note board; one person moves a card to another column",
+    pt: "Uma equipe diante de um quadro de notas adesivas; uma pessoa move um cartão de coluna",
+  },
+  "ia-en-el-negocio": {
+    es: "El dueño de una tienda de ropa le escribe al asistente de IA en su laptop",
+    en: "A clothing store owner types to the AI assistant on his laptop",
+    pt: "O dono de uma loja de roupas escreve para o assistente de IA no seu notebook",
+  },
+};
+
+const PORTADAS: Record<BlogSlug, (p: { alt: string }) => ReactNode> = {
   "agentes-de-ia-en-produccion": Operaciones,
   "facturacion-electronica-tienda-online": Venta,
   "antes-de-publicar-tu-web": Revision,
@@ -204,7 +242,8 @@ const PORTADAS: Record<BlogSlug, () => ReactNode> = {
 };
 
 export function PortadaBlog({ slug }: { slug: string }) {
+  const { locale } = useTranslation("blog");
   const Portada = PORTADAS[slug as BlogSlug];
   if (!Portada) return <Caja fondo={NOCHE}>{null}</Caja>;
-  return <Portada />;
+  return <Portada alt={altEn(ALT_PORTADAS[slug as BlogSlug], locale)} />;
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PiezaIsotipo } from "~/components/axium/portada-blog";
 import { useTranslation } from "~/hooks/useTranslation";
+import { type AltPorIdioma, altEn } from "~/lib/alt";
 
 /**
  * El CTA del taller (2026-10-23). Alexander: «haz un CTA con un fondo corporativo de personas
@@ -41,8 +42,15 @@ function fundido(hacia: "right" | "top", desde = 0, hasta = 100) {
   return `linear-gradient(to ${hacia}, ${paradas.join(", ")})`;
 }
 
+/** Lo que muestra la foto del taller (SEO-75) */
+const ALT_FOTO: AltPorIdioma = {
+  es: "Un equipo revisa bocetos sobre una mesa, de noche, en una oficina con vista a la ciudad",
+  en: "A team reviews sketches on a table at night, in an office overlooking the city",
+  pt: "Uma equipe revisa esboços sobre uma mesa, à noite, em um escritório com vista para a cidade",
+};
+
 export function CtaProceso() {
-  const { t } = useTranslation("landing");
+  const { t, locale } = useTranslation("landing");
   const { t: tc } = useTranslation("common");
   const K = "home.procesoFases.cta";
   const wa = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(tc("whatsappFlotante.mensaje"))}`;
@@ -57,7 +65,7 @@ export function CtaProceso() {
       <div className="relative aspect-[4/3] md:absolute md:inset-y-0 md:right-0 md:aspect-auto md:w-[62%]">
         <Image
           src="/images/inicio/cta-taller-recorte.jpg"
-          alt=""
+          alt={altEn(ALT_FOTO, locale)}
           fill
           sizes="(min-width: 768px) 62vw, 100vw"
           quality={85}

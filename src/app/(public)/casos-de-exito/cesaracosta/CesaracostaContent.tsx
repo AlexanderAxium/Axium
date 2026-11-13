@@ -481,6 +481,13 @@ function bloques(c: Copy): StoryBlock[] {
   ];
 }
 
+/** El alt de la foto del hero: lo que se ve en ella (SEO-75). */
+const HERO_ALT: Record<StoryLang, string> = {
+  es: "Una cancha de tenis de noche, con una raqueta y una canasta de pelotas junto a la red",
+  en: "A tennis court at night, with a racket and a basket of balls by the net",
+  pt: "Uma quadra de tênis à noite, com uma raquete e uma cesta de bolas junto à rede",
+};
+
 export default function CesaracostaContent() {
   const { locale } = useTranslation("landing");
   const lang: StoryLang = locale === "en" || locale === "pt" ? locale : "es";
@@ -492,6 +499,7 @@ export default function CesaracostaContent() {
         name="Academia César Acosta"
         tagline={c.tagline}
         heroImage={`${IMG}/ca-hero.jpg`}
+        heroAlt={HERO_ALT[lang]}
         heroPosition="68% 50%"
         logo={{ src: `${IMG}/ca-logo.png`, width: 1200, height: 468 }}
         // Sin liveUrl a propósito: el sitio está construido y aún no publicado.

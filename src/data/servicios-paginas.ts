@@ -8,6 +8,8 @@
  * metadatos. Los textos están en locales/{es,en,pt}/services.json → paginas.<id>.
  */
 
+import type { AltPorIdioma } from "~/lib/alt";
+
 export type IdServicio = "diseno" | "web" | "software" | "ia" | "iot" | "cloud";
 
 export type CasoServicio = {
@@ -32,7 +34,13 @@ export type DetalleServicio = {
   tipo: "mosaico" | "flujo";
   /** La foto del panel del proyecto: se funde en el navy por la izquierda (oscura, con el tema a la derecha) */
   foto?: { src: string; encuadre?: string };
-  imagenes?: { src: string; ancho: 1 | 2; estira?: boolean }[];
+  /** `alt`: lo que muestra cada pieza (los mismos textos que su caso) */
+  imagenes?: {
+    src: string;
+    ancho: 1 | 2;
+    estira?: boolean;
+    alt: AltPorIdioma;
+  }[];
 };
 
 /**
@@ -81,11 +89,52 @@ export const PAGINAS_SERVICIO: Record<IdServicio, PaginaServicioDatos> = {
       // retícula de cuatro columnas: las de 2:1 ocupan dos, las cuadradas una (alturas iguales)
       imagenes: [
         // comparte fila con dos cuadradas: se estira a su altura (con aspect 2:1 medía 6 px más, el medio hueco)
-        { src: "/images/proyects/alyer/al-camion.jpg", ancho: 2, estira: true },
-        { src: "/images/proyects/alyer/al-simbolo-marca.jpg", ancho: 1 },
-        { src: "/images/proyects/alyer/al-chaleco-espalda.jpg", ancho: 1 },
-        { src: "/images/proyects/alyer/al-manual.jpg", ancho: 2 },
-        { src: "/images/proyects/alyer/al-brochure.jpg", ancho: 2 },
+        {
+          src: "/images/proyects/alyer/al-camion.jpg",
+          ancho: 2,
+          estira: true,
+          alt: {
+            es: "Tractocamión y semirremolque con la rotulación de Alyer Transportes",
+            en: "Tractor unit and semi-trailer with Alyer Transportes livery",
+            pt: "Cavalo mecânico e semirreboque com a plotagem da Alyer Transportes",
+          },
+        },
+        {
+          src: "/images/proyects/alyer/al-simbolo-marca.jpg",
+          ancho: 1,
+          alt: {
+            es: "El símbolo de Alyer en blanco y rojo: la «A» fragmentada y orientada a la derecha",
+            en: "Alyer's symbol in white and red: the fragmented A, facing right",
+            pt: "O símbolo da Alyer em branco e vermelho: o «A» fragmentado e orientado à direita",
+          },
+        },
+        {
+          src: "/images/proyects/alyer/al-chaleco-espalda.jpg",
+          ancho: 1,
+          alt: {
+            es: "Un trabajador de espaldas con el chaleco reflectivo de Alyer y la dirección web bajo el logotipo",
+            en: "A worker seen from behind in the Alyer hi-vis vest, with the web address under the logotype",
+            pt: "Um trabalhador de costas com o colete refletivo da Alyer e o endereço web sob o logotipo",
+          },
+        },
+        {
+          src: "/images/proyects/alyer/al-manual.jpg",
+          ancho: 2,
+          alt: {
+            es: "Quince láminas del manual de marca de Alyer Transportes",
+            en: "Fifteen pages of the Alyer Transportes brand manual",
+            pt: "Quinze lâminas do manual de marca da Alyer Transportes",
+          },
+        },
+        {
+          src: "/images/proyects/alyer/al-brochure.jpg",
+          ancho: 2,
+          alt: {
+            es: "Páginas del brochure comercial de Alyer Producción",
+            en: "Pages of the Alyer Producción commercial brochure",
+            pt: "Páginas do brochure comercial da Alyer Producción",
+          },
+        },
       ],
     },
     casos: [
