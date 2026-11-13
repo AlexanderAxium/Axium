@@ -32,7 +32,6 @@ import innersoulbrightData from "~/data/cases/innersoulbright.json";
 import jarumiData from "~/data/cases/jarumi.json";
 import jcpingenierosData from "~/data/cases/jcpingenieros.json";
 import lifetoursflData from "~/data/cases/lifetoursfl.json";
-import lujanData from "~/data/cases/lujan.json";
 import lumiolearnData from "~/data/cases/lumiolearn.json";
 import maintechData from "~/data/cases/maintech.json";
 import moviflexData from "~/data/cases/moviflex.json";
@@ -79,7 +78,6 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   happyart: happyartData as Record<string, unknown>,
   redesvip: redesvipData as Record<string, unknown>,
   sportt: sporttData as Record<string, unknown>,
-  lujan: lujanData as Record<string, unknown>,
   ventanasantiruido: ventanasantiruidoData as Record<string, unknown>,
   antiruidopvc: antiruidopvcData as Record<string, unknown>,
   transportesrumi: transportesrumiData as Record<string, unknown>,
@@ -142,7 +140,6 @@ const CASE_ORDER: string[] = [
   "transportesrumi",
   "villacer",
   "capptura",
-  "lujan",
   "blendet",
   "firstautomation",
   "volveravivir",

@@ -41,7 +41,6 @@ const slugMap: Record<string, string> = {
   "Happy Art": "happyart",
   "Redes VIP": "redesvip",
   "Sportt Peru": "sportt",
-  "Vitivinícola Luján": "lujan",
   "Ventanas Antiruido": "ventanasantiruido",
   Decibeles: "antiruidopvc",
   "Transportes Rumi": "transportesrumi",

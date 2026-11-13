@@ -38,7 +38,6 @@ export const SERVICIOS_DEL_CASO = {
   jarumi: ["web"],
   jcpingenieros: ["web"],
   lifetoursfl: ["web"],
-  lujan: ["web"],
   lumiolearn: ["software", "ia"],
   maintech: ["diseno", "web"],
   moviflex: ["web"],

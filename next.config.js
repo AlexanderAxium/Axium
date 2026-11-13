@@ -22,6 +22,17 @@ const config = {
       },
     ];
   },
+  // Casos que salieron del portafolio: 301 a la lista, para no dejar un 404 indexado.
+  // Luján salió el 2026-11-13 (Alexander: «lujan dale de baja»).
+  async redirects() {
+    return [
+      {
+        source: "/casos-de-exito/lujan",
+        destination: "/portafolio",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     // Calidad por defecto alta para no pixelar; heroes/banners usan quality={95}
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

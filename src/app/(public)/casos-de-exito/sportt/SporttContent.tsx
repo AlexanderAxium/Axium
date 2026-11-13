@@ -234,7 +234,7 @@ const COPY: Record<StoryLang, Copy> = {
       confianza:
         "Marcas distribuidas por Sportt, sus tres promesas de servicio y el pie del sitio",
     },
-    nextTagline: "La tienda de vinos, piscos y macerados de la vitivinícola",
+    nextTagline: "La marca y la tienda virtual de regalos personalizados",
   },
 
   en: {
@@ -347,7 +347,7 @@ const COPY: Record<StoryLang, Copy> = {
       confianza:
         "Brands distributed by Sportt, its three service promises and the site footer",
     },
-    nextTagline: "The winery's shop for wines, piscos and macerates",
+    nextTagline: "The brand and online shop for personalized gifts",
   },
 
   pt: {
@@ -461,7 +461,7 @@ const COPY: Record<StoryLang, Copy> = {
       confianza:
         "Marcas distribuídas pela Sportt, as suas três promessas de serviço e o rodapé do site",
     },
-    nextTagline: "A loja de vinhos, piscos e macerados da vinícola",
+    nextTagline: "A marca e a loja virtual de presentes personalizados",
   },
 };
 
@@ -625,10 +625,10 @@ export default function SporttContent() {
         context={c.context}
         blocks={bloques(c)}
         next={{
-          name: "Vitivinícola Luján",
+          name: "Happy Art",
           tagline: c.nextTagline,
-          href: "/casos-de-exito/lujan",
-          image: "/images/proyects/lujan/lujan-home.jpg",
+          href: "/casos-de-exito/happyart",
+          image: "/images/proyects/happyart/happyart-home.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

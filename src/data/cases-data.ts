@@ -20,7 +20,6 @@ import huarmisData from "./cases/huarmis.json";
 import innersoulbrightData from "./cases/innersoulbright.json";
 import jcpingenierosData from "./cases/jcpingenieros.json";
 import lifetoursflData from "./cases/lifetoursfl.json";
-import lujanData from "./cases/lujan.json";
 import maintechData from "./cases/maintech.json";
 import podologiemtkData from "./cases/podologiemtk.json";
 import redesvipData from "./cases/redesvip.json";
@@ -125,7 +124,6 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(happyartData as CaseItemJSON),
   convertCaseFromJSON(redesvipData as CaseItemJSON),
   convertCaseFromJSON(sporttData as CaseItemJSON),
-  convertCaseFromJSON(lujanData as CaseItemJSON),
   convertCaseFromJSON(ventanasantiruidoData as CaseItemJSON),
   convertCaseFromJSON(antiruidopvcData as CaseItemJSON),
   convertCaseFromJSON(transportesrumiData as CaseItemJSON),

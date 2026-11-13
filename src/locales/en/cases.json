@@ -240,38 +240,6 @@
     ],
     "results": []
   },
-  "lujan": {
-    "title": "Vitivinícola Luján",
-    "industry": "E-commerce / Beverages",
-    "description": "Peruvian winery virtual store: wines, piscos, creams and macerates. Catalog by categories, CMS integration, payment gateway and advertising.",
-    "problem": "Vitivinícola Luján needed a digital platform to sell their wines, piscos and spirits online, with organized catalog and social presence.",
-    "solution": "E-commerce with catalog by categories, CMS integration, payment gateway, cart and checkout, complaints book and advertising for social media.",
-    "projectDescription": "We developed vitivinicolalujan.com as a virtual store for Vitivinícola Luján, in Santa Cruz de Flores, Cañete. Includes catalog of wines, piscos, creams and macerates; CMS integration, payment gateway; plus advertising for their social media.",
-    "secondaryIndustry": "Wines and Piscos",
-    "forWhom": "Consumers seeking quality Peruvian wines, piscos, creams and macerates",
-    "services": [
-      "Virtual Store",
-      "Catalog by Categories",
-      "CMS Integration",
-      "Payment Gateway",
-      "Advertising",
-      "Complaints Book"
-    ],
-    "results": [
-      {
-        "metric": "100%",
-        "label": "digital presence established"
-      },
-      {
-        "metric": "24/7",
-        "label": "store available online"
-      },
-      {
-        "metric": "B2C",
-        "label": "direct-to-consumer sales"
-      }
-    ]
-  },
   "ventanasantiruido": {
     "title": "Ventanas Antiruido",
     "industry": "Construction / Insulation",
