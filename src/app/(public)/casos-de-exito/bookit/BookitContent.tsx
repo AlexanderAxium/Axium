@@ -12,6 +12,7 @@ import {
   STORY_LABELS,
   type StoryLang,
 } from "~/components/axium/case-story/case-story";
+import { ServiciosDelCaso } from "~/components/axium/servicios-del-caso";
 import { useTranslation } from "~/hooks/useTranslation";
 
 /**
@@ -599,6 +600,7 @@ export default function BookitContent() {
       />
       {/* Sección clara para que el navbar se lea sobre la tarjeta oscura del formulario */}
       <div data-nav-theme="light" className="bg-white">
+        <ServiciosDelCaso caso="bookit" />
         <CaseContactCTA />
       </div>
     </>

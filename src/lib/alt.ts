@@ -7,7 +7,12 @@ export type Idioma = "es" | "en" | "pt";
 
 export type AltPorIdioma = Record<Idioma, string>;
 
+/** Lo mismo para un texto corto que no es un alt (un título, el texto de un enlace) */
+export type TextoPorIdioma = AltPorIdioma;
+
 /** El alt en el idioma activo; cualquier otro idioma cae al español, el principal del sitio. */
 export function altEn(textos: AltPorIdioma, locale: string): string {
   return locale === "en" || locale === "pt" ? textos[locale] : textos.es;
 }
+
+export const textoEn = altEn;

@@ -11,6 +11,7 @@ import {
   CaseNextProject,
 } from "~/components/axium/case-blocks";
 import { CaseContactCTA } from "~/components/axium/case-contact-cta";
+import { ServiciosDelCaso } from "~/components/axium/servicios-del-caso";
 import { useTranslation } from "~/hooks/useTranslation";
 import { useCaseContent } from "~/lib/case-translations";
 
@@ -131,6 +132,7 @@ export default function HotelesparaisoContent() {
 
       <CaseNextProject excludeSlug="hotelesparaiso" />
 
+      <ServiciosDelCaso caso="hotelesparaiso" />
       <CaseContactCTA />
     </div>
   );
