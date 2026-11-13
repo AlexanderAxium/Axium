@@ -46,6 +46,8 @@ import { useTranslation } from "~/hooks/useTranslation";
  *  decimoquinta generación).
  *
  * ── DE DÓNDE SALE CADA COSA ────────────────────────────────────────────────────────
+ *  · Desde el 2026-11-13 Feniz se presenta como sistema interno: sistemafeniz.com se dio de baja, así
+ *    que el caso no enlaza ni dice que esté en línea (Alexander).
  *  · Toda la interfaz es captura real. El sitio público, de sistemafeniz.com en vivo; el área
  *    privada, de la app del repo levantada en local (2026-09-30) contra un volcado ANONIMIZADO:
  *    nombres, correos, fechas, números de cuenta y saldos son de demostración. Ningún dato de
@@ -126,13 +128,12 @@ const COPY: Record<StoryLang, Copy> = {
       entregables: [
         "Entregables",
         [
-          "sistemafeniz.com",
+          "Sitio público",
           "Área del trader",
           "Panel de administración",
           "Expert Advisor en MQL5",
         ],
       ],
-      vivo: ["En vivo", "sistemafeniz.com", "https://sistemafeniz.com"],
     },
     contexto: [
       "Contexto",
@@ -166,7 +167,7 @@ const COPY: Record<StoryLang, Copy> = {
     mandos: { anterior: "Anterior", siguiente: "Siguiente" },
     alt: {
       sitioPanel:
-        "sistemafeniz.com en una ventana y el panel del trader en un celular, bajando a la vez sobre el azul y el oro de Feniz, con dos tarjetas reales flotando: balance total y rendimiento de hoy",
+        "El sitio de Feniz en una ventana y el panel del trader en un celular, bajando a la vez sobre el azul y el oro de Feniz, con dos tarjetas reales flotando: balance total y rendimiento de hoy",
       ea: "Código MQL5 del Expert Advisor que Feniz genera para cada trader",
       viaje:
         "Animación del viaje de una operación: el Expert Advisor arma en MetaTrader 5 el JSON de la operación cerrada, lo envía por POST a Feniz, recibe HTTP 200 y la fila entra en «Últimos movimientos» del área del trader, cada cinco segundos · datos de demostración",
@@ -192,7 +193,7 @@ const COPY: Record<StoryLang, Copy> = {
     resultado: {
       titulo: "Lo entregado",
       texto:
-        "Feniz está en línea en sistemafeniz.com con su sitio, su alta, su área de trader y su panel. No publicamos cifras de uso: su analítica no es nuestra.",
+        "Feniz funciona como sistema interno, con su sitio, su alta, su área de trader y su panel. No publicamos cifras de uso: su analítica no es nuestra.",
       cifras: [
         {
           valor: "519",
@@ -231,14 +232,8 @@ const COPY: Record<StoryLang, Copy> = {
       ],
       entregables: [
         "Deliverables",
-        [
-          "sistemafeniz.com",
-          "Trader area",
-          "Admin panel",
-          "MQL5 Expert Advisor",
-        ],
+        ["Public website", "Trader area", "Admin panel", "MQL5 Expert Advisor"],
       ],
-      vivo: ["Live", "sistemafeniz.com", "https://sistemafeniz.com"],
     },
     contexto: [
       "Context",
@@ -272,7 +267,7 @@ const COPY: Record<StoryLang, Copy> = {
     mandos: { anterior: "Previous", siguiente: "Next" },
     alt: {
       sitioPanel:
-        "sistemafeniz.com in a browser window and the trader panel on a phone, scrolling together over Feniz's navy and gold, with two real cards floating: total balance and today's performance",
+        "Feniz's website in a browser window and the trader panel on a phone, scrolling together over Feniz's navy and gold, with two real cards floating: total balance and today's performance",
       ea: "MQL5 code of the Expert Advisor Feniz generates for each trader",
       viaje:
         "Animation of a trade's journey: the Expert Advisor builds the closed trade's JSON in MetaTrader 5, POSTs it to Feniz, gets HTTP 200 back and the row lands in the trader area's latest movements, every five seconds · demo data",
@@ -298,7 +293,7 @@ const COPY: Record<StoryLang, Copy> = {
     resultado: {
       titulo: "What was delivered",
       texto:
-        "Feniz is live at sistemafeniz.com with its website, its sign-up, its trader area and its panel. We publish no usage figures: their analytics are not ours.",
+        "Feniz runs as an internal system, with its website, its sign-up, its trader area and its panel. We publish no usage figures: their analytics are not ours.",
       cifras: [
         {
           valor: "519",
@@ -341,13 +336,12 @@ const COPY: Record<StoryLang, Copy> = {
       entregables: [
         "Entregáveis",
         [
-          "sistemafeniz.com",
+          "Site público",
           "Área do trader",
           "Painel de administração",
           "Expert Advisor em MQL5",
         ],
       ],
-      vivo: ["No ar", "sistemafeniz.com", "https://sistemafeniz.com"],
     },
     contexto: [
       "Contexto",
@@ -381,7 +375,7 @@ const COPY: Record<StoryLang, Copy> = {
     mandos: { anterior: "Anterior", siguiente: "Próximo" },
     alt: {
       sitioPanel:
-        "sistemafeniz.com em uma janela e o painel do trader em um celular, descendo juntos sobre o azul e o ouro da Feniz, com dois cartões reais flutuando: saldo total e desempenho de hoje",
+        "O site da Feniz em uma janela e o painel do trader em um celular, descendo juntos sobre o azul e o ouro da Feniz, com dois cartões reais flutuando: saldo total e desempenho de hoje",
       ea: "Código MQL5 do Expert Advisor que a Feniz gera para cada trader",
       viaje:
         "Animação da viagem de uma operação: o Expert Advisor monta no MetaTrader 5 o JSON da operação fechada, envia por POST à Feniz, recebe HTTP 200 e a linha entra nos últimos movimentos da área do trader, a cada cinco segundos · dados de demonstração",
@@ -407,7 +401,7 @@ const COPY: Record<StoryLang, Copy> = {
     resultado: {
       titulo: "O que foi entregue",
       texto:
-        "A Feniz está no ar em sistemafeniz.com com o seu site, o seu cadastro, a sua área de trader e o seu painel. Não publicamos números de uso: a analítica deles não é nossa.",
+        "A Feniz funciona como sistema interno, com o seu site, o seu cadastro, a sua área de trader e o seu painel. Não publicamos números de uso: a analítica deles não é nossa.",
       cifras: [
         {
           valor: "519",

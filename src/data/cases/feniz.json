@@ -6,7 +6,6 @@
   "platform": "Plataforma web",
   "duration": "Sep '25 – Ene '26",
   "client": "Feniz",
-  "liveUrl": "https://sistemafeniz.com",
   "technologyStack": [
     "Next.js",
     "TypeScript",
