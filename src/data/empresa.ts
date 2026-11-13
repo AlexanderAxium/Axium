@@ -18,10 +18,9 @@ export const EMPRESA = {
 export const CORREO_RECLAMOS = "reclamos@axium.com.pe";
 
 /**
- * Los perfiles de Axium en redes: alimentan el pie y el `sameAs` del Organization (SEO-76). Vacío
- * a propósito: el 2026-11-13 no había ningún perfil documentado (ni en el repo, ni en secretario,
- * ni en AXIUM-SAC), y el pie decía «no colocar redes sociales» por pedido de Alexander. Solo se
- * agrega el perfil que existe y que Alexander confirme, con su URL exacta; con uno basta para que
- * aparezcan el bloque del pie y el `sameAs`.
+ * Los perfiles de Axium en redes: alimentan el pie y el `sameAs` del Organization (SEO-76). Solo
+ * van los que Alexander confirma, con su URL exacta: el 2026-11-13 confirmó Instagram @axiumsac.
  */
-export const REDES: readonly { red: string; url: string }[] = [];
+export const REDES: readonly { red: string; url: string }[] = [
+  { red: "Instagram", url: "https://www.instagram.com/axiumsac/" },
+];

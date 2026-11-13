@@ -92,7 +92,7 @@ export function Footer() {
               </div>
 
               {/* Las redes: salen de REDES (src/data/empresa.ts), que también llena el `sameAs` del
-                  Organization. Hoy está vacío (no hay perfiles confirmados), así que no se pinta */}
+                  Organization. Si la lista queda vacía, el bloque no se pinta */}
               {REDES.length > 0 && (
                 <ul className="flex flex-wrap gap-x-5 gap-y-2 pt-2">
                   {REDES.map((r) => (
