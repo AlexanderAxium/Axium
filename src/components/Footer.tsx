@@ -2,7 +2,7 @@
 
 import { BotonPreferenciasCookies } from "@/components/axium/consentimiento-cookies";
 import { SERVICIOS } from "@/components/axium/servicios-seis";
-import { EMPRESA } from "@/data/empresa";
+import { EMPRESA, REDES } from "@/data/empresa";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
@@ -91,23 +91,24 @@ export function Footer() {
                 </div>
               </div>
 
-              {/* Social Media - comentado por ahora, no colocar redes sociales */}
-              {/* {socialLinks.length > 0 && (
-                <div className="flex gap-3">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-gray-700 hover:bg-primary/10 border border-transparent hover:border-primary/20 rounded-lg transition-all duration-200"
-                      aria-label={social.name}
-                    >
-                      <social.icon className="h-4 w-4 text-gray-300 hover:text-primary transition-colors" />
-                    </a>
+              {/* Las redes: salen de REDES (src/data/empresa.ts), que también llena el `sameAs` del
+                  Organization. Hoy está vacío (no hay perfiles confirmados), así que no se pinta */}
+              {REDES.length > 0 && (
+                <ul className="flex flex-wrap gap-x-5 gap-y-2 pt-2">
+                  {REDES.map((r) => (
+                    <li key={r.url}>
+                      <a
+                        href={r.url}
+                        target="_blank"
+                        rel="noopener noreferrer me"
+                        className="inline-flex min-h-6 items-center text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                      >
+                        {r.red}
+                      </a>
+                    </li>
                   ))}
-                </div>
-              )} */}
+                </ul>
+              )}
             </div>
 
             {/* Quick Links */}

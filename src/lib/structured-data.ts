@@ -1,4 +1,4 @@
-import { EMPRESA } from "~/data/empresa";
+import { EMPRESA, REDES } from "~/data/empresa";
 import { PAGINAS_SERVICIO } from "~/data/servicios-paginas";
 import { SITIO } from "~/lib/seo";
 
@@ -8,8 +8,8 @@ import { SITIO } from "~/lib/seo";
  * una app) con una oferta sin precio que Search Console marca como error, y una geolocalización
  * y un horario que no salen de ninguna parte. Solo va lo que dice la web: el correo, el teléfono,
  * los seis servicios con su página y, desde el mismo día, la razón social, el RUC, el inicio de
- * actividades y el domicilio fiscal de SUNAT (`EMPRESA`). Cuando existan las redes (LinkedIn,
- * Instagram…), se suman en `sameAs`.
+ * actividades y el domicilio fiscal de SUNAT (`EMPRESA`). Las redes van en `sameAs` desde `REDES`
+ * (src/data/empresa.ts): solo los perfiles que existen; sin ninguno, no se declara.
  */
 
 const ID_ORG = `${SITIO}/#organizacion`;
@@ -26,6 +26,7 @@ export function esquemaOrganizacion() {
     url: SITIO,
     logo: `${SITIO}/icon-512.png`,
     image: `${SITIO}/og/og-inicio.jpg`,
+    ...(REDES.length ? { sameAs: REDES.map((r) => r.url) } : {}),
     description:
       "Empresa de desarrollo de software en Lima: software a medida, páginas web, tiendas online, apps, inteligencia artificial e IoT para empresas en Perú.",
     email: "contacto@axium.com.pe",
