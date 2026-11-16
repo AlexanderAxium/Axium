@@ -19,7 +19,7 @@ export default function PrivacyPage() {
             Política de Privacidad
           </h1>
           <p className="text-body-sm text-gray-500">
-            Última actualización: 5 de noviembre de 2026
+            Última actualización: 15 de noviembre de 2026
           </p>
         </div>
 
@@ -289,9 +289,81 @@ export default function PrivacyPage() {
             </p>
           </section>
 
+          <section className="py-8" id="whatsapp">
+            <h2 className="text-heading-3 text-gray-900 mb-3">
+              10. Mensajes de WhatsApp con las empresas que usan nuestro sistema
+            </h2>
+            <p className="text-body text-gray-500 mb-3">
+              Axium ofrece a empresas, como clínicas y comercios, un sistema que
+              conecta su número de WhatsApp Business con un asistente automático
+              y un CRM, a través de la Plataforma de WhatsApp Business de Meta.
+              Cuando usted le escribe por WhatsApp a una de esas empresas, la
+              empresa es la responsable de sus datos y Axium los trata por
+              encargo suyo, solo para darle ese servicio. De esas
+              conversaciones recibimos:
+            </p>
+            <ul className="space-y-2 text-body text-gray-500 list-disc list-inside mb-3">
+              <li>
+                <span className="font-medium text-gray-700">
+                  Su número y su nombre de perfil:
+                </span>{" "}
+                el número de teléfono y el nombre que usted tiene en WhatsApp.
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">Los mensajes:</span>{" "}
+                el texto, las imágenes, los audios y los documentos de esa
+                conversación, con su fecha, su hora y su estado de entrega.
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">
+                  Lo que usted nos cuente:
+                </span>{" "}
+                los datos que usted da en la conversación para lo que pide, por
+                ejemplo su nombre completo o su DNI para agendar una cita.
+              </li>
+            </ul>
+            <p className="text-body text-gray-500 mb-3">
+              Usamos esos datos solo para responderle, para que la empresa vea y
+              atienda la conversación en su CRM, para agendar o confirmar lo que
+              usted pide y para enviarle los avisos que usted aceptó recibir,
+              como recordatorios de citas. No los vendemos, no los usamos para
+              publicidad y no los usamos para entrenar modelos de inteligencia
+              artificial.
+            </p>
+            <p className="text-body text-gray-500 mb-3">
+              Si usted le escribe a un centro de salud, la conversación puede
+              incluir datos sobre su salud, que la Ley N.° 29733 considera datos
+              sensibles. Solo los ve el personal autorizado de ese centro y se
+              usan solo para atenderlo.
+            </p>
+            <p className="text-body text-gray-500 mb-3">
+              Los mensajes pasan por los servidores de Meta, que los trata según
+              sus propias condiciones de WhatsApp Business. Nosotros los
+              guardamos en una base de datos, en un servidor sin acceso público,
+              mientras la empresa use el servicio o hasta que usted pida
+              borrarlos.
+            </p>
+            <p className="text-body text-gray-500">
+              <span className="font-medium text-gray-700">
+                Cómo pedir que borremos sus datos:
+              </span>{" "}
+              escríbanos a{" "}
+              <a
+                href="mailto:contacto@axium.com.pe"
+                className="text-secondary hover:underline"
+              >
+                contacto@axium.com.pe
+              </a>{" "}
+              con el número de WhatsApp desde el que escribió y el nombre de la
+              empresa con la que conversó, o pídaselo directamente a esa
+              empresa. Borramos sus mensajes y sus datos en un plazo máximo de
+              10 días hábiles y se lo confirmamos por el mismo medio.
+            </p>
+          </section>
+
           <section className="py-8">
             <h2 className="text-heading-3 text-gray-900 mb-3">
-              10. Cambios a esta política
+              11. Cambios a esta política
             </h2>
             <p className="text-body text-gray-500">
               Podemos actualizar esta Política de Privacidad cuando sea
@@ -302,7 +374,7 @@ export default function PrivacyPage() {
           </section>
 
           <section className="py-8">
-            <h2 className="text-heading-3 text-gray-900 mb-3">11. Contacto</h2>
+            <h2 className="text-heading-3 text-gray-900 mb-3">12. Contacto</h2>
             <p className="text-body text-gray-500 mb-4">
               Para cualquier consulta relacionada con el tratamiento de sus
               datos personales:
