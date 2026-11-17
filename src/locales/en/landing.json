@@ -100,29 +100,33 @@
       "bajada": "Everything a software company is usually asked for, built by one team in Lima.",
       "verServicio": "See the service",
       "items": {
-        "diseno": {
-          "titulo": "Product design and branding",
-          "texto": "Identity, interfaces and design systems: logo, brand guidelines, UX/UI for websites and apps, and assets for social media and presentations."
-        },
         "web": {
-          "titulo": "Websites, online stores and apps",
-          "texto": "Corporate websites, e-commerce and iOS and Android apps from a single codebase: fast, easy to manage, with online payments, technical SEO and analytics from day one."
+          "titulo": "Websites and online stores",
+          "texto": "Corporate websites, landing pages and e-commerce that are fast and easy to manage, with online payments, technical SEO and analytics from day one."
+        },
+        "apps": {
+          "titulo": "Apps and product design",
+          "texto": "iOS and Android apps from a single codebase, UX/UI design, prototypes and design systems: from the first sketch to the app stores."
         },
         "software": {
           "titulo": "Custom software and integrations",
-          "texto": "Internal systems, dashboards, ERPs and CRMs built around how you operate. We connect the tools you already use through APIs and SUNAT e-invoicing, and modernize legacy systems without stopping the business."
+          "texto": "Internal systems, dashboards, ERP and CRM built around how you operate. We connect what you already use —APIs, SUNAT e-invoicing and IoT devices— and modernize legacy systems without stopping the business."
         },
         "ia": {
           "titulo": "Artificial intelligence and data",
-          "texto": "Agents, assistants that work with your company's data (RAG) and automations over WhatsApp or email, plus dashboards and reports to decide with numbers."
+          "texto": "Agents, assistants grounded in your company data (RAG) and automations over WhatsApp or email, plus dashboards and reports to decide with numbers."
+        },
+        "cloud": {
+          "titulo": "Cloud, security and support",
+          "texto": "Hosting, automated deployments, backups and monitoring. We take care of security and provide support and maintenance after launch."
+        },
+        "marca": {
+          "titulo": "Brand and growth",
+          "texto": "Visual identity and brand guidelines as a project, and monthly digital marketing: social media, Meta and Google ads and SEO, measured with your website’s real data."
         },
         "iot": {
           "titulo": "IoT and connected devices",
           "texto": "Sensors, equipment and machines connected to your systems: real-time monitoring, alerts and dashboards for your plant, fleet or warehouse, with the cloud and integrations that make it work."
-        },
-        "cloud": {
-          "titulo": "Cloud, security and support",
-          "texto": "Hosting, automated deployments, backups and monitoring. We look after security and provide support and maintenance after launch."
         }
       }
     },

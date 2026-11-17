@@ -100,29 +100,33 @@
       "bajada": "Tudo o que se costuma pedir a uma empresa de software, feito por uma mesma equipe em Lima.",
       "verServicio": "Ver o serviço",
       "items": {
-        "diseno": {
-          "titulo": "Design de produto e marca",
-          "texto": "Identidade, interfaces e design systems: logotipo, manual de marca, UX/UI de sites e apps, e peças para redes sociais e apresentações."
-        },
         "web": {
-          "titulo": "Sites, lojas online e apps",
-          "texto": "Sites institucionais, e-commerce e apps para iOS e Android com um mesmo código: rápidos, fáceis de administrar, com pagamentos online, SEO técnico e analytics desde o primeiro dia."
+          "titulo": "Sites e lojas online",
+          "texto": "Sites corporativos, landing pages e e-commerce rápidos e fáceis de administrar, com pagamentos online, SEO técnico e analytics desde o primeiro dia."
+        },
+        "apps": {
+          "titulo": "Apps e design de produto",
+          "texto": "Apps para iOS e Android com um único código, design UX/UI, protótipos e sistemas de design: do primeiro esboço às lojas de apps."
         },
         "software": {
           "titulo": "Software sob medida e integrações",
-          "texto": "Sistemas internos, painéis, ERP e CRM sob medida para a sua operação. Conectamos o que você já usa por APIs e faturamento eletrônico SUNAT, e modernizamos sistemas antigos sem parar o negócio."
+          "texto": "Sistemas internos, painéis, ERP e CRM sob medida para a sua operação. Conectamos o que você já usa —APIs, faturamento eletrônico SUNAT e dispositivos IoT— e modernizamos sistemas antigos sem parar o negócio."
         },
         "ia": {
           "titulo": "Inteligência artificial e dados",
           "texto": "Agentes, assistentes com os dados da sua empresa (RAG) e automações por WhatsApp ou e-mail, além de painéis e relatórios para decidir com números."
         },
-        "iot": {
-          "titulo": "IoT e dispositivos conectados",
-          "texto": "Sensores, equipamentos e máquinas conectados aos seus sistemas: monitoramento em tempo real, alertas e painéis para a sua fábrica, frota ou armazém, com a nuvem e as integrações que fazem tudo funcionar."
-        },
         "cloud": {
           "titulo": "Cloud, segurança e suporte",
           "texto": "Hospedagem, deploys automáticos, backups e monitoramento. Cuidamos da segurança e damos suporte e manutenção depois do lançamento."
+        },
+        "marca": {
+          "titulo": "Marca e crescimento",
+          "texto": "Identidade visual e manual de marca por projeto, e marketing digital mensal: redes sociais, anúncios no Meta e no Google e SEO, medidos com os dados reais do seu site."
+        },
+        "iot": {
+          "titulo": "IoT e dispositivos conectados",
+          "texto": "Sensores, equipamentos e máquinas conectados aos seus sistemas: monitoramento em tempo real, alertas e painéis para a sua fábrica, frota ou armazém, com a nuvem e as integrações que fazem tudo funcionar."
         }
       }
     },

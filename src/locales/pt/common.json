@@ -24,29 +24,33 @@
         "secundario": "Como trabalhamos",
         "etiqueta": "O que fazemos",
         "items": {
-          "diseno": {
-            "titulo": "Design de produto e marca",
-            "resumen": "Identidade, interfaces e design systems."
-          },
           "web": {
-            "titulo": "Sites, lojas e apps",
-            "resumen": "Sites, e-commerce e apps para iOS e Android."
+            "titulo": "Sites e lojas online",
+            "resumen": "Sites corporativos, landings e e-commerce."
+          },
+          "apps": {
+            "titulo": "Apps e design de produto",
+            "resumen": "Apps iOS e Android, UX/UI e protótipos."
           },
           "software": {
             "titulo": "Software sob medida",
-            "resumen": "Sistemas internos, ERP, CRM e integrações."
+            "resumen": "Sistemas internos, ERP, CRM, integrações e IoT."
           },
           "ia": {
             "titulo": "IA e dados",
             "resumen": "Agentes, automações, painéis e relatórios."
           },
-          "iot": {
-            "titulo": "IoT e dispositivos",
-            "resumen": "Sensores, monitoramento e alertas em tempo real."
-          },
           "cloud": {
             "titulo": "Cloud, segurança e suporte",
             "resumen": "Hospedagem, deploys, backups e monitoramento."
+          },
+          "marca": {
+            "titulo": "Marca e crescimento",
+            "resumen": "Branding, redes sociais, anúncios e SEO."
+          },
+          "iot": {
+            "titulo": "IoT e dispositivos",
+            "resumen": "Sensores, monitoramento e alertas em tempo real."
           }
         }
       },

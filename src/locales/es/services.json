@@ -1,209 +1,9 @@
 {
   "paginas": {
-    "diseno": {
-      "nombre": "Diseño de producto y marca",
-      "titulo": "Diseñamos marcas y productos digitales.",
-      "bajada": "Identidad visual, diseño de webs y apps, y sistemas de diseño que tu equipo puede seguir usando. Del logotipo al último botón, con el mismo criterio.",
-      "hacemos": [
-        {
-          "titulo": "Identidad visual",
-          "texto": "Logotipo, símbolo, paleta y tipografía, pensados para funcionar igual en una pantalla, un uniforme o un camión.",
-          "ejemplo": {
-            "texto": "En Aurore: logotipo, monograma, tipografía y paleta, desde cero.",
-            "slug": "aurore"
-          }
-        },
-        {
-          "titulo": "Manual de marca",
-          "texto": "Las reglas de uso por escrito: proporciones, colores, versiones y ejemplos, para que la marca no se deforme con el tiempo.",
-          "ejemplo": {
-            "texto": "En Alyer: un manual de 35 láminas.",
-            "slug": "alyer"
-          }
-        },
-        {
-          "titulo": "Diseño de webs y apps",
-          "texto": "Estructura, flujos y pantallas pensados para que el usuario encuentre lo que busca y termine lo que vino a hacer.",
-          "ejemplo": {
-            "texto": "En Rematch: la web pública y el panel de los clubes.",
-            "slug": "rematch"
-          }
-        },
-        {
-          "titulo": "Sistemas de diseño",
-          "texto": "Componentes, estilos y reglas en Figma y en código, para que cada pantalla nueva salga coherente y más rápido.",
-          "ejemplo": {
-            "texto": "En Vendiq: la tipografía, la paleta y los componentes de su web nueva.",
-            "slug": "vendiq"
-          }
-        },
-        {
-          "titulo": "Prototipos y pruebas",
-          "texto": "Prototipos navegables para probar la idea con usuarios reales antes de programar una sola línea."
-        },
-        {
-          "titulo": "Piezas y aplicaciones",
-          "texto": "Presentaciones, piezas para redes, papelería, brochures y señalética con la misma identidad.",
-          "ejemplo": {
-            "texto": "En Alyer: chalecos, brochures y la flota con la misma marca.",
-            "slug": "alyer"
-          }
-        }
-      ],
-      "pasos": [
-        {
-          "titulo": "Descubrir",
-          "texto": "Entendemos tu negocio, tu público y tu competencia, y definimos qué tiene que comunicar la marca.",
-          "entrega": "el brief creativo"
-        },
-        {
-          "titulo": "Proponer",
-          "texto": "Presentamos direcciones visuales distintas y elegimos una contigo, con argumentos y no solo con gustos.",
-          "entrega": "direcciones visuales para elegir"
-        },
-        {
-          "titulo": "Diseñar",
-          "texto": "Desarrollamos la identidad o las pantallas completas, con las rondas de revisión acordadas desde el inicio.",
-          "entrega": "la identidad completa, revisada contigo"
-        },
-        {
-          "titulo": "Entregar",
-          "texto": "Te damos los archivos fuente y el manual o el sistema de diseño, y acompañamos la implementación.",
-          "entrega": "los archivos editables y el manual"
-        }
-      ],
-      "casos": [
-        {
-          "categoria": "Marca y sitio web",
-          "titulo": "La marca de una empresa de formación técnica y el sitio donde vive",
-          "metricas": [
-            {
-              "valor": "9",
-              "texto": "páginas, con catálogo de cursos y verificación de certificados"
-            }
-          ],
-          "incluyo": [
-            "Identidad de marca",
-            "Sistema tipográfico",
-            "Arquitectura de marca",
-            "Aplicaciones de marca"
-          ]
-        },
-        {
-          "categoria": "Marca y tienda",
-          "titulo": "La marca de una perfumería, creada desde cero, y su tienda online",
-          "metricas": [
-            {
-              "valor": "278",
-              "texto": "fragancias por casa, por nota y por ocasión"
-            }
-          ],
-          "incluyo": [
-            "Identidad de marca",
-            "Sistema tipográfico",
-            "Aplicaciones de marca",
-            "Diseño UX/UI"
-          ]
-        }
-      ],
-      "puente": {
-        "titulo": "Tu marca, en una web que vende.",
-        "texto": "Cuando la identidad está lista, la llevamos a tu web, tu tienda o tu app con el mismo equipo."
-      },
-      "faqs": [
-        {
-          "q": "¿Cuánto demora un proyecto de branding?",
-          "a": "Depende del alcance. Una identidad visual completa (logo y manual de marca) toma entre 2 y 4 semanas. Con materiales adicionales puede extenderse a 6 u 8 semanas."
-        },
-        {
-          "q": "¿Qué necesito para empezar?",
-          "a": "Sólo una llamada de descubrimiento. Nos cuentas sobre tu empresa, tu audiencia y tus objetivos, y preparamos el brief creativo. No necesitas traer nada preparado."
-        },
-        {
-          "q": "¿Entregan archivos editables?",
-          "a": "Sí, siempre. Entregamos todo en formatos editables: AI, EPS y SVG para el logo; Figma para el diseño de producto; PDF e InDesign para materiales impresos."
-        },
-        {
-          "q": "¿Hacen rediseños de una marca existente?",
-          "a": "Sí. Analizamos tu marca actual e identificamos qué mantener, qué evolucionar y qué transformar por completo."
-        },
-        {
-          "q": "¿Cuántas revisiones están incluidas?",
-          "a": "Hasta 3 rondas en cada etapa del proyecto. Si necesitas ajustes fuera de ese alcance, los cotizamos aparte de forma transparente."
-        }
-      ],
-      "detalle": {
-        "titulo": "Alyer: una marca que se lee a treinta metros, en movimiento.",
-        "reto": "Una marca de transporte pesado se lee a treinta metros, de perfil y en movimiento. Y tenía que firmar dos negocios —la flota y el taller que fabrica las unidades— sin partirse en dos logotipos.",
-        "hicimos": "Un símbolo construido sobre la «A» de Alyer, que se lee como movimiento y como pieza mecánica, en un sistema corto: negro, rojo, cuatro grises y dos tipografías. Las dos líneas comparten símbolo y color, solo cambia el descriptor, y un manual de 35 láminas lo fija todo.",
-        "incluyo": [
-          "Identidad de marca",
-          "Manual de marca",
-          "Sistema tipográfico",
-          "Aplicaciones de marca",
-          "Merchandising",
-          "Diseño editorial"
-        ]
-      },
-      "stack": {
-        "capas": [
-          {
-            "nombre": "Herramientas",
-            "items": [
-              {
-                "slug": "figma",
-                "nombre": "Figma"
-              },
-              {
-                "nombre": "Adobe Illustrator"
-              },
-              {
-                "nombre": "Adobe InDesign"
-              }
-            ]
-          },
-          {
-            "nombre": "Marca",
-            "items": [
-              {
-                "nombre": "Logotipo editable (AI y SVG)"
-              },
-              {
-                "nombre": "Manual de marca en PDF"
-              },
-              {
-                "nombre": "Archivos para imprenta"
-              }
-            ]
-          },
-          {
-            "nombre": "Producto",
-            "items": [
-              {
-                "nombre": "Archivos de Figma con componentes"
-              },
-              {
-                "nombre": "Prototipo navegable"
-              },
-              {
-                "nombre": "Tokens de color, tipo y espaciado"
-              }
-            ]
-          }
-        ],
-        "tambien": "Todo se entrega editable y a tu nombre."
-      },
-      "secciones": {
-        "hacemos": "Qué diseñamos",
-        "proceso": "Cómo diseñamos una marca",
-        "stack": "Lo que te entregamos",
-        "mas": "Más marcas y sitios"
-      }
-    },
     "web": {
-      "nombre": "Webs, tiendas online y apps",
-      "titulo": "Webs, tiendas y apps hechas para vender.",
-      "bajada": "Sitios corporativos, landing pages, e-commerce y apps para iOS y Android con un mismo código. Rápidos, con pagos en línea y medibles desde el primer día.",
+      "nombre": "Páginas web y tiendas online",
+      "titulo": "Webs y tiendas hechas para vender.",
+      "bajada": "Sitios corporativos, landing pages y tiendas online rápidos, con pagos en línea y medibles desde el primer día.",
       "hacemos": [
         {
           "titulo": "Webs corporativas",
@@ -230,8 +30,8 @@
           }
         },
         {
-          "titulo": "Apps para iOS y Android",
-          "texto": "Una sola base de código para las dos tiendas de apps, conectada a tu sistema y publicada por nosotros."
+          "titulo": "Hechas para el celular",
+          "texto": "Diseño que se lee y se compra con el pulgar: la mayoría de tus visitas llegan desde un teléfono."
         },
         {
           "titulo": "SEO técnico y velocidad",
@@ -450,10 +250,186 @@
         "mas": "Más tiendas"
       }
     },
+    "apps": {
+      "nombre": "Apps y diseño de producto",
+      "titulo": "Apps y productos digitales que la gente usa.",
+      "bajada": "Apps para iOS y Android, diseño UX/UI y sistemas de diseño: del prototipo a la tienda de apps, con el mismo equipo que construye tu sistema.",
+      "hacemos": [
+        {
+          "titulo": "Apps para iOS y Android",
+          "texto": "Una sola base de código para las dos tiendas de apps, conectada a tu sistema y publicada por nosotros."
+        },
+        {
+          "titulo": "Diseño UX/UI",
+          "texto": "Estructura, flujos y pantallas de webs y apps, pensados para que el usuario encuentre lo que busca y termine lo que vino a hacer."
+        },
+        {
+          "titulo": "Prototipos y pruebas",
+          "texto": "Prototipos navegables para probar la idea con usuarios reales antes de programar una sola línea."
+        },
+        {
+          "titulo": "Sistemas de diseño",
+          "texto": "Componentes, estilos y reglas en Figma y en código, para que cada pantalla nueva salga coherente y más rápido."
+        },
+        {
+          "titulo": "Funciones conectadas",
+          "texto": "Inicio de sesión, pagos, notificaciones, reservas y datos en tiempo real, conectados a tu sistema o al que construimos contigo."
+        },
+        {
+          "titulo": "Publicación y mejoras",
+          "texto": "Subimos la app a App Store y Google Play, medimos cómo se usa y la mejoramos por versiones."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Entender",
+          "texto": "Mapeamos quién usa la app, qué tiene que poder hacer y qué conviene lanzar primero.",
+          "entrega": "el mapa de pantallas y prioridades"
+        },
+        {
+          "titulo": "Prototipar",
+          "texto": "Diseñamos los flujos y las pantallas clave y los probamos en un prototipo navegable antes de programar.",
+          "entrega": "el prototipo navegable"
+        },
+        {
+          "titulo": "Construir",
+          "texto": "Desarrollamos por etapas, con versiones de prueba que instalas en tu celular para revisarlas.",
+          "entrega": "versiones de prueba en tu celular"
+        },
+        {
+          "titulo": "Publicar y mejorar",
+          "texto": "Publicamos en App Store y Google Play, medimos el uso y priorizamos lo siguiente contigo.",
+          "entrega": "la app publicada en las tiendas"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "Plataforma con web pública",
+          "titulo": "Reservas, agenda y cobros para negocios con cita, cada uno con su propia web",
+          "metricas": [],
+          "incluyo": [
+            "Diseño de producto",
+            "Web pública",
+            "Plataforma SaaS multi-tenant",
+            "Pagos online"
+          ]
+        },
+        {
+          "categoria": "Producto propio",
+          "titulo": "Cursos con marca propia y un tutor con IA entrenado con el contenido de cada academia",
+          "metricas": [],
+          "incluyo": [
+            "Diseño de producto",
+            "Plataforma SaaS marca blanca",
+            "Tutor con IA",
+            "Constructor de sitios"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "Tu app, conectada a tu operación.",
+        "texto": "La app y el sistema que la alimenta, hechos por el mismo equipo: reservas, pagos, inventario o facturación en un solo lugar."
+      },
+      "faqs": [
+        {
+          "q": "¿Hacen apps nativas o híbridas?",
+          "a": "Usamos una sola base de código (React Native) para iOS y Android: se siente como una app nativa y el mantenimiento cuesta la mitad. Si un proyecto necesita algo puramente nativo, te lo decimos antes de empezar."
+        },
+        {
+          "q": "¿Cuánto demora una app?",
+          "a": "Depende del alcance. Un primer producto funcional toma entre 6 y 10 semanas, y trabajamos por etapas: ves versiones de prueba desde las primeras semanas."
+        },
+        {
+          "q": "¿Publican la app en las tiendas?",
+          "a": "Sí. La publicamos en App Store y Google Play con la cuenta de desarrollador de tu empresa, y te ayudamos a crearla si aún no la tienes."
+        },
+        {
+          "q": "¿Puedo contratar solo el diseño?",
+          "a": "Sí. Te entregamos el prototipo navegable y el sistema de diseño en Figma, para construirlo con nosotros o con tu propio equipo."
+        },
+        {
+          "q": "¿Qué pasa después de publicar?",
+          "a": "Seguimos con un plan mensual: actualizaciones para nuevas versiones de iOS y Android, corrección de errores y nuevas funciones."
+        }
+      ],
+      "detalle": {
+        "titulo": "Rematch: todo el club, en el celular del jugador y en el panel del dueño.",
+        "reto": "Los centros deportivos gestionaban las reservas por WhatsApp, las clases en hojas de cálculo, las ligas en grupos de chat y los torneos en papel: cada actividad en una herramienta distinta y nada conectado.",
+        "hicimos": "Diseñamos el producto completo —flujos, pantallas, componentes e íconos— y lo construimos como una sola plataforma: el club opera canchas, academias, ligas y torneos desde un panel, y los deportistas reservan y pagan desde el celular.",
+        "incluyo": [
+          "Diseño de producto",
+          "Sistema de componentes",
+          "Sistema de íconos",
+          "Desarrollo web",
+          "Tiempo real",
+          "Pagos recurrentes"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Diseño",
+            "items": [
+              {
+                "slug": "figma",
+                "nombre": "Figma"
+              },
+              {
+                "nombre": "Prototipos navegables"
+              },
+              {
+                "nombre": "Sistema de diseño"
+              }
+            ]
+          },
+          {
+            "nombre": "Desarrollo",
+            "items": [
+              {
+                "slug": "react",
+                "nombre": "React Native"
+              },
+              {
+                "slug": "nextdotjs",
+                "nombre": "Next.js"
+              },
+              {
+                "slug": "typescript",
+                "nombre": "TypeScript"
+              }
+            ]
+          },
+          {
+            "nombre": "Publicación",
+            "items": [
+              {
+                "slug": "apple",
+                "nombre": "App Store"
+              },
+              {
+                "slug": "googleplay",
+                "nombre": "Google Play"
+              },
+              {
+                "slug": "googleanalytics",
+                "nombre": "Google Analytics"
+              }
+            ]
+          }
+        ],
+        "tambien": "El código, las cuentas y los archivos de diseño quedan a tu nombre."
+      },
+      "secciones": {
+        "hacemos": "Qué hacemos",
+        "proceso": "Cómo hacemos una app",
+        "stack": "Con qué la construimos",
+        "mas": "Más productos"
+      }
+    },
     "software": {
       "nombre": "Software a medida e integraciones",
       "titulo": "Sistemas a medida para dejar el Excel.",
-      "bajada": "Sistemas internos, paneles, ERP y CRM hechos alrededor de cómo trabajas. Conectamos lo que ya usas, y el código es tuyo desde el primer día.",
+      "bajada": "Sistemas internos, paneles, ERP y CRM hechos alrededor de cómo trabajas. Conectamos lo que ya usas, incluidos los equipos IoT, y el código es tuyo desde el primer día.",
       "hacemos": [
         {
           "titulo": "Sistemas internos y paneles",
@@ -469,7 +445,7 @@
         },
         {
           "titulo": "Integraciones y APIs",
-          "texto": "Tu sistema conectado a pagos, ERPs, bancos y plataformas de terceros, para que los datos no se copien a mano.",
+          "texto": "Tu sistema conectado a pagos, ERPs, bancos, plataformas de terceros y equipos IoT, para que los datos no se copien a mano.",
           "ejemplo": {
             "texto": "En Feniz: MetaTrader 5 conectado a la plataforma.",
             "slug": "feniz"
@@ -932,6 +908,387 @@
         "mas": "Más IA en producción"
       }
     },
+    "cloud": {
+      "nombre": "Cloud, seguridad y soporte",
+      "titulo": "Tu web en línea, segura y atendida.",
+      "bajada": "Alojamiento, despliegues automáticos, respaldos y monitoreo. Cuidamos la seguridad y damos soporte después del lanzamiento.",
+      "hacemos": [
+        {
+          "titulo": "Alojamiento y nube",
+          "texto": "Servidores dimensionados según tu tráfico, con cada sistema aislado en su contenedor y espacio para crecer."
+        },
+        {
+          "titulo": "Despliegues automáticos",
+          "texto": "Cada cambio se revisa y se publica solo, sin cortar el servicio y con vuelta atrás en un paso.",
+          "ejemplo": {
+            "texto": "Así publicamos Vendiq, Rematch, LumioLearn y Bookit."
+          }
+        },
+        {
+          "titulo": "Respaldos y recuperación",
+          "texto": "Copias automáticas de la base de datos fuera del servidor, y restauraciones de prueba para saber que funcionan."
+        },
+        {
+          "titulo": "Monitoreo y alertas",
+          "texto": "Disponibilidad, certificados y procesos vigilados, con aviso antes de que lo note un cliente."
+        },
+        {
+          "titulo": "Seguridad",
+          "texto": "HTTPS, cabeceras, firewall de aplicaciones y filtrado de bots, accesos con llave y el correo con SPF, DKIM y DMARC."
+        },
+        {
+          "titulo": "Soporte y mantenimiento",
+          "texto": "Corrección de errores, actualizaciones y mejoras en ciclos regulares, con un equipo que conoce tu sistema."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Revisar",
+          "texto": "Auditamos lo que tienes: servidores, dominio, correo, seguridad y respaldos.",
+          "entrega": "un informe de lo que hay y sus riesgos"
+        },
+        {
+          "titulo": "Migrar",
+          "texto": "Movemos tu web o tu sistema sin cortar el servicio y verificamos que todo siga igual.",
+          "entrega": "tu sistema en el servidor nuevo, sin cortes"
+        },
+        {
+          "titulo": "Automatizar",
+          "texto": "Configuramos los despliegues, los respaldos, el monitoreo y las alertas.",
+          "entrega": "despliegues, respaldos y alertas funcionando"
+        },
+        {
+          "titulo": "Acompañar",
+          "texto": "Soporte y mantenimiento continuos, con reportes de lo que se hizo.",
+          "entrega": "un reporte mensual de lo que se hizo"
+        }
+      ],
+      "casos": [],
+      "puente": {
+        "titulo": "¿Tu sistema necesita crecer?",
+        "texto": "Si hace falta una función nueva o una integración, el mismo equipo la construye."
+      },
+      "faqs": [
+        {
+          "q": "¿Pueden migrar mi web sin que se caiga?",
+          "a": "Sí. Copiamos todo, verificamos que funcione igual en el servidor nuevo y recién ahí cambiamos el dominio, cuidando también el correo."
+        },
+        {
+          "q": "¿Qué pasa si se cae mi web?",
+          "a": "El monitoreo nos avisa al momento y actuamos según lo acordado en tu plan de soporte."
+        },
+        {
+          "q": "¿Cada cuánto se hacen respaldos?",
+          "a": "Lo definimos según cuánto cambia tu información; lo habitual es a diario, y probamos que se puedan restaurar."
+        },
+        {
+          "q": "¿Dan soporte a sistemas que no hicieron ustedes?",
+          "a": "Sí. Primero revisamos el código y la infraestructura, y te decimos con claridad qué se puede mantener y qué conviene cambiar."
+        },
+        {
+          "q": "¿Cómo se cobra el soporte?",
+          "a": "Con planes mensuales de mantenimiento y soporte, según el tamaño del sistema y el tiempo de respuesta que necesites."
+        }
+      ],
+      "detalle": {
+        "titulo": "El camino de cada cambio, del código a producción",
+        "texto": "El camino que recorre cada cambio en Vendiq, Rematch, LumioLearn y Bookit es el mismo que armamos para tu sistema.",
+        "flujo": [
+          {
+            "titulo": "Código",
+            "items": ["Repositorio en GitHub", "Cada cambio, revisado"]
+          },
+          {
+            "titulo": "Despliegue",
+            "items": [
+              "Publicación automática con cada cambio",
+              "Contenedores Docker detrás de Traefik"
+            ]
+          },
+          {
+            "titulo": "En línea",
+            "items": [
+              "DNS, CDN y WAF en Cloudflare",
+              "Certificado SSL automático"
+            ]
+          },
+          {
+            "titulo": "Operación",
+            "items": [
+              "Disponibilidad y certificados vigilados",
+              "Respaldos fuera del servidor, con restauración probada"
+            ]
+          }
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Servidores",
+            "items": [
+              {
+                "slug": "hetzner",
+                "nombre": "Hetzner"
+              },
+              {
+                "slug": "linux",
+                "nombre": "Linux"
+              },
+              {
+                "slug": "docker",
+                "nombre": "Docker"
+              },
+              {
+                "slug": "traefikproxy",
+                "nombre": "Traefik"
+              }
+            ]
+          },
+          {
+            "nombre": "Red y seguridad",
+            "items": [
+              {
+                "slug": "cloudflare",
+                "nombre": "Cloudflare"
+              },
+              {
+                "slug": "letsencrypt",
+                "nombre": "Let's Encrypt"
+              },
+              {
+                "nombre": "WAF y filtrado de bots"
+              }
+            ]
+          },
+          {
+            "nombre": "Datos",
+            "items": [
+              {
+                "slug": "postgresql",
+                "nombre": "PostgreSQL"
+              },
+              {
+                "slug": "redis",
+                "nombre": "Redis"
+              },
+              {
+                "nombre": "Respaldos fuera del servidor"
+              }
+            ]
+          },
+          {
+            "nombre": "Entrega",
+            "items": [
+              {
+                "slug": "github",
+                "nombre": "GitHub"
+              },
+              {
+                "nombre": "Despliegue con cada cambio"
+              }
+            ]
+          },
+          {
+            "nombre": "Correo",
+            "items": [
+              {
+                "nombre": "SPF, DKIM y DMARC"
+              }
+            ]
+          }
+        ],
+        "tambien": "Si ya tienes servidores o una nube, trabajamos sobre lo que tienes."
+      },
+      "secciones": {
+        "hacemos": "Qué cuidamos",
+        "proceso": "Cómo tomamos tu sistema",
+        "stack": "Infraestructura",
+        "mas": ""
+      }
+    },
+    "marca": {
+      "nombre": "Marca y crecimiento",
+      "titulo": "Una marca clara y clientes que llegan.",
+      "bajada": "Identidad visual por proyecto y marketing digital mensual: redes, publicidad en Meta y Google y SEO, medidos con los datos reales de tu web y tu sistema.",
+      "hacemos": [
+        {
+          "titulo": "Identidad visual",
+          "texto": "Logotipo, símbolo, paleta y tipografía, pensados para funcionar igual en una pantalla, un uniforme o un camión."
+        },
+        {
+          "titulo": "Manual y piezas de marca",
+          "texto": "Las reglas de uso y sus aplicaciones: papelería, uniformes, brochures, presentaciones y señalética con la misma identidad."
+        },
+        {
+          "titulo": "Redes y contenido",
+          "texto": "Un calendario mensual con fotos, Reels y piezas con tu identidad para Instagram, Facebook y TikTok."
+        },
+        {
+          "titulo": "Publicidad en Meta y Google",
+          "texto": "Campañas con un objetivo claro, sus piezas y su segmentación. La inversión en anuncios va aparte y la pagas directo a cada plataforma."
+        },
+        {
+          "titulo": "SEO y medición",
+          "texto": "Contenido que responde lo que busca tu cliente y un informe mensual con lo que funcionó, medido en tu web y en tu sistema."
+        },
+        {
+          "titulo": "Paquete Lanzamiento",
+          "texto": "Marca, web y el primer mes de marketing a precio cerrado, para salir al mercado con todo listo."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Entender",
+          "texto": "Conocemos tu negocio, tu público y tu competencia, y acordamos qué tiene que lograr la marca y cómo lo vamos a medir.",
+          "entrega": "el brief y las metas del primer trimestre"
+        },
+        {
+          "titulo": "Crear la marca",
+          "texto": "Presentamos direcciones visuales, elegimos una contigo y desarrollamos la identidad y su manual.",
+          "entrega": "la identidad y el manual, editables"
+        },
+        {
+          "titulo": "Lanzar",
+          "texto": "Llevamos la marca a tu web y a tus redes y activamos las primeras campañas.",
+          "entrega": "las campañas activas"
+        },
+        {
+          "titulo": "Medir y mejorar",
+          "texto": "Cada mes revisamos lo que funcionó, ajustamos las piezas y, si conviene, cambiamos los módulos del plan.",
+          "entrega": "el informe del mes"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "Marca y sitio web",
+          "titulo": "La marca de una empresa de formación técnica y el sitio donde vive",
+          "metricas": [
+            {
+              "valor": "9",
+              "texto": "páginas, con catálogo de cursos y verificación de certificados"
+            }
+          ],
+          "incluyo": [
+            "Identidad de marca",
+            "Sistema tipográfico",
+            "Arquitectura de marca",
+            "Aplicaciones de marca"
+          ]
+        },
+        {
+          "categoria": "Marca y tienda",
+          "titulo": "La marca de una perfumería, creada desde cero, y su tienda online",
+          "metricas": [
+            {
+              "valor": "278",
+              "texto": "fragancias por casa, por nota y por ocasión"
+            }
+          ],
+          "incluyo": [
+            "Identidad de marca",
+            "Sistema tipográfico",
+            "Aplicaciones de marca",
+            "Diseño UX/UI"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "Tu marca, en una web que vende.",
+        "texto": "Cuando la identidad está lista, la llevamos a tu web, tu tienda o tu app con el mismo equipo."
+      },
+      "faqs": [
+        {
+          "q": "¿Cuánto demora un proyecto de branding?",
+          "a": "Depende del alcance. Una identidad visual completa (logo y manual de marca) toma entre 2 y 4 semanas. Con materiales adicionales puede extenderse a 6 u 8 semanas."
+        },
+        {
+          "q": "¿Puedo contratar solo el marketing?",
+          "a": "Sí. Si ya tienes marca, partimos de ella. Antes de lanzar campañas revisamos que tu web mida bien las visitas y los contactos, para que cada sol invertido se pueda seguir."
+        },
+        {
+          "q": "¿Cómo se cobra el marketing?",
+          "a": "Con un plan mensual por niveles. En cada nivel eliges los módulos —redes, publicidad o SEO—, con un mínimo de tres meses y la opción de cambiarlos de un mes a otro."
+        },
+        {
+          "q": "¿La inversión en publicidad está incluida?",
+          "a": "No. Los anuncios se pagan directo a Meta o a Google con la tarjeta de tu empresa y las cuentas quedan a tu nombre. Nosotros cobramos la gestión y las piezas, así ves exactamente cuánto se invierte."
+        },
+        {
+          "q": "¿Entregan archivos editables?",
+          "a": "Sí, siempre. Entregamos todo en formatos editables: AI, EPS y SVG para el logo; Figma para el diseño de producto; PDF e InDesign para materiales impresos."
+        }
+      ],
+      "detalle": {
+        "titulo": "Alyer: una marca que se lee a treinta metros, en movimiento.",
+        "reto": "Una marca de transporte pesado se lee a treinta metros, de perfil y en movimiento. Y tenía que firmar dos negocios —la flota y el taller que fabrica las unidades— sin partirse en dos logotipos.",
+        "hicimos": "Un símbolo construido sobre la «A» de Alyer, que se lee como movimiento y como pieza mecánica, en un sistema corto: negro, rojo, cuatro grises y dos tipografías. Las dos líneas comparten símbolo y color, solo cambia el descriptor, y un manual de 35 láminas lo fija todo.",
+        "incluyo": [
+          "Identidad de marca",
+          "Manual de marca",
+          "Sistema tipográfico",
+          "Aplicaciones de marca",
+          "Merchandising",
+          "Diseño editorial"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Diseño",
+            "items": [
+              {
+                "slug": "figma",
+                "nombre": "Figma"
+              },
+              {
+                "nombre": "Adobe Illustrator"
+              },
+              {
+                "nombre": "Adobe InDesign"
+              }
+            ]
+          },
+          {
+            "nombre": "Publicidad y redes",
+            "items": [
+              {
+                "nombre": "Meta Ads"
+              },
+              {
+                "nombre": "Google Ads"
+              },
+              {
+                "nombre": "TikTok Ads"
+              }
+            ]
+          },
+          {
+            "nombre": "Medición",
+            "items": [
+              {
+                "slug": "googleanalytics",
+                "nombre": "Google Analytics"
+              },
+              {
+                "slug": "googlesearchconsole",
+                "nombre": "Search Console"
+              },
+              {
+                "slug": "googletagmanager",
+                "nombre": "Google Tag Manager"
+              }
+            ]
+          }
+        ],
+        "tambien": "Todo se entrega editable y a tu nombre, incluidas las cuentas de publicidad."
+      },
+      "secciones": {
+        "hacemos": "Qué hacemos",
+        "proceso": "Cómo trabajamos",
+        "stack": "Herramientas y entregables",
+        "mas": "Más marcas y sitios"
+      }
+    },
     "iot": {
       "nombre": "IoT y dispositivos conectados",
       "titulo": "Tus equipos, conectados a tu sistema.",
@@ -1137,204 +1494,6 @@
         "hacemos": "Qué conectamos",
         "proceso": "Cómo empieza un proyecto IoT",
         "stack": "Protocolos y plataforma",
-        "mas": ""
-      }
-    },
-    "cloud": {
-      "nombre": "Cloud, seguridad y soporte",
-      "titulo": "Tu web en línea, segura y atendida.",
-      "bajada": "Alojamiento, despliegues automáticos, respaldos y monitoreo. Cuidamos la seguridad y damos soporte después del lanzamiento.",
-      "hacemos": [
-        {
-          "titulo": "Alojamiento y nube",
-          "texto": "Servidores dimensionados según tu tráfico, con cada sistema aislado en su contenedor y espacio para crecer."
-        },
-        {
-          "titulo": "Despliegues automáticos",
-          "texto": "Cada cambio se revisa y se publica solo, sin cortar el servicio y con vuelta atrás en un paso.",
-          "ejemplo": {
-            "texto": "Así publicamos Vendiq, Rematch, LumioLearn y Bookit."
-          }
-        },
-        {
-          "titulo": "Respaldos y recuperación",
-          "texto": "Copias automáticas de la base de datos fuera del servidor, y restauraciones de prueba para saber que funcionan."
-        },
-        {
-          "titulo": "Monitoreo y alertas",
-          "texto": "Disponibilidad, certificados y procesos vigilados, con aviso antes de que lo note un cliente."
-        },
-        {
-          "titulo": "Seguridad",
-          "texto": "HTTPS, cabeceras, firewall de aplicaciones y filtrado de bots, accesos con llave y el correo con SPF, DKIM y DMARC."
-        },
-        {
-          "titulo": "Soporte y mantenimiento",
-          "texto": "Corrección de errores, actualizaciones y mejoras en ciclos regulares, con un equipo que conoce tu sistema."
-        }
-      ],
-      "pasos": [
-        {
-          "titulo": "Revisar",
-          "texto": "Auditamos lo que tienes: servidores, dominio, correo, seguridad y respaldos.",
-          "entrega": "un informe de lo que hay y sus riesgos"
-        },
-        {
-          "titulo": "Migrar",
-          "texto": "Movemos tu web o tu sistema sin cortar el servicio y verificamos que todo siga igual.",
-          "entrega": "tu sistema en el servidor nuevo, sin cortes"
-        },
-        {
-          "titulo": "Automatizar",
-          "texto": "Configuramos los despliegues, los respaldos, el monitoreo y las alertas.",
-          "entrega": "despliegues, respaldos y alertas funcionando"
-        },
-        {
-          "titulo": "Acompañar",
-          "texto": "Soporte y mantenimiento continuos, con reportes de lo que se hizo.",
-          "entrega": "un reporte mensual de lo que se hizo"
-        }
-      ],
-      "casos": [],
-      "puente": {
-        "titulo": "¿Tu sistema necesita crecer?",
-        "texto": "Si hace falta una función nueva o una integración, el mismo equipo la construye."
-      },
-      "faqs": [
-        {
-          "q": "¿Pueden migrar mi web sin que se caiga?",
-          "a": "Sí. Copiamos todo, verificamos que funcione igual en el servidor nuevo y recién ahí cambiamos el dominio, cuidando también el correo."
-        },
-        {
-          "q": "¿Qué pasa si se cae mi web?",
-          "a": "El monitoreo nos avisa al momento y actuamos según lo acordado en tu plan de soporte."
-        },
-        {
-          "q": "¿Cada cuánto se hacen respaldos?",
-          "a": "Lo definimos según cuánto cambia tu información; lo habitual es a diario, y probamos que se puedan restaurar."
-        },
-        {
-          "q": "¿Dan soporte a sistemas que no hicieron ustedes?",
-          "a": "Sí. Primero revisamos el código y la infraestructura, y te decimos con claridad qué se puede mantener y qué conviene cambiar."
-        },
-        {
-          "q": "¿Cómo se cobra el soporte?",
-          "a": "Con planes mensuales de mantenimiento y soporte, según el tamaño del sistema y el tiempo de respuesta que necesites."
-        }
-      ],
-      "detalle": {
-        "titulo": "El camino de cada cambio, del código a producción",
-        "texto": "El camino que recorre cada cambio en Vendiq, Rematch, LumioLearn y Bookit es el mismo que armamos para tu sistema.",
-        "flujo": [
-          {
-            "titulo": "Código",
-            "items": ["Repositorio en GitHub", "Cada cambio, revisado"]
-          },
-          {
-            "titulo": "Despliegue",
-            "items": [
-              "Publicación automática con cada cambio",
-              "Contenedores Docker detrás de Traefik"
-            ]
-          },
-          {
-            "titulo": "En línea",
-            "items": [
-              "DNS, CDN y WAF en Cloudflare",
-              "Certificado SSL automático"
-            ]
-          },
-          {
-            "titulo": "Operación",
-            "items": [
-              "Disponibilidad y certificados vigilados",
-              "Respaldos fuera del servidor, con restauración probada"
-            ]
-          }
-        ]
-      },
-      "stack": {
-        "capas": [
-          {
-            "nombre": "Servidores",
-            "items": [
-              {
-                "slug": "hetzner",
-                "nombre": "Hetzner"
-              },
-              {
-                "slug": "linux",
-                "nombre": "Linux"
-              },
-              {
-                "slug": "docker",
-                "nombre": "Docker"
-              },
-              {
-                "slug": "traefikproxy",
-                "nombre": "Traefik"
-              }
-            ]
-          },
-          {
-            "nombre": "Red y seguridad",
-            "items": [
-              {
-                "slug": "cloudflare",
-                "nombre": "Cloudflare"
-              },
-              {
-                "slug": "letsencrypt",
-                "nombre": "Let's Encrypt"
-              },
-              {
-                "nombre": "WAF y filtrado de bots"
-              }
-            ]
-          },
-          {
-            "nombre": "Datos",
-            "items": [
-              {
-                "slug": "postgresql",
-                "nombre": "PostgreSQL"
-              },
-              {
-                "slug": "redis",
-                "nombre": "Redis"
-              },
-              {
-                "nombre": "Respaldos fuera del servidor"
-              }
-            ]
-          },
-          {
-            "nombre": "Entrega",
-            "items": [
-              {
-                "slug": "github",
-                "nombre": "GitHub"
-              },
-              {
-                "nombre": "Despliegue con cada cambio"
-              }
-            ]
-          },
-          {
-            "nombre": "Correo",
-            "items": [
-              {
-                "nombre": "SPF, DKIM y DMARC"
-              }
-            ]
-          }
-        ],
-        "tambien": "Si ya tienes servidores o una nube, trabajamos sobre lo que tienes."
-      },
-      "secciones": {
-        "hacemos": "Qué cuidamos",
-        "proceso": "Cómo tomamos tu sistema",
-        "stack": "Infraestructura",
         "mas": ""
       }
     }

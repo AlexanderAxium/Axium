@@ -253,17 +253,56 @@ const ESCENAS: Record<string, Pieza[]> = {
       0.9
     ),
     P(rectV(40, 60, 28, 36, 62), 0.5, 0.9),
-    // el celular, junto al navegador: las apps van con las webs desde que entró IoT (2026-10-21)
-    L(aristas([96, 25, 10], [10, 3, 30]), 0.75, 1.15),
+    // sin el celular desde 2026-11-17: las apps tienen su propio servicio
+    S(solidoCaja([40, 28, 36], [20, 14, 26])),
+  ],
+  // Apps y diseño de producto: el celular con su interfaz, una capa de diseño detrás y un componente que sale de
+  // la pantalla (2026-11-17)
+  apps: [
+    P(rectH(18, 88, 30, 76, 0), 0, 0.5),
+    L(aristas([30, 44, 4], [40, 5, 64]), 0, 0.6),
     L(
       [
-        rectV(97.3, 104.7, 28, 13, 36.5),
-        seg([99.5, 28, 38.4], [102.5, 28, 38.4]),
+        rectV(33.5, 66.5, 49, 9, 64.5),
+        seg([45, 49, 66], [55, 49, 66]),
+        rectV(36, 64, 49, 46, 59),
+        rectV(36, 48.5, 49, 31, 42),
+        rectV(51.5, 64, 49, 31, 42),
+        seg([36, 49, 26], [64, 49, 26]),
+        seg([36, 49, 21], [56, 49, 21]),
+        seg([36, 49, 13], [64, 49, 13]),
       ].join(" "),
-      1.0,
-      1.35
+      0.35,
+      0.9
     ),
-    S(solidoCaja([40, 28, 36], [20, 14, 26])),
+    S(solidoCaja([56, 52, 29], [28, 3, 15])),
+  ],
+  // Marca y crecimiento: barras que suben, la más alta sólida, y la línea de la tendencia (2026-11-17)
+  marca: [
+    P(rectH(6, 94, 26, 70, 0), 0, 0.5),
+    ...(
+      [
+        [10, 16],
+        [30, 28],
+        [50, 40],
+      ] as [number, number][]
+    ).map(([x, h], i) =>
+      L(aristas([x, 40, 0], [14, 14, h]), 0.1 + i * 0.12, 0.55 + i * 0.12)
+    ),
+    S(solidoCaja([70, 40, 0], [14, 14, 54])),
+    L(
+      poli(
+        [
+          [17, 47, 22],
+          [37, 47, 34],
+          [57, 47, 46],
+          [77, 47, 60],
+        ],
+        false
+      ),
+      1.05,
+      1.45
+    ),
   ],
   // Software a medida: módulos en su base y uno que encaja en su sitio
   software: [
@@ -371,7 +410,7 @@ const ESCENAS: Record<string, Pieza[]> = {
     ),
   ],
 };
-const DESFASE = 380; // ms entre el arranque de un gráfico y el siguiente
+const DESFASE = 270; // ms entre el arranque de un gráfico y el siguiente (380 hasta 2026-11-17: «acelera un poco»)
 
 // La misma cámara para los seis, pero cada escena centrada en su caja y llenándola igual: el
 // encuadre sale de sus propios trazos. `f` compensa el grosor para que la línea mida lo mismo
@@ -414,7 +453,7 @@ const ENCUADRE_ICONO = Object.fromEntries(
 // armazón era UN trazo que recorría sus aristas una tras otra (avanzaba a saltos) y los gráficos
 // esperaban en fila. Ahora cada arista se dibuja por separado y todas a la vez, como una ola, con
 // entrada y salida suaves; el sólido llega después, creciendo apenas mientras sube.
-const ESCALA = 1.5; // los tiempos de ESCENAS, en segundos, se estiran a esto
+const ESCALA = 1.1; // los tiempos de ESCENAS, en segundos, se estiran a esto (1,5 hasta 2026-11-17)
 const SUAVE = "cubic-bezier(.65,0,.35,1)";
 const LLEGA = "cubic-bezier(.22,1,.36,1)";
 const subtrazos = (d: string) => d.split(/(?=M)/).filter((x) => x.trim());
@@ -444,7 +483,7 @@ function animar(svg: SVGSVGElement, piezas: Pieza[], f: number, v = 1) {
     if (pz.k === "linea") {
       // la ola: cada subtrazo dura casi toda la ventana y arranca un poco después que el anterior
       const [j, total] = [Number(n.dataset.s), Number(n.dataset.n)];
-      const dur = Math.max(ms(500), (t1 - t0) * 0.8);
+      const dur = Math.max(ms(380), (t1 - t0) * 0.8);
       const hueco = Math.max(0, t1 - t0 - dur);
       const delay = t0 + (total > 1 ? (j / (total - 1)) * hueco : 0);
       n.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], {
@@ -455,7 +494,7 @@ function animar(svg: SVGSVGElement, piezas: Pieza[], f: number, v = 1) {
       });
     } else if (pz.k === "puntos") {
       n.animate([{ opacity: 0 }, { opacity: 1 }], {
-        duration: Math.max(ms(500), t1 - t0),
+        duration: Math.max(ms(380), t1 - t0),
         delay: t0,
         easing: "ease-out",
         fill: "both",
@@ -469,7 +508,7 @@ function animar(svg: SVGSVGElement, piezas: Pieza[], f: number, v = 1) {
           },
           { opacity: 1, transform: "translateY(0) scale(1)" },
         ],
-        { duration: ms(1000), delay: t0, easing: LLEGA, fill: "both" }
+        { duration: ms(780), delay: t0, easing: LLEGA, fill: "both" }
       );
     }
   }
@@ -629,9 +668,12 @@ export function Grafico({
   );
 }
 
-export const SERVICIOS = (
-  ["diseno", "web", "software", "ia", "iot", "cloud"] as const
-).map((id) => ({ id, href: rutaServicio(id) }));
+export const SERVICIOS =
+  // 2026-11-17: la opción A de Alexander; «diseno» e «iot» siguen como escenas (la página de IoT sigue publicada)
+  (["web", "apps", "software", "ia", "cloud", "marca"] as const).map((id) => ({
+    id,
+    href: rutaServicio(id),
+  }));
 
 /**
  * Cada gráfico se dibuja una sola vez, al entrar en pantalla; si entran varios juntos, arrancan

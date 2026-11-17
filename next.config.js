@@ -31,6 +31,13 @@ const config = {
         destination: "/portafolio",
         permanent: true,
       },
+      // 2026-11-17: «Diseño de producto y marca» se repartió entre Apps y diseño de producto (UX/UI) y Marca y
+      // crecimiento (branding + marketing); la URL vieja, con su posicionamiento de marca, va a la nueva de marca
+      {
+        source: "/servicios/design-branding",
+        destination: "/servicios/brand-and-growth",
+        permanent: true,
+      },
     ];
   },
   images: {

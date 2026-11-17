@@ -1,209 +1,9 @@
 {
   "paginas": {
-    "diseno": {
-      "nombre": "Product design and branding",
-      "titulo": "We design brands and digital products.",
-      "bajada": "Visual identity, website and app design, and design systems your team can keep using. From the logo to the last button, with the same judgment.",
-      "hacemos": [
-        {
-          "titulo": "Visual identity",
-          "texto": "Logo, symbol, palette and typography, built to work the same on a screen, a uniform or a truck.",
-          "ejemplo": {
-            "texto": "At Aurore: logo, monogram, typography and palette, from scratch.",
-            "slug": "aurore"
-          }
-        },
-        {
-          "titulo": "Brand guidelines",
-          "texto": "The rules of use in writing: proportions, colors, versions and examples, so the brand doesn't drift over time.",
-          "ejemplo": {
-            "texto": "At Alyer: a 35-page guideline.",
-            "slug": "alyer"
-          }
-        },
-        {
-          "titulo": "Website and app design",
-          "texto": "Structure, flows and screens designed so users find what they need and finish what they came to do.",
-          "ejemplo": {
-            "texto": "At Rematch: the public website and the clubs' dashboard.",
-            "slug": "rematch"
-          }
-        },
-        {
-          "titulo": "Design systems",
-          "texto": "Components, styles and rules in Figma and in code, so every new screen comes out consistent and faster.",
-          "ejemplo": {
-            "texto": "At Vendiq: the typography, palette and components of its new website.",
-            "slug": "vendiq"
-          }
-        },
-        {
-          "titulo": "Prototypes and testing",
-          "texto": "Clickable prototypes to test the idea with real users before writing a single line of code."
-        },
-        {
-          "titulo": "Brand applications",
-          "texto": "Presentations, social media assets, stationery, brochures and signage with the same identity.",
-          "ejemplo": {
-            "texto": "At Alyer: vests, brochures and the fleet under the same brand.",
-            "slug": "alyer"
-          }
-        }
-      ],
-      "pasos": [
-        {
-          "titulo": "Discover",
-          "texto": "We learn your business, your audience and your competitors, and define what the brand needs to say.",
-          "entrega": "the creative brief"
-        },
-        {
-          "titulo": "Propose",
-          "texto": "We present distinct visual directions and choose one with you, based on reasons, not just taste.",
-          "entrega": "visual directions to choose from"
-        },
-        {
-          "titulo": "Design",
-          "texto": "We build out the full identity or the screens, with review rounds agreed from the start.",
-          "entrega": "the full identity, reviewed with you"
-        },
-        {
-          "titulo": "Deliver",
-          "texto": "We hand over the source files and the guideline or design system, and support the rollout.",
-          "entrega": "the editable files and the guidelines"
-        }
-      ],
-      "casos": [
-        {
-          "categoria": "Brand and website",
-          "titulo": "The brand of a technical training company and the website it lives on",
-          "metricas": [
-            {
-              "valor": "9",
-              "texto": "pages, with a course catalog and certificate verification"
-            }
-          ],
-          "incluyo": [
-            "Brand identity",
-            "Type system",
-            "Brand architecture",
-            "Brand applications"
-          ]
-        },
-        {
-          "categoria": "Brand and store",
-          "titulo": "A perfume house's brand, created from scratch, and its online store",
-          "metricas": [
-            {
-              "valor": "278",
-              "texto": "fragrances by house, note and occasion"
-            }
-          ],
-          "incluyo": [
-            "Brand identity",
-            "Type system",
-            "Brand applications",
-            "UX/UI design"
-          ]
-        }
-      ],
-      "puente": {
-        "titulo": "Your brand, on a website that sells.",
-        "texto": "Once the identity is ready, the same team takes it to your website, store or app."
-      },
-      "faqs": [
-        {
-          "q": "How long does a branding project take?",
-          "a": "It depends on scope. A full visual identity (logo plus brand manual) takes 2 to 4 weeks. With extra materials it can run to 6 or 8 weeks."
-        },
-        {
-          "q": "What do I need to get started?",
-          "a": "Just a discovery call. You tell us about your company, your audience and your goals, and we prepare the creative brief. You don't need to bring anything prepared."
-        },
-        {
-          "q": "Do you hand over editable files?",
-          "a": "Always. We deliver everything in editable formats: AI, EPS and SVG for the logo; Figma for product design; PDF and InDesign for print materials."
-        },
-        {
-          "q": "Do you redesign existing brands?",
-          "a": "Yes. We analyse your current brand and identify what to keep, what to evolve and what to change completely."
-        },
-        {
-          "q": "How many rounds of revisions are included?",
-          "a": "Up to 3 rounds at each stage of the project. If you need changes beyond that scope, we quote them separately and transparently."
-        }
-      ],
-      "detalle": {
-        "titulo": "Alyer: a brand that reads from thirty meters away, in motion.",
-        "reto": "A heavy-haulage brand is read from thirty metres away, side on and moving. And it had to sign two businesses —the fleet and the workshop that builds the units— without splitting into two logos.",
-        "hicimos": "A symbol built on Alyer’s «A» that reads as both movement and machined part, inside a short system: black, red, four greys and two typefaces. Both lines share symbol and colour, only the descriptor changes, and a 35-page manual fixes it all.",
-        "incluyo": [
-          "Brand identity",
-          "Brand manual",
-          "Type system",
-          "Brand applications",
-          "Merchandising",
-          "Editorial design"
-        ]
-      },
-      "stack": {
-        "capas": [
-          {
-            "nombre": "Tools",
-            "items": [
-              {
-                "slug": "figma",
-                "nombre": "Figma"
-              },
-              {
-                "nombre": "Adobe Illustrator"
-              },
-              {
-                "nombre": "Adobe InDesign"
-              }
-            ]
-          },
-          {
-            "nombre": "Brand",
-            "items": [
-              {
-                "nombre": "Editable logo (AI and SVG)"
-              },
-              {
-                "nombre": "Brand manual (PDF)"
-              },
-              {
-                "nombre": "Print-ready files"
-              }
-            ]
-          },
-          {
-            "nombre": "Product",
-            "items": [
-              {
-                "nombre": "Figma files with components"
-              },
-              {
-                "nombre": "Clickable prototype"
-              },
-              {
-                "nombre": "Color, type and spacing tokens"
-              }
-            ]
-          }
-        ],
-        "tambien": "Everything is handed over editable and in your name."
-      },
-      "secciones": {
-        "hacemos": "What we design",
-        "proceso": "How we design a brand",
-        "stack": "What you get",
-        "mas": "More brands and sites"
-      }
-    },
     "web": {
-      "nombre": "Websites, online stores and apps",
-      "titulo": "Websites, stores and apps built to sell.",
-      "bajada": "Corporate sites, landing pages, e-commerce and iOS and Android apps from a single codebase. Fast, with online payments and measurable from day one.",
+      "nombre": "Websites and online stores",
+      "titulo": "Websites and stores built to sell.",
+      "bajada": "Corporate sites, landing pages and online stores that are fast, take payments online and are measurable from day one.",
       "hacemos": [
         {
           "titulo": "Corporate websites",
@@ -230,8 +30,8 @@
           }
         },
         {
-          "titulo": "iOS and Android apps",
-          "texto": "A single codebase for both app stores, connected to your system and published by us."
+          "titulo": "Built for mobile",
+          "texto": "Design you can read and buy with one thumb: most of your visits come from a phone."
         },
         {
           "titulo": "Technical SEO and speed",
@@ -450,10 +250,186 @@
         "mas": "More stores"
       }
     },
+    "apps": {
+      "nombre": "Apps and product design",
+      "titulo": "Apps and digital products people actually use.",
+      "bajada": "iOS and Android apps, UX/UI design and design systems: from prototype to the app stores, with the same team that builds your system.",
+      "hacemos": [
+        {
+          "titulo": "iOS and Android apps",
+          "texto": "One codebase for both app stores, connected to your system and published by us."
+        },
+        {
+          "titulo": "UX/UI design",
+          "texto": "Structure, flows and screens for websites and apps, designed so users find what they need and finish what they came to do."
+        },
+        {
+          "titulo": "Prototypes and testing",
+          "texto": "Clickable prototypes to test the idea with real users before writing a single line of code."
+        },
+        {
+          "titulo": "Design systems",
+          "texto": "Components, styles and rules in Figma and in code, so every new screen ships consistent and faster."
+        },
+        {
+          "titulo": "Connected features",
+          "texto": "Sign-in, payments, notifications, bookings and real-time data, connected to your system or to the one we build with you."
+        },
+        {
+          "titulo": "Publishing and improvements",
+          "texto": "We publish the app on the App Store and Google Play, measure how it is used and improve it release by release."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Understand",
+          "texto": "We map who uses the app, what it has to do and what is worth launching first.",
+          "entrega": "the screen map and priorities"
+        },
+        {
+          "titulo": "Prototype",
+          "texto": "We design the key flows and screens and test them in a clickable prototype before coding.",
+          "entrega": "the clickable prototype"
+        },
+        {
+          "titulo": "Build",
+          "texto": "We develop in stages, with test builds you install on your phone to review.",
+          "entrega": "test builds on your phone"
+        },
+        {
+          "titulo": "Publish and improve",
+          "texto": "We publish on the App Store and Google Play, measure usage and prioritize what comes next with you.",
+          "entrega": "the app live in the stores"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "Platform with a public site",
+          "titulo": "Bookings, scheduling and payments for appointment-based businesses, each with its own website",
+          "metricas": [],
+          "incluyo": [
+            "Product design",
+            "Public website",
+            "Multi-tenant SaaS platform",
+            "Online payments"
+          ]
+        },
+        {
+          "categoria": "Own product",
+          "titulo": "Courses under your own brand, with an AI tutor trained on each academy’s content",
+          "metricas": [],
+          "incluyo": [
+            "Product design",
+            "White-label SaaS platform",
+            "AI tutor",
+            "Site builder"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "Your app, connected to your operation.",
+        "texto": "The app and the system behind it, built by the same team: bookings, payments, inventory or invoicing in one place."
+      },
+      "faqs": [
+        {
+          "q": "Do you build native or hybrid apps?",
+          "a": "We use a single codebase (React Native) for iOS and Android: it feels like a native app and maintenance costs half. If a project needs something purely native, we tell you before we start."
+        },
+        {
+          "q": "How long does an app take?",
+          "a": "It depends on the scope. A first working product takes 6 to 10 weeks, and we work in stages: you see test builds from the first weeks."
+        },
+        {
+          "q": "Do you publish the app in the stores?",
+          "a": "Yes. We publish it on the App Store and Google Play with your company’s developer account, and help you set it up if you don’t have one yet."
+        },
+        {
+          "q": "Can I hire just the design?",
+          "a": "Yes. We deliver the clickable prototype and the design system in Figma, to build it with us or with your own team."
+        },
+        {
+          "q": "What happens after launch?",
+          "a": "We continue with a monthly plan: updates for new iOS and Android versions, bug fixes and new features."
+        }
+      ],
+      "detalle": {
+        "titulo": "Rematch: the whole club, on the player’s phone and in the owner’s dashboard.",
+        "reto": "Sports centers handled bookings over WhatsApp, classes in spreadsheets, leagues in group chats and tournaments on paper: every activity in a different tool and nothing connected.",
+        "hicimos": "We designed the whole product —flows, screens, components and icons— and built it as a single platform: the club runs courts, academies, leagues and tournaments from one dashboard, and players book and pay from their phones.",
+        "incluyo": [
+          "Product design",
+          "Component system",
+          "Icon system",
+          "Web development",
+          "Real time",
+          "Recurring payments"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Design",
+            "items": [
+              {
+                "slug": "figma",
+                "nombre": "Figma"
+              },
+              {
+                "nombre": "Clickable prototypes"
+              },
+              {
+                "nombre": "Design system"
+              }
+            ]
+          },
+          {
+            "nombre": "Development",
+            "items": [
+              {
+                "slug": "react",
+                "nombre": "React Native"
+              },
+              {
+                "slug": "nextdotjs",
+                "nombre": "Next.js"
+              },
+              {
+                "slug": "typescript",
+                "nombre": "TypeScript"
+              }
+            ]
+          },
+          {
+            "nombre": "Publishing",
+            "items": [
+              {
+                "slug": "apple",
+                "nombre": "App Store"
+              },
+              {
+                "slug": "googleplay",
+                "nombre": "Google Play"
+              },
+              {
+                "slug": "googleanalytics",
+                "nombre": "Google Analytics"
+              }
+            ]
+          }
+        ],
+        "tambien": "The code, the accounts and the design files are yours."
+      },
+      "secciones": {
+        "hacemos": "What we do",
+        "proceso": "How we build an app",
+        "stack": "What we build it with",
+        "mas": "More products"
+      }
+    },
     "software": {
       "nombre": "Custom software and integrations",
       "titulo": "Custom systems to move off spreadsheets.",
-      "bajada": "Internal systems, dashboards, ERPs and CRMs built around how you work. We connect the tools you already use, and the code is yours from day one.",
+      "bajada": "Internal systems, dashboards, ERP and CRM built around how you work. We connect what you already use, including IoT devices, and the code is yours from day one.",
       "hacemos": [
         {
           "titulo": "Internal systems and dashboards",
@@ -469,7 +445,7 @@
         },
         {
           "titulo": "Integrations and APIs",
-          "texto": "Your system connected to payments, ERPs, banks and third-party platforms, so data isn't copied by hand.",
+          "texto": "Your system connected to payments, ERPs, banks, third-party platforms and IoT devices, so data is never copied by hand.",
           "ejemplo": {
             "texto": "At Feniz: MetaTrader 5 connected to the platform.",
             "slug": "feniz"
@@ -929,6 +905,387 @@
         "mas": "More AI in production"
       }
     },
+    "cloud": {
+      "nombre": "Cloud, security and support",
+      "titulo": "Your site online, secure and looked after.",
+      "bajada": "Hosting, automated deployments, backups and monitoring. We look after security and provide support after launch.",
+      "hacemos": [
+        {
+          "titulo": "Hosting and cloud",
+          "texto": "Servers sized to your traffic, with each system isolated in its own container and room to grow."
+        },
+        {
+          "titulo": "Automated deployments",
+          "texto": "Every change is reviewed and released automatically, with no downtime and one-step rollback.",
+          "ejemplo": {
+            "texto": "It's how we release Vendiq, Rematch, LumioLearn and Bookit."
+          }
+        },
+        {
+          "titulo": "Backups and recovery",
+          "texto": "Automatic database backups stored off the server, and test restores so you know they work."
+        },
+        {
+          "titulo": "Monitoring and alerts",
+          "texto": "Uptime, certificates and jobs watched, with a notice before a customer notices."
+        },
+        {
+          "titulo": "Security",
+          "texto": "HTTPS, headers, a web application firewall and bot filtering, key-based access and email with SPF, DKIM and DMARC."
+        },
+        {
+          "titulo": "Support and maintenance",
+          "texto": "Bug fixes, updates and improvements in regular cycles, from a team that knows your system."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Review",
+          "texto": "We audit what you have: servers, domain, email, security and backups.",
+          "entrega": "a report of what exists and its risks"
+        },
+        {
+          "titulo": "Migrate",
+          "texto": "We move your website or system without cutting service and check that everything works the same.",
+          "entrega": "your system on the new server, without downtime"
+        },
+        {
+          "titulo": "Automate",
+          "texto": "We set up deployments, backups, monitoring and alerts.",
+          "entrega": "deployments, backups and alerts in place"
+        },
+        {
+          "titulo": "Support",
+          "texto": "Ongoing support and maintenance, with reports of what was done.",
+          "entrega": "a monthly report of what was done"
+        }
+      ],
+      "casos": [],
+      "puente": {
+        "titulo": "Does your system need to grow?",
+        "texto": "If a new feature or an integration is needed, the same team builds it."
+      },
+      "faqs": [
+        {
+          "q": "Can you migrate my website without downtime?",
+          "a": "Yes. We copy everything, check that it works the same on the new server and only then switch the domain, taking care of email too."
+        },
+        {
+          "q": "What happens if my website goes down?",
+          "a": "Monitoring alerts us right away and we act as agreed in your support plan."
+        },
+        {
+          "q": "How often are backups made?",
+          "a": "We set it according to how often your data changes; daily is typical, and we test that they can be restored."
+        },
+        {
+          "q": "Do you support systems you didn't build?",
+          "a": "Yes. We first review the code and infrastructure, and tell you clearly what can be kept and what should change."
+        },
+        {
+          "q": "How is support billed?",
+          "a": "With monthly maintenance and support plans, based on the size of the system and the response time you need."
+        }
+      ],
+      "detalle": {
+        "titulo": "The path of every change, from code to production",
+        "texto": "The path every change takes in Vendiq, Rematch, LumioLearn and Bookit is the same one we set up for your system.",
+        "flujo": [
+          {
+            "titulo": "Code",
+            "items": ["Repository on GitHub", "Every change reviewed"]
+          },
+          {
+            "titulo": "Deployment",
+            "items": [
+              "Automatic release on every change",
+              "Docker containers behind Traefik"
+            ]
+          },
+          {
+            "titulo": "Online",
+            "items": [
+              "DNS, CDN and WAF on Cloudflare",
+              "Automatic SSL certificate"
+            ]
+          },
+          {
+            "titulo": "Operations",
+            "items": [
+              "Uptime and certificates watched",
+              "Off-server backups, with tested restores"
+            ]
+          }
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Servers",
+            "items": [
+              {
+                "slug": "hetzner",
+                "nombre": "Hetzner"
+              },
+              {
+                "slug": "linux",
+                "nombre": "Linux"
+              },
+              {
+                "slug": "docker",
+                "nombre": "Docker"
+              },
+              {
+                "slug": "traefikproxy",
+                "nombre": "Traefik"
+              }
+            ]
+          },
+          {
+            "nombre": "Network and security",
+            "items": [
+              {
+                "slug": "cloudflare",
+                "nombre": "Cloudflare"
+              },
+              {
+                "slug": "letsencrypt",
+                "nombre": "Let's Encrypt"
+              },
+              {
+                "nombre": "WAF and bot filtering"
+              }
+            ]
+          },
+          {
+            "nombre": "Data",
+            "items": [
+              {
+                "slug": "postgresql",
+                "nombre": "PostgreSQL"
+              },
+              {
+                "slug": "redis",
+                "nombre": "Redis"
+              },
+              {
+                "nombre": "Off-server backups"
+              }
+            ]
+          },
+          {
+            "nombre": "Delivery",
+            "items": [
+              {
+                "slug": "github",
+                "nombre": "GitHub"
+              },
+              {
+                "nombre": "Deploy on every change"
+              }
+            ]
+          },
+          {
+            "nombre": "Email",
+            "items": [
+              {
+                "nombre": "SPF, DKIM and DMARC"
+              }
+            ]
+          }
+        ],
+        "tambien": "If you already have servers or a cloud, we work on what you have."
+      },
+      "secciones": {
+        "hacemos": "What we look after",
+        "proceso": "How we take over your system",
+        "stack": "Infrastructure",
+        "mas": ""
+      }
+    },
+    "marca": {
+      "nombre": "Brand and growth",
+      "titulo": "A clear brand, and customers who find it.",
+      "bajada": "Visual identity as a project and monthly digital marketing: social media, Meta and Google ads and SEO, measured with the real data from your website and your system.",
+      "hacemos": [
+        {
+          "titulo": "Visual identity",
+          "texto": "Logo, symbol, palette and typography, built to work the same on a screen, a uniform or a truck."
+        },
+        {
+          "titulo": "Brand guidelines and assets",
+          "texto": "The usage rules and their applications: stationery, uniforms, brochures, presentations and signage with the same identity."
+        },
+        {
+          "titulo": "Social media and content",
+          "texto": "A monthly calendar with photos, Reels and on-brand pieces for Instagram, Facebook and TikTok."
+        },
+        {
+          "titulo": "Meta and Google ads",
+          "texto": "Campaigns with a clear goal, their creatives and targeting. Ad spend is separate and you pay it directly to each platform."
+        },
+        {
+          "titulo": "SEO and measurement",
+          "texto": "Content that answers what your customers search for, and a monthly report with what worked, measured on your website and in your system."
+        },
+        {
+          "titulo": "Launch package",
+          "texto": "Brand, website and the first month of marketing at a fixed price, to go to market with everything ready."
+        }
+      ],
+      "pasos": [
+        {
+          "titulo": "Understand",
+          "texto": "We learn your business, your audience and your competitors, and agree on what the brand must achieve and how we will measure it.",
+          "entrega": "the brief and first-quarter goals"
+        },
+        {
+          "titulo": "Create the brand",
+          "texto": "We present visual directions, choose one with you and develop the identity and its guidelines.",
+          "entrega": "the identity and guidelines, editable"
+        },
+        {
+          "titulo": "Launch",
+          "texto": "We bring the brand to your website and social media and activate the first campaigns.",
+          "entrega": "live campaigns"
+        },
+        {
+          "titulo": "Measure and improve",
+          "texto": "Every month we review what worked, adjust the creatives and, when it makes sense, switch the plan’s modules.",
+          "entrega": "the monthly report"
+        }
+      ],
+      "casos": [
+        {
+          "categoria": "Brand and website",
+          "titulo": "The brand of a technical training company and the website it lives on",
+          "metricas": [
+            {
+              "valor": "9",
+              "texto": "pages, with a course catalog and certificate verification"
+            }
+          ],
+          "incluyo": [
+            "Brand identity",
+            "Type system",
+            "Brand architecture",
+            "Brand applications"
+          ]
+        },
+        {
+          "categoria": "Brand and store",
+          "titulo": "A perfume house's brand, created from scratch, and its online store",
+          "metricas": [
+            {
+              "valor": "278",
+              "texto": "fragrances by house, note and occasion"
+            }
+          ],
+          "incluyo": [
+            "Brand identity",
+            "Type system",
+            "Brand applications",
+            "UX/UI design"
+          ]
+        }
+      ],
+      "puente": {
+        "titulo": "Your brand, on a website that sells.",
+        "texto": "Once the identity is ready, we bring it to your website, store or app with the same team."
+      },
+      "faqs": [
+        {
+          "q": "How long does a branding project take?",
+          "a": "It depends on scope. A full visual identity (logo plus brand manual) takes 2 to 4 weeks. With extra materials it can run to 6 or 8 weeks."
+        },
+        {
+          "q": "Can I hire just the marketing?",
+          "a": "Yes. If you already have a brand, we start from it. Before launching campaigns we check that your website tracks visits and leads properly, so every dollar invested can be followed."
+        },
+        {
+          "q": "How is marketing billed?",
+          "a": "With a monthly plan in tiers. In each tier you choose the modules —social media, ads or SEO—, with a three-month minimum and the option to switch them from one month to the next."
+        },
+        {
+          "q": "Is ad spend included?",
+          "a": "No. Ads are paid directly to Meta or Google with your company card, and the accounts are in your name. We charge for management and creatives, so you see exactly how much is invested."
+        },
+        {
+          "q": "Do you hand over editable files?",
+          "a": "Always. We deliver everything in editable formats: AI, EPS and SVG for the logo; Figma for product design; PDF and InDesign for print materials."
+        }
+      ],
+      "detalle": {
+        "titulo": "Alyer: a brand that reads from thirty meters away, in motion.",
+        "reto": "A heavy-haulage brand is read from thirty metres away, side on and moving. And it had to sign two businesses —the fleet and the workshop that builds the units— without splitting into two logos.",
+        "hicimos": "A symbol built on Alyer’s «A» that reads as both movement and machined part, inside a short system: black, red, four greys and two typefaces. Both lines share symbol and colour, only the descriptor changes, and a 35-page manual fixes it all.",
+        "incluyo": [
+          "Brand identity",
+          "Brand manual",
+          "Type system",
+          "Brand applications",
+          "Merchandising",
+          "Editorial design"
+        ]
+      },
+      "stack": {
+        "capas": [
+          {
+            "nombre": "Design",
+            "items": [
+              {
+                "slug": "figma",
+                "nombre": "Figma"
+              },
+              {
+                "nombre": "Adobe Illustrator"
+              },
+              {
+                "nombre": "Adobe InDesign"
+              }
+            ]
+          },
+          {
+            "nombre": "Ads and social",
+            "items": [
+              {
+                "nombre": "Meta Ads"
+              },
+              {
+                "nombre": "Google Ads"
+              },
+              {
+                "nombre": "TikTok Ads"
+              }
+            ]
+          },
+          {
+            "nombre": "Measurement",
+            "items": [
+              {
+                "slug": "googleanalytics",
+                "nombre": "Google Analytics"
+              },
+              {
+                "slug": "googlesearchconsole",
+                "nombre": "Search Console"
+              },
+              {
+                "slug": "googletagmanager",
+                "nombre": "Google Tag Manager"
+              }
+            ]
+          }
+        ],
+        "tambien": "Everything is delivered editable and in your name, including the ad accounts."
+      },
+      "secciones": {
+        "hacemos": "What we do",
+        "proceso": "How we work",
+        "stack": "Tools and deliverables",
+        "mas": "More brands and sites"
+      }
+    },
     "iot": {
       "nombre": "IoT and connected devices",
       "titulo": "Your equipment, connected to your system.",
@@ -1134,204 +1491,6 @@
         "hacemos": "What we connect",
         "proceso": "How an IoT project starts",
         "stack": "Protocols and platform",
-        "mas": ""
-      }
-    },
-    "cloud": {
-      "nombre": "Cloud, security and support",
-      "titulo": "Your site online, secure and looked after.",
-      "bajada": "Hosting, automated deployments, backups and monitoring. We look after security and provide support after launch.",
-      "hacemos": [
-        {
-          "titulo": "Hosting and cloud",
-          "texto": "Servers sized to your traffic, with each system isolated in its own container and room to grow."
-        },
-        {
-          "titulo": "Automated deployments",
-          "texto": "Every change is reviewed and released automatically, with no downtime and one-step rollback.",
-          "ejemplo": {
-            "texto": "It's how we release Vendiq, Rematch, LumioLearn and Bookit."
-          }
-        },
-        {
-          "titulo": "Backups and recovery",
-          "texto": "Automatic database backups stored off the server, and test restores so you know they work."
-        },
-        {
-          "titulo": "Monitoring and alerts",
-          "texto": "Uptime, certificates and jobs watched, with a notice before a customer notices."
-        },
-        {
-          "titulo": "Security",
-          "texto": "HTTPS, headers, a web application firewall and bot filtering, key-based access and email with SPF, DKIM and DMARC."
-        },
-        {
-          "titulo": "Support and maintenance",
-          "texto": "Bug fixes, updates and improvements in regular cycles, from a team that knows your system."
-        }
-      ],
-      "pasos": [
-        {
-          "titulo": "Review",
-          "texto": "We audit what you have: servers, domain, email, security and backups.",
-          "entrega": "a report of what exists and its risks"
-        },
-        {
-          "titulo": "Migrate",
-          "texto": "We move your website or system without cutting service and check that everything works the same.",
-          "entrega": "your system on the new server, without downtime"
-        },
-        {
-          "titulo": "Automate",
-          "texto": "We set up deployments, backups, monitoring and alerts.",
-          "entrega": "deployments, backups and alerts in place"
-        },
-        {
-          "titulo": "Support",
-          "texto": "Ongoing support and maintenance, with reports of what was done.",
-          "entrega": "a monthly report of what was done"
-        }
-      ],
-      "casos": [],
-      "puente": {
-        "titulo": "Does your system need to grow?",
-        "texto": "If a new feature or an integration is needed, the same team builds it."
-      },
-      "faqs": [
-        {
-          "q": "Can you migrate my website without downtime?",
-          "a": "Yes. We copy everything, check that it works the same on the new server and only then switch the domain, taking care of email too."
-        },
-        {
-          "q": "What happens if my website goes down?",
-          "a": "Monitoring alerts us right away and we act as agreed in your support plan."
-        },
-        {
-          "q": "How often are backups made?",
-          "a": "We set it according to how often your data changes; daily is typical, and we test that they can be restored."
-        },
-        {
-          "q": "Do you support systems you didn't build?",
-          "a": "Yes. We first review the code and infrastructure, and tell you clearly what can be kept and what should change."
-        },
-        {
-          "q": "How is support billed?",
-          "a": "With monthly maintenance and support plans, based on the size of the system and the response time you need."
-        }
-      ],
-      "detalle": {
-        "titulo": "The path of every change, from code to production",
-        "texto": "The path every change takes in Vendiq, Rematch, LumioLearn and Bookit is the same one we set up for your system.",
-        "flujo": [
-          {
-            "titulo": "Code",
-            "items": ["Repository on GitHub", "Every change reviewed"]
-          },
-          {
-            "titulo": "Deployment",
-            "items": [
-              "Automatic release on every change",
-              "Docker containers behind Traefik"
-            ]
-          },
-          {
-            "titulo": "Online",
-            "items": [
-              "DNS, CDN and WAF on Cloudflare",
-              "Automatic SSL certificate"
-            ]
-          },
-          {
-            "titulo": "Operations",
-            "items": [
-              "Uptime and certificates watched",
-              "Off-server backups, with tested restores"
-            ]
-          }
-        ]
-      },
-      "stack": {
-        "capas": [
-          {
-            "nombre": "Servers",
-            "items": [
-              {
-                "slug": "hetzner",
-                "nombre": "Hetzner"
-              },
-              {
-                "slug": "linux",
-                "nombre": "Linux"
-              },
-              {
-                "slug": "docker",
-                "nombre": "Docker"
-              },
-              {
-                "slug": "traefikproxy",
-                "nombre": "Traefik"
-              }
-            ]
-          },
-          {
-            "nombre": "Network and security",
-            "items": [
-              {
-                "slug": "cloudflare",
-                "nombre": "Cloudflare"
-              },
-              {
-                "slug": "letsencrypt",
-                "nombre": "Let's Encrypt"
-              },
-              {
-                "nombre": "WAF and bot filtering"
-              }
-            ]
-          },
-          {
-            "nombre": "Data",
-            "items": [
-              {
-                "slug": "postgresql",
-                "nombre": "PostgreSQL"
-              },
-              {
-                "slug": "redis",
-                "nombre": "Redis"
-              },
-              {
-                "nombre": "Off-server backups"
-              }
-            ]
-          },
-          {
-            "nombre": "Delivery",
-            "items": [
-              {
-                "slug": "github",
-                "nombre": "GitHub"
-              },
-              {
-                "nombre": "Deploy on every change"
-              }
-            ]
-          },
-          {
-            "nombre": "Email",
-            "items": [
-              {
-                "nombre": "SPF, DKIM and DMARC"
-              }
-            ]
-          }
-        ],
-        "tambien": "If you already have servers or a cloud, we work on what you have."
-      },
-      "secciones": {
-        "hacemos": "What we look after",
-        "proceso": "How we take over your system",
-        "stack": "Infrastructure",
         "mas": ""
       }
     }
