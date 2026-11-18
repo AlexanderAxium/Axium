@@ -3,6 +3,7 @@
 import { CaseContactCTA } from "@/components/axium/case-contact-cta";
 import { MagneticCursorArrow } from "@/components/axium/magnetic-cursor-arrow";
 import { Button } from "@/components/ui/button";
+import { titularDe } from "@/data/portafolio-titulares";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useCasesWithLocale } from "@/lib/case-translations";
 import { ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -255,76 +256,7 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
   },
 ];
 
-// Eje 3 — Tecnología. Cinco. Fuera «TypeScript», que duplicaba casi exactamente
-// a Next.js sin decir nada distinto al cliente.
-const TECH_FILTERS: { label: string; slugs: string[] }[] = [
-  {
-    label: "Next.js",
-    slugs: [
-      "rematch",
-      "lumiolearn",
-      "bookit",
-      "vendiq",
-      "aurore",
-      "toliveagain",
-      "volveravivir",
-      "feniz",
-      "maintech",
-      "sportt",
-      "clefast",
-      "vitalchain",
-      "redesvip",
-      "hotelesparaiso",
-      "lifetoursfl",
-      "siclo",
-      "fintrace",
-      "moviflex",
-      "capptura",
-      "blendet",
-      "jarumi",
-      "qintitec",
-      "cesaracosta",
-    ],
-  },
-  {
-    label: "WordPress",
-    slugs: [
-      "antiruidopvc",
-      "daesurmotors",
-      "enrafmedica",
-      "firstautomation",
-      "podologiemtk",
-      "transportesrumi",
-      "ventanasantiruido",
-      "villacer",
-      "huarmis",
-      "happyart",
-      "jcpingenieros",
-      "comunicarte",
-      "ghiperu",
-      "anjsports",
-      "fenalsa",
-      "ambientalpe",
-    ],
-  },
-  {
-    label: "WooCommerce",
-    slugs: ["happyart", "comunicarte", "anjsports", "ambientalpe"],
-  },
-  {
-    label: "React",
-    slugs: [
-      "favorygracia",
-      "feedback-management",
-      "ambientalpe",
-      "innersoulbright",
-    ],
-  },
-  { label: "IA y datos", slugs: ["web-scraping-ai", "lumiolearn", "feniz"] },
-];
-
-type SortKey = "default" | "az" | "za";
-type AxisKey = "service" | "industry" | "tech";
+type AxisKey = "service" | "industry";
 
 function getAllowedSlugs(
   active: Set<string>,
@@ -338,21 +270,119 @@ function getAllowedSlugs(
   return s;
 }
 
+// ─── Selector en píldora (modelo wacomms.com/case-studies) ───────────────────
+function Selector({
+  label,
+  items,
+  active,
+  onToggle,
+  onClear,
+  open,
+  onOpenChange,
+  clearLabel,
+}: {
+  label: string;
+  items: { label: string; slugs: string[] }[];
+  active: Set<string>;
+  onToggle: (label: string) => void;
+  onClear: () => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  clearLabel: string;
+}) {
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        onClick={() => onOpenChange(!open)}
+        className={`inline-flex items-center gap-3 rounded-full border px-6 py-3 text-base tracking-wide transition-colors md:px-8 md:py-4 md:text-lg ${
+          active.size > 0
+            ? "border-[#060C20] bg-[#060C20] text-white"
+            : "border-[#060C20] bg-white text-[#060C20] hover:bg-gray-50"
+        }`}
+      >
+        {label}
+        {active.size > 0 && (
+          <span className="tabular-nums text-sm text-white/70">
+            {active.size}
+          </span>
+        )}
+        <ChevronDown
+          className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <>
+          <div
+            className="fixed inset-0 z-10"
+            onClick={() => onOpenChange(false)}
+            onKeyDown={(e) => e.key === "Escape" && onOpenChange(false)}
+            role="button"
+            tabIndex={-1}
+            aria-hidden
+          />
+          <div className="absolute right-0 top-full z-20 mt-2 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-gray-200 bg-white p-2 shadow-xl">
+            <ul className="max-h-[60vh] overflow-y-auto">
+              {items.map(({ label: l, slugs }) => {
+                const on = active.has(l);
+                return (
+                  <li key={l}>
+                    <button
+                      type="button"
+                      onClick={() => onToggle(l)}
+                      className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-[#060C20] hover:bg-gray-50"
+                    >
+                      <span
+                        className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-[3px] border ${
+                          on
+                            ? "border-[#060C20] bg-[#060C20]"
+                            : "border-gray-300 bg-white"
+                        }`}
+                      >
+                        {on && (
+                          <span className="h-1.5 w-1.5 rounded-[1px] bg-white" />
+                        )}
+                      </span>
+                      <span className="flex-1">{l}</span>
+                      <span className="tabular-nums text-xs text-gray-400">
+                        {slugs.length}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+            {active.size > 0 && (
+              <button
+                type="button"
+                onClick={onClear}
+                className="mt-1 w-full border-t border-gray-100 px-3 pt-2.5 pb-1.5 text-left text-xs text-gray-500 underline underline-offset-2 hover:text-[#060C20]"
+              >
+                {clearLabel}
+              </button>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 // ─── Card ─────────────────────────────────────────────────────────────────────
+// Sin etiquetas: la empresa arriba en versalitas y debajo un titular corto que dice qué se hizo.
 function PortfolioCard({
   caseItem,
   index,
-  industryLabel,
-  serviceLabel,
   slug,
 }: {
   caseItem: { title: string; image: string; description?: string };
   index: number;
-  industryLabel: string;
-  serviceLabel?: string;
   slug: string;
 }) {
-  const { t } = useTranslation("landing");
+  const { t, locale } = useTranslation("landing");
+  const titular = titularDe(slug, locale, caseItem.title);
 
   return (
     <div
@@ -365,7 +395,7 @@ function PortfolioCard({
     >
       <MagneticCursorArrow label={t("portfolio.verProyecto")}>
         <Link href={`/casos-de-exito/${slug}`} className="group block">
-          <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-gray-100 mb-4">
+          <div className="relative overflow-hidden rounded-[3px] aspect-[4/3] bg-gray-100 mb-5">
             <Image
               src={caseItem.image}
               alt={caseItem.title}
@@ -375,18 +405,11 @@ function PortfolioCard({
               quality={85}
             />
           </div>
-          <div className="flex flex-wrap gap-2 mb-2">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-200 text-gray-500 bg-white">
-              {industryLabel}
-            </span>
-            {serviceLabel && serviceLabel !== industryLabel && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-200 text-gray-500 bg-white">
-                {serviceLabel}
-              </span>
-            )}
-          </div>
-          <h2 className="text-heading-2 text-[#060C20] group-hover:text-[#0072CF] transition-colors duration-200 leading-snug">
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.12em] text-gray-500">
             {caseItem.title}
+          </p>
+          <h2 className="text-xl font-medium leading-snug tracking-[-0.01em] text-[#060C20] transition-colors duration-200 group-hover:text-[#0072CF] sm:text-[1.375rem]">
+            {titular}
           </h2>
         </Link>
       </MagneticCursorArrow>
@@ -395,17 +418,16 @@ function PortfolioCard({
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
+// Página en blanco, sin héroe con fondo (modelo wacomms.com/case-studies, 2026-11-18): el título con el total
+// como superíndice y solo dos selectores, Sector y Qué hacemos.
 export function PortfolioPageContent() {
   const cases = useCasesWithLocale();
   const { t } = useTranslation("landing");
 
   const [activeIndustry, setActiveIndustry] = useState<Set<string>>(new Set());
   const [activeService, setActiveService] = useState<Set<string>>(new Set());
-  const [activeTech, setActiveTech] = useState<Set<string>>(new Set());
-  const [sortKey, setSortKey] = useState<SortKey>("default");
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortOpen, setSortOpen] = useState(false);
-  const [openAxis, setOpenAxis] = useState<AxisKey | null>("service");
+  const [openAxis, setOpenAxis] = useState<AxisKey | null>(null);
 
   const toggleFilter = (
     setter: (s: Set<string>) => void,
@@ -426,25 +448,17 @@ export function PortfolioPageContent() {
     () => getAllowedSlugs(activeService, SERVICE_FILTERS),
     [activeService]
   );
-  const techAllowed = useMemo(
-    () => getAllowedSlugs(activeTech, TECH_FILTERS),
-    [activeTech]
-  );
 
-  const filtered = useMemo(() => {
-    let list = cases.filter((c) => {
-      const slug = getSlug(c.title, c.slug);
-      if (industryAllowed && !industryAllowed.has(slug)) return false;
-      if (serviceAllowed && !serviceAllowed.has(slug)) return false;
-      if (techAllowed && !techAllowed.has(slug)) return false;
-      return true;
-    });
-    if (sortKey === "az")
-      list = [...list].sort((a, b) => a.title.localeCompare(b.title, "es"));
-    if (sortKey === "za")
-      list = [...list].sort((a, b) => b.title.localeCompare(a.title, "es"));
-    return list;
-  }, [cases, industryAllowed, serviceAllowed, techAllowed, sortKey]);
+  const filtered = useMemo(
+    () =>
+      cases.filter((c) => {
+        const slug = getSlug(c.title, c.slug);
+        if (industryAllowed && !industryAllowed.has(slug)) return false;
+        if (serviceAllowed && !serviceAllowed.has(slug)) return false;
+        return true;
+      }),
+    [cases, industryAllowed, serviceAllowed]
+  );
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   /**
@@ -477,71 +491,27 @@ export function PortfolioPageContent() {
     [filtered, start]
   );
 
-  // Reset to page 1 when filters or sort change
+  // Reset to page 1 when filters change
   // biome-ignore lint/correctness/useExhaustiveDependencies: intent is to reset page when any of these change
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeIndustry, activeService, activeTech, sortKey]);
+  }, [activeIndustry, activeService]);
 
-  const hasFilters =
-    activeIndustry.size > 0 || activeService.size > 0 || activeTech.size > 0;
+  const hasFilters = activeIndustry.size > 0 || activeService.size > 0;
   const resetAll = () => {
     setActiveIndustry(new Set());
     setActiveService(new Set());
-    setActiveTech(new Set());
   };
 
-  const SORT_OPTIONS: { key: SortKey; label: string }[] = [
-    { key: "default", label: t("portfolio.sortDefault") },
-    { key: "az", label: t("portfolio.sortAZ") },
-    { key: "za", label: t("portfolio.sortZA") },
-  ];
-  const sortLabel =
-    SORT_OPTIONS.find((o) => o.key === sortKey)?.label ??
-    t("portfolio.sortDefault");
-
-  const AXES: {
-    key: AxisKey;
-    label: string;
-    items: { label: string; slugs: string[] }[];
-    active: Set<string>;
-    onToggle: (label: string) => void;
-  }[] = [
-    {
-      key: "service",
-      label: t("portfolio.queHacemos"),
-      items: SERVICE_FILTERS,
-      active: activeService,
-      onToggle: (l) => toggleFilter(setActiveService, activeService, l),
-    },
-    {
-      key: "industry",
-      label: t("portfolio.sector"),
-      items: INDUSTRY_FILTERS,
-      active: activeIndustry,
-      onToggle: (l) => toggleFilter(setActiveIndustry, activeIndustry, l),
-    },
-    {
-      key: "tech",
-      label: t("portfolio.tecnologia"),
-      items: TECH_FILTERS,
-      active: activeTech,
-      onToggle: (l) => toggleFilter(setActiveTech, activeTech, l),
-    },
-  ];
-
-  const openAxisData = AXES.find((a) => a.key === openAxis);
-
   const activeChips: { axis: AxisKey; label: string }[] = [
-    ...[...activeService].map((label) => ({
-      axis: "service" as AxisKey,
-      label,
-    })),
     ...[...activeIndustry].map((label) => ({
       axis: "industry" as AxisKey,
       label,
     })),
-    ...[...activeTech].map((label) => ({ axis: "tech" as AxisKey, label })),
+    ...[...activeService].map((label) => ({
+      axis: "service" as AxisKey,
+      label,
+    })),
   ];
 
   const removeChip = (axis: AxisKey, label: string) => {
@@ -549,209 +519,74 @@ export function PortfolioPageContent() {
       toggleFilter(setActiveService, activeService, label);
     if (axis === "industry")
       toggleFilter(setActiveIndustry, activeIndustry, label);
-    if (axis === "tech") toggleFilter(setActiveTech, activeTech, label);
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-white">
       <section
         id="page-hero"
-        className="relative min-h-[40vh] flex flex-col justify-end pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden"
+        data-nav-theme="light"
+        className="container-section pt-32 pb-10 md:pt-44 md:pb-14"
       >
-        {/* con next/image y priority: como fondo CSS era un PNG de 2,9 MB que el navegador
-            descubría tarde, y la página tardaba 21 s en pintarse en un 4G lento (2026-10-23) */}
-        <Image
-          src="/abs12.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 container-section">
-          <div className="content-section">
-            <p className="entra-css text-overline text-white/80 mb-3 tracking-widest uppercase">
-              {t("portfolio.nuestroTrabajo")}
-            </p>
-            <h1
-              className="entra-css text-display text-white mb-3 max-w-2xl"
-              style={{ "--entra-retraso": "0.08s" } as CSSProperties}
-            >
-              {t("portfolio.titulo")}{" "}
-              <span className="text-white">{t("portfolio.tituloBold")}</span>
-            </h1>
-            <p
-              className="entra-css text-body text-white/70 max-w-xl"
-              style={{ "--entra-retraso": "0.15s" } as CSSProperties}
-            >
-              {t("portfolio.subtitulo", {
-                count: String(cases.length),
-                industries: String(INDUSTRY_FILTERS.length),
-              })}
-            </p>
+        <div className="content-section flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <h1 className="entra-css text-[clamp(3rem,7vw,6.5rem)] font-normal leading-[0.95] tracking-[-0.02em] text-[#060C20]">
+            {t("portfolio.nuestroTrabajo")}
+            <sup className="ml-2 align-super text-[0.22em] font-normal tracking-normal text-[#060C20]">
+              ({filtered.length})
+            </sup>
+          </h1>
+          <div className="flex flex-wrap items-center gap-3 md:gap-4">
+            <Selector
+              label={t("portfolio.sector")}
+              items={INDUSTRY_FILTERS}
+              active={activeIndustry}
+              onToggle={(l) =>
+                toggleFilter(setActiveIndustry, activeIndustry, l)
+              }
+              onClear={() => setActiveIndustry(new Set())}
+              open={openAxis === "industry"}
+              onOpenChange={(o) => setOpenAxis(o ? "industry" : null)}
+              clearLabel={t("portfolio.limpiarTodo")}
+            />
+            <Selector
+              label={t("portfolio.queHacemos")}
+              items={SERVICE_FILTERS}
+              active={activeService}
+              onToggle={(l) => toggleFilter(setActiveService, activeService, l)}
+              onClear={() => setActiveService(new Set())}
+              open={openAxis === "service"}
+              onOpenChange={(o) => setOpenAxis(o ? "service" : null)}
+              clearLabel={t("portfolio.limpiarTodo")}
+            />
           </div>
         </div>
+        {hasFilters && (
+          <div className="content-section mt-6 flex flex-wrap items-center gap-2">
+            {activeChips.map(({ axis, label }) => (
+              <button
+                key={`${axis}-${label}`}
+                type="button"
+                onClick={() => removeChip(axis, label)}
+                className="flex items-center gap-1 rounded-full bg-[#060C20] px-3 py-1 text-xs text-white hover:opacity-90"
+              >
+                {label} <X className="h-3 w-3" />
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={resetAll}
+              className="text-xs text-gray-500 underline underline-offset-2 hover:text-[#060C20]"
+            >
+              {t("portfolio.limpiarTodo")}
+            </button>
+          </div>
+        )}
       </section>
 
-      <div className="container-section">
+      <div data-nav-theme="light" className="container-section">
         <div className="content-section">
-          {/* ─── Barra superior de filtros ─────────────────────────────────── */}
-          <div className="border-b border-gray-200">
-            {/* Fila 1: ejes + conteo */}
-            <div className="flex items-center justify-between gap-4 pt-6 pb-3 md:pt-8">
-              <div className="flex items-center gap-4 sm:gap-7 overflow-x-auto scrollbar-hide min-w-0 [mask-image:linear-gradient(to_right,black_calc(100%-24px),transparent)] sm:[mask-image:none]">
-                <button
-                  type="button"
-                  onClick={() => {
-                    resetAll();
-                    setOpenAxis(null);
-                  }}
-                  className={`inline-flex min-h-6 min-w-6 shrink-0 items-center justify-center whitespace-nowrap border-b-2 pb-1 text-sm sm:text-base tracking-wide transition-colors ${
-                    !hasFilters && openAxis === null
-                      ? "border-[#060C20] text-[#060C20] font-semibold"
-                      : "border-transparent text-gray-500 hover:text-[#060C20]"
-                  }`}
-                >
-                  {t("portfolio.todos")}
-                </button>
-                {AXES.map((axis) => (
-                  <button
-                    key={axis.key}
-                    type="button"
-                    onClick={() =>
-                      setOpenAxis((v) => (v === axis.key ? null : axis.key))
-                    }
-                    className={`shrink-0 whitespace-nowrap border-b-2 pb-1 text-sm sm:text-base tracking-wide transition-colors flex items-center gap-1.5 ${
-                      openAxis === axis.key
-                        ? "border-[#060C20] text-[#060C20] font-semibold"
-                        : "border-transparent text-gray-500 hover:text-[#060C20]"
-                    }`}
-                  >
-                    {axis.label}
-                    {axis.active.size > 0 && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0072CF]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-              <p className="hidden sm:block shrink-0 text-sm text-gray-400 tabular-nums uppercase tracking-wider">
-                {t("portfolio.mostrando")}{" "}
-                <span className="text-[#060C20] font-semibold">
-                  ({filtered.length}
-                  {hasFilters ? ` / ${cases.length}` : ""})
-                </span>
-              </p>
-            </div>
-
-            {/* Fila 2: opciones del eje abierto */}
-            {openAxisData && (
-              <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-3 [mask-image:linear-gradient(to_right,black_calc(100%-28px),transparent)] lg:flex-wrap lg:gap-y-2 lg:overflow-visible lg:[mask-image:none]">
-                {openAxisData.items.map(({ label, slugs }) => {
-                  const on = openAxisData.active.has(label);
-                  return (
-                    <button
-                      key={label}
-                      type="button"
-                      onClick={() => openAxisData.onToggle(label)}
-                      className={`shrink-0 inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm whitespace-nowrap transition-colors ${
-                        on
-                          ? "bg-[#060C20] border-[#060C20] text-white"
-                          : "bg-white border-gray-200 text-gray-600 hover:border-[#060C20] hover:text-[#060C20]"
-                      }`}
-                    >
-                      {label}
-                      <span
-                        className={`text-[11px] tabular-nums ${on ? "text-white/60" : "text-gray-500"}`}
-                      >
-                        {slugs.length}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* Fila 3: filtros activos + orden */}
-            <div className="flex items-center justify-between gap-x-3 gap-y-2 pb-4 flex-wrap">
-              <div className="flex items-center gap-2 flex-wrap min-w-0">
-                <p className="sm:hidden shrink-0 text-xs text-gray-400 tabular-nums uppercase tracking-wider">
-                  {t("portfolio.mostrando")}{" "}
-                  <span className="text-[#060C20] font-semibold">
-                    ({filtered.length}
-                    {hasFilters ? ` / ${cases.length}` : ""})
-                  </span>
-                </p>
-                {activeChips.map(({ axis, label }) => (
-                  <button
-                    key={`${axis}-${label}`}
-                    type="button"
-                    onClick={() => removeChip(axis, label)}
-                    className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs bg-[#060C20] text-white hover:opacity-90"
-                  >
-                    {label} <X className="w-3 h-3" />
-                  </button>
-                ))}
-                {hasFilters && (
-                  <button
-                    type="button"
-                    onClick={resetAll}
-                    className="text-xs text-gray-400 hover:text-[#060C20] underline underline-offset-2"
-                  >
-                    {t("portfolio.limpiarTodo")}
-                  </button>
-                )}
-              </div>
-              <div className="relative shrink-0 ml-auto">
-                <button
-                  type="button"
-                  onClick={() => setSortOpen((v) => !v)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm text-gray-600 border border-gray-200 bg-white hover:border-gray-300"
-                >
-                  {sortLabel}
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 text-gray-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {sortOpen && (
-                  <>
-                    <div
-                      className="fixed inset-0 z-10"
-                      onClick={() => setSortOpen(false)}
-                      onKeyDown={(e) =>
-                        e.key === "Escape" && setSortOpen(false)
-                      }
-                      role="button"
-                      tabIndex={-1}
-                      aria-hidden
-                    />
-                    <div className="absolute right-0 top-full mt-1.5 z-20 bg-white border border-gray-100 rounded-xl shadow-lg py-1 w-40">
-                      {SORT_OPTIONS.map((opt) => (
-                        <button
-                          key={opt.key}
-                          type="button"
-                          onClick={() => {
-                            setSortKey(opt.key);
-                            setSortOpen(false);
-                          }}
-                          className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
-                            sortKey === opt.key
-                              ? "bg-gradient-to-br from-slate-200/90 to-blue-100/70 text-slate-700 font-medium"
-                              : "text-gray-600 hover:bg-gray-50"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-
           {/* ─── Rejilla + paginación ──────────────────────────────────────── */}
-          <div className="py-8 md:py-12">
+          <div className="pb-8 md:pb-12">
             {filtered.length === 0 ? (
               <div className="py-24 text-center">
                 <p className="text-heading-3 text-gray-300 mb-2">
@@ -776,19 +611,11 @@ export function PortfolioPageContent() {
                 >
                   {pageItems.map((caseItem, idx) => {
                     const slug = getSlug(caseItem.title, caseItem.slug);
-                    const industryLabel =
-                      INDUSTRY_FILTERS.find((f) => f.slugs.includes(slug))
-                        ?.label ?? caseItem.industry;
-                    const serviceLabel = SERVICE_FILTERS.find((f) =>
-                      f.slugs.includes(slug)
-                    )?.label;
                     return (
                       <PortfolioCard
                         key={caseItem.title}
                         caseItem={caseItem}
                         index={idx}
-                        industryLabel={industryLabel}
-                        serviceLabel={serviceLabel}
                         slug={slug}
                       />
                     );
