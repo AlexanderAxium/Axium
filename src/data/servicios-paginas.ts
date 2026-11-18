@@ -430,7 +430,7 @@ export const PAGINAS_SERVICIO: Record<IdServicio, PaginaServicioDatos> = {
       {
         slug: "maintech",
         cliente: "MainTech",
-        portada: "/images/proyects/maintech/mt-portada.jpg",
+        portada: "/images/proyects/maintech/mt-portada-panel.jpg",
       },
       {
         slug: "aurore",

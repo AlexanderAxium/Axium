@@ -628,7 +628,7 @@ export default function SporttContent() {
           name: "Happy Art",
           tagline: c.nextTagline,
           href: "/casos-de-exito/happyart",
-          image: "/images/proyects/happyart/happyart-home.jpg",
+          image: "/images/proyects/happyart/happyart-portada.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />
