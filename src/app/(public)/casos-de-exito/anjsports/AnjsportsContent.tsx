@@ -559,7 +559,7 @@ export default function AnjsportsContent() {
           name: "Vendiq",
           tagline: c.nextTagline,
           href: "/casos-de-exito/vendiq",
-          image: "/images/proyects/vendiq/vendiq-portada-estandar.jpg",
+          image: "/images/proyects/vendiq/vendiq-portada-laptop.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />
