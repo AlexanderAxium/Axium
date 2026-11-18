@@ -85,7 +85,7 @@ export default function FirstautomationContent() {
             <CaseImages
               images={[
                 {
-                  src: "/images/proyects/firstautomation/firstautomation-home.jpg",
+                  src: "/images/proyects/firstautomation/firstautomation-portada.jpg",
                   alt: "First Automation — vista principal / portada del sitio",
                 },
                 {

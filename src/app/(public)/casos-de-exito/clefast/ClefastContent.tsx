@@ -583,7 +583,7 @@ export default function ClefastContent() {
           name: "Aurore",
           tagline: c.nextTagline,
           href: "/casos-de-exito/aurore",
-          image: "/images/proyects/aurore/aurore-portada-estandar.jpg",
+          image: "/images/proyects/aurore/aurore-portada-laptop.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />
