@@ -85,8 +85,8 @@ export default function PodologiemtkContent() {
             <CaseImages
               images={[
                 {
-                  src: "/images/proyects/podologiemtk/podologiemtk-home.jpg",
-                  alt: "Podologie MTK — vista principal del sitio",
+                  src: "/images/proyects/podologiemtk/podologiemtk-portada.jpg",
+                  alt: "Podologie MTK — portada del sitio en una tablet",
                 },
                 {
                   src: "/images/proyects/podologiemtk/podologiemtk-leistungen.jpg",
