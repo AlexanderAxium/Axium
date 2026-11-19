@@ -1,5 +1,6 @@
 import { CheckCircle2, Clock, TrendingUp, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import tresbprofactoryData from "./cases/3bprofactory.json";
 import ambientalpeData from "./cases/ambientalpe.json";
 import anjsportsData from "./cases/anjsports.json";
 import antiruidopvcData from "./cases/antiruidopvc.json";
@@ -129,6 +130,7 @@ const cases: CaseItem[] = [
   convertCaseFromJSON(transportesrumiData as CaseItemJSON),
   convertCaseFromJSON(villacerData as CaseItemJSON),
   convertCaseFromJSON(daesurmotorsData as CaseItemJSON),
+  convertCaseFromJSON(tresbprofactoryData as CaseItemJSON),
   convertCaseFromJSON(firstautomationData as CaseItemJSON),
   convertCaseFromJSON(toliveagainData as CaseItemJSON),
   convertCaseFromJSON(podologiemtkData as CaseItemJSON),

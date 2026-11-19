@@ -5,6 +5,7 @@ import casesEs from "@/locales/es/cases.json";
 import casesPt from "@/locales/pt/cases.json";
 import { useMemo } from "react";
 import type { CaseItem } from "~/data/cases-data";
+import tresbprofactoryData from "~/data/cases/3bprofactory.json";
 import alyerData from "~/data/cases/alyer.json";
 import ambientalpeData from "~/data/cases/ambientalpe.json";
 import anjsportsData from "~/data/cases/anjsports.json";
@@ -83,6 +84,7 @@ const baseCasesBySlug: Record<string, Record<string, unknown>> = {
   transportesrumi: transportesrumiData as Record<string, unknown>,
   villacer: villacerData as Record<string, unknown>,
   daesurmotors: daesurmotorsData as Record<string, unknown>,
+  "3bprofactory": tresbprofactoryData as Record<string, unknown>,
   blendet: blendetData as Record<string, unknown>,
   capptura: cappturaData as Record<string, unknown>,
   moviflex: moviflexData as Record<string, unknown>,
@@ -118,9 +120,9 @@ const CASE_ORDER: string[] = [
   "alyer",
   "anjsports",
   "maintech",
-  "vitalchain",
+  "villacer",
   "fenalsa",
-  "feniz",
+  "3bprofactory",
   "toliveagain",
   "fintrace",
   // Sportt y AmbientalPE intercambiados (Alexander, 2026-10-07: «sportt intercambia con
@@ -138,7 +140,9 @@ const CASE_ORDER: string[] = [
   "antiruidopvc",
   "cesaracosta",
   "transportesrumi",
-  "villacer",
+  // Feniz baja a la página 2 y VitalChain toma el lugar de Villacer (Alexander, 2026-11-19)
+  "feniz",
+  "vitalchain",
   "capptura",
   "blendet",
   "firstautomation",

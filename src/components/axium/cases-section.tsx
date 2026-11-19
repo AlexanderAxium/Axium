@@ -46,6 +46,7 @@ const slugMap: Record<string, string> = {
   "Transportes Rumi": "transportesrumi",
   Villacer: "villacer",
   "Daesur Motors": "daesurmotors",
+  "3B Profactory": "3bprofactory",
   "First Automation": "firstautomation",
   "To Live Again": "toliveagain",
   "Podologie MTK": "podologiemtk",

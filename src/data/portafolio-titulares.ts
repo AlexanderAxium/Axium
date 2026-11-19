@@ -91,6 +91,11 @@ export const TITULARES_PORTAFOLIO: Record<string, Titular> = {
     en: "Brand and website for construction equipment rental",
     pt: "Marca e site para aluguel de equipamentos de obra",
   },
+  "3bprofactory": {
+    es: "EPP para minería que se cotiza por WhatsApp",
+    en: "Mining PPE quoted over WhatsApp",
+    pt: "EPI para mineração cotado pelo WhatsApp",
+  },
   daesurmotors: {
     es: "Un taller y sus repuestos, a un clic",
     en: "A car workshop and its spare parts, one click away",

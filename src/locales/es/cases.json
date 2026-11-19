@@ -330,6 +330,25 @@
     ],
     "results": []
   },
+  "3bprofactory": {
+    "title": "3B Profactory",
+    "industry": "Seguridad industrial · EPP",
+    "description": "Una tienda de EPP para minería e industria donde nada tiene precio: el comprador arma su lista, la manda por WhatsApp y 3B le responde con la cotización. Sobre Vendiq, con la línea propia 3B al frente.",
+    "problem": "3B Profactory vendía con un brochure en PDF y flyers sueltos por WhatsApp. Un comprador de mina no podía ver el catálogo completo, comparar tallas y normas ni saber qué productos estaban certificados, y cada consulta empezaba de cero.",
+    "solution": "Montamos su tienda sobre Vendiq en modo cotización: 75 productos en 12 categorías, fichas con tallas, normas y sellos de homologación, y un carrito que en vez de cobrar arma la lista y la envía por WhatsApp. El diseño sale de referentes del rubro (HexArmor, Libus, Puma Safety), con el verde del logo y el chevrón doble del brochure como firma.",
+    "projectDescription": "Sitio de 3B Profactory S.A.C., proveedor de equipos de protección personal, consumibles y herramientas para minería e industria en Tiabaya, Arequipa. La Línea 3B, de diseño propio y certificada por SGS e Intertek, va primero; detrás, el catálogo por categoría (manos, visual y facial, respiratoria, auditiva, cabeza, corporal, soldador, contra caídas, bloqueo, calzado y herramientas), el buscador, la lista de cotización, Nosotros, Contacto y el Libro de Reclamaciones.",
+    "secondaryIndustry": "Minería e industria",
+    "forWhom": "Compradores de minas, contratistas e industrias del sur del Perú que necesitan EPP certificado y cotizan por volumen",
+    "services": [
+      "Catálogo sin precios con lista de cotización",
+      "Cierre del pedido por WhatsApp",
+      "Línea propia 3B certificada por SGS e Intertek",
+      "75 productos en 12 categorías",
+      "Fichas con tallas, normas y sellos",
+      "Libro de Reclamaciones y legales"
+    ],
+    "results": []
+  },
   "firstautomation": {
     "title": "First Automation",
     "industry": "Industrial / Tecnología",

@@ -330,6 +330,25 @@
     ],
     "results": []
   },
+  "3bprofactory": {
+    "title": "3B Profactory",
+    "industry": "Industrial safety · PPE",
+    "description": "A PPE store for mining and industry where nothing has a price: buyers build their list, send it over WhatsApp and 3B replies with the quote. Built on Vendiq, with 3B's own line up front.",
+    "problem": "3B Profactory sold with a PDF brochure and loose flyers on WhatsApp. A mine buyer couldn't see the full catalogue, compare sizes and standards or tell which products were certified, and every enquiry started from scratch.",
+    "solution": "We set up their store on Vendiq in quote mode: 75 products in 12 categories, product pages with sizes, standards and certification seals, and a cart that builds the list and sends it over WhatsApp instead of charging. The design comes from industry references (HexArmor, Libus, Puma Safety), with the logo green and the brochure's double chevron as its signature.",
+    "projectDescription": "Website for 3B Profactory S.A.C., a supplier of personal protective equipment, consumables and tools for mining and industry in Tiabaya, Arequipa. The 3B Line, their own design certified by SGS and Intertek, comes first; then the catalogue by category (hands, eye and face, respiratory, hearing, head, body, welding, fall protection, lockout, footwear and tools), search, the quote list, About, Contact and the complaints book.",
+    "secondaryIndustry": "Mining and industry",
+    "forWhom": "Mine buyers, contractors and industries in southern Peru who need certified PPE and order in volume",
+    "services": [
+      "Price-free catalogue with a quote list",
+      "Orders closed over WhatsApp",
+      "Own 3B line certified by SGS and Intertek",
+      "75 products in 12 categories",
+      "Product pages with sizes, standards and seals",
+      "Complaints book and legal pages"
+    ],
+    "results": []
+  },
   "firstautomation": {
     "title": "First Automation",
     "industry": "Industrial / Technology",

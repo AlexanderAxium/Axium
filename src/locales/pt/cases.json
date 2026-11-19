@@ -330,6 +330,25 @@
     ],
     "results": []
   },
+  "3bprofactory": {
+    "title": "3B Profactory",
+    "industry": "Segurança industrial · EPI",
+    "description": "Uma loja de EPI para mineração e indústria onde nada tem preço: o comprador monta sua lista, envia pelo WhatsApp e a 3B responde com o orçamento. Sobre o Vendiq, com a linha própria 3B na frente.",
+    "problem": "A 3B Profactory vendia com um catálogo em PDF e folhetos soltos pelo WhatsApp. Um comprador de mina não conseguia ver o catálogo completo, comparar tamanhos e normas nem saber quais produtos eram certificados, e cada consulta começava do zero.",
+    "solution": "Montamos a loja sobre o Vendiq em modo orçamento: 75 produtos em 12 categorias, páginas de produto com tamanhos, normas e selos de homologação, e um carrinho que, em vez de cobrar, monta a lista e a envia pelo WhatsApp. O design vem de referências do setor (HexArmor, Libus, Puma Safety), com o verde do logo e a dupla divisa do catálogo como assinatura.",
+    "projectDescription": "Site da 3B Profactory S.A.C., fornecedora de equipamentos de proteção individual, consumíveis e ferramentas para mineração e indústria em Tiabaya, Arequipa. A Linha 3B, de design próprio e certificada pela SGS e pela Intertek, vem primeiro; depois, o catálogo por categoria (mãos, visual e facial, respiratória, auditiva, cabeça, corporal, soldador, antiqueda, bloqueio, calçado e ferramentas), a busca, a lista de orçamento, Sobre, Contato e o livro de reclamações.",
+    "secondaryIndustry": "Mineração e indústria",
+    "forWhom": "Compradores de minas, empreiteiras e indústrias do sul do Peru que precisam de EPI certificado e compram em volume",
+    "services": [
+      "Catálogo sem preços com lista de orçamento",
+      "Pedido fechado pelo WhatsApp",
+      "Linha própria 3B certificada pela SGS e pela Intertek",
+      "75 produtos em 12 categorias",
+      "Páginas com tamanhos, normas e selos",
+      "Livro de reclamações e páginas legais"
+    ],
+    "results": []
+  },
   "firstautomation": {
     "title": "First Automation",
     "industry": "Industrial / Tecnologia",

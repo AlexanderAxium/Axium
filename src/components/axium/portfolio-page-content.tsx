@@ -43,6 +43,7 @@ const slugMap: Record<string, string> = {
   "Transportes Rumi": "transportesrumi",
   Villacer: "villacer",
   "Daesur Motors": "daesurmotors",
+  "3B Profactory": "3bprofactory",
   "First Automation": "firstautomation",
   "To Live Again": "toliveagain",
   "Podologie MTK": "podologiemtk",
@@ -82,6 +83,7 @@ const SERVICE_FILTERS: { label: string; slugs: string[] }[] = [
     label: "Tienda online",
     slugs: [
       "vendiq",
+      "3bprofactory",
       "aurore",
       "clefast",
       "sportt",
@@ -235,6 +237,7 @@ const INDUSTRY_FILTERS: { label: string; slugs: string[] }[] = [
   {
     label: "Industria y construcción",
     slugs: [
+      "3bprofactory",
       "alyer",
       "transportesrumi",
       "villacer",

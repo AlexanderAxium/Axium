@@ -23,6 +23,7 @@ export const SERVICIOS_DEL_CASO = {
   clefast: ["web"],
   comunicarte: ["web"],
   daesurmotors: ["web"],
+  "3bprofactory": ["web"],
   enrafmedica: ["web"],
   favorygracia: ["web"],
   "feedback-management": ["software"],
