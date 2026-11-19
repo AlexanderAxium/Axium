@@ -495,11 +495,11 @@ function bloques(c: Copy): BloqueProducto[] {
       kind: "ancho",
       medio: {
         tipo: "imagen",
-        src: `${IMG}/bv-landing.jpg`,
-        srcMovil: `${IMG}/bv-landing-movil.jpg`,
+        // Su web móvil en un celular sobre una silla verde, con la hoja de «cero comisiones» (2026-11-19)
+        src: `${IMG}/bk-celular-silla.jpg`,
         alt: c.alt.landing,
       },
-      ratio: 2,
+      ratio: 3 / 2,
       ratioMovil: 4 / 3,
     },
     // El explicativo de 45 s de sus redes, con voz y subtítulos: suena sólo si se toca (2026-10-23)
