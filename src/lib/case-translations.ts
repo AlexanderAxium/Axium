@@ -136,12 +136,15 @@ const CASE_ORDER: string[] = [
   // Daesur y Luján intercambiados (Alexander, 2026-10-21: «daesur sufrió un refactoring, ponlo
   // en la página principal, cámbialo por vitivinícola»): Daesur sube a la página 1
   "daesurmotors",
-  "ventanasantiruido",
-  "antiruidopvc",
+  // JCP y Huarmis suben a la página 1; Rumi, Decibeles y Ventanas Antiruido bajan a la 2 (Alexander, 2026-11-19)
+  "jcpingenieros",
+  "huarmis",
   "cesaracosta",
-  "transportesrumi",
   // Capptura y Feniz intercambiados y VitalChain en el lugar de Villacer (Alexander, 2026-11-19)
   "capptura",
+  "transportesrumi",
+  "antiruidopvc",
+  "ventanasantiruido",
   "vitalchain",
   "feniz",
   "blendet",
@@ -150,11 +153,9 @@ const CASE_ORDER: string[] = [
   "podologiemtk",
   "enrafmedica",
   "moviflex",
-  "huarmis",
   "jarumi",
   "favorygracia",
   "hotelesparaiso",
-  "jcpingenieros",
   "qintitec",
   "lifetoursfl",
   "comunicarte",
