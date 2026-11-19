@@ -140,10 +140,10 @@ const CASE_ORDER: string[] = [
   "antiruidopvc",
   "cesaracosta",
   "transportesrumi",
-  // Feniz baja a la página 2 y VitalChain toma el lugar de Villacer (Alexander, 2026-11-19)
-  "feniz",
-  "vitalchain",
+  // Capptura y Feniz intercambiados y VitalChain en el lugar de Villacer (Alexander, 2026-11-19)
   "capptura",
+  "vitalchain",
+  "feniz",
   "blendet",
   "firstautomation",
   "volveravivir",
