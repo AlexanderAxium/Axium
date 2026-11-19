@@ -200,7 +200,7 @@ export const PAGINAS_SERVICIO: Record<IdServicio, PaginaServicioDatos> = {
       {
         slug: "bookit",
         cliente: "Bookit",
-        portada: "/images/proyects/bookit/bookit-portada-v2.jpg",
+        portada: "/images/proyects/bookit/bk-celular-silla.jpg",
       },
       {
         slug: "lumiolearn",

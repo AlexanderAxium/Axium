@@ -554,7 +554,7 @@ export default function FenizContent() {
           name: "Bookit",
           tagline: c.nextTagline,
           href: "/casos-de-exito/bookit",
-          image: "/images/proyects/bookit/bookit-portada-v2.jpg",
+          image: "/images/proyects/bookit/bk-celular-silla.jpg",
         }}
         labels={STORY_LABELS[lang]}
       />

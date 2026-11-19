@@ -527,7 +527,7 @@ export default function LumiolearnContent() {
           name: "Bookit",
           tagline: c.nextTagline,
           href: "/casos-de-exito/bookit",
-          image: "/images/proyects/bookit/bookit-portada-v2.jpg",
+          image: "/images/proyects/bookit/bk-celular-silla.jpg",
         }}
         // MainTech es cliente con soporte de Lumio, no LumioLearn: no se muestra al lado
         hide={["maintech"]}
